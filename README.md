@@ -26,7 +26,14 @@ Motor para sites de clientes + um design de exemplo. **Cada cliente tem seu pró
 
 Para adicionar uma página: crie `design/pages/nova.html`, inclua `"nova"` em `pages` no `site.config.json` e adicione `nav.nova` e `pages.nova` (com `title` e `description`) em cada `content/<idioma>.json`.
 
-## Cloudflare Pages
+## Cloudflare
+
+Funciona tanto como **Workers** (tela padrão de "Create" no painel) quanto como **Pages**.
+
+- Workers: build command `npm run build`; deploy command padrão (`npx wrangler deploy`). O `wrangler.jsonc` já aponta a saída para `dist`.
+- Pages: build command `npm run build`, output directory `dist`.
+
+### Detalhes
 
 - Build command: `npm run build`
 - Output directory: `dist`

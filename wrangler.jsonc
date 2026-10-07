@@ -1,0 +1,9 @@
+// Publica dist/ como site estático no Cloudflare (Workers com assets).
+// No Cloudflare Pages este arquivo é ignorado: lá use build `npm run build` e saída `dist`.
+{
+  "name": "site-modelo",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
