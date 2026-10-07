@@ -1,0 +1,65 @@
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow eyebrow-light">{{p.eyebrow}}</div>
+      <h1>{{p.heroTitle}}</h1>
+      <p class="lead">{{p.heroText}}</p>
+      <div class="btn-row">
+        <a class="btn btn-brand" href="{{wa}}" target="_blank" rel="noopener">{{t.cta}} <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="/{{lang}}/servicos">{{p.heroSecondary}}</a>
+      </div>
+    </div>
+    <dl class="stats">
+      {{#each p.stats}}<div><dt>{{it.value}}</dt><dd>{{it.label}}</dd></div>{{/each}}
+    </dl>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="wrap stack-lg">
+    <div class="split-head">
+      <div class="stack"><div class="eyebrow">{{p.whatEyebrow}}</div><h2>{{p.whatTitle}}</h2></div>
+      <p class="muted">{{p.whatText}}</p>
+    </div>
+    <div class="cards">
+      {{#each p.cards}}<a class="card" href="/{{lang}}/servicos">
+        <div class="card-img" style="background-image:url(/{{site.images.cards.$i}})"></div>
+        <div class="card-body">
+          <span class="num">{{num}}</span>
+          <h3>{{it.title}}</h3>
+          <p>{{it.text}}</p>
+          <span class="link">{{it.cta}} →</span>
+        </div>
+      </a>{{/each}}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap about">
+    <div class="about-media">
+      <div class="about-img" style="background-image:url(/{{site.images.about}})"></div>
+      <div class="badge"><strong>{{site.founded}}</strong><span>{{t.labels.founded}}</span></div>
+    </div>
+    <div class="stack">
+      <div class="eyebrow">{{p.aboutEyebrow}}</div>
+      <h2>{{p.aboutTitle}}</h2>
+      <p class="muted">{{p.aboutText}}</p>
+      <dl class="rows">
+        {{#each p.rows}}<div><dt>{{it.label}}</dt><dd>{{it.text}}</dd></div>{{/each}}
+      </dl>
+      <a class="link link-underline" href="/{{lang}}/sobre">{{p.aboutCta}} →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>{{p.bandTitle}}</h2>
+      <div class="btn-row">
+        <a class="btn btn-light" href="{{wa}}" target="_blank" rel="noopener">{{t.wa}} <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>

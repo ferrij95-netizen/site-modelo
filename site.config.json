@@ -1,0 +1,49 @@
+{
+  "name": "Empresa Exemplo",
+  "tagline": "Equipamentos<br>Industriais",
+  "logo": "",
+  "domain": "https://www.exemplo.com.br",
+  "whatsapp": "5511999999999",
+  "phone": "(11) 3456-7890",
+  "phoneHref": "+551134567890",
+  "email": "contato@exemplo.com.br",
+  "address": "Rua Exemplo, 123 — Cidade, UF",
+  "instagram": "https://www.instagram.com/",
+  "linkedin": "https://www.linkedin.com/",
+  "founded": "1991",
+  "defaultLang": "pt",
+  "langs": [
+    "pt",
+    "en",
+    "es"
+  ],
+  "theme": {
+    "brand": "#9C0016",
+    "brandDark": "#7E0012",
+    "brandDeep": "#5C000E",
+    "ink": "#1C1B1A",
+    "muted": "#55534F",
+    "line": "#E6E3DD",
+    "bg": "#F7F6F3",
+    "bgAlt": "#EFEDE8"
+  },
+  "hero": {
+    "image": "assets/img/hero.jpg",
+    "overlay": "linear-gradient(100deg,rgba(92,0,14,.88) 0%,rgba(28,27,26,.72) 45%,rgba(28,27,26,.2) 100%)"
+  },
+  "images": {
+    "cards": [
+      "assets/img/card-1.jpg",
+      "assets/img/card-2.jpg",
+      "assets/img/card-3.jpg"
+    ],
+    "about": "assets/img/sobre.jpg",
+    "band": "assets/img/hero.jpg"
+  },
+  "pages": [
+    "index",
+    "sobre",
+    "servicos",
+    "contato"
+  ]
+}
