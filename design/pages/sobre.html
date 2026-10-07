@@ -1,0 +1,17 @@
+<section class="page-head">
+  <div class="wrap stack"><div class="eyebrow eyebrow-light">{{p.eyebrow}}</div><h1>{{p.heading}}</h1></div>
+</section>
+<section class="section">
+  <div class="wrap about">
+    <div class="about-media">
+      <div class="about-img" style="background-image:url(/{{site.images.about}})"></div>
+      <div class="badge"><strong>{{site.founded}}</strong><span>{{t.labels.founded}}</span></div>
+    </div>
+    <div class="stack">
+      <p class="lead-dark">{{p.text}}</p>
+      <dl class="rows">
+        {{#each p.rows}}<div><dt>{{it.label}}</dt><dd>{{it.text}}</dd></div>{{/each}}
+      </dl>
+    </div>
+  </div>
+</section>

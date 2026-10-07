@@ -1,0 +1,19 @@
+<section class="page-head">
+  <div class="wrap stack"><div class="eyebrow eyebrow-light">{{p.eyebrow}}</div><h1>{{p.heading}}</h1></div>
+</section>
+<section class="section section-soft">
+  <div class="wrap">
+    <div class="service-grid">
+      {{#each p.services}}<article class="service">
+        <span class="num">{{num}}</span>
+        <h3>{{it.title}}</h3>
+        <p>{{it.text}}</p>
+        <a class="link" href="{{wa}}" target="_blank" rel="noopener">{{t.contactCta}} →</a>
+      </article>{{/each}}
+      <article class="service service-cta">
+        <h3>{{p.ctaTitle}}</h3>
+        <a class="link" href="{{wa}}" target="_blank" rel="noopener">{{t.cta}} →</a>
+      </article>
+    </div>
+  </div>
+</section>

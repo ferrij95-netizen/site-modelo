@@ -1,0 +1,13 @@
+{
+  "name": "site-modelo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs && node scripts/check.mjs",
+    "og": "node scripts/og-images.mjs",
+    "dev": "node scripts/build.mjs && npx --yes serve dist"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}
