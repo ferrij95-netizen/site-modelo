@@ -30,6 +30,8 @@ Para adicionar uma página: crie `design/pages/nova.html`, inclua `"nova"` em `p
 
 - Build command: `npm run build`
 - Output directory: `dist`
+- Branch de produção: `main`. Cada outra branch vira um preview em `https://<branch>.<projeto>.pages.dev` (ex.: `https://modelo-base.site-modelo.pages.dev`), e cada PR recebe o link num comentário do Cloudflare.
+- Sem domínio personalizado até o cliente aprovar.
 - As imagens OG ficam versionadas no repositório (rode `npm run og` antes do commit quando mudar títulos ou a foto), assim o build no Cloudflare não depende do `sharp`.
 
 ## Testar localmente
