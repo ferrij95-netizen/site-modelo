@@ -1,0 +1,16 @@
+<section class="phero"><div class="wrap">
+  <div class="frame">
+    <img src="/img/aves-matrizes.jpg" alt="Aves em um aviário da Agrogen" width="1920" height="600" fetchpriority="high">
+    <div class="txt">
+      <nav class="crumbs" aria-label="Você está em"><a href="/{{lang}}/">{{t.nav.index}}</a><span>/</span><span>{{t.nav.pilares}}</span></nav>
+      <h1>{{p.heading}}</h1>
+      <p>Quatro compromissos sustentam a qualidade das matrizes Agrogen: as aves, a sanidade, as pessoas e o meio ambiente.</p>
+    </div>
+  </div>
+</div></section>
+<section class="sec">
+  <div class="wrap">
+  {{#each t.pilares}}<div class="prow reveal{{#if it.rev}} rev{{/if}}"><img src="/img/{{it.img}}.jpg" alt="" loading="lazy" width="600" height="400"><div class="tx"><span class="eyebrow">Pilar {{num}}</span><h2>{{it.name}}</h2><p>{{it.short}}</p><a class="btn" href="/{{lang}}/{{it.id}}">{{t.more}}</a></div></div>{{/each}}
+  </div>
+</section>
+{{cta}}
