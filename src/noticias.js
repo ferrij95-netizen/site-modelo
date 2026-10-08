@@ -11,7 +11,7 @@
 import { painelHtml } from './painel.js';
 
 export const CLIENTES = {
-  nelsonwendt: { nome: 'Nelson Wendt', lang: 'pt', cor: '#0B3B2E', locale: 'pt-BR' },
+  nelsonwendt: { nome: 'Nelson Wendt Alimentos', lang: 'pt', cor: '#3F49A6', locale: 'pt-BR' },
 };
 
 const POR_PAGINA = 12;
@@ -34,23 +34,30 @@ function dataLonga(iso, locale) {
 }
 
 // Texto do painel -> HTML. Parágrafos separados por linha em branco, "## " subtítulo, "- " lista,
-// **negrito**, [texto](https://link). Tudo é escapado antes, então não entra HTML do usuário.
+// **negrito**, [texto](https://link), ![legenda](/noticias/img/N) imagem. Tudo é escapado, então não entra HTML do usuário.
 export function corpoHtml(txt) {
   const inline = s => esc(s)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
   return String(txt || '').replace(/\r/g, '').split(/\n{2,}/).map(b => b.trim()).filter(Boolean).map(b => {
     if (b.startsWith('## ')) return `<h2>${inline(b.slice(3))}</h2>`;
+    const im = b.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
+    if (im && SRC_OK.test(im[2])) return `<figure><img src="${esc(im[2])}" alt="${esc(im[1])}" loading="lazy">${im[1] ? `<figcaption>${esc(im[1])}</figcaption>` : ''}</figure>`;
     const linhas = b.split('\n');
     if (linhas.every(l => /^\s*[-•]\s+/.test(l))) return `<ul>${linhas.map(l => `<li>${inline(l.replace(/^\s*[-•]\s+/, ''))}</li>`).join('')}</ul>`;
     return `<p>${linhas.map(inline).join('<br>')}</p>`;
   }).join('\n');
 }
 
+// Imagens aceitas: enviadas pelo painel (/noticias/img/N) ou arquivos do próprio site (/img/...).
+const SRC_OK = /^\/(noticias\/img\/\d+|img\/[\w./-]+)$/;
+const capaDe = n => (n.imagem_id ? `/noticias/img/${n.imagem_id}` : n.capa) || null;
+
 function cartao(n, cfg) {
   const href = `/${cfg.lang}/noticias/${n.slug}`;
-  const img = n.imagem_id ? `<figure class="noticia-card-img"><img src="/noticias/img/${n.imagem_id}" alt="" loading="lazy"></figure>` : '';
-  return `<article class="noticia-card${n.imagem_id ? '' : ' noticia-card--sem-img'}"><a href="${href}">${img}<div class="noticia-card-txt">`
+  const src = capaDe(n);
+  const img = src ? `<figure class="noticia-card-img"><img src="${esc(src)}" alt="" loading="lazy"></figure>` : '';
+  return `<article class="noticia-card${src ? '' : ' noticia-card--sem-img'}"><a href="${href}">${img}<div class="noticia-card-txt">`
     + `<time datetime="${esc(n.data)}">${esc(dataLonga(n.data, cfg.locale))}</time><h3>${esc(n.titulo)}</h3>`
     + (n.resumo ? `<p>${esc(n.resumo)}</p>` : '') + `<span class="noticia-card-mais">Ler notícia</span></div></a></article>`;
 }
@@ -58,7 +65,7 @@ function cartao(n, cfg) {
 // ---------- Site público ----------
 
 async function publicadas(db, cliente, limite, offset = 0) {
-  const r = await db.prepare('SELECT id, slug, titulo, resumo, imagem_id, data FROM noticias WHERE cliente = ? AND publicada = 1 ORDER BY data DESC, id DESC LIMIT ? OFFSET ?')
+  const r = await db.prepare('SELECT id, slug, titulo, resumo, imagem_id, capa, data FROM noticias WHERE cliente = ? AND publicada = 1 ORDER BY data DESC, id DESC LIMIT ? OFFSET ?')
     .bind(cliente, limite, offset).all();
   return r.results;
 }
@@ -102,7 +109,8 @@ export async function noticias(request, env, cliente, url, asset) {
     const titulo = `${n.titulo} · ${cfg.nome}`;
     const desc = n.resumo || String(n.corpo).replace(/\s+/g, ' ').slice(0, 155);
     const abs = `${url.origin}/${L}/noticias/${n.slug}`;
-    const img = n.imagem_id ? `${url.origin}/noticias/img/${n.imagem_id}` : null;
+    const capa = capaDe(n);
+    const img = capa ? url.origin + capa : null;
     let rw = new HTMLRewriter()
       .on('title', new Preenche(esc(titulo)))
       .on('meta[name="description"]', new Attr('content', desc))
@@ -118,7 +126,7 @@ export async function noticias(request, env, cliente, url, asset) {
       .on('[data-noticia-data]', { element: el => { el.setInnerContent(esc(dataLonga(n.data, cfg.locale)), { html: true }); el.setAttribute('datetime', n.data); } })
       .on('[data-noticia-corpo]', new Preenche(corpoHtml(n.corpo)));
     if (img) rw = rw.on('meta[property="og:image"], meta[name="twitter:image"]', new Attr('content', img))
-      .on('[data-noticia-imagem]', new Preenche(`<img src="/noticias/img/${n.imagem_id}" alt="${esc(n.titulo)}">`));
+      .on('[data-noticia-imagem]', new Preenche(`<img src="${esc(capa)}" alt="${esc(n.titulo)}">`));
     else rw = rw.on('[data-noticia-imagem]', { element: el => el.remove() });
     return dinamico(rw.transform(res));
   }
@@ -248,8 +256,8 @@ async function admin(request, db, cliente, cfg, url) {
   }
 
   if (p === '/admin/api/noticias' && m === 'GET') {
-    const r = await db.prepare('SELECT id, slug, titulo, resumo, imagem_id, publicada, data, atualizada FROM noticias WHERE cliente = ? ORDER BY data DESC, id DESC').bind(cliente).all();
-    return json({ noticias: r.results, base: `/${cfg.lang}/noticias/` });
+    const r = await db.prepare('SELECT id, slug, titulo, resumo, imagem_id, capa, publicada, data, atualizada FROM noticias WHERE cliente = ? ORDER BY data DESC, id DESC').bind(cliente).all();
+    return json({ noticias: r.results.map(n => ({ ...n, imagem: capaDe(n) })), base: `/${cfg.lang}/noticias/` });
   }
 
   const mId = p.match(/^\/admin\/api\/noticias(?:\/(\d+))?$/);
@@ -257,7 +265,7 @@ async function admin(request, db, cliente, cfg, url) {
     const id = mId[1] ? +mId[1] : null;
     const atual = id ? await db.prepare('SELECT * FROM noticias WHERE id = ? AND cliente = ?').bind(id, cliente).first() : null;
     if (id && !atual) return json({ erro: 'Notícia não encontrada.' }, 404);
-    if (m === 'GET' && id) return json({ noticia: atual });
+    if (m === 'GET' && id) return json({ noticia: { ...atual, imagem: capaDe(atual) } });
     if (m === 'DELETE' && id) {
       await db.batch([
         db.prepare('DELETE FROM noticias WHERE id = ?').bind(id),
@@ -272,7 +280,11 @@ async function admin(request, db, cliente, cfg, url) {
       const data = /^\d{4}-\d{2}-\d{2}$/.test(b.data) ? b.data : new Date().toISOString().slice(0, 10);
       const resumo = String(b.resumo || '').trim().slice(0, 400);
       const corpo = String(b.corpo || '').slice(0, 50000);
-      const imagem_id = b.imagem_id ? +b.imagem_id : null;
+      // Capa: imagem enviada pelo painel (/noticias/img/N) ou arquivo do site (/img/...), ou nenhuma.
+      const src = b.imagem ? String(b.imagem) : null;
+      if (src && !SRC_OK.test(src)) return json({ erro: 'Imagem inválida.' }, 400);
+      const imagem_id = src?.startsWith('/noticias/img/') ? +src.split('/').pop() : null;
+      const capa = src && !imagem_id ? src : null;
       if (imagem_id && !(await db.prepare('SELECT 1 FROM imagens WHERE id = ? AND cliente = ?').bind(imagem_id, cliente).first())) return json({ erro: 'Imagem inválida.' }, 400);
       const publicada = b.publicada ? 1 : 0;
       // Endereço: definido na criação (para links já compartilhados não quebrarem); repete -2, -3 se já existir.
@@ -282,13 +294,13 @@ async function admin(request, db, cliente, cfg, url) {
         for (let i = 2; await db.prepare('SELECT 1 FROM noticias WHERE cliente = ? AND slug = ?').bind(cliente, slug).first(); i++) slug = `${base}-${i}`;
       }
       if (atual) {
-        await db.prepare("UPDATE noticias SET titulo = ?, resumo = ?, corpo = ?, imagem_id = ?, publicada = ?, data = ?, atualizada = datetime('now') WHERE id = ?")
-          .bind(titulo, resumo, corpo, imagem_id, publicada, data, id).run();
-        if (atual.imagem_id && atual.imagem_id !== imagem_id) await db.prepare('DELETE FROM imagens WHERE id = ? AND cliente = ?').bind(atual.imagem_id, cliente).run();
+        await db.prepare("UPDATE noticias SET titulo = ?, resumo = ?, corpo = ?, imagem_id = ?, capa = ?, publicada = ?, data = ?, atualizada = datetime('now') WHERE id = ?")
+          .bind(titulo, resumo, corpo, imagem_id, capa, publicada, data, id).run();
+        if (atual.imagem_id && atual.imagem_id !== imagem_id && !corpo.includes(`/noticias/img/${atual.imagem_id})`)) await db.prepare('DELETE FROM imagens WHERE id = ? AND cliente = ?').bind(atual.imagem_id, cliente).run();
         return json({ id, slug });
       }
-      const r = await db.prepare('INSERT INTO noticias (cliente, slug, titulo, resumo, corpo, imagem_id, publicada, data) VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
-        .bind(cliente, slug, titulo, resumo, corpo, imagem_id, publicada, data).run();
+      const r = await db.prepare('INSERT INTO noticias (cliente, slug, titulo, resumo, corpo, imagem_id, capa, publicada, data) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)')
+        .bind(cliente, slug, titulo, resumo, corpo, imagem_id, capa, publicada, data).run();
       return json({ id: r.meta.last_row_id, slug });
     }
   }
