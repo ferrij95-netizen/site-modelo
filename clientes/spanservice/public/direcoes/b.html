@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Span Service · Direção B · Perto de você</title>
+<link rel="icon" href="../img/favicon.svg">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--y:#FAB830;--ys:#FFF1D2;--ink:#1C1C1E;--g:#5F5E5B;--bg:#F7F5F0;--card:#FFFFFF;--line:#E6E2D9;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:17px/1.65 Manrope,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-weight:800;letter-spacing:-.035em;line-height:1.05}
+.hl{background:linear-gradient(transparent 58%,var(--y) 58%,var(--y) 92%,transparent 92%);padding:0 .06em}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 14px 7px 10px}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--y);box-shadow:0 0 0 4px var(--ys)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 16px/1 Manrope;text-decoration:none;padding:17px 26px;border-radius:99px;background:var(--ink);color:#fff;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.15)}
+.btn.y{background:var(--y);color:var(--ink)}
+.btn.o{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
+.btn svg{width:18px;height:18px}
+
+header{position:sticky;top:0;z-index:20;background:rgba(247,245,240,.88);backdrop-filter:blur(12px);border-bottom:1px solid transparent}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+header img{height:50px;width:auto}
+header ul{list-style:none;display:flex;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px}
+header ul a{display:block;text-decoration:none;font-weight:600;font-size:15px;padding:9px 18px;border-radius:99px}
+header ul a:hover{background:var(--ys)}
+header .btn{padding:13px 20px;font-size:15px}
+.burger{display:none;background:var(--card);border:1px solid var(--line);border-radius:50%;width:46px;height:46px;place-items:center}
+.burger svg{width:22px}
+
+/* hero */
+.hero{padding:56px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(46px,6.3vw,84px);margin:22px 0 24px}
+.hero p{font-size:20px;color:var(--g);max-width:520px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin:34px 0 40px}
+.hero .who{display:flex;gap:28px;flex-wrap:wrap;font-size:15px;color:var(--g)}
+.hero .who b{display:block;font-size:22px;color:var(--ink);letter-spacing:-.02em}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 150px 200px;gap:14px;position:relative}
+.collage img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.collage .c1{grid-row:1/3}.collage .c4{grid-column:1/3}
+.collage .badge{position:absolute;right:-16px;top:48%;background:var(--y);border-radius:18px;padding:16px 20px;font-weight:800;line-height:1.15;box-shadow:0 18px 40px rgba(0,0,0,.14);transform:rotate(3deg)}
+.collage .badge small{display:block;font-weight:600;font-size:13px}
+
+/* faixa logos de setores */
+.strip{border-block:1px solid var(--line);background:var(--card)}
+.strip .wrap{display:flex;justify-content:space-between;gap:24px;padding-top:22px;padding-bottom:22px;font-weight:700;color:var(--g);flex-wrap:wrap}
+.strip span{display:flex;align-items:center;gap:10px}
+.strip span:before{content:"";width:22px;height:4px;border-radius:2px;background:var(--y)}
+
+section{padding:110px 0}
+.head{max-width:720px;margin-bottom:52px}
+.head h2{font-size:clamp(38px,4.6vw,60px);margin:18px 0 16px}
+.head p{color:var(--g);font-size:19px}
+
+/* serviços */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc a{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px;text-decoration:none;display:flex;flex-direction:column;transition:.25s}
+.svc a:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(0,0,0,.08);border-color:transparent}
+.svc img{aspect-ratio:16/10;object-fit:cover;border-radius:14px;width:100%}
+.svc .t{padding:20px 14px 14px;display:flex;flex-direction:column;flex:1}
+.svc h3{font-size:24px;margin-bottom:8px}
+.svc p{color:var(--g);font-size:16px;flex:1}
+.svc .go{margin-top:18px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:15px}
+.svc .go i{width:40px;height:40px;border-radius:50%;background:var(--ys);display:grid;place-items:center;transition:.2s}
+.svc a:hover .go i{background:var(--y)}
+.svc .go svg{width:18px}
+.svc a.dark{background:var(--ink);color:#fff;border-color:var(--ink);padding:34px 30px;justify-content:space-between}
+.svc a.dark p{color:#BDBAB4}
+.svc a.dark h3{font-size:32px}
+.svc a.dark .go i{background:var(--y);color:var(--ink)}
+
+/* sobre */
+.about{background:var(--card);border-radius:36px;margin:0 16px}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about .ph{position:relative}
+.about .ph img{border-radius:var(--r);aspect-ratio:4/4.4;object-fit:cover;width:100%}
+.about .ph .sticker{position:absolute;left:24px;bottom:24px;right:24px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-radius:16px;padding:18px 20px;display:flex;gap:16px;align-items:center}
+.about .ph .sticker b{font-size:34px;letter-spacing:-.03em;background:var(--y);border-radius:12px;padding:6px 12px}
+.about h2{font-size:clamp(36px,4.2vw,54px);margin:18px 0 22px}
+.about p{color:var(--g);margin-bottom:14px}
+.vals{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0 34px}
+.vals div{border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:700;display:flex;gap:10px;align-items:center}
+.vals svg{width:20px;flex:none;color:#C88A0A}
+
+/* etapas */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.steps div{counter-increment:s;padding:28px 26px;border-radius:var(--r);background:var(--card);border:1px solid var(--line)}
+.steps div:before{content:counter(s,decimal-leading-zero);display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--y);font-weight:800;margin-bottom:20px}
+.steps h3{font-size:21px;margin-bottom:8px;letter-spacing:-.02em}
+.steps p{color:var(--g);font-size:15.5px}
+
+/* projetos */
+.gal{columns:3;column-gap:16px}
+.gal figure{break-inside:avoid;margin-bottom:16px;position:relative;border-radius:var(--r);overflow:hidden}
+.gal img{width:100%}
+.gal figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.95);border-radius:99px;padding:7px 14px;font-weight:700;font-size:14px}
+
+/* depoimento */
+.quote .box{background:var(--y);border-radius:36px;padding:72px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start}
+.quote .mark{font-size:180px;line-height:.7;font-weight:800}
+.quote blockquote{font-size:clamp(26px,3vw,38px);font-weight:700;letter-spacing:-.025em;line-height:1.25}
+.quote cite{display:block;margin-top:28px;font-style:normal;font-weight:700}
+.quote cite span{font-weight:500;opacity:.7;margin-left:8px}
+
+/* contato */
+.contact .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
+.contact h2{font-size:clamp(40px,4.8vw,62px);margin:18px 0 18px}
+.contact .l>p{color:var(--g);font-size:19px;margin-bottom:32px}
+.ways{display:grid;gap:12px}
+.ways a,.ways div{display:flex;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;text-decoration:none}
+.ways i{width:48px;height:48px;border-radius:14px;background:var(--ys);display:grid;place-items:center;flex:none}
+.ways i svg{width:22px}
+.ways small{display:block;color:var(--g);font-size:13px;font-weight:600}
+.ways b{font-size:17px}
+.ways a.wa i{background:#25D366;color:#fff}
+form{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:40px}
+form h3{font-size:28px;margin-bottom:6px}
+form>p{color:var(--g);margin-bottom:18px;font-size:15px}
+label{display:block;font-size:14px;font-weight:700;margin:16px 0 7px}
+input,textarea{width:100%;font:16px Manrope;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg)}
+input:focus,textarea:focus{outline:0;border-color:var(--ink);background:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{margin:0;font-weight:600;font-size:14px;border:1.5px solid var(--line);border-radius:99px;padding:8px 14px;cursor:pointer}
+.chips input{display:none}
+.chips input:checked+label{background:var(--ink);color:#fff;border-color:var(--ink)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form .btn{margin-top:24px;width:100%;justify-content:center;border:0;cursor:pointer}
+
+footer{background:var(--ink);color:#fff;margin-top:110px;padding:80px 0 36px;border-radius:36px 36px 0 0}
+footer .wrap{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+footer img{height:60px;width:auto;margin-bottom:18px}
+footer p,footer ul{color:#A9A6A0;font-size:15.5px}
+footer h4{font-size:15px;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:8px}
+footer a{text-decoration:none}footer a:hover{color:var(--y)}
+.legal{grid-column:1/-1;border-top:1px solid #333;margin-top:40px;padding-top:22px;display:flex;justify-content:space-between;color:#7A7772;font-size:14px}
+.wa-f{position:fixed;right:22px;bottom:22px;z-index:50;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;padding:12px 18px 12px 14px;border-radius:99px;box-shadow:0 12px 30px rgba(0,0,0,.2)}
+.wa-f svg{width:26px;height:26px;fill:#fff}
+
+@media (max-width:1000px){
+ header ul,header .btn{display:none}.burger{display:grid}
+ .hero .wrap,.about .wrap,.contact .wrap{grid-template-columns:1fr}
+ .collage .badge{right:10px}
+ .svc{grid-template-columns:1fr 1fr}
+ .steps{grid-template-columns:1fr 1fr}
+ .gal{columns:2}
+ .quote .box{grid-template-columns:1fr;padding:48px 36px;gap:10px}
+ .quote .mark{font-size:120px}
+ footer .wrap{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+ body{font-size:16px}
+ .wrap{padding:0 20px}
+ header .wrap{height:72px}header img{height:42px}
+ .hero{padding:30px 0 70px}
+ .hero p{font-size:18px}
+ .collage{grid-template-rows:150px 110px 150px;gap:10px}
+ .collage .badge{font-size:14px;padding:12px 14px}
+ .strip .wrap{justify-content:flex-start;gap:12px 22px;font-size:14px}
+ section{padding:80px 0}
+ .svc,.steps{grid-template-columns:1fr}
+ .about{margin:0 8px;border-radius:26px}
+ .vals,.row{grid-template-columns:1fr}
+ .gal{columns:1}
+ .quote .box{padding:40px 24px;border-radius:26px}
+ form{padding:28px 20px}
+ footer .wrap{grid-template-columns:1fr}
+ .legal{flex-direction:column;gap:6px}
+ .wa-f span{display:none}.wa-f{padding:14px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a href="#"><img src="../img/logo-grafite.png" alt="Span Service · Soluções industriais e residenciais"></a>
+  <ul><li><a href="#servicos">Serviços</a></li><li><a href="#sobre">A empresa</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#contato">Contato</a></li></ul>
+  <a class="btn" href="#contato">Pedir orçamento</a>
+  <button class="burger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></button>
+</div></header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><i></i>Montenegro/RS · desde 2015</span>
+      <h1>Soluções em metal para a sua <span class="hl">indústria</span> funcionar melhor.</h1>
+      <p>Serralheria, estruturas, solda em inox TIG, tubulações e isopainel. Analisamos, projetamos e executamos, com atendimento próximo do começo ao pós-venda.</p>
+      <div class="cta">
+        <a class="btn y" href="#contato">Pedir orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn o" href="#projetos">Ver projetos</a>
+      </div>
+      <div class="who"><div><b>Visita técnica</b>para entender a demanda</div><div><b>Projeto sob medida</b>para cada empresa</div></div>
+    </div>
+    <div class="collage">
+      <img class="c1" src="../img/projeto-guarda-corpo.jpg" alt="Guarda-corpo metálico">
+      <img src="../img/solda.jpg" alt="Solda TIG">
+      <img src="../img/projeto-cacamba.jpg" alt="Caçamba metálica">
+      <img class="c4" src="../img/corte.jpg" alt="Corte de metal">
+      <div class="badge">Inox TIG<small>solda especializada</small></div>
+    </div>
+  </div>
+</section>
+
+<div class="strip"><div class="wrap">
+  <span>Serralheria</span><span>Estruturas industriais</span><span>Solda em inox TIG</span><span>Tubulação metálica</span><span>Paredes frigoríficas</span>
+</div></div>
+
+<section id="servicos">
+  <div class="wrap">
+    <div class="head"><span class="pill"><i></i>O que fazemos</span><h2>Do portão à linha de produção</h2><p>Projetamos e desenvolvemos soluções metálicas com foco na manutenção industrial, em montagens, tubulações e isopainel.</p></div>
+    <div class="svc">
+      <a href="#"><img src="../img/projeto-grade.jpg" alt=""><div class="t"><h3>Serralheria</h3><p>Grades, portões, janelas e esquadrias sob medida.</p><div class="go">Ver serviço<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></i></div></div></a>
+      <a href="#"><img src="../img/projeto-guarda-corpo.jpg" alt=""><div class="t"><h3>Estruturas industriais</h3><p>Suportes, artefatos de ferro e inox, proteções e guarda-corpos.</p><div class="go">Ver serviço<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></i></div></div></a>
+      <a href="#"><img src="../img/solda.jpg" alt=""><div class="t"><h3>Solda em inox TIG</h3><p>Manutenção e fabricação em aço inox com acabamento limpo.</p><div class="go">Ver serviço<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></i></div></div></a>
+      <a href="#"><img src="../img/tubos.jpg" alt=""><div class="t"><h3>Tubulação metálica</h3><p>Tubos roscados para hidráulica, pneumática e hidrantes de combate a incêndio.</p><div class="go">Ver serviço<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></i></div></div></a>
+      <a href="#"><img src="../img/projeto-maquina.jpg" alt=""><div class="t"><h3>Paredes frigoríficas</h3><p>Montagem de câmaras e paredes em isopainel.</p><div class="go">Ver serviço<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></i></div></div></a>
+      <a href="#contato" class="dark"><div><span class="pill" style="background:#2A2A2D;border-color:#3A3A3E;color:#fff"><i></i>Consultoria</span><h3 style="margin:22px 0 12px">Não sabe ao certo do que precisa?</h3><p>Nosso atendimento especializado tira as dúvidas e ajuda a definir um projeto bem estruturado, durável e seguro.</p></div><div class="go">Falar com a gente<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></i></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="wrap">
+    <div class="ph"><img src="../img/ferramentas.jpg" alt="Ferramentas de usinagem"><div class="sticker"><b>2015</b><span>Começamos em junho de 2015 e hoje atendemos só empresas.</span></div></div>
+    <div>
+      <span class="pill"><i></i>A empresa</span>
+      <h2>Especialistas em soluções industriais e montagens em metal</h2>
+      <p>A Span Service nasceu para oferecer soluções acessíveis e de qualidade. No começo atendíamos pessoas físicas e empresas; com o tempo, escolhemos nos dedicar só às empresas.</p>
+      <p>Hoje trabalhamos com manutenção industrial de ponta. Nosso foco é analisar, projetar e desenvolver a melhor solução para cada negócio, com um ótimo atendimento.</p>
+      <div class="vals">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Integridade</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Qualidade</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Segurança</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Melhor custo</div>
+      </div>
+      <a class="btn" href="#">Conheça a Span Service</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><span class="pill"><i></i>Como trabalhamos</span><h2>A melhor solução com o melhor custo</h2></div>
+    <div class="steps">
+      <div><h3>Contato e consultoria</h3><p>Você conta a demanda e tiramos as dúvidas sobre o que é preciso.</p></div>
+      <div><h3>Visita técnica</h3><p>Vamos até a empresa para medir e entender o local.</p></div>
+      <div><h3>Projeto e orçamento</h3><p>Projetamos a solução em metal adequada ao seu negócio.</p></div>
+      <div><h3>Execução e pós-venda</h3><p>Entregamos com segurança e seguimos à disposição depois.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><span class="pill"><i></i>Projetos</span><h2>Trabalhos que já entregamos</h2><p>Durabilidade, tecnologia e segurança em cada peça.</p></div>
+    <div class="gal">
+      <figure><img src="../img/projeto-guarda-corpo.jpg" alt="Guarda-corpo"><figcaption>Guarda-corpo</figcaption></figure>
+      <figure><img src="../img/projeto-grade.jpg" alt="Grade"><figcaption>Grade de janela</figcaption></figure>
+      <figure><img src="../img/projeto-persiana.jpg" alt="Persiana"><figcaption>Persiana</figcaption></figure>
+      <figure><img src="../img/projeto-cacamba.jpg" alt="Caçamba"><figcaption>Caçamba metálica</figcaption></figure>
+      <figure><img src="../img/projeto-maquina.jpg" alt="Montagem industrial"><figcaption>Montagem industrial</figcaption></figure>
+      <figure><img src="../img/projeto-janela.jpg" alt="Janela"><figcaption>Janela</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="quote" style="padding-top:0"><div class="wrap"><div class="box">
+  <div class="mark">“</div>
+  <div><blockquote>Agradecemos à Span Service pelo incrível trabalho, pela entrega ágil, pelo profissionalismo e pela paciência no planejamento e no pós-venda.</blockquote><cite>Henrique Castro<span>Cliente</span></cite></div>
+</div></div></section>
+
+<section class="contact" id="contato" style="padding-top:0">
+  <div class="wrap">
+    <div class="l">
+      <span class="pill"><i></i>Contato</span>
+      <h2>Vamos conversar sobre a sua demanda</h2>
+      <p>Venha nos visitar ou ligue para a gente. Teremos prazer em receber você.</p>
+      <div class="ways">
+        <a class="wa" href="https://api.whatsapp.com/send?phone=5551998481127"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2c.1-.4.1-1.2 0-1.3z"/></svg></i><span><small>WhatsApp e telefone</small><b>(51) 99848-1127</b></span></a>
+        <a href="mailto:adm@spanservice.com.br"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></i><span><small>E-mail</small><b>adm@spanservice.com.br</b></span></a>
+        <a href="https://goo.gl/maps/7nitmbVuKgjiHEYY6"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></i><span><small>Endereço</small><b>Estrada Nossa Senhora Aparecida, 811 · Faxinal, Montenegro/RS</b></span></a>
+      </div>
+    </div>
+    <form onsubmit="return false">
+      <h3>Pedir orçamento</h3><p>Respondemos o quanto antes.</p>
+      <label>Qual serviço?</label>
+      <div class="chips">
+        <input type="checkbox" id="c1"><label for="c1">Serralheria</label>
+        <input type="checkbox" id="c2"><label for="c2">Estruturas</label>
+        <input type="checkbox" id="c3"><label for="c3">Inox TIG</label>
+        <input type="checkbox" id="c4"><label for="c4">Tubulação</label>
+        <input type="checkbox" id="c5"><label for="c5">Isopainel</label>
+        <input type="checkbox" id="c6"><label for="c6">Consultoria</label>
+      </div>
+      <div class="row"><div><label for="n">Nome</label><input id="n"></div><div><label for="e">E-mail ou telefone</label><input id="e"></div></div>
+      <label for="m">Conte o que você precisa</label><textarea id="m" rows="4"></textarea>
+      <button class="btn y">Enviar pedido</button>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div><img src="../img/logo-branco.png" alt="Span Service"><p>Soluções industriais e montagens em metal em Montenegro/RS.</p></div>
+  <div><h4>Serviços</h4><ul><li><a href="#">Serralheria</a></li><li><a href="#">Estruturas industriais</a></li><li><a href="#">Solda em inox TIG</a></li><li><a href="#">Tubulação metálica</a></li><li><a href="#">Paredes frigoríficas</a></li></ul></div>
+  <div><h4>Empresa</h4><ul><li><a href="#sobre">A empresa</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#contato">Contato</a></li></ul></div>
+  <div><h4>Contato</h4><ul><li><a href="tel:+5551998481127">(51) 99848-1127</a></li><li><a href="mailto:adm@spanservice.com.br">adm@spanservice.com.br</a></li><li>Montenegro/RS</li></ul></div>
+  <div class="legal"><span>© 2026 Span Service</span><span>Soluções industriais e residenciais</span></div>
+</div></footer>
+<a class="wa-f" href="https://api.whatsapp.com/send?phone=5551998481127"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg><span>Fale no WhatsApp</span></a>
+</body>
+</html>

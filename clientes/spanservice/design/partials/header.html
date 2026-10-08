@@ -1,0 +1,25 @@
+<div class="site-top">
+<div class="top"><div class="wrap">
+  <span>{{t.topLine}}</span>
+  <span><a href="tel:{{site.phoneHref}}">{{site.phone}}</a><a href="mailto:{{site.email}}">{{site.email}}</a></span>
+</div></div>
+<header class="site-header"><div class="wrap">
+  <a class="logo" href="/{{lang}}/"><img src="/img/logo-branco.png" alt="{{site.name}} · {{site.tagline}}" width="900" height="450"></a>
+  <nav id="nav" class="nav">
+    <a href="/{{lang}}/">{{t.nav.index}}</a>
+    <div class="has-sub">
+      <a href="/{{lang}}/servicos">{{t.nav.servicos}}<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+      <div class="sub">
+        {{#each t.services}}<a href="/{{lang}}/{{it.id}}"><img src="/img/{{it.img}}.jpg" alt="" width="64" height="44" loading="lazy"><span>{{it.name}}<small>{{it.short}}</small></span></a>{{/each}}
+        <a class="all" href="/{{lang}}/servicos">{{t.nav.all}} →</a>
+      </div>
+    </div>
+    <a href="/{{lang}}/empresa">{{t.nav.empresa}}</a>
+    <a href="/{{lang}}/projetos">{{t.nav.projetos}}</a>
+    <a href="/{{lang}}/contato">{{t.nav.contato}}</a>
+    <a class="nav-cta" href="{{wa}}" target="_blank" rel="noopener">{{t.wa}}</a>
+  </nav>
+  <a class="btn header-cta" href="/{{lang}}/contato">{{t.cta}}</a>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="{{t.menu}}"><span></span><span></span><span></span></button>
+</div></header>
+</div>

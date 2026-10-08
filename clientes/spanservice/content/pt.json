@@ -1,0 +1,407 @@
+{
+ "langName": "Português",
+ "locale": "pt_BR",
+ "nav": {
+  "index": "Início",
+  "servicos": "Serviços",
+  "empresa": "A empresa",
+  "projetos": "Projetos",
+  "contato": "Contato",
+  "all": "Todos os serviços",
+  "serralheria": "Serralheria",
+  "estruturas": "Estruturas industriais",
+  "inox-tig": "Solda em inox TIG",
+  "tubulacao": "Tubulação metálica",
+  "isopainel": "Paredes frigoríficas"
+ },
+ "cta": "Pedir orçamento",
+ "wa": "Fale no WhatsApp",
+ "waMessage": "Olá! Vim pelo site da Span Service e gostaria de um orçamento.",
+ "skip": "Pular para o conteúdo",
+ "menu": "Abrir menu",
+ "topLine": "Montenegro/RS · Atendimento para empresas",
+ "labels": {
+  "phone": "WhatsApp e telefone",
+  "email": "E-mail",
+  "address": "Endereço"
+ },
+ "services": [
+  {
+   "id": "serralheria",
+   "name": "Serralheria",
+   "tag": "Grades, portões e janelas",
+   "img": "projeto-grade",
+   "alt": "Grade metálica de janela fabricada pela Span Service",
+   "short": "Grades, portões, janelas e esquadrias sob medida.",
+   "intro": "Fabricação e instalação de peças de serralharia sob medida para empresas: grades de proteção, portões, janelas e esquadrias metálicas, feitas para durar e para proteger o seu patrimônio.",
+   "body": "Cada peça começa na medição no local. A partir dela definimos o material, o perfil e o acabamento mais adequados para o uso, seja uma grade de segurança, um portão de acesso de veículos ou uma janela com persiana. Produzimos e instalamos, com atenção ao alinhamento, às soldas e ao acabamento.",
+   "items": [
+    {
+     "t": "Grades de proteção",
+     "d": "Para janelas, portas e áreas externas, em ferro ou aço."
+    },
+    {
+     "t": "Portões",
+     "d": "De pedestres e de veículos, de abrir ou de correr."
+    },
+    {
+     "t": "Janelas e esquadrias",
+     "d": "Metálicas, sob medida para o vão existente."
+    },
+    {
+     "t": "Persianas",
+     "d": "Janelas com persiana integrada e persianas de enrolar."
+    },
+    {
+     "t": "Reformas e consertos",
+     "d": "Recuperação de peças de serralharia já instaladas."
+    }
+   ],
+   "uses": [
+    "Fábricas e galpões",
+    "Comércio e escritórios",
+    "Condomínios",
+    "Áreas externas e acessos"
+   ],
+   "gallery": [
+    "projeto-grade",
+    "projeto-janela",
+    "projeto-persiana"
+   ]
+  },
+  {
+   "id": "estruturas",
+   "name": "Estruturas industriais",
+   "tag": "Suportes, proteções e artefatos",
+   "img": "projeto-guarda-corpo",
+   "alt": "Guarda-corpo metálico amarelo instalado em calçada",
+   "short": "Suportes, artefatos de ferro e inox, proteções e guarda-corpos.",
+   "intro": "Estruturas metálicas e artefatos de ferro e inox para a área industrial: suportes, proteções de máquinas, guarda-corpos, caçambas e peças especiais, projetados para a rotina da sua fábrica.",
+   "body": "Analisamos a necessidade no local, projetamos a peça e executamos a fabricação e a montagem. O foco é segurança de quem trabalha perto da estrutura e durabilidade no uso pesado do dia a dia industrial.",
+   "items": [
+    {
+     "t": "Suportes",
+     "d": "Para tubulações, equipamentos, painéis e máquinas."
+    },
+    {
+     "t": "Proteções",
+     "d": "Proteções de máquinas, barreiras e defensas."
+    },
+    {
+     "t": "Guarda-corpos e corrimãos",
+     "d": "Para passarelas, escadas, calçadas e áreas de circulação."
+    },
+    {
+     "t": "Artefatos de ferro e inox",
+     "d": "Peças especiais feitas a partir do seu desenho ou da nossa medição."
+    },
+    {
+     "t": "Caçambas e recipientes",
+     "d": "Caçambas metálicas e estruturas para movimentação de material."
+    }
+   ],
+   "uses": [
+    "Indústrias",
+    "Linhas de produção",
+    "Áreas de circulação",
+    "Pátios e logística"
+   ],
+   "gallery": [
+    "projeto-guarda-corpo",
+    "projeto-cacamba",
+    "projeto-maquina"
+   ]
+  },
+  {
+   "id": "inox-tig",
+   "name": "Solda em inox TIG",
+   "tag": "Manutenção industrial em inox",
+   "img": "solda",
+   "alt": "Soldador trabalhando com solda TIG",
+   "short": "Manutenção e fabricação em aço inox com solda TIG.",
+   "intro": "Solda TIG em aço inox para manutenção industrial e fabricação de peças. É o processo indicado quando a solda precisa ficar limpa, resistente e com bom acabamento.",
+   "body": "Atendemos a manutenção de equipamentos, estruturas e tubulações em inox, além da fabricação de peças novas. A solda TIG permite um cordão preciso e uniforme, importante em ambientes que exigem higiene e resistência à corrosão.",
+   "items": [
+    {
+     "t": "Manutenção de equipamentos",
+     "d": "Reparo de peças e estruturas em inox já instaladas."
+    },
+    {
+     "t": "Fabricação em inox",
+     "d": "Peças, suportes, proteções e artefatos novos."
+    },
+    {
+     "t": "Tubulações em inox",
+     "d": "Soldagem e reparo de linhas e conexões."
+    },
+    {
+     "t": "Acabamento",
+     "d": "Cordão de solda limpo e uniforme."
+    }
+   ],
+   "uses": [
+    "Indústria de alimentos",
+    "Frigoríficos",
+    "Indústria em geral",
+    "Equipamentos em inox"
+   ],
+   "gallery": [
+    "solda",
+    "faiscas",
+    "ferramentas"
+   ]
+  },
+  {
+   "id": "tubulacao",
+   "name": "Tubulação metálica",
+   "tag": "Hidráulica, pneumática e incêndio",
+   "img": "tubos",
+   "alt": "Tubos metálicos em linha de produção",
+   "short": "Tubos roscados para hidráulica, pneumática e hidrantes de combate a incêndio.",
+   "intro": "Montagem de tubulação metálica roscada para hidráulica, pneumática (ar comprimido) e redes de hidrantes de combate a incêndio, com suportes e fixações feitos pela própria equipe.",
+   "body": "Fazemos o levantamento do trajeto, o dimensionamento das peças e a montagem da rede, incluindo suportes e fixações. Também atendemos ampliações e manutenção de redes existentes.",
+   "items": [
+    {
+     "t": "Hidráulica",
+     "d": "Redes de água para a indústria."
+    },
+    {
+     "t": "Pneumática",
+     "d": "Linhas de ar comprimido para máquinas e ferramentas."
+    },
+    {
+     "t": "Hidrantes",
+     "d": "Tubulação para sistemas de combate a incêndio."
+    },
+    {
+     "t": "Suportes e fixações",
+     "d": "Fabricados sob medida para cada trajeto."
+    },
+    {
+     "t": "Ampliação e manutenção",
+     "d": "Extensão e reparo de redes existentes."
+    }
+   ],
+   "uses": [
+    "Fábricas e galpões",
+    "Oficinas",
+    "Redes de incêndio",
+    "Ampliações de planta"
+   ],
+   "gallery": [
+    "tubos",
+    "corte",
+    "projeto-maquina"
+   ]
+  },
+  {
+   "id": "isopainel",
+   "name": "Paredes frigoríficas",
+   "tag": "Montagem de isopainel",
+   "img": "projeto-maquina",
+   "alt": "Montagem industrial executada pela Span Service",
+   "short": "Montagem de câmaras e paredes em isopainel.",
+   "intro": "Montagem de paredes frigoríficas e divisórias em isopainel (painel isotérmico), para câmaras frias, salas climatizadas e separação de ambientes na indústria.",
+   "body": "Cuidamos da estrutura de apoio, do corte e da montagem dos painéis e dos acabamentos metálicos. O resultado é um ambiente isolado, fácil de limpar e montado com rapidez.",
+   "items": [
+    {
+     "t": "Câmaras frias",
+     "d": "Paredes e forros em isopainel."
+    },
+    {
+     "t": "Salas climatizadas",
+     "d": "Ambientes isolados para produção e armazenagem."
+    },
+    {
+     "t": "Divisórias industriais",
+     "d": "Separação de setores dentro do galpão."
+    },
+    {
+     "t": "Estrutura e acabamento",
+     "d": "Perfis, cantoneiras e arremates metálicos."
+    }
+   ],
+   "uses": [
+    "Frigoríficos",
+    "Indústria de alimentos",
+    "Armazenagem",
+    "Galpões"
+   ],
+   "gallery": [
+    "projeto-maquina",
+    "corte",
+    "ferramentas"
+   ]
+  }
+ ],
+ "projects": [
+  {
+   "img": "projeto-guarda-corpo",
+   "t": "Guarda-corpo",
+   "s": "Estruturas industriais",
+   "id": "estruturas",
+   "alt": "Guarda-corpo metálico amarelo instalado em calçada"
+  },
+  {
+   "img": "projeto-cacamba",
+   "t": "Caçamba metálica",
+   "s": "Estruturas industriais",
+   "id": "estruturas",
+   "alt": "Caçamba metálica verde sendo içada"
+  },
+  {
+   "img": "projeto-grade",
+   "t": "Grade de janela",
+   "s": "Serralheria",
+   "id": "serralheria",
+   "alt": "Grade metálica de janela"
+  },
+  {
+   "img": "projeto-janela",
+   "t": "Janela com persiana",
+   "s": "Serralheria",
+   "id": "serralheria",
+   "alt": "Janela com persiana integrada"
+  },
+  {
+   "img": "projeto-persiana",
+   "t": "Persiana de enrolar",
+   "s": "Serralheria",
+   "id": "serralheria",
+   "alt": "Persiana de enrolar instalada"
+  },
+  {
+   "img": "projeto-maquina",
+   "t": "Montagem industrial",
+   "s": "Estruturas industriais",
+   "id": "estruturas",
+   "alt": "Montagem de estrutura industrial"
+  }
+ ],
+ "seeService": "Ver serviço",
+ "askService": "Pedir orçamento deste serviço",
+ "whatWeDo": "O que fazemos",
+ "forWho": "Onde atendemos",
+ "otherServices": "Outros serviços",
+ "photos": "Trabalhos",
+ "related": "Fotos de trabalhos",
+ "consult": {
+  "tag": "Consultoria",
+  "title": "Não sabe ao certo do que precisa?",
+  "text": "Contamos com atendimento especializado e consultoria. Nosso objetivo é tirar as suas dúvidas para entregar um projeto bem estruturado, que traga flexibilidade, durabilidade, confiança e segurança para quem vai usar.",
+  "btn": "Falar com um técnico"
+ },
+ "values": [
+  "Integridade",
+  "Qualidade",
+  "Segurança",
+  "Tecnologia e inovação"
+ ],
+ "why": [
+  {
+   "t": "Durabilidade",
+   "d": "Matérias-primas de qualidade, com alta durabilidade e flexibilidade."
+  },
+  {
+   "t": "Tecnologia e inovação",
+   "d": "Buscamos sempre novas maneiras de melhorar nossos serviços e acompanhamos as tendências da área."
+  },
+  {
+   "t": "Segurança e praticidade",
+   "d": "Métodos de produção próprios para entregar um resultado seguro e confiável a quem vai usar."
+  }
+ ],
+ "steps": [
+  {
+   "t": "Contato e consultoria",
+   "d": "Você conta a demanda e tiramos as dúvidas sobre o que é preciso."
+  },
+  {
+   "t": "Visita técnica",
+   "d": "Vamos até a empresa para medir e entender o local."
+  },
+  {
+   "t": "Projeto e orçamento",
+   "d": "Definimos a solução em metal adequada ao seu negócio."
+  },
+  {
+   "t": "Execução e pós-venda",
+   "d": "Entregamos com segurança e seguimos à disposição depois."
+  }
+ ],
+ "quote": {
+  "text": "Agradecemos à Span Service pelo incrível trabalho, pela entrega ágil, pelo profissionalismo e pela paciência no planejamento e no pós-venda.",
+  "name": "Henrique Castro",
+  "role": "Cliente Span Service"
+ },
+ "contactTitle": "Vamos resolver isso.",
+ "contactText": "Venha nos visitar ou ligue para a gente. Solicite um orçamento ou uma visita técnica, teremos prazer em atender você.",
+ "form": {
+  "title": "Pedir orçamento",
+  "name": "Nome",
+  "company": "Empresa",
+  "contact": "E-mail ou telefone",
+  "service": "Serviço",
+  "consult": "Consultoria / não sei ainda",
+  "message": "Conte o que você precisa",
+  "send": "Enviar pelo WhatsApp",
+  "note": "O pedido abre no WhatsApp, já preenchido."
+ },
+ "footerText": "Soluções industriais e montagens em metal: serralheria, estruturas, solda inox TIG, tubulações e isopainel.",
+ "footerCompany": "Empresa",
+ "footerServices": "Serviços",
+ "footerContact": "Contato",
+ "rights": "Todos os direitos reservados.",
+ "pages": {
+  "index": {
+   "title": "Span Service · Manutenção industrial e montagens em metal",
+   "description": "Serralheria, estruturas industriais, solda em inox TIG, tubulação metálica e isopainel para empresas. Span Service, Montenegro/RS, desde 2015.",
+   "heading": "Manutenção industrial e montagens em metal"
+  },
+  "servicos": {
+   "title": "Serviços · Span Service",
+   "description": "Serralheria, estruturas industriais, solda em inox TIG, tubulação metálica e paredes frigoríficas em isopainel para empresas de Montenegro e região.",
+   "heading": "Serviços em metal para a indústria"
+  },
+  "serralheria": {
+   "title": "Serralheria industrial · Span Service",
+   "description": "Grades, portões, janelas, esquadrias e persianas metálicas sob medida para empresas. Medição, fabricação e instalação pela Span Service.",
+   "heading": "Serralheria"
+  },
+  "estruturas": {
+   "title": "Estruturas industriais · Span Service",
+   "description": "Suportes, proteções de máquinas, guarda-corpos, caçambas e artefatos de ferro e inox sob medida para a sua indústria.",
+   "heading": "Estruturas industriais"
+  },
+  "inox-tig": {
+   "title": "Solda em inox TIG · Span Service",
+   "description": "Solda TIG em aço inox para manutenção industrial e fabricação de peças, com cordão limpo, resistente e bom acabamento.",
+   "heading": "Solda em inox TIG"
+  },
+  "tubulacao": {
+   "title": "Tubulação metálica · Span Service",
+   "description": "Tubulação metálica roscada para hidráulica, pneumática e redes de hidrantes de combate a incêndio, com suportes sob medida.",
+   "heading": "Tubulação metálica"
+  },
+  "isopainel": {
+   "title": "Paredes frigoríficas em isopainel · Span Service",
+   "description": "Montagem de câmaras frias, salas climatizadas e divisórias industriais em isopainel, com estrutura e acabamentos metálicos.",
+   "heading": "Paredes frigoríficas"
+  },
+  "empresa": {
+   "title": "A empresa · Span Service",
+   "description": "Desde 2015, a Span Service analisa, projeta e executa soluções em metal para empresas, com foco em manutenção industrial em Montenegro/RS.",
+   "heading": "Especialistas em soluções industriais"
+  },
+  "projetos": {
+   "title": "Projetos · Span Service",
+   "description": "Guarda-corpos, caçambas, grades, janelas, persianas e montagens industriais: alguns dos trabalhos entregues pela Span Service.",
+   "heading": "Trabalhos entregues"
+  },
+  "contato": {
+   "title": "Contato e orçamento · Span Service",
+   "description": "Peça um orçamento ou uma visita técnica: WhatsApp (51) 99848-1127, adm@spanservice.com.br, Estrada Nossa Senhora Aparecida, 811, Montenegro/RS.",
+   "heading": "Peça um orçamento ou uma visita técnica"
+  }
+ }
+}

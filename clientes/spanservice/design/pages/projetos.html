@@ -1,0 +1,17 @@
+<section class="phero">
+  <img src="/img/tubos.jpg" alt="Tubos metálicos" width="1366" height="364" fetchpriority="high">
+  <div class="wrap">
+    <nav class="crumbs"><a href="/{{lang}}/">{{t.nav.index}}</a> / <span>{{t.nav.projetos}}</span></nav>
+    <div class="eyebrow">Referência em soluções metálicas</div>
+    <h1>Trabalhos <em>entregues</em></h1>
+    <p>Algumas das soluções que a Span Service já fez para clientes. Cada uma começou com uma visita técnica e terminou com a peça instalada.</p>
+  </div>
+</section>
+
+<section class="sec"><div class="wrap">
+  <div class="gal big">{{#each t.projects}}<figure><img src="/img/{{it.img}}.jpg" alt="{{it.alt}}" loading="lazy" width="960" height="720"><figcaption><a href="/{{lang}}/{{it.id}}">{{it.t}}<small>{{it.s}} →</small></a></figcaption></figure>{{/each}}</div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <div class="consult"><div><div class="eyebrow">Seu projeto</div><h2>Tem uma demanda parecida?</h2><p>Conte o que você precisa. Fazemos a visita técnica e o orçamento sob medida para a sua empresa.</p></div><a class="btn dark" href="{{wa}}" target="_blank" rel="noopener">{{t.wa}}</a></div>
+</div></section>
