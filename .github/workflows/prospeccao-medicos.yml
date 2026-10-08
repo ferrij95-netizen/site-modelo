@@ -7,18 +7,19 @@ on:
 permissions:
   contents: write
 jobs:
-  sonda:
+  coleta:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
-      - name: Sondar fontes
+      - name: Coletar CNES
         working-directory: prospeccao/medicos
         run: |
-          pip install requests
-          python sonda.py
+          pip install requests pandas pyreaddbc
+          python coleta.py
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
-          git add -f prospeccao/medicos/sonda
-          git commit -m "Prospecção médicos: sonda" && git pull --rebase origin claude/project-thread-0xo7ls && git push
+          git add -f prospeccao/medicos/saida
+          git commit -m "Prospecção médicos: coleta CNES" && git pull --rebase origin claude/project-thread-0xo7ls && git push
