@@ -1,4 +1,4 @@
-# (v2) Baixa as fotos do site atual da Longlife (Google Sites, guardadas em googleusercontent) em tamanho original.
+# (v3) Salva as fotos do site atual da Longlife (Google Sites) pelo navegador, que tem permissão para abri-las.
 name: longlife-imagens
 on:
   push:
@@ -12,21 +12,51 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Baixar fotos por página
+      - name: Salvar fotos pelo navegador
         run: |
-          O=clientes/longlife/_origem
-          for f in $O/html/*.html; do
-            p=$(basename "$f" .html)
-            i=0
-            grep -oE 'https://lh[0-9]-[a-z]+\.googleusercontent\.com/[^"'"'"' )\\]+' "$f" | awk '{b=$0; sub(/=[^=]*$/,"",b); if(!(b in s)){s[b]=1; print}}' | while read u; do
-              i=$((i+1)); n=$(printf "%s-%02d" "$p" $i)
-              b=${u%=*}
-              curl -sSL --fail -e https://www.longlife.ind.br/ -o "$O/img/$n" "$b=w16383" || curl -sSL --fail -e https://www.longlife.ind.br/ -o "$O/img/$n" "$u" || { echo "falhou $u"; continue; }
-              t=$(file -b --mime-type "$O/img/$n"); ext=${t#image/}; [ "$ext" = jpeg ] && ext=jpg
-              mv "$O/img/$n" "$O/img/$n.$ext"; echo "$n.$ext $u" >> $O/img/origem.txt
-            done
-          done
-          ls -la $O/img
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          cat > fotos.cjs <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          const O = 'clientes/longlife/_origem/img';
+          const pages = { home: '', empresa: 'empresa', produtos: 'produtos', contato: 'contato', localizacao: 'localiza%C3%A7%C3%A3o', certificacoes: 'certifica%C3%A7%C3%B5es-e-licen%C3%A7as' };
+          (async () => {
+            const b = await chromium.launch();
+            const log = [];
+            for (const [nome, p] of Object.entries(pages)) {
+              const pg = await b.newPage({ viewport: { width: 2560, height: 1440 }, deviceScaleFactor: 2 });
+              const vistos = new Set(); let i = 0;
+              pg.on('response', async r => {
+                const u = r.url();
+                if (!/googleusercontent\.com/.test(u)) return;
+                const ct = r.headers()['content-type'] || '';
+                if (!ct.startsWith('image/')) return;
+                const base = u.replace(/=[^=]*$/, '');
+                try {
+                  const buf = await r.body();
+                  if (buf.length < 8000) return;
+                  const ext = ct.includes('png') ? 'png' : ct.includes('webp') ? 'webp' : 'jpg';
+                  const prev = [...vistos].find(v => v.base === base);
+                  if (prev && prev.size >= buf.length) return;
+                  const n = prev ? prev.n : `${nome}-${String(++i).padStart(2, '0')}`;
+                  fs.writeFileSync(`${O}/${n}.${ext}`, buf);
+                  if (prev) prev.size = buf.length; else vistos.add({ base, n, size: buf.length });
+                  log.push(`${n}.${ext} ${buf.length} ${u}`);
+                } catch (e) { log.push('erro ' + u + ' ' + e.message); }
+              });
+              await pg.goto('https://www.longlife.ind.br/' + p, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+              for (let y = 0; y < 12000; y += 700) { await pg.mouse.wheel(0, 700); await pg.waitForTimeout(250); }
+              await pg.waitForTimeout(3000);
+              // Logo do cabeçalho em alta
+              await pg.close();
+            }
+            fs.writeFileSync(`${O}/origem.txt`, log.join('\n') + '\n');
+            await b.close();
+          })();
+          JS
+          node fotos.cjs
+          ls -la clientes/longlife/_origem/img
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
