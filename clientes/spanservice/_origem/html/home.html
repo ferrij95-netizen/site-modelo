@@ -1,0 +1,998 @@
+<!DOCTYPE html><html lang="pt-br" dir="ltr"><head>
+    <meta charset="utf-8">
+    <title>Span Service</title>
+    <meta name="description" content="Span Service prestadora de serviços - Zelando pela qualidade e rapidez.">
+    <meta name="keywords" content="Span Service, Span Service soluções, Metais, Metal, Indústria, Solução, Indústrial, Soluções, Aço, Matéria-Prima.">
+    <link rel="canonical" href="https://spanservice.com.br">
+    <link rel="shortcut icon" type="image/x-icon" href="files/logo.png">
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+<!-- script do Jquery -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<!-- script do bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<!-- link dos icones -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/styles/default.css">
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<!-- link da fonte -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"> -->
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/default.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js" charset="utf-8"></script> -->
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <header class="container" id="header_include">
+  <nav>
+    <div class="logo"> </div>
+    <div class="align_pages">
+      <a href="/#inicio" class="page"> Início </a>
+      <a href="/#sobre_nos" class="page"> Sobre </a>
+      <a href="/#nossos_servicos" class="page"> Serviços </a>
+      <a href="/#nossos_projetos" class="page"> Projetos </a>
+      <a href="/#contato" class="page"> Contato </a>
+    </div>
+  </nav>
+</header>
+
+<style media="screen">
+  #header_include{
+    top: 0px;
+    position: absolute !important;
+    width: 1260px !important;
+    margin-left: calc(50% - 570px);
+    z-index: 5;
+    color:#fff
+  }
+  .align_pages{
+    margin-top: 30px;
+    height: 100%;
+    float: right;
+  }
+  .page{
+    margin: 0px 5px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .page:hover{ color:var(--color_main) !important; }
+  .logo{
+    float: left;
+    width: 198px;
+    height: 100px;
+    background-position: left;
+    background-image: url(files/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 6px;
+  }
+  #header_include_mobile{ display: none }
+  @media (orientation:portrait),(max-width:1024px){
+    #header_include{ display: none; }
+    #header_include_mobile{ display: block; }
+    .logo{
+      width: 150px;
+      height: 150px;
+      height: 110px;
+      background-size: contain;
+    }
+  }
+</style>
+
+<header class="container" id="header_include_mobile">
+  <nav>
+    <div class="align_menu_mobile">
+      <div class="logo"> </div>
+        <div class="menu-burguer">
+          <div class="menu-line"></div>
+          <div class="menu-line"></div>
+          <div class="menu-line"></div>
+        </div>
+    </div>
+    <div class="align_pages_mobile">
+      <a href="#inicio" class="page_mobile"> Início </a>
+      <a href="#sobre_nos" class="page_mobile"> Sobre </a>
+      <a href="#nossos_servicos" class="page_mobile"> Serviços </a>
+      <a href="#nossos_projetos" class="page_mobile"> Projetos </a>
+      <a href="#contato" class="page_mobile"> Contato </a>
+    </div>
+  </nav>
+</header>
+
+<style media="screen">
+  #header_include_mobile{
+    position: absolute;
+    width: 100% !important;
+    z-index: 5
+  }
+  .align_menu_mobile{
+    position: absolute;
+    width: 92%;
+    z-index: 5
+  }
+  .align_pages_mobile{
+    position: fixed;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background-color: #343A40;
+    opacity: 0.8;
+    padding-top: 130px;
+    margin-left: -100%;
+    color: #fff;
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+  .page_mobile{
+    position: relative;
+    float: left;
+    padding: 10px;
+    width: 100%;
+    margin:0px 5px;
+    transition: all 0.3s ease;
+    font-size: 22px !important;
+    text-align: center;
+    font-weight: 500;
+  }
+  .page_mobile:hover{ color:var(--color_main) !important; }
+  .open_align_menu_mobile{
+    position: fixed !important;
+  }
+  .open_align_pages_mobile{
+    margin-left:0% !important;
+  }
+  .menu-burguer {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    width: 35px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .open_align_menu_mobile .menu-line{
+    margin: 7px 0px;
+  }
+  .menu-line {
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    margin: 4px 0px;
+    transition: all 250ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+  .menu-line:first-child {animation: firstLinetoClose 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);}
+  .open .menu-line:first-child {
+    animation: firstLinetoOpen 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
+    animation-fill-mode: forwards;
+  }
+  @keyframes firstLinetoOpen {
+    0%   {transform: translateY(0);}
+    50% {transform: translateY(12px);}
+    100% {transform: translateY(17px) rotate(45deg);}
+  }
+  @keyframes firstLinetoClose {
+    0%   {transform: translateY(17px) rotate(0);}
+    100% {transform: translateY(0);}
+  }
+  .open .menu-line:nth-child(2){ opacity: 0;}
+  .menu-line:last-child {animation: lastLinetoClose 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);}
+  .open .menu-line:last-child {
+    animation: lastLinetoOpen 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
+    animation-fill-mode: forwards;
+  }
+  @keyframes lastLinetoOpen {
+    0%   {transform: translateY(0);}
+    50% {transform: translateY(-39px);}
+    100% {transform: translateY(-17px) rotate(-45deg);}
+  }
+  @keyframes lastLinetoClose {
+    0%   {transform: translateY(-17px);}
+    100% {transform: translateY(0);}
+  }
+</style>
+<script type="text/javascript">
+$('.menu-burguer').click(function(){
+  if ($('.menu-burguer').hasClass('open') == true) {
+      if ($('.align_pages_mobile').hasClass('open_align_pages_mobile') == true) {
+        $('.align_pages_mobile').removeClass('open_align_pages_mobile')
+      }
+      if ($('.align_menu_mobile').hasClass('open_align_menu_mobile') == true) {
+        $('.align_menu_mobile').removeClass('open_align_menu_mobile')
+      }
+    $('.menu-burguer').removeClass('open')
+  }else {
+    if ($('.align_pages_mobile').hasClass('open_align_pages_mobile') == false) {
+      $('.align_pages_mobile').addClass('open_align_pages_mobile')
+    }
+    if ($('.align_menu_mobile').hasClass('open_align_menu_mobile') == false) {
+      $('.align_menu_mobile').addClass('open_align_menu_mobile')
+    }
+    $('.menu-burguer').addClass('open')
+  }
+})
+</script>
+    <section id="inicio">
+      <div id="carousel_introduction" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carousel_introduction" data-slide-to="0" class=""></li>
+          <li data-target="#carousel_introduction" data-slide-to="1" class="active"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item">
+            <div class="div_image_background_introduction" style="background-image:url(files/banner_principal.png)"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-12 p-0 m-0 px-3">
+                  <div class="align_content_slide ">
+                    <div class="title">
+                    Span Service<br> soluções industriais
+                    </div>
+                    <div class="subtitle">
+                      Referência no segmento de suluções e montagem em metal para o seu negócio.
+                    </div>
+                    <div class="buttons">
+                      <a href="#sobre_nos">
+                        <div class="button_default button_orcar">Conheça</div>
+                      </a>
+                      <a href="#nossos_projetos">
+                        <div class="button_default button_products">Projetos</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item active">
+            <div class="div_image_background_introduction" style="background-image:url(files/banner_main_2.png)"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-12 p-0 m-0 px-3">
+                  <div class="align_content_slide ">
+                    <div class="title">
+                      SPAN SERVICE ELABORANDO O PROJETO DA SUA INDÚSTRIA
+                    </div>
+                    <div class="subtitle">
+                      Entre em contato conosco e solicite um orçamento ou uma visita técnica.
+                    </div>
+                    <div class="buttons">
+                      <a href="#sobre_nos">
+                        <div class="button_default button_orcar">Conheça</div>
+                      </a>
+                      <a href="#nossos_projetos">
+                        <div class="button_default button_products">Projetos</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <a class="carousel-control-prev icon_bootstrap" href="#carousel_introduction" role="button" data-slide="prev">
+          <div class="icon_arrow first_arrow"> </div>
+          <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next icon_bootstrap" href="#carousel_introduction" role="button" data-slide="next">
+          <div class="icon_arrow"> </div>
+          <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="sobre_nos">
+      <div class="container-md pt-5 pb-4 pb-md-5">
+        <center>
+          <h1 class="title_default" style="transform:translate(-10%,0%)">
+            Quem somos
+            <div></div>
+          </h1>
+        </center>
+        <div class="row">
+          <div class="col-md-6 mt-4 mt-sm-5">
+            <div class="subtitle_default">Somos especialistas em soluções indústriais e montagens em metal</div>
+            <div class="align_content_engineering">
+              <div class="content_engineering">
+                Com o objetivo de proporcionar soluções acessíveis e de qualidade, a Span Service iniciou suas atividades em 06/2015, e no primeiro momento, realizamos diversos tipos de serviços tanto para pessoa fisica quanto para pessoa juridica, logo em seguida optamos por realizar serviços apenas para empresas, hojes trabalhamos com manutenção industrial de ponta.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="join_images">
+              <div class="image_engineering_backgroud" style="background-image:url(files/first_img.png)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="o_que_fazemos">
+      <div class="container-md py-3 py-sm-5">
+        <h1 class="title_default" style="transform:translate(0%,0%)">
+          O que fazemos
+          <div></div>
+        </h1>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="join_images">
+              <div class="image_engineering_backgroud" style="background-image:url(files/family_img.png)">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mt-4 mt-sm-5">
+            <div class="subtitle_default">Idealizando e solucionando as demandas da sua indústria</div>
+            <div class="align_content_engineering">
+              <div class="content_engineering">
+                A Span Service tem como foco analisar, projetar e desenvolver a melhor solução possível para o seu negócio, além de um ótimo atendimento ao cliente. Somos especialistas em diversas áreas do segmento indústrial, tais como: 
+                
+                <ul style="margin-top:24px;">
+                  <li>Serralheria (grades, portoes, janelas,  etc)</li>
+                  <li>Área industrial (suportes, artefatos de ferro, inox, proteções etc)</li>
+                  <li>Inox- solda em inox tig</li>
+                  <li>Tubulação metalica roscado (tubos para hidraulica, pneumatica, hidrantes de combate incendio)</li>
+                  <li>Montagem de paredes frigorificas(isopainel)</li>
+
+                </ul>
+                <a href="#nossos_servicos">
+                  <button type="button" name="button" class="button_engineering">NOSSOS SERVIÇOS</button>
+
+
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nossos_servicos">
+      <div class="background_we_services"> </div>
+      <div class="icon_enginer_we_services"> </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 pt-5 mt-5">
+            <center>
+              <div class="subtitle_we_services">Soluções</div>
+              <h1 class="title_default title_background" style="transform:translate(0%,0%);color:#fff">
+                NOSSOS SERVIÇOS
+                <div style="background:#fff"></div>
+              </h1>
+              <div class="content_we_services">
+                Projetamos e desenvolvemos soluções metálicas com foco na manutenção industrial(soldas TIG-ER), montagens, tubulações e montagens de isopainel. Visamos atender a todas as demandas de nossos clientes, nosso lema é integridade, qualidade e segurança, sempre andando de mãos dadas com a tecnologia e a inovação.
+              </div>
+
+              <div class="buttons_we_services">
+                <!-- <div class="button_default button_services" data-service='d'>DECORAÇÃO</div> -->
+                <div class="button_default button_services" data-service="p">PARA A INDÚSTRIA</div>
+                <div class="button_default button_services" data-service="c">CONSULTORIA</div>
+              </div>
+
+              <div class="trial_selected">
+                <div class="mark_selected">
+                </div>
+              </div>
+
+            </center>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="service_especifc">
+      <div class="container my-1 my-sm-5 py-5">
+        <div class="row">
+          <div class="col-md-12" style="overflow:hidden">
+            <!-- <div class="service receive_service_decoracao">
+              <center>
+                <div class="icon_service_especifc" style="background-image:url(files/icon_flor.png)"> </div>
+                <div class="title_service_especifc">
+                  <div></div>
+                  DECORAÇÃO
+                  <div></div>
+                </div>
+                <div class="subtitle_service_especifc">
+                  MODERNO e SOFISTICADO
+                </div>
+                <div class="content_service_especifc">
+                  Contamos com uma equipe especializada em Design de interiores, com o objetivo de deixar a sua moradia com a cara da sua família. Nossos projetos visam modernidade e sofisticação, com o objetivo de agradar toda a família.
+                </div>
+              </center>
+            </div> -->
+
+            <div class="service receive_service_projetos service_show">
+              <center>
+                <div class="icon_service_especifc" style="background-image:url(files/icon_pencil.png)"> </div>
+                <div class="title_service_especifc">
+                  <div></div>
+                    Qualidade e segurança
+                  <div></div>
+                </div>
+                <div class="subtitle_service_especifc">
+                  VISANDO SEMPRE A MELHOR SOLUÇÃO COM O MELHOR CUSTO
+                </div>
+                <div class="content_service_especifc">
+                  Nós da Span Service nos contentamos com nada menos que a perfeição, elaborando soluções em metais que se adequem ao negócio de nossos clientes, visando sempre a segurança e a qualidade em primeiro lugar.
+                </div>
+              </center>
+            </div>
+
+            <div class="service receive_service_consultoria">
+              <center>
+                <div class="icon_service_especifc" style="background-image:url(files/icon_square.png)"> </div>
+                <div class="title_service_especifc">
+                  <div></div>
+                  Consultoria
+                  <div></div>
+                </div>
+                <div class="subtitle_service_especifc">
+                  DÚVIDAS?
+                </div>
+                <div class="content_service_especifc">
+                  Não sabe ao certo do que precisa? Contamos com um atendimento especializado e consultoria de ponta. Nosso objetivo é sanar todas as dúvidas dos nossos clientes para que possamos entregar um projeto muito bem estruturado e de qualidade impar, que traga flexibilidade, durabilidade, confiança e segurança para os seus usuários.
+                </div>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="foco">
+      <div class="container pt-4 pt-md-5 pb-5">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="title_default title_main_services">
+              Destaques
+              <div></div>
+            </h1>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col-md-4 my-2">
+            <div class="join_icon_text">
+              <div class="icon_services" style="background-image: url(files/icon_chip.png);"> </div>
+              <div class="text_services">
+                <span>Durabilidade</span>
+                <br>
+                  Contamos com matérias-primas de qualidade. Nossos materiais contam com uma alta taxa de durábilidade e flexibilidade.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 my-2">
+            <div class="join_icon_text">
+              <div class="icon_services" style="background-image: url(files/hospital.png);"> </div>
+              <div class="text_services">
+                <span> Tecnologia e inovação </span>
+                <br>
+                  Estamos sempre buscando novas maneiras de melhorar e evoluir nossos serviços, além de estarmos sempre atento às últimas tendências em tecnologia.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 my-2">
+            <div class="join_icon_text">
+              <div class="icon_services" style="background-image: url(files/icon_ecology.png);"> </div>
+              <div class="text_services">
+                <span> Segurança e praticidade</span>
+                <br>
+                Graças ao desenvolvimento de algumas de nossas metodologias de produção, Entregamos um produto final seguro e confiável, visando sempre a integridade dos usuários.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></section>
+
+    <section id="nossos_projetos">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-md-12">
+            <center>
+              <div class="title_we_projects">Veja abaixo algumas imagens de nossas soluções</div>
+              <div class="join_options_project">
+                <div class="option_project">Referência no ramo de soluções metálicas</div>
+              </div>
+            </center>
+            <div class="join_images_projects">
+              <div class="father_image"> <div class="image_project" style="background-image:url(files/project_1.png);height:300px;" data-img="files/project_1.png"> </div> </div>
+              <div class="father_image"> <div class="image_project" style="background-image:url(files/project_2.png);height:400px;" data-img="files/project_2.png"> </div> </div>
+              <div class="father_image"> <div class="image_project" style="background-image:url(files/project_3.png);height:300px;" data-img="files/project_3.png"> </div> </div>
+              <div class="father_image"> <div class="image_project" style="background-image:url(files/project_4.png)" data-img="files/project_4.png"> </div> </div>
+              <div class="father_image"> <div class="image_project" style="background-image:url(files/project_5.png)" data-img="files/project_5.png"> </div> </div>
+              <div class="father_image"> <div class="image_project" style="background-image:url(files/project_6.png)" data-img="files/project_6.png"> </div> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comentarys">
+      <div id="carouselcomentarys" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <center>
+            <div class="title_comentarys">
+              O QUE ESTÃO FALANDO SOBRE A SPAN SERVICE?
+            </div>
+            <div class="carousel-item">
+              <div class="comentary">
+                "Eu e a minha equipe estamos muito felizes com nosso projeto metálico estruturado pela Span Service. Recebemos o projeto em tempo recorde, assim como tudo que estava incluso nas requisições. ÓTIMO trabalho."
+              </div>
+              <div class="image_user_coment"> </div>
+              <div class="name_people">
+                Jardel Messias <br>
+
+              </div>
+            </div>
+            <div class="carousel-item active">
+              <div class="comentary">
+                "Agradeçemos a Span Service pelo incrível trabalho prestado, pelo tempo te entrega agíl, pelo profissionalismo e paciência tanto no processo de planejamento, quanto no pós-venda."
+
+              </div>
+              <div class="image_user_coment"> </div>
+              <div class="name_people">
+                Henrique Castro <br>
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="comentary">
+                "Ótimo trabalho! Recebemos o nosso produto antes do prazo, com todas as específicações requisitadas. Até o momento estamos muito satisfeitos com o trabalho da Span Service.
+              </div>
+              <div class="image_user_coment"> </div>
+              <div class="name_people">
+                Isabel Rochelle<br>
+
+              </div>
+            </div>
+          </center>
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselcomentarys" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselcomentarys" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="filter_visualizar_imagem">  </div>
+    <div class="visualization_images">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close_visualization_images"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      <div id="carouselvisualization_images" class="carousel slide" style="height:100%;  overflow: hidden;" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item image_carousel active" id="receive_img_maximize"> </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="contact_include">
+  <div class="alig_img_contact"> </div>
+  <div class="container-md">
+    <div class="row">
+      <div class="col-md-12 pb-5 pt-2">
+        <div class="text_contact">
+          SPAN SERVICE <br><br>
+          <div class="title_contact">
+            CONHEÇA<br>
+          </div>
+          <br>
+          Venha nos visitar ou ligue para a gente! Venha conhecer sua solução, teremos grande prazer em recebe-lo.
+        </div>
+        <a href="#contato" class="button_default button_contact"> Contato </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style media="screen">
+#contact_include{ position:relative; height: max-content; display:flex; justify-content:center;}
+  .alig_img_contact{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: url(files/banner_contact.png);
+    background-size: cover;
+    /* background-attachment: fixed; */
+  }
+  .text_contact{
+    width: 60%;
+    padding: 40px 0px;
+    color:#fff;
+    font-size:18px;
+    font-weight: 400;
+  }
+  .title_contact{ font-size: 34px; line-height: 40px; font-weight:600;
+  }
+  .button_contact{
+    top:0px;
+    left:0px;
+    font-size: 24px;
+    color:#fff !important
+  }
+  .button_contact:hover{color:var(--color_main)!important;}
+  @media (orientation:portrait),(max-width:1024px){
+    .title_contact{font-size: 27px;}
+    .text_contact{width: 100%;text-align: center;}
+    .button_contact{font-size: 18px;left:calc(50% - 90px);top: 10px !important;}
+  }
+</style>
+<footer id="contato">
+  <div class="container my-0 my-sm-5">
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="logo_footer"> </div>
+        <!-- <div class="join_social_icons_footer">
+          <a class="fa fa-facebook"></a>
+          <a class="fa fa-twitter"></a>
+          <a class="fa fa-instagram"></a>
+        </div> -->
+      </div>
+      <div class="col-md-3">
+        <a href="https://goo.gl/maps/7nitmbVuKgjiHEYY6" target="_blank">
+          <div class="join_informations_footer">
+            <div class="material-icons icon_informations_footer"></div>
+            Estrada Nossa Senhora Aparecida, 811, Bairro Faxinal, Montenegro/RS
+          </div>
+        </a>
+
+        <a href="mailto:spanservice@hotmail.com?subject=Contato%20site">
+          <div class="join_informations_footer">
+            <div class="material-icons icon_informations_footer"></div>
+            adm@spanservice.com.br
+          </div>
+        </a>
+
+        <a href="tel:+5551998481127">
+          <div class="join_informations_footer">
+            <div class="material-icons icon_informations_footer"></div>
+            (51) 99848-1127
+          </div>
+        </a>
+
+
+      </div>
+
+      <div class="col-md-6">
+        <form class="form_footer" action="/pages/script_contact.php" method="post">
+          <div class="join_inputs_footer">
+            <input type="text" class="input_footer" name="nome" placeholder=" ">
+            <label> Nome </label>
+          </div>
+          <div class="join_inputs_footer">
+            <input type="text" class="input_footer" name="email" placeholder=" ">
+            <label> E-mail </label>
+          </div>
+          <div class="join_inputs_footer" style="width:100%">
+            <input type="text" class="input_footer" name="assunto" placeholder=" ">
+            <label> Assunto </label>
+          </div>
+          <div class="join_inputs_footer" style="width:100%;height:150px;resize:none">
+            <textarea name="mensagem" class="input_footer" placeholder=" "></textarea>
+            <label> Mensagem </label>
+          </div>
+          <button type="submit" class="button_default button_footer" name="button"> Enviar Mensagem </button>
+      </form>
+    </div>
+
+    </div>
+  </div>
+</footer>
+<style media="screen">
+:root{
+  --size_social_icons:25px;
+  --color_inputs:#C8C8C8;
+  --color_text_inputs:#565656;
+}
+#contato{
+  overflow: hidden;
+}
+.logo_footer{
+  position: relative;
+  width: 80%;
+  height: 100px;
+  background-image: url(files/logo_2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: 1px solid red; */
+}
+@media (orientation:portrait),(max-width:1024px){
+  .logo_footer{
+    width: 250px;
+    height: 220px;
+    background-position: center;
+    left: calc(50% - 125px);
+    background-size:contain;
+  }
+}
+
+.join_social_icons_footer{
+  position: relative;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.join_social_icons_footer a{
+  position: relative;
+  width: var(--size_social_icons);
+  height: var(--size_social_icons);
+  font-size: 25px;
+  color:var(--color_main);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:1px solid var(--color_main);
+  border-radius: 100%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 7px;
+}
+.join_social_icons_footer a:hover{ background-color: var(--color_main); color:#fff;}
+.join_informations_footer{
+  margin: 25px 0px;
+  padding-left: 35px;
+  display: flex;
+  align-items: center;
+  color:#464646;
+}
+.icon_informations_footer{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+  margin-left:-35px;
+  color:var(--color_main);
+}
+@media (orientation:portrait),(max-width:1024px){
+  .join_informations_footer{
+    margin :10px 0px 40px
+    padding-left: 0px;
+    text-align: center;
+    display: block;
+  }
+  .icon_informations_footer{
+    display: none
+  }
+}
+textarea{ resize: none }
+.join_inputs_footer{
+  position: relative;
+  height: 40px;
+  width: 50%;
+  margin: 10px 0px;
+  overflow: hidden;
+  float: left;
+}
+.join_inputs_footer label{
+  position: absolute;
+  pointer-events: none;
+  left: 18px;
+  margin-top: 8px;
+  transition: all .3s ease-out;
+  color:var(--color_text_inputs);
+}
+.input_footer:focus + label,
+.input_footer:not(:placeholder-shown) + label{
+  margin-top:0%;
+  font-size:11px;
+  left:23px;
+}
+.input_footer{
+  position: relative;
+  width: calc(100% - 20px);
+  height: 100%;
+  font-size: 13px;
+  padding:10px 20px 0px 20px;
+  border-radius:7px;
+  border: 1px solid var(--color_inputs);
+  color: var(--color_text_inputs);
+}
+.input_footer:focus{ outline: none;border:1px solid var(--color_main)}
+.button_footer{
+  color:var(--color_main);
+  border:1px solid var(--color_main);
+  font-size: 16px;
+  padding: 10px 20px 10px 20px;
+  margin-top:10px;
+  top:0px
+}
+.button_footer:hover{ color:#FFF;}
+.button_footer::after{ background-color: var(--color_main);}
+@media (orientation:portrait),(max-width:1024px){
+  .button_footer{
+    top: 30px;
+    font-size: 20px;
+    left: 10%;
+    width: 80%;
+  }
+}
+</style>
+<header class="header_bottom" id="header_bottom_include">
+  <a href="#" class="button_back_to_top">
+    <div class="material-icons" id="arrow-up_one">arrow_upward</div>
+    <div class="material-icons" id="arrow-up_two">arrow_upward</div>
+  </a>
+  <a href="https://api.whatsapp.com/send?phone=5551998481127" target="_blank">
+    <div class="contact_us_whatsapp">
+      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="whatsapp" color="#fff" width="80%" height="80%" class="svg-inline--fa fa-whatsapp fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z">
+        </path>
+      </svg>
+      <div class="teste">
+      </div>
+    </div>
+  </a>
+</header>
+<style media="screen">
+/* header bottom */
+:root{
+  --size_buttons: 55px;
+}
+#header_bottom_include{
+  position: fixed;
+  width:  max-content;
+  right:50px;
+  height: 150px;
+  bottom:0px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: transparent;
+  z-index: 11;
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.contact_us_whatsapp{
+  position: relative;
+  width:var(--size_buttons);
+  height: var(--size_buttons);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1EBEA5;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-animation: pulse 1.5s infinite;
+  transition: all 0.3s ease;
+}
+@keyframes pulse {
+  0% {
+    transform:scale(.9);
+  }
+  70% {
+    transform:scale(1);
+    box-shadow: 0 0 0 8px hsl(171, 73%, 43%,0.4);
+  }
+    100% {
+    transform:scale(.9);
+    box-shadow: 0 0 0 0 hsl(171, 73%, 43%,0.4);
+  }
+}
+.fa-whatsapp{
+  width: 53%;
+  height:53%;
+  z-index: 2
+}
+.button_back_to_top{
+  position: relative;
+  width: var(--size_buttons);
+  height: var(--size_buttons);
+  right: 20px;
+  border:1px solid var(--color_main);
+  border-radius:100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  overflow:hidden;
+  transition: all 0.3s ease;
+  background-color:var(--color_main) !important; color:#fff !important
+}
+.button_back_to_top div{
+  position: absolute;
+  font-size: 40px;
+  transition: all 0.3s ease;
+}
+#arrow-up_two{top: 80px;}
+.button_back_to_top:hover{background: transparent !important;  color:var(--color_main) !important;}
+
+.button_back_to_top:hover #arrow-up_one{ margin-top: -80px}
+.button_back_to_top:hover #arrow-up_two{ top: 7px}
+@media (orientation:portrait),(max-width:1024px){
+  :root{
+    --size_buttons:80px;
+  }
+  #header_bottom_include{
+    right: calc(50% - 100px);
+  }
+  .button_back_to_top:hover #arrow-up_two{ top: 17px}
+
+}
+</style>
+<script type="text/javascript">
+$(window).scroll(function(){
+  // pegando a posição atual relativo com o topo da tela
+  position_actually = $(window).scrollTop()
+  // pegando o tamabnho da tela do usuario
+  height_window = window.innerHeight
+  if (position_actually > height_window) {
+    $('#header_bottom_include').css({'opacity': '1','pointer-events':'all'})
+  }else {
+    $("#header_bottom_include").css({'opacity': '0','pointer-events':'none'})
+  }
+  if (position_actually > 6700) {
+    $("#header_bottom_include").css({'opacity': '0','pointer-events':'none'})
+  }else {
+    $('#header_bottom_include').css({'opacity': '1','pointer-events':'all'})
+
+  }
+})
+</script>
+     <script type="text/javascript">
+      feather.replace()
+      // muda o serviço que vai ser exbibido
+      $('.button_services').click(function(){
+        data_button = $(this).attr('data-service');
+        if (data_button == 'p') {
+          $('.service').removeClass('service_show')
+          $('.receive_service_projetos').addClass('service_show')
+
+          $('.mark_selected').css({
+            'margin-left':'-35%',
+          })
+        }else if (data_button == 'c') {
+          $('.service').removeClass('service_show')
+          $('.receive_service_consultoria').addClass('service_show')
+
+          $('.mark_selected').css({
+            'margin-left':'35%',
+          })
+        }
+      })
+      // abrir e fechar a visualizaçao das fotos dos projetos
+      $('.image_project').click(function(){
+        imageMaximize = $(this).attr('data-img');
+        $('#receive_img_maximize').css({
+          'background-image':'url('+imageMaximize+')'
+        })
+        $('.visualization_images').css({
+          'opacity':'1',
+        })
+        $('.filter_visualizar_imagem').css({
+          'opacity':'0.6',
+          'pointer-events':'all'
+        })
+      })
+      $('.filter_visualizar_imagem').click(function(){
+        $('.visualization_images').css({
+          'opacity':'0',
+        })
+        $('.filter_visualizar_imagem').css({
+          'opacity':'0',
+          'pointer-events':'none'
+        })
+      })
+    </script>
+  
+
+</body></html>
