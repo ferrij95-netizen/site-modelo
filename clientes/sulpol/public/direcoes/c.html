@@ -9,31 +9,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
 <style>
-:root{--brand:#0B4F9C;--brand-deep:#062649;--ink:#0E1620;--muted:#5B6573;--line:#D9DEE5;--bg:#FAFAF8;--cond:'Barlow Condensed',sans-serif}
+:root{--brand:#2266AA;--brand-deep:#002553;--ink:#231F20;--muted:#5B6573;--line:#D9DEE5;--bg:#FAFAF8;--cond:'Barlow Condensed',sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font:17px/1.65 'Barlow',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
 .cond{font-family:var(--cond);text-transform:uppercase;letter-spacing:.01em;line-height:.95;font-weight:700}
 .kicker{font-family:var(--cond);font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:14px;display:flex;align-items:center;gap:14px}
-.kicker::before{content:"";width:36px;height:2px;background:currentColor}
+.kicker::before{content:"";width:36px;height:3px;background:linear-gradient(90deg,#27B472 0 20%,#FAAF3E 0 40%,#24A9E0 0 60%,#90268E 0 80%,#EC1B23 0)}
 .btn{display:inline-flex;align-items:center;gap:12px;padding:16px 28px;font-family:var(--cond);font-weight:600;font-size:17px;letter-spacing:.12em;text-transform:uppercase;background:var(--brand);color:#fff;transition:.2s}
 .btn:hover{filter:brightness(1.12)}
 .btn.out{background:transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
 /* hero */
 .hero{background:var(--brand-deep);color:#fff;position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column}
-.hero .bg{position:absolute;inset:0;opacity:.55}.hero .bg>div{position:absolute;inset:0}.hero .bg svg{width:100%;height:100%;display:block}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--brand-deep) 0%,rgba(6,38,73,.92) 40%,rgba(6,38,73,.35) 100%)}
+.hero .bg{position:absolute;inset:0}.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--brand-deep) 0%,rgba(0,37,83,.9) 42%,rgba(0,37,83,.25) 100%)}
 header{position:relative;z-index:2;border-bottom:1px solid rgba(255,255,255,.14)}
 header .wrap{display:flex;align-items:center;height:92px;gap:40px}
-.logo{display:flex;flex-direction:column;line-height:1;font-family:var(--cond);font-weight:700;font-size:34px;letter-spacing:.06em}
-.logo small{font-family:'Barlow';font-size:10px;letter-spacing:.5em;font-weight:600;opacity:.8;margin-top:3px}
+.logo img{height:50px;display:block}
 nav{margin-left:auto;display:flex;gap:34px;font-family:var(--cond);font-weight:600;font-size:17px;letter-spacing:.12em;text-transform:uppercase}
 nav a{opacity:.8}nav a:hover,nav a.on{opacity:1}
 .phone{font-family:var(--cond);font-weight:600;font-size:18px;letter-spacing:.06em;padding-left:32px;border-left:1px solid rgba(255,255,255,.2)}
 .hero .wrap.main{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:60px;padding-bottom:60px}
 .hero h1{font-size:clamp(52px,8vw,112px);margin:24px 0 28px;max-width:900px}
-.hero h1 span{color:#9CC3F0}
+.hero h1 span{color:#24A9E0}
 .hero p{font-size:20px;max-width:560px;opacity:.85}
 .hero .ctas{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
 .facts{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.14)}
@@ -55,7 +54,7 @@ h2{font-size:clamp(40px,5vw,68px)}
 .item h3{font-family:var(--cond);font-size:34px;font-weight:700;text-transform:uppercase;line-height:1}
 .item p{color:var(--muted);font-size:16px;margin-top:6px}
 .dot{width:120px;height:72px;border-radius:36px;overflow:hidden;position:relative;box-shadow:inset 0 0 0 1px var(--line)}
-.dot>div{position:absolute;inset:0}.dot svg{width:100%;height:100%;display:block}
+.dot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* 20 anos */
 .years{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .years .wrap{display:grid;grid-template-columns:auto 1fr;gap:72px;align-items:center}
@@ -93,9 +92,9 @@ footer .wrap{display:flex;justify-content:space-between;padding-top:26px;padding
 </head>
 <body>
 <div class="hero">
-  <div class="bg"><div data-pellets="marca" data-n="220" data-seed="21"></div></div>
+  <div class="bg"><img src="../img/azul.jpg" alt=""></div>
   <header><div class="wrap">
-    <a class="logo" href="#">SULPOL<small>PLÁSTICOS</small></a>
+    <a class="logo" href="#"><img src="../img/logo-branco-h.png" alt="Sulpol Plásticos"></a>
     <nav><a class="on" href="#">Início</a><a href="#produtos">Produtos</a><a href="#empresa">A Empresa</a><a href="#contato">Contato</a></nav>
     <span class="phone">(51) 99678-0093</span>
   </div></header>
@@ -106,7 +105,7 @@ footer .wrap{display:flex;justify-content:space-between;padding-top:26px;padding
     <div class="ctas"><a class="btn" href="#contato">Peça seu orçamento</a><a class="btn out" href="#produtos">Nossos produtos</a></div>
   </div>
   <div class="facts"><div class="wrap">
-    <div><b>20 anos</b><span>de mercado</span></div>
+    <div><b>20 anos</b><span>desde 2006</span></div>
     <div><b>4 linhas</b><span>de concentrados</span></div>
     <div><b>ISO 9001</b><span>fabricantes certificados</span></div>
     <div><b>Valgroup</b><span>distribuidor oficial</span></div>
@@ -116,10 +115,10 @@ footer .wrap{display:flex;justify-content:space-between;padding-top:26px;padding
 <section id="produtos"><div class="wrap grid2">
   <div class="sticky"><span class="kicker" style="color:var(--brand)">Produtos</span><h2 class="cond" style="margin-top:18px">Concentrados para cada aplicação</h2><p>Ativo, veículo e dosagem de cada produto, com apoio técnico para escolher o certo para a sua linha.</p><a class="btn" style="margin-top:28px" href="#">Ver catálogo</a></div>
   <div class="list">
-    <a class="item" href="#"><span class="num">01</span><div><h3>Concentrados Aditivos</h3><p>Antiestático, anti-UV, antiblock, deslizante, auxiliar de fluxo, antioxidante, purga, antichama e mais.</p></div><div class="dot"><div data-pellets="aditivo" data-n="70" data-seed="2"></div></div></a>
-    <a class="item" href="#"><span class="num">02</span><div><h3>Concentrados Brancos</h3><p>Dióxido de titânio de 40% a 75%, para peças e filmes de qualquer espessura.</p></div><div class="dot"><div data-pellets="branco" data-n="70" data-seed="6"></div></div></a>
-    <a class="item" href="#"><span class="num">03</span><div><h3>Concentrados Pretos</h3><p>Negro de fumo livre de metais pesados, para embalagens de alimentos, fármacos e brinquedos.</p></div><div class="dot"><div data-pellets="preto" data-n="70" data-seed="10"></div></div></a>
-    <a class="item" href="#"><span class="num">04</span><div><h3>Concentrados Coloridos</h3><p>Nove cores padrão para peças injetadas e extrudadas.</p></div><div class="dot"><div data-pellets="cores" data-n="70" data-seed="12"></div></div></a>
+    <a class="item" href="#"><span class="num">01</span><div><h3>Concentrados Aditivos</h3><p>Antiestático, anti-UV, antiblock, deslizante, auxiliar de fluxo, antioxidante, purga, antichama e mais.</p></div><div class="dot"><img src="../img/estufa.jpg" alt="" loading="lazy"></div></a>
+    <a class="item" href="#"><span class="num">02</span><div><h3>Concentrados Brancos</h3><p>Dióxido de titânio de 40% a 75%, para peças e filmes de qualquer espessura.</p></div><div class="dot"><img src="../img/branco.jpg" alt="" loading="lazy"></div></a>
+    <a class="item" href="#"><span class="num">03</span><div><h3>Concentrados Pretos</h3><p>Negro de fumo livre de metais pesados, para embalagens de alimentos, fármacos e brinquedos.</p></div><div class="dot"><img src="../img/transparente.jpg" alt="" loading="lazy"></div></a>
+    <a class="item" href="#"><span class="num">04</span><div><h3>Concentrados Coloridos</h3><p>Nove cores padrão para peças injetadas e extrudadas.</p></div><div class="dot"><img src="../img/verde.jpg" alt="" loading="lazy"></div></a>
   </div>
 </div></section>
 
@@ -143,6 +142,5 @@ footer .wrap{display:flex;justify-content:space-between;padding-top:26px;padding
 </div></section>
 <footer><div class="wrap"><span>© 2026 Sulpol Plásticos, Indústria e Comércio de Produtos Plásticos Ltda.</span><span>Canoas/RS</span></div></footer>
 <a class="wa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg></a>
-<script src="pellets.js"></script>
 </body>
 </html>

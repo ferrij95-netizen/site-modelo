@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,500;100,600;100,800;125,800;125,900&display=swap">
 <style>
-:root{--brand:#0B4F9C;--brand-dark:#083B75;--ink:#101418;--muted:#5A6472;--bg:#F6F7F9;--card:#FFFFFF;--r:22px}
+:root{--brand:#2266AA;--brand-dark:#1A4F86;--ink:#231F20;--muted:#5A6472;--bg:#F6F7F9;--card:#FFFFFF;--r:22px}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font:17px/1.6 'Archivo',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
 a{color:inherit;text-decoration:none}
@@ -23,8 +23,7 @@ a{color:inherit;text-decoration:none}
 /* header */
 header{position:absolute;top:0;left:0;right:0;z-index:10;color:#fff}
 header .wrap{display:flex;align-items:center;gap:32px;height:96px}
-.logo{display:flex;flex-direction:column;line-height:1;font-stretch:125%;font-weight:900;font-size:28px;letter-spacing:.02em}
-.logo small{font-size:10px;letter-spacing:.5em;font-weight:600;font-stretch:100%;margin-top:5px;opacity:.85}
+.logo img{height:50px;display:block}
 nav{margin-left:auto;display:flex;gap:6px;background:rgba(255,255,255,.12);padding:6px;border-radius:999px;backdrop-filter:blur(10px)}
 nav a{padding:9px 18px;border-radius:999px;font-weight:500;font-size:15px}
 nav a.on,nav a:hover{background:#fff;color:var(--brand)}
@@ -51,12 +50,12 @@ h2{font-size:clamp(34px,4.2vw,58px)}
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .tile{border-radius:var(--r);overflow:hidden;min-height:420px;display:flex;flex-direction:column;position:relative;transition:transform .25s}
 .tile:hover{transform:translateY(-6px)}
-.tile .art{flex:1;position:relative;min-height:200px}.tile .art>div{position:absolute;inset:0}.tile .art svg{width:100%;height:100%;display:block}
+.tile .art{flex:1;position:relative;min-height:200px;overflow:hidden}.tile .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}.tile:hover .art img{transform:scale(1.06)}
 .tile .txt{padding:24px 24px 26px}
 .tile h3{font-stretch:125%;font-weight:800;font-size:22px;line-height:1.05;text-transform:uppercase}
 .tile p{font-size:15px;margin-top:8px;opacity:.75}
 .tile .n{position:absolute;top:18px;left:18px;z-index:1;background:#fff;color:var(--ink);font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px}
-.t1{background:#EFEBD8}.t2{background:#fff}.t3{background:#16181C;color:#fff}.t4{background:#fff}
+.t1{background:#E9F3EC}.t2{background:#fff}.t3{background:#16181C;color:#fff}.t4{background:#fff}
 /* valgroup / pilares */
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .card{background:var(--card);border-radius:var(--r);padding:48px}
@@ -94,7 +93,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </head>
 <body>
 <header><div class="wrap">
-  <a class="logo" href="#">SULPOL<small>PLÁSTICOS</small></a>
+  <a class="logo" href="#"><img src="../img/logo-branco-h.png" alt="Sulpol Plásticos"></a>
   <nav><a class="on" href="#">Início</a><a href="#produtos">Produtos</a><a href="#empresa">A Empresa</a><a href="#contato">Contato</a></nav>
 </div></header>
 
@@ -106,19 +105,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <div class="ctas"><a class="btn light" href="#contato">Peça seu orçamento</a><a class="btn line" href="#produtos">Ver produtos</a></div>
   </div>
   <div class="heroart">
-    <div class="blob"><div data-pellets="cores" data-n="160" data-seed="5"></div></div>
-    <div class="badge"><div><b>20</b><span>anos</span></div></div>
+    <div class="blob"><div data-pellets="logo" data-n="160" data-seed="5"></div></div>
+    <div class="badge"><div><b>20</b><span>anos</span><span style="display:block;font-size:10px;opacity:.7;margin-top:2px">desde 2006</span></div></div>
   </div>
 </div></section>
-<div class="band" aria-hidden="true"><i style="background:#E2559A"></i><i style="background:#1C3F94"></i><i style="background:#2A5CD8"></i><i style="background:#1E9A4B"></i><i style="background:#FFE135"></i><i style="background:#F2B705"></i><i style="background:#F26A1B"></i><i style="background:#D2232A"></i><i style="background:#6B3E22"></i><i style="background:#fff"></i><i style="background:#16181C"></i></div>
+<div class="band" aria-hidden="true"><i style="background:#27B472"></i><i style="background:#FAAF3E"></i><i style="background:#24A9E0"></i><i style="background:#90268E"></i><i style="background:#EC1B23"></i><i style="background:#808284"></i></div>
 
 <section id="produtos"><div class="wrap">
   <div class="intro"><h2 class="wide">Quatro linhas<br>de concentrados</h2><p>Do branco de alta cobertura aos aditivos que fazem o filme correr na máquina: escolha a linha e veja ativo, veículo e dosagem de cada produto.</p></div>
   <div class="tiles">
-    <a class="tile t1" href="#"><span class="n">12 produtos</span><div class="art"><div data-pellets="aditivo" data-n="80" data-seed="3"></div></div><div class="txt"><h3>Aditivos</h3><p>Antiestático, anti-UV, antiblock, deslizante, antioxidante e mais.</p></div></a>
-    <a class="tile t2" href="#"><span class="n">TiO₂ 40 a 75%</span><div class="art"><div data-pellets="branco" data-n="80" data-seed="4"></div></div><div class="txt"><h3>Brancos</h3><p>Alta, média e baixa concentração.</p></div></a>
-    <a class="tile t3" href="#"><span class="n">Sem metais pesados</span><div class="art"><div data-pellets="preto" data-n="80" data-seed="8"></div></div><div class="txt"><h3>Pretos</h3><p>Para embalagens de alimentos, fármacos e brinquedos.</p></div></a>
-    <a class="tile t4" href="#"><span class="n">9 cores</span><div class="art"><div data-pellets="cores" data-n="80" data-seed="9"></div></div><div class="txt"><h3>Coloridos</h3><p>Para peças injetadas e extrudadas.</p></div></a>
+    <a class="tile t1" href="#"><span class="n">12 produtos</span><div class="art"><img src="../img/estufa.jpg" alt="" loading="lazy"></div><div class="txt"><h3>Aditivos</h3><p>Antiestático, anti-UV, antiblock, deslizante, antioxidante e mais.</p></div></a>
+    <a class="tile t2" href="#"><span class="n">TiO₂ 40 a 75%</span><div class="art"><img src="../img/branco.jpg" alt="" loading="lazy"></div><div class="txt"><h3>Brancos</h3><p>Alta, média e baixa concentração.</p></div></a>
+    <a class="tile t3" href="#"><span class="n">Sem metais pesados</span><div class="art"><img src="../img/transparente.jpg" alt="" loading="lazy"></div><div class="txt"><h3>Pretos</h3><p>Para embalagens de alimentos, fármacos e brinquedos.</p></div></a>
+    <a class="tile t4" href="#"><span class="n">9 cores</span><div class="art"><img src="../img/rosa.jpg" alt="" loading="lazy"></div><div class="txt"><h3>Coloridos</h3><p>Para peças injetadas e extrudadas.</p></div></a>
   </div>
 </div></section>
 
