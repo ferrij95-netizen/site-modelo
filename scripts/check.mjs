@@ -36,6 +36,8 @@ const errors = [];
 for (const file of pages) {
   const html = fs.readFileSync(file, 'utf8');
   const rel = path.relative(dist, file);
+  // Páginas avulsas de public/ marcadas noindex (ex.: prévias de direções) não passam pelo motor de SEO.
+  if (!html.includes('<!-- seo -->') && html.includes('name="robots" content="noindex"')) continue;
   for (const [re, label] of required) if (!re.test(html)) errors.push(`${rel}: falta ${label}`);
   const img = html.match(/<meta property="og:image" content="([^"]+)"/)?.[1];
   if (img?.startsWith(domain)) {

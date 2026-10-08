@@ -1,0 +1,21 @@
+<section class="page-head"><div class="wrap">
+  <span class="mono">{{site.name}}</span>
+  <h1>{{p.heading}}</h1>
+  <p>{{p.lead}}</p>
+</div></section>
+<section class="sec"><div class="wrap contact">
+  <form class="form" id="orcamento" data-wa="{{site.whatsapp}}">
+    <label>{{p.formName}}<input name="nome" required autocomplete="name"></label>
+    <label>{{p.formCompany}}<input name="empresa" autocomplete="organization"></label>
+    <label>{{p.formEmail}}<input name="contato" autocomplete="email"></label>
+    <label>{{p.formProduct}}<select name="produto"><option value="">—</option>{{#each t.lines}}<option>{{it.name}}</option>{{/each}}</select></label>
+    <label class="full">{{p.formMessage}}<textarea name="mensagem" rows="5"></textarea></label>
+    <div class="full form-foot"><button class="btn" type="submit">{{p.formSend}}</button><small>{{p.formNote}}</small></div>
+  </form>
+  <aside class="info">
+    <div><span class="mono">{{t.labels.phone}}</span><a href="{{wa}}" target="_blank" rel="noopener">{{site.phone}}</a></div>
+    <div><span class="mono">{{t.labels.email}}</span><a href="mailto:{{site.email}}">{{site.email}}</a><a href="mailto:{{site.email2}}">{{site.email2}}</a></div>
+    <div><span class="mono">{{t.labels.address}}</span><p>{{site.address}}</p><a class="link" href="{{site.mapsUrl}}" target="_blank" rel="noopener">{{p.mapLabel}} →</a></div>
+    <div><span class="mono">{{t.labels.hours}}</span><p>{{site.hours}}</p></div>
+  </aside>
+</div></section>

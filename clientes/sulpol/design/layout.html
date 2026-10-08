@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{htmlLang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{seo}}
+<meta name="theme-color" content="{{site.theme.brand}}">
+<link rel="icon" href="/assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/css/sulpol.css">
+<style>:root{--brand:{{site.theme.brand}};--brand-dark:{{site.theme.brandDark}};--brand-deep:{{site.theme.brandDeep}};--ink:{{site.theme.ink}};--muted:{{site.theme.muted}};--line:{{site.theme.line}};--bg:{{site.theme.bg}};--alt:{{site.theme.bgAlt}}}</style>
+</head>
+<body class="page-{{page}}">
+<a class="skip" href="#main">{{t.skip}}</a>
+{{header}}
+<main id="main">
+{{content}}
+</main>
+{{contato}}
+{{footer}}
+{{whatsapp}}
+<script src="/assets/js/sulpol.js" defer></script>
+</body>
+</html>

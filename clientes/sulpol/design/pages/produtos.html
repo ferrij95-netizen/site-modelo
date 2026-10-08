@@ -1,0 +1,28 @@
+<section class="page-head"><div class="wrap">
+  <span class="mono">{{site.name}}</span>
+  <h1>{{p.heading}}</h1>
+  <p>{{p.lead}}</p>
+  <nav class="jump">{{#each t.lines}}<a href="#{{it.id}}"><i class="dot-{{it.id}}"></i>{{it.name}}</a>{{/each}}</nav>
+</div></section>
+
+<section class="sec cat" id="aditivos"><div class="wrap">
+  <div class="cat-head"><div class="cat-img"><img src="/img/{{t.lines.0.img}}.jpg" alt="{{t.lines.0.alt}}" loading="lazy"></div><div><span class="mono">01 · {{t.lines.0.tag}}</span><h2>{{t.lines.0.name}}</h2><p>{{t.lines.0.intro}}</p></div></div>
+  <div class="specs">{{#each t.lines.0.items}}<article class="spec-card"><h3>{{it.name}}</h3><dl><dt>{{t.labels.active}}</dt><dd>{{it.active}}</dd><dt>{{t.labels.carrier}}</dt><dd>{{it.carrier}}</dd><dt>{{t.labels.dose}}</dt><dd>{{it.dose}}</dd></dl><p>{{it.text}}</p><p class="uses"><b>{{t.labels.uses}}:</b> {{it.uses}}</p></article>{{/each}}</div>
+</div></section>
+
+<section class="sec cat alt" id="brancos"><div class="wrap">
+  <div class="cat-head"><div class="cat-img"><img src="/img/{{t.lines.1.img}}.jpg" alt="{{t.lines.1.alt}}" loading="lazy"></div><div><span class="mono">02 · {{t.lines.1.tag}}</span><h2>{{t.lines.1.name}}</h2><p>{{t.lines.1.intro}}</p></div></div>
+  <div class="specs">{{#each t.lines.1.items}}<article class="spec-card"><h3>{{it.name}}</h3><dl><dt>{{t.labels.active}}</dt><dd>{{it.active}}</dd><dt>{{t.labels.carrier}}</dt><dd>{{it.carrier}}</dd><dt>{{t.labels.dose}}</dt><dd>{{it.dose}}</dd></dl><p>{{it.text}}</p><p class="uses"><b>{{t.labels.uses}}:</b> {{it.uses}}</p></article>{{/each}}</div>
+</div></section>
+
+<section class="sec cat" id="pretos"><div class="wrap">
+  <div class="cat-head"><div class="cat-img"><img src="/img/{{t.lines.2.img}}.jpg" alt="{{t.lines.2.alt}}" loading="lazy"></div><div><span class="mono">03 · {{t.lines.2.tag}}</span><h2>{{t.lines.2.name}}</h2><p>{{t.lines.2.intro}}</p></div></div>
+  <div class="specs">{{#each t.lines.2.items}}<article class="spec-card"><h3>{{it.name}}</h3><dl><dt>{{t.labels.active}}</dt><dd>{{it.active}}</dd><dt>{{t.labels.carrier}}</dt><dd>{{it.carrier}}</dd><dt>{{t.labels.dose}}</dt><dd>{{it.dose}}</dd></dl><p>{{it.text}}</p><p class="uses"><b>{{t.labels.uses}}:</b> {{it.uses}}</p></article>{{/each}}</div>
+</div></section>
+
+<section class="sec cat alt" id="coloridos"><div class="wrap">
+  <div class="cat-head"><div class="cat-img"><img src="/img/{{t.lines.3.img}}.jpg" alt="{{t.lines.3.alt}}" loading="lazy"></div><div><span class="mono">04 · {{t.lines.3.tag}}</span><h2>{{t.lines.3.name}}</h2><p>{{t.lines.3.intro}}</p></div></div>
+  <div class="colors">{{#each t.lines.3.colors}}<div class="color"><i style="background:{{it.hex}}"></i><span>Master {{it.name}}</span></div>{{/each}}</div>
+  <div class="table"><div class="row th"><span>{{t.labels.product}}</span><span>{{t.labels.active}}</span><span>{{t.labels.carrier}}</span><span>{{t.labels.dose}}</span></div>{{#each t.lines.3.items}}<div class="row"><b>{{it.name}}</b><span data-l="{{t.labels.active}}">{{it.active}}</span><span data-l="{{t.labels.carrier}}">{{it.carrier}}</span><span data-l="{{t.labels.dose}}">{{it.dose}}</span></div>{{/each}}</div>
+  <p class="note">{{t.colorNote}}</p>
+</div></section>
