@@ -1,0 +1,34 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>Oficina De Filippo · propostas de site</title><meta name="description" content="Duas versões do novo site da Oficina De Filippo para escolher.">
+<meta property="og:title" content="Oficina De Filippo · propostas de site"><meta property="og:description" content="Duas versões do novo site para escolher: Clássica e Pista."><meta property="og:image" content="https://defilippo.overtus.com.br/img/og.jpg"><meta property="og:url" content="https://defilippo.overtus.com.br/"><meta property="og:type" content="website">
+<link rel="icon" href="/img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Tinos&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#F3F1EC;color:#16181D;font:400 16px/1.5 'Source Sans 3',system-ui,sans-serif}
+.app{min-height:100dvh;display:flex;flex-direction:column;padding:clamp(16px,3.5vh,40px) clamp(16px,4vw,56px);gap:clamp(12px,2.5vh,28px)}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px}
+small{font:700 .72rem/1 'Source Sans 3';letter-spacing:.2em;text-transform:uppercase;color:#A88E5E}
+h1{font:400 clamp(1.8rem,1.6vw + 2.4vh,3rem)/1.1 Tinos,serif;color:#04146C;margin-top:8px}
+header p{color:#5B5E66;max-width:30em}
+.opcoes{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,28px)}
+.opcao{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:#fff;border:1px solid #DCD5C6;min-height:0;transition:transform .25s,box-shadow .25s}
+.opcao:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(4,20,108,.14)}
+.opcao figure{flex:1;min-height:140px;overflow:hidden;border-bottom:1px solid #DCD5C6}
+.opcao img{width:100%;height:100%;object-fit:cover;object-position:left top}
+.opcao>div{padding:clamp(12px,2vh,20px) 20px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.opcao h2{font:400 1.5rem/1.1 Tinos,serif;color:#04146C}.opcao p{color:#5B5E66;font-size:.95em}
+.opcao span{flex:none;background:#04146C;color:#fff;font-weight:600;padding:.6em 1.1em}
+.pista span{background:#D2111A}
+.atual{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;font-size:.95em;color:#5B5E66}
+.atual a{color:#04146C;font-weight:600}
+@media (min-width:900px) and (min-height:560px){html,body{height:100%;overflow:hidden}.app{height:100dvh}}
+@media (max-width:899px){.opcoes{grid-template-columns:1fr}.opcao figure{height:56vw;flex:none}}
+</style></head><body><div class="app">
+<header><div><small>Proposta Overtus · Oficina De Filippo</small><h1>Duas versões do novo site</h1></div><p>As duas usam o logotipo, as cores e a letra da marca. Escolha a que tem mais a cara da oficina; as duas têm todas as páginas navegáveis.</p></header>
+<main class="opcoes">
+<a class="opcao" href="/classica/"><figure><img src="/img/versao-classica.jpg" alt="Versão Clássica"></figure><div><div><h2>Clássica</h2><p>Clara e elegante: papel creme, azul-marinho e a herança italiana.</p></div><span>Ver versão</span></div></a>
+<a class="opcao pista" href="/pista/"><figure><img src="/img/versao-pista.jpg" alt="Versão Pista"></figure><div><div><h2>Pista</h2><p>Escura e esportiva: bandeira quadriculada, fotos grandes e vermelho de corrida.</p></div><span>Ver versão</span></div></a>
+</main>
+<footer class="atual"><span>Para comparar:</span><a href="/antigo/">Registro do site atual</a><a href="http://oficinadefilippo.com/" target="_blank" rel="noopener">Abrir oficinadefilippo.com ↗</a></footer>
+</div></body></html>
