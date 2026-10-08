@@ -1,4 +1,4 @@
-# (v3) Salva as fotos do site atual da Longlife (Google Sites) pelo navegador, que tem permissão para abri-las.
+# (v4) Salva as fotos do site atual da Longlife (Google Sites) pelo navegador, que tem permissão para abri-las.
 name: longlife-imagens
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
                 const base = u.replace(/=[^=]*$/, '');
                 try {
                   const buf = await r.body();
-                  if (buf.length < 8000) return;
+                  if (buf.length < 300) return;
                   const ext = ct.includes('png') ? 'png' : ct.includes('webp') ? 'webp' : 'jpg';
                   const prev = [...vistos].find(v => v.base === base);
                   if (prev && prev.size >= buf.length) return;
@@ -48,7 +48,7 @@ jobs:
               await pg.goto('https://www.longlife.ind.br/' + p, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
               for (let y = 0; y < 12000; y += 700) { await pg.mouse.wheel(0, 700); await pg.waitForTimeout(250); }
               await pg.waitForTimeout(3000);
-              // Logo do cabeçalho em alta
+              if (nome === "home") { const l = await pg.$("img.r9CsCb"); if (l) await l.screenshot({ path: `${O}/logo-print.png`, omitBackground: true }).catch(() => {}); }
               await pg.close();
             }
             fs.writeFileSync(`${O}/origem.txt`, log.join('\n') + '\n');
