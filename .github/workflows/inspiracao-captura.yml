@@ -1,0 +1,83 @@
+# Captura prints, HTML e estilos de um site de referência para o banco de inspirações (inspiracoes/<nome>/).
+name: inspiracao-captura
+on:
+  push:
+    branches: [claude/project-thread-r0bkvf]
+    paths: [.github/workflows/inspiracao-captura.yml]
+permissions:
+  contents: write
+env:
+  URL: https://www.sulpol.com.br/
+  NOME: sulpol-com-br
+jobs:
+  capturar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prints
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          mkdir -p inspiracoes/$NOME/prints inspiracoes/$NOME/html
+          cat > shot.cjs <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          const DIR = 'inspiracoes/' + process.env.NOME;
+          (async () => {
+            const b = await chromium.launch();
+            const info = { pedido: process.env.URL, paginas: [] };
+            const home = await b.newPage({ viewport: { width: 1440, height: 900 } });
+            await home.goto(process.env.URL, { waitUntil: 'networkidle', timeout: 60000 }).catch(e => info.erro = String(e));
+            await home.waitForTimeout(3000);
+            info.final = home.url();
+            const origin = new URL(home.url()).origin;
+            const links = await home.evaluate(o => [...new Set([...document.querySelectorAll('header a[href], nav a[href], a[href]')]
+              .map(a => a.href.split('#')[0]).filter(h => h.startsWith(o)))], origin).catch(() => []);
+            const pages = [home.url(), ...links.filter(l => l.replace(/\/$/, '') !== home.url().replace(/\/$/, ''))].slice(0, 6);
+            await home.close();
+            for (const [i, url] of pages.entries()) {
+              const slug = i === 0 ? 'home' : (new URL(url).pathname.replace(/^\/|\/$/g, '').replace(/[^a-z0-9]+/gi, '-') || 'p' + i);
+              for (const [w, h, t] of [[1440, 900, 'computador'], [390, 844, 'celular']]) {
+                const pg = await b.newPage({ viewport: { width: w, height: h } });
+                await pg.goto(url, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+                await pg.waitForTimeout(3000);
+                // força animações de rolagem a aparecerem
+                await pg.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 150)); } window.scrollTo(0, 0); }).catch(() => {});
+                await pg.waitForTimeout(1500);
+                await pg.screenshot({ path: `${DIR}/prints/${slug}-${t}.png`, fullPage: true }).catch(() => {});
+                await pg.screenshot({ path: `${DIR}/prints/${slug}-${t}-dobra.png` }).catch(() => {});
+                if (t === 'computador') {
+                  fs.writeFileSync(`${DIR}/html/${slug}.html`, await pg.content());
+                  const meta = await pg.evaluate(() => {
+                    const count = {};
+                    const add = (k) => count[k] = (count[k] || 0) + 1;
+                    for (const el of document.querySelectorAll('*')) {
+                      const s = getComputedStyle(el);
+                      for (const k of ['color', 'backgroundColor', 'borderTopColor']) { const v = s[k]; if (v && v !== 'rgba(0, 0, 0, 0)') add(k + ':' + v); }
+                      add('font:' + s.fontFamily);
+                    }
+                    const heads = [...document.querySelectorAll('h1,h2,h3')].slice(0, 40).map(h => {
+                      const s = getComputedStyle(h); return { tag: h.tagName, texto: h.innerText.trim().slice(0, 120), fonte: s.fontFamily, tamanho: s.fontSize, peso: s.fontWeight, ls: s.letterSpacing };
+                    });
+                    const body = getComputedStyle(document.body);
+                    return { titulo: document.title, descricao: document.querySelector('meta[name=description]')?.content, gerador: document.querySelector('meta[name=generator]')?.content,
+                      corpo: { fonte: body.fontFamily, tamanho: body.fontSize, cor: body.color, fundo: body.backgroundColor }, titulos: heads,
+                      secoes: [...document.querySelectorAll('body > *, main > *, section')].slice(0, 60).map(e => e.tagName + (e.id ? '#' + e.id : '') + (e.className && typeof e.className === 'string' ? '.' + e.className.trim().split(/\s+/).slice(0, 3).join('.') : '')),
+                      estilos: Object.entries(count).sort((a, b) => b[1] - a[1]).slice(0, 80) };
+                  }).catch(e => ({ erro: String(e) }));
+                  info.paginas.push({ slug, url, ...meta });
+                }
+                await pg.close();
+              }
+            }
+            fs.writeFileSync(`${DIR}/captura.json`, JSON.stringify(info, null, 1));
+            await b.close();
+          })();
+          JS
+          node shot.cjs
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add inspiracoes
+          git commit -m "Inspiração: captura de $URL" && git pull --rebase origin claude/project-thread-r0bkvf && git push
