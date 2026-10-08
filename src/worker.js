@@ -24,7 +24,7 @@ const redirecionar = (local, cookie) => {
 async function hub(request, env, url) {
   if (url.pathname === '/entrar' && request.method === 'POST') {
     const form = await request.formData().catch(() => null);
-    const cred = `${String(form?.get('email') || '').trim().toLowerCase()}:${form?.get('senha') || ''}`;
+    const cred = `${String(form?.get('ov_u') || form?.get('email') || '').trim().toLowerCase()}:${form?.get('ov_k') || form?.get('senha') || ''}`;
     if ((await sha256(cred)) !== CRED_HASH) return redirecionar('/entrar/?erro=1');
     const validade = form.get('lembrar') ? '; Max-Age=2592000' : '';
     return redirecionar('/', `hub=${await sha256('sessao:' + cred)}; Path=/; HttpOnly; Secure; SameSite=Lax${validade}`);
