@@ -19,10 +19,29 @@ jobs:
           const { chromium } = require('playwright');
           const fs = require('fs');
           const DIR = 'inspiracoes/' + process.env.NOME;
+          async function semCookies(pg) {
+            const re = /^\s*(accept all( cookies)?|allow all( cookies)?|accept|aceitar( todos| tudo| cookies)?|aceito|concordo|i agree|agree|ok|entendi|got it|allow|permitir todos)\s*$/i;
+            for (const fr of pg.frames()) {
+              await fr.evaluate((src) => {
+                const re = new RegExp(src, 'i');
+                const ids = ['#onetrust-accept-btn-handler', '#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll', '#CybotCookiebotDialogBodyButtonAccept', '#uc-btn-accept-banner', '.cky-btn-accept', '#truste-consent-button'];
+                for (const q of ids) { const el = document.querySelector(q); if (el) el.click(); }
+                for (const el of document.querySelectorAll('button, a[role=button], [role=button]')) if (re.test(el.innerText || '')) { try { el.click(); } catch (e) {} }
+              }, re.source).catch(() => {});
+            }
+            await pg.waitForTimeout(1200);
+            await pg.evaluate(() => {
+              for (const el of document.querySelectorAll('body *')) {
+                const s = getComputedStyle(el); const k = (el.id + ' ' + el.className).toLowerCase();
+                if ((s.position === 'fixed' || s.position === 'sticky') && /cookie|consent|onetrust|cybot|usercentrics|gdpr|lgpd|privacy|adopt/.test(k)) el.remove();
+              }
+              document.body.style.overflow = 'auto'; document.documentElement.style.overflow = 'auto';
+            }).catch(() => {});
+          }
           (async () => {
             const b = await chromium.launch();
             const info = { pedido: process.env.URL, paginas: [] };
-            const home = await b.newPage({ viewport: { width: 1440, height: 900 } });
+            const home = await b.newPage({ viewport: { width: 1440, height: 900 }, userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', locale: 'pt-BR' });
             await home.goto(process.env.URL, { waitUntil: 'networkidle', timeout: 60000 }).catch(e => info.erro = String(e));
             await home.waitForTimeout(3000);
             info.final = home.url();
@@ -34,9 +53,10 @@ jobs:
             for (const [i, url] of pages.entries()) {
               const slug = i === 0 ? 'home' : (new URL(url).pathname.replace(/^\/|\/$/g, '').replace(/[^a-z0-9]+/gi, '-') || 'p' + i);
               for (const [w, h, t] of [[1440, 900, 'computador'], [390, 844, 'celular']]) {
-                const pg = await b.newPage({ viewport: { width: w, height: h } });
+                const pg = await b.newPage({ viewport: { width: w, height: h }, userAgent: w > 500 ? 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36' : 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1', locale: 'pt-BR', isMobile: w < 500, hasTouch: w < 500 });
                 await pg.goto(url, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
                 await pg.waitForTimeout(3000);
+                await semCookies(pg);
                 // força animações de rolagem a aparecerem
                 await pg.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 150)); } window.scrollTo(0, 0); }).catch(() => {});
                 await pg.waitForTimeout(1500);
