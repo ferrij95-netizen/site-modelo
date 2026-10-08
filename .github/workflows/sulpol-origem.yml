@@ -1,0 +1,66 @@
+# Baixa logo, imagens, HTML e prints do site atual da Sulpol para clientes/sulpol/_origem/.
+name: sulpol-origem
+on:
+  push:
+    branches: [claude/sulpol-site-fn27aw]
+    paths: [.github/workflows/sulpol-origem.yml]
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar arquivos
+        run: |
+          set -x
+          O=clientes/sulpol/_origem; mkdir -p $O/img $O/html $O/prints
+          M=https://static.wixstatic.com/media
+          for f in 592665_6783815100ef4651a845969a7207c882.png 592665_4c2ad9ba42584a48a5d1d6efcb61174e~mv2.jpg 592665_f4d9d3398beb4e818d6c197595dab1d0.jpg 592665_b6cae732b1a044b9bec0a58ecc4b51d4~mv2.jpg 592665_383ce1e879364161908b5ca1e4c4203b~mv2.jpg 592665_bb984f9a00524d8e921bfc06ce7ed5f1~mv2.jpg 592665_34baf2f549df4c12979cff6a9f5846b3~mv2.jpg 592665_6ccd35e4bb97454f8a18f457178ba66a~mv2.jpg 9ac5a4_b7ac27b2df8540759c8961bfc1d9c64c~mv2.jpg 9ac5a4_8c5ef9e5ad6f4087b54bec6c1ba4698b~mv2.png; do
+            curl -sSL --fail -A "Mozilla/5.0" -o "$O/img/${f/\~/-}" "$M/$f" || echo "falhou $f"
+          done
+          for p in "" produtos a-empresa contatos; do
+            curl -sSL -A "Mozilla/5.0" -o "$O/html/${p:-home}.html" "https://www.sulpolplasticos.com.br/$p" || true
+          done
+          # Todas as imagens citadas no HTML (originais, sem redimensionamento)
+          grep -ohE 'static\.wixstatic\.com/media/[A-Za-z0-9_~.-]+\.(png|jpg|jpeg|gif|webp|svg)' $O/html/*.html | sort -u > $O/img/lista.txt || true
+          while read u; do n=$(basename "$u"); [ -f "$O/img/${n/\~/-}" ] || curl -sSL --fail -o "$O/img/${n/\~/-}" "https://$u" || true; done < $O/img/lista.txt
+      - name: Prints
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          cat > /tmp/shot.cjs <<'JS'
+          const { chromium } = require('playwright');
+          (async () => {
+            const b = await chromium.launch();
+            for (const p of ['', 'produtos', 'a-empresa', 'contatos']) {
+              for (const [w, h, t] of [[1440, 900, 'computador'], [390, 844, 'celular']]) {
+                const pg = await b.newPage({ viewport: { width: w, height: h } });
+                await pg.goto('https://www.sulpolplasticos.com.br/' + p, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+                await pg.waitForTimeout(4000);
+                await pg.screenshot({ path: `clientes/sulpol/_origem/prints/${p || 'home'}-${t}.png`, fullPage: true });
+                if (!p && t === 'computador') {
+                  const css = await pg.evaluate(() => {
+                    const out = {};
+                    for (const el of document.querySelectorAll('*')) {
+                      const s = getComputedStyle(el);
+                      for (const k of ['color', 'backgroundColor', 'borderTopColor']) { const v = s[k]; if (v && v !== 'rgba(0, 0, 0, 0)') out[v] = (out[v] || 0) + 1; }
+                      out['font:' + s.fontFamily] = (out['font:' + s.fontFamily] || 0) + 1;
+                    }
+                    return out;
+                  });
+                  require('fs').writeFileSync('clientes/sulpol/_origem/estilos.json', JSON.stringify(Object.entries(css).sort((a, b) => b[1] - a[1]), null, 1));
+                }
+                await pg.close();
+              }
+            }
+            await b.close();
+          })();
+          JS
+          node /tmp/shot.cjs
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add clientes/sulpol/_origem
+          git commit -m "Sulpol: arquivos do site atual" && git push || echo "nada novo"
