@@ -16,6 +16,8 @@ Motor para sites de clientes + um design de exemplo. **Cada cliente tem seu pró
 
 Cada cliente pode morar em `clientes/<cliente>/` (mesma estrutura da raiz: `site.config.json`, `content/`, `design/`, `assets/` e opcionalmente `public/`, copiada como está). `npm run build` monta a raiz e todos os clientes; o worker (`src/worker.js`) serve `clientes/<cliente>` em `<cliente>.overtus.com.br`. Para publicar um cliente novo, adicione a rota dele em `wrangler.jsonc`. Enquanto o cliente não tem `design/` (fase de direções visuais), só a pasta `public/` é publicada.
 
+`hub.overtus.com.br` lista todos os clientes de `clientes/` (gerado por `scripts/hub.mjs` a cada build, protegido por senha no worker). A capa de cada cliente é `clientes/<cliente>/capa.jpg` (print 1440×756 da home); sem ela, o hub usa a imagem Open Graph ou a cor da marca.
+
 ## Como funciona
 
 | Onde | O quê |
