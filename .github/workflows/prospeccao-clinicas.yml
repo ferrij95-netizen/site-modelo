@@ -3,7 +3,7 @@ name: prospeccao-clinicas
 on:
   push:
     branches: [claude/project-thread-6t6iqu]
-    paths: [.github/workflows/prospeccao-carros.yml, prospeccao/clinicas/maps.cjs, prospeccao/clinicas/analisa.py]
+    paths: [.github/workflows/prospeccao-clinicas.yml, prospeccao/clinicas/maps.cjs, prospeccao/clinicas/analisa.py]
 permissions:
   contents: write
 jobs:

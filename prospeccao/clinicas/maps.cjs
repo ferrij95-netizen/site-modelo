@@ -13,7 +13,7 @@ const BUSCAS = [
   'ginecologista',
   'clínica de fisioterapia',
   'cirurgião plástico',
-]
+];
 (async () => {
   const b = await chromium.launch();
   const ctx = await b.newContext({ locale: 'pt-BR', viewport: { width: 1300, height: 1000 },
