@@ -1,0 +1,87 @@
+# Baixa logo, imagens, HTML, cores e prints do site atual da Hermith para clientes/hermith/_origem/.
+name: hermith-origem
+on:
+  push:
+    branches: [claude/project-thread-dxyyvo]
+    paths: [.github/workflows/hermith-origem.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar HTML e imagens
+        run: |
+          O=clientes/hermith/_origem; mkdir -p $O/img $O/html $O/prints $O/video
+          S=https://www.hermith.com
+          PAGES="home about-us products news medical aerospace automotive industrial services quality downloads carrers contact faqs stock-range imprint privacy-policy de de/about-us de/products"
+          for p in $PAGES; do
+            u="$S/$p/"; [ "$p" = home ] && u="$S/"
+            n=$(echo "$p" | tr / -)
+            curl -sSL -A "Mozilla/5.0" -o "$O/html/$n.html" -w "$p %{http_code} %{url_effective}\n" "$u" || true
+          done | tee $O/html/status.txt
+          # Links internos que aparecem nas páginas (para saber se há mais subpáginas)
+          grep -ohE 'https?://(www\.)?hermith\.com/[A-Za-z0-9/_.-]*' $O/html/*.html | grep -v wp-content | grep -v wp-json | sort -u > $O/html/links.txt || true
+          # Todas as imagens de wp-content/uploads, versão original (sem -300x200)
+          grep -ohE '(https?:)?//(www\.)?hermith\.com/wp-content/uploads/[^"'"'"' )?]+\.(png|jpe?g|gif|webp|svg)|/wp-content/uploads/[^"'"'"' )?]+\.(png|jpe?g|gif|webp|svg)' $O/html/*.html $O/html/*.css 2>/dev/null \
+            | sed -E 's#^(https?:)?//(www\.)?hermith\.com##; s#-[0-9]+x[0-9]+(\.[a-z]+)$#\1#' | sort -u > $O/img/lista.txt || true
+          while read u; do f=$(echo "$u" | sed 's#^/wp-content/uploads/##; s#/#_#g'); curl -sSL --fail -o "$O/img/$f" "$S$u" || echo "falhou $u"; done < $O/img/lista.txt
+          # Vídeo: só alguns quadros (o mp4 não vai para o repositório)
+          curl -sSL --fail --max-filesize 200000000 -o /tmp/v.mp4 "$S/wp-content/uploads/Hermith.mp4" && \
+            ffmpeg -loglevel error -i /tmp/v.mp4 -vf "fps=1/4,scale=1600:-2" -q:v 3 $O/video/quadro-%02d.jpg || echo "sem video"
+          ls -la $O/img $O/video
+      - name: Prints e cores
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          cat > shot.cjs <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          (async () => {
+            const b = await chromium.launch();
+            const pages = ['', 'about-us', 'products', 'aerospace', 'medical', 'services', 'quality', 'contact', 'stock-range'];
+            for (const p of pages) {
+              for (const [w, h, t] of [[1440, 900, 'computador'], [390, 844, 'celular']]) {
+                const pg = await b.newPage({ viewport: { width: w, height: h } });
+                await pg.goto('https://www.hermith.com/' + (p ? p + '/' : ''), { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+                await pg.waitForTimeout(3000);
+                // fecha banner de cookies se houver
+                for (const sel of ['text=Accept', 'text=Akzeptieren', 'text=Alle akzeptieren', 'text=Accept all']) { await pg.click(sel, { timeout: 800 }).catch(() => {}); }
+                await pg.screenshot({ path: `clientes/hermith/_origem/prints/${p || 'home'}-${t}.png`, fullPage: true });
+                if (t === 'computador') {
+                  const info = await pg.evaluate(() => {
+                    const out = {};
+                    for (const el of document.querySelectorAll('*')) {
+                      const s = getComputedStyle(el);
+                      for (const k of ['color', 'backgroundColor', 'borderTopColor']) { const v = s[k]; if (v && v !== 'rgba(0, 0, 0, 0)') out[v] = (out[v] || 0) + 1; }
+                      out['font:' + s.fontFamily] = (out['font:' + s.fontFamily] || 0) + 1;
+                    }
+                    const txt = document.body.innerText;
+                    const imgs = [...document.querySelectorAll('img')].map(i => i.currentSrc || i.src);
+                    const bgs = [...document.querySelectorAll('*')].map(e => getComputedStyle(e).backgroundImage).filter(v => v && v.startsWith('url('));
+                    return { estilos: Object.entries(out).sort((a, b) => b[1] - a[1]), txt, imgs, bgs };
+                  });
+                  fs.writeFileSync(`clientes/hermith/_origem/html/${p || 'home'}.txt`, info.txt);
+                  fs.writeFileSync(`clientes/hermith/_origem/html/${p || 'home'}-imagens.json`, JSON.stringify({ imgs: info.imgs, bgs: info.bgs }, null, 1));
+                  if (!p) fs.writeFileSync('clientes/hermith/_origem/estilos.json', JSON.stringify(info.estilos, null, 1));
+                }
+                await pg.close();
+              }
+            }
+            await b.close();
+          })();
+          JS
+          node shot.cjs
+          # Imagens de fundo (CSS) e das páginas renderizadas que ainda não baixamos
+          O=clientes/hermith/_origem
+          cat $O/html/*-imagens.json | grep -oE 'https?://(www\.)?hermith\.com/wp-content/uploads/[^"\\)]+' | sed -E 's#^https?://(www\.)?hermith\.com##; s#-[0-9]+x[0-9]+(\.[a-z]+)$#\1#' | sort -u | while read u; do
+            f=$(echo "$u" | sed 's#^/wp-content/uploads/##; s#/#_#g'); [ -f "$O/img/$f" ] || curl -sSL --fail -o "$O/img/$f" "https://www.hermith.com$u" || true
+          done
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add clientes/hermith/_origem
+          git commit -m "Hermith: arquivos do site atual" && git pull --rebase origin claude/project-thread-dxyyvo && git push
