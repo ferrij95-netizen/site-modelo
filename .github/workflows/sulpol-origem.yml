@@ -29,7 +29,7 @@ jobs:
         run: |
           npm i --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
-          cat > /tmp/shot.cjs <<'JS'
+          cat > shot.cjs <<'JS'
           const { chromium } = require('playwright');
           (async () => {
             const b = await chromium.launch();
@@ -57,7 +57,7 @@ jobs:
             await b.close();
           })();
           JS
-          node /tmp/shot.cjs
+          node shot.cjs
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
