@@ -5,8 +5,9 @@ const PREFIX = '/_clientes/';
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const sub = url.hostname.split('.')[0];
-    const cliente = url.hostname.endsWith('.overtus.com.br') && sub !== 'site-modelo' ? sub : null;
+    const host = url.hostname.split(':')[0];
+    const sub = host.split('.')[0];
+    const cliente = host.endsWith('.overtus.com.br') && sub !== 'site-modelo' ? sub : null;
 
     if (!cliente) {
       if (url.pathname.startsWith(PREFIX)) return new Response('Not found', { status: 404 });
