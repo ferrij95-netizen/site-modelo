@@ -13,7 +13,12 @@
     { "pattern": "sulpol.overtus.com.br", "custom_domain": true },
     { "pattern": "hermith.overtus.com.br", "custom_domain": true },
     { "pattern": "hub.overtus.com.br", "custom_domain": true },
-    { "pattern": "agrogen.overtus.com.br", "custom_domain": true }
+    { "pattern": "agrogen.overtus.com.br", "custom_domain": true },
+    { "pattern": "nelsonwendt.overtus.com.br", "custom_domain": true }
+  ],
+  // Notícias e painel /admin dos clientes que têm notícias (src/noticias.js).
+  "d1_databases": [
+    { "binding": "NOTICIAS", "database_name": "noticias", "database_id": "57f5cc1b-a111-4f03-a28a-af57c4d3427d" }
   ],
   "assets": {
     "directory": "./dist",

@@ -1,0 +1,42 @@
+# Segunda passada: baixa em tamanho original as fotos e arquivos do CMS (wdframe) listados em
+# clientes/nelsonwendt/_origem/conteudo/wdframe-urls.txt para clientes/nelsonwendt/_origem/wd/.
+# (A primeira passada, que espelhou o site e tirou os prints, está no histórico do git.)
+name: nelsonwendt-origem
+on:
+  push:
+    branches: [claude/project-thread-o69ha8]
+    paths: [.github/workflows/nelsonwendt-origem.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar arquivos do CMS
+        run: |
+          O=clientes/nelsonwendt/_origem; mkdir -p $O/wd
+          : > $O/wd/indice.txt
+          while read u; do
+            [ -z "$u" ] && continue
+            id=$(echo "$u" | sed -E 's/.*[?&]id=([^&]+).*/\1/'); tipo=$(echo "$u" | sed -E 's/.*type=([a-z]+).*/\1/')
+            n=$(echo "$id" | base64 -d 2>/dev/null || echo "$id")
+            ct=$(curl -sSL --fail -m 120 --max-filesize 40000000 -A "Mozilla/5.0" -o /tmp/f -w '%{content_type}' "$u") || { echo "falhou $u" >> $O/wd/indice.txt; continue; }
+            case "$ct" in
+              *jpeg*) ext=jpg;; *png*) ext=png;; *webp*) ext=webp;; *gif*) ext=gif;; *svg*) ext=svg;; *pdf*) ext=pdf;; *mp4*) ext=mp4;; *) ext=bin;;
+            esac
+            if [ "$ext" = mp4 ]; then
+              ffmpeg -loglevel error -i /tmp/f -vf "fps=1/3,scale=1600:-2" -q:v 3 $O/wd/$tipo-$n-quadro-%02d.jpg || true
+              echo "$u $tipo-$n.mp4 (só quadros) $ct" >> $O/wd/indice.txt
+            else
+              cp /tmp/f $O/wd/$tipo-$n.$ext; echo "$u $tipo-$n.$ext $ct $(stat -c %s /tmp/f)" >> $O/wd/indice.txt
+            fi
+          done < $O/conteudo/wdframe-urls.txt
+          du -sh $O/wd; cat $O/wd/indice.txt
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add clientes/nelsonwendt/_origem/wd
+          git commit -m "Nelson Wendt: fotos e arquivos do CMS em tamanho original" && git pull --rebase origin claude/project-thread-o69ha8 && git push
