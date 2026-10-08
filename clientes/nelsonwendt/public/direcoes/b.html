@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nelson Wendt · Direção B · Mesa cheia</title>
+<link rel="icon" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--laranja:#F07A22;--laranja2:#FFB168;--azul:#3F49A6;--azul2:#2A3180;--tinta:#1E1B2E;--fundo:#FFF8EF;--suave:#5E5A6E;--vermelho:#D7262E;--amarelo:#FFD23F}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:17px/1.6 "DM Sans",system-ui,sans-serif;color:var(--tinta);background:var(--fundo)}
+img{display:block;max-width:100%}a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+h1,h2,h3,.bg{font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.03em;line-height:.98;font-weight:800}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:16px;background:var(--azul);color:#fff;text-decoration:none;font-weight:700;font-size:16px;transition:.2s;box-shadow:0 4px 0 var(--azul2)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--azul2)}
+.btn.branco{background:#fff;color:var(--tinta);box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.pill{display:inline-block;background:#fff;color:var(--tinta);font-weight:700;font-size:14px;padding:8px 16px;border-radius:99px}
+/* topo */
+header{position:sticky;top:0;z-index:20;background:var(--fundo)}
+header .wrap{display:flex;align-items:center;height:84px;gap:28px}
+header .logo img{height:40px}
+header nav{margin-left:auto;display:flex;gap:6px;font-weight:500}
+header nav a{text-decoration:none;padding:9px 16px;border-radius:12px}
+header nav a:hover{background:#FFE7D1}
+header .btn{padding:12px 20px;font-size:15px}
+.lang{font-weight:700;font-size:13px;color:var(--suave)}
+.menu-btn{display:none;margin-left:auto;background:var(--azul);color:#fff;border:0;border-radius:12px;width:46px;height:46px;font-size:22px}
+/* hero */
+.hero{padding:10px 0 0}
+.hero-box{background:var(--laranja);border-radius:36px;position:relative;overflow:hidden;color:#fff;display:grid;grid-template-columns:1.05fr 1fr;min-height:640px}
+.hero-txt{padding:72px 0 72px 64px;position:relative;z-index:2;align-self:center}
+.hero h1{font-size:clamp(48px,6.6vw,96px);margin:22px 0 24px}
+.hero h1 span{color:var(--tinta)}
+.hero p{font-size:19px;max-width:470px;margin-bottom:34px}
+.hero-img{position:relative}
+.hero-img .circ{position:absolute;width:560px;height:560px;border-radius:50%;background:var(--laranja2);right:-60px;top:50%;transform:translateY(-50%)}
+.hero-img .p{position:absolute;filter:drop-shadow(0 30px 30px rgba(80,30,0,.35));transition:transform .6s}
+.hero-img .p1{height:400px;left:16%;top:15%;transform:rotate(-8deg);z-index:2}
+.hero-img .p2{height:430px;left:44%;top:10%;transform:rotate(6deg);z-index:3}
+.hero-img .p3{height:330px;left:3%;bottom:-6%;transform:rotate(-16deg);z-index:1}
+.hero-img .p4{height:300px;right:-2%;bottom:-8%;transform:rotate(14deg);z-index:4}
+.hero-box:hover .p1{transform:rotate(-11deg) translateY(-8px)}.hero-box:hover .p2{transform:rotate(9deg) translateY(-12px)}
+.adesivo{position:absolute;z-index:5;right:40px;top:36px;background:var(--amarelo);color:var(--tinta);width:132px;height:132px;border-radius:50%;display:grid;place-items:center;text-align:center;font:800 15px/1.05 "Bricolage Grotesque",sans-serif;transform:rotate(10deg)}
+.adesivo b{font-size:38px;display:block}
+/* faixa */
+.faixa{overflow:hidden;padding:34px 0;border-bottom:2px solid #F3E2CF}
+.faixa div{display:flex;gap:56px;white-space:nowrap;animation:corre 40s linear infinite;font:800 40px "Bricolage Grotesque",sans-serif;color:var(--azul)}
+.faixa span:nth-child(even){color:var(--laranja)}
+@keyframes corre{to{transform:translateX(-50%)}}
+section{padding:110px 0}
+.cab{text-align:center;max-width:760px;margin:0 auto 60px}
+.cab h2{font-size:clamp(40px,5.4vw,76px)}
+.cab p{color:var(--suave);font-size:19px;margin-top:18px}
+/* marcas */
+.marcas{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.marca{border-radius:28px;padding:28px 26px 0;color:#fff;text-decoration:none;display:flex;flex-direction:column;min-height:470px;overflow:hidden;position:relative;transition:.3s}
+.marca:hover{transform:translateY(-8px) rotate(-.6deg)}
+.marca h3{font-size:40px}
+.marca p{font-size:15px;opacity:.92;margin-top:10px}
+.marca .imgs{margin-top:auto;display:flex;justify-content:center;align-items:flex-end;height:270px}
+.marca .imgs img{height:250px;width:auto;filter:drop-shadow(0 16px 16px rgba(0,0,0,.3));transform:translateY(24px);transition:.4s}
+.marca:hover .imgs img{transform:translateY(8px)}
+.marca .imgs img+img{margin-left:-60px}
+.m1{background:var(--vermelho)}.m2{background:var(--azul)}.m3{background:#F39A1E}.m4{background:#232A6B}
+.marca .seta{position:absolute;right:22px;top:24px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:20px}
+/* emoções */
+.emocoes{background:var(--vermelho);color:#fff;border-radius:36px;margin:0 28px;padding:90px 0;position:relative;overflow:hidden}
+.emocoes .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.emocoes h2{font-size:clamp(40px,5vw,72px);margin:18px 0}
+.emocoes p{font-size:18px;opacity:.95;max-width:520px}
+.variedades{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.var{background:rgba(255,255,255,.12);border-radius:22px;padding:18px 14px 14px;text-align:center;font-weight:700;font-size:14px;transition:.3s}
+.var:hover{background:rgba(255,255,255,.22)}
+.var img{height:150px;margin:0 auto 10px;filter:drop-shadow(0 10px 10px rgba(0,0,0,.25))}
+.premio{display:flex;gap:18px;align-items:center;margin-top:34px;background:#fff;color:var(--tinta);padding:16px 22px;border-radius:20px;max-width:520px}
+.premio b{font:800 46px "Bricolage Grotesque",sans-serif;color:var(--vermelho)}
+/* números */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.num{background:#fff;border-radius:28px;padding:34px 28px;border:2px solid #F3E2CF}
+.num b{font:800 64px/1 "Bricolage Grotesque",sans-serif;color:var(--laranja);display:block}
+.num:nth-child(2) b{color:var(--azul)}.num:nth-child(3) b{color:var(--vermelho)}.num:nth-child(4) b{color:#1F8A55}
+.num span{display:block;margin-top:12px;color:var(--suave);font-size:16px}
+/* do campo */
+.campo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.campo .foto{border-radius:28px;overflow:hidden;min-height:520px;position:relative}
+.campo .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.campo .txt{background:var(--azul);color:#fff;border-radius:28px;padding:60px;display:flex;flex-direction:column;justify-content:center}
+.campo h2{font-size:clamp(36px,4.4vw,60px);margin:16px 0 18px}
+.passos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:26px 0 34px}
+.passos div{background:rgba(255,255,255,.12);border-radius:16px;padding:14px 16px;font-weight:700}
+.passos small{display:block;font-weight:400;opacity:.8;font-size:14px}
+/* notícias */
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.n{background:#fff;border-radius:28px;overflow:hidden;text-decoration:none;border:2px solid #F3E2CF;transition:.3s}
+.n:hover{transform:translateY(-6px);border-color:var(--laranja)}
+.n img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.n div{padding:22px 24px 28px}
+.n span{font-size:13px;font-weight:700;color:var(--laranja);text-transform:uppercase;letter-spacing:.06em}
+.n h3{font-size:24px;margin-top:8px;line-height:1.1}
+/* rodapé */
+.final{background:var(--laranja);border-radius:36px 36px 0 0;color:#fff;padding:90px 0 40px;margin-top:40px}
+.final .topo-f{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;padding-bottom:70px;border-bottom:2px solid rgba(255,255,255,.25)}
+.final h2{font-size:clamp(40px,5vw,72px)}
+.final .info{display:grid;grid-template-columns:1fr 1fr;gap:26px;font-size:16px}
+.final .info b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.08em;opacity:.8;margin-bottom:4px}
+.final .base{display:flex;justify-content:space-between;align-items:center;padding-top:30px;font-size:14px}
+.final .base img{height:36px}
+@media (max-width:1020px){
+ header nav,header .btn,.lang{display:none}.menu-btn{display:block}
+ .hero-box{grid-template-columns:1fr}.hero-txt{padding:56px 36px 0}.hero-img{height:420px}.hero-img .circ{width:420px;height:420px;right:-40px}
+ .hero-img .p1{height:300px}.hero-img .p2{height:320px}.hero-img .p3{height:250px}.hero-img .p4{height:230px}
+ .marcas,.nums{grid-template-columns:1fr 1fr}
+ .emocoes .wrap,.campo,.final .topo-f{grid-template-columns:1fr}
+ .news{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+ .wrap{padding:0 18px}section{padding:76px 0}
+ header .logo img{height:32px}
+ .hero-box{border-radius:26px;min-height:0}.hero-txt{padding:44px 24px 0}.hero p{font-size:17px}
+ .hero-img{height:360px}.hero-img .p1{height:240px;left:6%}.hero-img .p2{height:260px;left:42%}.hero-img .p3,.hero-img .p4{height:180px}
+ .adesivo{width:96px;height:96px;font-size:11px;right:16px;top:auto;bottom:16px}.adesivo b{font-size:26px}
+ .faixa div{font-size:28px}
+ .marcas{grid-template-columns:1fr}.marca{min-height:400px}
+ .emocoes{margin:0 10px;padding:60px 0;border-radius:26px}.variedades{grid-template-columns:1fr 1fr}
+ .nums{grid-template-columns:1fr 1fr;gap:12px}.num{padding:22px 18px}.num b{font-size:42px}
+ .campo .foto{min-height:300px}.campo .txt{padding:36px 24px}.passos{grid-template-columns:1fr}
+ .final .info{grid-template-columns:1fr}.final .base{flex-direction:column;gap:16px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><img src="../img/logo.png" alt="Nelson Wendt Alimentos"></a>
+  <nav><a href="#">Empresa</a><a href="#">Produtos</a><a href="#">Responsabilidade</a><a href="#">Notícias</a></nav>
+  <span class="lang">PT · EN · ES</span>
+  <a class="btn" href="#">Fale conosco</a>
+  <button class="menu-btn" aria-label="Menu">☰</button>
+</div></header>
+
+<section class="hero" style="padding-top:10px"><div class="wrap">
+  <div class="hero-box">
+    <div class="hero-txt">
+      <span class="pill">Desde 1964 em Pelotas, RS</span>
+      <h1>Arroz que <span>enche a mesa</span> do Brasil e do mundo.</h1>
+      <p>Emoções, Garibaldo, Danói e Amigaço: marcas queridas, feitas com cuidado do campo até a sua casa, e o arroz parboilizado nº 1 em exportação do país.</p>
+      <a class="btn branco" href="#marcas">Ver nossas marcas →</a>
+    </div>
+    <div class="hero-img">
+      <div class="circ"></div>
+      <img class="p p3" src="../img/emb/super-garibaldo.webp" alt="">
+      <img class="p p1" src="../img/emb/emocoes-parboilizado-1kg.webp" alt="Arroz Emoções Parboilizado">
+      <img class="p p2" src="../img/emb/emocoes-branco-1kg.webp" alt="Arroz Emoções Branco">
+      <img class="p p4" src="../img/emb/danoi-5kg.webp" alt="">
+    </div>
+    <div class="adesivo"><span><b>Nº 1</b>exportador de parboilizado</span></div>
+  </div>
+</div></section>
+
+<div class="faixa"><div><span>Lavoura</span><span>Beneficiamento</span><span>Empacotamento</span><span>Distribuição</span><span>Exportação</span><span>Lavoura</span><span>Beneficiamento</span><span>Empacotamento</span><span>Distribuição</span><span>Exportação</span></div></div>
+
+<section id="marcas"><div class="wrap">
+  <div class="cab"><h2>Uma marca para cada prato.</h2><p>Cada marca tem linhas com características próprias, pensadas para diferentes paladares.</p></div>
+  <div class="marcas">
+    <a class="marca m1" href="#"><span class="seta">→</span><h3>Emoções</h3><p>Líder de vendas no Nordeste.</p><div class="imgs"><img src="../img/emb/emocoes-integral-1kg.webp" alt="Emoções Integral"><img src="../img/emb/emocoes-parboilizado-1kg.webp" alt="Emoções Parboilizado"></div></a>
+    <a class="marca m2" href="#"><span class="seta">→</span><h3>Garibaldo</h3><p>O sabor que toda família adora.</p><div class="imgs"><img src="../img/emb/garibaldo.webp" alt="Garibaldo"><img src="../img/emb/super-garibaldo.webp" alt="Super Garibaldo"></div></a>
+    <a class="marca m3" href="#"><span class="seta">→</span><h3>Danói</h3><p>Prato bonito e saboroso, em 5 kg.</p><div class="imgs"><img src="../img/emb/danoi-5kg.webp" alt="Danói"></div></a>
+    <a class="marca m4" href="#"><span class="seta">→</span><h3>Amigaço</h3><p>Para toda a família, inclusive os pets.</p><div class="imgs"><img src="../img/emb/amigaco-5kg.webp" alt="Amigaço" style="height:230px"></div></a>
+  </div>
+</div></section>
+
+<div class="emocoes"><div class="wrap">
+  <div>
+    <span class="pill">Arroz Emoções</span>
+    <h2>Gostinho de almoço com a família.</h2>
+    <p>Branquinho e macio, parboilizado cheio de nutrientes, integral rico em fibras, arbório para o risoto e saquinhos prontos para o preparo, sem risco de errar na medida.</p>
+    <div class="premio"><b>10×</b><span>1º lugar em consumo e preferência na pesquisa <strong>Marcas Que Eu Gosto</strong>, da Folha de Pernambuco.</span></div>
+  </div>
+  <div class="variedades">
+    <div class="var"><img src="../img/emb/emocoes-branco-1kg.webp" alt="">Branco</div>
+    <div class="var"><img src="../img/emb/emocoes-parboilizado-1kg.webp" alt="">Parboilizado</div>
+    <div class="var"><img src="../img/emb/emocoes-integral-1kg.webp" alt="">Integral</div>
+    <div class="var"><img src="../img/emb/emocoes-parboilizado-saquinhos.webp" alt="">Parboilizado em saquinhos</div>
+    <div class="var"><img src="../img/emb/emocoes-integral-saquinhos.webp" alt="">Integral em saquinhos</div>
+    <div class="var"><img src="../img/emb/emocoes-integral-500g.webp" alt="">Integral 500 g</div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <div class="nums">
+    <div class="num"><b>60</b><span>anos de empresa familiar</span></div>
+    <div class="num"><b>25+</b><span>países recebem nosso arroz</span></div>
+    <div class="num"><b>400+</b><span>pessoas na família Nelson Wendt</span></div>
+    <div class="num"><b>HACCP</b><span>certificação de alimento seguro</span></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="campo">
+    <div class="foto"><img src="../img/lavoura-agronoma.jpg" alt="Agrônoma na lavoura de arroz"></div>
+    <div class="txt">
+      <span class="pill" style="align-self:flex-start">Do campo à sua mesa</span>
+      <h2>Cuidado em cada etapa da produção.</h2>
+      <p>Controlamos toda a cadeia, seguindo os mais altos padrões de qualidade, para que o arroz que chega até você seja sempre seguro e saboroso.</p>
+      <div class="passos"><div>Lavoura<small>no sul do Brasil</small></div><div>Beneficiamento<small>com selo HACCP</small></div><div>Empacotamento<small>em Pelotas e Recife</small></div><div>Distribuição<small>Brasil e 25+ países</small></div></div>
+      <a class="btn branco" href="#" style="align-self:flex-start">Conheça a empresa</a>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="cab"><h2>Novidades</h2></div>
+  <div class="news">
+    <a class="n" href="#"><img src="../img/noticia-marcas-que-eu-gosto.jpg" alt=""><div><span>Prêmio</span><h3>Pela 6ª vez, o arroz Emoções está no coração de Pernambuco</h3></div></a>
+    <a class="n" href="#"><img src="../img/noticia-haccp.jpg" alt=""><div><span>Qualidade</span><h3>Somos certificados com o selo HACCP</h3></div></a>
+    <a class="n" href="#"><img src="../img/noticia-redes-sociais.jpg" alt=""><div><span>Comunicação</span><h3>A Nelson Wendt agora nas redes sociais</h3></div></a>
+  </div>
+</div></section>
+
+<footer class="final"><div class="wrap">
+  <div class="topo-f">
+    <div><h2>Vem conhecer a nossa indústria!</h2><p style="font-size:18px;margin:20px 0 30px;max-width:520px">Agende uma visita em Pelotas ou fale com o nosso time de vendas.</p><a class="btn branco" href="#">Fale conosco →</a></div>
+    <div class="info">
+      <div><b>Telefone</b>+55 53 3223.1277<br>+55 53 98115.3111</div>
+      <div><b>E-mail</b>vendas@nelsonwendt.com.br</div>
+      <div><b>Endereço</b>Av. Fernando Osório, 2774<br>Pelotas, RS · 96055-000</div>
+      <div><b>Menu</b>Empresa · Produtos · Responsabilidade · Notícias · Contato</div>
+    </div>
+  </div>
+  <div class="base"><img src="../img/logo-branco.png" alt="Nelson Wendt"><span>© Nelson Wendt Alimentos · PT · EN · ES</span></div>
+</div></footer>
+</body>
+</html>
