@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Texian · Direção C: Equipe em campo</title>
+<link rel="icon" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{--red:#E02B20;--red2:#B8211A;--ink:#151517;--muted:#626269;--line:#E6E6E9;--soft:#F4F4F6;--disp:'Big Shoulders Display',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.65 Figtree,system-ui,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--disp);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.005em}
+h2{font-size:clamp(46px,6vw,84px)}
+.pill{display:inline-block;background:var(--soft);color:var(--red);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;padding:16px 26px;border-radius:10px;font-weight:700;transition:.2s}
+.btn:hover{background:var(--red2);transform:translateY(-2px)}
+.btn.w{background:#fff;color:var(--ink)}
+.btn.o{background:transparent;box-shadow:inset 0 0 0 2px currentColor}
+
+/* barra */
+.bar{background:var(--ink);color:#C8C8CE;font-size:13px}
+.bar .wrap{display:flex;justify-content:space-between;height:38px;align-items:center}
+.bar b{color:#fff}
+.top{position:sticky;top:0;background:#fff;z-index:10;box-shadow:0 1px 0 var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:82px}
+.top img{height:44px}
+.top nav{display:flex;gap:28px;font-weight:600;font-size:15px}
+.top nav a:hover{color:var(--red)}
+.top .btn{padding:12px 20px;font-size:14px}
+.burger{display:none;background:none;border:0}
+
+/* hero */
+.hero{padding:22px 0 0}
+.hero .quadro{position:relative;border-radius:22px;overflow:hidden;min-height:640px;background:url(../img/equipe-tupy.jpg) center 40%/cover}
+.hero .quadro::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.25),transparent 60%)}
+.hero .bloco{position:absolute;left:0;bottom:0;z-index:2;background:var(--red);color:#fff;padding:46px 52px 50px;max-width:720px;border-top-right-radius:22px}
+.hero h1{font-size:clamp(54px,7vw,104px)}
+.hero p{font-size:18px;margin:20px 0 28px;color:#FFE5E2;max-width:540px}
+.hero .acoes{display:flex;gap:12px;flex-wrap:wrap}
+.selo{position:absolute;right:34px;top:34px;z-index:2;width:150px;height:150px;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center;box-shadow:0 14px 40px rgba(0,0,0,.25);animation:gira 0s}
+.selo b{font-family:var(--disp);font-weight:900;font-size:64px;line-height:.8;color:var(--red);display:block}
+.selo span{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+
+/* pilares */
+.pilares{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+.pilares div{background:var(--soft);border-radius:16px;padding:26px 26px 28px}
+.pilares b{font-family:var(--disp);font-size:44px;font-weight:900;line-height:1;color:var(--red);display:block}
+.pilares span{font-weight:600}
+
+/* abas de serviços */
+.sec{padding:110px 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:46px}
+.head h2{margin-top:14px}
+.head p{max-width:420px;color:var(--muted)}
+.abas{display:grid;grid-template-columns:330px 1fr;gap:40px}
+.abas>*{min-width:0}
+.abas .lista button{display:flex;justify-content:space-between;width:100%;text-align:left;font:800 26px/1 var(--disp);text-transform:uppercase;padding:20px 22px;border:0;border-radius:12px;background:none;cursor:pointer;color:var(--muted);transition:.2s}
+.abas .lista button:hover{color:var(--ink)}
+.abas .lista button.on{background:var(--ink);color:#fff}
+.abas .lista button.on::after{content:"→";color:var(--red)}
+.painel{display:none;grid-template-columns:1fr 1fr;gap:34px;background:var(--soft);border-radius:20px;padding:28px}
+.painel.on{display:grid}
+.painel img{width:100%;height:100%;min-height:420px;object-fit:cover;border-radius:14px}
+.painel h3{font-size:46px;margin:6px 0 16px}
+.painel ul{list-style:none}
+.painel li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);position:relative;font-size:15px}
+.painel li::before{content:"";position:absolute;left:4px;top:15px;width:12px;height:12px;border-radius:3px;background:var(--red)}
+
+/* segurança */
+.seg{background:var(--ink);color:#fff;border-radius:28px;margin:0 22px}
+.seg .head p{color:#A9A9B0}
+.seg .pill{background:#26262A}
+.prem{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prem article{background:#1F1F23;border-radius:18px;overflow:hidden}
+.prem img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.prem div{padding:24px 24px 28px}
+.prem small{color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.prem h3{font-size:30px;margin:8px 0 10px;line-height:.98}
+.prem p{color:#A9A9B0;font-size:15px}
+.guincho{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:20px;background:var(--red);border-radius:18px;padding:34px}
+.guincho h3{font-size:44px}
+.guincho .num{font-family:var(--disp);font-weight:900;font-size:110px;line-height:.85}
+.guincho img{border-radius:12px;aspect-ratio:4/3;object-fit:cover;width:100%}
+
+/* notícias */
+.news{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px}
+.news a{border-radius:18px;overflow:hidden;border:1px solid var(--line);transition:.25s;background:#fff}
+.news a:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
+.news img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.news div{padding:22px 24px 26px}
+.news time{font-size:13px;color:var(--muted);font-weight:600}
+.news h3{font-size:28px;margin-top:8px;line-height:1}
+
+/* carreira */
+.carreira{display:grid;grid-template-columns:1fr 1fr;border-radius:24px;overflow:hidden;background:var(--red);color:#fff}
+.carreira img{width:100%;height:100%;object-fit:cover;min-height:420px}
+.carreira div{padding:60px 56px;display:flex;flex-direction:column;justify-content:center}
+.carreira p{color:#FFE5E2;font-size:18px;margin:18px 0 28px}
+
+.logos{display:grid;grid-template-columns:repeat(9,1fr);gap:12px}
+.logos img{height:84px;width:100%;object-fit:contain;border:1px solid var(--line);border-radius:12px;padding:16px;background:#fff}
+
+footer{background:var(--soft);padding:70px 0 34px;margin-top:110px;font-size:15px}
+footer .g{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+footer img{height:46px;margin-bottom:16px}
+footer h4{font-family:var(--disp);font-size:20px;text-transform:uppercase;margin-bottom:12px}
+footer p,footer li{color:var(--muted)}
+footer li{list-style:none;margin-bottom:6px}
+footer .base{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.zap{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:18px;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:20}
+
+@media (max-width:1000px){
+  .bar{display:none}
+  .top nav,.top .btn{display:none}.burger{display:block}
+  .hero .quadro{min-height:860px}
+  .hero .bloco{padding:34px 26px 36px;border-radius:0;right:0}
+  .selo{width:116px;height:116px;right:18px;top:18px}.selo b{font-size:48px}
+  .pilares{grid-template-columns:1fr 1fr}
+  .head{flex-direction:column;align-items:flex-start}
+  .abas{grid-template-columns:1fr}.abas .lista{display:flex;overflow-x:auto;gap:6px}.abas .lista button{white-space:nowrap;font-size:20px;padding:14px 16px;width:auto}
+  .painel{grid-template-columns:1fr}.painel img{min-height:240px;height:240px}
+  .seg{margin:0;border-radius:0}
+  .prem{grid-template-columns:1fr}
+  .guincho{grid-template-columns:1fr}
+  .news{grid-template-columns:1fr}
+  .carreira{grid-template-columns:1fr}.carreira img{min-height:260px}.carreira div{padding:40px 26px}
+  .logos{grid-template-columns:repeat(4,1fr)}
+  footer .g{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  .sec{padding:80px 0}
+  .logos{grid-template-columns:repeat(3,1fr)}.logos img{height:66px;padding:10px}
+  .pilares div{padding:18px}.pilares b{font-size:32px}
+  .guincho .num{font-size:80px}
+  footer .g{grid-template-columns:1fr}footer .base{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+<div class="bar"><div class="wrap"><span>Matriz em Montenegro/RS · <b>texian@texian.com.br</b> · <b>+55 51 99780-1084</b></span><span>ISO 9001 · CRCC Petrobras</span></div></div>
+<header class="top"><div class="wrap">
+  <a href="#"><img src="../img/logo.png" alt="Texian"></a>
+  <nav><a href="#">A Texian</a><a href="#servicos">Soluções</a><a href="#">Áreas de atuação</a><a href="#seguranca">Segurança</a><a href="#noticias">Notícias</a><a href="#">Contato</a></nav>
+  <a class="btn" href="#carreira">Trabalhe conosco</a>
+  <button class="burger" aria-label="Menu"><svg width="28" height="20" viewBox="0 0 28 20" fill="#151517"><rect width="28" height="3" rx="1.5"/><rect y="8.5" width="28" height="3" rx="1.5"/><rect y="17" width="28" height="3" rx="1.5"/></svg></button>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="quadro">
+    <div class="selo"><div><b>30</b><span>anos<br>1995–2025</span></div></div>
+    <div class="bloco">
+      <h1>Gente que monta a indústria com segurança</h1>
+      <p>Manutenção e montagem elétrica, de instrumentação, mecânica, caldeiraria, estrutura metálica e civil, do projeto ao start-up.</p>
+      <div class="acoes"><a class="btn w" href="#servicos">O que fazemos</a><a class="btn o" href="#">Baixe a apresentação</a></div>
+    </div>
+  </div>
+  <div class="pilares">
+    <div><b>1995</b><span>30 anos de história no Polo Petroquímico</span></div>
+    <div><b>Diamante</b><span>Prêmio de segurança Arlanxeo 2024</span></div>
+    <div><b>230 kV</b><span>Montagem de subestações</span></div>
+    <div><b>45+</b><span>Clientes como Braskem, Petrobras e Gerdau</span></div>
+  </div>
+</div></section>
+
+<section class="sec" id="servicos"><div class="wrap">
+  <div class="head"><div><span class="pill">Soluções</span><h2>O que a Texian faz</h2></div><p>Manutenção preventiva, preditiva e corretiva em contratos de longo prazo e paradas programadas.</p></div>
+  <div class="abas">
+    <div class="lista">
+      <button class="on" data-i="0">Elétrica</button><button data-i="1">Instrumentação</button><button data-i="2">Mecânica e caldeiraria</button><button data-i="3">Construção civil</button><button data-i="4">Estrutura metálica</button><button data-i="5">Projetos</button>
+    </div>
+    <div>
+      <div class="painel on"><img src="../img/paineis.jpg" alt=""><div><span class="pill">01</span><h3>Elétrica</h3><ul><li>Subestações até 230 kV e retrofit</li><li>Painéis QGBT, CCM, baterias, nobreak e transformadores</li><li>Lançamento de cabos AT/MT/BT, comando e redes</li><li>Eletrocalhas, leitos e eletrodutos aéreos e subterrâneos</li><li>SPDA e sistemas de aterramento</li><li>Termografia e Hipot até 120 kV</li><li>Comissionamento e blank test</li></ul></div></div>
+      <div class="painel"><img src="../img/valvulas.jpg" alt=""><div><span class="pill">02</span><h3>Instrumentação e automação</h3><ul><li>Instrumentos, válvulas de controle e de segurança</li><li>Analisadores industriais e sistemas de amostragem</li><li>Painéis SDCD, CLP e quadros de comando</li><li>Fibra óptica: fusão e certificação</li><li>Migração de sistemas de controle</li><li>Calibração e preservação</li><li>Loop test e start-up</li></ul></div></div>
+      <div class="painel"><img src="../img/solda-tubo.jpg" alt=""><div><span class="pill">03</span><h3>Mecânica e caldeiraria</h3><ul><li>Pré-fabricação e montagem de tubulações</li><li>Suportes: fabricação, jato e pintura</li><li>Equipamentos estáticos e rotativos</li><li>Válvulas e acessórios de tubulação</li><li>Testes, condicionamento e start-up</li><li>Soldas em aço carbono, inox, alumínio e cobre</li></ul></div></div>
+      <div class="painel"><img src="../img/fundacao.jpg" alt=""><div><span class="pill">04</span><h3>Construção civil</h3><ul><li>Topografia e demolições especiais</li><li>Fundações: raiz, hélice contínua e cravada</li><li>Concreto FCK 30 MPa em 48 horas</li><li>Lajes steel deck</li><li>Revestimentos antiácidos e fireproofing</li><li>Recuperações estruturais e reformas</li></ul></div></div>
+      <div class="painel"><img src="../img/escada-metalica.jpg" alt=""><div><span class="pill">05</span><h3>Estrutura metálica</h3><ul><li>Fabricação, jato, pintura e montagem</li><li>Escadas e plataformas de trabalho</li><li>Pipe-racks</li><li>Estruturas para cargas e pontes rolantes</li><li>Adequação de plantas e máquinas à NR-12</li></ul></div></div>
+      <div class="painel"><img src="../img/projeto-guindaste.jpg" alt=""><div><span class="pill">06</span><h3>Engenharia de projetos</h3><ul><li>Levantamentos em campo</li><li>Engenharia básica e detalhada</li><li>Especificações técnicas e memoriais de cálculo</li><li>Desenhos de fabricação e montagem</li><li>Andaimes e estruturas temporárias</li><li>Recuperação de equipamentos</li></ul></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec seg" id="seguranca"><div class="wrap">
+  <div class="head"><div><span class="pill">Segurança e saúde</span><h2>Primeiro valor da casa</h2></div><p>DDS diários nos clientes, treinamentos de NR-35 e plataforma elevatória, e reconhecimentos que vêm de quem contrata.</p></div>
+  <div class="prem">
+    <article><img src="../img/medalhas-arlanxeo.jpg" alt=""><div><small>Arlanxeo · 2024</small><h3>Medalha nível Diamante</h3><p>Prêmio Crescimento em Excelência e Maturidade em Segurança.</p></div></article>
+    <article><img src="../img/premio-braskem.jpg" alt=""><div><small>Braskem · 2025</small><h3>Melhor projeto de rota de fuga</h3><p>1º lugar na premiação de Melhor Sugestão.</p></div></article>
+    <article><img src="../img/treinamento-nr35.jpg" alt=""><div><small>Treinamento</small><h3>NR-35 para novos colaboradores</h3><p>Trabalho em altura antes da primeira obra.</p></div></article>
+  </div>
+  <div class="guincho">
+    <div><span class="pill" style="background:#fff">Tecnologia Texian</span><h3 style="margin:14px 0 10px">Guincho para lançamento de cabos</h3><div class="num">25 → 5</div><p>pessoas expostas no lançamento. Carga de 5 e 10 t, tração em todos os sentidos, conforme a NR-12.</p></div>
+    <img src="../img/guincho.jpg" alt="Guincho Texian">
+  </div>
+</div></section>
+
+<section class="sec" id="noticias"><div class="wrap">
+  <div class="head"><div><span class="pill">Notícias</span><h2>Na obra esta semana</h2></div><a class="btn o" href="#" style="color:var(--ink)">Todas as notícias</a></div>
+  <div class="news">
+    <a href="#"><img src="../img/30-anos.jpg" alt=""><div><time>Julho de 2025</time><h3>Completamos 30 anos: uma história construída por pessoas</h3></div></a>
+    <a href="#"><img src="../img/equipe-tupy.jpg" alt=""><div><time>Abril de 2025</time><h3>Texian inicia atividades na Tupy, em Joinville</h3></div></a>
+    <a href="#"><img src="../img/vibra.jpg" alt=""><div><time>Fevereiro de 2025</time><h3>Contrato com a Vibra em Canoas e Ijuí</h3></div></a>
+  </div>
+</div></section>
+
+<section id="carreira"><div class="wrap">
+  <div class="carreira">
+    <img src="../img/equipe-dds.jpg" alt="Equipe Texian">
+    <div><h2>Venha trabalhar com a gente</h2><p>Eletricistas, instrumentistas, mecânicos, caldeireiros, soldadores e técnicos de segurança para contratos e paradas no RS e SC.</p><a class="btn w" href="#">Ver vagas abertas</a></div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-bottom:0"><div class="wrap">
+  <div class="head"><div><span class="pill">Clientes</span><h2>Quem confia na Texian</h2></div></div>
+  <div class="logos" id="logos"></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="g">
+    <div><img src="../img/logo.png" alt="Texian"><p>BR 386, Km 419, Via 2, nº 801<br>Distrito Industrial, Bom Jardim do Caí<br>Montenegro/RS, CEP 92532-000</p></div>
+    <div><h4>A Texian</h4><ul><li>Sobre</li><li>História</li><li>Clientes</li><li>Notícias</li></ul></div>
+    <div><h4>Soluções</h4><ul><li>Projetos</li><li>Manutenções e montagens</li><li>Tecnologia</li><li>Áreas de atuação</li></ul></div>
+    <div><h4>Contato</h4><ul><li>texian@texian.com.br</li><li>+55 51 99780-1084</li><li>Trabalhe conosco</li><li>Área dos fornecedores</li></ul></div>
+  </div>
+  <div class="base"><span>© 2025 Texian Manutenção e Montagens Industriais Ltda.</span><span>ISO 9001 · CRCC Petrobras nº 029995</span></div>
+</div></footer>
+<a class="zap" href="https://wa.me/5551997801084" aria-label="WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1Z"/></svg></a>
+<script>
+const L=["braskem","petrobras","gerdau","cmpc","arlanxeo","john-deere","siemens","klabin","copesul","refap","transpetro","innova","dsm","lanxess","bunge","valmet","saint-gobain","stihl","honeywell","yara","voith","pirelli","ipiranga","aes-sul","adm","adama","alubar","coester","duratex-dexco","engecampo","fibraplac","grupo-isdra","hochtief","invensys","masisa","maxiforja","midea-carrier","nalco","odebrecht","odfjell-terminals","prometeon","tenaris-confab","tractebel-energia","utc-engenharia","viero"];
+document.getElementById('logos').innerHTML=L.map(n=>`<img src="../img/clientes/${n}.png" alt="${n}">`).join('');
+const bs=document.querySelectorAll('.abas .lista button'),ps=document.querySelectorAll('.painel');
+bs.forEach(b=>b.onclick=()=>{bs.forEach(x=>x.classList.remove('on'));ps.forEach(x=>x.classList.remove('on'));b.classList.add('on');ps[b.dataset.i].classList.add('on')});
+</script>
+</body>
+</html>
