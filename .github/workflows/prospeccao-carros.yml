@@ -3,7 +3,7 @@ name: prospeccao-carros
 on:
   push:
     branches: [claude/project-thread-poo1un]
-    paths: [.github/workflows/prospeccao-carros.yml, prospeccao/carros/*.cjs, prospeccao/carros/*.py]
+    paths: [.github/workflows/prospeccao-carros.yml, prospeccao/carros/maps.cjs, prospeccao/carros/analisa.py]
 permissions:
   contents: write
 jobs:
