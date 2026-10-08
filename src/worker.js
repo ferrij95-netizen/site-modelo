@@ -5,7 +5,7 @@ const PREFIX = '/_clientes/';
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const host = url.hostname.split(':')[0];
+    const host = url.hostname;
     const sub = host.split('.')[0];
     const cliente = host.endsWith('.overtus.com.br') && sub !== 'site-modelo' ? sub : null;
 

@@ -12,6 +12,10 @@ Motor para sites de clientes + um design de exemplo. **Cada cliente tem seu pró
 6. `npm install && npm run og && npm run build`
 7. Faça push. O Cloudflare Pages publica o preview.
 
+## Clientes neste repositório
+
+Cada cliente pode morar em `clientes/<cliente>/` (mesma estrutura da raiz: `site.config.json`, `content/`, `design/`, `assets/` e opcionalmente `public/`, copiada como está). `npm run build` monta a raiz e todos os clientes; o worker (`src/worker.js`) serve `clientes/<cliente>` em `<cliente>.overtus.com.br`. Para publicar um cliente novo, adicione a rota dele em `wrangler.jsonc`. Enquanto o cliente não tem `design/` (fase de direções visuais), só a pasta `public/` é publicada.
+
 ## Como funciona
 
 | Onde | O quê |
