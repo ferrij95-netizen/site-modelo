@@ -1,4 +1,4 @@
-# O site atual da De Filippo só tem fotos minúsculas (2010). Baixa fotos livres do Unsplash (licença Unsplash) para os previews.
+# O site atual da De Filippo só tem fotos minúsculas (2010). Baixa fotos de licença livre do Wikimedia Commons para os previews.
 name: defilippo-fotos
 on:
   push:
@@ -15,11 +15,16 @@ jobs:
       - name: Buscar e baixar
         run: |
           O=clientes/defilippo/_origem/banco; mkdir -p $O
-          for q in "car mechanic workshop" "auto repair garage" "fiat 500" "alfa romeo" "car engine bay" "car brake disc" "mechanic tools" "car suspension" "vintage italian car" "car diagnostic"; do
+          # Wikimedia Commons (licenças livres, crédito em creditos.tsv)
+          for q in "auto repair shop mechanic" "car mechanic workshop" "Fiat 500 Abarth" "Alfa Romeo Giulia" "Fiat 500 classic" "car engine bay" "disc brake car" "car lift garage" "mechanic tools wrench" "Lancia Delta" "Pinheiros Sao Paulo street"; do
             s=$(echo "$q" | tr ' ' '-')
-            curl -sSL -A "Mozilla/5.0" "https://unsplash.com/napi/search/photos?query=$(echo $q | sed 's/ /%20/g')&per_page=12&orientation=landscape" -o /tmp/$s.json || continue
-            jq -r '.results[] | select(.premium != true and .plus != true) | [.id, .urls.raw, .user.name, (.alt_description // "" | gsub("[\\t\\n]";" "))] | @tsv' /tmp/$s.json | head -8 | while IFS=$'\t' read id raw autor alt; do
-              curl -sSL --fail -m 60 -o "$O/$s-$id.jpg" "$raw&w=1800&q=72&fm=jpg&fit=max" && printf '%s\t%s\t%s\t%s\n' "$s-$id.jpg" "$autor" "https://unsplash.com/photos/$id" "$alt" >> $O/creditos.tsv
+            curl -sS -G -A "OvertusBot/1.0 (ferrij95@users.noreply.github.com)" "https://commons.wikimedia.org/w/api.php" \
+              --data-urlencode "action=query" --data-urlencode "format=json" --data-urlencode "generator=search" --data-urlencode "gsrnamespace=6" \
+              --data-urlencode "gsrsearch=$q filetype:bitmap" --data-urlencode "gsrlimit=10" --data-urlencode "prop=imageinfo" \
+              --data-urlencode "iiprop=url|size|extmetadata" --data-urlencode "iiurlwidth=1800" -o /tmp/$s.json || continue
+            jq -r '.query.pages // {} | to_entries[] | .value | select(.imageinfo[0].width >= 1200) | [(.pageid|tostring), .imageinfo[0].thumburl, (.imageinfo[0].extmetadata.Artist.value // "" | gsub("<[^>]*>";"") | gsub("[\t\n]";" ")), (.imageinfo[0].extmetadata.LicenseShortName.value // ""), .imageinfo[0].descriptionurl] | @tsv' /tmp/$s.json | head -6 | while IFS=$'\t' read id url autor lic desc; do
+              curl -sSL --fail -m 60 -A "OvertusBot/1.0" -o "$O/$s-$id.jpg" "$url" && printf '%s\t%s\t%s\t%s\n' "$s-$id.jpg" "$autor" "$lic" "$desc" >> $O/creditos.tsv
+              sleep 1
             done
           done
           ls $O | wc -l; du -sh $O
