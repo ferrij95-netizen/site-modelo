@@ -1,0 +1,36 @@
+<section class="phero"><div class="wrap">
+  <div class="frame">
+    <img src="/img/matriz-montenegro.jpg" alt="Complexo da matriz da Agrogen em Montenegro, RS" width="1920" height="600" fetchpriority="high">
+    <div class="txt">
+      <nav class="crumbs" aria-label="Você está em"><a href="/{{lang}}/">{{t.nav.index}}</a><span>/</span><span>{{t.nav.estrutura}}</span></nav>
+      <h1>{{p.heading}}</h1>
+      <p>Uma grande estrutura formada por escritórios, granjas, laboratórios e fábricas de ração, que nos permite produzir até 14 milhões de matrizes por ano.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec tight"><div class="wrap nums reveal">
+  <div class="n"><b>14 mi</b><span>matrizes por ano</span></div>
+  <div class="n"><b>10</b><span>unidades</span></div>
+  <div class="n"><b>3</b><span>cidades: Montenegro, Triunfo e Guarapuava</span></div>
+  <div class="n"><b>2</b><span>estados: RS e PR</span></div>
+</div></section>
+
+<section class="sec sand"><div class="wrap">
+  <div class="sec-head reveal"><div><span class="eyebrow">Por tipo de unidade</span><h2>Cada etapa com uma estrutura dedicada</h2></div></div>
+  <div class="types">{{#each t.unitTypes}}<a class="type reveal" href="/{{lang}}/{{it.id}}"><img src="/img/{{it.img}}.jpg" alt="" loading="lazy" width="937" height="463"><div><small>{{it.count}}</small><h3>{{it.name}}</h3><p>{{it.short}}</p></div></a>{{/each}}</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="state-block">
+    <div class="state-title reveal"><span class="eyebrow">Rio Grande do Sul</span></div>
+    <div class="state-title reveal" style="margin-top:-8px"><h2>Montenegro e Triunfo</h2><span>Matriz, incubatório, fábrica de ração, laboratório e duas granjas</span></div>
+    <div class="units">{{#each t.unitsRS}}<a class="unit reveal" href="/{{lang}}/{{it.page}}"><div class="img"><img src="/img/{{it.img}}.jpg" alt="{{it.name}}, {{it.city}}" loading="lazy" width="937" height="463"></div><div class="body"><span><h3>{{it.name}}</h3><span class="city">{{it.city}}</span></span><span class="pin">{{it.type}}</span></div></a>{{/each}}</div>
+  </div>
+  <div class="state-block">
+    <div class="state-title reveal"><span class="eyebrow">Paraná</span></div>
+    <div class="state-title reveal" style="margin-top:-8px"><h2>Guarapuava</h2><span>Sede administrativa, incubatório, fábrica de ração e granja</span></div>
+    <div class="units two">{{#each t.unitsPR}}<a class="unit reveal" href="/{{lang}}/{{it.page}}"><div class="img"><img src="/img/{{it.img}}.jpg" alt="{{it.name}}, {{it.city}}" loading="lazy" width="937" height="463"></div><div class="body"><span><h3>{{it.name}}</h3><span class="city">{{it.city}}</span></span><span class="pin">{{it.type}}</span></div></a>{{/each}}</div>
+  </div>
+</div></section>
+{{cta}}
