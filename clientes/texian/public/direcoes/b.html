@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Texian · Direção B: Memorial técnico</title>
+<link rel="icon" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--red:#D92B21;--ink:#1B1A19;--muted:#6E6A64;--line:#DDD7CE;--bg:#F5F2EC;--paper:#FFFFFF;--serif:'Instrument Serif',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.7 'Public Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.eyebrow b{color:var(--red);margin-right:8px}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.02}
+h2{font-size:clamp(40px,4.6vw,64px)}
+h1 em,h2 em{color:var(--red)}
+.link{display:inline-flex;gap:10px;align-items:center;font-weight:600;border-bottom:1.5px solid var(--ink);padding-bottom:4px}
+.link:hover{color:var(--red);border-color:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:15px 24px;font-weight:600;font-size:15px;border-radius:999px;transition:.2s}
+.btn:hover{background:var(--red)}
+
+/* topo */
+.top{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:10}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:84px}
+.top img{height:42px}
+.top nav{display:flex;gap:32px;font-size:15px;font-weight:500}
+.top nav a:hover{color:var(--red)}
+.top .btn{padding:11px 20px;font-size:14px}
+.burger{display:none;background:none;border:0}
+
+/* hero */
+.hero{padding:70px 0 0}
+.hero .g{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:end}
+.hero h1{font-size:clamp(56px,7vw,104px);margin:22px 0 28px}
+.hero p{font-size:19px;color:#4A4743;max-width:520px;margin-bottom:34px}
+.hero .acoes{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.hero figure{position:relative}
+.hero figure img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:4px}
+.hero figcaption{position:absolute;left:-40px;bottom:40px;background:var(--paper);padding:18px 22px;border-left:3px solid var(--red);font-size:14px;box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.hero figcaption b{display:block;font-family:var(--serif);font-size:30px;font-weight:400;line-height:1}
+.ficha{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--ink);margin-top:80px}
+.ficha div{padding:20px 20px 26px 0;border-right:1px solid var(--line)}
+.ficha div+div{padding-left:20px}
+.ficha div:last-child{border:0}
+.ficha dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ficha dd{font-family:var(--serif);font-size:30px;line-height:1.1;margin-top:6px}
+
+/* sobre */
+.sec{padding:120px 0}
+.sobre .g{display:grid;grid-template-columns:1fr 1.2fr;gap:80px}
+.sobre .txt p{font-size:18px;color:#3F3C38;margin-top:22px}
+.mvv{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:70px;border-top:1px solid var(--line)}
+.mvv div{padding:30px 30px 0 0}
+.mvv div+div{padding-left:30px;border-left:1px solid var(--line)}
+.mvv h3{font-family:var(--serif);font-weight:400;font-size:30px;margin-bottom:10px}
+.mvv p{color:var(--muted);font-size:15px}
+
+/* soluções lista */
+.solucoes{background:var(--paper)}
+.lista{margin-top:56px;border-top:1px solid var(--ink)}
+.lista a{display:grid;grid-template-columns:80px 1.1fr 1.4fr 160px;gap:30px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line);transition:.25s}
+.lista .n{font-family:var(--serif);font-size:22px;color:var(--muted)}
+.lista h3{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1}
+.lista p{color:var(--muted);font-size:15px}
+.lista img{width:160px;height:106px;object-fit:cover;border-radius:3px;filter:grayscale(1);transition:.3s}
+.lista a:hover{background:var(--bg);padding-left:16px;padding-right:16px}
+.lista a:hover img{filter:none}
+.lista a:hover h3{color:var(--red)}
+
+/* tecnologia */
+.tec .g{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.tec .fotos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tec .fotos img{aspect-ratio:3/4;object-fit:cover;width:100%;border-radius:4px}
+.tec .fotos span{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:10px;color:var(--muted)}
+.tec ul{list-style:none;margin:28px 0 34px;border-top:1px solid var(--line)}
+.tec li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px}
+.tec li b{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--red);white-space:nowrap}
+
+/* setores */
+.setores{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:56px}
+.setores a img{aspect-ratio:3/4;object-fit:cover;width:100%;border-radius:4px;transition:.4s}
+.setores a:hover img{transform:translateY(-6px)}
+.setores h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1;margin-top:16px}
+
+/* história */
+.historia{background:var(--ink);color:#EEE9E1}
+.historia .eyebrow{color:#A8A39B}
+.anos{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;border-top:1px solid #3A3835}
+.anos div{padding:28px 28px 0 0}
+.anos div+div{padding-left:28px;border-left:1px solid #3A3835}
+.anos b{font-family:var(--serif);font-weight:400;font-size:64px;line-height:1;color:#fff;display:block}
+.anos p{color:#A8A39B;font-size:15px;margin-top:14px}
+
+/* clientes */
+.logos{display:grid;grid-template-columns:repeat(9,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+.logos img{background:var(--paper);height:96px;width:100%;object-fit:contain;padding:22px 16px;filter:grayscale(1);opacity:.75;transition:.3s}
+.logos img:hover{filter:none;opacity:1}
+
+footer{background:var(--paper);border-top:1px solid var(--line);padding:80px 0 40px;font-size:15px}
+footer .g{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:60px}
+footer h2{font-size:48px}
+footer h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+footer .base{display:flex;justify-content:space-between;margin-top:70px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.zap{position:fixed;right:22px;bottom:22px;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:20}
+
+@media (max-width:1000px){
+  .top nav{display:none}.burger{display:block}
+  .hero .g,.sobre .g,.tec .g{grid-template-columns:1fr;gap:48px}
+  .hero figcaption{left:16px}
+  .ficha{grid-template-columns:1fr 1fr}.ficha div{border-right:0;border-bottom:1px solid var(--line);padding-left:0!important}
+  .mvv{grid-template-columns:1fr}.mvv div+div{border-left:0;padding-left:0}
+  .lista a{grid-template-columns:50px 1fr;gap:6px 18px}.lista p{grid-column:2}.lista img{display:none}
+  .setores{grid-template-columns:1fr 1fr}
+  .anos{grid-template-columns:1fr 1fr;row-gap:30px}.anos div+div{border-left:0;padding-left:0}
+  .logos{grid-template-columns:repeat(4,1fr)}
+  footer .g{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .wrap{padding:0 20px}
+  .sec{padding:80px 0}
+  .lista h3{font-size:30px}
+  .logos{grid-template-columns:repeat(3,1fr)}.logos img{height:76px;padding:16px 10px}
+  footer .base{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a href="#"><img src="../img/logo.png" alt="Texian"></a>
+  <nav><a href="#">A Texian</a><a href="#solucoes">Soluções</a><a href="#setores">Áreas de atuação</a><a href="#">Notícias</a><a href="#">Contato</a></nav>
+  <a class="btn" href="#">Fale com a Texian</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="g">
+    <div>
+      <span class="eyebrow"><b>Desde 1995</b>Montenegro, Rio Grande do Sul</span>
+      <h1>Engenharia que <em>monta</em> e mantém a indústria</h1>
+      <p>A Texian projeta, monta e faz a manutenção de plantas industriais nas áreas de elétrica, instrumentação, mecânica, caldeiraria e construção civil, com segurança e respeito às normas socioambientais.</p>
+      <div class="acoes"><a class="btn" href="#solucoes">Conheça as soluções</a><a class="link" href="#">Baixe nossa apresentação ↓</a></div>
+    </div>
+    <figure>
+      <img src="../img/sede.jpg" alt="Sede da Texian em Montenegro" style="object-position:30% center">
+      <figcaption><b>3.500 m²</b>Sede junto ao Polo Petroquímico</figcaption>
+    </figure>
+  </div>
+  <dl class="ficha">
+    <div><dt>Fundação</dt><dd>16.06.1995</dd></div>
+    <div><dt>Qualidade</dt><dd>ISO 9001</dd></div>
+    <div><dt>Petrobras</dt><dd>CRCC 029995</dd></div>
+    <div><dt>Subestações</dt><dd>até 230 kV</dd></div>
+    <div><dt>Maior efetivo</dt><dd>400+ pessoas</dd></div>
+  </dl>
+</div></section>
+
+<section class="sec sobre"><div class="wrap">
+  <div class="g">
+    <div><span class="eyebrow"><b>01</b>A Texian</span><h2 style="margin-top:20px">Trinta anos de <em>obra</em>, contratos e paradas</h2></div>
+    <div class="txt">
+      <p>Fundada em junho de 1995 por Vitor Jair da Silva, a Texian Manutenção e Montagens Industriais tem base operacional no Distrito Industrial de Montenegro, junto ao Polo Petroquímico do Rio Grande do Sul.</p>
+      <p>Os serviços são prestados com foco nas necessidades dos clientes, valorização dos colaboradores, zelo pela segurança e integridade, respeito às normas socioambientais e repúdio às práticas corruptivas.</p>
+      <a class="link" href="#" style="margin-top:28px">Sobre a empresa →</a>
+    </div>
+  </div>
+  <div class="mvv">
+    <div><h3>Missão</h3><p>Prestar serviços industriais com excelência, oferecendo soluções seguras, inovadoras e competitivas, para agregar valor ao negócio de cada cliente.</p></div>
+    <div><h3>Visão 2030</h3><p>Ser reconhecida como líder em serviços industriais em todo o território nacional, por excelência operacional e inovação contínua.</p></div>
+    <div><h3>Valores</h3><p>Segurança e saúde, motivação, desenvolvimento, confiança, compromisso com prazos e equilíbrio comercial.</p></div>
+  </div>
+</div></section>
+
+<section class="sec solucoes" id="solucoes"><div class="wrap">
+  <span class="eyebrow"><b>02</b>Construção e montagem</span>
+  <h2 style="margin-top:20px;max-width:760px">Do projeto executivo ao <em>start-up</em></h2>
+  <div class="lista">
+    <a href="#"><span class="n">01</span><h3>Elétrica</h3><p>Subestações até 230 kV, painéis QGBT e CCM, cabos AT/MT/BT, SPDA, termografia, Hipot até 120 kV, comissionamento.</p><img src="../img/paineis.jpg" alt=""></a>
+    <a href="#"><span class="n">02</span><h3>Instrumentação e automação</h3><p>Instrumentos e válvulas, analisadores, SDCD e CLP, fibra óptica, calibração, loop test e start-up.</p><img src="../img/valvulas.jpg" alt=""></a>
+    <a href="#"><span class="n">03</span><h3>Mecânica e caldeiraria</h3><p>Tubulações industriais, equipamentos estáticos e rotativos, soldas em aço carbono, inox, alumínio e cobre.</p><img src="../img/solda-tubo.jpg" alt=""></a>
+    <a href="#"><span class="n">04</span><h3>Construção civil</h3><p>Fundações, concretos especiais, steel deck, revestimentos antiácidos e fireproofing, reformas.</p><img src="../img/fundacao.jpg" alt=""></a>
+    <a href="#"><span class="n">05</span><h3>Estrutura metálica</h3><p>Pipe-racks, escadas e plataformas, estruturas para pontes rolantes e adequação à NR-12.</p><img src="../img/escada-metalica.jpg" alt=""></a>
+    <a href="#"><span class="n">06</span><h3>Engenharia de projetos</h3><p>Levantamentos em campo, engenharia básica e detalhada, memoriais de cálculo, desenhos de fabricação e montagem.</p><img src="../img/projeto-guindaste.jpg" alt=""></a>
+    <a href="#"><span class="n">07</span><h3>Materiais e equipamentos</h3><p>Fornecimento turn-key, painéis e transformadores, andaimes, plataformas elevatórias, munck e guindaste.</p><img src="../img/munck.jpg" alt=""></a>
+  </div>
+</div></section>
+
+<section class="sec tec"><div class="wrap"><div class="g">
+  <div class="fotos">
+    <div><img src="../img/cabos-antes.jpg" alt="Lançamento manual de cabos"><span>Antes</span></div>
+    <div><img src="../img/guincho-parada.jpg" alt="Guincho com parada de emergência"><span>Depois</span></div>
+  </div>
+  <div>
+    <span class="eyebrow"><b>03</b>Tecnologia Texian</span>
+    <h2 style="margin-top:20px">Um guincho <em>nosso</em> para lançar cabos</h2>
+    <ul>
+      <li><span>Carga máxima</span><b>5 e 10 t</b></li>
+      <li><span>Pessoas expostas no lançamento</span><b>25 → 5</b></li>
+      <li><span>Tração</span><b>em todos os sentidos</b></li>
+      <li><span>Conformidade</span><b>NR-12</b></li>
+    </ul>
+    <a class="link" href="#">Tecnologia e softwares próprios →</a>
+  </div>
+</div></div></section>
+
+<section class="sec" id="setores" style="padding-top:20px"><div class="wrap">
+  <span class="eyebrow"><b>04</b>Áreas de atuação</span>
+  <h2 style="margin-top:20px">Cinco setores da indústria</h2>
+  <div class="setores">
+    <a href="#"><img src="../img/petroquimica.jpg" alt=""><h3>Petroquímico, químico, óleo e gás</h3></a>
+    <a href="#"><img src="../img/celulose.jpg" alt=""><h3>Celulose e papel</h3></a>
+    <a href="#"><img src="../img/siderurgia.jpg" alt=""><h3>Metalurgia e siderurgia</h3></a>
+    <a href="#"><img src="../img/energia.jpg" alt=""><h3>Geração e distribuição de energia</h3></a>
+    <a href="#"><img src="../img/agricola.jpg" alt=""><h3>Máquinas e implementos agrícolas</h3></a>
+  </div>
+</div></section>
+
+<section class="sec historia"><div class="wrap">
+  <span class="eyebrow"><b>05</b>História</span>
+  <h2 style="margin-top:20px;max-width:800px">Uma trajetória escrita dentro das maiores plantas do Sul</h2>
+  <div class="anos">
+    <div><b>1997</b><p>Duplicação da Copesul, empresa de primeira geração do Polo Petroquímico de Triunfo.</p></div>
+    <div><b>2008</b><p>Modernização do controle da Braskem com mais de 400 colaboradores, e obra na refinaria REMAN, em Manaus.</p></div>
+    <div><b>2014</b><p>Duplicação da CMPC Celulose Riograndense, em Guaíba, em parceria com a Siemens.</p></div>
+    <div><b>2025</b><p>30 anos, contrato com a Vibra e início das operações na Tupy, em Joinville.</p></div>
+  </div>
+  <a class="link" href="#" style="margin-top:50px;border-color:#fff">Linha do tempo completa →</a>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow"><b>06</b>Clientes</span>
+  <h2 style="margin-top:20px">Quem confia na Texian</h2>
+  <div class="logos" id="logos"></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="g">
+    <div><h2>Vamos conversar sobre a sua <em>planta</em>?</h2><a class="btn" href="#" style="margin-top:28px">Fale com a Texian</a></div>
+    <div><h4>Contato</h4><p>texian@texian.com.br<br>+55 51 99780-1084</p><h4 style="margin-top:26px">Sede</h4><p>BR 386, Km 419, Via 2, nº 801<br>Distrito Industrial, Montenegro/RS</p></div>
+    <div><h4>Navegação</h4><p>Sobre · História · Clientes<br>Projetos · Manutenções e montagens<br>Tecnologia · Notícias<br>Trabalhe conosco · Fornecedores</p></div>
+  </div>
+  <div class="base"><span>© 2025 Texian Manutenção e Montagens Industriais Ltda.</span><span>ISO 9001 · CRCC Petrobras nº 029995</span></div>
+</div></footer>
+<a class="zap" href="https://wa.me/5551997801084" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1Z"/></svg></a>
+<script>
+const L=["braskem","petrobras","gerdau","cmpc","arlanxeo","john-deere","siemens","klabin","copesul","refap","transpetro","innova","dsm","lanxess","bunge","valmet","saint-gobain","stihl","honeywell","yara","voith","pirelli","ipiranga","aes-sul","adm","adama","alubar","coester","duratex-dexco","engecampo","fibraplac","grupo-isdra","hochtief","invensys","masisa","maxiforja","midea-carrier","nalco","odebrecht","odfjell-terminals","prometeon","tenaris-confab","tractebel-energia","utc-engenharia","viero"];
+document.getElementById('logos').innerHTML=L.map(n=>`<img src="../img/clientes/${n}.png" alt="${n}">`).join('');
+</script>
+</body>
+</html>
