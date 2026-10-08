@@ -4,7 +4,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+import { siteDir, distDir } from './paths.mjs';
+
+// `node scripts/build.mjs` monta o site da raiz; `node scripts/build.mjs clientes/<cliente>` monta o site daquele cliente.
+const root = siteDir(process.argv[2]);
 const read = f => fs.readFileSync(path.join(root, f), 'utf8');
 const site = JSON.parse(read('site.config.json'));
 const domain = site.domain.replace(/\/$/, '');
@@ -18,7 +21,7 @@ for (const slot of ['{{seo}}', '{{whatsapp}}', '{{content}}']) {
 const partials = Object.fromEntries(fs.readdirSync(path.join(root, D, 'partials'))
   .filter(f => f.endsWith('.html')).map(f => [f.slice(0, -5), read(`${D}/partials/${f}`)]));
 if (!partials.whatsapp) throw new Error(`${D}/partials/whatsapp.html é obrigatório`);
-const dist = path.join(root, 'dist');
+const dist = distDir(process.argv[2]);
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const get = (obj, key) => key.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
@@ -94,7 +97,9 @@ fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 fs.cpSync(path.join(root, 'assets'), path.join(dist, 'assets'), { recursive: true });
 fs.cpSync(path.join(root, D, 'assets'), path.join(dist, 'assets'), { recursive: true });
-for (const f of ['_headers']) if (fs.existsSync(path.join(root, f))) fs.copyFileSync(path.join(root, f), path.join(dist, f));
+// public/ vai para a raiz do site como está (ex.: prévias das direções visuais).
+if (fs.existsSync(path.join(root, 'public'))) fs.cpSync(path.join(root, 'public'), dist, { recursive: true });
+if (!process.argv[2]) for (const f of ['_headers']) if (fs.existsSync(path.join(root, f))) fs.copyFileSync(path.join(root, f), path.join(dist, f));
 
 const urls = [];
 for (const lang of site.langs) {
@@ -135,4 +140,4 @@ fs.writeFileSync(path.join(dist, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
 fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${domain}/sitemap.xml\n`);
 
-console.log(`build: ${urls.length} páginas em dist/ (${site.langs.join(', ')})`);
+console.log(`build: ${urls.length} páginas em ${path.relative(process.cwd(), dist) || 'dist'}/ (${site.langs.join(', ')})`);

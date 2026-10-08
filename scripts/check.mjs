@@ -2,8 +2,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
-const dist = path.join(root, 'dist');
+import { siteDir, distDir } from './paths.mjs';
+
+const root = siteDir(process.argv[2]);
+const dist = distDir(process.argv[2]);
 const site = JSON.parse(fs.readFileSync(path.join(root, 'site.config.json'), 'utf8'));
 const domain = site.domain.replace(/\/$/, '');
 const MAX_OG_BYTES = 300 * 1024;
@@ -25,7 +27,7 @@ const pages = [];
 (function walk(d) {
   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
     const p = path.join(d, e.name);
-    if (e.isDirectory() && e.name !== 'assets') walk(p);
+    if (e.isDirectory() && e.name !== 'assets' && e.name !== '_clientes') walk(p);
     else if (e.name.endsWith('.html')) pages.push(p);
   }
 })(dist);
@@ -48,4 +50,4 @@ if (errors.length) {
   console.error(`check: ${errors.length} problema(s)\n- ` + errors.join('\n- '));
   process.exit(1);
 }
-console.log(`check: ${pages.length} páginas OK (Open Graph, Twitter, canonical, hreflang, og:image)`);
+console.log(`check: ${site.name}: ${pages.length} páginas OK (Open Graph, Twitter, canonical, hreflang, og:image)`);
