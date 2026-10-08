@@ -1,0 +1,60 @@
+{
+ "cnes_api_tipo22": {
+  "status": 200,
+  "tipo": "application/json",
+  "tam": 32351
+ },
+ "cnes_api_tipos": {
+  "status": 200,
+  "tipo": "application/json",
+  "tam": 3491
+ },
+ "cnes_site_estab": {
+  "status": 503,
+  "tipo": "text/html; charset=iso-8859-1",
+  "tam": 27
+ },
+ "cnes_site_estab2": {
+  "status": 503,
+  "tipo": "text/html; charset=iso-8859-1",
+  "tam": 27
+ },
+ "cnes_ftp_list": {
+  "erro": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='ftp.datasus.gov.br', port=443): Max retries exceeded with url: /cnes/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7fa415d31190>, 'Connection to ftp.datasus.gov.br timed out. (connect timeout=40)'))\"))"
+ },
+ "cnes_downloads": {
+  "status": 200,
+  "tipo": "text/html;charset=ISO-8859-1",
+  "tam": 20326
+ },
+ "cfm_busca": {
+  "status": 404,
+  "tipo": "text/html; charset=UTF-8",
+  "tam": 156286
+ },
+ "cremers": {
+  "status": 404,
+  "tipo": "text/html; charset=UTF-8",
+  "tam": 98884
+ },
+ "telelistas": {
+  "status": 410,
+  "tipo": "text/html; charset=utf-8",
+  "tam": 4613
+ },
+ "guiamais": {
+  "status": 404,
+  "tipo": "text/html; charset=UTF-8",
+  "tam": 114463
+ },
+ "apontador": {
+  "status": 200,
+  "tipo": "text/html; charset=UTF-8",
+  "tam": 37975
+ },
+ "doctoralia": {
+  "status": 200,
+  "tipo": "text/html; charset=UTF-8",
+  "tam": 887905
+ }
+}
