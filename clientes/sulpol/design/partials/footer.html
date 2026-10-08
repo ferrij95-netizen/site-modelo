@@ -5,7 +5,7 @@
   </div>
   <div>
     <span class="mono">{{t.footerCompany}}</span>
-    <nav class="f-nav">{{navLinks}}</nav>
+    <nav class="f-nav"><a href="/{{lang}}/">{{t.nav.index}}</a><a href="/{{lang}}/produtos">{{t.nav.produtos}}</a>{{#each t.lines}}<a class="f-sub" href="/{{lang}}/{{it.id}}">{{it.name}}</a>{{/each}}<a href="/{{lang}}/empresa">{{t.nav.empresa}}</a><a href="/{{lang}}/contato">{{t.nav.contato}}</a></nav>
   </div>
   <div>
     <span class="mono">{{t.footerContact}}</span>

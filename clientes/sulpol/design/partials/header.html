@@ -5,7 +5,16 @@
 <header class="site-header"><div class="wrap">
   <a class="logo" href="/{{lang}}/"><img src="/img/logo-h.png" alt="{{site.name}}" width="415" height="132"></a>
   <nav id="nav" class="nav">
-    {{navLinks}}
+    <a class="n-index" href="/{{lang}}/">{{t.nav.index}}</a>
+    <div class="has-sub">
+      <a class="n-produtos" href="/{{lang}}/produtos">{{t.nav.produtos}}<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      <div class="sub">
+        {{#each t.lines}}<a class="n-{{it.id}}" href="/{{lang}}/{{it.id}}"><img src="/img/{{it.img}}.jpg" alt="" width="64" height="40" loading="lazy"><span><b>{{it.name}}</b><small>{{it.short}}</small></span></a>{{/each}}
+        <a class="sub-all" href="/{{lang}}/produtos">{{t.nav.all}} →</a>
+      </div>
+    </div>
+    <a class="n-empresa" href="/{{lang}}/empresa">{{t.nav.empresa}}</a>
+    <a class="n-contato" href="/{{lang}}/contato">{{t.nav.contato}}</a>
     <a class="nav-cta" href="{{wa}}" target="_blank" rel="noopener">{{t.wa}}</a>
   </nav>
   <a class="btn header-cta" href="/{{lang}}/contato">{{t.cta}}</a>

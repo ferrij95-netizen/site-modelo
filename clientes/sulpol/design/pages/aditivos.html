@@ -1,0 +1,20 @@
+<!-- Página da linha 0: gerada a partir do mesmo modelo das outras linhas (mude as quatro juntas). -->
+<section class="line-hero"><div class="wrap">
+  <div class="lh-txt">
+    <nav class="crumbs"><a href="/{{lang}}/">{{t.nav.index}}</a> / <a href="/{{lang}}/produtos">{{t.nav.produtos}}</a> / <span>{{t.lines.0.name}}</span></nav>
+    <span class="mono">01 · {{t.lines.0.tag}}</span>
+    <h1>{{t.lines.0.name}}</h1>
+    <p>{{t.lines.0.intro}}</p>
+    <div class="ctas"><a class="btn" href="{{wa}}" target="_blank" rel="noopener">{{t.askLine}}</a><a class="btn ghost" href="#fichas">{{t.lines.0.count}}</a></div>
+  </div>
+  <div class="lh-img"><img src="/img/{{t.lines.0.img}}.jpg" alt="{{t.lines.0.alt}}" width="1600" height="456" fetchpriority="high"></div>
+</div></section>
+
+<section class="sec" id="fichas"><div class="wrap">
+  <div class="specs">{{#each t.lines.0.items}}<article class="spec-card"><span class="mono">{{num}}</span><h3>{{it.name}}</h3><dl><dt>{{t.labels.active}}</dt><dd>{{it.active}}</dd><dt>{{t.labels.carrier}}</dt><dd>{{it.carrier}}</dd><dt>{{t.labels.dose}}</dt><dd>{{it.dose}}</dd></dl><p>{{it.text}}</p><p class="uses"><b>{{t.labels.uses}}:</b> {{it.uses}}</p></article>{{/each}}</div>
+  <div class="help"><p>{{t.techHelp}}</p><a class="btn" href="{{wa}}" target="_blank" rel="noopener">{{t.wa}}</a></div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="head"><div><span class="mono">{{t.nav.produtos}}</span><h2>{{t.otherLines}}</h2></div><a class="btn ghost" href="/{{lang}}/produtos">{{t.nav.all}}</a></div>
+  <div class="lines">{{#each t.lines}}<a class="line l-{{it.id}}" href="/{{lang}}/{{it.id}}"><div class="swatch"><img src="/img/{{it.img}}.jpg" alt="{{it.alt}}" loading="lazy" width="1600" height="456"></div><div class="body"><span class="mono">{{it.tag}}</span><h3>{{it.name}}</h3><p>{{it.short}}</p><span class="go">{{it.count}} →</span></div></a>{{/each}}</div>
+</div></section>
