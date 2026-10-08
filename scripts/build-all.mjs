@@ -20,5 +20,6 @@ for (const c of clientes) {
     console.log(`build: clientes/${c} sem design/, publicada só a pasta public/`);
   }
 }
+run('hub.mjs');
 run('check.mjs');
 for (const c of clientes) if (temDesign(c)) run('check.mjs', `clientes/${c}`);
