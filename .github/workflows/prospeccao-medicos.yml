@@ -3,7 +3,7 @@ name: prospeccao-medicos
 on:
   push:
     branches: [claude/project-thread-0xo7ls]
-    paths: [.github/workflows/prospeccao-medicos.yml, prospeccao/medicos/*.py, prospeccao/medicos/*.cjs]
+    paths: [.github/workflows/prospeccao-medicos.yml, prospeccao/medicos/*.py, prospeccao/medicos/*.cjs, prospeccao/medicos/*.sh]
 permissions:
   contents: write
 jobs:
@@ -12,14 +12,15 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
-      - name: Coletar CNES
+      - name: Profissionais (PF do DATASUS)
         working-directory: prospeccao/medicos
         run: |
-          pip install requests pandas pyreaddbc
-          python coleta.py
+          pip install pandas pyreaddbc
+          bash pf.sh || true
+          [ -f pf.dbc ] && python pf.py || true
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
           git add -f prospeccao/medicos/saida
-          git commit -m "Prospecção médicos: coleta CNES" && git pull --rebase origin claude/project-thread-0xo7ls && git push
+          git commit -m "Prospecção médicos: PF" && git pull --rebase origin claude/project-thread-0xo7ls && git push
