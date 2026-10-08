@@ -1,8 +1,8 @@
 /* Agrogen v2 · base da direção A "Campo" + elementos pinçados do banco de designs (ver design/ORIGEM.md). */
-:root{--navy:#1B3F63;--navy-d:#132F4B;--green:#3D8B37;--green-l:#E6F0DF;--green-s:#9FD18F;--ink:#1D2420;--muted:#5F6A62;--cream:#F6F3EC;--sand:#ECE6D8;--line:#DCD5C4;--r:22px;--serif:Fraunces,Georgia,serif}
+:root{--navy:#1B3F63;--navy-d:#132F4B;--green:#3D8B37;--green-l:#E6F0DF;--green-s:#9FD18F;--ink:#1D2420;--muted:#5F6A62;--cream:#F6F3EC;--sand:#ECE6D8;--line:#DCD5C4;--r:22px;--serif:'Exo 2',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font:17px/1.65 'Instrument Sans',system-ui,sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+body{font:17px/1.65 Inter,system-ui,sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;height:auto}
 ul{list-style:none}
@@ -213,7 +213,7 @@ a.pilar:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(27,63,99,.1
 /* valores */
 .mv{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
 .quote{font-family:var(--serif);font-size:clamp(28px,3vw,40px);line-height:1.2;color:var(--navy)}
-.quote small{display:block;font-family:'Instrument Sans',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:16px;font-weight:600}
+.quote small{display:block;font-family:Inter,sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:16px;font-weight:600}
 .visao{margin-top:34px;padding-top:28px;border-top:1px solid var(--line)}
 .visao p{font-size:20px;color:var(--ink);margin-top:6px}
 .vlist{display:grid;gap:12px}
@@ -436,7 +436,7 @@ ol.steps{list-style:none;counter-reset:s;gap:16px}
 .step{background:#fff;border:1px solid var(--hair);border-radius:var(--r);overflow:hidden;padding:10px}
 .step img{height:190px;border-radius:calc(var(--r) - 8px)}
 .step div{padding:20px 14px 18px}
-.step small{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green-l);color:var(--green);font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13px}
+.step small{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green-l);color:var(--green);font-family:Inter,sans-serif;font-weight:600;font-size:13px}
 .step h3{color:var(--navy);margin:14px 0 6px}
 .step p{color:var(--muted)}
 .step:first-child{background:var(--navy);border-color:var(--navy)}
@@ -550,3 +550,13 @@ body.hc .feature{background:#1f5f1a}
 .tk-nums b{white-space:nowrap}
 .wordmark{line-height:1.05;margin-bottom:24px}
 .respiro{margin-top:0}
+
+/* Fontes: títulos na Exo 2 (a mais próxima da letra da logo), texto na Inter. Sem itálico decorativo. */
+em,.hero h1 em{font-family:inherit;font-style:normal;font-weight:inherit}
+h1,h2,h3,.quote,.wordmark,.ft-lead,.badge b,.nums b,.timeline b,.eco b,.fact b,.ccard b,.tk-nums b,.ed h3,.ccat h3,.step h3{font-weight:600}
+.tk-nums b{font-weight:500}
+.hero2 h1{font-size:clamp(46px,7.6vw,116px);line-height:.98;letter-spacing:-.025em}
+.phero h1{font-size:clamp(40px,5.6vw,84px);line-height:1;letter-spacing:-.02em}
+.sec-head h2,.h2,.cta h2,.feature h2{letter-spacing:-.015em;line-height:1.08}
+.wordmark{letter-spacing:-.03em}
+.quote{font-size:clamp(26px,2.6vw,36px);line-height:1.25}
