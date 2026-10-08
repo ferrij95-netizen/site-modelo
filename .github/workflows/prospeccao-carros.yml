@@ -1,0 +1,59 @@
+# Busca oficinas e lojas de carros no Google Maps e dá nota aos sites (resultado em prospeccao/carros/saida/).
+name: prospeccao-carros
+on:
+  push:
+    branches: [claude/project-thread-poo1un]
+    paths: [.github/workflows/prospeccao-carros.yml, prospeccao/carros/*.cjs, prospeccao/carros/*.py]
+permissions:
+  contents: write
+jobs:
+  maps:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        cidade: [São Paulo, Rio de Janeiro, Belo Horizonte, Brasília, Curitiba, Porto Alegre, Campinas, Goiânia, Florianópolis, Salvador, Recife, Fortaleza]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Buscar no Maps
+        working-directory: prospeccao/carros
+        env:
+          CIDADE: ${{ matrix.cidade }}
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node maps.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maps-${{ strategy.job-index }}
+          path: prospeccao/carros/saida/
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: debug-${{ strategy.job-index }}
+          path: prospeccao/carros/debug-*.png
+          if-no-files-found: ignore
+  analisa:
+    needs: maps
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: maps-*
+          path: prospeccao/carros/saida
+          merge-multiple: true
+      - name: Checar sites
+        working-directory: prospeccao/carros
+        run: |
+          pip install requests
+          python analisa.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add -f prospeccao/carros/saida
+          git commit -m "Prospecção carros: resultados" && git pull --rebase origin claude/project-thread-poo1un && git push
