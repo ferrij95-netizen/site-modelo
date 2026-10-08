@@ -14,7 +14,8 @@ UF = {'São Paulo': 'SP', 'Rio de Janeiro': 'RJ', 'Belo Horizonte': 'MG', 'Bras�
 FORA = re.compile(r'hospital|laborat|unimed|hapvida|amil|sorridents|odontocompany|oral sin|orthopride|odonto excellence|'
                   r'dr\.? ?consulta|clínica sim|clinica sim|amo saúde|cartão de todos|espaçolaser|espaco laser|'
                   r'mais top estética|onodera|emagrecentro|pronto[- ]?socorro|upa |ubs |posto de saúde|sesi|senac|'
-                  r'drogaria|farmácia|farmacia|petz|veterin|pet ', re.I)
+                  r'drogaria|farmácia|farmacia|petz|veterin|pet |shopping|centro comercial|amorsa[uú]de|sódent|sodent|'
+                  r'doutor dermato|dr\.? exame|medclin|grupo |rede |franquia|academia|salão|salao|barbearia|ótica|otica', re.I)
 ESPEC = [('Odontologia', r'odonto|dent|ortodon|implant|sorriso'),
          ('Estética', r'estétic|estetic|harmoniza|beleza|depila|botox|spa\b|micropigment|laser'),
          ('Dermatologia', r'dermato'), ('Cirurgia plástica', r'plástic|plastic'),
@@ -33,20 +34,37 @@ def especialidade(p):
 
 L = json.load(open(sys.argv[1]))
 L = [p for p in L if not FORA.search(p['nome'] + ' ' + p.get('categoria', ''))]
-ok = lambda p: (p['nota'] or 0) >= 4.0 and p['avaliacoes'] >= 10
+# nomes que se repetem em 3+ fichas são redes (cada unidade aparece "sem site" mas a rede tem site)
+from collections import Counter, defaultdict
+chave = lambda p: ' '.join(re.sub(r'[^a-z0-9 ]', '', p['nome'].lower()).split()[:2])
+rep = Counter(chave(p) for p in L)
+L = [p for p in L if rep[chave(p)] < 3]
+ok = lambda p: (p['nota'] or 0) >= 4.3 and 15 <= p['avaliacoes'] <= 1500 and p['telefone']
 
 sem = [p for p in L if p['tipo_site'] in ('sem site', 'rede social/portal') and ok(p)]
-ruim = [p for p in L if p['tipo_site'] == 'site próprio' and ok(p) and (not p.get('site_ok') or p.get('pontos', 0) >= 3)]
-# sem site: quem tem telefone e mais avaliações primeiro (clínica movimentada, mas sem presença própria)
-sem.sort(key=lambda p: (not p['telefone'], p['tipo_site'] != 'sem site', -p['avaliacoes']))
-ruim.sort(key=lambda p: (-(10 if not p.get('site_ok') else p.get('pontos', 0)), -p['avaliacoes']))
+# site ruim: 4+ problemas, ou site que responde com erro (404, 500, certificado); bloqueios de robô (403/429) ficam de fora
+quebrado = lambda p: not p.get('site_ok') and (str(p.get('status', '')).startswith(('404', '410', '5')) or p.get('erro') == 'SSLError')
+ruim = [p for p in L if p['tipo_site'] == 'site próprio' and ok(p) and (quebrado(p) or (p.get('site_ok') and p.get('pontos', 0) >= 4))]
+sem.sort(key=lambda p: (p['tipo_site'] != 'sem site', -p['avaliacoes']))
+ruim.sort(key=lambda p: (quebrado(p), -p.get('pontos', 0), -p['avaliacoes']))
 print('sem site', len(sem), 'site ruim', len(ruim), 'total filtrado', len(L))
 
+def espalha(lst, n):
+    """Pega n itens alternando entre cidades, para não concentrar tudo numa capital."""
+    por = defaultdict(list)
+    for p in lst: por[p['cidade']].append(p)
+    out = []
+    while len(out) < n and any(por.values()):
+        for c in list(por):
+            if por[c] and len(out) < n: out.append(por[c].pop(0))
+    return out, [p for v in por.values() for p in v]
+
 N = int(sys.argv[3]) if len(sys.argv) > 3 else 300
-# reserva até 1/3 para sites ruins, o resto sem site
-n_ruim = min(len(ruim), max(N - len(sem), N // 3))
-lista = sem[:N - n_ruim] + ruim[:n_ruim]
-resto = sem[N - n_ruim:] + ruim[n_ruim:]
+n_ruim = min(len(ruim), N // 5)
+a1, r1 = espalha(sem, N - n_ruim)
+a2, r2 = espalha(ruim, n_ruim)
+lista = a1 + a2
+resto = sorted(r1, key=lambda p: -p['avaliacoes'])[:300] + r2[:100]
 
 def linha(i, p):
     if p['tipo_site'] == 'sem site':
@@ -54,7 +72,7 @@ def linha(i, p):
     elif p['tipo_site'] == 'rede social/portal':
         site, sit, nota, prob = p['site'], 'Só rede social/portal', '', 'Não tem site próprio, só Instagram/Doctoralia/link'
     elif not p.get('site_ok'):
-        site, sit, nota, prob = p['site'], 'Site fora do ar', 10, 'Site não abre (' + str(p.get('status') or p.get('erro') or 'erro') + ')'
+        site, sit, nota, prob = p['site'], 'Site com erro', 10, 'Site não abre direito (' + str(p.get('status') or p.get('erro') or 'erro') + ')'
     else:
         site, sit, nota, prob = p['site'], 'Site desatualizado', p['pontos'], '; '.join(p['problemas'])
     zap = p.get('whatsapp') or ''
@@ -87,6 +105,5 @@ for aba, dados in (('Clínicas', lista), ('Reservas', resto)):
     ws.freeze_panes = 'C2'
     ws.auto_filter.ref = ws.dimensions
 wb.save(sys.argv[2])
-from collections import Counter
 print('planilha', len(lista), Counter(linha(0, p)[8] for p in lista), Counter(especialidade(p) for p in lista))
 print('cidades', Counter(p['cidade'] for p in lista).most_common())
