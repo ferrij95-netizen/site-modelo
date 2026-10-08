@@ -4,11 +4,11 @@ import { noticias } from './noticias.js';
 
 const PREFIX = '/_clientes/';
 // hub.overtus.com.br: lista de todos os clientes (dist/_hub/), com tela de login em /entrar/.
-// Nada secreto fica no código: CRED_HASH = sha256("email:senha"); o cookie leva sha256("sessao:email:senha"),
+// Nada secreto fica no código: CRED_HASH = sha256("usuario:senha"); o cookie leva sha256("sessao:usuario:senha"),
 // que só quem sabe a senha consegue gerar, e o worker confere sha256(cookie) === SESSAO_HASH.
 // Para trocar a senha, gere os dois hashes de novo.
-const CRED_HASH = '23bf112c420e6c25316238ebbc8c7bdbc304783a94baa122b82b540ab3a1e0ce';
-const SESSAO_HASH = '025512f50b32a3c91eedd499d5b633e07edfa39abef8ef630aa6e3afb0f0df59';
+const CRED_HASH = '3990a7858587f047c1b71e497dc0d03bad2c397707fa77281ca034092c23a21f';
+const SESSAO_HASH = '6d203bd4216f4d75b894163c1d338bc73806eadae35de3a67932f34a99e5ac77';
 
 async function sha256(texto) {
   const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(texto));
