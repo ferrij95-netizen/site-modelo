@@ -1,0 +1,22 @@
+<section class="phero">
+  <img src="/img/faiscas.jpg" alt="Faíscas de corte de metal" width="960" height="339" fetchpriority="high">
+  <div class="wrap">
+    <nav class="crumbs"><a href="/{{lang}}/">{{t.nav.index}}</a> / <span>{{t.nav.servicos}}</span></nav>
+    <div class="eyebrow">O que fazemos</div>
+    <h1>Serviços em metal para a <em>indústria</em></h1>
+    <p>Projetamos e desenvolvemos soluções metálicas com foco na manutenção industrial, em montagens, tubulações e isopainel. Visamos atender todas as demandas dos nossos clientes, com integridade, qualidade e segurança.</p>
+  </div>
+</section>
+
+<section class="sec"><div class="wrap">
+  <div class="rows">{{#each t.services}}<a href="/{{lang}}/{{it.id}}"><span class="n">{{num}}</span><h3>{{it.name}}</h3><p><b>{{it.tag}}</b>{{it.short}}</p><img src="/img/{{it.img}}.jpg" alt="{{it.alt}}" loading="lazy" width="960" height="720"></a>{{/each}}</div>
+</div></section>
+
+<section class="sec light"><div class="wrap">
+  <div class="head"><div><div class="eyebrow">Como trabalhamos</div><h2>Do primeiro contato<br>ao pós-venda</h2></div><p>A Span Service tem como foco analisar, projetar e desenvolver a melhor solução possível para o seu negócio, com um ótimo atendimento.</p></div>
+  <div class="why four">{{#each t.steps}}<div class="card"><b>{{num}}</b><h3>{{it.t}}</h3><p>{{it.d}}</p></div>{{/each}}</div>
+</div></section>
+
+<section class="sec" style="padding-top:0;background:var(--w)"><div class="wrap">
+  <div class="consult"><div><div class="eyebrow">{{t.consult.tag}}</div><h2>{{t.consult.title}}</h2><p>{{t.consult.text}}</p></div><a class="btn dark" href="{{wa}}" target="_blank" rel="noopener">{{t.consult.btn}}</a></div>
+</div></section>

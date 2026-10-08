@@ -1,0 +1,38 @@
+<!-- Página do serviço 0: gerada a partir do mesmo modelo das outras (mude as cinco juntas). -->
+<section class="phero">
+  <img src="/img/{{t.services.0.img}}.jpg" alt="{{t.services.0.alt}}" width="1600" height="1000" fetchpriority="high">
+  <div class="wrap">
+    <nav class="crumbs"><a href="/{{lang}}/">{{t.nav.index}}</a> / <a href="/{{lang}}/servicos">{{t.nav.servicos}}</a> / <span>{{t.services.0.name}}</span></nav>
+    <div class="eyebrow">01 · {{t.services.0.tag}}</div>
+    <h1>{{t.services.0.name}}</h1>
+    <p>{{t.services.0.short}}</p>
+    <div class="ctas"><a class="btn" href="{{wa}}" target="_blank" rel="noopener">{{t.askService}}</a><a class="btn ghost" href="#detalhes">{{t.whatWeDo}}</a></div>
+  </div>
+</section>
+
+<section class="sec light detail" id="detalhes"><div class="wrap">
+  <div>
+    <div class="eyebrow">{{t.services.0.name}}</div>
+    <p class="lead">{{t.services.0.intro}}</p>
+    <p>{{t.services.0.body}}</p>
+    <div class="uses">{{#each t.services.0.uses}}<span>{{it}}</span>{{/each}}</div>
+  </div>
+  <div>
+    <h2 style="font-size:clamp(36px,4vw,52px);margin-bottom:24px">{{t.whatWeDo}}</h2>
+    <ul class="items">{{#each t.services.0.items}}<li><b>{{num}}</b><h3>{{it.t}}</h3><p>{{it.d}}</p></li>{{/each}}</ul>
+  </div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
+  <div class="head"><div><div class="eyebrow">{{t.related}}</div><h2>{{t.photos}}</h2></div><p><a href="/{{lang}}/projetos" style="color:var(--y)">{{t.nav.projetos}} →</a></p></div>
+  <div class="gal three">{{#each t.services.0.gallery}}<figure><img src="/img/{{it}}.jpg" alt="{{t.services.0.name}}" loading="lazy" width="960" height="720"></figure>{{/each}}</div>
+</div></section>
+
+<section class="sec" style="padding-bottom:0"><div class="wrap">
+  <div class="consult"><div><div class="eyebrow">{{t.consult.tag}}</div><h2>{{t.consult.title}}</h2><p>{{t.consult.text}}</p></div><a class="btn dark" href="{{wa}}" target="_blank" rel="noopener">{{t.consult.btn}}</a></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="head"><div><div class="eyebrow">{{t.nav.servicos}}</div><h2>{{t.otherServices}}</h2></div><a class="btn ghost" href="/{{lang}}/servicos">{{t.nav.all}}</a></div>
+  <div class="svc">{{#each t.services}}<a href="/{{lang}}/{{it.id}}"><img src="/img/{{it.img}}.jpg" alt="" loading="lazy" width="960" height="720"><span class="n">{{num}}</span><h3>{{it.name}}</h3><p>{{it.short}}</p><span class="more">{{t.seeService}} →</span></a>{{/each}}<a href="/{{lang}}/contato" class="cta"><span class="n">{{t.consult.tag}}</span><h3>{{t.consult.title}}</h3><p>Nosso atendimento técnico ajuda a definir a solução antes do orçamento.</p><span class="more">{{t.consult.btn}} →</span></a></div>
+</div></section>
