@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hermith · Direction C: Corporate</title>
+<link rel="icon" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root{--navy:#0A2A5C;--navy2:#0F3878;--brand:#124690;--sky:#3D7BE0;--ink:#16202E;--muted:#5D6878;--line:#DCE2EA;--bg:#FFFFFF;--alt:#F1F4F8;--cond:'Barlow Condensed',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16.5px/1.65 Barlow,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.k{font-family:var(--cond);font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:12px}
+.k::before{content:"";width:28px;height:3px;background:currentColor}
+h1,h2,h3{font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.005em}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;font-family:var(--cond);font-weight:600;font-size:17px;letter-spacing:.06em;text-transform:uppercase;background:var(--brand);color:#fff;transition:.2s;clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%)}
+.btn:hover{background:var(--sky)}
+.btn.w{background:#fff;color:var(--navy)}
+.btn.w:hover{background:#DCE7F8}
+.btn.o{background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,255,.5);clip-path:none}
+.mark{font-family:var(--cond);font-weight:700;font-style:italic;font-size:34px;letter-spacing:.01em;line-height:1;color:var(--navy)}
+.mark small{display:block;font-family:Barlow,sans-serif;font-style:normal;font-weight:500;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+/* header */
+.top{background:var(--navy);color:#B8C7DF;font-size:13.5px}
+.top .wrap{display:flex;justify-content:space-between;padding-top:8px;padding-bottom:8px;gap:16px}
+.top b{color:#fff;font-weight:500}
+header{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 1px 0 var(--line)}
+header .wrap{display:flex;align-items:center;gap:32px;height:86px}
+nav{display:flex;gap:4px;margin-left:auto;font-family:var(--cond);font-weight:600;font-size:17px;letter-spacing:.06em;text-transform:uppercase}
+nav a{padding:10px 14px;transition:.2s}
+nav a:hover,nav a.on{color:var(--brand);background:var(--alt)}
+.burger{display:none;margin-left:auto;width:46px;height:46px;border:0;background:var(--navy);color:#fff;font-size:20px}
+/* hero */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;min-height:620px;position:relative;z-index:2}
+.hero-txt{padding:88px 40px 96px 0;display:flex;flex-direction:column;justify-content:center}
+.hero .k{color:#8FB3EE}
+.hero h1{font-size:clamp(46px,6vw,88px);line-height:.92;margin:22px 0 24px}
+.hero h1 span{color:#8FB3EE}
+.hero p{color:#C6D3E8;font-size:18px;max-width:520px}
+.hero .ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.hero-img{position:absolute;top:0;right:0;bottom:0;width:52%;clip-path:polygon(18% 0,100% 0,100% 100%,0 100%)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,42,92,.45),rgba(10,42,92,0) 50%)}
+/* sectors bar */
+.sectors{background:#fff;position:relative;z-index:3}
+.sectors .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;transform:translateY(-56px);box-shadow:0 20px 50px rgba(10,42,92,.14)}
+.sectors a{background:#fff;padding:28px 26px;display:flex;gap:18px;align-items:center;border-left:1px solid var(--line);transition:.2s}
+.sectors a:first-child{border-left:0}
+.sectors a:hover{background:var(--alt)}
+.sectors img{height:62px}
+.sectors h3{font-size:24px;color:var(--navy);line-height:1}
+.sectors span{font-size:14px;color:var(--muted)}
+/* about */
+section{padding:96px 0}
+.about{padding-top:40px}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about h2,.sh h2{font-size:clamp(36px,4.2vw,58px);line-height:.98;color:var(--navy);margin:16px 0 22px}
+.about p{color:var(--muted);margin-bottom:14px}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);margin-top:30px}
+.figs div{background:#fff;padding:22px 0 18px}
+.figs div:nth-child(even){padding-left:24px}
+.figs b{font-family:var(--cond);font-size:54px;font-weight:700;color:var(--brand);line-height:1}
+.figs span{display:block;font-size:14px;color:var(--muted)}
+.about .ph{position:relative}
+.about .ph img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.about .ph .tag{position:absolute;left:-28px;bottom:36px;background:var(--brand);color:#fff;padding:22px 26px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.04em;font-size:20px;line-height:1.15;font-weight:600}
+.about .ph .tag b{display:block;font-size:44px}
+/* products */
+.alt{background:var(--alt)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:44px}
+.sh p{max-width:430px;color:var(--muted)}
+.prod{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.p{background:#fff;transition:.25s;display:flex;flex-direction:column}
+.p:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(10,42,92,.12)}
+.p img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.p .t{padding:20px 20px 22px;border-top:4px solid var(--brand);flex:1;display:flex;flex-direction:column}
+.p h3{font-size:24px;color:var(--navy);line-height:1}
+.p p{font-size:14.5px;color:var(--muted);margin:8px 0 14px;flex:1}
+.p .more{font-family:var(--cond);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-size:15px}
+/* munich band */
+.band{position:relative;color:#fff;padding:0;isolation:isolate}
+.band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,42,92,.95) 0%,rgba(10,42,92,.85) 55%,rgba(10,42,92,.55) 100%);z-index:-1}
+.band .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;padding-top:96px;padding-bottom:96px;align-items:center}
+.band h2{font-size:clamp(36px,4.2vw,58px);line-height:.98;margin:16px 0 18px}
+.band .k{color:#8FB3EE}
+.band p{color:#C6D3E8}
+.steps{display:grid;gap:2px}
+.st{display:grid;grid-template-columns:72px 1fr auto;gap:20px;align-items:center;background:rgba(255,255,255,.08);padding:20px 24px;backdrop-filter:blur(4px)}
+.st i{font-style:normal;font-family:var(--cond);font-size:34px;font-weight:700;color:#8FB3EE}
+.st h3{font-size:22px;line-height:1.1}
+.st span{font-size:14px;color:#C6D3E8}
+.st b{font-family:var(--cond);font-size:22px;font-weight:600;text-align:right;white-space:nowrap}
+/* quality */
+.qual .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:72px}
+.certs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.cert{border:1px solid var(--line);padding:22px;border-top:4px solid var(--brand)}
+.cert h3{font-size:26px;color:var(--navy);line-height:1}
+.cert p{font-size:14px;color:var(--muted);margin-top:6px}
+.quote{background:var(--navy);color:#fff;padding:44px 40px;align-self:start;position:relative}
+.quote::before{content:"“";font-family:var(--cond);font-size:140px;line-height:.6;color:#8FB3EE;display:block;height:56px}
+.quote p{font-size:22px;line-height:1.4}
+.quote cite{display:block;font-style:normal;margin-top:22px;font-family:var(--cond);font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:#8FB3EE}
+.quote .ap{margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.18);font-size:15px;color:#C6D3E8}
+.quote .ap b{color:#fff;font-weight:600}
+/* news */
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.n{border-top:2px solid var(--navy);padding-top:18px}
+.n span{font-family:var(--cond);letter-spacing:.1em;text-transform:uppercase;font-size:14px;color:var(--brand);font-weight:600}
+.n h3{font-family:Barlow,sans-serif;text-transform:none;font-weight:600;font-size:19px;line-height:1.35;margin-top:8px;color:var(--ink)}
+.n:hover h3{color:var(--brand)}
+/* cta */
+.cta{background:var(--brand);color:#fff}
+.cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px;padding-top:64px;padding-bottom:64px}
+.cta h2{font-size:clamp(32px,3.6vw,50px);line-height:1}
+.cta p{color:#D5E0F3;margin-top:10px}
+.cta .ctas{display:flex;gap:14px;flex-wrap:wrap}
+/* footer */
+footer{background:#071D40;color:#9FB0CB;font-size:14.5px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-top:64px;padding-bottom:48px}
+footer .mark{color:#fff}footer .mark small{color:#8FB3EE}
+footer h4{font-family:var(--cond);font-weight:600;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:14px}
+footer li{list-style:none;padding:3px 0}
+footer a:hover{color:#fff}
+.legal{border-top:1px solid #163463}
+.legal .wrap{display:flex;justify-content:space-between;padding-top:18px;padding-bottom:18px;font-size:13px}
+@media (max-width:980px){
+  nav{display:none}.burger{display:block}
+  .top .wrap span:first-child{display:none}
+  .hero .wrap{grid-template-columns:1fr;min-height:0}
+  .hero-txt{padding:56px 0 110px}
+  .hero-img{position:relative;width:100%;height:280px;clip-path:none}
+  .hero{display:flex;flex-direction:column-reverse}
+  .sectors .wrap{grid-template-columns:1fr 1fr;transform:translateY(-40px);padding:0;margin:0 16px}
+  .sectors a{padding:18px;gap:12px;border-top:1px solid var(--line)}
+  .sectors a:nth-child(odd){border-left:0}
+  .sectors a{padding:16px 12px;gap:10px;min-width:0}.sectors img{height:38px}.sectors h3{font-size:17px}.sectors span{display:none}
+  section{padding:64px 0}.about{padding-top:16px}
+  .about .wrap,.band .wrap,.qual .wrap{grid-template-columns:1fr;gap:40px}
+  .about .ph .tag{left:16px;bottom:16px}
+  .about .ph img{aspect-ratio:4/3}
+  .sh{display:block}.sh p{margin-top:8px}
+  .prod{grid-template-columns:1fr 1fr}
+  .band .wrap{padding-top:64px;padding-bottom:64px}
+  .st{grid-template-columns:52px 1fr;padding:16px 18px}.st b{grid-column:2;text-align:left}
+  .news{grid-template-columns:1fr}
+  .cta .wrap{flex-direction:column;align-items:flex-start}
+  footer .wrap{grid-template-columns:1fr 1fr}footer .wrap>div:first-child{grid-column:1/-1}
+  .legal .wrap{flex-direction:column;gap:6px}
+}
+@media (max-width:520px){.prod{grid-template-columns:1fr}.p img{aspect-ratio:16/9}.certs{grid-template-columns:1fr}.quote{padding:32px 24px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><span>Englmannstr. 2, 81673 Munich, Germany</span><span><b>+49 (0)89 2111 3137</b> &nbsp;|&nbsp; <b>sales@hermith.com</b> &nbsp;|&nbsp; EN · DE</span></div></div>
+<header><div class="wrap">
+  <a href="#" class="mark">HERMITH<small>Titanium stockist &amp; supplier</small></a>
+  <nav><a href="#" class="on">Home</a><a href="#empresa">About</a><a href="#produtos">Products</a><a href="#">Industries</a><a href="#">Services</a><a href="#qualidade">Quality</a><a href="#">Stock</a><a href="#">Contact</a></nav>
+  <button class="burger" aria-label="Menu">☰</button>
+</div></header>
+
+<div class="hero">
+  <div class="wrap"><div class="hero-txt">
+    <span class="k">One of Europe’s leading titanium suppliers</span>
+    <h1>Titanium<br>from Munich<br><span>to the world.</span></h1>
+    <p>Bars, billets, plates, sheets, tubes and wire in certified grades, produced and supplied by Hermith GmbH for demanding industries worldwide.</p>
+    <div class="ctas"><a href="#rfq" class="btn w">Request a quote</a><a href="#produtos" class="btn o">Our products</a></div>
+  </div></div>
+  <div class="hero-img"><img src="../img/inspecao.jpg" alt="Hermith employee inspecting titanium material"></div>
+</div>
+
+<div class="sectors"><div class="wrap">
+  <a href="#"><img src="../img/icone-aeroespacial.png" alt=""><div><h3>Aerospace</h3><span>Airframe, engines, MRO</span></div></a>
+  <a href="#"><img src="../img/icone-automotivo.png" alt=""><div><h3>Automotive</h3><span>Exhausts, springs, motorsport</span></div></a>
+  <a href="#"><img src="../img/icone-industrial.png" alt=""><div><h3>Industrial</h3><span>Chemical, marine, energy</span></div></a>
+  <a href="#"><img src="../img/icone-medico.png" alt=""><div><h3>Medical</h3><span>Implants, instruments</span></div></a>
+</div></div>
+
+<section class="about" id="empresa"><div class="wrap">
+  <div>
+    <span class="k">About Hermith</span>
+    <h2>The entire titanium supply chain, in one partner.</h2>
+    <p>Hermith GmbH is a Munich-based manufacturer and global supplier of titanium and titanium alloy products. We cover sourcing, processing, quality control, certification and logistics for OEMs, Tier-1 suppliers and specialised manufacturers.</p>
+    <p>Customers in Europe, the USA and international markets rely on us for standard stock and custom-engineered products with full material traceability.</p>
+    <div class="figs">
+      <div><b>300 t</b><span>Ti alloys on stock</span></div>
+      <div><b>1,000 t</b><span>Melting capacity per year</span></div>
+      <div><b>10</b><span>Languages spoken</span></div>
+      <div><b>4</b><span>Global markets</span></div>
+    </div>
+  </div>
+  <div class="ph"><img src="../img/barras-tubos.jpg" alt="Titanium bars and tubes"><div class="tag"><b>20 years</b>of titanium experience</div></div>
+</div></section>
+
+<section class="alt" id="produtos"><div class="wrap">
+  <div class="sh"><div><span class="k">Products</span><h2>Semi-finished titanium products</h2></div><p>Grades 1 to 23 and special alloys, released to AMS, ASTM, ISO, EN and customer specifications.</p></div>
+  <div class="prod">
+    <a href="#" class="p"><img src="../img/barras-redondas.jpg" alt=""><div class="t"><h3>Bars &amp; Billets</h3><p>Round Ø 4–450 mm and rectangular bars.</p><span class="more">Details →</span></div></a>
+    <a href="#" class="p"><img src="../img/chapas.jpg" alt=""><div class="t"><h3>Plates &amp; Sheets</h3><p>0.4–160 mm thick, up to 2,500 mm wide.</p><span class="more">Details →</span></div></a>
+    <a href="#" class="p"><img src="../img/tubos.jpg" alt=""><div class="t"><h3>Tubes</h3><p>Seamless, OD 6–50.8 mm, Grade 9 for aerospace.</p><span class="more">Details →</span></div></a>
+    <a href="#" class="p"><img src="../img/arame.jpg" alt=""><div class="t"><h3>Wire &amp; Rod</h3><p>Ø 0.8–8 mm for AM, welding and medical.</p><span class="more">Details →</span></div></a>
+    <a href="#" class="p"><img src="../img/chapas-barras.jpg" alt=""><div class="t"><h3>Special Alloys</h3><p>Ti 6242, Ti 6246 and Hermith alloys.</p><span class="more">Details →</span></div></a>
+  </div>
+</div></section>
+
+<section class="band"><img src="../img/munique.jpg" alt="Munich skyline"><div class="wrap">
+  <div><span class="k">Services &amp; delivery</span><h2>Cut, packed and on the road.</h2><p>Bespoke production, band-saw cutting to −1/+2 mm, polythene wrapping in returnable wooden crates and free storage for up to one year on long-term agreements.</p><div style="margin-top:28px"><a href="#" class="btn w">All services</a></div></div>
+  <div class="steps">
+    <div class="st"><i>01</i><div><h3>Germany</h3><span>After signed order confirmation</span></div><b>2 working days</b></div>
+    <div class="st"><i>02</i><div><h3>Rest of EU</h3><span>Next-day express to FR, DE and IT</span></div><b>4–5 working days</b></div>
+    <div class="st"><i>03</i><div><h3>Outside the EU</h3><span>Export terms reviewed per order</span></div><b>2–3 weeks</b></div>
+  </div>
+</div></section>
+
+<section class="qual" id="qualidade"><div class="wrap">
+  <div>
+    <span class="k">Quality</span>
+    <h2 style="font-size:clamp(36px,4.2vw,58px);line-height:.98;color:var(--navy);margin:16px 0 18px">Certified quality management</h2>
+    <p style="color:var(--muted)">Every order ships with 3.1 certificates and full traceability, according to the standards your application demands.</p>
+    <div class="certs">
+      <div class="cert"><h3>EN 9100:2018</h3><p>Aviation, space and defence organisations</p></div>
+      <div class="cert"><h3>EN 9120:2018</h3><p>Aviation, space and defence distributors</p></div>
+      <div class="cert"><h3>ISO 9001:2015</h3><p>Quality management systems</p></div>
+      <div class="cert"><h3>OASIS</h3><p>Listed supplier, OIN 6133202724</p></div>
+    </div>
+  </div>
+  <div class="quote"><p>Being a trusted supplier isn’t just about delivering the best product. It’s about delivering on our promises.</p><cite>Alexey Rasskazov · CEO &amp; Founder</cite><div class="ap">Customer approvals: <b>Leonardo S.p.A. Aircraft Division</b> and <b>Pilatus Aircraft Ltd</b>.</div></div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="sh"><div><span class="k">News</span><h2 style="font-size:clamp(32px,3.4vw,46px);color:var(--navy);margin-top:14px">From Hermith</h2></div><a href="#" class="btn">All news</a></div>
+  <div class="news">
+    <a href="#" class="n"><span>Events</span><h3>Hermith GmbH at FIA 2026: aerospace titanium, industry insights and new market directions</h3></a>
+    <a href="#" class="n"><span>Insights</span><h3>Titanium in spacecraft: Hermith’s perspective on titanium and the space industry</h3></a>
+    <a href="#" class="n"><span>Company</span><h3>Strengthening global titanium leadership: 2025 year in review</h3></a>
+  </div>
+</div></section>
+
+<div class="cta" id="rfq"><div class="wrap">
+  <div><h2>Need titanium for your next project?</h2><p>Send grade, form, dimensions, standard and quantity. Our sales team prepares a tailored quotation.</p></div>
+  <div class="ctas"><a href="#" class="btn w">Request a quote</a><a href="#" class="btn o">+49 (0)89 2111 3137</a></div>
+</div></div>
+
+<footer>
+  <div class="wrap">
+    <div><span class="mark">HERMITH<small>Titanium stockist &amp; supplier</small></span><p style="margin-top:18px">Englmannstr. 2<br>81673 Munich, Germany</p></div>
+    <div><h4>Products</h4><ul><li><a href="#">Bars &amp; Billets</a></li><li><a href="#">Plates &amp; Sheets</a></li><li><a href="#">Tubes</a></li><li><a href="#">Wire &amp; Rod</a></li><li><a href="#">Stock range</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="#">About us</a></li><li><a href="#">Quality</a></li><li><a href="#">Downloads</a></li><li><a href="#">News</a></li><li><a href="#">Careers</a></li><li><a href="#">FAQs</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>+49 (0)89 2111 3137</li><li>sales@hermith.com</li><li><a href="#">LinkedIn</a> · <a href="#">Facebook</a> · <a href="#">X</a></li></ul></div>
+  </div>
+  <div class="legal"><div class="wrap"><span>© 2026 Hermith GmbH</span><span><a href="#">Imprint</a> · <a href="#">Privacy policy</a></span></div></div>
+</footer>
+</body>
+</html>
