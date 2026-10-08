@@ -1,11 +1,17 @@
-// Publica dist/ como site estático no Cloudflare (Workers com assets).
+// Publica dist/ no Cloudflare (Workers com assets).
+// O worker em src/worker.js escolhe o site pelo endereço: <cliente>.overtus.com.br serve clientes/<cliente>/.
 // No Cloudflare Pages este arquivo é ignorado: lá use build `npm run build` e saída `dist`.
 {
   "name": "site-modelo",
+  "main": "src/worker.js",
   "compatibility_date": "2026-09-01",
-  // Endereço do preview no domínio da agência (o domínio precisa estar nesta conta Cloudflare).
-  "routes": [{ "pattern": "site-modelo.overtus.com.br", "custom_domain": true }],
+  // Endereços no domínio da agência (o domínio precisa estar nesta conta Cloudflare). Um por cliente.
+  "routes": [
+    { "pattern": "site-modelo.overtus.com.br", "custom_domain": true }
+  ],
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
   }
 }

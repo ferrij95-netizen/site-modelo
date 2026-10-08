@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sulpol Plásticos · Direção A: Ficha técnica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--brand:#0B4F9C;--brand-dark:#083B75;--ink:#14181F;--muted:#56606E;--line:#DDE2E9;--bg:#FFFFFF;--alt:#F4F6F9;--mono:'IBM Plex Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.6 'IBM Plex Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;font-weight:600;font-size:15px;border:1px solid var(--brand);background:var(--brand);color:#fff;transition:.2s}
+.btn:hover{background:var(--brand-dark)}
+.btn.ghost{background:transparent;color:var(--brand)}
+.btn.ghost:hover{background:var(--brand);color:#fff}
+/* header */
+.top{border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.top .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:40px;height:76px}
+.logo{display:flex;flex-direction:column;line-height:1;font-weight:700;font-size:26px;letter-spacing:.04em;color:var(--brand)}
+.logo small{font-size:10px;letter-spacing:.42em;color:var(--ink);margin-top:4px;font-weight:600}
+nav{display:flex;gap:28px;margin-left:auto;font-weight:500;font-size:15px}
+nav a{padding:6px 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.on{border-color:var(--brand)}
+header .btn{padding:11px 18px}
+/* hero */
+.hero{border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;min-height:560px}
+.hero-txt{padding:80px 48px 64px 0;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:clamp(34px,4.4vw,56px);line-height:1.08;letter-spacing:-.02em;font-weight:600;margin:20px 0 22px}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero p{font-size:18px;color:var(--muted);max-width:540px}
+.hero .ctas{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+.hero-spec{display:grid;grid-template-rows:1fr auto}
+.hero-art{position:relative;background:var(--alt);overflow:hidden}
+.hero-art>div{position:absolute;inset:0}
+.hero-art svg{width:100%;height:100%;display:block}
+.spec{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.spec div{padding:18px 20px;border-right:1px solid var(--line)}
+.spec div:last-child{border:0}
+.spec b{display:block;font-size:22px;font-weight:600;margin-top:4px}
+/* linhas */
+section{padding:96px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px}
+.head h2{font-size:clamp(28px,3vw,40px);line-height:1.15;letter-spacing:-.015em;font-weight:600;margin-top:10px}
+.lines{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+.line{border-right:1px solid var(--line);display:flex;flex-direction:column;transition:.2s}
+.line:last-child{border:0}
+.line:hover{background:var(--alt)}
+.swatch{height:170px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.swatch>div{position:absolute;inset:0}.swatch svg{width:100%;height:100%;display:block}
+.line .body{padding:24px;flex:1;display:flex;flex-direction:column}
+.line h3{font-size:20px;font-weight:600;margin:8px 0}
+.line p{color:var(--muted);font-size:15px;flex:1}
+.line .go{margin-top:20px;font-weight:600;color:var(--brand);font-size:14px}
+/* tabela */
+.table{margin-top:56px;border:1px solid var(--line)}
+.table .row{display:grid;grid-template-columns:2fr 2fr 1fr 1fr;border-bottom:1px solid var(--line)}
+.table .row:last-child{border:0}
+.table .row>*{padding:14px 18px}
+.table .th{background:var(--alt)}
+.table .row b{font-weight:600}
+.table .row span{font-family:var(--mono);font-size:13px;color:var(--muted)}
+/* valgroup + 20 anos */
+.alt{background:var(--alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.split>div{background:#fff;padding:48px}
+.split h3{font-size:28px;font-weight:600;letter-spacing:-.01em;margin:12px 0 14px}
+.split p{color:var(--muted)}
+.big{font-size:120px;line-height:.9;font-weight:700;letter-spacing:-.04em;color:var(--brand)}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);margin-top:56px;background:#fff}
+.pillars div{padding:28px;border-right:1px solid var(--line)}
+.pillars div:last-child{border:0}
+.pillars h4{font-size:17px;font-weight:600;margin:10px 0 6px}
+.pillars p{color:var(--muted);font-size:15px}
+/* contato */
+.cta{background:var(--brand);color:#fff}
+.cta .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+.cta h2{font-size:clamp(30px,3.4vw,44px);line-height:1.1;font-weight:600;letter-spacing:-.02em}
+.cta p{opacity:.85;margin-top:14px}
+.cta .mono{color:rgba(255,255,255,.7)}
+.cta ul{list-style:none;border-top:1px solid rgba(255,255,255,.25)}
+.cta li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.25)}
+.cta .btn{background:#fff;color:var(--brand);border-color:#fff;margin-top:28px}
+footer{padding:40px 0;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.wa{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.wa svg{width:28px;fill:#fff}
+@media (max-width:900px){
+  .top,nav,header .btn{display:none}
+  .hero .wrap,.split,.cta .wrap{grid-template-columns:1fr}
+  .hero-txt{border:0;padding:56px 0 40px}
+  .hero-art{min-height:240px}
+  .lines,.pillars{grid-template-columns:1fr 1fr}
+  .line:nth-child(2){border-right:0}.line:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .pillars div:nth-child(2){border-right:0}.pillars div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .table .row{grid-template-columns:1fr 1fr}.table .th{display:none}
+  .head{flex-direction:column;align-items:start}
+  section{padding:64px 0}.split>div{padding:32px}.big{font-size:88px}
+}
+@media (max-width:560px){.lines,.pillars{grid-template-columns:1fr}.line,.pillars div{border-right:0!important;border-bottom:1px solid var(--line)}.spec b{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><span>Canoas/RS · Seg a sex, 8h às 12h e 13h às 17h30</span><span>(51) 99678-0093 · sulpolplasticos.car@terra.com.br</span></div></div>
+<header><div class="wrap">
+  <a class="logo" href="#">SULPOL<small>PLÁSTICOS</small></a>
+  <nav><a class="on" href="#">Início</a><a href="#produtos">Produtos</a><a href="#empresa">A Empresa</a><a href="#contato">Contato</a></nav>
+  <a class="btn" href="#contato">Peça seu orçamento</a>
+</div></header>
+
+<section class="hero" style="padding:0"><div class="wrap">
+  <div class="hero-txt">
+    <span class="mono">Masterbatch · Aditivos · Pigmentos · Compostos termoplásticos</span>
+    <h1>Matéria-prima para quem <em>transforma plástico</em> no Sul do Brasil.</h1>
+    <p>Distribuímos e representamos fabricantes nacionais de masterbatches, pigmentos, aditivos e compostos termoplásticos, com suporte técnico e atendimento ágil.</p>
+    <div class="ctas"><a class="btn" href="#produtos">Ver produtos</a><a class="btn ghost" href="#contato">Falar no WhatsApp</a></div>
+  </div>
+  <div class="hero-spec">
+    <div class="hero-art"><div data-pellets="cores" data-n="140" data-seed="11"></div></div>
+    <div class="spec"><div><span class="mono">Linhas</span><b>4</b></div><div><span class="mono">Mercado</span><b>20 anos</b></div><div><span class="mono">Fabricantes</span><b>ISO 9001</b></div></div>
+  </div>
+</div></section>
+
+<section id="produtos"><div class="wrap">
+  <div class="head"><div><span class="mono">01 · Produtos</span><h2>Quatro linhas de concentrados</h2></div><a class="btn ghost" href="#">Catálogo completo</a></div>
+  <div class="lines">
+    <a class="line" href="#"><div class="swatch"><div data-pellets="aditivo" data-n="70"></div></div><div class="body"><span class="mono">Masterfil</span><h3>Concentrados Aditivos</h3><p>Antiestático, anti-UV, antiblock, deslizante, auxiliar de fluxo, antioxidante e mais.</p><span class="go">12 produtos →</span></div></a>
+    <a class="line" href="#"><div class="swatch"><div data-pellets="branco" data-n="70"></div></div><div class="body"><span class="mono">TiO₂ 40 a 75%</span><h3>Concentrados Brancos</h3><p>Alta, média e baixa concentração para peças e filmes de qualquer espessura.</p><span class="go">3 produtos →</span></div></a>
+    <a class="line" href="#"><div class="swatch"><div data-pellets="preto" data-n="70"></div></div><div class="body"><span class="mono">Negro de fumo 40 a 50%</span><h3>Concentrados Pretos</h3><p>Livres de metais pesados, para embalagens de alimentos, fármacos e brinquedos.</p><span class="go">2 produtos →</span></div></a>
+    <a class="line" href="#"><div class="swatch"><div data-pellets="cores" data-n="70"></div></div><div class="body"><span class="mono">9 cores padrão</span><h3>Concentrados Coloridos</h3><p>Rosa, azuis, verde, amarelos, laranja, vermelho e marrom para injeção e extrusão.</p><span class="go">9 cores →</span></div></a>
+  </div>
+  <div class="table">
+    <div class="row th"><span>Produto</span><span>Ativo</span><span>Veículo</span><span>Dosagem</span></div>
+    <div class="row"><b>Masterfil Anti-UV</b><span>Benzofenona / HALS</span><span>PEBD</span><span>3 a 4%</span></div>
+    <div class="row"><b>Masterfil Slip (Deslizante)</b><span>Oleamida / erucamida</span><span>PEBD</span><span>1 a 2%</span></div>
+    <div class="row"><b>Master Preto Alta Concentração</b><span>50% negro de fumo</span><span>PEBD</span><span>2 a 3%</span></div>
+  </div>
+</div></section>
+
+<section class="alt" id="empresa"><div class="wrap">
+  <div class="split">
+    <div><span class="mono">02 · Parceria</span><h3>Distribuidor Valgroup</h3><p>Somos distribuidores de uma linha completa de masterbatches da Valgroup, uma das maiores produtoras, transformadoras e recicladoras de plástico do Brasil.</p><a class="btn ghost" style="margin-top:24px" href="https://www.valgroupco.com/produtos-valgroup/">Conheça a Valgroup</a></div>
+    <div><span class="mono">03 · Trajetória</span><div class="big" style="margin-top:16px">20</div><h3 style="margin-top:8px">anos de fornecimento</h3><p>Referência em matérias-primas termoplásticas para transformadores do Rio Grande do Sul e de todo o Sul do Brasil.</p></div>
+  </div>
+  <div class="pillars">
+    <div><span class="mono">A</span><h4>Excelência no fornecimento</h4><p>Entrega confiável para a sua produção não parar.</p></div>
+    <div><span class="mono">B</span><h4>Equipe técnica</h4><p>Apoio na escolha do concentrado e da dosagem certa.</p></div>
+    <div><span class="mono">C</span><h4>Ética e confiabilidade</h4><p>Relação de longo prazo com clientes e fabricantes.</p></div>
+    <div><span class="mono">D</span><h4>Qualidade e inovação</h4><p>Produtos de fabricantes com certificação ISO 9001.</p></div>
+  </div>
+</div></section>
+
+<section class="cta" id="contato"><div class="wrap">
+  <div><span class="mono">04 · Contato</span><h2 style="margin-top:12px">Fale conosco e peça seu orçamento.</h2><p>Atendimento técnico e comercial para transformadores de plástico de todo o Sul do Brasil.</p><a class="btn" href="#">Chamar no WhatsApp</a></div>
+  <ul><li><span>WhatsApp</span><b>(51) 99678-0093</b></li><li><span>E-mail</span><b>sulpolplasticos.car@terra.com.br</b></li><li><span>Endereço</span><b>Rua João Goulart, 1010, Canoas/RS</b></li><li><span>Horário</span><b>8h às 12h · 13h às 17h30</b></li></ul>
+</div></section>
+<footer><div class="wrap"><span>© 2026 Sulpol Plásticos, Indústria e Comércio de Produtos Plásticos Ltda.</span><span>Distrito Industrial · Canoas/RS</span></div></footer>
+<a class="wa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg></a>
+<script src="pellets.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+{
+  "langName": "Português",
+  "locale": "pt_BR",
+  "nav": {
+    "index": "Início",
+    "produtos": "Produtos",
+    "empresa": "A Empresa",
+    "contato": "Contato"
+  },
+  "cta": "Peça seu orçamento",
+  "wa": "Fale no WhatsApp",
+  "waShort": "WhatsApp",
+  "waMessage": "Olá! Vim pelo site da Sulpol e gostaria de um orçamento.",
+  "skip": "Pular para o conteúdo",
+  "menu": "Abrir menu",
+  "more": "Ver produtos",
+  "labels": {
+    "phone": "WhatsApp e telefone",
+    "email": "E-mail",
+    "address": "Endereço",
+    "hours": "Atendimento",
+    "active": "Ativo",
+    "carrier": "Veículo",
+    "dose": "Dosagem",
+    "uses": "Aplicações"
+  },
+  "contactTitle": "Fale conosco e peça seu orçamento",
+  "contactText": "Atendimento técnico e comercial para transformadores de plástico de todo o Sul do Brasil.",
+  "footerText": "Distribuição e representação de masterbatches, pigmentos, aditivos e compostos termoplásticos no Sul do Brasil.",
+  "footerCompany": "Navegue",
+  "footerContact": "Contato",
+  "rights": "Todos os direitos reservados.",
+  "colorNote": "As cores exibidas são apenas ilustrativas.",
+  "lines": [
+    {
+      "id": "aditivos",
+      "name": "Concentrados Aditivos",
+      "short": "Antiestático, anti-UV, antiblock, deslizante, auxiliar de fluxo e mais.",
+      "intro": "Masterfils que melhoram o processamento e o desempenho do produto final, de filmes flexíveis a peças injetadas.",
+      "items": [
+        { "name": "Masterfil Antiestático", "active": "Amida de ácido graxo", "carrier": "PEBD", "dose": "1%", "text": "Absorve a umidade do ar e forma uma camada semicondutora na superfície, que dissipa a eletricidade estática e reduz o acúmulo de pó.", "uses": "Eletrônicos, embalagens flexíveis, automotivo, farmacêutico e brinquedos." },
+        { "name": "Masterfil Anti-UV", "active": "Benzofenona / HALS", "carrier": "PEBD", "dose": "3 a 4%", "text": "Transforma a energia ultravioleta em calor e evita a fotodegradação do polímero.", "uses": "Filmes agrícolas, embalagens de alimentos e fármacos, brinquedos e móveis." },
+        { "name": "Masterfil Antiblock", "active": "Sílica", "carrier": "PEBD", "dose": "1 a 2%", "text": "Evita que as camadas de filme grudem entre si em embalagens flexíveis.", "uses": "Embalagens flexíveis." },
+        { "name": "Masterfil Slip (Deslizante)", "active": "Oleamida / erucamida", "carrier": "PEBD", "dose": "1 a 2%", "text": "Reduz o coeficiente de atrito (COF) do filme para empacotamento automático. Disponível em versão erucamida e oleamida.", "uses": "Empacotamento automático." },
+        { "name": "Masterfil Auxiliar de Fluxo", "active": "Fluorpolímero", "carrier": "PEBD", "dose": "0,5 a 1%", "text": "Melhora o fluxo do material fundido, reduz a fratura do fundido e o acúmulo na matriz.", "uses": "Filme stretch e embalagens de alimentos." },
+        { "name": "Masterfil Antioxidante", "active": "Antioxidantes primários e secundários", "carrier": "PEBD", "dose": "0,8 a 1%", "text": "Evita a degradação termo-oxidativa e o amarelamento. Em máquinas cast de alta produtividade, reduz o tempo de limpeza.", "uses": "Extrusão cast e processos de alta temperatura." },
+        { "name": "Masterfil Purga", "active": "Carbonato de cálcio e lubrificantes", "carrier": "PEBD", "dose": "50%", "text": "Reduz o tempo de limpeza da máquina e o consumo de material na troca de cor ou resina.", "uses": "Limpeza de extrusoras e injetoras." },
+        { "name": "Masterfil Antichama", "active": "Decabromo e trióxido de antimônio", "carrier": "PEBD", "dose": "5% em filme, 10 a 30% em injeção", "text": "Reduz a inflamabilidade do produto. A classificação (V0, V1 ou V2) depende da dosagem aplicada.", "uses": "Filmes e peças injetadas." },
+        { "name": "Masterfil Antiderrapante", "active": "Polímero de ultra-alto peso molecular", "carrier": "PEBD", "dose": "5 a 10%", "text": "Aumenta a rugosidade e o atrito do filme, dando firmeza ao empilhar e enfardar.", "uses": "Enfardamento e empilhamento." },
+        { "name": "Aditivo Dessecante", "active": "Óxido de cálcio", "carrier": "PEBD", "dose": "1 a 2%", "text": "Retira a umidade do polímero e evita bolhas na superfície.", "uses": "Reciclados e materiais úmidos." },
+        { "name": "Combinado Antiblock / Deslizante", "active": "Sílica, oleamida e erucamida", "carrier": "PEBDL", "dose": "1 a 2%", "text": "Une as funções antiblock e deslizante em um só aditivo.", "uses": "Embalagens flexíveis." },
+        { "name": "Combinado Antioxidante / Auxiliar de Fluxo", "active": "Antioxidantes primários e secundários e fluorpolímeros", "carrier": "PEBDL", "dose": "1%", "text": "Reduz as paradas de máquina e ajuda a controlar a espessura do filme.", "uses": "Extrusão de filmes." }
+      ]
+    },
+    {
+      "id": "brancos",
+      "name": "Concentrados Brancos",
+      "short": "Dióxido de titânio em alta, média e baixa concentração.",
+      "intro": "Masters brancos à base de dióxido de titânio (TiO₂) para cobertura em peças e filmes de qualquer espessura.",
+      "items": [
+        { "name": "Master Branco Alta Concentração", "active": "75% / 70% de TiO₂", "carrier": "PEBD", "dose": "Sob consulta", "text": "Excelente cobertura em peças moldadas e filmes finos.", "uses": "Peças moldadas e filmes finos." },
+        { "name": "Master Branco Média Concentração", "active": "60% / 55% de TiO₂", "carrier": "PEBD", "dose": "Sob consulta", "text": "Boa cobertura em peças moldadas e filmes de média a grossa espessura.", "uses": "Peças moldadas e filmes médios e grossos." },
+        { "name": "Master Branco Baixa Concentração", "active": "50% / 40% de TiO₂", "carrier": "PEBD", "dose": "Sob consulta", "text": "Boa cobertura em peças moldadas e filmes de média a grossa espessura.", "uses": "Peças moldadas e filmes médios e grossos." }
+      ]
+    },
+    {
+      "id": "pretos",
+      "name": "Concentrados Pretos",
+      "short": "Negro de fumo livre de metais pesados, para embalagens e brinquedos.",
+      "intro": "Masters pretos de negro de fumo, livres de metais pesados, indicados inclusive para embalagens de alimentos e fármacos e brinquedos.",
+      "items": [
+        { "name": "Master Preto Alta Concentração", "active": "50% de negro de fumo", "carrier": "PEBD", "dose": "2 a 3%", "text": "Master colorante livre de metais pesados. Não exige cuidados além do manuseio normal de produtos químicos.", "uses": "Embalagens de alimentos e fármacos e brinquedos." },
+        { "name": "Master Preto Normal", "active": "40% de negro de fumo", "carrier": "PEBD", "dose": "3 a 5%", "text": "Master colorante livre de metais pesados. Não exige cuidados além do manuseio normal de produtos químicos.", "uses": "Embalagens de alimentos e fármacos e brinquedos." }
+      ]
+    },
+    {
+      "id": "coloridos",
+      "name": "Concentrados Coloridos",
+      "short": "Nove cores padrão para injeção e extrusão.",
+      "intro": "Masters coloridos com veículo PEBD e dosagem de 4 a 6%, para peças injetadas e extrudadas.",
+      "colors": [
+        { "name": "Rosa", "hex": "#E2559A" },
+        { "name": "Azul Forte", "hex": "#1C3F94" },
+        { "name": "Azul Bic", "hex": "#2A5CD8" },
+        { "name": "Verde", "hex": "#1E9A4B" },
+        { "name": "Amarelo Canário", "hex": "#FFE135" },
+        { "name": "Amarelo Ouro", "hex": "#F2B705" },
+        { "name": "Laranja", "hex": "#F26A1B" },
+        { "name": "Vermelho", "hex": "#D2232A" },
+        { "name": "Marrom", "hex": "#6B3E22" }
+      ],
+      "items": [
+        { "name": "Master Colorido", "active": "Pigmento", "carrier": "PEBD", "dose": "4 a 6%", "text": "Rosa, Azul Forte, Azul Bic, Verde, Amarelo Canário, Amarelo Ouro, Laranja, Vermelho e Marrom.", "uses": "Peças injetadas e extrudadas." }
+      ]
+    }
+  ],
+  "pages": {
+    "index": {
+      "title": "Sulpol Plásticos | Masterbatch, aditivos e pigmentos em Canoas/RS",
+      "description": "Masterbatch, pigmentos, aditivos plásticos e compostos termoplásticos para transformadores do Sul do Brasil. Suporte técnico e orçamento rápido pelo WhatsApp.",
+      "eyebrow": "Canoas · Rio Grande do Sul",
+      "heroTitle": "Masterbatch, aditivos e pigmentos para o plástico do Sul do Brasil.",
+      "heroText": "Distribuímos e representamos fabricantes nacionais de masterbatches, pigmentos, aditivos e compostos termoplásticos, com suporte técnico e atendimento ágil.",
+      "linesTitle": "Nossas linhas de produtos",
+      "valgroupTitle": "Distribuidor Valgroup",
+      "valgroupText": "Somos distribuidores de uma linha completa de masterbatches da Valgroup, uma das maiores produtoras, transformadoras e recicladoras de plástico do Brasil.",
+      "valgroupLink": "Conheça a Valgroup",
+      "valgroupUrl": "https://www.valgroupco.com/produtos-valgroup/",
+      "anniversary": "20 anos",
+      "anniversaryText": "de fornecimento para a indústria do plástico",
+      "pillars": [
+        { "title": "Excelência no fornecimento", "text": "Entrega confiável para a sua produção não parar." },
+        { "title": "Equipe técnica", "text": "Apoio na escolha do concentrado e da dosagem certa." },
+        { "title": "Ética e confiabilidade", "text": "Relação de longo prazo com clientes e fabricantes." },
+        { "title": "Qualidade e inovação", "text": "Produtos de fabricantes com certificação ISO 9001." }
+      ]
+    },
+    "produtos": {
+      "title": "Produtos | Concentrados aditivos, brancos, pretos e coloridos | Sulpol",
+      "description": "Masterfils aditivos, masters brancos de TiO₂, pretos de negro de fumo e coloridos: ativo, veículo, dosagem e aplicações de cada produto Sulpol.",
+      "heading": "Produtos",
+      "lead": "Aditivos plásticos, masterbatch e pigmentos e compostos termoplásticos, de fabricantes com certificação ISO 9001, com suporte técnico, atendimento rápido e preço competitivo."
+    },
+    "empresa": {
+      "title": "A Empresa | Sulpol Plásticos, Canoas/RS",
+      "description": "A Sulpol fornece matérias-primas para transformadores de plástico no Sul do Brasil, distribuindo e representando fabricantes nacionais de masterbatch.",
+      "heading": "A Empresa",
+      "lead": "Fornecemos matérias-primas para os transformadores de plástico do Sul do Brasil, distribuindo e representando fabricantes nacionais de masterbatches, pigmentos, aditivos e compostos termoplásticos.",
+      "blocks": [
+        { "title": "Visão", "text": "Ser reconhecida no Sul do Brasil como referência no fornecimento de matérias-primas termoplásticas beneficiadas, crescendo de forma constante e investindo em inovação e nas pessoas da empresa." },
+        { "title": "Missão", "text": "Crescer de forma sustentável e rentável, reinvestindo na melhoria contínua do negócio." },
+        { "title": "Diferenciais", "text": "Excelência no fornecimento, equipe técnica capacitada, ética e confiabilidade, qualidade com inovação." }
+      ]
+    },
+    "contato": {
+      "title": "Contato e orçamento | Sulpol Plásticos, Canoas/RS",
+      "description": "Peça seu orçamento de masterbatch, aditivos e pigmentos pelo WhatsApp (51) 99678-0093 ou por e-mail. Rua João Goulart, 1010, Canoas/RS.",
+      "heading": "Contato",
+      "lead": "Fale conosco e peça seu orçamento. Respondemos pelo WhatsApp, telefone ou e-mail.",
+      "formName": "Nome",
+      "formCompany": "Empresa",
+      "formProduct": "Produto de interesse",
+      "formMessage": "Mensagem",
+      "formSend": "Enviar pelo WhatsApp"
+    }
+  }
+}

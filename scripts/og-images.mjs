@@ -4,7 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+import { siteDir } from './paths.mjs';
+
+const root = siteDir(process.argv[2]);
 const site = JSON.parse(fs.readFileSync(path.join(root, 'site.config.json'), 'utf8'));
 const outDir = path.join(root, 'assets/img/og');
 fs.mkdirSync(outDir, { recursive: true });
