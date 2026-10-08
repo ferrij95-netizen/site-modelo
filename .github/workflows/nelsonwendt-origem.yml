@@ -1,0 +1,104 @@
+# Baixa logo, imagens, HTML, textos, cores e prints do site atual da Nelson Wendt para clientes/nelsonwendt/_origem/.
+name: nelsonwendt-origem
+on:
+  push:
+    branches: [claude/project-thread-o69ha8]
+    paths: [.github/workflows/nelsonwendt-origem.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Espelhar o site (HTML, CSS, imagens)
+        run: |
+          O=clientes/nelsonwendt/_origem; mkdir -p $O/espelho $O/prints $O/html
+          wget -e robots=off -U "Mozilla/5.0" --recursive --level=3 --page-requisites --adjust-extension \
+            --span-hosts --domains=nelsonwendt.com.br,www.nelsonwendt.com.br \
+            --reject-regex '(\?|wp-json|xmlrpc|feed|/tag/|/author/|\.(mp4|zip|pdf)$)' \
+            --quota=300m --timeout=30 --tries=2 -nv -P /tmp/esp https://www.nelsonwendt.com.br/ 2>&1 | tail -n 400 > $O/espelho-log.txt || true
+          # Mantém só HTML, CSS e imagens (sem JS de terceiros)
+          cd /tmp/esp && find . -type f \( -iname '*.html' -o -iname '*.htm' -o -iname '*.css' -o -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.svg' -o -iname '*.ico' \) -size -15M -print0 | xargs -0 -I{} cp --parents {} $GITHUB_WORKSPACE/$O/espelho/ ; cd -
+          find $O/espelho -type f -iname '*.htm*' | sed "s#$O/espelho/##" | sort > $O/html/paginas.txt
+          wc -l $O/html/paginas.txt; du -sh $O/espelho
+      - name: Prints, textos e cores
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          cat > shot.cjs <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          const O = 'clientes/nelsonwendt/_origem';
+          (async () => {
+            const b = await chromium.launch();
+            const pg0 = await b.newPage();
+            await pg0.goto('https://www.nelsonwendt.com.br/', { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+            await pg0.waitForTimeout(3000);
+            let links = await pg0.evaluate(() => [...document.querySelectorAll('a[href]')].map(a => a.href));
+            links = [...new Set(['https://www.nelsonwendt.com.br/', ...links.map(l => l.split('#')[0])])]
+              .filter(l => /^https?:\/\/(www\.)?nelsonwendt\.com\.br/.test(l) && !/\.(pdf|jpe?g|png|zip)$/i.test(l));
+            // segundo nível: links das subpáginas
+            for (const l of links.slice(1, 40)) {
+              await pg0.goto(l, { waitUntil: 'domcontentloaded', timeout: 30000 }).catch(() => {});
+              const m = await pg0.evaluate(() => [...document.querySelectorAll('a[href]')].map(a => a.href)).catch(() => []);
+              for (const x of m) { const y = x.split('#')[0]; if (/^https?:\/\/(www\.)?nelsonwendt\.com\.br/.test(y) && !/\.(pdf|jpe?g|png|zip)$/i.test(y) && !links.includes(y)) links.push(y); }
+            }
+            links = links.slice(0, 60);
+            fs.writeFileSync(O + '/html/links.txt', links.join('\n'));
+            const todas = {};
+            for (const [i, l] of links.entries()) {
+              const nome = (new URL(l).pathname.replace(/^\/|\/$/g, '').replace(/[^a-zA-Z0-9]+/g, '-') || 'home').slice(0, 60);
+              for (const [w, h, t] of [[1440, 900, 'computador'], [390, 844, 'celular']]) {
+                if (t === 'celular' && i > 12) continue;
+                const pg = await b.newPage({ viewport: { width: w, height: h } });
+                await pg.goto(l, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+                await pg.waitForTimeout(2500);
+                for (const sel of ['text=Aceitar', 'text=Aceito', 'text=Concordo', 'text=OK', 'text=Accept']) { await pg.click(sel, { timeout: 600 }).catch(() => {}); }
+                await pg.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 120)); } window.scrollTo(0, 0); }).catch(() => {});
+                await pg.waitForTimeout(800);
+                await pg.screenshot({ path: `${O}/prints/${nome}-${t}.png`, fullPage: true }).catch(() => {});
+                if (t === 'computador') {
+                  const info = await pg.evaluate(() => {
+                    const out = {};
+                    for (const el of document.querySelectorAll('*')) {
+                      const s = getComputedStyle(el);
+                      for (const k of ['color', 'backgroundColor', 'borderTopColor']) { const v = s[k]; if (v && v !== 'rgba(0, 0, 0, 0)') out[v] = (out[v] || 0) + 1; }
+                      out['font:' + s.fontFamily] = (out['font:' + s.fontFamily] || 0) + 1;
+                    }
+                    return {
+                      titulo: document.title,
+                      descricao: (document.querySelector('meta[name=description]') || {}).content || '',
+                      txt: document.body.innerText,
+                      imgs: [...document.querySelectorAll('img')].map(i => ({ src: i.currentSrc || i.src, alt: i.alt, w: i.naturalWidth, h: i.naturalHeight })),
+                      bgs: [...document.querySelectorAll('*')].map(e => getComputedStyle(e).backgroundImage).filter(v => v && v.includes('url(')),
+                      estilos: Object.entries(out).sort((a, b) => b[1] - a[1]).slice(0, 60),
+                    };
+                  }).catch(() => null);
+                  if (info) {
+                    fs.writeFileSync(`${O}/html/${nome}.txt`, `# ${info.titulo}\n# ${l}\n# ${info.descricao}\n\n${info.txt}`);
+                    todas[nome] = { url: l, imgs: info.imgs, bgs: info.bgs };
+                    if (i === 0) fs.writeFileSync(O + '/estilos.json', JSON.stringify(info.estilos, null, 1));
+                  }
+                }
+                await pg.close();
+              }
+            }
+            fs.writeFileSync(O + '/html/imagens.json', JSON.stringify(todas, null, 1));
+            await b.close();
+          })();
+          JS
+          node shot.cjs
+          # Imagens vistas na página renderizada (inclusive de fundo e de outros domínios) que o espelho não pegou
+          O=clientes/nelsonwendt/_origem; mkdir -p $O/img
+          grep -oE 'https?://[^"\\) ]+\.(png|jpe?g|gif|webp|svg)' $O/html/imagens.json | sort -u | while read u; do
+            f=$(echo "$u" | sed -E 's#^https?://##; s#[/?&=]#_#g' | tail -c 120); [ -f "$O/img/$f" ] || curl -sSL --fail -m 30 -o "$O/img/$f" "$u" || true
+          done
+          du -sh $O; ls $O/prints | head -50
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add clientes/nelsonwendt/_origem
+          git commit -m "Nelson Wendt: arquivos do site atual" && git pull --rebase origin claude/project-thread-o69ha8 && git push
