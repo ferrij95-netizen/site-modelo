@@ -1,0 +1,1719 @@
+<!DOCTYPE html><html dir="ltr" lang="pt-br" style="overflow: auto;"><head><link rel="stylesheet" type="text/css" href="https://apigw.privally.io/webc/v1/privacy-center/stylesheet?webcid=58e61f38-27e8-40b1-8244-0a85042fac51"><style type="text/css">.swal-icon--error{border-color:#f27474;-webkit-animation:animateErrorIcon .5s;animation:animateErrorIcon .5s}.swal-icon--error__x-mark{position:relative;display:block;-webkit-animation:animateXMark .5s;animation:animateXMark .5s}.swal-icon--error__line{position:absolute;height:5px;width:47px;background-color:#f27474;display:block;top:37px;border-radius:2px}.swal-icon--error__line--left{-webkit-transform:rotate(45deg);transform:rotate(45deg);left:17px}.swal-icon--error__line--right{-webkit-transform:rotate(-45deg);transform:rotate(-45deg);right:16px}@-webkit-keyframes animateErrorIcon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}to{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}}@keyframes animateErrorIcon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}to{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}}@-webkit-keyframes animateXMark{0%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}50%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}80%{-webkit-transform:scale(1.15);transform:scale(1.15);margin-top:-6px}to{-webkit-transform:scale(1);transform:scale(1);margin-top:0;opacity:1}}@keyframes animateXMark{0%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}50%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}80%{-webkit-transform:scale(1.15);transform:scale(1.15);margin-top:-6px}to{-webkit-transform:scale(1);transform:scale(1);margin-top:0;opacity:1}}.swal-icon--warning{border-color:#f8bb86;-webkit-animation:pulseWarning .75s infinite alternate;animation:pulseWarning .75s infinite alternate}.swal-icon--warning__body{width:5px;height:47px;top:10px;border-radius:2px;margin-left:-2px}.swal-icon--warning__body,.swal-icon--warning__dot{position:absolute;left:50%;background-color:#f8bb86}.swal-icon--warning__dot{width:7px;height:7px;border-radius:50%;margin-left:-4px;bottom:-11px}@-webkit-keyframes pulseWarning{0%{border-color:#f8d486}to{border-color:#f8bb86}}@keyframes pulseWarning{0%{border-color:#f8d486}to{border-color:#f8bb86}}.swal-icon--success{border-color:#a5dc86}.swal-icon--success:after,.swal-icon--success:before{content:"";border-radius:50%;position:absolute;width:60px;height:120px;background:#fff;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal-icon--success:before{border-radius:120px 0 0 120px;top:-7px;left:-33px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:60px 60px;transform-origin:60px 60px}.swal-icon--success:after{border-radius:0 120px 120px 0;top:-11px;left:30px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 60px;transform-origin:0 60px;-webkit-animation:rotatePlaceholder 4.25s ease-in;animation:rotatePlaceholder 4.25s ease-in}.swal-icon--success__ring{width:80px;height:80px;border:4px solid hsla(98,55%,69%,.2);border-radius:50%;box-sizing:content-box;position:absolute;left:-4px;top:-4px;z-index:2}.swal-icon--success__hide-corners{width:5px;height:90px;background-color:#fff;padding:1px;position:absolute;left:28px;top:8px;z-index:1;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal-icon--success__line{height:5px;background-color:#a5dc86;display:block;border-radius:2px;position:absolute;z-index:2}.swal-icon--success__line--tip{width:25px;left:14px;top:46px;-webkit-transform:rotate(45deg);transform:rotate(45deg);-webkit-animation:animateSuccessTip .75s;animation:animateSuccessTip .75s}.swal-icon--success__line--long{width:47px;right:8px;top:38px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-animation:animateSuccessLong .75s;animation:animateSuccessLong .75s}@-webkit-keyframes rotatePlaceholder{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}to{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes rotatePlaceholder{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}to{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@-webkit-keyframes animateSuccessTip{0%{width:0;left:1px;top:19px}54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}to{width:25px;left:14px;top:45px}}@keyframes animateSuccessTip{0%{width:0;left:1px;top:19px}54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}to{width:25px;left:14px;top:45px}}@-webkit-keyframes animateSuccessLong{0%{width:0;right:46px;top:54px}65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}to{width:47px;right:8px;top:38px}}@keyframes animateSuccessLong{0%{width:0;right:46px;top:54px}65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}to{width:47px;right:8px;top:38px}}.swal-icon--info{border-color:#c9dae1}.swal-icon--info:before{width:5px;height:29px;bottom:17px;border-radius:2px;margin-left:-2px}.swal-icon--info:after,.swal-icon--info:before{content:"";position:absolute;left:50%;background-color:#c9dae1}.swal-icon--info:after{width:7px;height:7px;border-radius:50%;margin-left:-3px;top:19px}.swal-icon{width:80px;height:80px;border-width:4px;border-style:solid;border-radius:50%;padding:0;position:relative;box-sizing:content-box;margin:20px auto}.swal-icon:first-child{margin-top:32px}.swal-icon--custom{width:auto;height:auto;max-width:100%;border:none;border-radius:0}.swal-icon img{max-width:100%;max-height:100%}.swal-title{color:rgba(0,0,0,.65);font-weight:600;text-transform:none;position:relative;display:block;padding:13px 16px;font-size:27px;line-height:normal;text-align:center;margin-bottom:0}.swal-title:first-child{margin-top:26px}.swal-title:not(:first-child){padding-bottom:0}.swal-title:not(:last-child){margin-bottom:13px}.swal-text{font-size:16px;position:relative;float:none;line-height:normal;vertical-align:top;text-align:left;display:inline-block;margin:0;padding:0 10px;font-weight:400;color:rgba(0,0,0,.64);max-width:calc(100% - 20px);overflow-wrap:break-word;box-sizing:border-box}.swal-text:first-child{margin-top:45px}.swal-text:last-child{margin-bottom:45px}.swal-footer{text-align:right;padding-top:13px;margin-top:13px;padding:13px 16px;border-radius:inherit;border-top-left-radius:0;border-top-right-radius:0}.swal-button-container{margin:5px;display:inline-block;position:relative}.swal-button{background-color:#7cd1f9;color:#fff;border:none;box-shadow:none;border-radius:5px;font-weight:600;font-size:14px;padding:10px 24px;margin:0;cursor:pointer}.swal-button:not([disabled]):hover{background-color:#78cbf2}.swal-button:active{background-color:#70bce0}.swal-button:focus{outline:none;box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(43,114,165,.29)}.swal-button[disabled]{opacity:.5;cursor:default}.swal-button::-moz-focus-inner{border:0}.swal-button--cancel{color:#555;background-color:#efefef}.swal-button--cancel:not([disabled]):hover{background-color:#e8e8e8}.swal-button--cancel:active{background-color:#d7d7d7}.swal-button--cancel:focus{box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(116,136,150,.29)}.swal-button--danger{background-color:#e64942}.swal-button--danger:not([disabled]):hover{background-color:#df4740}.swal-button--danger:active{background-color:#cf423b}.swal-button--danger:focus{box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(165,43,43,.29)}.swal-content{padding:0 20px;margin-top:20px;font-size:medium}.swal-content:last-child{margin-bottom:20px}.swal-content__input,.swal-content__textarea{-webkit-appearance:none;background-color:#fff;border:none;font-size:14px;display:block;box-sizing:border-box;width:100%;border:1px solid rgba(0,0,0,.14);padding:10px 13px;border-radius:2px;transition:border-color .2s}.swal-content__input:focus,.swal-content__textarea:focus{outline:none;border-color:#6db8ff}.swal-content__textarea{resize:vertical}.swal-button--loading{color:transparent}.swal-button--loading~.swal-button__loader{opacity:1}.swal-button__loader{position:absolute;height:auto;width:43px;z-index:2;left:50%;top:50%;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);text-align:center;pointer-events:none;opacity:0}.swal-button__loader div{display:inline-block;float:none;vertical-align:baseline;width:9px;height:9px;padding:0;border:none;margin:2px;opacity:.4;border-radius:7px;background-color:hsla(0,0%,100%,.9);transition:background .2s;-webkit-animation:swal-loading-anim 1s infinite;animation:swal-loading-anim 1s infinite}.swal-button__loader div:nth-child(3n+2){-webkit-animation-delay:.15s;animation-delay:.15s}.swal-button__loader div:nth-child(3n+3){-webkit-animation-delay:.3s;animation-delay:.3s}@-webkit-keyframes swal-loading-anim{0%{opacity:.4}20%{opacity:.4}50%{opacity:1}to{opacity:.4}}@keyframes swal-loading-anim{0%{opacity:.4}20%{opacity:.4}50%{opacity:1}to{opacity:.4}}.swal-overlay{position:fixed;top:0;bottom:0;left:0;right:0;text-align:center;font-size:0;overflow-y:auto;background-color:rgba(0,0,0,.4);z-index:10000;pointer-events:none;opacity:0;transition:opacity .3s}.swal-overlay:before{content:" ";display:inline-block;vertical-align:middle;height:100%}.swal-overlay--show-modal{opacity:1;pointer-events:auto}.swal-overlay--show-modal .swal-modal{opacity:1;pointer-events:auto;box-sizing:border-box;-webkit-animation:showSweetAlert .3s;animation:showSweetAlert .3s;will-change:transform}.swal-modal{width:478px;opacity:0;pointer-events:none;background-color:#fff;text-align:center;border-radius:5px;position:static;margin:20px auto;display:inline-block;vertical-align:middle;-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:50% 50%;transform-origin:50% 50%;z-index:10001;transition:opacity .2s,-webkit-transform .3s;transition:transform .3s,opacity .2s;transition:transform .3s,opacity .2s,-webkit-transform .3s}@media (max-width:500px){.swal-modal{width:calc(100% - 20px)}}@-webkit-keyframes showSweetAlert{0%{-webkit-transform:scale(1);transform:scale(1)}1%{-webkit-transform:scale(.5);transform:scale(.5)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes showSweetAlert{0%{-webkit-transform:scale(1);transform:scale(1)}1%{-webkit-transform:scale(.5);transform:scale(.5)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}to{-webkit-transform:scale(1);transform:scale(1)}}</style>
+	<!-- Google Tag Manager -->
+	<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PDBLGFZW"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PDBLGFZW');</script>
+	<!-- End Google Tag Manager -->
+
+	<script src="https://apigw.privally.io/webc/v1/privacy-center/minimal?webcid=58e61f38-27e8-40b1-8244-0a85042fac51"></script><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var script = document.createElement('script');
+
+			if (window.location.href.includes('.br')) {
+				script.setAttribute('pid', "a942ab-ef0079");
+			} else {
+				script.setAttribute('pid', "a942ab-bd3045");
+			}
+			script.src = "https://app.privally.global/app.js";
+			script.id = "PrivallyApp";
+			script.type = 'text/javascript';
+			document.body.appendChild(script);
+		});
+
+
+	</script>
+	<!-- Privally .com.br -->
+	<!-- <script type="text/javascript" id="PrivallyApp" src="https://app.privally.global/app.js"
+		pid="a942ab-ef0079"></script> -->
+
+	<!-- Privally .com -->
+	<!-- <script type="text/javascript" id="PrivallyApp" src="https://app.privally.global/app.js"
+		pid="a942ab-bd3045"></script> -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="publisher" content="contato@okngroup.com.brr">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7CWQBJNDZ0');
+</script>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="alternate" hreflang="pt" href="http://www.tupy.com.br/">
+<link rel="alternate" hreflang="eng" href="http://www.tupy.com.br/en/">
+<link rel="alternate" hreflang="esp" href="http://www.tupy.com.br/es/">
+<link rel="alternate" hreflang="x-default" href="http://www.tupy.com.br/">
+
+	<!-- This site is optimized with the Yoast SEO plugin v28.5 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>Home - Tupy</title>
+	<link rel="canonical" href="https://www.tupy.com.br/">
+	<meta property="og:locale" content="pt_BR">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Home - Tupy">
+	<meta property="og:url" content="https://www.tupy.com.br/">
+	<meta property="og:site_name" content="Tupy">
+	<meta property="article:modified_time" content="2026-08-21T17:54:00+00:00">
+	<meta name="twitter:card" content="summary_large_image">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/www.tupy.com.br\/","url":"https:\/\/www.tupy.com.br\/","name":"Home - Tupy","isPartOf":{"@id":"https:\/\/www.tupy.com.br\/#website"},"datePublished":"2021-05-28T15:40:28+00:00","dateModified":"2026-08-21T17:54:00+00:00","breadcrumb":{"@id":"https:\/\/www.tupy.com.br\/#breadcrumb"},"inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https:\/\/www.tupy.com.br\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/www.tupy.com.br\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"https:\/\/www.tupy.com.br\/#website","url":"https:\/\/www.tupy.com.br\/","name":"Tupy","description":"Referência em tecnologia de fundição de blocos e cabeçotes de motor de ferro e usinagem.","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/www.tupy.com.br\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"pt-BR"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+/*wp_block_styles_on_demand_placeholder:6ac7e4cf105f4*/
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id="wp-block-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the block styles printed at wp_footer." }
+/*# sourceURL=wp-block-styles-placeholder-inline-css */
+</style>
+<style id="wp-global-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the global-styles printed at wp_footer." }
+/*# sourceURL=wp-global-styles-placeholder-inline-css */
+</style>
+<link rel="stylesheet" id="wpml-blocks-css" href="http://www.tupy.com.br/wp-content/plugins/sitepress-multilingual-cms/dist/css/blocks/styles.css?ver=4.6.15" media="all">
+<link rel="stylesheet" id="contact-form-7-css" href="https://www.tupy.com.br/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.1.7" media="all">
+<link rel="stylesheet" id="menu-image-css" href="https://www.tupy.com.br/wp-content/plugins/menu-image/includes/css/menu-image.css?ver=3.13" media="all">
+<link rel="stylesheet" id="dashicons-css" href="https://www.tupy.com.br/wp-includes/css/dashicons.min.css?ver=486f344f0551d365670c996dc57bec89" media="all">
+<link rel="stylesheet" id="wpml-legacy-dropdown-0-css" href="https://www.tupy.com.br/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown/style.min.css?ver=1" media="all">
+<style id="wpml-legacy-dropdown-0-inline-css">
+.wpml-ls-legacy-dropdown { position: absolute; top: 0; right: 0; width: 8.2rem; height: 100%; background-color: #fff; } .header > .wrapper:first-child { position: relative; padding-right: 8.2rem; } .wpml-ls-legacy-dropdown>ul { height: 100%; display: flex; align-items: center; background-color: #fff; } .wpml-ls-legacy-dropdown .wpml-ls-item { width: 100%; display: flex; height: 100%; position: relative; } .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle { border: none; display: flex; /* align-items: center; */ justify-content: flex-end; height: 100%; width: 100%; } .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle::after { width: 0.7rem; height: 0.7rem; background-color: transparent; border: none; border-bottom: 1px solid #484848; border-right: 1px solid #484848; top: 44%; right: 0; transform: translateY(-50%) rotate(45deg); } .wpml-ls-legacy-dropdown .wpml-ls-current-language:hover>a, .wpml-ls-legacy-dropdown a:focus, .wpml-ls-legacy-dropdown a:hover { background: #fff; } .wpml-ls-legacy-dropdown .wpml-ls-sub-menu { border: none; top: 98%; } .wpml-ls-legacy-dropdown a { border: none; display: flex; align-items: center; justify-content: flex-end; padding-right: 1.4rem; width: 100%; } .wpml-ls-legacy-dropdown a span { font-size: 1.2rem; line-height: 1.7rem; font-weight: 400; font-family: "Open Sans", sans-serif; } .wpml-ls-legacy-dropdown::before { content: \'\'; position: absolute; top: 0; left: 0; width: 150%; height: 100%; background-color: #fff; } .wpml-ls-sub-menu::before { content: \'\'; position: absolute; left: 0; top: 0; width: 150%; height: 100%; background-color: #fff; }
+/*# sourceURL=wpml-legacy-dropdown-0-inline-css */
+</style>
+<link rel="stylesheet" id="custom-style-css" href="https://www.tupy.com.br/wp-content/themes/tupy/assets/css/custom.css?ver=1783603711" media="all">
+<script id="wpml-legacy-dropdown-0-js" src="https://www.tupy.com.br/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown/script.min.js?ver=1"></script>
+<link rel="https://api.w.org/" href="https://www.tupy.com.br/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://www.tupy.com.br/wp-json/wp/v2/pages/7"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.tupy.com.br/xmlrpc.php?rsd">
+
+<link rel="shortlink" href="https://www.tupy.com.br/">
+<meta name="generator" content="WPML ver:4.6.15 stt:1,42,2;">
+
+	<link rel="apple-touch-icon" sizes="60x60" href="https://www.tupy.com.br/wp-content/themes/tupy/assets/img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://www.tupy.com.br/wp-content/themes/tupy/assets/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://www.tupy.com.br/wp-content/themes/tupy/assets/img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="https://www.tupy.com.br/wp-content/themes/tupy/assets/img/favicon/site.webmanifest">
+	<link rel="mask-icon" href="https://www.tupy.com.br/wp-content/themes/tupy/assets/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&amp;family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://www.tupy.com.br/wp-content/themes/tupy/assets/lib/slick.css?ver=1642092476">
+	<link rel="stylesheet" href="https://www.tupy.com.br/wp-content/themes/tupy/assets/css/carrier.css?ver=1710191297">
+	<link rel="stylesheet" href="https://www.tupy.com.br/wp-content/themes/tupy/assets/css/style.css?ver=1783603711">
+
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://www.tupy.com.br/xmlrpc.php">
+<style>
+            .custom-warning {
+                padding: 10px;
+                margin-top: 5px;
+                color: #721c24;
+                background-color: #f8d7da;
+                border: 1px solid #f5c6cb;
+                border-radius: 4px;
+                font-family: sans-serif;
+                font-size: 14px;
+                display: none;
+            }
+            .input-error {
+                border: 2px solid #dc3545 !important;
+                outline: none;
+            }
+        </style><script src="https://www.tupy.com.br/wp-includes/js/wp-emoji-release.min.js?ver=486f344f0551d365670c996dc57bec89" defer=""></script></head>
+
+<body class="home wp-singular page-template-default page page-id-7 wp-theme-tupy" style="overflow: auto;">
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDBLGFZW"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<!-- header nao tem classe white só na home -->
+	<header class="header" style="transform: translateY(0px);">
+		<div class="wrapper">
+			<div class="header__top">
+				<nav class="header__contents">
+					<svg version="1.1" id="Capa_1" fill="#fff" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 516.375 516.375" style="enable-background:new 0 0 516.375 516.375;" xml:space="preserve">
+						<g>
+							<g>
+								<path d="M258.188,286.875c-26.775,0-47.812,21.037-47.812,47.812c0,15.3,7.65,28.688,19.125,38.25v38.25
+							c0,15.3,13.388,28.688,28.688,28.688s28.688-13.388,28.688-28.688v-38.25c11.475-9.562,19.125-22.95,19.125-38.25
+							C306,307.912,284.963,286.875,258.188,286.875z M267.75,361.463v49.725c0,5.737-3.825,9.562-9.562,9.562s-9.562-3.825-9.562-9.562
+							v-49.725c-11.475-3.825-19.125-15.301-19.125-26.775c0-15.3,13.388-28.688,28.688-28.688s28.688,13.388,28.688,28.688
+							C286.875,348.075,279.225,357.638,267.75,361.463z"></path>
+								<path d="M401.625,210.375v-66.938C401.625,65.025,336.6,0,258.188,0C179.775,0,114.75,65.025,114.75,143.438v66.938
+							c-32.513,0-57.375,24.862-57.375,57.375V459c0,32.513,24.862,57.375,57.375,57.375h286.875C434.138,516.375,459,491.513,459,459
+							V267.75C459,237.15,434.138,210.375,401.625,210.375z M133.875,143.438c0-68.85,55.462-124.312,124.312-124.312
+							c68.85,0,124.312,55.462,124.312,124.312v66.938h-19.125v-66.938c0-57.375-47.812-105.188-105.188-105.188S153,86.062,153,143.438
+							v66.938h-19.125V143.438z M344.25,143.438v66.938H172.125v-66.938c0-47.812,38.25-86.062,86.062-86.062
+							S344.25,95.625,344.25,143.438z M439.875,459c0,21.037-17.213,38.25-38.25,38.25H114.75c-21.038,0-38.25-17.213-38.25-38.25
+							V267.75c0-21.038,17.212-38.25,38.25-38.25h286.875c21.037,0,38.25,17.212,38.25,38.25V459z"></path>
+							</g>
+					</g></svg>
+					<button class="btnOpenModal">Login</button>
+					<div class="modal-container" tabindex="0">
+						<div class="modal">
+							<h2>
+								Administração							</h2>
+							<hr>
+																<a href="https://webforms.tupy.com/tflweb/login.php" target="_blank" title="TFL WEB FORMS">
+										TFL WEB FORMS									</a>
+																		<a href="https://webforms.tupy.com/tupyweb/login.php" target="_blank" title="TAFCO Web Forms">
+										TAFCO Web Forms									</a>
+																		<a href="http://websource.1edisource.com/" target="_blank" title="TAFCO EDI">
+										TAFCO EDI									</a>
+															</div>
+					</div>
+					<!-- <a href="">Mapa do Site</a> -->
+												<a href="/fale-conosco/" target="" title="Fale conosco">
+								Fale conosco							</a>
+														<a href="https://www.contatoseguro.com.br/tupy " target="_blank" title="Ética e Integridade">
+								Ética e Integridade							</a>
+											</nav>
+				<nav class="header__buttons">
+					<a href="http://ri.tupy.com.br/" target="_blank" class="header__investors">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18.635" height="18.635" viewBox="0 0 18.635 18.635">
+							<g transform="translate(0)">
+								<g transform="translate(0)">
+									<path style="fill: #23d0ed" d="M2.729,15.906A9.317,9.317,0,0,0,15.906,2.729,9.317,9.317,0,0,0,2.729,15.906ZM9.317,1.092A8.225,8.225,0,1,1,1.092,9.317,8.235,8.235,0,0,1,9.317,1.092Z"></path>
+								</g>
+								<g transform="translate(6.432 3.509)">
+									<path style="fill: #23d0ed" d="M179.034,102.756h1.17a1.208,1.208,0,1,1,0,2.417h-2.339a.546.546,0,0,0,0,1.092h1.208v1.208a.546.546,0,1,0,1.092,0v-1.208h.039a2.3,2.3,0,1,0,0-4.6h-1.17a1.208,1.208,0,0,1,0-2.417h2.339a.546.546,0,0,0,0-1.092h-1.208V96.947a.546.546,0,1,0-1.092,0v1.208h-.039a2.3,2.3,0,0,0,0,4.6Z" transform="translate(-176.734 -96.401)"></path>
+								</g>
+							</g>
+						</svg>
+						Investidores
+					</a>
+					<!-- <a href="" target="_blank" class="header__login">
+						<svg xmlns="http://www.w3.org/2000/svg" width="17.882" height="19.671" viewBox="0 0 17.882 19.671">
+							<g transform="translate(41 0)">
+								<g transform="translate(-41)">
+									<path style="fill:#484848;fill-rule:evenodd;" d="M12.32,1005.141a9.751,9.751,0,0,0-2.276,2.963.38.38,0,0,0-.008.339c3.23,6.735,13.9,6.877,17.8.023a.38.38,0,0,0,.018-.335c-.5-1.892-3.551-4.507-5.434-3.923a5.264,5.264,0,0,1-6.5.007,4.364,4.364,0,0,0-3.6.925Zm3.245-.258a6.111,6.111,0,0,0,7.159.021,5.531,5.531,0,0,1,4.356,3.357c-3.646,6.111-13.252,5.962-16.278.029a8.867,8.867,0,0,1,2-2.569,3.871,3.871,0,0,1,2.767-.839Z" transform="translate(-10 -993.88)"/>
+									<path style="fill:#484848;fill-rule:evenodd;" d="M32.022,958.362a5.15,5.15,0,1,0,5.178,5.154A5.167,5.167,0,0,0,32.022,958.362Zm0,.751a4.4,4.4,0,1,1-4.415,4.4A4.4,4.4,0,0,1,32.022,959.113Z" transform="translate(-23.086 -958.362)"/>
+								</g>
+							</g>
+						</svg>
+						Login
+					</a> -->
+				</nav>
+			</div>
+			
+<div class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-dropdown js-wpml-ls-legacy-dropdown">
+	<ul>
+
+		<li tabindex="0" class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-pt-br wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-dropdown">
+			<a href="#" class="js-wpml-ls-item-toggle wpml-ls-item-toggle">
+                <span class="wpml-ls-native">PT</span></a>
+
+			<ul class="wpml-ls-sub-menu">
+				
+					<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en">
+						<a href="http://www.tupy.com.br/en/" class="wpml-ls-link">
+                            <span class="wpml-ls-display">ENG</span></a>
+					</li>
+
+				
+					<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-es wpml-ls-last-item">
+						<a href="http://www.tupy.com.br/es/" class="wpml-ls-link">
+                            <span class="wpml-ls-display">ESP</span></a>
+					</li>
+
+							</ul>
+
+		</li>
+
+	</ul>
+</div>
+		</div>
+		<div class="header__bottom">
+			<div class="wrapper header__container">
+				<!-- h1 só na home -->
+								<h1 class="logo">
+					Tupy
+					<a href="https://www.tupy.com.br">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="119.911" height="31.008" viewBox="0 0 119.911 31.008">
+							<defs>
+								<style>
+									.logo-a,
+									.logo-c {
+										fill: #484848;
+									}
+
+									.logo-b {
+										clip-path: url(#logo-a);
+									}
+
+									.logo-c {
+										fill-rule: evenodd;
+									}
+								</style>
+								<clipPath id="logo-a">
+									<rect class="logo-a" width="119.911" height="31.008"></rect>
+								</clipPath>
+							</defs>
+							<g transform="translate(-49.413 -4)">
+								<g class="logo-b" transform="translate(49.413 4)">
+									<path class="logo-c" d="M21.389,27.153,2.9,5.959C1.636,4.511,2.188,2.318,4.475,2.325V2.309H44.752v.016c2.287-.008,2.839,2.185,1.571,3.633L27.838,27.153c-2.141,1.98-4.308,1.98-6.449,0m4.982-4.206V8.71H34.9V5.863H14.323V8.71h8.533V22.946ZM5.025,0C-.3.072-.991,4.942,1.084,7.22L19.494,28.64a6.717,6.717,0,0,0,10.239,0L48.143,7.22C50.217,4.942,49.527.072,44.2,0Z" transform="translate(0 0)"></path>
+									<path class="logo-c" d="M128.818,6.834V7.3a2.361,2.361,0,0,0-1.254.489,13.006,13.006,0,0,0-1.923,2.873l-3.578,6.157v4.114a5.683,5.683,0,0,0,.134,1.64,1.254,1.254,0,0,0,.528.561,1.957,1.957,0,0,0,1.055.248h.922v.463h-9.26v-.463h.864a2.18,2.18,0,0,0,1.155-.265,1.169,1.169,0,0,0,.5-.6,5.161,5.161,0,0,0,.137-1.58V17.52l-3.884-7.286a10.684,10.684,0,0,0-1.632-2.539,1.992,1.992,0,0,0-1.263-.394V6.834h7.909V7.3h-.353a1.724,1.724,0,0,0-1,.214.573.573,0,0,0-.283.45,7.717,7.717,0,0,0,.972,2.269l2.983,5.634,2.97-5.134a6.936,6.936,0,0,0,1.105-2.5.666.666,0,0,0-.316-.561,2.94,2.94,0,0,0-1.52-.377V6.834m-18.934.98v7.352c.27.016.469.025.61.025a2.884,2.884,0,0,0,2.286-.912,4.166,4.166,0,0,0,.806-2.817,4.017,4.017,0,0,0-.806-2.771,3.085,3.085,0,0,0-2.4-.878Zm0,8.327V20.86a5.292,5.292,0,0,0,.166,1.734,1.2,1.2,0,0,0,.581.574,3.832,3.832,0,0,0,1.542.214v.463H98.747v-.463a3.636,3.636,0,0,0,1.554-.222,1.277,1.277,0,0,0,.573-.57,5.437,5.437,0,0,0,.162-1.73V9.822a5.532,5.532,0,0,0-.162-1.738,1.218,1.218,0,0,0-.581-.569A3.726,3.726,0,0,0,98.747,7.3V6.834h7.2q3.552,0,5.1,1.306a4.092,4.092,0,0,1,1.545,3.262,4.245,4.245,0,0,1-1,2.835,5.071,5.071,0,0,1-2.751,1.605,18.263,18.263,0,0,1-3.991.3M81.45,6.834h8.516V7.3h-.424a2.936,2.936,0,0,0-1.321.206,1.149,1.149,0,0,0-.511.57,6.378,6.378,0,0,0-.154,1.82v8.327a8.7,8.7,0,0,0,.336,3.027,2.878,2.878,0,0,0,1.1,1.229,3.537,3.537,0,0,0,1.935.488,4.038,4.038,0,0,0,2.281-.621,3.759,3.759,0,0,0,1.412-1.712,10.7,10.7,0,0,0,.47-3.8V9.9a4.124,4.124,0,0,0-.233-1.632,1.413,1.413,0,0,0-.581-.676,3.378,3.378,0,0,0-1.55-.287V6.834h5.708V7.3h-.341a2.137,2.137,0,0,0-1.155.287,1.622,1.622,0,0,0-.668.865A4.522,4.522,0,0,0,96.113,9.9v6.46a17.4,17.4,0,0,1-.382,4.328,4.834,4.834,0,0,1-1.869,2.445,6.6,6.6,0,0,1-4.054,1.117,7.512,7.512,0,0,1-3.311-.591A4.952,4.952,0,0,1,84.245,21.6a7.346,7.346,0,0,1-.656-3.378V9.9a5.982,5.982,0,0,0-.158-1.824,1.18,1.18,0,0,0-.548-.57,3.159,3.159,0,0,0-1.433-.2Zm-.739,0v4.607h-.436A7.455,7.455,0,0,0,79.41,9.15a3.307,3.307,0,0,0-1.305-1.109,3.974,3.974,0,0,0-1.615-.227H75.26V20.932a5.632,5.632,0,0,0,.137,1.631,1.293,1.293,0,0,0,.548.57,2.133,2.133,0,0,0,1.114.248h.548v.463H68.966v-.463h.549a2.219,2.219,0,0,0,1.155-.265,1.17,1.17,0,0,0,.5-.6,5.192,5.192,0,0,0,.137-1.58V7.814h-1.2a3.39,3.39,0,0,0-2.422.728,4.866,4.866,0,0,0-1.337,2.9h-.462V6.834Z" transform="translate(-8.907 -0.924)"></path>
+								</g>
+							</g>
+						</svg>
+					</a>
+				</h1>
+				<nav class="header__menu">
+					<a href="https://www.tupy.com.br/sobre-a-tupy/" target="" class="menu__item ">Sobre a Tupy</a><a href="#" target="" class="menu__item " data-menu="0">Soluções</a><a href="https://www.tupy.com.br/inovacao-e-tecnologia/" target="" class="menu__item " data-menu="1">Inovação e Tecnologia</a><a href="https://www.tupy.com.br/sustentabilidade/" target="" class="menu__item " data-menu="2">Sustentabilidade</a><a href="https://www.tupy.com.br/carreiras/" target="" class="menu__item ">Carreiras</a><a href="https://www.tupy.com.br/imprensa/" target="" class="menu__item " data-menu="3">Imprensa</a><a href="https://www.tupy.com.br/fornecedores/" target="" class="menu__item ">Fornecedores</a><a href="https://www.tupy.com.br/onde-estamos/" target="" class="menu__item ">Onde Estamos</a>				</nav>
+				<button class="header__search">
+					<svg xmlns="http://www.w3.org/2000/svg" width="23.909" height="24" viewBox="0 0 23.909 24">
+						<path style="fill: #fff;" d="M183.889,182.013l-7.006-7.031a9.211,9.211,0,0,0-.889-11.953,9.181,9.181,0,1,0-1.032,13.88l7.006,7.031a1.355,1.355,0,0,0,1.921,0A1.368,1.368,0,0,0,183.889,182.013Zm-9.065-7.635-.221.242-.241.222a7.218,7.218,0,1,1,.462-.465Z" transform="translate(-160.377 -160.34)"></path>
+					</svg>
+				</button>
+				<button class="menu__button mobile-only">
+					<span></span>
+				</button>
+			</div>
+		</div>
+		<div class="h-search" style="height: 111.922px;">
+			<div class="wrapper h-search__container">
+				<form method="GET" action="https://www.tupy.com.br" class="h-search__form">
+					<input type="text" name="s" id="s" placeholder="O que você procura?" autocomplete="off" style="">
+					<button type="submit">
+						<svg xmlns="http://www.w3.org/2000/svg" width="23.909" height="24" viewBox="0 0 23.909 24">
+							<path style="fill: #484848;" d="M183.889,182.013l-7.006-7.031a9.211,9.211,0,0,0-.889-11.953,9.181,9.181,0,1,0-1.032,13.88l7.006,7.031a1.355,1.355,0,0,0,1.921,0A1.368,1.368,0,0,0,183.889,182.013Zm-9.065-7.635-.221.242-.241.222a7.218,7.218,0,1,1,.462-.465Z" transform="translate(-160.377 -160.34)"></path>
+						</svg>
+					</button>
+				</form>
+				<button class="h-search__close">×</button>
+			</div>
+		</div>
+	</header>
+
+	<aside class="submenu" style="top: 111.922px;">
+		<div class="submenu__item" data-submenu="0"><div class="submenu__container"><nav class="submenu__menu"><a href="https://www.tupy.com.br/solucoes/componentes-estruturais-e-pecas-de-engenharia/" target="" class="">Componentes Estruturais e Peças de Engenharia</a><a href="https://www.tupy.com.br/solucoes/usinagem/" target="" class="">Usinagem</a><a href="https://mwm.com.br/pt/" target="_blank" class="">MWM</a><a href="https://www.tupy.com.br/solucoes/hidraulica/" target="" class="">Hidráulica</a><a href="https://www.tupy.com.br/solucoes/coprodutos/" target="" class="">Coprodutos</a></nav></div></div><div class="submenu__item" data-submenu="1"><div class="submenu__container"><nav class="submenu__menu"><a href="https://www.tupy.com.br/inovacao-aberta/" target="" class="">Inovação Aberta</a><a href="https://www.shiftt.com.br/" target="_blank" class="">ShiftT</a></nav></div></div><div class="submenu__item" data-submenu="2"><div class="submenu__container"><nav class="submenu__menu"><a href="https://www.tupy.com.br/sustentabilidade/#relatorios" target="" class="">Relatórios</a></nav></div></div><div class="submenu__item" data-submenu="3"><div class="submenu__container"><nav class="submenu__menu"><a href="https://www.tupy.com.br/imprensa/banco-de-imagens-e-videos/" target="" class="">Banco de Imagens e vídeos</a><a href="https://www.tupy.com.br/imprensa/noticias/" target="" class="">Notícias</a></nav></div></div>	</aside>
+	<main>
+<style>
+    .h-banner__item[data-bg="1"] {
+                                    background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/10/img-home-header-8a.jpg)
+                                }
+                                @media only screen and (max-width:800px){
+                                    .h-banner__item[data-bg="1"] {
+                                        background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/10/img-home-header-8a.jpg);
+                                    }
+                                }
+                                .h-banner__item[data-bg="2"] {
+                                    background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/06/img-home-header-6.jpg)
+                                }
+                                @media only screen and (max-width:800px){
+                                    .h-banner__item[data-bg="2"] {
+                                        background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/06/img-home-header-6.jpg);
+                                    }
+                                }
+                                </style>
+<section class="h-banner slick-initialized slick-slider"><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 2880px;"><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 1440px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;"><div><div class="h-banner__item" data-bg="1" style="width: 100%; display: inline-block;">
+                <div class="wrapper h-banner__container">
+                    <h2>Liderança Global</h2>
+                    <p>A Tupy está presente em todos continentes. É referência em componentes estruturais em ferro fundido para bens de capital</p>
+                    <span class="h-banner__down">
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+            </div></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 1440px; position: relative; left: -1440px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms;" tabindex="-1"><div><div class="h-banner__item" data-bg="2" style="width: 100%; display: inline-block;">
+                <div class="wrapper h-banner__container">
+                    <h2>Conhecimento que lidera a transformação</h2>
+                    <p>Transformamos resíduos em produtos de alta complexidade, exportando conhecimento tecnológico para todo o mundo</p>
+                    <span class="h-banner__down">
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+            </div></div></div></div></div></section>
+
+<section class="h-slider h-slider--corona slick-initialized slick-slider slick-dotted"><button class="slick-prev slick-arrow slick-disabled" aria-label="Previous" type="button" aria-disabled="true" style="">Previous</button><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 4320px; transform: translate3d(0px, 0px, 0px);"><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 1440px;" role="tabpanel" id="slick-slide10"><div><div class="h-slider__item" style="width: 100%; display: inline-block;">
+                <div class="h-slider__text wrapper-left" style="padding-left: 167.5px;">
+                    <h2>Desenvolvimento sustentável</h2>
+                    <p>As iniciativas ambientais, sociais e de governança (ESG, na sigla em inglês) da Companhia, bem como a estratégia de sustentabilidade da Tupy são reportadas em nosso Relatório. Acesse a última edição</p>
+                                            <a href="https://www.tupy.com.br/wp-content/uploads/2026/05/RelatorioSustentabilidade2025.pdf" target="_blank" class="more" tabindex="0">
+                            <span></span>
+                            <p></p>
+                        </a>
+                                    </div>
+                <figure class="h-slider__image" style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2026/05/05_2026_Capa_Site_Relatório_v2_PT_BR.png); background-position: left"></figure>
+            </div></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 1440px;" tabindex="-1" role="tabpanel" id="slick-slide11"><div><div class="h-slider__item" style="width: 100%; display: inline-block;">
+                <div class="h-slider__text wrapper-left" style="padding-left: 167.5px;">
+                    <h2>Inovação aberta</h2>
+                    <p>A Tupy acredita que ao reunir de maneira colaborativa diferentes experiências e competências gera-se valor sustentável. Para nós, a Inovação Aberta fortalece o ecossistema de ciência, tecnologia e inovação, cocriando e catalisando os potenciais de toda a rede.</p>
+                                            <a href="/inovacao-aberta/" target="" class="more" tabindex="-1">
+                            <span></span>
+                            <p></p>
+                        </a>
+                                    </div>
+                <figure class="h-slider__image" style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/05/img-inovacao-tupyup-1.jpg); background-position: center"></figure>
+            </div></div></div><div class="slick-slide" data-slick-index="2" aria-hidden="true" style="width: 1440px;" tabindex="-1" role="tabpanel" id="slick-slide12"><div><div class="h-slider__item" style="width: 100%; display: inline-block;">
+                <div class="h-slider__text wrapper-left" style="padding-left: 167.5px;">
+                    <h2>Conheça a ShiftT, aceleradora de startups com a força da Tupy</h2>
+                    <p>Parceria e inovação tecnológica sempre foram a base do desenvolvimento da Tupy. Unir o conhecimento dos profissionais e a estrutura da Companhia ao talento de empreendedores de todo o País faz parte de nossa jornada rumo ao desenvolvimento sustentável.</p>
+                                            <a href="https://www.shiftt.com.br/" target="_blank" class="more" tabindex="-1">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </div>
+                <figure class="h-slider__image" style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/07/home-carrossel-shift-tupy-v03.jpg); background-position: center"></figure>
+            </div></div></div></div></div><button class="slick-next slick-arrow" aria-label="Next" type="button" style="" aria-disabled="false">Next</button><ul class="slick-dots" style="" role="tablist"><li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control10" aria-controls="slick-slide10" aria-label="1 of 3" tabindex="0" aria-selected="true">1</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control11" aria-controls="slick-slide11" aria-label="2 of 3" tabindex="-1">2</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control12" aria-controls="slick-slide12" aria-label="3 of 3" tabindex="-1">3</button></li></ul></section>
+
+<section class="h-meet">
+    <figure class="h-meet__left" style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/05/img-home-fachada-tupy.jpg)">
+        <h2>Conheça <p>a Tupy</p></h2>
+        <span>Tupy</span>
+    </figure>
+    <div class="h-meet__right">
+                        <div class="h-meet__item wrapper-right" style="padding-right: 167.5px;">
+                    <img src="https://www.tupy.com.br/wp-content/uploads/2021/05/icon-sobre.png">
+                    <div class="h-meet__text">
+                        <h3>Sobre a Tupy</h3>
+                        <p>Multinacional brasileira, emprega mais de 20 mil pessoas, com fábricas em Joinville (Santa Catarina, Brasil), sede da organização, São Paulo (São Paulo), Betim (Minas Gerais, Brasil), Saltillo e Ramos Arizpe (Coahuila, México), Aveiro (Portugal), além de escritórios no Brasil, Estados Unidos, Alemanha, Itália e Holanda.</p>
+                    </div>
+                                            <a href="https://www.tupy.com.br/sobre-a-tupy/" target="" class="more">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </div>
+                        <div class="h-meet__item wrapper-right" style="padding-right: 167.5px;">
+                    <img src="https://www.tupy.com.br/wp-content/uploads/2021/05/icon-sustentabilidade.png">
+                    <div class="h-meet__text">
+                        <h3>Sustentabilidade</h3>
+                        <p>Desenvolvemos soluções que contribuem com a melhoria da condição de vida das pessoas, buscando sempre minimizar  nosso impacto e ampliar o nosso valor para a sociedade </p>
+                    </div>
+                                            <a href="https://www.tupy.com.br/sustentabilidade/" target="" class="more">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </div>
+                        <div class="h-meet__item wrapper-right" style="padding-right: 167.5px;">
+                    <img src="https://www.tupy.com.br/wp-content/uploads/2021/05/icon-tecnologia.png">
+                    <div class="h-meet__text">
+                        <h3>Inovação e Tecnologia</h3>
+                        <p>Transformamos conhecimento em soluções inovadoras, combinando excelência em fundição, metalurgia, motores e novos modelos de negócio com a colaboração contínua do ecossistema de inovação</p>
+                    </div>
+                                            <a href="https://www.tupy.com.br/inovacao-e-tecnologia/" target="" class="more">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </div>
+                        <div class="h-meet__item wrapper-right" style="padding-right: 167.5px;">
+                    <img src="https://www.tupy.com.br/wp-content/uploads/2021/05/icon-carreiras.png">
+                    <div class="h-meet__text">
+                        <h3>Carreiras</h3>
+                        <p>Nossa equipe é o maior patrimônio da Empresa, com comprometimento, trabalho e iniciativa</p>
+                    </div>
+                                            <a href="https://www.tupy.com.br/carreiras/" target="" class="more">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </div>
+            </div>
+</section>
+
+<section class="h-everywhere desktop-only">
+    <div class="wrapper h-everywhere__top">
+        <div class="h-everywhere__cats">
+            <button class="h-everywhere__category" data-category="agricultura">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;" xml:space="preserve">
+                    <g>
+                        <path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275 c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"></path>
+                    </g>
+                </svg>
+                Agricultura
+            </button>
+            <button class="h-everywhere__category" data-category="transporte">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;" xml:space="preserve">
+                    <g>
+                        <path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275 c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"></path>
+                    </g>
+                </svg>
+                Transporte e manuseio de carga
+            </button>
+            <button class="h-everywhere__category" data-category="infraestrutura">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;" xml:space="preserve">
+                    <g>
+                        <path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275 c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"></path>
+                    </g>
+                </svg>
+                Infraestrutura &amp; Construção
+            </button>
+            <button class="h-everywhere__category" data-category="geracao">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;" xml:space="preserve">
+                    <g>
+                        <path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275 c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"></path>
+                    </g>
+                </svg>
+                Geração de Energia
+            </button>
+            <span>X
+                Limpar            </span>
+        </div>
+        <div class="h-everywhere__heading">
+            <h2>Tupy em <span>todos os lugares</span></h2>
+            <h3>Essenciais para a sociedade, nossos produtos estão no dia a dia de todos</h3>
+            <p><b>Clique nas categorias</b> ao lado e identifique abaixo os setores em que a Tupy está presente.</p>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="78" height="43" viewBox="0 0 78 43">
+            <g transform="translate(-146 -5640)">
+                <g transform="translate(146 5640)">
+                    <circle style="fill: #f7a31c" cx="7.5" cy="7.5" r="7.5"></circle>
+                    <ellipse style="fill: #f7a31c" cx="7" cy="7.5" rx="7" ry="7.5" transform="translate(32)"></ellipse>
+                    <g style="fill:none;stroke:#f7a31c;" transform="translate(62)">
+                        <ellipse style="stroke:none;" cx="8" cy="7.5" rx="8" ry="7.5"></ellipse>
+                        <ellipse style="fill:none;" cx="8" cy="7.5" rx="7.5" ry="7"></ellipse>
+                    </g>
+                </g>
+                <g transform="translate(146 5669.11)">
+                    <ellipse style="fill: #f7a31c" cx="7.5" cy="7" rx="7.5" ry="7" transform="translate(0 -0.11)"></ellipse>
+                    <circle style="fill: #f7a31c" cx="7" cy="7" r="7" transform="translate(32 -0.11)"></circle>
+                    <ellipse style="fill: #f7a31c" cx="8" cy="7" rx="8" ry="7" transform="translate(62 -0.11)"></ellipse>
+                </g>
+            </g>
+        </svg>
+    </div>
+        <figure class="h-everywhere__image">
+        <img src="https://www.tupy.com.br/wp-content/uploads/2021/06/img-home-bg-infografico.png">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1278.945" height="655.961" viewBox="0 0 1278.945 655.961">
+            <defs>
+                <style>
+                    .a,
+                    .h {
+                        fill: #fff;
+                    }
+
+                    .b {
+                        fill: #faa61a;
+                    }
+
+                    .c {
+                        fill: #2e2e2e;
+                        font-size: 14px;
+                        font-family: OpenSans, Open Sans;
+                    }
+
+                    .d {
+                        fill: #f7a31c;
+                    }
+
+                    .e {
+                        opacity: 0.998;
+                    }
+
+                    .f {
+                        fill: #f7de1c;
+                    }
+
+                    .g {
+                        fill: #32d0ed;
+                    }
+
+                    .h {
+                        opacity: 0.996;
+                    }
+
+                    .i {
+                        fill: #054295;
+                    }
+
+                    .j {
+                        filter: url(#bc);
+                    }
+
+                    .k {
+                        filter: url(#ba);
+                    }
+
+                    .l {
+                        filter: url(#ay);
+                    }
+
+                    .m {
+                        filter: url(#aw);
+                    }
+
+                    .n {
+                        filter: url(#au);
+                    }
+
+                    .o {
+                        filter: url(#as);
+                    }
+
+                    .p {
+                        filter: url(#aq);
+                    }
+
+                    .q {
+                        filter: url(#ao);
+                    }
+
+                    .r {
+                        filter: url(#am);
+                    }
+
+                    .s {
+                        filter: url(#ak);
+                    }
+
+                    .t {
+                        filter: url(#ai);
+                    }
+
+                    .u {
+                        filter: url(#ag);
+                    }
+
+                    .v {
+                        filter: url(#ae);
+                    }
+
+                    .w {
+                        filter: url(#ac);
+                    }
+
+                    .x {
+                        filter: url(#aa);
+                    }
+
+                    .y {
+                        filter: url(#y);
+                    }
+
+                    .z {
+                        filter: url(#w);
+                    }
+
+                    .aa {
+                        filter: url(#u);
+                    }
+
+                    .ac {
+                        filter: url(#q);
+                    }
+
+                    .ad {
+                        filter: url(#o);
+                    }
+
+                    .ae {
+                        filter: url(#m);
+                    }
+
+                    .af {
+                        filter: url(#k);
+                    }
+
+                    .ag {
+                        filter: url(#i);
+                    }
+
+                    .ah {
+                        filter: url(#g);
+                    }
+
+                    .ai {
+                        filter: url(#e);
+                    }
+
+                    .aj {
+                        filter: url(#c);
+                    }
+
+                    .ak {
+                        filter: url(#a);
+                    }
+                </style>
+                <!-- SVG INGLES -->
+                
+                                <!-- SVG PORTUGUES -->
+                                    <filter id="a" x="379.648" y="58.961" width="221.97" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="b"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="c" x="651.115" y="343.341" width="200.435" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="d"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="d"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="e" x="804.648" y="251.049" width="182.366" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="f"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="f"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="g" x="635.582" y="169.367" width="230.97" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="h"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="h"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="i" x="546.198" y="298" width="185.901" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="j"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="j"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="k" x="337.607" y="208.367" width="150.969" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="l"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="l"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="m" x="479.529" y="386.961" width="237.574" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="n"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="n"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="o" x="1039.648" y="311.961" width="199.97" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="p"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="p"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="q" x="1128.976" y="420.961" width="149.969" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="r"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="r"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="s" x="987.805" y="602.961" width="220.158" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="t"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="t"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="u" x="868.648" y="0" width="149.951" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="v"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="v"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="w" x="778.582" y="61.92" width="253.969" height="48.001" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="x"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="x"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="y" x="788.363" y="385.961" width="334.803" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="z"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="z"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="aa" x="1007.166" y="28.96" width="134.882" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="ab"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="ab"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="ac" x="992.166" y="110.092" width="121.16" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="ad"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="ad"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="ae" x="528.234" y="479.092" width="149.348" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="af"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="af"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="ag" x="443.593" y="523.05" width="102.744" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="ah"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="ah"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="ai" x="231.649" y="428.912" width="255.643" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="aj"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="aj"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="ak" x="285.471" y="605.912" width="188.28" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="al"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="al"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="am" x="460.948" y="123.911" width="215.883" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="an"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="an"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="ao" x="603.948" y="34.911" width="212.815" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="ap"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="ap"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="aq" x="280.648" y="341.913" width="144.065" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="ar"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="ar"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="as" x="0" y="529.793" width="208.7" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="at"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="at"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="au" x="325.295" y="299.358" width="210.349" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="av"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="av"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="aw" x="111.295" y="398.358" width="210.349" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="ax"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="ax"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="ay" x="818.648" y="477.961" width="157.297" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="az"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="az"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="ba" x="914.584" y="527.961" width="113.625" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="bb"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="bb"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                    <filter id="bc" x="785.441" y="607.961" width="189.505" height="48" filterUnits="userSpaceOnUse">
+                                        <feOffset input="SourceAlpha"></feOffset>
+                                        <feGaussianBlur stdDeviation="3" result="bd"></feGaussianBlur>
+                                        <feFlood flood-opacity="0.161"></feFlood>
+                                        <feComposite operator="in" in2="bd"></feComposite>
+                                        <feComposite in="SourceGraphic"></feComposite>
+                                    </filter>
+                                </defs>
+                                <g transform="translate(-50.35 -99.567)">
+                                    <g transform="translate(0.999 -2714.521)" data-type="transporte">
+                                        <g transform="translate(18 5)">
+                                            <g transform="translate(52.072 2793.775)">
+                                                <g class="ak" transform="matrix(1, 0, 0, 1, -20.72, 15.31)">
+                                                    <path class="a" d="M379.158,85.274H560.666c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H443.574l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H379.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(20.72 -17.31)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(454 2893.521)">
+                                                <tspan x="0" y="0">
+                                                    Movimentação de carga
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(449 2882.521) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(284.467 289.38)">
+                                            <g transform="translate(54.072 2793.775)">
+                                                <g class="aj" transform="matrix(1, 0, 0, 1, -289.19, -269.07)">
+                                                    <path class="a" d="M382.158,85.274H542.131c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H443.574l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H382.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(289.19 267.07)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(459.188 2894.142)">
+                                                <tspan x="0" y="0">
+                                                    Caminhões pesados
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(454.188 2883.142) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(452 197.088)">
+                                            <g transform="translate(54.072 2793.775)">
+                                                <g class="ai" transform="matrix(1, 0, 0, 1, -456.72, -176.77)">
+                                                    <path class="a" d="M369.158,85.274h141.9c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H391.3l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12h-11.7c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(455.72 174.77)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(442.683 2894.434)">
+                                                <tspan x="0" y="0">
+                                                    Veículos Especiais
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(438.188 2883.434) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(231.934 105.406)">
+                                            <g class="e" transform="translate(106.072 2803.775)">
+                                                <g class="ah" transform="matrix(1, 0, 0, 1, -288.65, -95.09)">
+                                                    <path class="a" d="M369.158,85.274H559.666c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H443.574l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H369.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(286.65 93.09)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 1.148)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(497.188 2904.114)">
+                                                <tspan x="0" y="0">
+                                                    Veículos comerciais leves
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(492.188 2893.115) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(182.55 244.04)">
+                                            <g transform="translate(54.072 2793.775)">
+                                                <g class="ag" transform="matrix(1, 0, 0, 1, -187.27, -223.73)">
+                                                    <path class="a" d="M379.158,85.274H524.6c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H417.436l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12h-27.84c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(187.27 221.73)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(450.188 2894.481)">
+                                                <tspan x="0" y="0">
+                                                    Caminhões médios
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(445.188 2883.481) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(-29.041 160.406)">
+                                            <g transform="translate(54.072 2793.775)">
+                                                <g class="af" transform="matrix(1, 0, 0, 1, 24.32, -140.09)">
+                                                    <path class="a" d="M382.158,115.274H492.665c6.192,0,11.231-5.509,11.231-12.279s-5.039-12.279-11.231-12.279H423.574l-1.312-1.594-.587-.713-2.081-2.522a1.557,1.557,0,0,0-2.477,0l-2.081,2.522-.464.565L413.235,90.6l-.1.12H382.158c-6.192,0-11.231,5.507-11.231,12.279s5.039,12.279,11.231,12.279" transform="translate(-24.32 132.09)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(455.188 2893.114)">
+                                                <tspan x="0" y="0">
+                                                    Embarcações
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(450.188 2883.114) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(103.881 328.469)">
+                                            <g transform="translate(412.999 2877.627)">
+                                                <g class="ae" transform="matrix(1, 0, 0, 1, -467.53, -392.01)">
+                                                    <path class="a" d="M381.158,85.274H578.27c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H508.919l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H381.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(118.6 310.69)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,104.587V91.742" transform="translate(-341.654 -85.633)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(465 2898.053)">
+                                                <tspan x="0" y="0">
+                                                    Caminhões de bombeiros
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(460 2888.052) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(761 258)">
+                                            <g transform="translate(54.072 2793.775)">
+                                                <g class="ad" transform="matrix(1, 0, 0, 1, -765.72, -237.69)">
+                                                    <path class="a" d="M359.158,85.274H518.666c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H483.574l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H359.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(700.72 235.69)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(369.188 2894.521)">
+                                                <tspan x="0" y="0">
+                                                    Caminhões especiais
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(364.188 2883.521) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(820.328 372)">
+                                            <g transform="translate(54.072 2788.775)">
+                                                <g class="ac" transform="matrix(1, 0, 0, 1, -825.05, -346.69)">
+                                                    <path class="a" d="M389.158,115.274H498.665c6.192,0,11.231-5.509,11.231-12.279s-5.039-12.279-11.231-12.279H483.573l-1.312-1.594-.587-.713-2.081-2.522a1.557,1.557,0,0,0-2.477,0l-2.081,2.522-.464.565L473.235,90.6l-.1.12H389.158c-6.192,0-11.231,5.507-11.231,12.279s5.039,12.279,11.231,12.279" transform="translate(760.05 344.69)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(400.188 2894.521)">
+                                                <tspan x="0" y="0">
+                                                    Escavadeiras
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(391.188 2883.521) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(618.275 549)">
+                                            <g transform="translate(54.072 2793.775)">
+                                                <g class="ab" transform="matrix(1, 0, 0, 1, -623, -528.69)">
+                                                    <path class="a" d="M386.039,85.394l179.7-.12c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279h-76.42L488,111.425l-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.465-.565-1.337-1.622-.1-.12-92.838.12c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(622 526.69)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(458.188 2894.887)">
+                                                <tspan x="0" y="0">
+                                                    Infraestrutura ferroviária
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(453.188 2884.416) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(499 -54.961)">
+                                            <g transform="translate(60.072 2793.775)">
+                                                <g class="aa" transform="matrix(1, 0, 0, 1, -509.72, 75.27)">
+                                                    <path class="a" d="M399.158,85.274H508.647c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H447.039l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H399.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(489.72 -76.27)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(457.188 2894.482)">
+                                                <tspan x="0" y="0">
+                                                    Empilhadeiras
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(452.188 2883.481) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(382.352 25.441)">
+                                            <g class="z" transform="matrix(1, 0, 0, 1, -333, 2788.65)">
+                                                <path class="a" d="M345.158,115.275H558.665c6.192,0,11.231-5.509,11.231-12.279s-5.039-12.279-11.231-12.279H493.573l-1.312-1.594-.587-.713-2.081-2.522a1.557,1.557,0,0,0-2.477,0l-2.081,2.522-.464.565L483.235,90.6l-.1.12H345.158c-6.192,0-11.231,5.507-11.231,12.279s5.039,12.279,11.231,12.279" transform="translate(453.65 -14.35)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(485.567 2882.08)">
+                                                <tspan x="0" y="0">
+                                                    Caminhão de abastecimento
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(480.566 2871.079) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(413.716 345.607)">
+                                            <g transform="translate(418.475 2863.442)">
+                                                <g class="y" transform="matrix(1, 0, 0, 1, -782.84, -394.96)">
+                                                    <path class="a" d="M428.456,115.274H724.2c5.8,0,10.529-5.509,10.529-12.279S730.007,90.716,724.2,90.716H486.736l-1.23-1.594-.55-.713L483,85.887a1.406,1.406,0,0,0-2.322,0l-1.951,2.522s-.21.274-.435.565L477.044,90.6l-.093.12h-48.5c-5.805,0-10.529,5.507-10.529,12.279s4.724,12.279,10.529,12.279" transform="translate(379.44 309.69)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v19.1" transform="translate(-365.172 -61.636)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(465.364 2885.914)">
+                                                <tspan x="0" y="0">
+                                                    Transporte de insumos de matéria-prima
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(460.365 2874.914) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(635.387 -15.564)">
+                                            <g transform="translate(410.131 2867.613)">
+                                                <g class="x" transform="matrix(1, 0, 0, 1, -996.17, -37.96)">
+                                                    <path class="a" d="M493.578,115.274h-94.42c-6.192,0-11.231-5.509-11.231-12.279s5.039-12.279,11.231-12.279h72.28l1.312-1.594.587-.713,2.081-2.522a1.557,1.557,0,0,1,2.477,0l2.081,2.522.464.565,1.337,1.622.1.12h11.7c6.192,0,11.231,5.507,11.231,12.279s-5.039,12.279-11.231,12.279" transform="translate(628.24 -47.31)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,104.587V91.742" transform="translate(-249.806 -77.211)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(465.188 2890.643)">
+                                                <tspan x="0" y="0">
+                                                    Pushback
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(460.188 2879.642) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(632.518 66.131)">
+                                            <g transform="translate(407.999 2868.049)">
+                                                <g class="w" transform="matrix(1, 0, 0, 1, -991.17, -120.09)">
+                                                    <path class="a" d="M389.158,115.274h80.7c6.192,0,11.231-5.509,11.231-12.279s-5.039-12.279-11.231-12.279H420.9l-1.312-1.594L419,88.409l-2.081-2.522a1.557,1.557,0,0,0-2.477,0l-2.081,2.522-.464.565L410.563,90.6l-.1.12H389.158c-6.192,0-11.231,5.507-11.231,12.279s5.039,12.279,11.231,12.279" transform="translate(623.24 33.82)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,104.587V91.742" transform="translate(-342.654 -77.211)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(446.486 2890.391)">
+                                                <tspan x="0" y="0">
+                                                    Catering
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(441.674 2879.39) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(180.586 434.131)">
+                                            <g transform="translate(405.999 2868.049)">
+                                                <g class="v" transform="matrix(1, 0, 0, 1, -537.23, -488.09)">
+                                                    <path class="a" d="M379.158,115.274H488.044c6.192,0,11.231-5.509,11.231-12.279s-5.039-12.279-11.231-12.279H407.833l-1.312-1.594-.587-.713-2.081-2.522a1.557,1.557,0,0,0-2.477,0L399.3,88.409l-.465.565L397.494,90.6l-.1.12H379.158c-6.192,0-11.231,5.507-11.231,12.279s5.039,12.279,11.231,12.279" transform="translate(169.31 402.82)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,104.587V91.742" transform="translate(-342.654 -77.211)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(437.188 2890.887)">
+                                                <tspan x="0" y="0">
+                                                    Ambulâncias
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(432.188 2880.416) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(47.945 479.091)">
+                                            <g transform="translate(409.999 2875.048)">
+                                                <g class="u" transform="matrix(1, 0, 0, 1, -408.59, -540.05)">
+                                                    <path class="a" d="M485.44,115.274H423.158c-6.192,0-11.231-5.509-11.231-12.279s5.039-12.279,11.231-12.279h25.608l1.312-1.594.587-.713,2.081-2.522a1.557,1.557,0,0,1,2.477,0l2.081,2.522s.225.274.464.565L459.1,90.6l.1.12H485.44c6.192,0,11.231,5.507,11.231,12.279s-5.039,12.279-11.231,12.279" transform="translate(40.67 446.78)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(-218.818 -73.208)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(482 2890.151)">
+                                                <tspan x="0" y="0">
+                                                    Ônibus
+                                                </tspan>
+                                            </text>
+                                            <path class="d" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(477.188 2879.416) rotate(90)"></path>
+                                        </g>
+                                    </g>
+                                    <g transform="translate(-10 -2713.521)" data-type="infraestrutura">
+                                        <g transform="translate(-108 382.951)">
+                                            <g transform="translate(409.999 2868.049)">
+                                                <g class="t" transform="matrix(1, 0, 0, 1, -241.65, -437.91)">
+                                                    <path class="a" d="M369.158,115.274H584.339c6.192,0,11.231-5.509,11.231-12.279s-5.039-12.279-11.231-12.279H423.971l-1.312-1.594-.587-.713-2.081-2.522a1.557,1.557,0,0,0-2.477,0l-2.081,2.522-.464.565L413.632,90.6l-.1.12H369.158c-6.192,0-11.231,5.507-11.231,12.279s5.039,12.279,11.231,12.279" transform="translate(-117.28 352.64)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,104.587V91.742" transform="translate(-346.654 -77.211)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(440.188 2891.151)">
+                                                <tspan x="0" y="0">
+                                                    Válvulas e conexões de ferro
+                                                </tspan>
+                                            </text>
+                                            <path class="f" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(435.188 2880.416) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(-73.694 556.951)">
+                                            <g transform="translate(409.999 2868.049)">
+                                                <g class="s" transform="matrix(1, 0, 0, 1, -275.95, -611.91)">
+                                                    <path class="a" d="M369.158,115.274H516.976c6.192,0,11.231-5.509,11.231-12.279s-5.039-12.279-11.231-12.279H423.971l-1.312-1.594-.587-.713-2.081-2.522a1.557,1.557,0,0,0-2.477,0l-2.081,2.522-.464.565L413.632,90.6l-.1.12H369.158c-6.192,0-11.231,5.507-11.231,12.279s5.039,12.279,11.231,12.279" transform="translate(-63.46 529.64)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,104.587V91.742" transform="translate(-346.654 -77.211)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(459.188 2893.887)">
+                                                <tspan x="0" y="0">
+                                                    Saneamento básico
+                                                </tspan>
+                                            </text>
+                                            <path class="f" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(454.188 2883.416) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(120.299 68.951)">
+                                            <g transform="translate(410 2878.049)">
+                                                <g class="r" transform="matrix(1, 0, 0, 1, -469.95, -133.91)">
+                                                    <path class="a" d="M369.158,85.274H544.58c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H423.971l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H369.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(112.02 47.64)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(-346.655 -73.209)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(437.188 2893.887)">
+                                                <tspan x="0" y="0">
+                                                    Infraestrutura Portuária
+                                                </tspan>
+                                            </text>
+                                            <path class="f" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(432.188 2884.416) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(263.299 -20.049)">
+                                            <g transform="translate(410 2878.049)">
+                                                <g class="q" transform="matrix(1, 0, 0, 1, -612.95, -44.91)">
+                                                    <path class="a" d="M369.158,85.274H541.511c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H423.971l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H369.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(255.02 -41.36)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(-346.655 -73.209)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(439.188 2894.151)">
+                                                <tspan x="0" y="0">
+                                                    Instalações hidráulicas
+                                                </tspan>
+                                            </text>
+                                            <path class="f" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(434.188 2883.416) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(-78 286.951)">
+                                            <g transform="translate(409.999 2868.049)">
+                                                <g class="p" transform="matrix(1, 0, 0, 1, -271.65, -341.91)">
+                                                    <path class="a" d="M389.158,85.274h103.6c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H423.97l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H389.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(-88.28 265.64)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,104.587V91.742" transform="translate(-346.654 -77.211)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(456.188 2894.151)">
+                                                <tspan x="0" y="0">
+                                                    Perfuratrizes
+                                                </tspan>
+                                            </text>
+                                            <path class="f" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(451.188 2883.416) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(-355.648 490.441)">
+                                            <g transform="translate(404.999 2861.441)">
+                                                <g class="o" transform="matrix(1, 0, 0, 1, 11, -538.79)">
+                                                    <path class="a" d="M398.456,115.274c-5.8,0-10.529-5.509-10.529-12.279s4.724-12.279,10.529-12.279h8.232l1.23-1.594.55-.713,1.951-2.522a1.406,1.406,0,0,1,2.322,0l1.951,2.522.435.565,1.253,1.622.093.12H568.1c5.8,0,10.529,5.507,10.529,12.279S573.9,115.274,568.1,115.274" transform="translate(-378.93 453.52)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,110.838v-19.1" transform="translate(-331.696 -68.138)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(456.259 2884.559)">
+                                                <tspan x="0" y="0">
+                                                    Sistema anti-incêndio
+                                                </tspan>
+                                            </text>
+                                            <path class="f" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(451 2873.558) rotate(90)"></path>
+                                        </g>
+                                    </g>
+                                    <g transform="translate(-13.001 -2719.074)" data-type="geracao">
+                                        <g transform="translate(6.646 249.951)">
+                                            <g transform="translate(410 2878.049)">
+                                                <g class="n" transform="matrix(1, 0, 0, 1, -353.3, -309.36)">
+                                                    <path class="a" d="M374.158,85.274H544.045c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H415.85l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522s-.225-.274-.464-.565l-1.337-1.622-.1-.12H374.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(-28.63 223.08)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(-346.655 -73.209)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(422.674 2894.049)">
+                                                <tspan x="0" y="0">
+                                                    Geradores de energia
+                                                </tspan>
+                                            </text>
+                                            <path class="g" d="M6.128,2.544a1.043,1.043,0,0,1,1.81,0l4.538,7.913a1.043,1.043,0,0,1-.905,1.563H2.495a1.043,1.043,0,0,1-.905-1.563Z" transform="translate(419.693 2882.6) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(-207.354 348.951)">
+                                            <g transform="translate(410 2878.049)">
+                                                <g class="m" transform="matrix(1, 0, 0, 1, -139.3, -408.36)">
+                                                    <path class="a" d="M374.158,85.274H544.045c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H415.85l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522s-.225-.274-.464-.565l-1.337-1.622-.1-.12H374.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(-242.63 322.08)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(-346.655 -73.209)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(422.674 2894.049)">
+                                                <tspan x="0" y="0">
+                                                    Geradores de energia
+                                                </tspan>
+                                            </text>
+                                            <path class="g" d="M6.128,2.544a1.043,1.043,0,0,1,1.81,0l4.538,7.913a1.043,1.043,0,0,1-.905,1.563H2.495a1.043,1.043,0,0,1-.905-1.563Z" transform="translate(419.693 2882.6) rotate(90)"></path>
+                                        </g>
+                                    </g>
+                                    <g transform="translate(31.999 -2689.521)" data-type="agricultura">
+                                        <g transform="translate(428 399)">
+                                            <g transform="translate(54.072 2793.775)">
+                                                <g class="l" transform="matrix(1, 0, 0, 1, -463.72, -403.69)">
+                                                    <path class="h" d="M375.158,85.274H491.994c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H423.971l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H375.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(463.72 401.69)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(450.648 2894.151)">
+                                                <tspan x="0" y="0">
+                                                    Colheitadeiras
+                                                </tspan>
+                                            </text>
+                                            <path class="i" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(445.648 2884.416) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(529.936 449)">
+                                            <g transform="translate(54.072 2793.775)">
+                                                <g class="k" transform="matrix(1, 0, 0, 1, -565.66, -453.69)">
+                                                    <path class="h" d="M369.158,85.274h73.163c6.192,0,11.231,5.509,11.231,12.279s-5.039,12.279-11.231,12.279H397.833l-1.312,1.594-.587.713-2.081,2.522a1.557,1.557,0,0,1-2.477,0l-2.081-2.522-.464-.565-1.337-1.622-.1-.12H369.158c-6.192,0-11.231-5.507-11.231-12.279s5.039-12.279,11.231-12.279" transform="translate(565.66 451.69)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,91.742v12.845" transform="translate(11.273 10.066)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(440.188 2894.151)">
+                                                <tspan x="0" y="0">
+                                                    Tratores
+                                                </tspan>
+                                            </text>
+                                            <path class="i" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(435.188 2884.416) rotate(90)"></path>
+                                        </g>
+                                        <g transform="translate(403.793 538)">
+                                            <g transform="translate(409.999 2868.049)">
+                                                <g class="j" transform="matrix(1, 0, 0, 1, -795.44, -616.96)">
+                                                    <path class="h" d="M369.158,115.274H518.2c6.192,0,11.231-5.509,11.231-12.279S524.393,90.716,518.2,90.716h-94.23l-1.312-1.594-.587-.713-2.081-2.522a1.557,1.557,0,0,0-2.477,0l-2.081,2.522-.464.565L413.632,90.6l-.1.12H369.158c-6.192,0-11.231,5.507-11.231,12.279s5.039,12.279,11.231,12.279" transform="translate(436.51 531.69)"></path>
+                                                </g>
+                                                <path class="b" d="M365.171,104.587V91.742" transform="translate(-346.654 -77.211)"></path>
+                                            </g>
+                                            <text class="c" transform="translate(436.188 2891.151)">
+                                                <tspan x="0" y="0">
+                                                    Máquinas agrícolas
+                                                </tspan>
+                                            </text>
+                                            <path class="i" d="M4.868,1.512a1,1,0,0,1,1.735,0L10.612,8.5A1,1,0,0,1,9.744,10H1.726A1,1,0,0,1,.859,8.5Z" transform="translate(431.188 2880.416) rotate(90)"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                                    </svg>
+    </figure>
+</section>
+
+<section class="wrapper h-solution">
+    <div class="h-solution__heading">
+        <h2>Soluções</h2>
+        <p>Reconhecida pela alta tecnologia no desenho de soluções e criação de ligas metálicas, a Tupy tem no setor de bens de capital seu principal negócio.</p>
+    </div>
+    <div class="h-solution__cards">
+                        <article class="h-solution__item" style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/05/img-home-solucoes-componentes.jpg)">
+                    <h2>Componentes Estruturais e Peças de Engenharia</h2>
+                    <p>Fabricamos produtos customizados para os grandes <i>players</i> globais. São blocos, cabeçotes de motor e peças de engenharia que resultam do trabalho de profissionais especializados.</p>
+                                            <a href="https://www.tupy.com.br/solucoes/componentes-estruturais-e-pecas-de-engenharia/" target="" class="more">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </article>
+                        <article class="h-solution__item" style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/05/img-home-solucoes-usinagem.jpg)">
+                    <h2>Usinagem</h2>
+                    <p>Atuando desde 1996, hoje, a área dispões de 240 centros de usinagem e mais de 375 equipamentos especiais no Brasil e no México. Toda a engenharia do processo de usinagem é feita na Companhia por mais de 30 engenheiros especializados no Brasil e no México.</p>
+                                            <a href="https://www.tupy.com.br/solucoes/usinagem/" target="" class="more">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </article>
+                        <article class="h-solution__item" style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/05/img-home-solucoes-hidraulica.jpg)">
+                    <h2>Hidráulica</h2>
+                    <p>Também integram nosso portfólio as conexões de ferro maleável e perfis em ferro nodular ou cinzento, em formatos diversificados.</p>
+                                            <a href="https://www.tupy.com.br/solucoes/hidraulica/" target="" class="more">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </article>
+            </div>
+</section>
+
+<section class="h-press">
+    <div class="h-press__left wrapper-left" style="padding-left: 167.5px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="78" height="43" viewBox="0 0 78 43">
+            <g transform="translate(-146 -5640)">
+                <g transform="translate(146 5640)">
+                    <circle style="fill: #f7a31c" cx="7.5" cy="7.5" r="7.5"></circle>
+                    <ellipse style="fill: #f7a31c" cx="7" cy="7.5" rx="7" ry="7.5" transform="translate(32)"></ellipse>
+                    <g style="fill:none;stroke:#f7a31c;" transform="translate(62)">
+                        <ellipse style="stroke:none;" cx="8" cy="7.5" rx="8" ry="7.5"></ellipse>
+                        <ellipse style="fill:none;" cx="8" cy="7.5" rx="7.5" ry="7"></ellipse>
+                    </g>
+                </g>
+                <g transform="translate(146 5669.11)">
+                    <ellipse style="fill: #f7a31c" cx="7.5" cy="7" rx="7.5" ry="7" transform="translate(0 -0.11)"></ellipse>
+                    <circle style="fill: #f7a31c" cx="7" cy="7" r="7" transform="translate(32 -0.11)"></circle>
+                    <ellipse style="fill: #f7a31c" cx="8" cy="7" rx="8" ry="7" transform="translate(62 -0.11)"></ellipse>
+                </g>
+            </g>
+        </svg>
+        <h2>
+            <span>Im</span><span>pren</span><span>sa</span>        </h2>
+    </div>
+    <div class="h-press__right wrapper-right" style="padding-right: 167.5px;">
+                        <article class="h-press__item">
+                    <h3>Banco de imagens e vídeos</h3>
+                                            <a href="https://www.tupy.com.br/imprensa/banco-de-imagens-e-videos/" target="" class="download">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </article>
+                        <article class="h-press__item">
+                    <h3>Notícias</h3>
+                                            <a href="https://www.tupy.com.br/imprensa/noticias/" target="" class="download">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                                    </article>
+            </div>
+</section>
+
+<section class="location">
+    <div class="location__left wrapper-left" style="padding-left: 167.5px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="62.468" height="78.24" viewBox="0 0 62.468 78.24">
+            <g transform="translate(-62.379 -13.5)">
+                <path style="fill:#f7a31c;" d="M122.863,55.676a31.189,31.189,0,0,0-3.625-28.755h0a31.171,31.171,0,0,0-51.248,0,31.167,31.167,0,0,0-3.638,28.723A24.1,24.1,0,0,0,68.8,62.983L93.074,91.49a.708.708,0,0,0,1.08,0L118.407,63A24.126,24.126,0,0,0,122.863,55.676Zm-5.541,6.413L93.615,89.935,69.883,62.06a22.78,22.78,0,0,1-4.2-6.914A29.761,29.761,0,0,1,69.158,27.73a29.751,29.751,0,0,1,48.912,0,29.783,29.783,0,0,1,3.468,27.442,22.769,22.769,0,0,1-4.2,6.9Z"></path>
+                <path style="fill:#f7a31c;" d="M183.249,119.719a13.995,13.995,0,1,0,13.995,13.995A14.011,14.011,0,0,0,183.249,119.719Zm0,26.569a12.575,12.575,0,1,1,12.575-12.575A12.589,12.589,0,0,1,183.249,146.288Z" transform="translate(-89.634 -89.084)"></path>
+            </g>
+        </svg>
+        <h2>Onde estamos</h2>
+        <p>Fundada em 1938 por imigrantes alemães, a primeira fábrica e sede da Tupy está em Joinville (SC, Brasil). Nossas outras plantas fabris, estão localizadas em São Paulo (SP), Betim (MG, Brasil), Saltillo e Ramos Arizpe (Coahuila, México), Aveiro (Portugal). Atendemos nossos clientes com escritórios no Brasil, Estados Unidos, Alemanha, Itália e Holanda. Nossos produtos são exportados para cerca de 40 países.</p>
+                    <a href="https://www.tupy.com.br/onde-estamos/" target="" class="more">
+                <span></span>
+                <p>ver</p>
+            </a>
+            </div>
+    <div class="location__map">
+        <div id="map" style="height: 100%; width: 100%;"></div>
+        <div class="h-location__infos">
+                                <div class="l-location__call" data-address="Rua Albano Schmidt, 3400 Joinville-SC">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/06/tupy.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>TUPY S/A</h2>
+                            <p>Rua Albano Schmidt, 3400</p>
+                            <p>Bairro Boa Vista</p>
+                            <p>CEP 89227-901</p>
+                            <p>Fone 47 4009-8181</p>
+                            <div>
+                                <div>
+                                    <h3>Joinville-SC</h3>
+                                    <p>SEDE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="Av. Cardoso de Melo, 1666 – 6º andar São Paulo -SP">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/07/img-escritorios-de-vendas.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>TUPY S/A</h2>
+                            <p>Av. Cardoso de Melo, 1666 – 6º andar</p>
+                            <p>Bairro Vila Olímpia</p>
+                            <p>CEP 04.548.005</p>
+                            <p>Fone 11 2763-7815</p>
+                            <div>
+                                <div>
+                                    <h3>São Paulo -SP</h3>
+                                    <p>Escritório </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="41800 West Eleven Mile Road, Suite 115 – Pinnacle Centre Michigan – USA">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/07/img-escritorios-de-vendas.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>Tupy American Foundry Corporation</h2>
+                            <p>41800 West Eleven Mile Road, Suite 115 – Pinnacle Centre</p>
+                            <p>48375 – Novi – Michigan – USA</p>
+                            <p></p>
+                            <p>Fone: + 1 248-324-0167</p>
+                            <div>
+                                <div>
+                                    <h3>Michigan – USA</h3>
+                                    <p>Escritório </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="AM Hochacker 2 Grasbrunn - Munique">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/07/img-escritorios-de-vendas.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>Tupy</h2>
+                            <p>AM Hochacker 2</p>
+                            <p>D-85630 Grasbrunn - Munique</p>
+                            <p></p>
+                            <p>Fone +49 89 9454 8430</p>
+                            <div>
+                                <div>
+                                    <h3>Grasbrunn - Munique</h3>
+                                    <p>Escritório</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="Via Chambéry 93,107 Turim - Itália">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/07/img-escritorios-de-vendas.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>Tupy</h2>
+                            <p>Via Chambéry 93,107</p>
+                            <p></p>
+                            <p>CAP 10142</p>
+                            <p></p>
+                            <div>
+                                <div>
+                                    <h3>Turim - Itália</h3>
+                                    <p>Escritório</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="Meander 901 Arnhem - Holanda">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/07/img-escritorios-de-vendas.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>Tupy</h2>
+                            <p>Meander 901</p>
+                            <p></p>
+                            <p>6825MH</p>
+                            <p></p>
+                            <div>
+                                <div>
+                                    <h3>Arnhem - Holanda</h3>
+                                    <p>Escritório</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="Rua Isidro López Zertuche, 4003 Coahuila - México">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/07/img-onde-estamos-saltillo-1.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>Tupy Saltillo</h2>
+                            <p>Rua Isidro López Zertuche, 4003</p>
+                            <p>Zona Industrial - Coahuila – México</p>
+                            <p>Código Postal 25230</p>
+                            <p>Fone +52 844 411-2000</p>
+                            <div>
+                                <div>
+                                    <h3>Coahuila - México</h3>
+                                    <p>Parque Industrial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="Rodovia Monterrey – Saltillo, Km. 21,5 Coahuila – México">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2021/07/img-onde-estamos-ramos-1.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>Tupy Ramos Arizpe</h2>
+                            <p>Rodovia Monterrey – Saltillo, Km. 21,5</p>
+                            <p>Coahuila – México</p>
+                            <p>Codigo Postal 25900</p>
+                            <p>Fone: +52 844 866-0600</p>
+                            <div>
+                                <div>
+                                    <h3>Coahuila – México</h3>
+                                    <p>Parque Industrial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="Rua Senador Giovanni Agnelli, 230 a 906 Betim – Minas Gerais ">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2022/02/2021_1004_13h54m21s_tupy_IMG_6402.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>TUPY S/A</h2>
+                            <p>Rua Senador Giovanni Agnelli, 230 a 906</p>
+                            <p>Bairro: Distrito Industrial Paulo Camilo</p>
+                            <p>CEP 32681-080</p>
+                            <p>Fone +55 31 3316-8111</p>
+                            <div>
+                                <div>
+                                    <h3>Betim – Minas Gerais </h3>
+                                    <p>Parque Industrial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="Rua da Junqueira Apatado 3 Aveiro - Portugal">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2022/02/Logo_Fachada.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>TUPY S/A</h2>
+                            <p>Rua da Junqueira Apatado 3</p>
+                            <p>Bairro Cacia</p>
+                            <p>CEP 3801-652</p>
+                            <p>Fone +351 234 301 700</p>
+                            <div>
+                                <div>
+                                    <h3>Aveiro - Portugal</h3>
+                                    <p>Parque Industrial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="l-location__call" data-address="Av. das Nações Unidas, 22002 São Paulo-SP">
+                        <figure style="background-image: url(https://www.tupy.com.br/wp-content/uploads/2022/11/mwm-sp.jpg)"></figure>
+                        <div>
+                            <button class="l-location__close"></button>
+                            <h2>MWM/TUPY</h2>
+                            <p>Av. das Nações Unidas, 22002</p>
+                            <p>Jurubatuba -SP</p>
+                            <p>CEP 04795-915</p>
+                            <p>Fone +55 (11) 3882-3200</p>
+                            <div>
+                                <div>
+                                    <h3>São Paulo-SP</h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+    </div>
+</section>
+
+<!-- <aside class="l-details">
+            <div class="wrapper l-details__container">
+                <figure class="l-details__image" style="background-image: url()"></figure>
+                <div class="l-details__text">
+                    <h2>Tupy S/A</h2>
+                    <div class="l-details__data">
+                        <span>Rua Albano Schmidt, 3400</span>
+                        <span>Bairro: Boa Vista</span>
+                        <span>CEP: 89227-901</span>
+                        <span>Fone: (47) 4009-8181</span>
+                    </div>
+                    <div class="l-details__bottom">
+                        <div class="l-details__left">
+                            <p>Joinville-SC</p>
+                            <span>Sede</span>
+                        </div>
+                        <a href="" class="more">
+                            <span></span>
+                            <p>ver</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside> -->
+
+
+
+
+
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/tupy/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+    <script>
+        if (document.querySelector('.fale-message__container .wpcf7')) {
+            let formFaleConosco = document.querySelector('.fale-message__container .wpcf7')
+
+            formFaleConosco.addEventListener('wpcf7mailsent', function (event) {
+                let selectArea = document.querySelector('select[name="area"]')
+                if (selectArea.value == "Ética") {
+                    location = ' https://www.contatoseguro.com.br/tupy/'
+                } else {
+                    return
+                }
+            }, false)
+        }
+    </script>
+<script id="wp-hooks-js" src="https://www.tupy.com.br/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255"></script>
+<script id="wp-i18n-js" src="https://www.tupy.com.br/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="swv-js" src="https://www.tupy.com.br/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.1.7"></script>
+<script id="contact-form-7-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "contact-form-7", {"translation-revision-date":"2025-05-19 13:41:20+0000","generator":"GlotPress\/4.0.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n > 1;","lang":"pt_BR"},"Error:":["Erro:"]}},"comment":{"reference":"includes\/js\/index.js"}} );
+//# sourceURL=contact-form-7-js-translations
+</script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/www.tupy.com.br\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+//# sourceURL=contact-form-7-js-before
+</script>
+<script id="contact-form-7-js" src="https://www.tupy.com.br/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.1.7"></script>
+<script id="sweetalert-js" src="https://www.tupy.com.br/wp-content/themes/tupy/assets/lib/sweetalert.min.js?ver=1789480198"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://www.tupy.com.br/wp-includes/js/wp-emoji-release.min.js?ver=486f344f0551d365670c996dc57bec89"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://www.tupy.com.br/wp-includes/js/wp-emoji-loader.min.js
+</script>
+    <script>
+        document.addEventListener('wpcf7mailsent', function (response) {
+            var message = response.detail.apiResponse.message;
+
+            if (typeof swal === 'function') {
+                swal({
+                    title: "Obrigado!",
+                    text: message,
+                    icon: "success",
+                    button: "Fechar"
+                });
+            } else {
+                // sweetalert pode ser bloqueado por gestores de consentimento (ex: Privally);
+                // sem fallback, o CSS abaixo escondia a mensagem nativa do CF7 e nada aparecia.
+                var form = response.target;
+                var output = form && form.querySelector('.wpcf7-response-output');
+                if (output) {
+                    output.style.display = '';
+                } else {
+                    alert(message);
+                }
+            }
+        }, false);
+    </script>
+
+    <style>
+        .wpcf7-mail-sent-ok,
+        .wpcf7-response-output {
+            display: none !important;
+        }
+    </style>
+    
+    </main><script type="text/javascript" id="" charset="">(function(a,e,b,f,g,c,d){a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};c=e.createElement(f);c.async=1;c.src="https://www.clarity.ms/tag/"+g;d=e.getElementsByTagName(f)[0];d.parentNode.insertBefore(c,d)})(window,document,"clarity","script","w4zov9ubyt");</script><script type="text/javascript" id="" charset="">document.addEventListener("wpcf7mailsent",function(a){dataLayer.push({event:"wpcf7successfulsubmit",CF7formID:a.detail.contactFormId})},!1);</script>
+    
+    <span class="up desktop-only">
+        <span>
+            Subir        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16.978" height="235.812" viewBox="0 0 16.978 235.812">
+            <defs>
+                <style>.up-svg{fill:none;stroke:#f7a31c;stroke-width:2px;}</style>
+            </defs>
+            <g transform="translate(-1171.012 -53.991)">
+                <line class="up-svg" x2="8.528" y2="8.528" transform="translate(1171.719 63.227) rotate(-90)"></line>
+                <line class="up-svg" y1="8.528" x2="8.528" transform="translate(1178.754 63.227) rotate(-90)"></line>
+                <path class="up-svg" d="M233.454,0H0" transform="translate(1179.5 289.803) rotate(-90)"></path>
+            </g>
+        </svg>
+    </span>
+    <footer class="footer">
+        <div class="footer__top">
+            <div class="wrapper footer__content">
+                <div class="footer__logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="200.634" height="51.882" viewBox="0 0 200.634 51.882">
+                        <g transform="translate(-138.683 -220.117)">
+                            <path style="fill:#fff;fill-rule:evenodd;" d="M97.962,622.689,67.033,587.228c-2.121-2.422-1.2-6.092,2.629-6.078v-.027h67.391v.027c3.826-.014,4.749,3.656,2.629,6.078l-30.929,35.461c-3.583,3.314-7.209,3.313-10.791,0m8.335-7.038V591.83h14.277v-4.763H86.14v4.763h14.278v23.821ZM70.583,577.258c-8.911.12-10.066,8.268-6.6,12.08l30.8,35.84a11.239,11.239,0,0,0,17.131,0l30.8-35.84c3.472-3.812,2.317-11.96-6.6-12.08Z" transform="translate(76.508 -357.141)"></path>
+                            <path style="fill:#fff;fill-rule:evenodd;" d="M262.809,587.147v.78a3.945,3.945,0,0,0-2.1.817,21.806,21.806,0,0,0-3.218,4.807l-5.984,10.3v6.884a9.507,9.507,0,0,0,.223,2.744,2.1,2.1,0,0,0,.882.938,3.27,3.27,0,0,0,1.766.416h1.543v.774H240.428v-.774h1.446a3.654,3.654,0,0,0,1.932-.444,1.962,1.962,0,0,0,.834-1.01,8.645,8.645,0,0,0,.229-2.644v-5.709l-6.5-12.193a17.9,17.9,0,0,0-2.731-4.248,3.338,3.338,0,0,0-2.113-.659v-.78H246.76v.78h-.591a2.883,2.883,0,0,0-1.682.359.96.96,0,0,0-.473.752,12.892,12.892,0,0,0,1.627,3.8l4.99,9.428,4.97-8.589q1.845-3.148,1.849-4.177a1.117,1.117,0,0,0-.528-.938,4.919,4.919,0,0,0-2.544-.631v-.78m-31.681,1.64v12.3c.452.028.785.043,1.022.043a4.825,4.825,0,0,0,3.823-1.526,6.971,6.971,0,0,0,1.348-4.714,6.72,6.72,0,0,0-1.348-4.635,5.163,5.163,0,0,0-4.011-1.468Zm0,13.933v7.9a8.817,8.817,0,0,0,.278,2.9,2.02,2.02,0,0,0,.973.96,6.4,6.4,0,0,0,2.579.358v.774H212.493v-.774a6.082,6.082,0,0,0,2.6-.372,2.129,2.129,0,0,0,.959-.953,9.049,9.049,0,0,0,.271-2.894V592.147a9.2,9.2,0,0,0-.271-2.909,2.028,2.028,0,0,0-.973-.952,6.2,6.2,0,0,0-2.586-.359v-.78h12.039q5.943,0,8.528,2.184a6.852,6.852,0,0,1,2.586,5.459,7.1,7.1,0,0,1-1.668,4.742,8.49,8.49,0,0,1-4.6,2.687A30.544,30.544,0,0,1,222.7,602.72Zm-39.145-15.573H197.8v.78h-.708a4.918,4.918,0,0,0-2.211.344,1.935,1.935,0,0,0-.855.953,10.664,10.664,0,0,0-.257,3.045V606.2a14.58,14.58,0,0,0,.563,5.065,4.814,4.814,0,0,0,1.842,2.056,5.923,5.923,0,0,0,3.239.816,6.757,6.757,0,0,0,3.816-1.039,6.306,6.306,0,0,0,2.363-2.865,17.942,17.942,0,0,0,.785-6.361V592.269a6.917,6.917,0,0,0-.389-2.73,2.371,2.371,0,0,0-.973-1.132,5.66,5.66,0,0,0-2.593-.48v-.78h9.55v.78h-.57a3.584,3.584,0,0,0-1.932.48,2.717,2.717,0,0,0-1.119,1.447,7.6,7.6,0,0,0-.264,2.415v10.809a29.178,29.178,0,0,1-.639,7.243,8.087,8.087,0,0,1-3.128,4.09,11.039,11.039,0,0,1-6.784,1.87,12.537,12.537,0,0,1-5.539-.989,8.274,8.274,0,0,1-3.767-3.438,12.3,12.3,0,0,1-1.1-5.652V592.269a10.017,10.017,0,0,0-.264-3.052,1.969,1.969,0,0,0-.917-.953,5.3,5.3,0,0,0-2.4-.337Zm-1.238,0v7.707h-.729a12.43,12.43,0,0,0-1.446-3.832,5.528,5.528,0,0,0-2.183-1.855,6.642,6.642,0,0,0-2.7-.38H173.2v21.949a9.416,9.416,0,0,0,.23,2.729,2.161,2.161,0,0,0,.917.953,3.555,3.555,0,0,0,1.863.416h.918v.774H162.666v-.774h.917a3.721,3.721,0,0,0,1.932-.444,1.953,1.953,0,0,0,.834-1.01,8.632,8.632,0,0,0,.23-2.644V588.787h-2a5.667,5.667,0,0,0-4.052,1.218,8.14,8.14,0,0,0-2.238,4.849h-.772v-7.707Z" transform="translate(76.508 -357.141)"></path>
+                        </g>
+                    </svg>
+                </div>
+                <div class="footer__container">
+                    <div class="footer__columns">
+                        <a href="https://www.tupy.com.br/sobre-a-tupy/" class="footer__item">Sobre a Tupy</a><nav class="footer__item"><span>Soluções</span><a href="https://www.tupy.com.br/solucoes/componentes-estruturais-e-pecas-de-engenharia/">Componentes Estruturais e Peças de Engenharia</a><a href="https://www.tupy.com.br/solucoes/usinagem/">Usinagem</a><a href="https://mwm.com.br/pt/">MWM</a><a href="https://www.tupy.com.br/solucoes/hidraulica/">Hidráulica</a><a href="https://www.tupy.com.br/solucoes/coprodutos/">Coprodutos</a></nav><nav class="footer__item"><span>Inovação e Tecnologia</span><a href="https://www.tupy.com.br/inovacao-aberta/">Inovação Aberta</a><a href="https://www.shiftt.com.br/">ShiftT</a></nav><nav class="footer__item"><span>Sustentabilidade</span><a href="https://www.tupy.com.br/sustentabilidade/#relatorios">Relatórios</a></nav><a href="https://www.tupy.com.br/carreiras/" class="footer__item">Carreiras</a><nav class="footer__item"><span>Imprensa</span><a href="https://www.tupy.com.br/imprensa/banco-de-imagens-e-videos/">Banco de Imagens e vídeos</a><a href="https://www.tupy.com.br/imprensa/noticias/">Notícias</a></nav><a href="https://www.tupy.com.br/fornecedores/" class="footer__item">Fornecedores</a><a href="https://www.tupy.com.br/onde-estamos/" class="footer__item">Onde Estamos</a>                    </div>
+                    <nav class="footer__socials">
+                                                            <a href="https://www.linkedin.com/company/tupy?originalSubdomain=br" target="_blank" title="LinkedIn">
+                                        <img src="https://www.tupy.com.br/wp-content/uploads/2021/06/icon-linkedin.svg">
+                                    </a>
+                                            </nav>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="wrapper footer__copy">
+                <span>© <span>2026</span> Tupy. 
+                        Todos os direitos reservados.                        </span>
+                <nav class="footer__nav">
+                    <a href="http://ri.tupy.com.br/" target="_blank">
+                        Investidores                    </a>
+                    <!-- <a href="">Mapa do Site</a> -->
+                    <!-- <a href="" target="_blank">WebMail</a> -->
+                </nav>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://www.tupy.com.br/wp-content/themes/tupy/assets/lib/jquery-3.5.1.min.js"></script>
+    <script src="https://www.tupy.com.br/wp-content/themes/tupy/assets/lib/slick.js"></script>
+    <script src="https://www.tupy.com.br/wp-content/themes/tupy/assets/lib/jquery.mask.js"></script>
+    <script src="https://www.tupy.com.br/wp-content/themes/tupy/assets/js/main.js?ver=1788888696"></script>
+    <script src="https://www.tupy.com.br/wp-content/themes/tupy/assets/js/map.js"></script>
+    
+
+
+</body></html>
