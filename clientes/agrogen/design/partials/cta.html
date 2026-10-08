@@ -1,0 +1,10 @@
+<section class="cta">
+  <img src="/img/granja-guararapes.jpg" alt="" loading="lazy" width="937" height="463">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow light">Fale conosco</span><h2>{{t.ctaTitle}}</h2><p>{{t.ctaText}}</p></div>
+    <div class="phones reveal">
+      {{#each t.phones}}<a href="tel:{{it.href}}"><span>{{it.label}}</span><b>{{it.number}}</b></a>{{/each}}
+      <a class="more" href="/{{lang}}/contato">{{t.ctaButton}} →</a>
+    </div>
+  </div>
+</section>

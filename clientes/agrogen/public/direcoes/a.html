@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Agrogen · Direção A: Campo</title>
+<link rel="icon" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--navy:#1B3F63;--green:#3D8B37;--green-l:#E6F0DF;--ink:#1D2420;--muted:#5F6A62;--cream:#F6F3EC;--sand:#ECE6D8;--line:#DCD5C4;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:17px/1.65 'Instrument Sans',system-ui,sans-serif;color:var(--ink);background:var(--cream)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.serif{font-family:Fraunces,Georgia,serif;font-weight:400;letter-spacing:-.02em}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+.eyebrow:before{content:"";width:22px;height:2px;background:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:15px;background:var(--navy);color:#fff;transition:.2s}
+.btn:hover{background:var(--green)}
+.btn.light{background:#fff;color:var(--navy)}
+.btn.light:hover{background:var(--green-l)}
+.btn.line{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy)}
+.btn.line:hover{background:var(--navy);color:#fff}
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(246,243,236,.92);backdrop-filter:blur(10px)}
+header .wrap{display:flex;align-items:center;gap:40px;height:84px}
+.logo img{height:34px;width:auto}
+nav{display:flex;gap:30px;margin-left:auto;font-weight:500;font-size:15px}
+nav a{position:relative;padding:4px 0}
+nav a:after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--green);transition:.25s}
+nav a:hover:after,nav a.on:after{right:0}
+.langs{font-size:13px;color:var(--muted);display:flex;gap:10px}
+.langs b{color:var(--navy)}
+.burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--navy);background:none;color:var(--navy);font-size:18px}
+/* hero */
+.hero{padding:12px 0 0}
+.hero .frame{position:relative;border-radius:32px;overflow:hidden;min-height:640px;display:flex;align-items:flex-end}
+.hero .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .frame:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,30,20,.62),rgba(13,30,20,.1) 70%),linear-gradient(180deg,rgba(13,30,20,0) 40%,rgba(13,30,20,.6))}
+.hero .txt{position:relative;z-index:2;padding:56px;color:#fff;max-width:860px}
+.hero h1{font-size:clamp(40px,5.6vw,78px);line-height:1.02;margin:18px 0 20px}
+.hero h1 em{font-style:italic;color:#CFE6BF}
+.hero p{font-size:19px;max-width:600px;color:#E8EFE6}
+.hero .eyebrow{color:#CFE6BF}.hero .eyebrow:before{background:#CFE6BF}
+.hero .ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.hero .badge{position:absolute;right:40px;top:40px;z-index:2;background:var(--cream);border-radius:20px;padding:18px 22px;display:flex;gap:16px;align-items:center;max-width:300px}
+.hero .badge b{font-family:Fraunces,serif;font-size:42px;line-height:1;color:var(--navy);font-weight:600}
+.hero .badge span{font-size:14px;line-height:1.35;color:var(--muted)}
+/* intro */
+section{padding:110px 0}
+.intro .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.intro h2{font-size:clamp(32px,3.6vw,50px);line-height:1.08;margin:16px 0 24px;color:var(--navy)}
+.intro p{color:var(--muted);margin-bottom:16px}
+.cobb{display:flex;align-items:center;gap:22px;margin-top:30px;padding:22px 26px;background:#fff;border-radius:var(--r)}
+.cobb img{width:110px}
+.cobb p{margin:0;font-size:15px}
+.collage{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:240px 240px;gap:16px}
+.collage img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.collage img:first-child{grid-row:span 2}
+/* cadeia */
+.cadeia{background:var(--navy);color:#fff;border-radius:40px;margin:0 16px}
+.cadeia .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:54px}
+.cadeia h2{font-size:clamp(32px,3.6vw,50px);line-height:1.08;max-width:560px;margin-top:14px}
+.cadeia .head p{max-width:440px;color:#C4D2DF}
+.cadeia .eyebrow{color:#9FD18F}.cadeia .eyebrow:before{background:#9FD18F}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:rgba(255,255,255,.06);border-radius:var(--r);overflow:hidden}
+.step img{height:200px;width:100%;object-fit:cover}
+.step div{padding:22px 22px 26px}
+.step small{font-family:Fraunces,serif;font-size:15px;color:#9FD18F}
+.step h3{font-family:Fraunces,serif;font-weight:400;font-size:26px;margin:2px 0 6px}
+.step p{font-size:15px;color:#C4D2DF;line-height:1.5}
+/* numeros */
+.nums .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.nums .n{padding:10px 30px;border-left:1px solid var(--line)}
+.nums .n:first-child{border-left:0;padding-left:0}
+.nums b{display:block;font-family:Fraunces,serif;font-weight:400;font-size:clamp(40px,4.4vw,64px);line-height:1;color:var(--navy);letter-spacing:-.03em}
+.nums span{display:block;margin-top:10px;color:var(--muted);font-size:15px}
+.nums{padding:90px 0}
+/* estrutura */
+.estrutura{background:var(--sand)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:46px}
+.sec-head h2{font-size:clamp(32px,3.6vw,50px);line-height:1.08;color:var(--navy);margin-top:14px;max-width:640px}
+.units{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.unit{background:#fff;border-radius:var(--r);overflow:hidden;transition:.25s}
+.unit:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(27,63,99,.12)}
+.unit img{height:230px;width:100%;object-fit:cover}
+.unit div{padding:20px 24px 24px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.unit h3{font-size:19px;font-weight:600;color:var(--navy)}
+.unit span{font-size:14px;color:var(--muted)}
+.unit .pin{flex:none;font-size:12px;font-weight:600;color:var(--green);background:var(--green-l);padding:5px 11px;border-radius:999px}
+.states{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.states span{background:#fff;border-radius:999px;padding:10px 18px;font-size:14px;color:var(--muted)}
+.states b{color:var(--navy)}
+/* pilares */
+.pilares .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pilar{border-radius:var(--r);overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.pilar img{height:210px;width:100%;object-fit:cover}
+.pilar div{padding:24px;flex:1;display:flex;flex-direction:column}
+.pilar h3{font-family:Fraunces,serif;font-weight:400;font-size:25px;line-height:1.15;color:var(--navy);margin-bottom:10px}
+.pilar p{font-size:15px;color:var(--muted);line-height:1.55;flex:1}
+.pilar a{margin-top:18px;font-weight:600;font-size:14px;color:var(--green)}
+/* valores */
+.valores .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.quote{font-family:Fraunces,serif;font-size:clamp(28px,3vw,40px);line-height:1.2;color:var(--navy)}
+.quote small{display:block;font-family:'Instrument Sans',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:16px;font-weight:600}
+.visao{margin-top:34px;padding-top:28px;border-top:1px solid var(--line)}
+.visao p{font-size:20px;color:var(--ink);margin-top:6px}
+.vlist{display:grid;gap:12px}
+.vlist div{background:#fff;border-radius:18px;padding:20px 24px;display:grid;grid-template-columns:44px 1fr;gap:14px}
+.vlist i{font-style:normal;width:44px;height:44px;border-radius:50%;background:var(--green-l);color:var(--green);display:grid;place-items:center;font-family:Fraunces,serif;font-size:18px}
+.vlist b{color:var(--navy);font-size:17px}
+.vlist p{font-size:15px;color:var(--muted);line-height:1.5}
+/* certificado */
+.cert .box{background:#fff;border-radius:32px;display:grid;grid-template-columns:220px 1fr auto;gap:48px;align-items:center;padding:44px 56px}
+.cert img{width:220px}
+.cert h2{font-family:Fraunces,serif;font-weight:400;font-size:32px;color:var(--navy);line-height:1.15;margin:10px 0 10px}
+.cert p{color:var(--muted);font-size:15px}
+.cert{padding:0 0 110px}
+/* cta */
+.cta{position:relative;margin:0 16px;border-radius:40px;overflow:hidden;color:#fff;padding:120px 0}
+.cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cta:before{content:"";position:absolute;inset:0;background:rgba(17,40,62,.78);z-index:1}
+.cta .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+.cta h2{font-size:clamp(34px,4vw,56px);line-height:1.05}
+.cta .phones{display:grid;gap:14px}
+.cta .phones a{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.1);border-radius:18px;padding:20px 24px}
+.cta .phones span{font-size:14px;color:#C4D2DF}
+.cta .phones b{font-size:22px;font-weight:600}
+/* footer */
+footer{padding:80px 0 36px;font-size:15px;color:var(--muted)}
+footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid var(--line)}
+footer img{height:32px;width:auto;margin-bottom:16px}
+footer h4{color:var(--navy);font-size:14px;margin-bottom:14px}
+footer li{list-style:none;margin-bottom:8px}
+footer a:hover{color:var(--green)}
+footer .bottom{display:flex;justify-content:space-between;gap:20px;padding-top:26px;font-size:13px;flex-wrap:wrap}
+@media (max-width:980px){
+ nav,.langs,header .btn{display:none}
+ .burger{display:block}
+ header.open nav{display:flex;position:absolute;top:84px;left:0;right:0;flex-direction:column;gap:0;background:var(--cream);padding:8px 24px 20px;border-bottom:1px solid var(--line)}
+ header.open nav a{padding:14px 0;border-bottom:1px solid var(--line)}
+ .hero .frame{min-height:560px;border-radius:24px}
+ .hero .txt{padding:30px 24px}
+ .hero .badge{display:none}
+ .cta .phones a{flex-direction:column;align-items:flex-start;gap:4px}
+ section{padding:72px 0}
+ .intro .wrap,.valores .wrap,.cta .wrap{grid-template-columns:1fr;gap:40px}
+ .collage{grid-template-rows:160px 160px}
+ .cadeia{margin:0 8px;border-radius:28px}
+ .cadeia .head,.sec-head{flex-direction:column;align-items:flex-start}
+ .steps,.pilares .grid{grid-template-columns:1fr 1fr}
+ .units{grid-template-columns:1fr}
+ .nums .wrap{grid-template-columns:1fr 1fr;gap:34px 0}
+ .nums .n:nth-child(3){border-left:0;padding-left:0}
+ .cert .box{grid-template-columns:1fr;padding:32px 26px;gap:22px}
+ .cert img{width:160px}
+ .cta{margin:0 8px;border-radius:28px;padding:72px 0}
+ footer .grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){.steps,.pilares .grid{grid-template-columns:1fr}.step img{height:170px}}
+</style>
+</head>
+<body>
+<header id="top">
+ <div class="wrap">
+  <a class="logo" href="#"><img src="../img/logo-agrogen.png" alt="Agrogen"></a>
+  <nav>
+   <a class="on" href="#">Início</a><a href="#empresa">A Empresa</a><a href="#estrutura">Estrutura</a><a href="#pilares">Pilares</a><a href="#valores">Valores</a><a href="#contato">Contato</a>
+  </nav>
+  <div class="langs"><b>PT</b><span>EN</span><span>ES</span></div>
+  <button class="burger" aria-label="Menu" onclick="document.getElementById('top').classList.toggle('open')">☰</button>
+ </div>
+</header>
+
+<div class="hero"><div class="wrap">
+ <div class="frame">
+  <img src="../img/aerea-montenegro.jpg" alt="Vista aérea da matriz da Agrogen em Montenegro, RS">
+  <div class="badge"><b>1934</b><span>Grupo familiar com mais de 90 anos de história no campo</span></div>
+  <div class="txt">
+   <span class="eyebrow">Multiplicação genética avícola</span>
+   <h1 class="serif">Pioneirismo e referência em <em>matrizes de frango</em></h1>
+   <p>A Agrogen cria, seleciona e entrega matrizes nobres em parceria com a Cobb, líder mundial em genética de matrizes pesadas.</p>
+   <div class="ctas"><a class="btn light" href="#empresa">Conheça a Agrogen</a><a class="btn line" style="color:#fff;box-shadow:inset 0 0 0 1.5px #fff" href="#estrutura">Nossa estrutura</a></div>
+  </div>
+ </div>
+</div></div>
+
+<section class="intro" id="empresa"><div class="wrap">
+ <div>
+  <span class="eyebrow">O que fazemos</span>
+  <h2 class="serif">Do campo à sua mesa, com genética de padrão internacional</h2>
+  <p>A Agrogen é resultado do sucesso de um grupo familiar de empreendedores que iniciou suas atividades em 1934. Desde os anos 70, seus sócios e gestores tornaram-se referência mundial na avicultura.</p>
+  <p>Na multiplicação genética, é pioneira no Brasil, atuando em parceria com a Cobb. Uma parceria de sucesso, que garante ao mercado matrizes nobres, com qualidade reconhecida internacionalmente.</p>
+  <div class="cobb"><img src="../img/parceria-cobb.png" alt="Parceria Agrogen e Cobb"><p><b style="color:var(--navy)">Parceria Agrogen + Cobb</b><br>Referência mundial e líder em genética de matrizes pesadas.</p></div>
+ </div>
+ <div class="collage">
+  <img src="../img/incubatorio-montenegro.jpg" alt="Incubatório da Agrogen em Montenegro">
+  <img src="../img/fabrica-racao-montenegro.jpg" alt="Silos da fábrica de ração em Montenegro">
+  <img src="../img/predio-administrativo.jpg" alt="Prédio da Agrogen em Montenegro">
+ </div>
+</div></section>
+
+<section class="cadeia"><div class="wrap">
+ <div class="head">
+  <div><span class="eyebrow">Como funciona</span><h2 class="serif">Quatro etapas até a mesa do consumidor</h2></div>
+  <p>A Agrogen recebe as avós da Cobb com um dia de vida. Após a criação e a seleção cuidadosa, nascem as matrizes que nossos clientes reproduzem para gerar o frango de corte.</p>
+ </div>
+ <div class="steps">
+  <div class="step"><img src="../img/aves-matrizes.jpg" alt="Aves avós"><div><small>01</small><h3>Avós</h3><p>Recebidas da Cobb com um dia de vida, com genética já definida.</p></div></div>
+  <div class="step"><img src="../img/pintinhos.jpg" alt="Pintinhos"><div><small>02</small><h3>Matrizes</h3><p>Criadas e selecionadas nas granjas da Agrogen e entregues aos clientes.</p></div></div>
+  <div class="step"><img src="../img/aviario.jpg" alt="Aviário"><div><small>03</small><h3>Frango de corte</h3><p>Os clientes reproduzem as matrizes e geram o frango de corte.</p></div></div>
+  <div class="step"><img src="../img/frango-mesa.jpg" alt="Frango assado na mesa"><div><small>04</small><h3>Sua mesa</h3><p>Carne de frango de qualidade, que passa pelo nosso trabalho genético.</p></div></div>
+ </div>
+</div></section>
+
+<section class="nums"><div class="wrap">
+ <div class="n"><b>14 mi</b><span>matrizes produzidas por ano</span></div>
+ <div class="n"><b>1934</b><span>início do grupo familiar</span></div>
+ <div class="n"><b>1990</b><span>fundação da Agrogen</span></div>
+ <div class="n"><b>2</b><span>estados: Rio Grande do Sul e Paraná</span></div>
+</div></section>
+
+<section class="estrutura" id="estrutura"><div class="wrap">
+ <div class="sec-head">
+  <div><span class="eyebrow">Estrutura</span><h2 class="serif">Escritórios, granjas, laboratórios e fábricas de ração</h2></div>
+  <a class="btn line" href="#">Ver as 10 unidades</a>
+ </div>
+ <div class="units">
+  <a class="unit" href="#"><img src="../img/matriz-montenegro.jpg" alt="Matriz Montenegro"><div><span><h3>Matriz</h3>Montenegro, RS</span><span class="pin">Sede</span></div></a>
+  <a class="unit" href="#"><img src="../img/laboratorio-montenegro.jpg" alt="Laboratório Montenegro"><div><span><h3>Laboratório</h3>Montenegro, RS</span><span class="pin">Sanidade</span></div></a>
+  <a class="unit" href="#"><img src="../img/granja-palmeirinha.jpg" alt="Granja Avícola Palmeirinha"><div><span><h3>Granja Palmeirinha</h3>Guarapuava, PR</span><span class="pin">Granja</span></div></a>
+ </div>
+ <div class="states"><span><b>Rio Grande do Sul</b> · Montenegro e Triunfo</span><span><b>Paraná</b> · Guarapuava</span></div>
+</div></section>
+
+<section class="pilares" id="pilares"><div class="wrap">
+ <div class="sec-head"><div><span class="eyebrow">Nossos pilares</span><h2 class="serif">Cuidado em cada etapa da produção</h2></div></div>
+ <div class="grid">
+  <div class="pilar"><img src="../img/aviario.jpg" alt=""><div><h3>Nutrição e bem-estar animal</h3><p>Aviários climatizados, iluminação controlada e ração própria, 100% de origem vegetal.</p><a href="#">Saiba mais →</a></div></div>
+  <div class="pilar"><img src="../img/incubadora.jpg" alt=""><div><h3>Rigor em sanidade</h3><p>Biosseguridade com vazios sanitários, banhos, desinfecção e veículos de uso interno.</p><a href="#">Saiba mais →</a></div></div>
+  <div class="pilar"><img src="../img/pessoas-reuniao.jpg" alt=""><div><h3>Gestão de pessoas</h3><p>Programas, treinamentos e comunicação para a qualidade de vida dos colaboradores.</p><a href="#">Saiba mais →</a></div></div>
+  <div class="pilar"><img src="../img/granjas-aerea.jpg" alt=""><div><h3>Compromisso ambiental</h3><p>Práticas sustentáveis em toda a cadeia, dejetos tratados e coleta seletiva em todas as unidades.</p><a href="#">Saiba mais →</a></div></div>
+ </div>
+</div></section>
+
+<section class="valores" id="valores" style="padding-top:0"><div class="wrap">
+ <div>
+  <p class="quote"><small>Nossa missão</small>Produzir matrizes com excelência, assegurando lucro e atendendo às expectativas de acionistas, clientes, consumidores e funcionários.</p>
+  <div class="visao"><span class="eyebrow">Nossa visão</span><p>Ser reconhecida pela excelência em nossas atividades.</p></div>
+ </div>
+ <div class="vlist">
+  <div><i>1</i><span><b>Excelência</b><p>Assegurar permanentemente a qualidade nos processos, produtos e serviços.</p></span></div>
+  <div><i>2</i><span><b>Foco do cliente</b><p>Atender às expectativas a partir da visão do cliente.</p></span></div>
+  <div><i>3</i><span><b>Pessoas</b><p>Trabalhar e se comunicar com respeito, com crescimento individual e da empresa.</p></span></div>
+  <div><i>4</i><span><b>Comprometimento</b><p>Compromisso com os processos, na busca dos objetivos da empresa.</p></span></div>
+  <div><i>5</i><span><b>Sustentabilidade</b><p>Econômica, social e ambiental: inovação e perpetuação com respeito à sociedade e ao meio ambiente.</p></span></div>
+ </div>
+</div></section>
+
+<section class="cert"><div class="wrap"><div class="box">
+ <img src="../img/selo-sanitario.png" alt="Selo Certificado Sanitário de Compartimento Avícola">
+ <div><span class="eyebrow">Certificação MAPA</span><h2>Certificado Sanitário de Compartimento Avícola</h2><p>Concedido pelo Ministério da Agricultura e Pecuária, atesta que nossas granjas de reprodução, de corte e incubatórios cumprem as exigências para Influenza Aviária e Doença de Newcastle.</p></div>
+ <a class="btn" href="#">Saiba mais</a>
+</div></div></section>
+
+<div class="cta" id="contato">
+ <img src="../img/granja-guararapes.jpg" alt="">
+ <div class="wrap">
+  <div><span class="eyebrow" style="color:#9FD18F">Fale conosco</span><h2 class="serif" style="margin-top:14px">Vamos conversar sobre matrizes de qualidade</h2><p style="color:#C4D2DF;margin-top:16px">Atendimento de segunda a sexta, das 7h30 às 17h.</p></div>
+  <div class="phones">
+   <a href="tel:+555127000010"><span>Matriz Montenegro, RS</span><b>(51) 2700-0010</b></a>
+   <a href="tel:+554236240015"><span>Central Guarapuava, PR</span><b>(42) 3624-0015</b></a>
+  </div>
+ </div>
+</div>
+
+<footer><div class="wrap">
+ <div class="grid">
+  <div><img src="../img/logo-agrogen.png" alt="Agrogen"><p>Agrogen Desenvolvimento Genético S/A<br>RS 124, km 02, Bairro Estação<br>Montenegro, RS</p></div>
+  <div><h4>Empresa</h4><ul><li><a href="#">O que fazemos</a></li><li><a href="#">Estrutura</a></li><li><a href="#">Pilares</a></li><li><a href="#">Valores</a></li></ul></div>
+  <div><h4>Contato</h4><ul><li><a href="#">Fale conosco</a></li><li><a href="#">Trabalhe conosco</a></li><li><a href="#">Canal de ética</a></li><li><a href="#">LGPD</a></li></ul></div>
+  <div><h4>Siga</h4><ul><li><a href="https://www.linkedin.com/company/agrogen-desenvolvimento-gen%C3%A9tico-s-a/">LinkedIn</a></li></ul></div>
+ </div>
+ <div class="bottom"><span>© Agrogen. Todos os direitos reservados.</span><span>Montenegro, RS · Guarapuava, PR</span></div>
+</div></footer>
+</body>
+</html>

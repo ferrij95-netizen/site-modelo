@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nelson Wendt · Direção C · Exportador</title>
+<link rel="icon" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--azul:#1E2770;--azul2:#141A4F;--azulM:#3F49A6;--laranja:#F07A22;--cinza:#F2F3F7;--linha:#DFE1EA;--tinta:#151833;--suave:#5C6079}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.65 "Public Sans",system-ui,sans-serif;color:var(--tinta);background:#fff}
+img{display:block;max-width:100%}a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:Sora,system-ui,sans-serif;letter-spacing:-.025em;line-height:1.08;font-weight:600}
+.eyebrow{font:600 12px Sora,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--laranja);display:flex;align-items:center;gap:12px}
+.eyebrow:before{content:"";width:28px;height:2px;background:currentColor}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;background:var(--laranja);color:#fff;text-decoration:none;font:600 14px Sora,sans-serif;letter-spacing:.02em;transition:.2s}
+.btn:hover{background:#D9640F}
+.btn.contorno{background:transparent;border:1px solid rgba(255,255,255,.5)}.btn.contorno:hover{background:#fff;color:var(--azul)}
+.btn.azul{background:var(--azul)}.btn.azul:hover{background:var(--azulM)}
+/* barra */
+.util{background:var(--azul2);color:rgba(255,255,255,.75);font-size:13px}
+.util .wrap{display:flex;justify-content:space-between;height:40px;align-items:center}
+.util .l{display:flex;gap:26px}.util b{color:#fff;font-weight:600}
+header{background:#fff;border-bottom:1px solid var(--linha);position:sticky;top:0;z-index:20}
+header .wrap{display:flex;align-items:center;height:86px;gap:40px}
+header .logo img{height:42px}
+header nav{display:flex;gap:34px;margin-left:auto;font:500 14px Sora,sans-serif}
+header nav a{text-decoration:none;padding:32px 0;border-bottom:2px solid transparent}
+header nav a:hover{border-color:var(--laranja)}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--linha);width:46px;height:46px;font-size:22px}
+/* hero */
+.hero{position:relative;color:#fff;min-height:720px;display:flex;align-items:center;overflow:hidden;background:var(--azul2)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,26,79,.96) 0%,rgba(20,26,79,.7) 45%,rgba(20,26,79,.05) 100%);z-index:1}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero h1{font-size:clamp(42px,5.6vw,80px);max-width:780px;margin:22px 0 26px;font-weight:300}
+.hero h1 strong{font-weight:700}
+.hero p{font-size:19px;max-width:560px;color:rgba(255,255,255,.85);margin-bottom:38px}
+.hero .acoes{display:flex;gap:14px;flex-wrap:wrap}
+.paises{position:absolute;right:32px;bottom:40px;z-index:2;display:flex;gap:1px;background:rgba(255,255,255,.18)}
+.paises div{background:rgba(20,26,79,.75);backdrop-filter:blur(6px);padding:18px 24px;min-width:170px}
+.paises b{font:600 30px Sora,sans-serif;display:block}.paises span{font-size:13px;opacity:.75}
+/* números */
+.kpis{border-bottom:1px solid var(--linha)}
+.kpis .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.kpi{padding:52px 32px;border-right:1px solid var(--linha)}
+.kpi:first-child{padding-left:0}.kpi:last-child{border-right:0}
+.kpi b{font:300 64px/1 Sora,sans-serif;color:var(--azul);display:block;letter-spacing:-.04em}
+.kpi b sup{font-size:28px;color:var(--laranja);font-weight:600;vertical-align:top;margin-left:4px}
+.kpi span{display:block;margin-top:12px;color:var(--suave);font-size:15px;max-width:230px}
+section{padding:120px 0}
+.dois{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+h2{font-size:clamp(34px,3.8vw,54px);margin:20px 0 22px}
+.lead{font-size:18px;color:var(--suave)}
+/* exportação */
+.export{background:var(--cinza)}
+.mapa{position:relative;background:#fff;padding:28px;border:1px solid var(--linha)}
+.mapa img{width:100%}
+.regioes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);margin-top:34px;border:1px solid var(--linha)}
+.regioes div{background:#fff;padding:18px 20px;font:600 14px Sora,sans-serif}
+.regioes small{display:block;font:400 13px "Public Sans",sans-serif;color:var(--suave);margin-top:2px}
+.graos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:80px}
+.grao{background:#fff;border:1px solid var(--linha);transition:.3s}
+.grao:hover{border-color:var(--azul);transform:translateY(-4px)}
+.grao img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.grao div{padding:24px 26px 28px}
+.grao h3{font-size:20px}.grao p{font-size:14px;color:var(--suave);margin-top:6px}
+.grao .t{font:600 11px Sora,sans-serif;letter-spacing:.14em;color:var(--laranja);text-transform:uppercase}
+/* qualidade */
+.cert{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--linha);margin-top:60px}
+.cert div{padding:40px 36px;border-right:1px solid var(--linha)}.cert div:last-child{border-right:0}
+.cert img{height:90px;width:auto;margin-bottom:24px;mix-blend-mode:multiply}
+.cert h3{font-size:19px;margin-bottom:8px}.cert p{font-size:15px;color:var(--suave)}
+.foto-alta{position:relative;height:620px}
+.foto-alta img{position:absolute;object-fit:cover}
+.foto-alta .f1{width:78%;height:78%;right:0;top:0}
+.foto-alta .f2{width:52%;height:48%;left:0;bottom:0;border:10px solid #fff}
+.foto-alta .badge{position:absolute;left:8%;top:12%;background:var(--laranja);color:#fff;padding:22px 26px;font:600 14px Sora,sans-serif;max-width:210px}
+.foto-alta .badge b{font-size:44px;display:block;line-height:1}
+/* marcas */
+.marcas{background:var(--azul);color:#fff}
+.marcas h2{color:#fff}
+.marcas .lead{color:rgba(255,255,255,.75)}
+.mlist{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14);margin-top:60px}
+.mlist a{background:var(--azul);padding:34px 28px 0;text-decoration:none;display:flex;flex-direction:column;min-height:380px;transition:.3s;overflow:hidden}
+.mlist a:hover{background:var(--azul2)}
+.mlist h3{font-size:24px}.mlist p{font-size:14px;color:rgba(255,255,255,.7);margin-top:8px}
+.mlist img{height:210px;width:auto;margin:auto auto -20px;filter:drop-shadow(0 18px 20px rgba(0,0,0,.4));transition:.4s}
+.mlist a:hover img{transform:translateY(-10px)}
+/* parceiro */
+.parceiro{display:grid;grid-template-columns:1.1fr 1fr;background:var(--cinza)}
+.parceiro img{width:100%;height:100%;object-fit:cover;min-height:480px}
+.parceiro div{padding:80px 72px;align-self:center}
+/* notícias */
+.nhead{display:flex;justify-content:space-between;align-items:end;margin-bottom:46px}
+.nlist{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px}
+.nitem{text-decoration:none}
+.nitem img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.nitem:first-child img{aspect-ratio:16/10}
+.nitem time{display:block;font:600 12px Sora,sans-serif;letter-spacing:.12em;color:var(--laranja);text-transform:uppercase;margin:20px 0 8px}
+.nitem h3{font-size:20px}.nitem:first-child h3{font-size:28px}
+footer{background:var(--azul2);color:rgba(255,255,255,.75);padding:80px 0 34px;font-size:15px}
+footer .g{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px}
+footer img{height:40px;margin-bottom:22px}
+footer h4{font:600 12px Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+footer a{display:block;text-decoration:none;margin-bottom:8px}footer a:hover{color:#fff}
+footer .b{border-top:1px solid rgba(255,255,255,.12);margin-top:60px;padding-top:26px;display:flex;justify-content:space-between;font-size:13px}
+@media (max-width:1020px){
+ header nav,.util .l span:nth-child(n+2){display:none}.menu-btn{display:block}
+ .hero{flex-direction:column;align-items:stretch;padding:80px 0 0!important;min-height:0}.paises{position:relative;right:auto;bottom:auto;margin:40px 32px 40px}
+ .kpis .wrap{grid-template-columns:1fr 1fr}.kpi{padding:36px 20px}.kpi:nth-child(2){border-right:0}.kpi:nth-child(3){padding-left:0}.kpi:nth-child(-n+2){border-bottom:1px solid var(--linha)}
+ .dois,.parceiro{grid-template-columns:1fr;gap:50px}
+ .graos,.cert,.mlist{grid-template-columns:1fr 1fr}
+ .nlist{grid-template-columns:1fr 1fr}.nitem:first-child{grid-column:span 2}
+ footer .g{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+ .wrap{padding:0 20px}section{padding:80px 0}
+ .util .r{display:none}
+ header .logo img{height:32px}
+ .paises{flex-wrap:wrap;margin:36px 20px}.paises div{min-width:0;flex:1 1 30%;padding:14px}.paises b{font-size:22px}
+ .kpi b{font-size:44px}
+ .graos,.cert,.mlist,.nlist,.regioes{grid-template-columns:1fr}.nitem:first-child{grid-column:auto}
+ .cert div{border-right:0;border-bottom:1px solid var(--linha)}
+ .foto-alta{height:420px}
+ .parceiro div{padding:50px 22px}
+ .nhead{flex-direction:column;align-items:flex-start;gap:20px}
+ footer .g{grid-template-columns:1fr}footer .b{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+<div class="util"><div class="wrap"><div class="l"><span>+55 53 3223.1277</span><span>vendas@nelsonwendt.com.br</span><span>Pelotas · RS · Brasil</span></div><div class="r"><b>PT</b> &nbsp;EN&nbsp; ES</div></div></div>
+<header><div class="wrap">
+  <a class="logo" href="#"><img src="../img/logo.png" alt="Nelson Wendt Alimentos"></a>
+  <nav><a href="#">Empresa</a><a href="#">Produtos</a><a href="#">Exportação</a><a href="#">Responsabilidade</a><a href="#">Notícias</a><a href="#">Contato</a></nav>
+  <button class="menu-btn" aria-label="Menu">☰</button>
+</div></header>
+
+<section class="hero" style="padding:0">
+  <img src="../img/fabrica-aerea.jpg" alt="Vista aérea da indústria Nelson Wendt">
+  <div class="wrap">
+    <span class="eyebrow">Nº 1 em exportação · Abiarroz 2025</span>
+    <h1>O maior exportador de <strong>arroz parboilizado</strong> do Brasil.</h1>
+    <p>Há mais de 60 anos produzindo arroz com controle de toda a cadeia, da lavoura à distribuição, para o Brasil e para mais de 25 países.</p>
+    <div class="acoes"><a class="btn" href="#">Fale com o comercial →</a><a class="btn contorno" href="#">Conheça a empresa</a></div>
+  </div>
+  <div class="paises"><div><b>25+</b><span>países atendidos</span></div><div><b>Nº 1</b><span>em parboilizado</span></div><div><b>HACCP</b><span>alimento seguro</span></div></div>
+</section>
+
+<div class="kpis"><div class="wrap">
+  <div class="kpi"><b>1964</b><span>ano de fundação, em Pelotas, RS</span></div>
+  <div class="kpi"><b>400<sup>+</sup></b><span>trabalhadores em uma empresa familiar</span></div>
+  <div class="kpi"><b>10<sup>+</sup></b><span>anos de experiência em exportação</span></div>
+  <div class="kpi"><b>2</b><span>estados com indústria: Rio Grande do Sul e Pernambuco</span></div>
+</div></div>
+
+<section class="export"><div class="wrap">
+  <div class="dois">
+    <div>
+      <span class="eyebrow">Distribuição internacional</span>
+      <h2>Arroz brasileiro para a América, África, Europa e Oriente Médio.</h2>
+      <p class="lead">Após mais de 10 anos de experiência em exportação, estamos aptos a atender nossos clientes internacionais das mais diversas formas, sempre com produto de alta qualidade e certificação HACCP.</p>
+      <div class="regioes"><div>América Latina</div><div>América do Norte</div><div>África</div><div>Europa</div><div>Oriente Médio</div><div>Brasil<small>com foco no Norte e Nordeste</small></div></div>
+    </div>
+    <div class="mapa"><img src="../img/mapa-exportacao.png" alt="Mapa com os destinos de exportação"></div>
+  </div>
+  <div class="graos">
+    <div class="grao"><img src="../img/grao-parboilizado.jpg" alt=""><div><span class="t">Long grain parboiled rice</span><h3>Arroz parboilizado</h3><p>Polido, no máximo 4% de quebrados. Granel, sacos de PP ou embalagens de varejo.</p></div></div>
+    <div class="grao"><img src="../img/grao-branco.jpg" alt=""><div><span class="t">Long grain white rice</span><h3>Arroz branco</h3><p>Polido, no máximo 5% de quebrados. Granel, sacos de PP ou embalagens de varejo.</p></div></div>
+    <div class="grao"><img src="../img/grao-integral.jpg" alt=""><div><span class="t">Long grain parboiled brown rice</span><h3>Arroz parboilizado integral</h3><p>No máximo 4% de quebrados. Granel, sacos de PP ou embalagens de varejo.</p></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="dois">
+    <div class="foto-alta">
+      <img class="f1" src="../img/haccp-graos.jpg" alt="Grãos de arroz e selo HACCP">
+      <img class="f2" src="../img/qualidade-tablet.jpg" alt="Controle de qualidade">
+      <div class="badge"><b>100%</b>da cadeia sob nosso controle</div>
+    </div>
+    <div>
+      <span class="eyebrow">Qualidade</span>
+      <h2>Uma cadeia repleta de cuidados.</h2>
+      <p class="lead">Trabalhamos com o arroz desde a colheita, no sul do Brasil, passando pelo beneficiamento, empacotamento e distribuição. Tudo com muita precaução, para garantir um produto seguro e muito saboroso.</p>
+      <a class="btn azul" href="#" style="margin-top:34px">Como produzimos →</a>
+    </div>
+  </div>
+  <div class="cert">
+    <div><img src="../img/haccp-selo.jpg" alt="Selo HACCP"><h3>Certificação HACCP</h3><p>Desde 2023, certifica internacionalmente a distribuição de alimentos seguros.</p></div>
+    <div><img src="../img/ghg-protocol.jpg" alt="Programa Brasileiro GHG Protocol"><h3>Energia renovável</h3><p>Desde 2017, energia renovável certificada pelo Programa Brasileiro GHG Protocol.</p></div>
+    <div><img src="../img/eureciclo.png" alt="eureciclo"><h3>Logística reversa</h3><p>Parceria com a eureciclo para a reciclagem das embalagens após o consumo.</p></div>
+  </div>
+</div></section>
+
+<section class="marcas"><div class="wrap">
+  <span class="eyebrow">Mercado nacional</span>
+  <div class="dois" style="align-items:end"><h2>Marcas presentes em todo o Brasil.</h2><p class="lead">Além do Emoções, líder de vendas no Nordeste, trabalhamos com outras marcas nacionais, cada uma com linhas pensadas para diferentes paladares.</p></div>
+  <div class="mlist">
+    <a href="#"><h3>Emoções</h3><p>Branco, parboilizado, integral, arbório e saquinhos.</p><img src="../img/emb/emocoes-parboilizado-1kg.webp" alt="Emoções"></a>
+    <a href="#"><h3>Garibaldo</h3><p>Garibaldo e Super Garibaldo, 1 kg e 5 kg.</p><img src="../img/emb/super-garibaldo.webp" alt="Garibaldo"></a>
+    <a href="#"><h3>Danói</h3><p>Agulhinha tipo 1, embalagem de 5 kg.</p><img src="../img/emb/danoi-5kg.webp" alt="Danói"></a>
+    <a href="#"><h3>Amigaço</h3><p>Fragmentos do melhor arroz, para toda a família.</p><img src="../img/emb/amigaco-5kg.webp" alt="Amigaço"></a>
+  </div>
+</div></section>
+
+<div class="parceiro">
+  <img src="../img/unidade-nordeste.jpg" alt="Unidade da Nelson Wendt no Nordeste">
+  <div>
+    <span class="eyebrow">Seja um parceiro</span>
+    <h2>Representantes em todo o Norte e Nordeste.</h2>
+    <p class="lead">Como empresa familiar, investimos em relações fortes com nossos representantes comerciais, com agilidade e uma ampla capacidade logística.</p>
+    <a class="btn azul" href="#" style="margin-top:30px">Encontre um representante →</a>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <div class="nhead"><div><span class="eyebrow">Notícias e documentos</span><h2 style="margin-bottom:0">Acontece na Nelson Wendt</h2></div><a class="btn azul" href="#">Todas as notícias</a></div>
+  <div class="nlist">
+    <a class="nitem" href="#"><img src="../img/noticia-marcas-que-eu-gosto.jpg" alt=""><time>Reconhecimento</time><h3>Pela 6ª vez, o arroz Emoções está no coração de Pernambuco</h3></a>
+    <a class="nitem" href="#"><img src="../img/noticia-haccp.jpg" alt=""><time>Certificação</time><h3>Somos certificados com o selo HACCP</h3></a>
+    <a class="nitem" href="#"><img src="../img/noticia-relatorio.jpg" alt=""><time>Documentos</time><h3>Relatório de Transparência Salarial</h3></a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="g">
+    <div><img src="../img/logo-escuro.png" alt="Nelson Wendt Alimentos"><p>O maior exportador de arroz parboilizado do Brasil.</p></div>
+    <div><h4>Empresa</h4><a href="#">Nossa história</a><a href="#">Exportação</a><a href="#">Responsabilidade</a><a href="#">Notícias</a></div>
+    <div><h4>Contato</h4><a href="#">+55 53 3223.1277</a><a href="#">+55 53 98115.3111</a><a href="#">vendas@nelsonwendt.com.br</a></div>
+    <div><h4>Endereço</h4><a href="#">Av. Fernando Osório, 2774<br>Pelotas · RS · 96055-000</a></div>
+  </div>
+  <div class="b"><span>© Nelson Wendt Alimentos</span><span>Português · English · Español</span></div>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+# Baixa logo, imagens, textos, cores e prints do site atual da Longlife para clientes/longlife/_origem/.
+name: longlife-origem
+on:
+  push:
+    branches: [claude/project-thread-f2k7xp]
+    paths: [.github/workflows/longlife-origem.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Percorrer o site (páginas, textos, prints, imagens)
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          cat > crawl.cjs <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          const O = 'clientes/longlife/_origem';
+          for (const d of ['html', 'prints', 'img']) fs.mkdirSync(`${O}/${d}`, { recursive: true });
+          const START = 'https://www.longlife.ind.br/';
+          const host = h => h.replace(/^www\./, '');
+          const nome = u => { const p = new URL(u); let n = (p.pathname + p.search).replace(/^\/|\/$/g, '').replace(/[^A-Za-z0-9._-]+/g, '_'); return n || 'home'; };
+          (async () => {
+            const b = await chromium.launch();
+            const fila = [START], vistos = new Set(), paginas = [], imagens = new Set(), estilosHome = {};
+            while (fila.length && paginas.length < 60) {
+              const u = fila.shift().split('#')[0];
+              if (vistos.has(u)) continue; vistos.add(u);
+              if (/\.(pdf|jpe?g|png|gif|webp|svg|zip|docx?|xlsx?|mp4)$/i.test(u)) { if (/\.pdf$/i.test(u)) paginas.push({ url: u, pdf: true }); continue; }
+              const pg = await b.newPage({ viewport: { width: 1440, height: 900 } });
+              const r = await pg.goto(u, { waitUntil: 'networkidle', timeout: 60000 }).catch(e => null);
+              await pg.waitForTimeout(2500);
+              for (const sel of ['text=Aceitar', 'text=Aceito', 'text=Concordo', 'text=Accept', 'text=OK']) await pg.click(sel, { timeout: 500 }).catch(() => {});
+              const n = nome(pg.url());
+              const info = await pg.evaluate(() => {
+                const links = [...document.querySelectorAll('a[href]')].map(a => a.href);
+                const imgs = [...document.querySelectorAll('img')].map(i => i.currentSrc || i.src).concat(
+                  [...document.querySelectorAll('img[srcset], source[srcset]')].flatMap(i => i.srcset.split(',').map(s => new URL(s.trim().split(' ')[0], location.href).href)));
+                const bgs = [...document.querySelectorAll('*')].map(e => getComputedStyle(e).backgroundImage).filter(v => v && v.includes('url('))
+                  .flatMap(v => [...v.matchAll(/url\(["']?([^"')]+)/g)].map(m => new URL(m[1], location.href).href));
+                const icons = [...document.querySelectorAll('link[rel*=icon], meta[property="og:image"]')].map(l => l.href || l.content);
+                const est = {};
+                for (const el of document.querySelectorAll('*')) {
+                  const s = getComputedStyle(el);
+                  for (const k of ['color', 'backgroundColor', 'borderTopColor']) { const v = s[k]; if (v && v !== 'rgba(0, 0, 0, 0)') est[v] = (est[v] || 0) + 1; }
+                  est['font:' + s.fontFamily] = (est['font:' + s.fontFamily] || 0) + 1;
+                }
+                const menu = [...document.querySelectorAll('nav a, header a')].map(a => ({ t: a.innerText.trim(), h: a.href }));
+                return { title: document.title, desc: (document.querySelector('meta[name=description]') || {}).content || '', txt: document.body.innerText, links, imgs: imgs.concat(bgs, icons), est, menu };
+              }).catch(() => null);
+              if (info) {
+                fs.writeFileSync(`${O}/html/${n}.html`, await pg.content());
+                fs.writeFileSync(`${O}/html/${n}.txt`, `# ${info.title}\n# ${pg.url()}\n# ${info.desc}\n\n${info.txt}`);
+                info.imgs.forEach(i => i && i.startsWith('http') && imagens.add(i));
+                if (!paginas.length) { fs.writeFileSync(`${O}/estilos.json`, JSON.stringify(Object.entries(info.est).sort((a, b) => b[1] - a[1]), null, 1)); fs.writeFileSync(`${O}/menu.json`, JSON.stringify(info.menu, null, 1)); }
+                for (const l of info.links) { try { const x = new URL(l); if (host(x.hostname) === host(new URL(START).hostname) && /^https?:$/.test(x.protocol)) fila.push(x.href.split('#')[0]); } catch {} }
+                await pg.screenshot({ path: `${O}/prints/${n}-computador.png`, fullPage: true }).catch(() => {});
+                paginas.push({ url: pg.url(), nome: n, status: r ? r.status() : 0, title: info.title });
+              }
+              await pg.close();
+              if (paginas.length <= 12 && info) {
+                const m = await b.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
+                await m.goto(u, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+                await m.waitForTimeout(2000);
+                await m.screenshot({ path: `${O}/prints/${n}-celular.png`, fullPage: true }).catch(() => {});
+                await m.close();
+              }
+            }
+            fs.writeFileSync(`${O}/paginas.json`, JSON.stringify(paginas, null, 1));
+            fs.writeFileSync(`${O}/img/lista.txt`, [...imagens].join('\n') + '\n');
+            await b.close();
+          })();
+          JS
+          node crawl.cjs
+          O=clientes/longlife/_origem
+          # Baixa as imagens (do próprio site) na maior versão disponível
+          while read u; do
+            [ -z "$u" ] && continue
+            case "$u" in *longlife*) ;; *) echo "externa $u" >> $O/img/externas.txt; continue;; esac
+            big=$(echo "$u" | sed -E 's#-[0-9]+x[0-9]+(\.[A-Za-z]+)(\?.*)?$#\1#')
+            f=$(echo "$big" | sed -E 's#^https?://[^/]+/##; s#\?.*##; s#wp-content/uploads/##; s#[/ ]#_#g')
+            [ -f "$O/img/$f" ] && continue
+            curl -sSL --fail --max-filesize 15000000 -o "$O/img/$f" "$big" || curl -sSL --fail --max-filesize 15000000 -o "$O/img/$f" "$u" || echo "falhou $u"
+          done < $O/img/lista.txt
+          # PDFs (catálogos, fichas): só a lista e os pequenos
+          grep -h '"pdf": true' -B1 $O/paginas.json | grep -oE 'https?://[^"]+' > $O/pdfs.txt || true
+          mkdir -p $O/pdf; while read u; do curl -sSL --fail --max-filesize 8000000 -o "$O/pdf/$(basename "$u")" "$u" || echo "pdf falhou $u"; done < $O/pdfs.txt
+          ls -la $O/img | head -100; du -sh $O
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add clientes/longlife/_origem
+          git commit -m "Longlife: arquivos do site atual" && git pull --rebase origin claude/project-thread-f2k7xp && git push

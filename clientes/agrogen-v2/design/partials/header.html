@@ -1,0 +1,25 @@
+<header class="site-header"><div class="wrap"><div class="pill">
+  <a class="logo" href="/{{lang}}/"><img src="/img/logo-agrogen.png" alt="{{site.name}}" width="272" height="75"></a>
+  <nav id="nav" class="nav" aria-label="Principal">
+    <a data-g="index" href="/{{lang}}/">{{t.nav.index}}</a>
+    <a data-g="empresa" href="/{{lang}}/empresa">{{t.nav.empresa}}</a>
+    <div class="has-sub">
+      <a data-g="estrutura" href="/{{lang}}/estrutura">{{t.nav.estrutura}}<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      <div class="sub"><div class="sub-in">
+        {{#each t.unitTypes}}<a href="/{{lang}}/{{it.id}}"><img src="/img/{{it.img}}.jpg" alt="" width="56" height="42" loading="lazy"><span>{{it.name}}<small>{{it.count}}</small></span></a>{{/each}}
+        <a class="all" href="/{{lang}}/estrutura">{{t.nav.allUnits}} <span>→</span></a>
+      </div></div>
+    </div>
+    <div class="has-sub">
+      <a data-g="pilares" href="/{{lang}}/pilares">{{t.nav.pilares}}<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      <div class="sub"><div class="sub-in">
+        {{#each t.pilares}}<a href="/{{lang}}/{{it.id}}"><img src="/img/{{it.img}}.jpg" alt="" width="56" height="42" loading="lazy"><span>{{it.name}}</span></a>{{/each}}
+        <a class="all" href="/{{lang}}/pilares">{{t.nav.allPilares}} <span>→</span></a>
+      </div></div>
+    </div>
+    <a data-g="valores" href="/{{lang}}/valores">{{t.nav.valores}}</a>
+    <a data-g="contato" href="/{{lang}}/contato">{{t.nav.contato}}</a>
+  </nav>
+  <a class="btn header-cta" href="/{{lang}}/contato">Fale conosco</a>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="{{t.menu}}"><span></span><span></span><span></span></button>
+</div></div></header>

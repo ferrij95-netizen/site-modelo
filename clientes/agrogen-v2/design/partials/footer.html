@@ -1,0 +1,10 @@
+<footer class="site-footer"><div class="wrap">
+  <div class="grid">
+    <div><p class="ft-lead">{{t.footerText}}</p><p>{{site.legalName}}<br>{{site.address}}</p></div>
+    <div><h4>Empresa</h4><ul><li><a href="/{{lang}}/empresa">{{t.nav.empresa}}</a></li><li><a href="/{{lang}}/estrutura">{{t.nav.estrutura}}</a></li><li><a href="/{{lang}}/pilares">{{t.nav.pilares}}</a></li><li><a href="/{{lang}}/valores">{{t.nav.valores}}</a></li></ul></div>
+    <div><h4>Estrutura</h4><ul>{{#each t.unitTypes}}<li><a href="/{{lang}}/{{it.id}}">{{it.name}}</a></li>{{/each}}<li><a href="/{{lang}}/sanidade">Laboratório</a></li></ul></div>
+    <div><h4>Contato</h4><ul>{{#each t.phones}}<li><a href="tel:{{it.href}}">{{it.number}}</a></li>{{/each}}<li><a href="{{t.links.trabalhe}}" target="_blank" rel="noopener">Trabalhe conosco</a></li><li><a href="/{{lang}}/contato#etica">Canal de ética</a></li><li><a href="{{t.links.linkedin}}" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+  </div>
+  <a class="wordmark" href="/{{lang}}/" aria-label="{{site.name}}, página inicial">Agrogen<span>.</span></a>
+  <div class="bottom"><span>© {{year}} {{site.legalName}}. {{t.rights}}</span><button class="contrast-toggle" type="button" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 010 18z" fill="currentColor"/></svg>{{t.contrast}}</button></div>
+</div></footer>
