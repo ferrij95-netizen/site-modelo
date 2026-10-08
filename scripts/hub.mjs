@@ -29,7 +29,7 @@ const clientes = slugs.map(slug => {
   }
   return {
     slug,
-    nome: cfg.name || slug,
+    nome: cfg.hubName || cfg.name || slug,
     tagline: cfg.tagline || '',
     cor: cfg.theme?.brandDeep || cfg.theme?.brand || '#333',
     completo,
