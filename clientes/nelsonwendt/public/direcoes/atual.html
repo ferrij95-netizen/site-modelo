@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nelson Wendt · Site atual (captura)</title>
+<link rel="icon" href="../img/favicon.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.5 system-ui,sans-serif;color:#1d1b18;background:#e9e5de}
+header{position:sticky;top:0;z-index:5;background:#1d1b18;color:#fff;padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+header b{margin-right:auto}
+header a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:6px;background:rgba(255,255,255,.12);font-size:14px}
+header a.on{background:#F07A22}
+main{max-width:1200px;margin:24px auto;padding:0 12px}
+p.n{margin-bottom:12px;color:#5d574d}
+img{width:100%;display:block;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+</style>
+</head>
+<body>
+<header><b>Site atual da Nelson Wendt · captura de 08/10/2026</b>
+<a href="#" data-p="home" class="on">Início</a><a href="#" data-p="empresa">Empresa</a><a href="#" data-p="produtos">Produtos</a><a href="#" data-p="responsabilidade">Responsabilidade</a><a href="#" data-p="blog">Notícias</a><a href="#" data-p="contato">Contato</a>
+<a href="https://www.nelsonwendt.com.br/" target="_blank" rel="noopener">Abrir o site atual ↗</a><a href="./">← Direções novas</a></header>
+<main><p class="n">Captura de tela do site como está hoje, para comparar com as direções novas.</p><img id="i" src="atual/home.jpg" alt="Site atual"></main>
+<script>document.querySelectorAll('[data-p]').forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById('i').src='atual/'+a.dataset.p+'.jpg';document.querySelectorAll('[data-p]').forEach(x=>x.classList.toggle('on',x===a));scrollTo(0,0)})</script>
+</body>
+</html>
