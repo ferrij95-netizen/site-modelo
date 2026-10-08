@@ -1,0 +1,97 @@
+# Baixa textos, logo, imagens, cores, fontes e prints do site atual da Oficina De Filippo para clientes/defilippo/_origem/.
+name: defilippo-origem
+on:
+  push:
+    branches: [claude/project-thread-4nqz4o]
+    paths: [.github/workflows/defilippo-origem.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Navegar, salvar textos, imagens e prints
+        run: |
+          O=clientes/defilippo/_origem; mkdir -p $O/img $O/html $O/prints
+          # 2ª passada: páginas no www. que a 1ª não seguiu
+          for p in oficina historia etica galeria fotos 'localiza%C3%A7ao' contato; do curl -sSL -A "Mozilla/5.0" -o "$O/html/bruto-$p.html" -w "$p %{http_code}\n" "http://www.oficinadefilippo.com/$p.html"; done | tee -a $O/html/status.txt || true
+          # Objetos flash/vídeo embutidos
+          grep -ohiE '[A-Za-z0-9_/%.-]+\.(swf|flv|mp4|wmv)' $O/html/*.html | sort -u | while read v; do curl -sSL --fail -m 60 -o "$O/img/$(basename "$v")" "http://www.oficinadefilippo.com/$v" && echo "video $v"; done || true
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          cat > shot.cjs <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          const O = 'clientes/defilippo/_origem';
+          (async () => {
+            const b = await chromium.launch();
+            const ctx = await b.newContext({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36' });
+            const fila = ['http://www.oficinadefilippo.com/oficina.html','http://www.oficinadefilippo.com/historia.html','http://www.oficinadefilippo.com/etica.html','http://www.oficinadefilippo.com/localiza%C3%A7ao.html','http://www.oficinadefilippo.com/galeria.html','http://www.oficinadefilippo.com/servi%C3%A7os.html'];
+            const vistos = new Set(); const imgs = new Set(); let host = null; const log = [];
+            while (fila.length && vistos.size < 25) {
+              const u = fila.shift(); const k = u.replace(/#.*$/, '').replace(/\/$/, '');
+              if (vistos.has(k)) continue; vistos.add(k);
+              const pg = await ctx.newPage({ viewport: { width: 1440, height: 900 } });
+              await pg.setViewportSize({ width: 1440, height: 900 });
+              const r = await pg.goto(u, { waitUntil: 'networkidle', timeout: 60000 }).catch(e => null);
+              await pg.waitForTimeout(2500);
+              if (!host) host = new URL(pg.url()).host;
+              const nome = (new URL(pg.url()).pathname.replace(/^\/|\/$/g, '').replace(/[^a-z0-9]+/gi, '-') || 'home').slice(0, 60);
+              log.push(`${u} -> ${pg.url()} ${r ? r.status() : 'erro'} ${nome}`);
+              // rola para carregar imagens preguiçosas
+              await pg.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 150)); } window.scrollTo(0, 0); });
+              await pg.waitForTimeout(1000);
+              const info = await pg.evaluate(() => {
+                const out = {};
+                for (const el of document.querySelectorAll('*')) {
+                  const s = getComputedStyle(el);
+                  for (const k of ['color', 'backgroundColor', 'borderTopColor']) { const v = s[k]; if (v && v !== 'rgba(0, 0, 0, 0)') out[v] = (out[v] || 0) + 1; }
+                  out['font:' + s.fontFamily] = (out['font:' + s.fontFamily] || 0) + 1;
+                }
+                const links = [...document.querySelectorAll('a[href]')].map(a => ({ href: a.href, txt: a.innerText.trim().slice(0, 80) }));
+                const im = [...document.querySelectorAll('img')].map(i => ({ src: i.currentSrc || i.src, alt: i.alt, w: i.naturalWidth, h: i.naturalHeight, srcset: i.srcset }));
+                const bgs = [...document.querySelectorAll('*')].map(e => getComputedStyle(e).backgroundImage).filter(v => v && v.includes('url('));
+                const meta = [...document.querySelectorAll('meta,link[rel*=icon],link[rel=stylesheet]')].map(m => m.outerHTML);
+                return { estilos: Object.entries(out).sort((a, b) => b[1] - a[1]).slice(0, 80), txt: document.body.innerText, title: document.title, links, im, bgs, meta, html: document.documentElement.outerHTML };
+              });
+              fs.writeFileSync(`${O}/html/${nome}.txt`, info.title + '\n\n' + info.txt);
+              fs.writeFileSync(`${O}/html/${nome}.html`, info.html);
+              fs.writeFileSync(`${O}/html/${nome}.json`, JSON.stringify({ url: pg.url(), title: info.title, links: info.links, im: info.im, bgs: info.bgs, meta: info.meta, estilos: info.estilos }, null, 1));
+              info.im.forEach(i => { if (i.src) imgs.add(i.src); (i.srcset || '').split(',').forEach(s => { const x = s.trim().split(' ')[0]; if (x) imgs.add(new URL(x, pg.url()).href); }); });
+              info.bgs.forEach(v => (v.match(/url\("?([^")]+)"?\)/g) || []).forEach(m => imgs.add(m.replace(/^url\("?|"?\)$/g, ''))));
+              await pg.screenshot({ path: `${O}/prints/${nome}-computador.png`, fullPage: true }).catch(() => {});
+              await pg.setViewportSize({ width: 390, height: 844 }); await pg.waitForTimeout(1200);
+              await pg.screenshot({ path: `${O}/prints/${nome}-celular.png`, fullPage: true }).catch(() => {});
+              for (const l of info.links) {
+                try { const x = new URL(l.href); if (/oficinadefilippo\.com$/.test(x.host) && !/\.(jpe?g|png|pdf|webp|gif|zip)$/i.test(x.pathname) && !/wp-json|feed|xmlrpc|\?/.test(x.href)) fila.push(x.href.replace(/#.*$/, '')); } catch {}
+              }
+              await pg.close();
+            }
+            fs.writeFileSync(`${O}/html/paginas.txt`, log.join('\n'));
+            fs.writeFileSync(`${O}/img/lista.txt`, [...imgs].join('\n'));
+            await b.close();
+          })();
+          JS
+          node shot.cjs || true
+          cat $O/html/paginas.txt || true
+          # Baixa as imagens (http ou https), nomes legíveis
+          n=0
+          while read u; do
+            case "$u" in data:*|"") continue;; esac
+            n=$((n+1)); f=$(echo "$u" | sed -E 's#^https?://##; s#\?.*$##; s#[^A-Za-z0-9._-]+#_#g' | tail -c 90)
+            curl -sSL --fail -m 60 -A "Mozilla/5.0" -o "$O/img/$f" "$u" || echo "falhou $u"
+          done < $O/img/lista.txt
+          # Fontes declaradas em CSS
+          grep -ohE 'https?://[^"'"'"' )]+\.css[^"'"'"' )]*' $O/html/*.html | sort -u | head -40 > $O/html/css.txt || true
+          mkdir -p $O/css; i=0; while read c; do i=$((i+1)); curl -sSL --fail -m 30 -o $O/css/$i.css "$c" && echo "$i $c" >> $O/css/lista.txt; done < $O/html/css.txt
+          grep -hoE "font-family:[^;}]+" $O/css/*.css $O/html/*.html 2>/dev/null | sort | uniq -c | sort -rn | head -40 > $O/fontes.txt || true
+          du -sh $O; ls -la $O/img | head -100
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          find clientes/defilippo/_origem -type f -size +8M -delete
+          git add clientes/defilippo/_origem
+          git commit -m "De Filippo: arquivos do site atual" && git pull --rebase origin claude/project-thread-4nqz4o && git push

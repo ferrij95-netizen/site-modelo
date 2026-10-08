@@ -1,0 +1,36 @@
+# O site atual da De Filippo só tem fotos minúsculas (2010). Baixa fotos de licença livre do Wikimedia Commons para os previews.
+name: defilippo-fotos
+on:
+  push:
+    branches: [claude/project-thread-4nqz4o]
+    paths: [.github/workflows/defilippo-fotos.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Buscar e baixar
+        run: |
+          O=clientes/defilippo/_origem/banco; mkdir -p $O
+          # Wikimedia Commons (licenças livres, crédito em creditos.tsv)
+          for q in "auto repair shop mechanic" "car mechanic workshop" "Fiat 500 Abarth" "Alfa Romeo Giulia" "Fiat 500 classic" "car engine bay" "disc brake car" "car lift garage" "mechanic tools wrench" "Lancia Delta" "Pinheiros Sao Paulo street"; do
+            s=$(echo "$q" | tr ' ' '-')
+            curl -sS -G -A "OvertusBot/1.0 (ferrij95@users.noreply.github.com)" "https://commons.wikimedia.org/w/api.php" \
+              --data-urlencode "action=query" --data-urlencode "format=json" --data-urlencode "generator=search" --data-urlencode "gsrnamespace=6" \
+              --data-urlencode "gsrsearch=$q filetype:bitmap" --data-urlencode "gsrlimit=10" --data-urlencode "prop=imageinfo" \
+              --data-urlencode "iiprop=url|size|extmetadata" --data-urlencode "iiurlwidth=1800" -o /tmp/$s.json || continue
+            jq -r '.query.pages // {} | to_entries[] | .value | select(.imageinfo[0].width >= 1200) | [(.pageid|tostring), .imageinfo[0].thumburl, (.imageinfo[0].extmetadata.Artist.value // "" | gsub("<[^>]*>";"") | gsub("[\t\n]";" ")), (.imageinfo[0].extmetadata.LicenseShortName.value // ""), .imageinfo[0].descriptionurl] | @tsv' /tmp/$s.json | head -6 | while IFS=$'\t' read id url autor lic desc; do
+              curl -sSL --fail -m 60 -A "OvertusBot/1.0" -o "$O/$s-$id.jpg" "$url" && printf '%s\t%s\t%s\t%s\n' "$s-$id.jpg" "$autor" "$lic" "$desc" >> $O/creditos.tsv
+              sleep 1
+            done
+          done
+          ls $O | wc -l; du -sh $O
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add clientes/defilippo/_origem/banco
+          git commit -m "De Filippo: banco de fotos livres" && git pull --rebase origin claude/project-thread-4nqz4o && git push
