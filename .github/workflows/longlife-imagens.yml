@@ -1,0 +1,34 @@
+# Baixa as fotos do site atual da Longlife (Google Sites, guardadas em googleusercontent) em tamanho original.
+name: longlife-imagens
+on:
+  push:
+    branches: [claude/project-thread-f2k7xp]
+    paths: [.github/workflows/longlife-imagens.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar fotos por página
+        run: |
+          O=clientes/longlife/_origem
+          for f in $O/html/*.html; do
+            p=$(basename "$f" .html)
+            i=0
+            grep -oE 'https://lh[0-9]-[a-z]+\.googleusercontent\.com/[^"'"'"' )\\]+' "$f" | sed 's/=[^=]*$//' | awk '!s[$0]++' | while read u; do
+              i=$((i+1)); n=$(printf "%s-%02d" "$p" $i)
+              curl -sSL --fail -D /tmp/h -o "$O/img/$n" "$u=s0" || curl -sSL --fail -D /tmp/h -o "$O/img/$n" "$u=w2400" || { echo "falhou $u"; continue; }
+              t=$(file -b --mime-type "$O/img/$n"); ext=${t#image/}; [ "$ext" = jpeg ] && ext=jpg
+              mv "$O/img/$n" "$O/img/$n.$ext"; echo "$n.$ext $u" >> $O/img/origem.txt
+            done
+          done
+          ls -la $O/img
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add clientes/longlife/_origem
+          git commit -m "Longlife: fotos do site atual" && git pull --rebase origin claude/project-thread-f2k7xp && git push
