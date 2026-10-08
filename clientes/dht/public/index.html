@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DHT · escolha a versão do site</title>
+<meta name="description" content="Duas versões do site da DHT para escolher: Laboratório (clara) e Plantão (escura).">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DHT · escolha a versão do site">
+<meta property="og:description" content="Duas versões do site da DHT para escolher: Laboratório (clara) e Plantão (escura).">
+<meta property="og:url" content="https://dht.overtus.com.br/">
+<meta property="og:image" content="https://dht.overtus.com.br/assets/og-a.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/dht-base.css">
+<style>
+  body { background: #fff; color: #0c0c0c; min-height: 100svh; display: grid; grid-template-rows: auto 1fr; }
+  header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px var(--lateral); border-bottom: 1px solid var(--regua); }
+  main { display: grid; grid-template-columns: 1fr 1fr; }
+  a.v { display: grid; grid-template-rows: 1fr auto; text-decoration: none; border-right: 1px solid var(--regua); min-height: 0; }
+  a.v:last-child { border-right: 0; }
+  .v figure { overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 32px var(--lateral); min-height: 0; }
+  .v img { width: 100%; height: auto; max-height: 56svh; object-fit: cover; object-position: top; border: 1px solid var(--regua); transition: transform .4s; }
+  .v:hover img { transform: scale(1.015); }
+  .v div { display: grid; gap: 12px; align-content: start; min-height: 250px; padding: 24px var(--lateral) 40px; border-top: 1px solid var(--regua); }
+  .v h2 { font: 400 clamp(32px, 3.6vw, 52px)/1.11 var(--f-display); text-transform: uppercase; }
+  .v p { color: #3a3a3a; max-width: 46ch; }
+  .v .sublinhado { justify-self: start; margin-top: 8px; }
+  .b { background: #000; color: #fff; }
+  .b p { color: #cfcfcf; }
+  .b img { border-color: #262626; }
+  .b div { border-color: #262626; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; } a.v { border-right: 0; } }
+</style>
+</head>
+<body>
+<header><span class="marca"><svg viewBox="0 0 28 24" aria-hidden="true"><path d="M1 14h6V3h6v18h6V9h8" fill="none" stroke="currentColor" stroke-width="2.6"/></svg><span>DHT</span></span><span class="rotulo">Proposta de site · duas versões</span></header>
+<main>
+  <a class="v" href="/a/"><figure><img src="/assets/versao-a.jpg" alt="Página inicial da versão A"></figure>
+    <div><span class="rotulo">Versão A</span><h2>Laboratório</h2><p>Clara, como uma ficha técnica: fundo branco, desenho do sensor em destaque e capítulos pretos mostrando os sinais ao vivo.</p><span class="sublinhado">Abrir a versão A</span></div></a>
+  <a class="v b" href="/b/"><figure><img src="/assets/versao-b.jpg" alt="Página inicial da versão B"></figure>
+    <div><span class="rotulo">Versão B</span><h2>Plantão</h2><p>Escura, como um monitor à noite: os sinais vitais abrem o site e as fichas técnicas aparecem como folhas brancas.</p><span class="sublinhado">Abrir a versão B</span></div></a>
+</main>
+</body>
+</html>
