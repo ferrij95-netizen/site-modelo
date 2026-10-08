@@ -6,6 +6,7 @@
     preto: ['#1A1A1A', '#2A2A2A', '#111111'],
     cores: ['#E2559A', '#1C3F94', '#2A5CD8', '#1E9A4B', '#FFE135', '#F2B705', '#F26A1B', '#D2232A', '#6B3E22'],
     aditivo: ['#F3EFD9', '#E9E4C6', '#F7F4E6'],
+    logo: ['#27B472', '#FAAF3E', '#24A9E0', '#90268E', '#EC1B23', '#808284'],
   };
   function rnd(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
   function shade(hex, f) {
