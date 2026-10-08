@@ -1,0 +1,61 @@
+# Busca indústrias do agro no Google Maps pelo Brasil, dá nota aos sites e procura sinais de porte (resultado em prospeccao/agro/saida/).
+name: prospeccao-agro
+on:
+  push:
+    branches: [claude/project-thread-4is0gm]
+    paths: [.github/workflows/prospeccao-agro.yml, prospeccao/agro/maps.cjs, prospeccao/agro/analisa.py]
+permissions:
+  contents: write
+jobs:
+  maps:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        cidade: [Sorriso MT, Rondonópolis MT, Lucas do Rio Verde MT, Sinop MT, Primavera do Leste MT, Cuiabá MT,
+                 Rio Verde GO, Jataí GO, Anápolis GO, Uberlândia MG, Uberaba MG, Patos de Minas MG, Varginha MG,
+                 Ribeirão Preto SP, Sertãozinho SP, Piracicaba SP, Bauru SP, Presidente Prudente SP, São José do Rio Preto SP,
+                 Londrina PR, Maringá PR, Cascavel PR, Toledo PR, Ponta Grossa PR, Francisco Beltrão PR,
+                 Chapecó SC, Concórdia SC, Videira SC, Passo Fundo RS, Santa Rosa RS, Ijuí RS, Santa Cruz do Sul RS, Pelotas RS,
+                 Dourados MS, Campo Grande MS, Luís Eduardo Magalhães BA, Barreiras BA, Juazeiro BA, Balsas MA,
+                 Petrolina PE, Mossoró RN, Ji-Paraná RO, Paragominas PA, Gurupi TO, Linhares ES, Teresina PI]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Buscar no Maps
+        working-directory: prospeccao/agro
+        env:
+          CIDADE: ${{ matrix.cidade }}
+          IDX: ${{ strategy.job-index }}
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node maps.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maps-${{ strategy.job-index }}
+          path: prospeccao/agro/saida/
+          if-no-files-found: ignore
+  analisa:
+    needs: maps
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: maps-*
+          path: prospeccao/agro/saida
+          merge-multiple: true
+      - name: Checar sites
+        working-directory: prospeccao/agro
+        run: |
+          pip install requests
+          python analisa.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add -f prospeccao/agro/saida
+          git commit -m "Prospecção agro: resultados" && git pull --rebase origin claude/project-thread-4is0gm && git push
