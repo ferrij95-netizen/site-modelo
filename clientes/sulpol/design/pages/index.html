@@ -1,0 +1,36 @@
+<section class="hero"><div class="wrap">
+  <div class="hero-txt">
+    <span class="mono">{{p.eyebrow}}</span>
+    <h1>{{p.heroTitle}}</h1>
+    <p>{{p.heroText}}</p>
+    <div class="ctas"><a class="btn" href="/{{lang}}/produtos">{{t.more}}</a><a class="btn ghost" href="{{wa}}" target="_blank" rel="noopener">{{t.wa}}</a></div>
+  </div>
+  <div class="hero-side">
+    <div class="hero-art"><img src="/img/azul.jpg" alt="Masterbatch azul e peças plásticas" width="1600" height="456" fetchpriority="high"></div>
+    <div class="spec"><div><span class="mono">Linhas</span><b>4</b></div><div><span class="mono">Desde</span><b>2006</b></div><div><span class="mono">Fabricantes</span><b>ISO 9001</b></div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="head"><div><span class="mono">01 · {{t.nav.produtos}}</span><h2>{{p.linesTitle}}</h2></div><a class="btn ghost" href="/{{lang}}/produtos">{{t.catalog}}</a></div>
+  <div class="lines">
+    {{#each t.lines}}<a class="line" href="/{{lang}}/produtos#{{it.id}}">
+      <div class="swatch"><img src="/img/{{it.img}}.jpg" alt="{{it.alt}}" loading="lazy" width="1600" height="456"></div>
+      <div class="body"><span class="mono">{{it.tag}}</span><h3>{{it.name}}</h3><p>{{it.short}}</p><span class="go">{{it.count}} →</span></div>
+    </a>{{/each}}
+  </div>
+  <div class="table">
+    <div class="row th"><span>{{t.labels.product}}</span><span>{{t.labels.active}}</span><span>{{t.labels.carrier}}</span><span>{{t.labels.dose}}</span></div>
+    {{#each p.table}}<div class="row"><b>{{it.name}}</b><span data-l="{{t.labels.active}}">{{it.active}}</span><span data-l="{{t.labels.carrier}}">{{it.carrier}}</span><span data-l="{{t.labels.dose}}">{{it.dose}}</span></div>{{/each}}
+  </div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
+  <div class="split">
+    <div><span class="mono">02 · Parceria</span><h3>{{p.valgroupTitle}}</h3><p>{{p.valgroupText}}</p><a class="btn ghost" href="{{p.valgroupUrl}}" target="_blank" rel="noopener">{{p.valgroupLink}}</a></div>
+    <div><span class="mono">03 · Trajetória</span><div class="big">20</div><h3>anos de fornecimento, desde 2006</h3><p>{{p.anniversaryText}}.</p><a class="btn ghost" href="/{{lang}}/empresa">{{t.nav.empresa}}</a></div>
+  </div>
+  <div class="pillars">
+    {{#each p.pillars}}<div><span class="mono">{{num}}</span><h4>{{it.title}}</h4><p>{{it.text}}</p></div>{{/each}}
+  </div>
+</div></section>

@@ -1,0 +1,19 @@
+<section class="page-head"><div class="wrap">
+  <span class="mono">{{site.name}}</span>
+  <h1>{{p.heading}}</h1>
+  <p>{{p.lead}}</p>
+</div></section>
+<section class="sec"><div class="wrap about">
+  <div class="about-img"><img src="/img/estufa.jpg" alt="Estufa coberta com filme agrícola" loading="lazy"><div class="badge"><b>20</b><span>anos</span></div></div>
+  <div>
+    <span class="mono">{{t.pages.index.since}}</span>
+    <h2>{{p.since}}</h2>
+    <div class="blocks">{{#each p.blocks}}<div><span class="mono">{{num}}</span><h3>{{it.title}}</h3><p>{{it.text}}</p></div>{{/each}}</div>
+  </div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="split">
+    <div><span class="mono">Parceria</span><h3>{{t.pages.index.valgroupTitle}}</h3><p>{{t.pages.index.valgroupText}}</p><a class="btn ghost" href="{{t.pages.index.valgroupUrl}}" target="_blank" rel="noopener">{{t.pages.index.valgroupLink}}</a></div>
+    <div><span class="mono">Por que a Sulpol</span><ul class="checks">{{#each t.pages.index.pillars}}<li><b>{{it.title}}</b> {{it.text}}</li>{{/each}}</ul></div>
+  </div>
+</div></section>

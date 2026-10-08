@@ -13,7 +13,9 @@
   "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua+Jo%C3%A3o+Goulart+1010+Canoas+RS+92420-530",
   "hours": "Segunda a sexta, 8h às 12h e 13h às 17h30",
   "defaultLang": "pt",
-  "langs": ["pt"],
+  "langs": [
+    "pt"
+  ],
   "theme": {
     "brand": "#2266AA",
     "brandDark": "#1A4F86",
@@ -27,5 +29,13 @@
   "hero": {
     "image": "assets/img/hero.jpg"
   },
-  "pages": ["index", "produtos", "empresa", "contato"]
+  "pages": [
+    "index",
+    "produtos",
+    "empresa",
+    "contato"
+  ],
+  "city": "Canoas/RS",
+  "hoursShort": "8h às 12h · 13h às 17h30",
+  "addressShort": "Rua João Goulart, 1010, Canoas/RS"
 }
