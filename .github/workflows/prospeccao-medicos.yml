@@ -1,26 +1,52 @@
-# Garimpo de médicos com pouca presença digital (resultado em prospeccao/medicos/).
+# Garimpo de médicos com pouca presença digital: confere cada candidato no Google Maps (resultado em prospeccao/medicos/saida/).
 name: prospeccao-medicos
 on:
   push:
     branches: [claude/project-thread-0xo7ls]
-    paths: [.github/workflows/prospeccao-medicos.yml, prospeccao/medicos/*.py, prospeccao/medicos/*.cjs, prospeccao/medicos/*.sh]
+    paths: [.github/workflows/prospeccao-medicos.yml, prospeccao/medicos/maps.cjs]
 permissions:
   contents: write
 jobs:
-  coleta:
+  maps:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        lote: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     steps:
       - uses: actions/checkout@v4
-      - name: Profissionais (PF do DATASUS)
+      - name: Buscar no Maps
         working-directory: prospeccao/medicos
+        env:
+          LOTE: ${{ matrix.lote }}
+          LOTES: 16
         run: |
-          pip install pandas pyreaddbc
-          bash pf.sh || true
-          [ -f pf.dbc ] && python pf.py || true
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node maps.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maps-${{ matrix.lote }}
+          path: |
+            prospeccao/medicos/saida/maps-*.json
+            prospeccao/medicos/debug-*.png
+          if-no-files-found: ignore
+  junta:
+    needs: maps
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: maps-*
+          path: prospeccao/medicos
+          merge-multiple: true
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
-          git add -f prospeccao/medicos/saida
-          git commit -m "Prospecção médicos: PF" && git pull --rebase origin claude/project-thread-0xo7ls && git push
+          git add -f prospeccao/medicos/saida prospeccao/medicos/debug-*.png || true
+          git commit -m "Prospecção médicos: Maps" && git pull --rebase origin claude/project-thread-0xo7ls && git push
