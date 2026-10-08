@@ -47,14 +47,15 @@ const card = c => `
         ${c.capa ? `<img src="${c.capa}" alt="" loading="lazy">` : `<span>${esc(c.nome.slice(0, 1))}</span>`}
       </a>
       <div class="info">
-        <span class="status ${c.completo ? 'ok' : 'dir'}">${c.completo ? 'Site completo' : 'Direções'}</span>
-        <h2>${esc(c.nome)}</h2>
-        <p>${esc(c.tagline)}</p>
+        <div class="nome">
+          <span class="status ${c.completo ? 'ok' : 'dir'}">${c.completo ? 'Site completo' : 'Direções'}</span>
+          <h2>${esc(c.nome)}</h2>
+          <p title="${esc(c.slug)}.overtus.com.br">${esc(c.tagline || c.slug + '.overtus.com.br')}</p>
+        </div>
         <div class="links">
           ${c.completo ? `<a href="${c.url}">Ver site</a>` : ''}
           ${c.direcoes ? `<a href="${c.url}direcoes/">${c.completo ? 'Direções' : 'Ver direções'}</a>` : ''}
         </div>
-        <small>${esc(c.slug)}.overtus.com.br</small>
       </div>
     </article>`;
 
@@ -66,30 +67,42 @@ const html = `<!doctype html>
 <meta name="robots" content="noindex, nofollow">
 <title>Overtus · Sites em desenvolvimento</title>
 <style>
-  :root { --bg:#f4f4f1; --card:#fff; --ink:#16181b; --muted:#6b7079; --line:#e3e3de; --ok:#1f7a4d; --dir:#a2620b; }
+  /* O hub inteiro cabe na janela: cabeçalho fixo e a grade divide o resto da altura entre os cartões. */
+  :root { --bg:#f4f4f1; --card:#fff; --ink:#16181b; --muted:#6b7079; --line:#e3e3de; --ok:#1f7a4d; --dir:#a2620b; --borda:clamp(12px, min(2.6vh, 2.2vw), 28px); }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  header { max-width:1200px; margin:0 auto; padding:48px 20px 24px; display:flex; justify-content:space-between; align-items:end; gap:16px; flex-wrap:wrap; }
-  h1 { margin:0; font-size:28px; letter-spacing:-.02em; }
-  header p { margin:4px 0 0; color:var(--muted); }
+  html, body { height:100%; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; display:flex; flex-direction:column; height:100vh; height:100dvh; padding:var(--borda); gap:clamp(10px, 2vh, 20px); }
+  header { width:100%; max-width:1600px; margin:0 auto; display:flex; justify-content:space-between; align-items:end; gap:4px 16px; flex-wrap:wrap; flex:none; }
+  h1 { margin:0; font-size:clamp(20px, 3.2vh, 28px); line-height:1.2; letter-spacing:-.02em; }
+  header p { margin:2px 0 0; color:var(--muted); font-size:clamp(13px, 1.8vh, 16px); }
   .resumo { color:var(--muted); font-size:14px; }
   .resumo a { color:inherit; }
-  main { max-width:1200px; margin:0 auto; padding:0 20px 64px; display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:20px; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
-  .thumb { display:grid; place-items:center; aspect-ratio:1200/630; background:var(--cor); overflow:hidden; text-decoration:none; }
+  main { width:100%; max-width:1600px; margin:0 auto; flex:1; min-height:0; display:grid; grid-template-columns:repeat(var(--cols, 3), minmax(0, 1fr)); grid-auto-rows:minmax(var(--min-linha, 0px), 1fr); gap:clamp(10px, 1.8vh, 20px); overflow:auto; }
+  .card { container-type:inline-size; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; min-height:0; }
+  .thumb { flex:1; min-height:0; display:grid; place-items:center; background:var(--cor); overflow:hidden; text-decoration:none; }
   .thumb img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform .3s; }
   .thumb:hover img { transform:scale(1.03); }
-  .thumb span { color:#fff; font-size:64px; font-weight:700; opacity:.9; }
-  .info { padding:16px 18px 18px; display:flex; flex-direction:column; gap:6px; flex:1; }
-  .status { align-self:flex-start; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; padding:2px 8px; border-radius:99px; }
+  .thumb span { color:#fff; font-size:clamp(32px, 7vh, 64px); font-weight:700; opacity:.9; }
+  .info { flex:none; padding:clamp(8px, 1.4vh, 14px) clamp(12px, 1.4vw, 18px); display:grid; grid-template-columns:1fr auto; align-items:center; gap:2px 12px; }
+  .nome { min-width:0; }
+  .status { display:inline-block; white-space:nowrap; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; padding:1px 8px; border-radius:99px; }
   .status.ok { color:var(--ok); background:#e3f3ea; }
   .status.dir { color:var(--dir); background:#fbefdc; }
-  h2 { margin:4px 0 0; font-size:19px; }
-  .info p { margin:0; color:var(--muted); font-size:14px; flex:1; }
-  .links { display:flex; gap:8px; margin-top:8px; }
-  .links a { padding:8px 14px; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; color:var(--ink); border:1px solid var(--line); }
+  h2 { margin:2px 0 0; font-size:clamp(15px, 2vh, 18px); line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .info p { margin:0; color:var(--muted); font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .links { display:flex; gap:6px; }
+  .links a { padding:clamp(5px, .9vh, 8px) 12px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; color:var(--ink); border:1px solid var(--line); white-space:nowrap; }
   .links a:first-child { background:var(--ink); color:#fff; border-color:var(--ink); }
-  small { color:var(--muted); font-size:12px; }
+  @container (max-width: 360px) { .info { grid-template-columns:1fr; } .links { margin-top:4px; } }
+  /* Celular: um cartão por linha, foto à esquerda e texto à direita, para todos caberem na tela. */
+  @media (max-width: 560px) {
+    .card { flex-direction:row; }
+    .thumb { flex:0 0 38%; }
+    .info { flex:1; min-width:0; grid-template-columns:1fr; align-content:center; padding:8px 12px; }
+    .info p { display:none; }
+    .links { margin-top:4px; }
+    .links a { padding:4px 10px; font-size:12px; }
+  }
 </style>
 </head>
 <body>
@@ -102,6 +115,33 @@ const html = `<!doctype html>
 </header>
 <main>${clientes.map(card).join('')}
 </main>
+<script>
+  // Escolhe o número de colunas que deixa os cartões maiores sem passar da altura da janela.
+  (function () {
+    const main = document.querySelector('main'), n = main.children.length, MIN_FOTO = 70;
+    function ajusta() {
+      if (innerWidth <= 560) {
+        main.style.setProperty('--cols', 1);
+        main.style.setProperty('--min-linha', main.clientHeight / n < 84 ? '84px' : '0px');
+        return;
+      }
+      const W = main.clientWidth, H = main.clientHeight, gap = parseFloat(getComputedStyle(main).rowGap) || 0;
+      let melhor = { cols: 1, nota: -1, info: 96 };
+      for (let cols = 1; cols <= n; cols++) {
+        const linhas = Math.ceil(n / cols), w = (W - gap * (cols - 1)) / cols, h = (H - gap * (linhas - 1)) / linhas;
+        if (w < 220 && cols > 1) break;
+        const INFO = w <= 360 ? 128 : 96; // cartão estreito: botões descem para baixo do nome
+        const nota = Math.min(w, (h - INFO) * 1.9);
+        if (nota > melhor.nota) melhor = { cols, nota, info: INFO };
+      }
+      main.style.setProperty('--cols', melhor.cols);
+      // Clientes demais para a altura: cada cartão mantém um tamanho mínimo e a grade rola por dentro.
+      main.style.setProperty('--min-linha', melhor.nota / 1.9 < MIN_FOTO ? (MIN_FOTO + melhor.info) + 'px' : '0px');
+    }
+    ajusta();
+    addEventListener('resize', ajusta);
+  })();
+</script>
 </body>
 </html>
 `;
