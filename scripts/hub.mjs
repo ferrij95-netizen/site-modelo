@@ -14,6 +14,8 @@ const slugs = fs.existsSync(dir)
 
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(path.join(out, 'capas'), { recursive: true });
+// Tela de login (hub/entrar/), servida sem senha pelo worker.
+fs.cpSync(path.join(repo, 'hub/entrar'), path.join(out, 'entrar'), { recursive: true });
 
 const clientes = slugs.map(slug => {
   const base = path.join(dir, slug);
@@ -71,6 +73,7 @@ const html = `<!doctype html>
   h1 { margin:0; font-size:28px; letter-spacing:-.02em; }
   header p { margin:4px 0 0; color:var(--muted); }
   .resumo { color:var(--muted); font-size:14px; }
+  .resumo a { color:inherit; }
   main { max-width:1200px; margin:0 auto; padding:0 20px 64px; display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:20px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
   .thumb { display:grid; place-items:center; aspect-ratio:1200/630; background:var(--cor); overflow:hidden; text-decoration:none; }
@@ -95,7 +98,7 @@ const html = `<!doctype html>
     <h1>Sites em desenvolvimento</h1>
     <p>Previews dos clientes da Overtus.</p>
   </div>
-  <span class="resumo">${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)}</span>
+  <span class="resumo">${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/sair">Sair</a></span>
 </header>
 <main>${clientes.map(card).join('')}
 </main>
