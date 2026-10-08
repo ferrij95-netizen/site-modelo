@@ -15,7 +15,10 @@ jobs:
       - name: Navegar, salvar textos, imagens e prints
         run: |
           O=clientes/defilippo/_origem; mkdir -p $O/img $O/html $O/prints
-          curl -sSL -A "Mozilla/5.0" -o $O/html/home-bruto.html -w "home %{http_code} %{url_effective}\n" http://oficinadefilippo.com/ | tee $O/html/status.txt || true
+          # 2ª passada: páginas no www. que a 1ª não seguiu
+          for p in oficina historia etica galeria fotos 'localiza%C3%A7ao' contato; do curl -sSL -A "Mozilla/5.0" -o "$O/html/bruto-$p.html" -w "$p %{http_code}\n" "http://www.oficinadefilippo.com/$p.html"; done | tee -a $O/html/status.txt || true
+          # Objetos flash/vídeo embutidos
+          grep -ohiE '[A-Za-z0-9_/%.-]+\.(swf|flv|mp4|wmv)' $O/html/*.html | sort -u | while read v; do curl -sSL --fail -m 60 -o "$O/img/$(basename "$v")" "http://www.oficinadefilippo.com/$v" && echo "video $v"; done || true
           npm i --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
           cat > shot.cjs <<'JS'
@@ -25,7 +28,7 @@ jobs:
           (async () => {
             const b = await chromium.launch();
             const ctx = await b.newContext({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36' });
-            const fila = ['http://oficinadefilippo.com/'];
+            const fila = ['http://www.oficinadefilippo.com/oficina.html','http://www.oficinadefilippo.com/historia.html','http://www.oficinadefilippo.com/etica.html','http://www.oficinadefilippo.com/localiza%C3%A7ao.html','http://www.oficinadefilippo.com/galeria.html','http://www.oficinadefilippo.com/servi%C3%A7os.html'];
             const vistos = new Set(); const imgs = new Set(); let host = null; const log = [];
             while (fila.length && vistos.size < 25) {
               const u = fila.shift(); const k = u.replace(/#.*$/, '').replace(/\/$/, '');
@@ -62,7 +65,7 @@ jobs:
               await pg.setViewportSize({ width: 390, height: 844 }); await pg.waitForTimeout(1200);
               await pg.screenshot({ path: `${O}/prints/${nome}-celular.png`, fullPage: true }).catch(() => {});
               for (const l of info.links) {
-                try { const x = new URL(l.href); if (x.host === host && !/\.(jpe?g|png|pdf|webp|gif|zip)$/i.test(x.pathname) && !/wp-json|feed|xmlrpc|\?/.test(x.href)) fila.push(x.href.replace(/#.*$/, '')); } catch {}
+                try { const x = new URL(l.href); if (/oficinadefilippo\.com$/.test(x.host) && !/\.(jpe?g|png|pdf|webp|gif|zip)$/i.test(x.pathname) && !/wp-json|feed|xmlrpc|\?/.test(x.href)) fila.push(x.href.replace(/#.*$/, '')); } catch {}
               }
               await pg.close();
             }
