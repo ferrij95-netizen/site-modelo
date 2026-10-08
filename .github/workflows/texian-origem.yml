@@ -83,8 +83,8 @@ jobs:
         run: |
           O=clientes/texian/_origem
           # versões originais (sem -300x200 do WordPress) além das usadas
-          sed -E 's#-[0-9]+x[0-9]+(\.[a-zA-Z]+)$#\1#' $O/img/lista.txt >> $O/img/lista.txt
-          sort -u $O/img/lista.txt | grep -E '^https?://' | while read u; do
+          { cat $O/img/lista.txt; sed -E 's#-[0-9]+x[0-9]+(\.[a-zA-Z]+)$#\1#' $O/img/lista.txt; } | sort -u > /tmp/todas.txt
+          cat /tmp/todas.txt | grep -E '^https?://' | while read u; do
             f=$(echo "$u" | sed -E 's#^https?://[^/]+/##; s#\?.*$##; s#wp-content/uploads/##; s#[/]#_#g' | cut -c1-120)
             [ -n "$f" ] && curl -sSL --fail -m 60 -A "Mozilla/5.0" -o "$O/img/$f" "$u" || echo "falhou $u"
           done
