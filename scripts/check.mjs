@@ -27,7 +27,7 @@ const pages = [];
 (function walk(d) {
   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
     const p = path.join(d, e.name);
-    if (e.isDirectory() && e.name !== 'assets' && e.name !== '_clientes') walk(p);
+    if (e.isDirectory() && e.name !== 'assets' && !e.name.startsWith('_')) walk(p);
     else if (e.name.endsWith('.html')) pages.push(p);
   }
 })(dist);
