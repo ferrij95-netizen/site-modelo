@@ -1,0 +1,101 @@
+# Baixa logo, imagens, HTML, textos, cores e prints do site atual da Texian para clientes/texian/_origem/.
+# Percorre o site sozinho: começa na home e segue os links internos (até 60 páginas).
+name: texian-origem
+on:
+  push:
+    branches: [claude/project-thread-prwcm6]
+    paths: [.github/workflows/texian-origem.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Percorrer o site, prints, textos e cores
+        run: |
+          mkdir -p clientes/texian/_origem/{html,img,prints}
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          cat > crawl.cjs <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          const O = 'clientes/texian/_origem';
+          const START = 'https://texian.com.br/';
+          const nome = u => { const p = new URL(u).pathname.replace(/^\/|\/$/g, '').replace(/[^A-Za-z0-9_-]+/g, '-'); return p || 'home'; };
+          (async () => {
+            const b = await chromium.launch();
+            const ctx = await b.newContext({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36', viewport: { width: 1440, height: 900 } });
+            const fila = [START], vistos = new Set(), imagens = new Set(), status = [];
+            let host = null;
+            while (fila.length && vistos.size < 60) {
+              const u = fila.shift(); const k = u.replace(/[#?].*$/, '').replace(/\/$/, '');
+              if (vistos.has(k)) continue; vistos.add(k);
+              const pg = await ctx.newPage();
+              let r = null;
+              try { r = await pg.goto(u, { waitUntil: 'networkidle', timeout: 60000 }); } catch (e) { status.push(`${u} ERRO ${e.message.split('\n')[0]}`); await pg.close(); continue; }
+              const final = pg.url(); if (!host) host = new URL(final).hostname;
+              status.push(`${u} ${r && r.status()} ${final}`);
+              await pg.waitForTimeout(2500);
+              for (const sel of ['text=Aceitar', 'text=Aceito', 'text=Concordo', 'text=Accept', 'text=OK']) await pg.click(sel, { timeout: 500 }).catch(() => {});
+              // rola a página para carregar imagens preguiçosas
+              await pg.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 150)); } window.scrollTo(0, 0); });
+              await pg.waitForTimeout(1000);
+              const n = nome(final);
+              const info = await pg.evaluate(() => {
+                const est = {};
+                for (const el of document.querySelectorAll('*')) {
+                  const s = getComputedStyle(el);
+                  for (const k of ['color', 'backgroundColor', 'borderTopColor']) { const v = s[k]; if (v && v !== 'rgba(0, 0, 0, 0)') est[v] = (est[v] || 0) + 1; }
+                  est['font:' + s.fontFamily] = (est['font:' + s.fontFamily] || 0) + 1;
+                }
+                const imgs = [...document.querySelectorAll('img')].map(i => ({ src: i.currentSrc || i.src, alt: i.alt, w: i.naturalWidth, h: i.naturalHeight }));
+                const srcsets = [...document.querySelectorAll('img[srcset],source[srcset]')].flatMap(i => i.srcset.split(',').map(s => s.trim().split(' ')[0]));
+                const bgs = [...document.querySelectorAll('*')].map(e => getComputedStyle(e).backgroundImage).filter(v => v && v.includes('url('))
+                  .flatMap(v => [...v.matchAll(/url\("?([^")]+)"?\)/g)].map(m => m[1]));
+                const links = [...document.querySelectorAll('a[href]')].map(a => ({ href: a.href, txt: a.innerText.trim().slice(0, 80) }));
+                const meta = { title: document.title, desc: document.querySelector('meta[name=description]')?.content, og: document.querySelector('meta[property="og:image"]')?.content, icon: [...document.querySelectorAll('link[rel*=icon]')].map(l => l.href) };
+                return { est: Object.entries(est).sort((a, b) => b[1] - a[1]).slice(0, 80), txt: document.body.innerText, imgs, srcsets, bgs, links, meta };
+              });
+              fs.writeFileSync(`${O}/html/${n}.html`, await pg.content());
+              fs.writeFileSync(`${O}/html/${n}.txt`, info.txt);
+              fs.writeFileSync(`${O}/html/${n}.json`, JSON.stringify({ url: final, meta: info.meta, imgs: info.imgs, bgs: info.bgs, links: info.links }, null, 1));
+              if (vistos.size === 1) fs.writeFileSync(`${O}/estilos.json`, JSON.stringify(info.est, null, 1));
+              [...info.imgs.map(i => i.src), ...info.srcsets, ...info.bgs, info.meta.og, ...info.meta.icon].filter(Boolean).forEach(s => { try { imagens.add(new URL(s, final).href); } catch {} });
+              if (vistos.size <= 14) {
+                await pg.screenshot({ path: `${O}/prints/${n}-computador.png`, fullPage: true });
+                await pg.setViewportSize({ width: 390, height: 844 }); await pg.waitForTimeout(1200);
+                await pg.screenshot({ path: `${O}/prints/${n}-celular.png`, fullPage: true });
+              }
+              for (const l of info.links) {
+                try { const x = new URL(l.href); if (x.hostname.replace(/^www\./, '') === host.replace(/^www\./, '') && !/\.(pdf|jpe?g|png|zip|docx?|xlsx?|mp4)$/i.test(x.pathname) && !/wp-(admin|login|json)|feed|\/tag\/|\/author\//.test(x.pathname)) fila.push(x.origin + x.pathname); } catch {}
+              }
+              await pg.close();
+            }
+            fs.writeFileSync(`${O}/html/status.txt`, status.join('\n') + '\n');
+            fs.writeFileSync(`${O}/img/lista.txt`, [...imagens].join('\n') + '\n');
+            await b.close();
+          })();
+          JS
+          node crawl.cjs
+      - name: Baixar imagens e PDFs
+        run: |
+          O=clientes/texian/_origem
+          # versões originais (sem -300x200 do WordPress) além das usadas
+          sed -E 's#-[0-9]+x[0-9]+(\.[a-zA-Z]+)$#\1#' $O/img/lista.txt >> $O/img/lista.txt
+          sort -u $O/img/lista.txt | grep -E '^https?://' | while read u; do
+            f=$(echo "$u" | sed -E 's#^https?://[^/]+/##; s#\?.*$##; s#wp-content/uploads/##; s#[/]#_#g' | cut -c1-120)
+            [ -n "$f" ] && curl -sSL --fail -m 60 -A "Mozilla/5.0" -o "$O/img/$f" "$u" || echo "falhou $u"
+          done
+          # PDFs (catálogos) linkados no site
+          mkdir -p $O/pdf
+          cat $O/html/*.json | grep -oE '"href": "[^"]+\.pdf"' | cut -d'"' -f4 | sort -u | head -20 | while read u; do curl -sSL --fail -m 120 -o "$O/pdf/$(basename "$u")" "$u" || true; done
+          find $O/img -size 0 -delete
+          du -sh $O/*; ls $O/img | head -100; cat $O/html/status.txt
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add clientes/texian/_origem
+          git commit -m "Texian: arquivos do site atual" && git pull --rebase origin claude/project-thread-prwcm6 && git push
