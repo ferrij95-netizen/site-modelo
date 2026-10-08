@@ -14,7 +14,7 @@
 <section class="sec"><div class="wrap">
   <div class="head"><div><span class="mono">01 · {{t.nav.produtos}}</span><h2>{{p.linesTitle}}</h2></div><a class="btn ghost" href="/{{lang}}/produtos">{{t.catalog}}</a></div>
   <div class="lines">
-    {{#each t.lines}}<a class="line" href="/{{lang}}/produtos#{{it.id}}">
+    {{#each t.lines}}<a class="line" href="/{{lang}}/{{it.id}}">
       <div class="swatch"><img src="/img/{{it.img}}.jpg" alt="{{it.alt}}" loading="lazy" width="1600" height="456"></div>
       <div class="body"><span class="mono">{{it.tag}}</span><h3>{{it.name}}</h3><p>{{it.short}}</p><span class="go">{{it.count}} →</span></div>
     </a>{{/each}}
