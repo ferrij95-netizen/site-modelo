@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Long Life · Direção B: Faixas verdes</title>
+<link rel="icon" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root{--g:#009035;--g2:#00702A;--g3:#003D17;--lime:#B5E61D;--ink:#101410;--muted:#5A635C;--paper:#F5F5F0;--line:#DCDDD5;--cond:'Barlow Condensed',Impact,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:17px/1.6 Barlow,system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+.k{font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:15px}
+/* faixas do logo */
+.stripes{background:repeating-linear-gradient(180deg,currentColor 0 4px,transparent 4px 9px)}
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:18px;padding:15px 26px;background:var(--lime);color:var(--g3);transition:.2s}
+.btn:hover{background:#fff}
+.btn.line{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.btn.line:hover{background:#fff;color:var(--g3)}
+.btn.dark{background:var(--g);color:#fff}.btn.dark:hover{background:var(--g3)}
+/* header */
+header{position:absolute;top:0;left:0;right:0;z-index:10;color:#fff}
+header .wrap{display:flex;align-items:center;height:92px;gap:40px}
+header .logo img{width:200px}
+nav{display:flex;gap:30px;margin-left:auto}
+nav a{font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:17px;opacity:.9}
+nav a:hover{opacity:1;color:var(--lime)}
+header .tel{font-family:var(--cond);font-weight:700;font-size:20px;letter-spacing:.02em;padding-left:28px;border-left:1px solid rgba(255,255,255,.35)}
+.burger{display:none;margin-left:auto;background:none;border:2px solid #fff;color:#fff;width:44px;height:44px;font-size:20px}
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:max(680px,100svh);display:flex;align-items:flex-end;color:#fff;background:#0b2b14 url(../img/fabrica-aerea.jpg) center/cover;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,61,23,.94) 0%,rgba(0,112,42,.78) 45%,rgba(0,112,42,.15) 100%)}
+.hero .wrap{position:relative;width:100%;padding-bottom:64px}
+.hero h1{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:clamp(64px,10.5vw,168px);line-height:.86;letter-spacing:-.01em;margin:18px 0 28px}
+.hero h1 span{display:block}
+.hero h1 .o{color:transparent;-webkit-text-stroke:2px #fff}
+.hero p{font-size:20px;max-width:560px;opacity:.92}
+.hero .ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.hero .st{position:absolute;right:28px;top:120px;width:180px;height:120px;color:rgba(255,255,255,.5)}
+/* números */
+.nums{background:var(--g);color:#fff}
+.nums .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.nums .wrap>div{padding:40px 28px 40px 0;border-left:1px solid rgba(255,255,255,.25);padding-left:28px}
+.nums .wrap>div:first-child{border-left:0;padding-left:0}
+.nums b{display:block;font-family:var(--cond);font-weight:800;font-size:76px;line-height:.9}
+.nums b small{font-size:30px;margin-left:4px}
+.nums span{display:block;margin-top:8px;font-size:15px;opacity:.9}
+/* seções */
+section{padding:110px 0}
+h2{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:clamp(44px,6vw,88px);line-height:.92;letter-spacing:-.005em}
+h2 em{font-style:normal;color:var(--g)}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-bottom:56px}
+.intro p{font-size:19px;color:var(--muted);max-width:520px}
+/* produtos */
+.prods{display:grid;grid-template-columns:1.25fr 1fr;gap:20px}
+.prod{position:relative;min-height:520px;color:#fff;overflow:hidden;display:flex;align-items:flex-end;background:var(--g3)}
+.prod img,.prod svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.prod:hover img,.prod:hover svg{transform:scale(1.04)}
+.prod::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,40,15,.92) 0%,rgba(0,40,15,.1) 60%)}
+.prod .tx{position:relative;z-index:1;padding:34px}
+.prod h3{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:48px;line-height:.95;margin:8px 0 12px}
+.prod p{max-width:440px;opacity:.9}
+.prod .go{display:inline-block;margin-top:18px;color:var(--lime)}
+/* processos */
+.proc{background:var(--g3);color:#fff;position:relative;overflow:hidden}
+.proc h2 em{color:var(--lime)}
+.proc .intro p{color:#B9CDBF}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.2)}
+.step{padding:30px 30px 34px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.step:not(:nth-child(3n+1)){padding-left:30px;border-left:1px solid rgba(255,255,255,.2)}
+.step .n{font-family:var(--cond);font-weight:800;font-size:22px;color:var(--lime)}
+.step h3{font-family:var(--cond);font-weight:700;text-transform:uppercase;font-size:32px;line-height:1;margin:10px 0 8px}
+.step p{color:#B9CDBF;font-size:16px}
+.step b{color:#fff;font-weight:600}
+.proc .ph{margin-top:56px;display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.proc .ph img{width:100%;height:360px;object-fit:cover}
+/* qualidade */
+.qual{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff}
+.qual .ph{background:url(../img/laboratorio.jpg) center/cover;min-height:560px}
+.qual .tx{padding:72px 64px}
+.qual .badge{display:inline-flex;align-items:center;gap:16px;margin:28px 0;padding:14px 20px 14px 14px;background:var(--paper);border-left:6px solid var(--g)}
+.qual .badge img{width:70px;border:1px solid var(--line)}
+.qual .badge b{font-family:var(--cond);font-size:30px;font-weight:800;display:block;line-height:1}
+.qual ul{list-style:none;margin-top:10px}
+.qual li{padding:12px 0 12px 34px;border-bottom:1px solid var(--line);position:relative}
+.qual li::before{content:"";position:absolute;left:0;top:19px;width:20px;height:11px;color:var(--g);background:repeating-linear-gradient(180deg,currentColor 0 3px,transparent 3px 4px)}
+/* história */
+.hist .years{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.hist .y{border-top:6px solid var(--g);padding-top:18px}
+.hist .y b{font-family:var(--cond);font-weight:800;font-size:64px;line-height:1;color:var(--g)}
+.hist .y p{color:var(--muted);margin-top:6px}
+/* contato */
+.cta{background:var(--g);color:#fff;position:relative;overflow:hidden}
+.cta .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.cta h2 em{color:var(--lime)}
+.cta p{font-size:19px;margin:20px 0 30px;opacity:.92;max-width:520px}
+.cards{display:grid;gap:12px}
+.card{background:rgba(0,40,15,.35);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:.2s}
+.card:hover{background:var(--g3)}
+.card .k{opacity:.75;font-size:14px}
+.card b{display:block;font-family:var(--cond);font-size:28px;font-weight:700;line-height:1.1}
+.card .ar{font-size:26px;color:var(--lime)}
+.cta .st{position:absolute;left:0;right:0;bottom:0;height:46px;color:rgba(255,255,255,.12)}
+footer{background:var(--g3);color:#9FB8A7;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:28px;padding-bottom:28px;flex-wrap:wrap}
+footer img{width:140px}
+@media (max-width:1000px){
+  nav,header .tel{display:none}.burger{display:block}
+  nav.open{display:flex;flex-direction:column;position:absolute;top:92px;left:0;right:0;background:var(--g3);padding:16px 28px 24px;gap:12px}
+  .intro,.prods,.qual,.cta .wrap{grid-template-columns:1fr}
+  .nums .wrap{grid-template-columns:1fr 1fr}.nums .wrap>div:nth-child(3){border-left:0;padding-left:0}
+  .steps{grid-template-columns:1fr 1fr}.step:not(:nth-child(3n+1)){padding-left:0;border-left:0}.step:nth-child(even){padding-left:24px;border-left:1px solid rgba(255,255,255,.2)}.step:nth-child(odd){padding-left:0;border-left:0}
+  .hist .years{grid-template-columns:1fr 1fr}
+  .qual .ph{min-height:320px}.qual .tx{padding:56px 28px}
+  .hero .st{display:none}
+}
+@media (max-width:600px){
+  section{padding:72px 0}
+  .wrap{padding:0 20px}
+  header .logo img{width:160px}
+  .nums b{font-size:56px}
+  .steps{grid-template-columns:1fr}.step:nth-child(even){padding-left:0;border-left:0}
+  .prod{min-height:420px}.prod h3{font-size:40px}
+  .proc .ph{grid-template-columns:1fr}.proc .ph img{height:240px}
+  .hero p{font-size:18px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><img src="../img/logo-branco.png" alt="Long Life"></a>
+  <nav id="nav"><a href="#empresa">Empresa</a><a href="#produtos">Produtos</a><a href="#estrutura">Estrutura</a><a href="#qualidade">Qualidade</a><a href="#contato">Contato</a></nav>
+  <a class="tel" href="tel:+555134816677">(51) 3481-6677</a>
+  <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+</div></header>
+
+<div class="hero">
+  <div class="stripes st"></div>
+  <div class="wrap">
+    <span class="k">Long Life Indústria e Comércio · Eldorado do Sul/RS</span>
+    <h1><span>Estampamos</span><span class="o">metal</span><span>desde 1985</span></h1>
+    <p>Peças estampadas e telas expandidas sob desenho, para autopeças e indústria. Qualidade certificada ISO 9001:2015.</p>
+    <div class="ctas"><a class="btn" href="#contato">Pedir orçamento →</a><a class="btn line" href="#produtos">Ver produtos</a></div>
+  </div>
+</div>
+
+<div class="nums"><div class="wrap">
+  <div><b>40<small>+</small></b><span>anos de estamparia</span></div>
+  <div><b>100<small>t</small></b><span>de estampados por mês</span></div>
+  <div><b>31</b><span>prensas excêntricas e hidráulicas</span></div>
+  <div><b>1.890<small>m²</small></b><span>de área de fábrica</span></div>
+</div></div>
+
+<section id="produtos"><div class="wrap">
+  <div class="intro"><h2>O que sai da <em>nossa prensa</em></h2><p>Fabricamos sob desenho do cliente, do corte da chapa à peça acabada, em pequenos e grandes lotes.</p></div>
+  <div class="prods">
+    <a class="prod" href="#"><img src="../img/pecas.jpg" alt=""><div class="tx"><span class="k">01</span><h3>Peças de metal estampadas</h3><p>Suportes, abraçadeiras, anéis, arruelas, tampas e peças técnicas para autopeças e indústria.</p><span class="go k">Ver peças →</span></div></a>
+    <a class="prod" href="#"><svg viewBox="0 0 600 520" preserveAspectRatio="xMidYMid slice"><defs><pattern id="mesh" width="70" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(-8)"><path d="M0 17 L18 0 L52 0 L70 17 L52 34 L18 34 Z" fill="none" stroke="#7FB892" stroke-width="6"/></pattern></defs><rect width="600" height="520" fill="#0E5A2A"/><rect width="600" height="520" fill="url(#mesh)"/></svg><div class="tx"><span class="k">02</span><h3>Telas expandidas</h3><p>Chapas de metal expandido para proteção, ventilação e componentes, cortadas na medida da aplicação.</p><span class="go k">Ver telas →</span></div></a>
+  </div>
+</div></section>
+
+<section id="estrutura" class="proc"><div class="wrap">
+  <div class="intro"><h2>Da chapa à peça, <em>tudo aqui dentro</em></h2><p>Maquinário atualizado conforme as normas de segurança, em um pavilhão de 1.680 m² construídos.</p></div>
+  <div class="steps">
+    <div class="step"><span class="n">01</span><h3>Corte</h3><p><b>3 guilhotinas</b> para preparar chapas e tiras.</p></div>
+    <div class="step"><span class="n">02</span><h3>Estampagem</h3><p><b>20 prensas excêntricas</b> e <b>11 hidráulicas</b>.</p></div>
+    <div class="step"><span class="n">03</span><h3>Dobra</h3><p><b>Prensa dobradeira</b> para perfis e suportes.</p></div>
+    <div class="step"><span class="n">04</span><h3>Usinagem</h3><p><b>2 tornos CNC</b> e <b>3 tornos mecânicos</b>.</p></div>
+    <div class="step"><span class="n">05</span><h3>Solda ponto</h3><p><b>3 máquinas</b> para montar conjuntos.</p></div>
+    <div class="step"><span class="n">06</span><h3>Acabamento</h3><p><b>2 tambores rotativos</b> para rebarbar e limpar.</p></div>
+  </div>
+  <div class="ph"><img src="../img/producao.jpg" alt="Linha de prensas"><img src="../img/painel-pecas.jpg" alt="Painel de peças produzidas"></div>
+</div></section>
+
+<div id="qualidade" class="qual">
+  <div class="ph" role="img" aria-label="Laboratório de medição"></div>
+  <div class="tx">
+    <span class="k" style="color:var(--g)">Qualidade</span>
+    <h2 style="font-size:clamp(40px,4.6vw,68px)">Medido no <em>nosso laboratório</em></h2>
+    <a class="badge" href="../img/certificado-iso-9001.jpg"><img src="../img/certificado-iso-9001.jpg" alt=""><span><span class="k" style="color:var(--muted)">Certificado DNV</span><b>ISO 9001:2015</b></span></a>
+    <p style="color:var(--muted)">Sistema de Gestão da Qualidade desde 1998. Nossa política tem quatro objetivos:</p>
+    <ul><li>Continuidade da existência da empresa</li><li>Atendimento às especificações do cliente</li><li>Cumprimento do prazo de entrega</li><li>Valorização dos colaboradores com treinamento</li></ul>
+  </div>
+</div>
+
+<section id="empresa" class="hist"><div class="wrap">
+  <div class="intro"><h2>Uma história <em>gaúcha</em> de 40 anos</h2><p>Começamos em Porto Alegre e crescemos em Eldorado do Sul, ampliando a fábrica e o parque de máquinas para acompanhar os clientes.</p></div>
+  <div class="years">
+    <div class="y"><b>1985</b><p>Fundação em Porto Alegre, no setor de autopeças.</p></div>
+    <div class="y"><b>1989</b><p>Sede transferida para Eldorado do Sul.</p></div>
+    <div class="y"><b>1998</b><p>Início do Sistema de Gestão da Qualidade ISO 9001.</p></div>
+    <div class="y"><b>Hoje</b><p>Fábrica duplicada e certificação ISO 9001:2015.</p></div>
+  </div>
+</div></section>
+
+<section id="contato" class="cta"><div class="stripes st"></div><div class="wrap">
+  <div><h2>Mande o desenho. <em>A gente estampa.</em></h2><p>Envie o desenho técnico, a quantidade e o material. Respondemos com o orçamento por telefone, WhatsApp ou e-mail.</p><a class="btn" href="https://wa.me/5551992823056">Chamar no WhatsApp →</a></div>
+  <div class="cards">
+    <a class="card" href="tel:+555134816677"><span><span class="k">Telefone</span><b>(51) 3481-6677</b></span><span class="ar">→</span></a>
+    <a class="card" href="https://wa.me/5551992823056"><span><span class="k">WhatsApp</span><b>(51) 99282-3056</b></span><span class="ar">→</span></a>
+    <a class="card" href="mailto:estamparia@longlife.com.br"><span><span class="k">E-mail</span><b>estamparia@longlife.com.br</b></span><span class="ar">→</span></a>
+    <a class="card" href="https://www.google.com/maps/search/?api=1&query=Estrada+da+Arrozeira+1315+Eldorado+do+Sul+RS"><span><span class="k">Fábrica</span><b>Estrada da Arrozeira, 1315 · Eldorado do Sul/RS</b></span><span class="ar">→</span></a>
+  </div>
+</div></section>
+<footer><div class="wrap"><img src="../img/logo-branco.png" alt="Long Life"><span>© Long Life Indústria e Comércio Ltda. · CNPJ 91.212.803/0001-65</span></div></footer>
+</body>
+</html>
