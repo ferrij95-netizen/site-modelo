@@ -10,7 +10,8 @@
   // Endereços no domínio da agência (o domínio precisa estar nesta conta Cloudflare). Um por cliente.
   "routes": [
     { "pattern": "site-modelo.overtus.com.br", "custom_domain": true },
-    { "pattern": "sulpol.overtus.com.br", "custom_domain": true }
+    { "pattern": "sulpol.overtus.com.br", "custom_domain": true },
+    { "pattern": "hermith.overtus.com.br", "custom_domain": true }
   ],
   "assets": {
     "directory": "./dist",
