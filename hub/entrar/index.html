@@ -108,7 +108,7 @@
       <p>Contatos, negócios em andamento e as decisões da semana, atualizados todos os dias.</p>
       <div class="acoes">
         <a class="contorno" href="https://overtus.com.br/">O que tem no painel</a>
-        <a class="seta" href="https://overtus.com.br/">Falar com a Overtus →</a>
+        <a class="seta" href="https://overtus.com.br/" data-agendar>Falar com a Overtus →</a>
       </div>
     </div>
 
@@ -137,14 +137,14 @@
           <div class="erro" id="erro" role="alert" hidden></div>
           <button type="submit" class="cheio" id="entrar">Entrar</button>
           <div class="divisor">Ainda não é cliente?</div>
-          <a class="vazado" href="https://overtus.com.br/">Agendar conversa</a>
+          <a class="vazado" href="https://overtus.com.br/" data-agendar>Agendar conversa</a>
         </form>
 
         <div id="esqueci" hidden>
           <div class="rotulo">Área do cliente</div>
           <h2>Recuperar senha</h2>
           <p>Fale com a Overtus e enviamos uma senha nova para o seu <span style="white-space: nowrap;">e-mail</span>.</p>
-          <a class="cheio vazado" href="https://overtus.com.br/" style="margin-top: 28px;">Falar com a Overtus</a>
+          <a class="cheio vazado" href="https://overtus.com.br/" style="margin-top: 28px;" data-agendar>Falar com a Overtus</a>
           <button type="button" class="texto voltar" id="ir-login">← Voltar para o login</button>
         </div>
       </div>
@@ -170,6 +170,29 @@
   });
   $('ir-esqueci').addEventListener('click', () => { form.hidden = true; $('esqueci').hidden = false; });
   $('ir-login').addEventListener('click', () => { $('esqueci').hidden = true; form.hidden = false; });
+
+  // Agenda: os botões com data-agendar abrem a agenda do Cal.com por cima da página, nas cores da Overtus.
+  // CAL_LINK é o usuário (ou "usuario/evento") no Cal.com; vazio, os botões levam para overtus.com.br.
+  const CAL_LINK = 'overtus';
+  if (CAL_LINK) {
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === 'string') { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, 'https://app.cal.com/embed/embed.js', 'init');
+    Cal('init', 'overtus', { origin: 'https://app.cal.com' });
+    Cal.ns.overtus('ui', {
+      theme: 'dark',
+      layout: 'month_view',
+      hideEventTypeDetails: false,
+      cssVarsPerTheme: {
+        dark: { 'cal-brand': '#fef9e1', 'cal-brand-text': '#182644', 'cal-bg': '#182644', 'cal-bg-muted': '#1f3052', 'cal-bg-subtle': '#24365d', 'cal-bg-emphasis': '#2c4170', 'cal-border': '#34497a', 'cal-border-subtle': '#2c4170', 'cal-text': '#fef9e1', 'cal-text-emphasis': '#ffffff', 'cal-text-muted': '#c1d3e6' },
+        light: { 'cal-brand': '#182644', 'cal-brand-text': '#fef9e1' }
+      }
+    });
+    document.querySelectorAll('[data-agendar]').forEach(a => {
+      a.dataset.calLink = CAL_LINK;
+      a.dataset.calNamespace = 'overtus';
+      a.dataset.calConfig = JSON.stringify({ layout: 'month_view', theme: 'dark' });
+      a.addEventListener('click', e => e.preventDefault());
+    });
+  }
 </script>
 </body>
 </html>
