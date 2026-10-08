@@ -3,18 +3,46 @@
 import { noticias } from './noticias.js';
 
 const PREFIX = '/_clientes/';
-// hub.overtus.com.br: lista de todos os clientes (dist/_hub/), protegida por senha.
-// Guardamos só o SHA-256 de "usuario:senha"; para trocar, gere o hash de novo.
-const HUB_HASH = 'd187aef3a534764677c227938909da17fd8ad6a38314d0fca0de3d0c5acd179f';
+// hub.overtus.com.br: lista de todos os clientes (dist/_hub/), com tela de login em /entrar/.
+// Nada secreto fica no código: CRED_HASH = sha256("usuario:senha"); o cookie leva sha256("sessao:usuario:senha"),
+// que só quem sabe a senha consegue gerar, e o worker confere sha256(cookie) === SESSAO_HASH.
+// Para trocar a senha, gere os dois hashes de novo.
+const CRED_HASH = '3990a7858587f047c1b71e497dc0d03bad2c397707fa77281ca034092c23a21f';
+const SESSAO_HASH = '6d203bd4216f4d75b894163c1d338bc73806eadae35de3a67932f34a99e5ac77';
 
-async function hubAutorizado(request) {
-  const auth = request.headers.get('Authorization') || '';
-  if (!auth.startsWith('Basic ')) return false;
-  let par;
-  try { par = atob(auth.slice(6)); } catch { return false; }
-  const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(par));
-  const hex = [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
-  return hex === HUB_HASH;
+async function sha256(texto) {
+  const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(texto));
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+const redirecionar = (local, cookie) => {
+  const headers = { Location: local, 'Cache-Control': 'no-store' };
+  if (cookie) headers['Set-Cookie'] = cookie;
+  return new Response(null, { status: 303, headers });
+};
+
+async function hub(request, env, url) {
+  if (url.pathname === '/entrar' && request.method === 'POST') {
+    const form = await request.formData().catch(() => null);
+    const cred = `${String(form?.get('email') || '').trim().toLowerCase()}:${form?.get('senha') || ''}`;
+    if ((await sha256(cred)) !== CRED_HASH) return redirecionar('/entrar/?erro=1');
+    const validade = form.get('lembrar') ? '; Max-Age=2592000' : '';
+    return redirecionar('/', `hub=${await sha256('sessao:' + cred)}; Path=/; HttpOnly; Secure; SameSite=Lax${validade}`);
+  }
+  if (url.pathname === '/sair') return redirecionar('/entrar/', 'hub=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0');
+
+  const publico = url.pathname.startsWith('/entrar/');
+  if (!publico) {
+    const cookie = (request.headers.get('Cookie') || '').match(/(?:^|;\s*)hub=([0-9a-f]{64})/);
+    if (!cookie || (await sha256(cookie[1])) !== SESSAO_HASH) return redirecionar('/entrar/');
+  }
+  url.pathname = '/_hub' + url.pathname;
+  const res = await env.ASSETS.fetch(new Request(url, request));
+  const out = new Response(res.body, res);
+  if (!publico) out.headers.set('Cache-Control', 'private, no-store');
+  const loc = res.headers.get('Location');
+  if (loc) out.headers.set('Location', new URL(loc, url).pathname.replace(/^\/_hub/, '') || '/');
+  return out;
 }
 
 export default {
@@ -24,18 +52,7 @@ export default {
     const sub = host.split('.')[0];
     const overtus = host.endsWith('.overtus.com.br');
 
-    if (overtus && sub === 'hub') {
-      if (!(await hubAutorizado(request))) {
-        return new Response('Senha necessária', { status: 401, headers: { 'WWW-Authenticate': 'Basic realm="Overtus", charset="UTF-8"' } });
-      }
-      url.pathname = '/_hub' + url.pathname;
-      const res = await env.ASSETS.fetch(new Request(url, request));
-      const out = new Response(res.body, res);
-      out.headers.set('Cache-Control', 'private, no-store');
-      const loc = res.headers.get('Location');
-      if (loc) out.headers.set('Location', new URL(loc, url).pathname.replace(/^\/_hub/, '') || '/');
-      return out;
-    }
+    if (overtus && sub === 'hub') return hub(request, env, url);
 
     const cliente = overtus && sub !== 'site-modelo' ? sub : null;
 
