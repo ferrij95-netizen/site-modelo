@@ -3,12 +3,9 @@ name: inspiracao-captura
 on:
   push:
     branches: [claude/project-thread-r0bkvf]
-    paths: [.github/workflows/inspiracao-captura.yml]
+    paths: [.github/workflows/inspiracao-captura.yml, inspiracoes/lista.txt]
 permissions:
   contents: write
-env:
-  URL: https://www.sulpol.com.br/
-  NOME: sulpol-com-br
 jobs:
   capturar:
     runs-on: ubuntu-latest
@@ -18,7 +15,6 @@ jobs:
         run: |
           npm i --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
-          mkdir -p inspiracoes/$NOME/prints inspiracoes/$NOME/html
           cat > shot.cjs <<'JS'
           const { chromium } = require('playwright');
           const fs = require('fs');
@@ -33,7 +29,7 @@ jobs:
             const origin = new URL(home.url()).origin;
             const links = await home.evaluate(o => [...new Set([...document.querySelectorAll('header a[href], nav a[href], a[href]')]
               .map(a => a.href.split('#')[0]).filter(h => h.startsWith(o)))], origin).catch(() => []);
-            const pages = [home.url(), ...links.filter(l => l.replace(/\/$/, '') !== home.url().replace(/\/$/, ''))].slice(0, 6);
+            const pages = [home.url(), ...links.filter(l => l.replace(/\/$/, '') !== home.url().replace(/\/$/, ''))].slice(0, Number(process.env.PAGS || 6));
             await home.close();
             for (const [i, url] of pages.entries()) {
               const slug = i === 0 ? 'home' : (new URL(url).pathname.replace(/^\/|\/$/g, '').replace(/[^a-z0-9]+/gi, '-') || 'p' + i);
@@ -74,10 +70,15 @@ jobs:
             await b.close();
           })();
           JS
-          node shot.cjs
+          grep -v '^#' inspiracoes/lista.txt | while read NOME URL PAGS; do
+            [ -n "$NOME" ] || continue
+            [ -f inspiracoes/$NOME/captura.json ] && continue
+            mkdir -p inspiracoes/$NOME/prints inspiracoes/$NOME/html
+            NOME=$NOME URL=$URL PAGS=${PAGS:-1} timeout 300 node shot.cjs || echo "falhou $NOME"
+          done
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
           git add inspiracoes
-          git commit -m "Inspiração: captura de $URL" && git pull --rebase origin claude/project-thread-r0bkvf && git push
+          git commit -m "Inspiração: capturas da lista" && git pull --rebase origin claude/project-thread-r0bkvf && git push
