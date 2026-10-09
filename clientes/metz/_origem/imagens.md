@@ -80,13 +80,13 @@ Lista das imagens usadas no site atual, para referência.
 
 - print-home
 
-  ![print-home](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmetzconsultoria.com.br%2F?w=1440&h=2400&v=2)
+  ![print-home](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmetzconsultoria.com.br%2F?w=1440&h=2400&v=7)
 
 - print-sobre
 
-  ![print-sobre](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmetzconsultoria.com.br%2Fsobre%2F?w=1440&h=2400&v=2)
+  ![print-sobre](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmetzconsultoria.com.br%2Fsobre%2F?w=1440&h=2400&v=7)
 
 - print-contato
 
-  ![print-contato](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmetzconsultoria.com.br%2Fcontato%2F?w=1440&h=2400&v=2)
+  ![print-contato](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmetzconsultoria.com.br%2Fcontato%2F?w=1440&h=2400&v=7)
 
