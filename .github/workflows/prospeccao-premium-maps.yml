@@ -1,0 +1,56 @@
+# Oficinas independentes de carros premium: busca no Maps + nota do site (resultado em prospeccao/oficinas-premium/saida/).
+name: prospeccao-premium-maps
+on:
+  push:
+    branches: [claude/project-thread-y31wxg]
+    paths: [.github/workflows/prospeccao-premium-maps.yml, prospeccao/oficinas-premium/maps.cjs, prospeccao/oficinas-premium/analisa.py, prospeccao/oficinas-premium/checa_site.py, prospeccao/oficinas-premium/cidades.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  maps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        chave: ["São Paulo SP|1", "São Paulo SP|2", "São Paulo SP|3", "Rio de Janeiro RJ|1", "Rio de Janeiro RJ|2", "Belo Horizonte MG|1", "Porto Alegre RS|1", "Curitiba PR|1", "Brasília DF|1", "Campinas SP|1", "Goiânia GO|1", "Salvador BA|1", "Recife PE|1", "Fortaleza CE|1", "Florianópolis SC|1", "Ribeirão Preto SP|1", "São José dos Campos SP|1", "Santos SP|1", "Sorocaba SP|1", "Santo André SP|1", "Guarulhos SP|1", "Niterói RJ|1", "Vitória ES|1", "Londrina PR|1", "Joinville SC|1", "Caxias do Sul RS|1", "Cuiabá MT|1", "Uberlândia MG|1", "Manaus AM|1", "Natal RN|1", "Jundiaí SP|1", "Cascavel PR|1"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Buscar no Maps
+        working-directory: prospeccao/oficinas-premium
+        env:
+          CHAVE: ${{ matrix.chave }}
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node maps.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maps-${{ strategy.job-index }}
+          path: prospeccao/oficinas-premium/saida/
+          if-no-files-found: ignore
+  analisa:
+    needs: maps
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: maps-*
+          path: prospeccao/oficinas-premium/saida
+          merge-multiple: true
+      - name: Filtrar e checar sites
+        working-directory: prospeccao/oficinas-premium
+        run: |
+          pip install requests
+          python analisa.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add -f prospeccao/oficinas-premium/saida/todos.json prospeccao/oficinas-premium/saida/candidatos.json
+          git commit -m "Prospecção oficinas premium: candidatas [skip ci]" && git pull --rebase origin claude/project-thread-y31wxg && git push
