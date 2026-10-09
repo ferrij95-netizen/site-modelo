@@ -30,6 +30,8 @@ Cada cliente pode morar em `clientes/<cliente>/` (mesma estrutura da raiz: `site
 | `scripts/og-images.mjs` | Gera `assets/img/og/<idioma>-<pagina>.jpg` 1200x630 (< 300 KB) com a foto do hero, o gradiente e o título. |
 | `scripts/check.mjs` | Reprova o build se alguma página estiver sem title, description, canonical, hreflang, og:*, twitter:card, ou se a imagem OG não existir ou passar de 300 KB. |
 
+Idiomas: se o site atual do cliente tem bandeiras ou seletor de idioma, o novo também tem, com as mesmas línguas. Quando o design tem os textos escritos direto nas páginas (não em `content/`), use o idioma por dicionário: `content/en.json` com `"traduzDe": "pt"`, `"textos": { "texto em pt": "tradução" }` e `"iguais": [nomes que não mudam]` (veja `scripts/traduzir.mjs`). O build falha e lista em `content/en.faltando.json` cada texto sem tradução; `npm run og -- clientes/<cliente> en` gera as imagens Open Graph do idioma.
+
 Para adicionar uma página: crie `design/pages/nova.html`, inclua `"nova"` em `pages` no `site.config.json` e adicione `nav.nova` e `pages.nova` (com `title` e `description`) em cada `content/<idioma>.json`.
 
 ## Cloudflare

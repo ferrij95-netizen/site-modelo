@@ -48,11 +48,16 @@ async function make(title, file) {
   console.log(`og: ${file} ${(buf.length / 1024).toFixed(0)} KB`);
 }
 
-for (const lang of site.langs) {
-  const t = JSON.parse(fs.readFileSync(path.join(root, `content/${lang}.json`), 'utf8'));
+// `npm run og -- clientes/<cliente> en` gera só os idiomas pedidos.
+const so = process.argv.slice(3);
+const ler = l => JSON.parse(fs.readFileSync(path.join(root, `content/${l}.json`), 'utf8'));
+for (const lang of site.langs.filter(l => !so.length || so.includes(l))) {
+  let t = ler(lang), tr = s => s;
+  // Idioma por dicionário (scripts/traduzir.mjs): título do idioma de origem, traduzido.
+  if (t.traduzDe) { const d = t; t = ler(d.traduzDe); tr = s => d.textos[s] ?? s; }
   for (const page of site.pages) {
     const p = t.pages[page];
-    await make(page === 'index' ? (p.heroTitle || p.title) : (p.heading || p.title), `${lang}-${page}.jpg`);
+    await make(tr(page === 'index' ? (p.heroTitle || p.title) : (p.heading || p.title)), `${lang}-${page}.jpg`);
   }
 }
-await make(site.name, 'default.jpg');
+if (!so.length) await make(site.name, 'default.jpg');
