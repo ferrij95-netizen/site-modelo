@@ -136,9 +136,9 @@ Lista das imagens usadas no site atual, para referência.
 
 - print-1440
 
-  ![print-1440](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvordexengenharia.com.br%2F?w=1440&h=3600&v=2)
+  ![print-1440](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvordexengenharia.com.br%2F?w=1440&h=3600&v=7)
 
 - print-390
 
-  ![print-390](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvordexengenharia.com.br%2F?w=390&h=2400&v=2)
+  ![print-390](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvordexengenharia.com.br%2F?w=390&h=2400&v=7)
 
