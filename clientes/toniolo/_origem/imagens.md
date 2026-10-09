@@ -175,3 +175,48 @@
 - print home celular
 
   ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrupotoniolo.com%2F?w=390&h=844&vpw=390&vph=844&v=2)
+
+## Vídeo do YouTube (quem somos)
+
+- youtube-hqdefault
+
+  ![yt](https://img.youtube.com/vi/fKygBIRDE0Y/hqdefault.jpg)
+
+- youtube-sddefault
+
+  ![yt](https://img.youtube.com/vi/fKygBIRDE0Y/sddefault.jpg)
+
+- youtube-0
+
+  ![yt](https://img.youtube.com/vi/fKygBIRDE0Y/0.jpg)
+
+## Fotos de banco (Unsplash, licença livre), só onde falta foto real
+
+- unsplash-1523848309072-c199db53f137
+
+  ![u](https://images.unsplash.com/photo-1523848309072-c199db53f137?fm=jpg&q=80&w=2000)
+
+- unsplash-1587919968590-fbc98cea6c9a
+
+  ![u](https://images.unsplash.com/photo-1587919968590-fbc98cea6c9a?fm=jpg&q=80&w=2000)
+
+- unsplash-1680463990599-9d318aaecf71
+
+  ![u](https://images.unsplash.com/photo-1680463990599-9d318aaecf71?fm=jpg&q=80&w=2000)
+
+- unsplash-1505833464198-4993b36cdfab
+
+  ![u](https://images.unsplash.com/photo-1505833464198-4993b36cdfab?fm=jpg&q=80&w=2000)
+
+- unsplash-1560872531-552417aded86
+
+  ![u](https://images.unsplash.com/photo-1560872531-552417aded86?fm=jpg&q=80&w=2000)
+
+- unsplash-1654461339694-128902c5c075
+
+  ![u](https://images.unsplash.com/photo-1654461339694-128902c5c075?fm=jpg&q=80&w=2000)
+
+- unsplash-1711012604128-8339024a3e12
+
+  ![u](https://images.unsplash.com/photo-1711012604128-8339024a3e12?fm=jpg&q=80&w=2000)
+
