@@ -350,29 +350,31 @@ ol.protocol{list-style:none}
 @media (max-width:900px){.unitnav .types{grid-template-columns:1fr!important}}
 .docs a span{white-space:nowrap}
 
-/* Cadeia em setas, como no site atual da Agrogen: fotos em formato de seta encaixadas, etiqueta azul inclinada com número e nome */
-ol.steps.arrows{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.arrows .step{background:none;border:0;border-radius:0;padding:0;overflow:visible}
-.arrows .arrow{position:relative;overflow:hidden;height:240px;margin-right:-30px;clip-path:polygon(0 0,calc(100% - 38px) 0,100% 50%,calc(100% - 38px) 100%,0 100%,38px 50%)}
-.arrows .step:first-child .arrow{clip-path:polygon(0 0,calc(100% - 38px) 0,100% 50%,calc(100% - 38px) 100%,0 100%);border-radius:22px 0 0 22px}
-.arrows .step:last-child .arrow{margin-right:0;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,38px 50%);border-radius:0 22px 22px 0}
+/* Cadeia em setas, como no site atual da Agrogen: fotos em seta encaixadas lado a lado, com um fio fino entre elas e a etiqueta azul inclinada */
+ol.steps.arrows{--d:40px;--g:6px;list-style:none;display:flex;gap:0;margin:0}
+.arrows .step{flex:0 0 calc((100% + 3 * (var(--d) - var(--g))) / 4);min-width:0;background:none;border:0;border-radius:0;padding:0;overflow:visible}
+.arrows .step+.step{margin-left:calc(var(--g) - var(--d))}
+.arrows .arrow{position:relative;padding:0;height:250px;clip-path:polygon(0 0,calc(100% - var(--d)) 0,100% 50%,calc(100% - var(--d)) 100%,0 100%,var(--d) 50%)}
+.arrows .step:first-child .arrow{clip-path:polygon(0 0,calc(100% - var(--d)) 0,100% 50%,calc(100% - var(--d)) 100%,0 100%)}
+.arrows .step:last-child .arrow{clip-path:polygon(0 0,100% 0,100% 100%,0 100%,var(--d) 50%)}
 .arrows .arrow img{width:100%;height:100%;object-fit:cover;border-radius:0}
-.arrows .tag{position:absolute;left:46px;right:46px;bottom:22px;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 22px;background:rgba(27,63,99,.88);color:#fff;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%)}
+.arrows .step:first-child .arrow img{border-radius:22px 0 0 22px}
+.arrows .step:last-child .arrow img{border-radius:0 22px 22px 0}
+.arrows .tag{position:absolute;left:calc(var(--d) + 6px);right:calc(var(--d) + 6px);bottom:22px;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 20px;background:rgba(27,63,99,.9);color:#fff;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%)}
 .arrows .step:first-child .tag{left:20px}
+.arrows .step:last-child .tag{right:20px}
 .arrows .tag b{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1}
 .arrows .tag span{font-weight:600;font-size:16px;line-height:1.2}
-.arrows .step p{padding:18px 44px 0 8px;font-size:15px;line-height:1.5}
+.arrows .step p{padding:18px calc(var(--d) + 4px) 0 calc(var(--d) - var(--g) + 4px);font-size:15px;line-height:1.5}
+.arrows .step:first-child p{padding-left:4px}
 .arrows .step:first-child,.arrows .step:last-child{background:none;border:0}
-@media (max-width:1080px){ol.steps.arrows{grid-template-columns:repeat(4,1fr)}.arrows .arrow{height:200px}.arrows .tag{left:40px;right:40px;padding:8px 12px 8px 16px}.arrows .tag b{font-size:22px}.arrows .tag span{font-size:14px}}
-@media (max-width:820px){
- ol.steps.arrows{grid-template-columns:1fr;gap:0}
- .arrows .arrow,.arrows .step:first-child .arrow,.arrows .step:last-child .arrow{height:190px;margin:0 0 -18px;border-radius:0;clip-path:polygon(0 0,50% 26px,100% 0,100% calc(100% - 26px),50% 100%,0 calc(100% - 26px))}
- .arrows .step:first-child .arrow{clip-path:polygon(0 0,100% 0,100% calc(100% - 26px),50% 100%,0 calc(100% - 26px));border-radius:22px 22px 0 0}
- .arrows .step:last-child .arrow{margin-bottom:0;clip-path:polygon(0 0,50% 26px,100% 0,100% 100%,0 100%);border-radius:0 0 22px 22px}
- .arrows .tag,.arrows .step:first-child .tag{left:20px;right:auto;bottom:40px}
- .arrows .step:last-child .tag{bottom:20px}
- .arrows .step p{padding:30px 8px 26px}
- .arrows .step:last-child p{padding-top:16px}
+@media (max-width:1080px){ol.steps.arrows{--d:30px}.arrows .arrow{height:200px}.arrows .tag{padding:8px 12px 8px 16px}.arrows .tag b{font-size:22px}.arrows .tag span{font-size:14px}}
+/* celular: as quatro setas seguem lado a lado e a fileira rola para o lado */
+@media (max-width:760px){
+ ol.steps.arrows{--d:28px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;margin:0 -24px;padding-left:24px;padding-right:24px;scrollbar-width:none}
+ ol.steps.arrows::-webkit-scrollbar{display:none}
+ .arrows .step{flex:0 0 250px;scroll-snap-align:start}
+ .arrows .arrow{height:190px}
 }
 
 /* Mais azul, como no site atual: seções alternam creme e azul em gradiente (azul Agrogen → azul escuro, com um brilho verde) */
