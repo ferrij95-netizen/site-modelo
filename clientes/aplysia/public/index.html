@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APLYSIA · escolha a versão do novo site</title>
+<meta name="description" content="Duas versões do novo site da APLYSIA Soluções Ambientais para escolher: Institucional e Campo e Ciência.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://aplysia.overtus.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="APLYSIA Soluções Ambientais">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="APLYSIA · escolha a versão do novo site">
+<meta property="og:description" content="Duas versões do novo site da APLYSIA Soluções Ambientais para escolher: Institucional e Campo e Ciência.">
+<meta property="og:url" content="https://aplysia.overtus.com.br/">
+<meta property="og:image" content="https://aplysia.overtus.com.br/assets/og-a.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="APLYSIA · escolha a versão do novo site">
+<meta name="twitter:description" content="Duas versões do novo site da APLYSIA Soluções Ambientais para escolher: Institucional e Campo e Ciência.">
+<meta name="twitter:image" content="https://aplysia.overtus.com.br/assets/og-a.jpg">
+<link rel="icon" href="/assets/img/emblema.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Open+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="/assets/base.css">
+<style>
+  html, body { height: 100%; }
+  body { display: grid; grid-template-rows: auto 1fr; background: var(--fundo-alt); }
+  header { background: #fff; border-bottom: 1px solid var(--borda); }
+  header .in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; min-height: 76px; }
+  header img { width: 74px; }
+  header small { font: 600 13px/1.2 var(--fb); letter-spacing: .12em; text-transform: uppercase; color: var(--suave); }
+  main { display: grid; min-height: 0; }
+  main .in { display: grid; grid-template-columns: 1fr 1fr 0.8fr; gap: 20px; width: min(100% - 2 * var(--gutter), 1360px); padding-block: clamp(16px, 3vh, 32px); align-content: center; }
+  .v { display: grid; grid-template-rows: auto 1fr; background: #fff; border: 1px solid var(--borda); border-radius: var(--raio); overflow: hidden; color: var(--texto); transition: border-color .15s, box-shadow .15s; min-height: 0; }
+  .v:hover { border-color: var(--teal); box-shadow: var(--sombra); color: var(--texto); }
+  .v img { width: 100%; aspect-ratio: 16 / 10; max-height: 48vh; object-fit: cover; object-position: top; border-bottom: 1px solid var(--borda); }
+  .v div { display: grid; gap: 8px; padding: clamp(14px, 2vh, 22px) 22px clamp(16px, 2.4vh, 24px); align-content: start; }
+  .v span.e { font: 600 13px/1.2 var(--fb); letter-spacing: .12em; text-transform: uppercase; color: var(--teal-t); }
+  .v h2 { font-size: clamp(22px, 1.4vw + 8px, 28px); margin: 0; }
+  .v p { color: var(--suave); font-size: 15.5px; line-height: 1.5; margin: 0; }
+  .v b.l { font-size: 15px; color: var(--laranja-esc); }
+  .v b.l a { color: inherit; }
+  .v.atual { background: transparent; border-style: dashed; }
+  .v.atual img { filter: grayscale(.3); }
+  .v.atual span.e { color: var(--suave); }
+  @media (max-width: 1000px) {
+    html, body { height: auto; }
+    main .in { grid-template-columns: 1fr; }
+    .v img { max-height: none; }
+  }
+</style>
+</head>
+<body>
+<header><div class="in"><img src="/assets/img/logo-cor.webp" alt="APLYSIA Soluções Ambientais" width="169" height="134"><small>Proposta de novo site · duas versões · português e inglês</small></div></header>
+<main><div class="in">
+  <a class="v" href="/a/"><img src="/assets/versao-a.jpg" alt="Página inicial da versão A">
+    <div><span class="e">Versão A</span><h2>Institucional</h2><p>Fiel ao site atual: branco e cinza, logo no cartão branco, banner rotativo, os cinco cartões coloridos por segmento, mapa de atuação e esteira de clientes, mais moderno e organizado.</p><b class="l">Abrir a versão A →</b></div></a>
+  <a class="v" href="/b/"><img src="/assets/versao-b.jpg" alt="Página inicial da versão B">
+    <div><span class="e">Versão B</span><h2>Campo e Ciência</h2><p>O azul-marinho do logo como cor principal, fotos reais de campo e laboratório em destaque, segmentos em painéis que se abrem e as etapas de trabalho em ciclo.</p><b class="l">Abrir a versão B →</b></div></a>
+  <a class="v atual" href="https://www.aplysia.com.br/pt/" target="_blank" rel="noopener"><img src="/assets/site-atual.jpg" alt="Página inicial do site atual da APLYSIA">
+    <div><span class="e">Para comparar</span><h2>Site atual</h2><p>aplysia.com.br como está hoje.</p><b class="l">Abrir o site atual ↗</b></div></a>
+</div></main>
+</body>
+</html>
