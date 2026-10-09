@@ -1,0 +1,10 @@
+# REM Consultoria Metz: como este site é feito
+
+- Cliente: REM Consultoria Metz (Reestruturação Empresarial Metz), razão social Christian Metz Consultoria Empresarial LTDA, CNPJ 39.149.282/0001-29. Site atual: metzconsultoria.com.br (só em português, sem troca de idioma). Textos, soluções, missão, visão, valores, depoimento e artigos tirados do site atual em 2026-10-09 e reescritos em tom mais formal, a pedido do Joao.
+- Site estático em `public/`: `/` é a página de escolha (com o print do site atual), `/a/` é a versão A "Institucional" (clara) e `/b/` a versão B "Executiva" (grafite, como o site atual). 12 páginas em cada: início, a empresa, soluções, uma página por solução (6), metodologia, artigos e contato.
+- Páginas geradas: textos em `conteudo.mjs`, peças comuns em `comum.mjs`, páginas internas em `paginas.mjs`, página inicial de cada versão em `versao-a.mjs` e `versao-b.mjs`. Depois de mudar qualquer texto: `node clientes/metz/_origem/gerar.mjs`.
+- Imagens: o servidor não abre metzconsultoria.com.br, então vieram pelo proxy de imagens do GitHub (lista em `imagens.md`, originais em `img/`). As fotos de Christian, a capa do e-book e o jogo foram recortadas de dentro das artes do site (`recorte-*.png`); o retrato da camisa branca teve a barra vermelha completada à direita. `imagens.mjs` converte para `public/assets/img/*.webp`. O logo escuro da versão A é o mesmo PNG com o "REM" branco trocado por grafite.
+- Marca: laranja #f5aa3e, verde-azulado #11a398, vermelho #de2546 (do logo). Títulos em Plus Jakarta Sans (a fonte do site atual), texto em Public Sans (a das artes do site).
+- O vídeo do depoimento é o MP4 do próprio site atual (link direto). Só a primeira frase do depoimento de Leonardo Linhares é citação literal; colar o texto completo quando o cliente mandar.
+- Artigos levam ao blog atual. E-book e Método FlowMAP levam a metodoflowmap.admx.tech, como no site atual.
+- `public/assets/versao-*.jpg`, `og-*.jpg` e `../capa.jpg` são prints das páginas, refeitos à mão quando o visual mudar.

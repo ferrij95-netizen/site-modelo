@@ -1,0 +1,67 @@
+/* Versão B "Executiva": grafite como o site atual, sem brilhos, com uma faixa clara para leitura. */
+:root {
+  --fundo: #14181b; --fundo-alt: #1b2024; --cartao: #1b2024; --cabeca: #1b2024; --topo: rgba(20,24,27,.97);
+  --texto: #d6dade; --titulo: #ffffff; --suave: #a9b0b6; --destaque: #f5aa3e;
+  --borda: #2c3237; --borda-forte: #4a5259;
+  --btn: #f5aa3e; --btn-txt: #14181b; --btn-hover: #ffbf5f;
+  --depo: #1b2024;
+  --cta: #0e1113; --cta-txt: #ffffff; --cta-suave: #a9b0b6; --cta-borda: #4a5259;
+  --rodape: #0e1113; --rodape-txt: #ffffff; --rodape-suave: #9aa2a8; --rodape-borda: #262c31;
+}
+
+.hero { position: relative; min-height: min(86vh, 760px); display: flex; align-items: center; overflow: hidden; background: #0f2a2f; }
+.hero-foto { position: absolute; inset: 0 0 0 auto; width: 58%; }
+.hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 60% top; }
+.hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #14181b 0%, #14181b 38%, rgba(20,24,27,.6) 54%, rgba(20,24,27,0) 70%); }
+.hero .in { position: relative; z-index: 1; }
+.hero-txt { max-width: 600px; padding: 72px 0; }
+.hero .eyebrow { border-left: 3px solid var(--laranja); padding-left: 14px; }
+.hero .lead { margin-top: 24px; }
+
+.pilares { background: var(--fundo-alt); }
+.pilares .in > div { padding: 44px 36px 44px 0; position: relative; }
+.pilares .in > div::before { content: ''; display: block; width: 40px; height: 4px; margin-bottom: 22px; background: var(--laranja); }
+.pilares .in > div:nth-child(2)::before { background: var(--verde); }
+.pilares .in > div:nth-child(3)::before { background: var(--vermelho); }
+
+/* Faixa clara: o texto longo da empresa fica em papel, como pede o tom formal. */
+.secao-clara { background: #f4f2ee; --titulo: #1d2125; --suave: #4f565c; --destaque: #0d8077; }
+.secao-clara .empresa { max-width: 980px; }
+.secao-clara h2 { margin-bottom: 32px; font-size: clamp(28px, 2vw + 14px, 42px); }
+.secao-clara .colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; font-size: 18px; color: var(--suave); }
+.secao-clara .link { color: #1d2125; }
+
+.zig { display: grid; gap: 1px; background: var(--borda); border: 1px solid var(--borda); }
+.zig article { display: grid; grid-template-columns: 0.9fr 1.1fr; background: var(--fundo); }
+.zig article:nth-child(even) figure { order: 2; }
+.zig figure { position: relative; background: #f4f2ee; min-height: 340px; overflow: hidden; }
+.zig figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.zig .foto-flowmap img, .zig .foto-jogo img { object-fit: cover; object-position: center; }
+.zig .foto-flowmap { background: #fbfaf7; }
+.zig .foto-ebook { display: flex; align-items: center; justify-content: center; padding: 24px; }
+.zig .foto-ebook img { inset: 24px; width: calc(100% - 48px); height: calc(100% - 48px); object-fit: contain; }
+.zig article > div { padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; justify-content: center; }
+.zig h3 { font-size: clamp(22px, 1vw + 14px, 28px); margin: 12px 0 12px; }
+.zig p { color: var(--suave); margin: 0; }
+.zig .acoes { margin-top: 24px; }
+
+.sub-ferr { margin: 64px 0 24px; font-size: 22px; }
+
+.foto-sol { background: #f4f2ee; }
+.foto-sol.foto-ebook, .foto-sol.foto-jogo, .foto-sol.foto-flowmap { padding: 24px; }
+.cabeca { background: linear-gradient(180deg, #1b2024, #14181b); }
+.valores li { border-top-color: var(--laranja); }
+.valores li:nth-child(2) { border-top-color: var(--verde); }
+.valores li:nth-child(3) { border-top-color: var(--vermelho); }
+.form select option { background: #1b2024; }
+
+@media (max-width: 960px) {
+  .hero { min-height: 0; display: block; }
+  .hero-foto { position: relative; width: 100%; height: 360px; }
+  .hero::after { background: linear-gradient(180deg, rgba(20,24,27,0) 200px, #14181b 360px); }
+  .hero-txt { padding: 0 0 56px; margin-top: -40px; }
+  .secao-clara .colunas { grid-template-columns: 1fr; gap: 0; }
+  .zig article { grid-template-columns: 1fr; }
+  .zig article:nth-child(even) figure { order: 0; }
+  .zig figure { min-height: 240px; height: 240px; }
+}

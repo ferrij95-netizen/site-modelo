@@ -1,0 +1,40 @@
+/* Versão B "Apresentação": clara como o site e a apresentação da Vordex, grafite e laranja. */
+:root {
+  --fundo: #ffffff; --fundo-alt: #f3f3f3; --cartao: #ffffff; --campo: #ffffff; --borda: #e2e2e2;
+  --texto: #3d3d3d; --titulo: #404040; --suave: #666666;
+  --topo-fundo: #ffffff;
+  --cab-fundo: linear-gradient(180deg, #f3f3f3 0%, #ececec 100%); --cab-titulo: #404040; --cab-texto: #666; --v-opac: .09;
+  --rodape-fundo: #2f2f2f; --rodape-texto: #c4c4c4; --rodape-titulo: #fff; --rodape-borda: #444;
+}
+.secao-alt .canal, .secao-alt .oferecidos li { background: #fff; }
+.oferecidos li { background: #f3f3f3; }
+.canal { background: #f6f6f6; }
+
+/* Início */
+.hero { position: relative; overflow: hidden; padding: clamp(48px, 6vw, 88px) 0 clamp(56px, 7vw, 104px); background: linear-gradient(180deg, #f3f3f3 0%, #ebebeb 100%); }
+.hero-v { left: 18%; top: -8%; width: min(70vw, 760px); opacity: .07; filter: grayscale(1); }
+.hero .in { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero h1 { max-width: 16ch; }
+.hero-fotos { position: relative; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 250px 210px; gap: 14px; }
+.hero-fotos figure { margin: 0; border-radius: 18px; overflow: hidden; border: 4px solid var(--laranja); background: #ddd; }
+.hero-fotos figure img { width: 100%; height: 100%; object-fit: cover; }
+.hero-fotos .f1 { grid-column: 1 / -1; border-color: var(--grafite); }
+.hero-fotos .f3 { border-color: var(--grafite); }
+@media (max-width: 900px) { .hero .in { grid-template-columns: 1fr; } .hero-fotos { grid-template-rows: 200px 170px; } }
+.destaques { padding: clamp(56px, 7vw, 96px) 0; background: #fff; }
+.destaques .in { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.dq { display: grid; justify-items: center; text-align: center; gap: 18px; padding: 36px 28px; border-radius: 4px; background: linear-gradient(180deg, #fff 0%, #f1efec 100%); }
+.dq img { width: 150px; height: 150px; }
+.dq p { margin: 0; font: 700 17px/1.45 var(--ft); color: var(--titulo); max-width: 26ch; }
+@media (max-width: 860px) { .destaques .in { grid-template-columns: 1fr; } }
+.sede-faixa { position: relative; min-height: 540px; display: grid; align-items: center; overflow: hidden; }
+.sede-faixa > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 65%; }
+.sede-faixa .in { padding: 64px 0; }
+.sf-caixa { max-width: 560px; padding: clamp(28px, 4vw, 48px); background: rgba(255,255,255,.95); border-left: 8px solid var(--laranja); box-shadow: 0 30px 60px rgba(0,0,0,.18); }
+.sf-caixa blockquote { color: var(--titulo); margin-bottom: 26px; font-size: clamp(22px, 1.6vw + 12px, 34px); }
+.secao-frota { background: #f3f3f3; }
+.secao-frota .laminas { background: radial-gradient(closest-side, #fff, transparent); }
+.cta { background: linear-gradient(100deg, #404040 0%, #2b2b2b 55%, #3a2416 100%); }
+.cta h2 em { color: var(--laranja-forte); }
+.cta .btn-prim { background: var(--laranja); }
+.cta .btn-prim:hover { background: var(--laranja-escuro); }
