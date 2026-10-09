@@ -25,7 +25,8 @@
     e.preventDefault();
     const via = e.submitter ? e.submitter.dataset.via : 'email';
     const d = Object.fromEntries(new FormData(form));
-    const txt = `${d.assunto}\n\nNome: ${d.nome}\nEmpresa: ${d.empresa}\nE-mail: ${d.email}\nTelefone: ${d.telefone || '-'}\n\n${d.mensagem || ''}`;
+    const r = document.documentElement.lang === 'en' ? ['Name', 'Company', 'Email', 'Phone'] : ['Nome', 'Empresa', 'E-mail', 'Telefone'];
+    const txt = `${d.assunto}\n\n${r[0]}: ${d.nome}\n${r[1]}: ${d.empresa}\n${r[2]}: ${d.email}\n${r[3]}: ${d.telefone || '-'}\n\n${d.mensagem || ''}`;
     if (via === 'zap') location.href = `https://wa.me/${corpo.dataset.zap}?text=${encodeURIComponent(txt)}`;
     else location.href = `mailto:${corpo.dataset.email}?subject=${encodeURIComponent(d.assunto + ' · ' + d.empresa)}&body=${encodeURIComponent(txt)}`;
   });

@@ -1,7 +1,7 @@
 // Versão B, "Operação": escura, grafite com o verde do logo aceso. Cara de sala de controle: foto de campo em
 // tela cheia, frota em lista técnica com números, ficha técnica em linhas, trajetória em régua horizontal.
 import { site, nav, missao, visao, valores, numeros, setores, robos, servicos, historia, lideranca, politicas, equipe, clientes, parceiros, comerciais, associacoes, imprensa, setor, robo } from './conteudo.mjs';
-import { documento, logo, img, zap, formContato, num } from './comum.mjs';
+import { documento, idiomas, logo, img, zap, formContato, num } from './comum.mjs';
 
 const V = 'b';
 const L = s => `/${V}/${s === 'index' ? '' : s + '/'}`;
@@ -14,6 +14,7 @@ const header = slug => `<header class="topo${slug === 'index' ? ' topo-sobre' : 
   <nav class="topo-nav" id="menu" aria-label="Principal">
     ${nav.map(([s, n]) => `<a href="${L(s)}"${slug.split('/')[0] === s ? ' aria-current="page"' : ''}>${n}</a>`).join('\n    ')}
   </nav>
+  ${idiomas}
   <a class="btn btn-prim topo-cta" href="${L('contato')}">Fale conosco</a>
   <button class="topo-menu" type="button" aria-expanded="false" aria-controls="menu" data-menu><span></span>Menu</button>
 </div></header>`;

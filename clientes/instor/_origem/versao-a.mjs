@@ -1,7 +1,7 @@
 // Versão A, "Engenharia": clara, papel branco e cinza do logo com o verde como acento. Cara de catálogo técnico
 // organizado: abertura dividida com foto real, setores em cartões, ficha técnica em tabela limpa.
 import { site, nav, missao, visao, valores, numeros, setores, robos, servicos, historia, lideranca, politicas, equipe, clientes, parceiros, comerciais, associacoes, imprensa, setor, robo } from './conteudo.mjs';
-import { documento, logo, img, zap, formContato, esc } from './comum.mjs';
+import { documento, idiomas, logo, img, zap, formContato, esc } from './comum.mjs';
 
 const V = 'a';
 const L = s => `/${V}/${s === 'index' ? '' : s + '/'}`;
@@ -16,6 +16,7 @@ const header = slug => `<div class="util"><div class="in util-in">
   <nav class="topo-nav" id="menu" aria-label="Principal">
     ${nav.map(([s, n]) => `<a href="${L(s)}"${slug.split('/')[0] === s ? ' aria-current="page"' : ''}>${n}</a>`).join('\n    ')}
   </nav>
+  ${idiomas}
   <a class="btn btn-prim topo-cta" href="${L('contato')}">Fale com a engenharia</a>
   <button class="topo-menu" type="button" aria-expanded="false" aria-controls="menu" data-menu><span></span>Menu</button>
 </div></header>`;

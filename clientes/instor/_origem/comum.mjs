@@ -46,6 +46,7 @@ export function documento({ versao, slug, corpo, tema }) {
 <meta name="description" content="${esc(desc)}">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="${url}">
+<!--ALTERNADOS-->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Instor Projetos e Robótica">
 <meta property="og:locale" content="pt_BR">
@@ -76,3 +77,6 @@ ${corpo}
 }
 
 export { FONTES };
+
+// Seletor de idioma com bandeiras, como no site atual (PT e EN). Os links são preenchidos em gerar.mjs.
+export const idiomas = '<!--IDIOMAS-->';
