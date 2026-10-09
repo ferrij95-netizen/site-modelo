@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { siteDir, distDir } from './paths.mjs';
+import { traduzir } from './traduzir.mjs';
 
 // `node scripts/build.mjs` monta o site da raiz; `node scripts/build.mjs clientes/<cliente>` monta o site daquele cliente.
 const root = siteDir(process.argv[2]);
@@ -12,6 +13,12 @@ const read = f => fs.readFileSync(path.join(root, f), 'utf8');
 const site = JSON.parse(read('site.config.json'));
 const domain = site.domain.replace(/\/$/, '');
 const content = Object.fromEntries(site.langs.map(l => [l, JSON.parse(read(`content/${l}.json`))]));
+// Idioma por dicionário (ver scripts/traduzir.mjs): monta com os textos do idioma de origem e traduz no fim.
+for (const l of site.langs) {
+  const c = content[l];
+  if (c.traduzDe) content[l] = { ...content[c.traduzDe], langName: c.langName, locale: c.locale, dicionario: c };
+}
+const faltando = {};
 const D = 'design';
 const layout = read(`${D}/layout.html`);
 for (const slot of ['{{seo}}', '{{whatsapp}}', '{{content}}']) {
@@ -118,10 +125,20 @@ for (const lang of site.langs) {
     for (const p of Object.keys(partials)) raw[p] = render(partials[p], ctx, raw, `partial ${p} (${where})`);
     raw.content = render(read(`${D}/pages/${page}.html`), ctx, raw, `${D}/pages/${page}.html (${lang})`);
     raw.seo = seo(lang, page);
-    const html = render(layout, ctx, raw, `layout (${where})`);
+    let html = render(layout, ctx, raw, `layout (${where})`);
+    if (t.dicionario) {
+      const d = t.dicionario;
+      html = traduzir(html, { textos: d.textos, iguais: d.iguais, de: d.traduzDe, para: lang, faltando: faltando[lang] ??= new Set() });
+    }
     fs.writeFileSync(path.join(dist, lang, `${page}.html`), html);
     urls.push(domain + pagePath(lang, page));
   }
+}
+
+for (const [l, f] of Object.entries(faltando)) if (f.size) {
+  const arq = path.join(root, `content/${l}.faltando.json`);
+  fs.writeFileSync(arq, JSON.stringify([...f], null, 1) + '\n');
+  throw new Error(`content/${l}.json: ${f.size} textos sem tradução (lista em ${path.relative(process.cwd(), arq)})`);
 }
 
 // Raiz: vai para o idioma salvo ou do navegador, senão o padrão.

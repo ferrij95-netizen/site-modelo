@@ -1,11 +1,14 @@
 // Menu, link ativo, vídeo do topo, filtro de notícias e formulários (enviados por e-mail).
 (() => {
   const cab = document.getElementById('cab');
+  // Idioma da página (pt, en ou es), para os textos que o script escreve.
+  const L = (document.documentElement.lang || 'pt').slice(0, 2);
+  const T = { pt: ['Fechar menu', 'Abrir menu', 'Reproduzir vídeo', 'Pausar vídeo'], en: ['Close menu', 'Open menu', 'Play video', 'Pause video'], es: ['Cerrar menú', 'Abrir menú', 'Reproducir video', 'Pausar video'] }[L] || [];
   const burger = cab.querySelector('.burger');
   burger.addEventListener('click', () => {
     const aberto = cab.classList.toggle('aberto');
     burger.setAttribute('aria-expanded', aberto);
-    burger.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+    burger.setAttribute('aria-label', aberto ? T[0] : T[1]);
     document.body.style.overflow = aberto ? 'hidden' : '';
   });
   cab.querySelectorAll('.grupo>button').forEach(b => b.addEventListener('click', () => {
@@ -14,7 +17,7 @@
   }));
 
   // Link da página atual (e do grupo dela) em destaque.
-  const aqui = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/pt';
+  const aqui = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/' + L;
   cab.querySelectorAll('.menu a').forEach(a => {
     const h = a.getAttribute('href').replace(/\/$/, '');
     if (h === aqui) {
@@ -23,13 +26,13 @@
       if (g) g.querySelector('button').setAttribute('aria-current', 'true');
     }
   });
-  if (document.body.dataset.noticia !== undefined) cab.querySelector('.menu a[href="/pt/noticias"]')?.setAttribute('aria-current', 'true');
+  if (document.body.dataset.noticia !== undefined) cab.querySelector(`.menu a[href="/${L}/noticias"]`)?.setAttribute('aria-current', 'true');
 
   // Vídeo de solda do topo: respeita quem prefere menos movimento.
   const v = document.querySelector('.hero video'), pausa = document.querySelector('.hero .pausa');
   if (v) {
-    const parar = () => { v.pause(); pausa.innerHTML = '&#9654;'; pausa.setAttribute('aria-label', 'Reproduzir vídeo'); };
-    const tocar = () => { v.play().catch(() => {}); pausa.innerHTML = '&#10073;&#10073;'; pausa.setAttribute('aria-label', 'Pausar vídeo'); };
+    const parar = () => { v.pause(); pausa.innerHTML = '&#9654;'; pausa.setAttribute('aria-label', T[2]); };
+    const tocar = () => { v.play().catch(() => {}); pausa.innerHTML = '&#10073;&#10073;'; pausa.setAttribute('aria-label', T[3]); };
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) parar();
     pausa.addEventListener('click', () => (v.paused ? tocar() : parar()));
   }
