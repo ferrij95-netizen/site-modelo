@@ -10,79 +10,47 @@ O site atual tem só o logo. As fotos abaixo são do Unsplash (licença livre), 
 
   ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fengenhoam.com.br%2F?w=1440&h=900)
 
-- unsplash-b-AYmZeowJQ
+- arroz-medidor
 
-  ![unsplash-b-AYmZeowJQ](https://unsplash.com/photos/b-AYmZeowJQ/download?w=2000)
+  ![arroz-medidor](https://images.unsplash.com/photo-1568347355280-d33fdf77d42a?fm=jpg&q=80&w=2000)
 
-- unsplash-Y0SeiGEl2L4
+- arroz-tabua
 
-  ![unsplash-Y0SeiGEl2L4](https://unsplash.com/photos/Y0SeiGEl2L4/download?w=2000)
+  ![arroz-tabua](https://images.unsplash.com/photo-1723475158232-819e29803f4d?fm=jpg&q=80&w=2000)
 
-- unsplash-LShWR3roTX0
+- arroz-macro
 
-  ![unsplash-LShWR3roTX0](https://unsplash.com/photos/LShWR3roTX0/download?w=2000)
+  ![arroz-macro](https://images.unsplash.com/photo-1667992852201-e43961b1a0f6?fm=jpg&q=80&w=2000)
 
-- unsplash-tyVcPQfncrg
+- grao-mao
 
-  ![unsplash-tyVcPQfncrg](https://unsplash.com/photos/tyVcPQfncrg/download?w=2000)
+  ![grao-mao](https://images.unsplash.com/photo-1711060221380-acfa2c82cc99?fm=jpg&q=80&w=2000)
 
-- unsplash-EtGcf0zDaLc
+- lavoura-aerea
 
-  ![unsplash-EtGcf0zDaLc](https://unsplash.com/photos/EtGcf0zDaLc/download?w=2000)
+  ![lavoura-aerea](https://images.unsplash.com/photo-1730697897511-bafe1f939e6b?fm=jpg&q=80&w=2000)
 
-- unsplash-hFuDKU4LTwk
+- silos-fila
 
-  ![unsplash-hFuDKU4LTwk](https://unsplash.com/photos/hFuDKU4LTwk/download?w=2000)
+  ![silos-fila](https://images.unsplash.com/photo-1684607961356-1d99dc31aee2?fm=jpg&q=80&w=2000)
 
-- unsplash-V8_5LeatPdE
+- silos-ceu
 
-  ![unsplash-V8_5LeatPdE](https://unsplash.com/photos/V8_5LeatPdE/download?w=2000)
+  ![silos-ceu](https://images.unsplash.com/photo-1627052428109-576e839d100a?fm=jpg&q=80&w=2000)
 
-- unsplash-NamNQ2AIluE
+- tanques
 
-  ![unsplash-NamNQ2AIluE](https://unsplash.com/photos/NamNQ2AIluE/download?w=2000)
+  ![tanques](https://images.unsplash.com/photo-1556114846-f753bec8a9f5?fm=jpg&q=80&w=2000)
 
-- unsplash-TbIocmZVHig
+- arroz-integral
 
-  ![unsplash-TbIocmZVHig](https://unsplash.com/photos/TbIocmZVHig/download?w=2000)
+  ![arroz-integral](https://images.unsplash.com/photo-1561767782-d8e3aa77ef77?fm=jpg&q=80&w=2000)
 
-- unsplash-dm-9lIgr_K0
+- fabrica
 
-  ![unsplash-dm-9lIgr_K0](https://unsplash.com/photos/dm-9lIgr_K0/download?w=2000)
+  ![fabrica](https://images.unsplash.com/photo-1589725971211-7e86a631e2c2?fm=jpg&q=80&w=2000)
 
-- unsplash-m2BM5FPRuIY
+- lavoura-dia
 
-  ![unsplash-m2BM5FPRuIY](https://unsplash.com/photos/m2BM5FPRuIY/download?w=2000)
-
-- unsplash-Nh7n1Kxb43U
-
-  ![unsplash-Nh7n1Kxb43U](https://unsplash.com/photos/Nh7n1Kxb43U/download?w=2000)
-
-- unsplash-ztNPlky769A
-
-  ![unsplash-ztNPlky769A](https://unsplash.com/photos/ztNPlky769A/download?w=2000)
-
-- unsplash-ZaVUNY5rHmY
-
-  ![unsplash-ZaVUNY5rHmY](https://unsplash.com/photos/ZaVUNY5rHmY/download?w=2000)
-
-- unsplash-7kSnMLGoR9w
-
-  ![unsplash-7kSnMLGoR9w](https://unsplash.com/photos/7kSnMLGoR9w/download?w=2000)
-
-- unsplash-9PkcuHSzzsw
-
-  ![unsplash-9PkcuHSzzsw](https://unsplash.com/photos/9PkcuHSzzsw/download?w=2000)
-
-- unsplash-XpWlhMSflV8
-
-  ![unsplash-XpWlhMSflV8](https://unsplash.com/photos/XpWlhMSflV8/download?w=2000)
-
-- unsplash-wnIeCBJfUYM
-
-  ![unsplash-wnIeCBJfUYM](https://unsplash.com/photos/wnIeCBJfUYM/download?w=2000)
-
-- unsplash-GYGWh4GtW5Q
-
-  ![unsplash-GYGWh4GtW5Q](https://unsplash.com/photos/GYGWh4GtW5Q/download?w=2000)
+  ![lavoura-dia](https://images.unsplash.com/photo-1549888728-c4df900ccba7?fm=jpg&q=80&w=2000)
 
