@@ -170,3 +170,16 @@ Lista das imagens do site atual, para referência.
 
   ![print-produtos](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.altoalegre.com.br%2Fprodutos%2Facucar-cristal?w=1440&h=900&v=2)
 
+## Fotos de banco (Unsplash), só onde o site atual não tem foto grande
+
+- canavial
+
+  ![canavial](https://images.unsplash.com/photo-1775619427924-16ff07cf2f2e?fm=jpg&q=80&w=2400&fit=crop)
+
+- campo
+
+  ![campo](https://images.unsplash.com/photo-1606707761700-86b58f251a01?fm=jpg&q=80&w=2400&fit=crop)
+
+- print-home-2
+
+  ![print-home-2](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.altoalegre.com.br%2F?w=1440&h=900&v=3)
