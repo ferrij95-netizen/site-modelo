@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Overtus · Buscar sites antigos</title>
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#182644">
+<link rel="icon" href="/app/favicon-48.png">
+<link rel="apple-touch-icon" href="/app/icone-apple-180.png">
+<style>
+  /* Mesmo visual do hub. A página cabe na janela: o formulário fica à esquerda e só a lista de buscas rola. */
+  :root { --bg:#f4f4f1; --card:#fff; --ink:#16181b; --muted:#6b7079; --line:#e3e3de; --azul:#182644; --laranja:#ed9454; --forte:#1f7a4d; --medio:#a2620b; --borda:clamp(12px, min(2.6vh, 2.2vw), 28px); }
+  * { box-sizing:border-box; }
+  [hidden] { display:none !important; }
+  html, body { height:100%; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; display:flex; flex-direction:column; height:100vh; height:100dvh; padding:var(--borda); gap:clamp(10px, 2vh, 20px); }
+  header { width:100%; max-width:1600px; margin:0 auto; display:flex; justify-content:space-between; align-items:end; gap:4px 16px; flex-wrap:wrap; flex:none; }
+  h1 { margin:0; font-size:clamp(20px, 3.2vh, 28px); line-height:1.2; letter-spacing:-.02em; }
+  header p { margin:2px 0 0; color:var(--muted); font-size:clamp(13px, 1.8vh, 16px); }
+  .resumo { color:var(--muted); font-size:14px; }
+  .resumo a { color:inherit; }
+  .layout { width:100%; max-width:1600px; margin:0 auto; flex:1; min-height:0; display:grid; grid-template-columns:minmax(280px, 340px) 1fr; gap:clamp(10px, 1.8vh, 20px); }
+
+  aside { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; overflow:auto; display:flex; flex-direction:column; gap:14px; }
+  label { display:block; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-bottom:5px; }
+  input, select { width:100%; font:inherit; color:var(--ink); padding:9px 11px; border:1px solid var(--line); border-radius:8px; background:#fff; }
+  input:focus, select:focus { outline:2px solid var(--azul); outline-offset:-1px; border-color:var(--azul); }
+  #setor { font-size:17px; font-weight:600; }
+  .linha { display:grid; grid-template-columns:1fr 92px; gap:8px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { font:inherit; font-size:13px; padding:3px 10px; border-radius:99px; border:1px solid var(--azul); background:var(--azul); color:#fff; cursor:pointer; }
+  .chip.off { background:#fff; color:var(--muted); border-color:var(--line); text-decoration:line-through; }
+  .dica { margin:0; color:var(--muted); font-size:13px; }
+  .opc { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--ink); text-transform:none; letter-spacing:0; font-weight:400; margin:0; cursor:pointer; }
+  .opc input { width:auto; }
+  .ajuda { margin-top:auto; border-top:1px solid var(--line); padding-top:12px; font-size:13px; color:var(--muted); }
+  .ajuda strong { color:var(--ink); }
+  .ajuda ul { margin:6px 0 0; padding-left:18px; }
+
+  .resultados { min-height:0; overflow:auto; display:flex; flex-direction:column; gap:clamp(10px, 1.8vh, 18px); padding-right:2px; }
+  .vazio { flex:1; display:grid; place-items:center; text-align:center; color:var(--muted); background:var(--card); border:1px dashed var(--line); border-radius:12px; padding:24px; }
+  .vazio strong { display:block; color:var(--ink); font-size:18px; margin-bottom:4px; }
+  .grupo { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; flex:none; }
+  .grupo > h2 { margin:0; padding:12px 16px; font-size:16px; display:flex; align-items:baseline; gap:10px; border-bottom:1px solid var(--line); background:linear-gradient(90deg, #eef1f6, #fff); }
+  .grupo > h2 span { font-size:13px; font-weight:400; color:var(--muted); }
+  .busca { display:grid; grid-template-columns:1fr auto; gap:6px 14px; padding:12px 16px; border-bottom:1px solid var(--line); align-items:center; }
+  .busca:last-child { border-bottom:0; }
+  .titulo { font-weight:600; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .forca { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; padding:1px 8px; border-radius:99px; white-space:nowrap; }
+  .forca.forte { color:var(--forte); background:#e3f3ea; }
+  .forca.medio { color:var(--medio); background:#fbefdc; }
+  .porque { grid-column:1; margin:0; color:var(--muted); font-size:13px; }
+  .q { grid-column:1 / -1; width:100%; font:13px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:#2b3242; background:#f7f7f4; border:1px solid var(--line); border-radius:8px; padding:7px 10px; resize:none; field-sizing:content; min-height:2.4em; }
+  .acoes { grid-column:2; grid-row:1 / span 2; display:flex; gap:6px; align-self:start; }
+  .acoes a, .acoes button { font:inherit; font-size:13px; font-weight:600; padding:7px 12px; border-radius:8px; text-decoration:none; white-space:nowrap; cursor:pointer; }
+  .acoes a { background:var(--azul); color:#fff; border:1px solid var(--azul); }
+  .acoes button { background:#fff; color:var(--ink); border:1px solid var(--line); }
+  .acoes button.ok { color:var(--forte); border-color:var(--forte); }
+
+  @media (max-width: 760px) {
+    body { height:auto; min-height:100dvh; }
+    .layout { grid-template-columns:1fr; }
+    aside { overflow:visible; }
+    .ajuda { display:none; }
+    .resultados { overflow:visible; }
+    .busca { grid-template-columns:1fr; }
+    .acoes { grid-column:1; grid-row:auto; }
+    .acoes a, .acoes button { flex:1; text-align:center; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Buscar sites antigos</h1>
+    <p>Digite um setor e abra as pesquisas prontas no Google para achar empresas com site velho ou sem site.</p>
+  </div>
+  <span class="resumo"><a href="/">Voltar ao hub</a> · <a href="/sair">Sair</a></span>
+</header>
+<div class="layout">
+  <aside>
+    <div>
+      <label for="setor">Setor</label>
+      <input id="setor" placeholder="ex.: autopeças, clínica odontológica" autocomplete="off" autofocus>
+    </div>
+    <div class="linha">
+      <div><label for="cidade">Cidade (opcional)</label><input id="cidade" placeholder="ex.: Porto Alegre" autocomplete="off"></div>
+      <div><label for="uf">Estado</label><select id="uf"></select></div>
+    </div>
+    <div id="caixaTermos" hidden>
+      <label>Termos usados</label>
+      <div class="chips" id="chips"></div>
+      <p class="dica">Clique para tirar ou pôr um termo. Para somar outro, digite abaixo e aperte Enter.</p>
+      <input id="extra" placeholder="+ outro termo" autocomplete="off" style="margin-top:6px">
+    </div>
+    <div>
+      <label for="ano">Rodapé até o ano</label><input id="ano" type="number" min="2003" max="2022" value="2016" style="width:110px">
+    </div>
+    <label class="opc"><input type="checkbox" id="excluir" checked> Esconder redes sociais e guias (Facebook, OLX, Guia Mais…)</label>
+    <div class="ajuda">
+      <strong>Ao abrir um resultado, é site antigo se:</strong>
+      <ul>
+        <li>no celular a página fica minúscula ou corta para o lado;</li>
+        <li>o navegador mostra "Não seguro" (sem cadeado);</li>
+        <li>o rodapé tem ano velho, "Fone/Fax" ou e-mail @terra, @bol, @ig;</li>
+        <li>tem contador de visitas, Flash ou link de Orkut.</li>
+      </ul>
+      <p style="margin:8px 0 0">O Google não deixa pesquisar direto por "sem celular" ou "sem https"; essas buscas acham os sinais que andam junto.</p>
+    </div>
+  </aside>
+  <section class="resultados" id="resultados" aria-live="polite">
+    <div class="vazio"><div><strong>Comece pelo setor</strong>Ex.: autopeças, oficina mecânica, imobiliária, indústria metalúrgica, dentista.</div></div>
+  </section>
+</div>
+
+<script>
+// Tudo roda aqui no navegador: nada vai para servidor e nada é raspado do Google, só montamos os links de pesquisa.
+const UFS = [['', 'Todos'], ['AC','Acre'],['AL','Alagoas'],['AP','Amapá'],['AM','Amazonas'],['BA','Bahia'],['CE','Ceará'],['DF','Distrito Federal'],['ES','Espírito Santo'],['GO','Goiás'],['MA','Maranhão'],['MT','Mato Grosso'],['MS','Mato Grosso do Sul'],['MG','Minas Gerais'],['PA','Pará'],['PB','Paraíba'],['PR','Paraná'],['PE','Pernambuco'],['PI','Piauí'],['RJ','Rio de Janeiro'],['RN','Rio Grande do Norte'],['RS','Rio Grande do Sul'],['RO','Rondônia'],['RR','Roraima'],['SC','Santa Catarina'],['SP','São Paulo'],['SE','Sergipe'],['TO','Tocantins']];
+
+// Vocabulário por setor: [palavras que reconhecem o setor, termos de pesquisa, domínio profissional .br, sites a esconder do setor]
+const SETORES = [
+  [['autopeca', 'auto peca', 'pecas automotivas', 'pecas para carro'], ['autopeças', 'peças automotivas', 'auto peças'], null, []],
+  [['oficina', 'mecanica auto', 'auto center', 'autocenter'], ['oficina mecânica', 'auto center', 'mecânica automotiva'], null, []],
+  [['funilaria', 'lanternagem', 'pintura automotiva'], ['funilaria e pintura', 'lanternagem', 'pintura automotiva'], null, []],
+  [['concessionaria', 'revenda de carro', 'loja de carro', 'veiculos seminovos', 'seminovo'], ['revenda de veículos', 'seminovos', 'loja de carros'], null, ['site:webmotors.com.br', 'site:icarros.com.br']],
+  [['pneu', 'borracharia'], ['pneus', 'borracharia', 'centro automotivo'], null, []],
+  [['dentista', 'odontolog', 'ortodont', 'implante dentario'], ['clínica odontológica', 'consultório odontológico', 'dentista'], 'odo.br', ['site:doctoralia.com.br', 'site:boaconsulta.com']],
+  [['clinica medica', 'consultorio medico', 'medico', 'clinica'], ['clínica médica', 'consultório médico', 'clínica'], 'med.br', ['site:doctoralia.com.br', 'site:boaconsulta.com']],
+  [['veterinar', 'pet shop', 'petshop'], ['clínica veterinária', 'veterinário', 'pet shop'], 'vet.br', []],
+  [['psicolog'], ['psicólogo', 'psicologia', 'consultório de psicologia'], 'psi.br', ['site:doctoralia.com.br']],
+  [['fisioterap'], ['fisioterapia', 'clínica de fisioterapia', 'reabilitação'], null, ['site:doctoralia.com.br']],
+  [['laboratorio', 'analises clinicas'], ['laboratório de análises clínicas', 'análises clínicas', 'laboratório'], null, []],
+  [['farmacia', 'drogaria'], ['farmácia', 'drogaria', 'farmácia de manipulação'], 'far.br', []],
+  [['otica'], ['ótica', 'óculos', 'lentes de contato'], null, []],
+  [['imobiliar', 'corretor de imove', 'imoveis'], ['imobiliária', 'imóveis', 'corretor de imóveis'], 'imb.br', ['site:zapimoveis.com.br', 'site:vivareal.com.br', 'site:imovelweb.com.br']],
+  [['construtora', 'incorporadora', 'construcao civil'], ['construtora', 'incorporadora', 'construção civil'], 'eng.br', []],
+  [['engenharia'], ['engenharia', 'projetos de engenharia', 'engenheiro'], 'eng.br', []],
+  [['arquitet'], ['arquitetura', 'escritório de arquitetura', 'arquiteto'], 'arq.br', []],
+  [['advoga', 'advocacia', 'escritorio de advocacia', 'juridic'], ['escritório de advocacia', 'advogados', 'advocacia'], 'adv.br', ['site:jusbrasil.com.br']],
+  [['contabil', 'contador', 'contabilidade'], ['escritório de contabilidade', 'contabilidade', 'contador'], 'cnt.br', []],
+  [['metalurg', 'usinagem', 'caldeiraria', 'metalmecanica'], ['metalúrgica', 'usinagem', 'caldeiraria'], 'ind.br', []],
+  [['industria', 'fabrica', 'fabricante'], ['indústria', 'fabricante', 'fábrica'], 'ind.br', []],
+  [['plastico', 'injecao plastica', 'embalagem', 'embalagens'], ['indústria de plásticos', 'embalagens', 'injeção plástica'], 'ind.br', []],
+  [['quimic'], ['indústria química', 'produtos químicos', 'química'], 'ind.br', []],
+  [['alimento', 'frigorific', 'laticini'], ['indústria de alimentos', 'alimentos', 'frigorífico'], 'ind.br', []],
+  [['moveis', 'moveleir', 'marcenaria', 'planejados'], ['móveis planejados', 'marcenaria', 'fábrica de móveis'], 'ind.br', []],
+  [['textil', 'confeccao', 'malharia', 'uniformes'], ['confecção', 'malharia', 'indústria têxtil'], 'ind.br', []],
+  [['calcado', 'couro', 'curtume'], ['calçados', 'fábrica de calçados', 'curtume'], 'ind.br', []],
+  [['grafica'], ['gráfica', 'gráfica rápida', 'impressão'], null, []],
+  [['silo', 'armazenagem', 'secador de grao'], ['silos', 'armazenagem de grãos', 'secadores de grãos'], 'ind.br', []],
+  [['maquinas agricolas', 'implementos', 'implemento agricola'], ['máquinas agrícolas', 'implementos agrícolas', 'peças agrícolas'], 'agr.br', []],
+  [['agro', 'agricola', 'agropecuar', 'semente', 'fertilizante', 'defensivo', 'insumo'], ['agropecuária', 'insumos agrícolas', 'sementes'], 'agr.br', []],
+  [['cerealista', 'arroz', 'grao', 'cooperativa'], ['cerealista', 'beneficiamento de grãos', 'cooperativa agrícola'], 'agr.br', []],
+  [['transport', 'logistica', 'frete', 'mudanca'], ['transportadora', 'logística', 'transportes'], null, []],
+  [['material de construcao', 'materiais de construcao', 'madeireira', 'ferragem'], ['materiais de construção', 'madeireira', 'ferragens'], null, []],
+  [['vidracaria', 'vidro', 'esquadria'], ['vidraçaria', 'vidros temperados', 'esquadrias'], null, []],
+  [['serralheria', 'portao'], ['serralheria', 'portões', 'estruturas metálicas'], null, []],
+  [['refrigeracao', 'ar condicionado', 'climatizacao'], ['refrigeração', 'ar condicionado', 'climatização'], null, []],
+  [['energia solar', 'fotovoltaic', 'solar'], ['energia solar', 'placas solares', 'sistema fotovoltaico'], null, []],
+  [['eletric', 'automacao'], ['instalações elétricas', 'automação industrial', 'materiais elétricos'], null, []],
+  [['seguranca eletronica', 'alarme', 'cftv', 'monitoramento'], ['segurança eletrônica', 'alarmes', 'CFTV'], null, []],
+  [['restaurante', 'churrascaria', 'pizzaria'], ['restaurante', 'churrascaria', 'pizzaria'], null, ['site:ifood.com.br', 'site:tripadvisor.com.br']],
+  [['hotel', 'pousada'], ['hotel', 'pousada', 'hospedagem'], 'tur.br', ['site:booking.com', 'site:tripadvisor.com.br']],
+  [['turismo', 'agencia de viage'], ['agência de viagens', 'turismo', 'pacotes de viagem'], 'tur.br', []],
+  [['escola', 'colegio', 'educacao infantil', 'curso'], ['escola', 'colégio', 'educação infantil'], null, []],
+  [['academia', 'pilates', 'crossfit'], ['academia', 'pilates', 'musculação'], null, []],
+  [['estetica', 'salao de beleza', 'cabeleireir', 'barbearia'], ['clínica de estética', 'salão de beleza', 'estética'], null, []],
+  [['fotograf'], ['fotógrafo', 'estúdio fotográfico', 'fotografia'], 'fot.br', []],
+  [['consultoria'], ['consultoria empresarial', 'consultoria', 'assessoria'], null, []],
+  [['hospital', 'equipamento medico', 'produtos hospitalares'], ['equipamentos médicos', 'produtos hospitalares', 'materiais hospitalares'], 'ind.br', []],
+];
+
+// Sites que entopem os resultados sem serem o site da empresa.
+const ESCONDER = ['site:facebook.com', 'site:instagram.com', 'site:linkedin.com', 'site:youtube.com', 'site:mercadolivre.com.br', 'site:olx.com.br', 'site:reclameaqui.com.br', 'site:guiamais.com.br', 'site:apontador.com.br', 'site:telelistas.net', 'site:econodata.com.br', 'site:cnpj.biz', 'site:solutudo.com.br', 'site:wikipedia.org'];
+
+const $ = id => document.getElementById(id);
+const sem = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+const aspas = t => `"${t.replace(/"/g, '')}"`;
+const ou = lista => lista.length === 1 ? lista[0] : `(${lista.join(' OR ')})`;
+const anos = (de, ate) => Array.from({ length: ate - de + 1 }, (_, i) => aspas(String(de + i)));
+
+$('uf').innerHTML = UFS.map(([s, n]) => `<option value="${s}">${s || n}</option>`).join('');
+
+let setorAtual = null; // linha de SETORES reconhecida
+let termos = [];       // [{t, on}]
+
+function reconhece(texto) {
+  const s = sem(texto);
+  if (!s) return null;
+  return SETORES.find(([chaves]) => chaves.some(c => (' ' + s).includes(' ' + c) || (s.length >= 4 && c.startsWith(s)))) || null;
+}
+
+function atualizaTermos() {
+  const texto = $('setor').value.trim();
+  const achado = reconhece(texto);
+  const extras = termos.filter(x => x.extra);
+  const base = [texto, ...(achado ? achado[1] : [])].filter(Boolean);
+  const vistos = new Set();
+  const antes = new Map(termos.map(x => [sem(x.t), x.on]));
+  termos = [...base.map(t => ({ t })), ...extras].filter(x => {
+    const k = sem(x.t);
+    if (!k || vistos.has(k)) return false;
+    vistos.add(k);
+    return true;
+  }).map(x => ({ ...x, on: antes.has(sem(x.t)) ? antes.get(sem(x.t)) : true }));
+  setorAtual = achado;
+  desenhaChips();
+}
+
+function desenhaChips() {
+  $('caixaTermos').hidden = !termos.length;
+  $('chips').innerHTML = termos.map((x, i) => `<button type="button" class="chip${x.on ? '' : ' off'}" data-i="${i}">${x.t.replace(/</g, '&lt;')}</button>`).join('');
+}
+
+// O Google aceita até 32 palavras por pesquisa: se passar, tira primeiro os sites escondidos.
+function monta(partes, esconder) {
+  const conta = s => s.split(/\s+/).filter(p => p && p !== '(' && p !== ')').length;
+  let fora = [...esconder];
+  let q = [...partes, ...fora.map(s => '-' + s)].filter(Boolean).join(' ');
+  while (conta(q) > 32 && fora.length) { fora.pop(); q = [...partes, ...fora.map(s => '-' + s)].filter(Boolean).join(' '); }
+  return q;
+}
+
+function linkGoogle(q, ateAno) {
+  const p = new URLSearchParams({ q, hl: 'pt-BR', gl: 'br', cr: 'countryBR' });
+  if (ateAno) p.set('tbs', `cdr:1,cd_min:,cd_max:12/31/${ateAno}`);
+  return 'https://www.google.com/search?' + p.toString();
+}
+
+function buscas() {
+  const ativos = termos.filter(x => x.on).map(x => x.t).slice(0, 4);
+  if (!ativos.length) return null;
+  const S = ou(ativos.map(aspas));
+  const cidade = $('cidade').value.trim();
+  const uf = $('uf').value;
+  const ufNome = (UFS.find(u => u[0] === uf) || [])[1];
+  const L = cidade ? aspas(cidade) : uf ? aspas(ufNome) : '';
+  const ano = Math.min(2022, Math.max(2003, parseInt($('ano').value, 10) || 2016));
+  const esconder = $('excluir').checked ? [...(setorAtual ? setorAtual[3] : []), ...ESCONDER] : [];
+  const dom = setorAtual && setorAtual[2];
+  const q = (sinal, extra = esconder) => monta([S, L, sinal], extra);
+  const rodape = '"todos os direitos reservados"';
+
+  return [
+    { titulo: 'Ano antigo', sub: 'rodapé ou página parados no tempo', itens: [
+      { nome: `Rodapé de ${ano - 3} a ${ano}`, forca: 'forte', porque: 'Site que não muda o ano do rodapé há anos quase sempre está abandonado.', q: q(`${rodape} ${ou(anos(ano - 3, ano))}`) },
+      { nome: `Rodapé de ${ano - 8} a ${ano - 4}`, forca: 'forte', porque: 'Mesma ideia, anos mais velhos: costuma pegar sites ainda mais antigos.', q: q(`${rodape} ${ou(anos(ano - 8, ano - 4))}`) },
+      { nome: `"Copyright" até ${ano}`, forca: 'medio', porque: 'Variação em inglês que muita agência antiga deixava no rodapé.', q: q(`"copyright" ${ou(anos(ano - 5, ano))}`) },
+      { nome: `Páginas que o Google datou até ${ano}`, forca: 'medio', porque: `Usa o filtro de data do próprio Google (Ferramentas > Período) para mostrar só páginas de ${ano} ou antes.`, q: q(''), ateAno: ano },
+    ]},
+    { titulo: 'Tecnologia antiga', sub: 'Flash, Internet Explorer, Joomla velho, páginas .asp e .htm', itens: [
+      { nome: 'Flash e "pular intro"', forca: 'forte', porque: 'Flash morreu em 2020; quem ainda cita é site do tempo da abertura animada.', q: q('("Flash Player" OR "Adobe Flash" OR "pular intro" OR "skip intro")') },
+      { nome: 'Feito para Internet Explorer', forca: 'forte', porque: 'Frases como "melhor visualizado em 1024x768" são marca registrada de sites dos anos 2000.', q: q('("melhor visualizado" OR "Internet Explorer" OR "1024x768" OR "800x600")') },
+      { nome: 'Joomla antigo', forca: 'forte', porque: 'Endereços com option=com_content são do Joomla 1.x, usado até por volta de 2012.', q: q('inurl:"option=com_content"') },
+      { nome: 'Páginas .asp', forca: 'medio', porque: 'ASP clássico é tecnologia dos anos 2000 que quase ninguém usa em site novo.', q: q('filetype:asp') },
+      { nome: 'Páginas .htm soltas', forca: 'medio', porque: 'Site feito à mão em HTML puro, normalmente sem versão para celular.', q: q('filetype:htm') },
+      { nome: 'Criadores de site e agências antigas', forca: 'medio', porque: 'Rodapés "criado com Webnode", "Locaweb", "UOL Host" ou "desenvolvido por" de construtores baratos e antigos.', q: q('("criado com" OR "Webnode" OR "Locaweb" OR "UOL Host" OR "Powered by Joomla")') },
+    ]},
+    { titulo: 'Cara de site parado', sub: 'sinais que andam junto com site sem celular e sem https', itens: [
+      { nome: 'Fone/Fax no contato', forca: 'forte', porque: 'Quase ninguém mais tem fax: se o site mostra "Fone/Fax", o contato não é atualizado há muito tempo.', q: q('("fone/fax" OR "tel/fax" OR "telefax" OR "fone fax")') },
+      { nome: 'E-mail @terra, @bol, @ig', forca: 'forte', porque: 'E-mail de provedor antigo no site mostra empresa que parou no tempo no digital.', q: q('("@terra.com.br" OR "@bol.com.br" OR "@ig.com.br" OR "@uol.com.br" OR "@pop.com.br")') },
+      { nome: 'Contador de visitas e livro de visitas', forca: 'forte', porque: 'Contador "você é o visitante nº" é coisa de site dos anos 2000.', q: q('("você é o visitante" OR "visitante número" OR "contador de visitas" OR "livro de visitas")') },
+      { nome: 'Link para Orkut ou MSN', forca: 'forte', porque: 'O Orkut acabou em 2014: se o site ainda aponta para ele, ninguém mexe nele desde então.', q: q('("orkut" OR "adicione no MSN" OR "MSN Messenger")') },
+      { nome: '"Adicionar aos favoritos"', forca: 'medio', porque: 'Botões de "adicione aos favoritos" e "recomende este site" sumiram junto com o Internet Explorer.', q: q('("adicione aos favoritos" OR "adicionar aos favoritos" OR "recomende este site" OR "torne nossa página inicial")') },
+      { nome: 'Site em construção', forca: 'medio', porque: 'Empresa que tem domínio mas deixou o site "em construção": precisa de site e sabe disso.', q: q('("site em construção" OR "página em construção" OR "em breve nosso novo site")') },
+    ]},
+    { titulo: 'Sem site próprio', sub: 'só rede social, site grátis ou domínio do setor', itens: [
+      { nome: 'Site grátis (Wix, Webnode, Blogspot…)', forca: 'forte', porque: 'Endereço do tipo empresa.wixsite.com: tem site, mas sem domínio próprio e quase sempre amador.', q: monta([S, L, '(site:wixsite.com OR site:webnode.com.br OR site:webnode.page OR site:blogspot.com OR site:sites.google.com)'], []) },
+      { nome: 'Outros construtores grátis', forca: 'forte', porque: 'Mesma ideia em construtores menos conhecidos.', q: monta([S, L, '(site:weebly.com OR site:jimdofree.com OR site:site123.me OR site:comunidades.net OR site:yolasite.com)'], []) },
+      { nome: 'Só Instagram', forca: 'medio', porque: 'Perfis do setor que vendem pelo WhatsApp e não têm link de site na bio.', q: monta([S, L, 'site:instagram.com', '("whatsapp" OR "orçamento")', '-"www"'], []) },
+      { nome: 'Só Facebook', forca: 'medio', porque: 'Página do Facebook aparece no lugar do site: a empresa provavelmente não tem um.', q: monta([S, L, 'site:facebook.com'], []) },
+      ...(dom ? [{ nome: `Domínio .${dom}`, forca: 'medio', porque: `Domínios .${dom} são do próprio setor e muito usados por empresas que fizeram site há mais de dez anos.`, q: q(`site:.${dom}`) }] : []),
+      { nome: 'Google Maps', forca: 'medio', porque: 'Abre o Maps com o setor e a cidade: as empresas sem o botão "Site" na ficha não têm site.', maps: [ativos[0], cidade || ufNome].filter(Boolean).join(' ') },
+    ]},
+  ];
+}
+
+const escHtml = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function desenha() {
+  const grupos = buscas();
+  if (!grupos) {
+    $('resultados').innerHTML = `<div class="vazio"><div><strong>Comece pelo setor</strong>Ex.: autopeças, oficina mecânica, imobiliária, indústria metalúrgica, dentista.</div></div>`;
+    return;
+  }
+  $('resultados').innerHTML = grupos.map((g, gi) => `
+    <div class="grupo"><h2>${g.titulo} <span>${g.sub}</span></h2>
+      ${g.itens.map((b, bi) => {
+        const url = b.maps ? 'https://www.google.com/maps/search/' + encodeURIComponent(b.maps) : linkGoogle(b.q, b.ateAno);
+        const texto = b.maps || b.q;
+        return `<div class="busca" data-g="${gi}" data-b="${bi}">
+          <div class="titulo">${escHtml(b.nome)} <span class="forca ${b.forca}">${b.forca === 'forte' ? 'sinal forte' : 'sinal médio'}</span></div>
+          <p class="porque">${escHtml(b.porque)}</p>
+          <div class="acoes"><a href="${escHtml(url)}" target="_blank" rel="noopener">${b.maps ? 'Abrir no Maps' : 'Abrir no Google'}</a><button type="button" class="copiar">Copiar</button></div>
+          <textarea class="q" rows="1" spellcheck="false" ${b.maps ? 'data-maps' : ''} ${b.ateAno ? `data-ano="${b.ateAno}"` : ''}>${escHtml(texto)}</textarea>
+        </div>`;
+      }).join('')}
+    </div>`).join('');
+}
+
+// Se a pessoa editar a pesquisa, o botão passa a abrir a versão editada.
+$('resultados').addEventListener('input', e => {
+  if (!e.target.classList.contains('q')) return;
+  const t = e.target, a = t.closest('.busca').querySelector('a');
+  a.href = t.hasAttribute('data-maps') ? 'https://www.google.com/maps/search/' + encodeURIComponent(t.value) : linkGoogle(t.value, t.dataset.ano);
+});
+$('resultados').addEventListener('click', async e => {
+  const btn = e.target.closest('.copiar');
+  if (!btn) return;
+  const t = btn.closest('.busca').querySelector('.q');
+  try { await navigator.clipboard.writeText(t.value); } catch { t.select(); document.execCommand('copy'); }
+  btn.textContent = 'Copiado'; btn.classList.add('ok');
+  setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1500);
+});
+
+$('chips').addEventListener('click', e => {
+  const c = e.target.closest('.chip');
+  if (!c) return;
+  termos[c.dataset.i].on = !termos[c.dataset.i].on;
+  desenhaChips(); desenha(); guarda();
+});
+$('extra').addEventListener('keydown', e => {
+  if (e.key !== 'Enter' || !e.target.value.trim()) return;
+  e.preventDefault();
+  termos.push({ t: e.target.value.trim(), on: true, extra: true });
+  e.target.value = '';
+  atualizaTermos(); desenha(); guarda();
+});
+
+let espera;
+$('setor').addEventListener('input', () => { clearTimeout(espera); espera = setTimeout(() => { termos = termos.filter(x => x.extra); atualizaTermos(); desenha(); guarda(); }, 200); });
+['cidade', 'uf', 'ano', 'excluir'].forEach(id => $(id).addEventListener('input', () => { desenha(); guarda(); }));
+
+// Lembra a última busca neste navegador.
+function guarda() {
+  try { localStorage.setItem('ov-busca', JSON.stringify({ setor: $('setor').value, cidade: $('cidade').value, uf: $('uf').value, ano: $('ano').value, excluir: $('excluir').checked, termos })); } catch {}
+}
+try {
+  const s = JSON.parse(localStorage.getItem('ov-busca') || 'null');
+  if (s) {
+    $('setor').value = s.setor || ''; $('cidade').value = s.cidade || ''; $('uf').value = s.uf || ''; $('ano').value = s.ano || 2016; $('excluir').checked = s.excluir !== false;
+    termos = s.termos || [];
+    atualizaTermos(); desenha();
+  }
+} catch {}
+</script>
+</body>
+</html>

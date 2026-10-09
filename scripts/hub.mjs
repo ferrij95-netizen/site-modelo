@@ -19,6 +19,8 @@ fs.cpSync(path.join(repo, 'hub/entrar'), path.join(out, 'entrar'), { recursive: 
 // App instalável no PC (manifest, ícones e service worker), também servido sem senha.
 fs.cpSync(path.join(repo, 'hub/app'), path.join(out, 'app'), { recursive: true });
 fs.copyFileSync(path.join(repo, 'hub/sw.js'), path.join(out, 'sw.js'));
+// Busca de sites antigos (hub/busca/): só gera links de pesquisa do Google, protegida pelo mesmo login.
+fs.cpSync(path.join(repo, 'hub/busca'), path.join(out, 'busca'), { recursive: true });
 
 const clientes = slugs.map(slug => {
   const base = path.join(dir, slug);
@@ -119,7 +121,7 @@ const html = `<!doctype html>
     <h1>Sites em desenvolvimento</h1>
     <p>Previews dos clientes da Overtus.</p>
   </div>
-  <span class="resumo"><button class="instalar" hidden>Instalar app</button>${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/sair">Sair</a></span>
+  <span class="resumo"><button class="instalar" hidden>Instalar app</button>${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/busca/">Buscar sites antigos</a> · <a href="/sair">Sair</a></span>
 </header>
 <main>${clientes.map(card).join('')}
 </main>
