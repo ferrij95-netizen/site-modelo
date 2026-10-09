@@ -201,3 +201,65 @@
   .tabela-prod td.col-img svg { width: 64px; }
   .tabela-prod td:last-child { text-align: left; margin-top: 8px; }
 }
+
+/* Profundidade (versão B) */
+.barra { background: linear-gradient(180deg, rgba(14,42,71,.97), rgba(10,32,56,.97)); backdrop-filter: blur(10px); box-shadow: 0 10px 30px -18px rgba(0,0,0,.6); }
+.barra-cot { background: var(--grad-azul); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 6px 16px -6px rgba(26,115,209,.8); }
+.barra-nav a[aria-current] { border-bottom-color: transparent; background: linear-gradient(0deg, rgba(90,163,232,.16), transparent 70%); box-shadow: inset 0 -3px 0 #5aa3e8; }
+
+.abertura, .faixa { position: relative; overflow: hidden; background:
+  radial-gradient(45% 70% at 80% 35%, rgba(46,128,214,.35) 0%, rgba(46,128,214,0) 70%),
+  radial-gradient(35% 60% at 0% 100%, rgba(3,14,28,.6) 0%, transparent 70%),
+  var(--grad-marinho); }
+.abertura::before, .faixa::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(140,192,242,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(140,192,242,.07) 1px, transparent 1px); background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(80% 90% at 70% 40%, #000 10%, transparent 80%); mask-image: radial-gradient(80% 90% at 70% 40%, #000 10%, transparent 80%); }
+.abertura::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(140,192,242,.5), transparent); }
+.abertura-in, .faixa .in { position: relative; }
+.abertura h1, .faixa h1 { background: linear-gradient(180deg, #ffffff 40%, #b9d6f5 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ficha-linhas { border: 1px solid rgba(255,255,255,.6); box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 30px 60px -20px rgba(0,0,0,.55), 0 0 0 8px rgba(255,255,255,.05); transform: perspective(1400px) rotateY(-6deg) rotateX(2deg); transition: transform .5s cubic-bezier(.2,.7,.2,1); background: linear-gradient(180deg, #fff, #f8fafd); }
+.ficha-linhas:hover { transform: perspective(1400px) rotateY(0) rotateX(0); }
+.ficha-topo { background: linear-gradient(180deg, #f2f6fb, #e6eef7); }
+.fl-ico { background: var(--grad-metal); box-shadow: inset 0 0 0 1px rgba(14,42,71,.06); }
+
+.numeros { background: linear-gradient(180deg, #08192d, #0a2038); box-shadow: inset 0 1px 0 rgba(140,192,242,.12); }
+.numeros b { background: linear-gradient(180deg, #ffffff, #9cc8f2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.numeros-claro { background: var(--grad-tinta); box-shadow: none; }
+.numeros-claro b { background: var(--grad-azul); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.bloco-tinta { background: radial-gradient(50% 70% at 100% 0%, rgba(26,115,209,.07), transparent 70%), var(--grad-tinta); }
+.bloco-escuro { position: relative; overflow: hidden; background:
+  radial-gradient(40% 80% at 15% 0%, rgba(46,128,214,.28), transparent 70%),
+  radial-gradient(40% 80% at 100% 100%, rgba(46,128,214,.18), transparent 70%),
+  var(--grad-marinho); }
+.bloco-escuro .in { position: relative; }
+.tempo-n { box-shadow: 0 0 0 6px rgba(90,163,232,.10), 0 0 24px rgba(90,163,232,.35); background: radial-gradient(circle at 35% 30%, #1d4a7a, #0e2a47); }
+.bloco:not(.bloco-escuro) .tempo-n { background: linear-gradient(180deg, #fff, #eef4fb); box-shadow: 0 0 0 6px rgba(11,92,173,.07), 0 6px 14px -4px rgba(11,92,173,.35); }
+.tempo li::before { background: linear-gradient(90deg, rgba(140,192,242,.55), rgba(140,192,242,.12)); }
+
+.tabela-rolagem, .tabela-spec, .passos { box-shadow: var(--sombra-2); border-color: rgba(219,227,235,.85); }
+.tabela-prod th { background: linear-gradient(180deg, #f2f6fb, #e4edf7); }
+.tabela-prod td.col-img svg { background: var(--grad-metal); box-shadow: inset 0 0 0 1px rgba(14,42,71,.06); }
+.tabela-prod tr { transition: background .15s; }
+.tabela-prod tr:hover td { background: linear-gradient(90deg, #f3f8fd, #fafcfe); }
+.tabela-spec th { background: linear-gradient(90deg, #f3f7fc, #f9fbfd); }
+.aba { box-shadow: var(--sombra-1); background: linear-gradient(180deg, #fff, #f6f9fc); transition: all .2s; }
+.aba.ativa { background: var(--grad-marinho); box-shadow: 0 8px 18px -6px rgba(14,42,71,.55); }
+.passos li { background: linear-gradient(180deg, #fff, #fbfcfe); }
+.passos { border: 0; }
+.passo-n { background: var(--grad-azul); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lista li { border-top: 0; position: relative; }
+.lista li::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, var(--azul), rgba(219,227,235,.9) 30%, rgba(219,227,235,.3)); }
+.filtro-barra input { box-shadow: var(--sombra-2); border-color: rgba(196,207,218,.7); }
+.form { background: linear-gradient(180deg, #fff, #fbfcfe); border: 1px solid rgba(219,227,235,.85); border-radius: 14px; padding: 28px; box-shadow: var(--sombra-2); }
+
+.cta { position: relative; overflow: hidden; background:
+  radial-gradient(50% 120% at 85% 0%, rgba(110,180,255,.35), transparent 60%),
+  radial-gradient(40% 100% at 0% 100%, rgba(5,30,60,.5), transparent 70%),
+  linear-gradient(120deg, #0b4a8f 0%, #0b5cad 50%, #1a73d1 100%); }
+.cta::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 32px 32px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 60%); mask-image: linear-gradient(90deg, transparent, #000 60%); }
+.cta-in { position: relative; }
+.cta .btn-prim { background: linear-gradient(180deg, #fff, #eaf1f8); color: var(--marinho); box-shadow: 0 10px 24px -8px rgba(0,0,0,.45); }
+.rodape { background: radial-gradient(60% 80% at 100% 0%, rgba(26,115,209,.16), transparent 70%), linear-gradient(180deg, #0a2038, #071729); }
+@media (max-width: 960px) { .ficha-linhas { transform: none; } }
+@media (max-width: 600px) { .form { padding: 18px; } .tabela-rolagem { box-shadow: none; } .tabela-prod tr { box-shadow: var(--sombra-2); } }
