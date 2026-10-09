@@ -46,7 +46,7 @@ main.celular img{max-width:420px}
   </div>
   <div class="links">
     <a class="old" id="ao-vivo" href="https://texian.com.br/" target="_blank" rel="noopener">Site atual ao vivo ↗</a>
-    <a id="novo" href="/direcoes/">Ver as propostas novas →</a>
+    <a id="novo" href="/pt/">Ver o site novo →</a>
   </div>
 </div>
 <main id="main"><img id="shot" alt="Página do site atual da Texian"></main>
@@ -62,6 +62,7 @@ function show(){
   document.querySelectorAll('#tabs button').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.p===p)});
   document.querySelectorAll('#dev button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.d===d));
   document.getElementById('ao-vivo').href='https://texian.com.br/'+vivo[p];
+  document.getElementById('novo').href='/pt/'+(p==='home'?'':p);
   history.replaceState(null,'','?p='+p+'&d='+d);
 }
 tabs.onclick=e=>{if(e.target.dataset.p){p=e.target.dataset.p;show();scrollTo(0,0)}};
