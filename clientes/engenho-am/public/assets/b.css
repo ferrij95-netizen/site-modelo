@@ -37,7 +37,7 @@ h3 { font-size: 20px; }
 .secao-escura { background: var(--verde-noite); color: #d6e0d4; }
 .secao-escura h2, .secao-escura h3 { color: #fff; }
 .secao-escura .eyebrow { color: #ffb8b8; }
-.secao-faixa { background: #fff; border-top: 6px solid var(--vermelho); }
+
 .secao-topo { display: grid; gap: 0; margin-bottom: 44px; max-width: 860px; }
 .secao-topo .link { margin-top: 18px; }
 
@@ -131,6 +131,53 @@ h3 { font-size: 20px; }
 .rodape-contato p { margin-top: 8px; color: var(--suave); font-size: 15px; }
 .rodape-base { border-top: 1px solid var(--borda); }
 
+/* Vitrine de produtos (segunda dobra): um cartão grande e dois menores, foto inteira e texto por cima. */
+.secao-topo-lado { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 32px; max-width: none; }
+.secao-topo-lado .link { margin-top: 0; }
+.vitrine { display: grid; grid-template-columns: 1.25fr 1fr; grid-template-rows: repeat(2, minmax(250px, 1fr)); gap: 18px; }
+.vit { position: relative; display: block; overflow: hidden; border-radius: 14px; color: #fff; text-decoration: none; isolation: isolate; background: var(--verde-noite); }
+.vit-1 { grid-row: span 2; }
+.vit img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.vit::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(8,40,13,0) 30%, rgba(8,40,13,.88) 100%); }
+.vit:hover img { transform: scale(1.05); }
+.vit-n { position: absolute; top: 18px; left: 20px; font: 800 13px/1 var(--fh); letter-spacing: .12em; padding: 8px 11px; border-radius: 99px; background: rgba(255,255,255,.16); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.vit-txt { position: absolute; left: 0; right: 70px; bottom: 0; padding: 26px; display: grid; gap: 6px; }
+.vit-txt span { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #ffc9c9; }
+.vit-txt h3 { color: #fff; font-size: clamp(22px, 1.2vw + 12px, 30px); }
+.vit-1 .vit-txt h3 { font-size: clamp(28px, 2vw + 12px, 44px); }
+.vit-txt p { color: #e2ebe0; font-size: 15.5px; max-width: 420px; }
+.vit-ir { position: absolute; right: 22px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--vermelho); transition: transform .2s; }
+.vit-ir .seta { width: 20px; height: 20px; }
+.vit:hover .vit-ir { transform: translateX(4px); }
+
+/* Linha de beneficiamento: trilho com estações ligadas, um grão que percorre a linha e as fases por cima. */
+.secao-trilho { background: radial-gradient(1200px 500px at 85% 0%, #14501d 0%, transparent 60%), var(--verde-noite); overflow: hidden; }
+.trilho { --icone: 76px; --fim: calc((100% - 90px) / 6 - var(--icone) / 2); }
+.fases { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0 18px; margin-bottom: 26px; }
+.fases span { grid-column: span var(--n); font: 700 12px/1 var(--fh); font-stretch: 120%; letter-spacing: .16em; text-transform: uppercase; color: #ffb8b8; padding-bottom: 10px; border-bottom: 2px solid rgba(255,184,184,.45); }
+.estacoes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; position: relative; }
+.estacoes::before { content: ''; position: absolute; left: calc(var(--icone) / 2); right: var(--fim); top: calc(var(--icone) / 2); height: 2px; background: repeating-linear-gradient(90deg, rgba(255,255,255,.4) 0 8px, transparent 8px 16px); }
+.estacoes::after { content: ''; position: absolute; top: calc(var(--icone) / 2 - 6px); left: calc(var(--icone) / 2); width: 22px; height: 12px; border-radius: 50%; background: #f4ecd2; box-shadow: 0 0 14px rgba(244,236,210,.8); animation: grao 9s linear infinite; }
+@keyframes grao { 0% { left: calc(var(--icone) / 2); opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { left: calc(100% - var(--fim) - 22px); opacity: 0; } }
+.estacoes li { position: relative; display: grid; gap: 8px; align-content: start; }
+.est-ic { width: var(--icone); height: var(--icone); border-radius: 50%; display: grid; place-items: center; position: relative; z-index: 1; background: var(--verde-noite); border: 2px solid rgba(255,255,255,.22); box-shadow: inset 0 0 0 7px #0f3a16; transition: border-color .2s, transform .2s; margin-bottom: 10px; }
+.est-ic svg { width: 32px; height: 32px; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.estacoes li:hover .est-ic { border-color: var(--vermelho); transform: translateY(-3px); }
+.estacoes li:last-child .est-ic { background: var(--vermelho); border-color: var(--vermelho); box-shadow: inset 0 0 0 7px var(--vermelho-esc); }
+.estacoes b { font: 800 13px/1 var(--fh); letter-spacing: .12em; color: #ffb8b8; }
+.estacoes h3 { color: #fff; font-size: 19px; }
+.estacoes p { font-size: 14.5px; line-height: 1.55; color: #c9d6c8; }
+@media (prefers-reduced-motion: reduce) { .estacoes::after { animation: none; display: none; } }
+
+/* Empresa familiar: verde forte com cartões brancos, contraste alto. */
+.secao-familia { background: var(--verde-esc); color: #e6efe4; }
+.secao-familia h2 { color: #fff; }
+.secao-familia .eyebrow { color: #ffc9c9; }
+.secao-familia .tempo-b ol { align-items: start; }
+.secao-familia .tempo-b li { background: #fff; border-top: 5px solid var(--vermelho); box-shadow: 0 16px 40px rgba(0,0,0,.18); }
+.secao-familia .tempo-b b { color: var(--vermelho); }
+.secao-familia .tempo-b p { color: #2b352d; }
+
 @media (max-width: 1100px) {
   .producao { grid-template-columns: repeat(3, 1fr); gap: 28px 0; }
   .topo-tel span { display: none; }
@@ -145,6 +192,16 @@ h3 { font-size: 20px; }
   .tempo-b ol, .lista-clientes { grid-template-columns: 1fr; }
   .numeros { grid-template-columns: 1fr 1fr; }
   .lado { position: static; display: flex; flex-wrap: wrap; }
+  .vitrine { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .vit-1 { grid-column: 1 / -1; grid-row: auto; min-height: 340px; }
+  .vit { min-height: 260px; }
+  .fases { display: none; }
+  .estacoes { grid-template-columns: 1fr; gap: 0; }
+  .estacoes::before { display: none; }
+  .estacoes li:not(:last-child)::after { content: ''; position: absolute; left: calc(var(--icone) / 2 - 1px); top: var(--icone); bottom: 0; width: 2px; background: repeating-linear-gradient(180deg, rgba(255,255,255,.4) 0 8px, transparent 8px 16px); }
+  .estacoes::after { display: none; }
+  .estacoes li { grid-template-columns: var(--icone) 1fr; column-gap: 20px; padding-bottom: 26px; }
+  .est-ic { grid-row: span 3; margin-bottom: 0; }
   .duas-img img { aspect-ratio: 4 / 3; }
 }
 @media (max-width: 640px) {
@@ -155,5 +212,8 @@ h3 { font-size: 20px; }
   .ficha-img { grid-row: auto; }
   .lista-prod a { grid-template-columns: 90px 1fr 22px; }
   .lista-prod b { display: none; }
+  .vitrine { grid-template-columns: 1fr; }
+  .vit, .vit-1 { min-height: 300px; }
+  .trilho { --icone: 60px; }
   .btn { white-space: normal; }
 }
