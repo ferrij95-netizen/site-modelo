@@ -126,3 +126,9 @@ Lista das imagens usadas no site atual, para referência.
 ![print2](https://image.thum.io/get/width/1440/crop/900/https://www.mbembalagens.com/)
 
 ![print3](https://image.thum.io/get/width/1440/fullpage/https://www.mbembalagens.com/)
+
+![print4](https://image.thum.io/get/width/1440/crop/900/wait/10/noanimate/https://www.mbembalagens.com/index.html)
+
+![print5](https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.mbembalagens.com%2Findex.html?w=1440&h=900&vpw=1440&vph=900)
+
+![print6](https://api.microlink.io/?url=https%3A%2F%2Fwww.mbembalagens.com%2F&screenshot=true&meta=false&embed=screenshot.url&waitForTimeout=8000)
