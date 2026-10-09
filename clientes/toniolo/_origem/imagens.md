@@ -162,19 +162,19 @@
 
 - print home
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrupotoniolo.com%2F?w=1440&h=900&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrupotoniolo.com%2F?w=1440&h=900&v=3)
 
 - print quem-somos/
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrupotoniolo.com%2Fquem-somos%2F?w=1440&h=900&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrupotoniolo.com%2Fquem-somos%2F?w=1440&h=900&v=3)
 
 - print manejo-e-remanejo-de-rejeitos/
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrupotoniolo.com%2Fmanejo-e-remanejo-de-rejeitos%2F?w=1440&h=900&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrupotoniolo.com%2Fmanejo-e-remanejo-de-rejeitos%2F?w=1440&h=900&v=3)
 
 - print home celular
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrupotoniolo.com%2F?w=390&h=844&vpw=390&vph=844&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrupotoniolo.com%2F?w=390&h=844&vpw=390&vph=844&v=3)
 
 ## Vídeo do YouTube (quem somos)
 
