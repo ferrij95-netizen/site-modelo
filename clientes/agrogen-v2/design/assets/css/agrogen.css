@@ -655,3 +655,9 @@ ol.steps.arrows{--d:40px;--g:6px;list-style:none;display:flex;gap:0;margin:0}
 
 /* Fim da página sem emenda: o gradiente do CTA desce até o tom do rodapé, sem corte no meio */
 .cta{background:radial-gradient(900px 420px at 88% 0%,rgba(61,139,55,.28),transparent 62%),linear-gradient(180deg,#1B3F63 0%,#163756 55%,#132F4B 100%)}
+/* Seletor de idioma PT · EN · ES, como os botões do site atual */
+.idiomas{display:flex;align-items:center;gap:2px;margin-left:-12px}
+.idiomas a{font-weight:600;font-size:12px;line-height:1;letter-spacing:.08em;padding:7px 7px;border-radius:6px;color:var(--navy);opacity:.55;text-decoration:none;transition:opacity .15s,background .15s}
+.idiomas a:hover{opacity:1}
+.idiomas a[aria-current]{opacity:1;background:var(--navy);color:#fff}
+@media (max-width:1080px){.idiomas{margin-left:auto}.menu-toggle{margin-left:10px}}
