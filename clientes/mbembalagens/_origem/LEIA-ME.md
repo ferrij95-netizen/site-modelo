@@ -1,0 +1,9 @@
+# MB Embalagens: como este site é feito
+
+- Cliente: MB Embalagens (mbembalagens.com), fábrica de embalagens plásticas flexíveis em Esteio/RS, desde 2004. Textos, catálogo com todas as tabelas de medidas, contato, logo e fotos tirados do site atual em 2026-10-09.
+- Site estático em `public/`: `/` é a página de escolha (com o print do site atual para comparar), `/a/` é a versão A "Catálogo" (clara) e `/b/` a versão B "Fábrica" (azul-marinho com a faixa laranja das caixas). 10 páginas em cada: início, catálogo, uma página por linha (bobinas, multidobras, sacarias, sacolas), bobinas industriais, segmentos, empresa e contato com formulário de orçamento.
+- As páginas são geradas: textos e tabelas em `conteudo.mjs`, peças comuns em `comum.mjs`, estrutura de cada versão em `versao-a.mjs` e `versao-b.mjs`. Depois de mudar qualquer texto: `node clientes/mbembalagens/_origem/gerar.mjs`.
+- Imagens: o servidor não abre mbembalagens.com, então as imagens e o print foram baixados pelo proxy de imagens do GitHub (lista em `imagens.md`, originais em `img/`). `imagens.mjs` converte para `public/assets/img/*.webp` e recorta o logo (azul e branco). As fotos de produto do site atual têm só 420 px; trocar por fotos maiores quando a MB mandar.
+- Marca: azul-marinho do logo #181e58 e laranja do site atual e das caixas #f27423. Títulos em Fredoka, a família arredondada e pesada mais próxima do letreiro do logo; texto em Inter.
+- Conteúdo proposto (confirmar com a MB): o WhatsApp (o site atual usa wa.me/5134535034, sem o 55; aqui ficou 55 51 3453-5034), o horário de atendimento, as quatro etapas de fabricação (extrusão, corte e solda, bobinamento, expedição), as frases de apresentação de cada linha e de cada segmento, e o texto sobre a linha com reciclado. O site atual diz "há 15 anos", mas a fundação é 2004; aqui ficou "há 22 anos".
+- `public/assets/versao-*.jpg`, `og-*.jpg` e `../capa.jpg` são prints das páginas, refeitos à mão quando o visual mudar.
