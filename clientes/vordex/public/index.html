@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vordex Soluções Industriais · escolha a versão do novo site</title>
+<meta name="description" content="Duas versões do novo site da Vordex Soluções Industriais para escolher: Industrial e Apresentação.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://vordex.overtus.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vordex Soluções Industriais">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Vordex Soluções Industriais · escolha a versão do novo site">
+<meta property="og:description" content="Duas versões do novo site da Vordex Soluções Industriais para escolher: Industrial e Apresentação.">
+<meta property="og:url" content="https://vordex.overtus.com.br/">
+<meta property="og:image" content="https://vordex.overtus.com.br/assets/og-a.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vordex Soluções Industriais · escolha a versão do novo site">
+<meta name="twitter:description" content="Duas versões do novo site da Vordex Soluções Industriais para escolher: Industrial e Apresentação.">
+<meta name="twitter:image" content="https://vordex.overtus.com.br/assets/og-a.jpg">
+<link rel="icon" href="/assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/vordex-base.css">
+<style>
+  :root { --fundo: #f3f3f3; --texto: #2b3035; --titulo: #1d2125; --suave: #565d63; --borda: #e4e0d8; --destaque: #e66926; }
+  html, body { height: 100%; }
+  body { display: grid; grid-template-rows: auto 1fr; }
+  header { background: #fff; border-bottom: 1px solid var(--borda); }
+  header .in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; min-height: 72px; }
+  header .marca img { width: 170px; }
+  header small { font: 500 13px/1.2 var(--fh); letter-spacing: .1em; text-transform: uppercase; color: var(--suave); }
+  main { display: grid; min-height: 0; }
+  main .in { display: grid; grid-template-columns: 1fr 1fr 0.8fr; gap: 20px; width: min(100% - 2 * var(--gutter), 1360px); padding-top: clamp(16px, 3vh, 32px); padding-bottom: clamp(16px, 3vh, 32px); align-content: center; }
+  .v { display: grid; grid-template-rows: auto 1fr; background: #fff; border: 1px solid var(--borda); border-radius: 2px; overflow: hidden; text-decoration: none; transition: border-color .15s, box-shadow .15s; min-height: 0; }
+  .v:hover { border-color: var(--laranja); box-shadow: 0 12px 32px rgba(29,33,37,.1); }
+  .v img { width: 100%; aspect-ratio: 16 / 10; max-height: 48vh; object-fit: cover; object-position: top; border-bottom: 1px solid var(--borda); }
+  .v div { display: grid; gap: 8px; padding: clamp(14px, 2vh, 22px) 22px clamp(16px, 2.4vh, 24px); align-content: start; }
+  .v span.e { font: 600 13px/1.2 var(--fh); letter-spacing: .12em; text-transform: uppercase; color: var(--destaque); }
+  .v h2 { font-size: clamp(20px, 1.2vw + 8px, 26px); }
+  .v p { color: var(--suave); font-size: 16px; line-height: 1.5; margin: 0; }
+  .v b.l { font: 600 15px/1.3 var(--fh); color: var(--titulo); }
+  .v.atual { background: transparent; border-style: dashed; }
+  .v.atual img { filter: grayscale(.3); }
+  .v.atual span.e { color: var(--suave); }
+  @media (max-width: 1000px) {
+    html, body { height: auto; }
+    main .in { grid-template-columns: 1fr; }
+    .v img { max-height: none; }
+  }
+</style>
+</head>
+<body>
+<header><div class="in"><span class="marca"><img src="/assets/logo-vordex.png" alt="Vordex Soluções Industriais"></span><small>Proposta de novo site · duas versões</small></div></header>
+<main><div class="in">
+  <a class="v" href="/a/"><img src="/assets/versao-a.jpg" alt="Página inicial da versão A">
+    <div><span class="e">Versão A</span><h2>Industrial</h2><p>Grafite escuro e laranja, com a foto da sede em tela cheia, serviços em fotos de obra e a frota com as lâminas da apresentação da Vordex.</p><b class="l">Abrir a versão A →</b></div></a>
+  <a class="v" href="/b/"><img src="/assets/versao-b.jpg" alt="Página inicial da versão B">
+    <div><span class="e">Versão B</span><h2>Apresentação</h2><p>Clara como o site atual, com os títulos "//", os ícones e as fotos redondas de hoje, fotos com moldura laranja e o V do logo ao fundo.</p><b class="l">Abrir a versão B →</b></div></a>
+  <a class="v atual" href="https://vordexengenharia.com.br/" target="_blank" rel="noopener"><img src="/assets/site-atual.jpg" alt="Página inicial do site atual da Vordex">
+    <div><span class="e">Para comparar</span><h2>Site atual</h2><p>vordexengenharia.com.br como está hoje.</p><b class="l">Abrir o site atual ↗</b></div></a>
+</div></main>
+</body>
+</html>

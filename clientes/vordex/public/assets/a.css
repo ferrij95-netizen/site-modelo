@@ -1,0 +1,52 @@
+/* Versão A "Industrial": grafite escuro com laranja. */
+:root {
+  --fundo: #1c1c1c; --fundo-alt: #262626; --cartao: #2e2e2e; --campo: #232323; --borda: #3a3a3a;
+  --texto: #d9d9d9; --titulo: #ffffff; --suave: #a8a8a8;
+  --topo-fundo: #161616;
+  --cab-fundo: radial-gradient(120% 140% at 100% 0%, #3a2a20 0%, #1c1c1c 55%); --cab-titulo: #fff; --cab-texto: #bdbdbd; --v-opac: .07;
+  --rodape-fundo: #141414; --rodape-texto: #a8a8a8; --rodape-titulo: #fff; --rodape-borda: #2c2c2c;
+}
+
+.btn-sec { border-color: #fff; color: #fff; }
+.btn-sec:hover { background: #fff; color: #1c1c1c; }
+.sub-lista { background: #262626; }
+.circ img, .ls-foto img, .cab-img img, .serv-foto.redonda img { border-color: #1c1c1c; }
+.serv-foto { box-shadow: 14px 14px 0 #333; }
+.cab-v { filter: none; }
+
+/* Início */
+.hero { position: relative; min-height: min(86vh, 820px); display: grid; align-items: center; overflow: hidden; padding: 80px 0 140px; }
+.hero-fundo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 60%; }
+.hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(20,20,20,.96) 0%, rgba(20,20,20,.86) 42%, rgba(20,20,20,.35) 75%, rgba(20,20,20,.2) 100%), linear-gradient(0deg, #1c1c1c 0%, transparent 30%); }
+.hero .in { z-index: 2; }
+.hero-txt { max-width: 720px; }
+.hero h1 { color: #fff; }
+.hero .lead { color: #d0d0d0; }
+.hero .eyebrow { color: #e0e0e0; }
+.destaques { position: relative; z-index: 3; margin-top: -96px; padding-bottom: clamp(48px, 6vw, 80px); }
+.destaques .in { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; background: #262626; border-top: 4px solid var(--laranja); box-shadow: 0 30px 60px rgba(0,0,0,.4); }
+.dq { padding: 34px 32px 30px; }
+.dq + .dq { border-left: 1px solid #3a3a3a; }
+.dq .n { display: block; font: 900 44px/1 var(--fh); font-stretch: 125%; color: var(--laranja); margin-bottom: 14px; }
+.dq h2 { font-size: 18px; margin-bottom: 10px; }
+.dq p { margin: 0; color: var(--suave); font-size: 16px; }
+@media (max-width: 860px) { .destaques .in { grid-template-columns: 1fr; } .dq + .dq { border-left: 0; border-top: 1px solid #3a3a3a; } .hero { padding-bottom: 130px; } }
+.serv-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.sc { position: relative; display: block; min-height: 460px; overflow: hidden; border-radius: var(--raio); text-decoration: none; background: #111; }
+.sc img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .62; transition: transform .5s, opacity .3s; }
+.sc::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,10,10,.92) 85%); }
+.sc div { position: absolute; z-index: 1; inset: auto 0 0; padding: 26px 24px; }
+.sc .n { font: 900 14px/1 var(--fh); color: var(--laranja); letter-spacing: .1em; }
+.sc h3 { color: #fff; margin: 10px 0 10px; }
+.sc p { color: #cfcfcf; font-size: 15px; margin: 0 0 10px; }
+.sc:hover img { transform: scale(1.06); opacity: .8; }
+.sc::before { content: ''; position: absolute; z-index: 2; left: 0; right: 0; top: 0; height: 4px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.sc:hover::before { transform: none; }
+@media (max-width: 1000px) { .serv-cards { grid-template-columns: 1fr 1fr; } .sc { min-height: 360px; } }
+@media (max-width: 560px) { .serv-cards { grid-template-columns: 1fr; } .sc { min-height: 300px; } }
+.faixa-missao { position: relative; overflow: hidden; padding: clamp(64px, 8vw, 112px) 0; background: linear-gradient(120deg, #2b2b2b 0%, #1c1c1c 60%); }
+.faixa-missao figure { margin: 0; max-width: 460px; border-radius: var(--raio); overflow: hidden; border: 4px solid var(--laranja); }
+.faixa-missao figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.faixa-missao blockquote { color: #fff; margin-bottom: 28px; }
+.fm-v { right: -6%; bottom: -10%; width: min(50vw, 560px); opacity: .08; }
+.secao-frota { background: radial-gradient(90% 120% at 0% 100%, #3a2416 0%, #1c1c1c 60%); }
