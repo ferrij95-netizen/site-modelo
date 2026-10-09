@@ -3,18 +3,26 @@
 // abre o site no tamanho de celular e anota erros de verdade.
 const { chromium } = require('playwright');
 const fs = require('fs');
-const SHARD = Number(process.env.SHARD), N = Number(process.env.N);
+// No PC (sem Actions): ALVOS=arquivo com ids separados por vírgula, PAUSA=segundos entre fichas, MINUTOS=limite.
+// Retoma de onde parou: pula os ids que já estão em saida/detalhe-<SHARD>.json.
+const SHARD = Number(process.env.SHARD || 0), N = Number(process.env.N || 1);
+const PAUSA = Number(process.env.PAUSA || 0) * 1000;
 const todos = JSON.parse(fs.readFileSync('saida/candidatos.json', 'utf8'));
-const meus = todos.filter((_, i) => i % N === SHARD);
+const alvos = process.env.ALVOS ? new Set(fs.readFileSync(process.env.ALVOS, 'utf8').split(',').map(Number)) : null;
+const arq = `saida/detalhe-${SHARD}.json`;
+const feitos = fs.existsSync(arq) ? JSON.parse(fs.readFileSync(arq, 'utf8')) : [];
+const ja = new Set(feitos.map(r => r.id));
+const meus = todos.filter((c, i) => i % N === SHARD && (!alvos || alvos.has(c.id)) && !ja.has(c.id));
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36';
-const LIMITE = Date.now() + 80 * 60 * 1000;   // para antes do tempo do job e salva o que tiver
+const LIMITE = Date.now() + Number(process.env.MINUTOS || 80) * 60 * 1000;   // para antes do tempo do job e salva o que tiver
 (async () => {
-  const b = await chromium.launch();
+  const b = await chromium.launch(process.env.CHROME ? { executablePath: process.env.CHROME } : {});
   const ctx = await b.newContext({ locale: 'pt-BR', viewport: { width: 1300, height: 1000 }, userAgent: UA });
   const cel = await b.newContext({ locale: 'pt-BR', viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true,
     userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1' });
-  const out = [];
-  const salva = () => fs.writeFileSync(`saida/detalhe-${SHARD}.json`, JSON.stringify(out));
+  const out = feitos;
+  console.log('faltam', meus.length, 'já feitos', feitos.length);
+  const salva = () => fs.writeFileSync(arq, JSON.stringify(out));
   for (const c of meus) {
     if (Date.now() > LIMITE) break;
     const r = { id: c.id };
@@ -67,6 +75,7 @@ const LIMITE = Date.now() + 80 * 60 * 1000;   // para antes do tempo do job e sa
     out.push(r);
     if (out.length % 20 === 0) salva();
     console.log(c.id, c.nome, (r.datas || [])[0], (r.reviews || []).length);
+    if (PAUSA) await new Promise(ok => setTimeout(ok, PAUSA * (0.7 + Math.random() * 0.6)));
   }
   salva();
   await b.close();
