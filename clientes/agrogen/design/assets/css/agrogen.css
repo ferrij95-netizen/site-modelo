@@ -374,3 +374,25 @@ ol.steps.arrows{list-style:none;display:grid;grid-template-columns:repeat(4,1fr)
  .arrows .step p{padding:30px 8px 26px}
  .arrows .step:last-child p{padding-top:16px}
 }
+
+/* Mais azul, como no site atual: seções alternam creme e azul em gradiente (azul Agrogen → azul escuro, com um brilho verde) */
+:root{--grad:radial-gradient(900px 420px at 88% 0%,rgba(61,139,55,.28),transparent 62%),linear-gradient(140deg,#1B3F63 0%,#163756 45%,#0F2A40 100%)}
+.sec.sand,.sec.white{background:var(--grad);color:#fff;--navy:#fff;--ink:#fff;--muted:#C4D2DF;--green:#9FD18F;--line:rgba(255,255,255,.18);--hair:rgba(255,255,255,.2)}
+.sec.sand .btn:not(.line),.sec.white .btn:not(.line){background:#fff;color:#1B3F63}
+.sec.sand .btn:not(.line):hover,.sec.white .btn:not(.line):hover{background:#E6F0DF}
+.sec.sand .btn.line:hover,.sec.white .btn.line:hover{background:#fff;color:#1B3F63}
+.sec.sand .eyebrow,.sec.white .eyebrow{background:rgba(255,255,255,.06)}
+.sec.sand .eyebrow:before,.sec.white .eyebrow:before{background:#9FD18F}
+.sec.sand :is(.unit,.fact,.ccard,.vlist>div,.docs a,.protocol li,.eco>div,.pilar,.ccat,.cert,.prow,.states span,.cobb,.map,.acc),.sec.white :is(.unit,.fact,.ccard,.vlist>div,.docs a,.protocol li,.eco>div,.pilar,.ccat,.cert,.prow,.states span,.cobb,.map){--navy:#1B3F63;--ink:#1D2420;--muted:#5F6A62;--green:#3D8B37;--line:#DCD5C4;--hair:#E4DDCC;color:#1D2420;background:#fff}
+.sec.sand .timeline div:before,.sec.white .timeline div:before{border-color:#163756}
+.sec.sand .gallery figcaption{color:#1B3F63}
+.sec.sand .ccat,.sec.white .ccat{border-color:transparent}
+.cadeia{background:var(--grad)}
+.cta:before{background:linear-gradient(120deg,rgba(27,63,99,.92),rgba(15,42,64,.88) 60%,rgba(61,139,55,.55))}
+.site-footer{background:linear-gradient(180deg,#132F4B,#0B2236);color:#93A9BF;margin-top:16px}
+.site-footer .grid{border-color:rgba(255,255,255,.12)}
+.site-footer h4{color:#fff}
+.site-footer a:hover{color:#fff}
+.contrast-toggle{border-color:rgba(255,255,255,.25);color:#C4D2DF}
+.contrast-toggle:hover{border-color:#fff;color:#fff}
+.hero .frame,.phero .frame{background:var(--grad)}
