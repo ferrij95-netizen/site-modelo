@@ -31,7 +31,7 @@ async function hub(request, env, url) {
   }
   if (url.pathname === '/sair') return redirecionar('/entrar/', 'hub=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0');
 
-  const publico = url.pathname.startsWith('/entrar/');
+  const publico = url.pathname.startsWith('/entrar/') || url.pathname.startsWith('/app/') || url.pathname === '/sw.js';
   if (!publico) {
     const cookie = (request.headers.get('Cookie') || '').match(/(?:^|;\s*)hub=([0-9a-f]{64})/);
     if (!cookie || (await sha256(cookie[1])) !== SESSAO_HASH) return redirecionar('/entrar/');
