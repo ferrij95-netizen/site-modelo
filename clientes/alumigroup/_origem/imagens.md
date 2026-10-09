@@ -118,13 +118,13 @@
 
 - print-4f509f.jpg
 
-  ![print-4f509f.jpg](https://s.wordpress.com/mshots/v1/https%3A%2F%2Falumigroup.com.br%2F?w=1440&h=3000&v=2)
+  ![print-4f509f.jpg](https://s.wordpress.com/mshots/v1/https%3A%2F%2Falumigroup.com.br%2F?w=1440&h=3000&v=3)
 
 - print-d99732.jpg
 
-  ![print-d99732.jpg](https://s.wordpress.com/mshots/v1/https%3A%2F%2Falumigroup.com.br%2Fpage%2Fmetais?w=1440&h=2400&v=2)
+  ![print-d99732.jpg](https://s.wordpress.com/mshots/v1/https%3A%2F%2Falumigroup.com.br%2Fpage%2Fmetais?w=1440&h=2400&v=3)
 
 - print-f2ce2c.jpg
 
-  ![print-f2ce2c.jpg](https://s.wordpress.com/mshots/v1/https%3A%2F%2Falumigroup.com.br%2F?w=390&h=844&v=2)
+  ![print-f2ce2c.jpg](https://s.wordpress.com/mshots/v1/https%3A%2F%2Falumigroup.com.br%2F?w=390&h=844&v=3)
 
