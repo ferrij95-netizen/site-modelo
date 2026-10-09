@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Overtus · Entrar</title>
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#182644">
+<link rel="icon" href="/app/favicon-48.png">
+<link rel="apple-touch-icon" href="/app/icone-apple-180.png">
 <link rel="preload" href="/entrar/fontes/general-sans-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/entrar/fontes/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -198,6 +202,7 @@
       a.addEventListener('click', e => e.preventDefault());
     });
   }
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
 </html>

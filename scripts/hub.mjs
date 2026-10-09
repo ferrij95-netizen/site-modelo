@@ -16,6 +16,9 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(path.join(out, 'capas'), { recursive: true });
 // Tela de login (hub/entrar/), servida sem senha pelo worker.
 fs.cpSync(path.join(repo, 'hub/entrar'), path.join(out, 'entrar'), { recursive: true });
+// App instalável no PC (manifest, ícones e service worker), também servido sem senha.
+fs.cpSync(path.join(repo, 'hub/app'), path.join(out, 'app'), { recursive: true });
+fs.copyFileSync(path.join(repo, 'hub/sw.js'), path.join(out, 'sw.js'));
 
 const clientes = slugs.map(slug => {
   const base = path.join(dir, slug);
@@ -66,6 +69,10 @@ const html = `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Overtus · Sites em desenvolvimento</title>
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#182644">
+<link rel="icon" href="/app/favicon-48.png">
+<link rel="apple-touch-icon" href="/app/icone-apple-180.png">
 <style>
   /* O hub inteiro cabe na janela: cabeçalho fixo e a grade divide o resto da altura entre os cartões. */
   :root { --bg:#f4f4f1; --card:#fff; --ink:#16181b; --muted:#6b7079; --line:#e3e3de; --ok:#1f7a4d; --dir:#a2620b; --borda:clamp(12px, min(2.6vh, 2.2vw), 28px); }
@@ -77,6 +84,7 @@ const html = `<!doctype html>
   header p { margin:2px 0 0; color:var(--muted); font-size:clamp(13px, 1.8vh, 16px); }
   .resumo { color:var(--muted); font-size:14px; }
   .resumo a { color:inherit; }
+  .instalar { font:inherit; font-size:13px; font-weight:600; margin-right:10px; padding:5px 12px; border-radius:8px; border:0; background:#182644; color:#fff; cursor:pointer; }
   main { width:100%; max-width:1600px; margin:0 auto; flex:1; min-height:0; display:grid; grid-template-columns:repeat(var(--cols, 3), minmax(0, 1fr)); grid-auto-rows:minmax(var(--min-linha, 0px), 1fr); gap:clamp(10px, 1.8vh, 20px); overflow:auto; }
   .card { container-type:inline-size; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; min-height:0; }
   .thumb { flex:1; min-height:0; display:grid; place-items:center; background:var(--cor); overflow:hidden; text-decoration:none; }
@@ -111,11 +119,20 @@ const html = `<!doctype html>
     <h1>Sites em desenvolvimento</h1>
     <p>Previews dos clientes da Overtus.</p>
   </div>
-  <span class="resumo">${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/sair">Sair</a></span>
+  <span class="resumo"><button class="instalar" hidden>Instalar app</button>${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/sair">Sair</a></span>
 </header>
 <main>${clientes.map(card).join('')}
 </main>
 <script>
+  // App no PC: o navegador avisa quando o hub pode ser instalado e o botão "Instalar app" aparece.
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+  (function () {
+    const btn = document.querySelector('.instalar');
+    let pedido;
+    addEventListener('beforeinstallprompt', e => { e.preventDefault(); pedido = e; btn.hidden = false; });
+    addEventListener('appinstalled', () => { btn.hidden = true; });
+    btn.addEventListener('click', async () => { if (!pedido) return; pedido.prompt(); await pedido.userChoice; pedido = null; btn.hidden = true; });
+  })();
   // Escolhe o número de colunas que deixa os cartões maiores sem passar da altura da janela.
   (function () {
     const main = document.querySelector('main'), n = main.children.length, MIN_FOTO = 70;
