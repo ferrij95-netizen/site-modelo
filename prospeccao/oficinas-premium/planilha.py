@@ -1,6 +1,7 @@
 """Gera a planilha (uma aba por marca + reservas + como foi feito) e os lotes de documentos do canvas.
 Uso: python planilha.py saida/selecao.json <arquivo.xlsx> <pasta-dos-lotes>"""
 import json, sys, os
+SEM = os.environ.get('SEM_DETALHE') == '1'
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
@@ -42,16 +43,19 @@ for t in [
  '• Ficaram de fora: concessionárias e autorizadas, redes e franquias (Bosch Car Service, Pit Stop, Midas, DPaschoal etc.), oficinas de moto, caminhão e diesel, lojas de peças, estética, lava-jato e quem tem o mesmo site em mais de 3 fichas.',
  '',
  'Como decidimos a marca de cada oficina',
- '• A marca aparece no nome, no site, na ficha do Google ou nas avaliações dos clientes (coluna "Por que é dessa marca"). Cada oficina aparece em uma marca só: a que ela mais cita. Oficinas de importados sem marca escrita só entram para completar uma marca, quando estão no topo da busca dela.',
+ ('• Primeiro entram as oficinas com a marca no nome ou no site. Depois, as que aparecem entre as 20 primeiras do Google Maps na busca "oficina <marca> <cidade>" (o Google põe ali quem os clientes associam à marca). A coluna "Por que é dessa marca" diz qual foi o caso. Cada oficina aparece em uma marca só.' if SEM else
+  '• A marca aparece no nome, no site, na ficha do Google ou nas avaliações dos clientes (coluna "Por que é dessa marca"). Cada oficina aparece em uma marca só: a que ela mais cita. Oficinas de importados sem marca escrita só entram para completar uma marca, quando estão no topo da busca dela.'),
  '',
  'Site',
  '• Sem site (10), só Instagram/Facebook/WhatsApp (9), site fora do ar (9), ou site com 3 ou mais problemas: ano velho no rodapé, não adaptado ao celular, lento, tecnologia antiga, sem HTTPS, sem prévia no WhatsApp, sem WhatsApp/formulário, links quebrados, erros ao abrir no celular, página mais larga que a tela.',
  '',
  'Sinais para vender o sistema',
- '• Sem agendamento on-line (nem botão de agendar no Google), site sem pedido de orçamento, atendimento só por WhatsApp/telefone, avaliações recentes que falam de orçamento, demora/prazo, retorno/contato ou preço, e volume de avaliações nos últimos 3 meses.',
+ ('• Atendimento só por telefone/WhatsApp/redes (sem site), sem agendamento on-line, site sem pedido de orçamento e volume alto de avaliações no Google.' if SEM else
+  '• Sem agendamento on-line (nem botão de agendar no Google), site sem pedido de orçamento, atendimento só por WhatsApp/telefone, avaliações recentes que falam de orçamento, demora/prazo, retorno/contato ou preço, e volume de avaliações nos últimos 3 meses.'),
  '',
- 'Filtros: avaliação no Google nos últimos 12 meses, nota 3,8 ou mais, telefone. Telefones só para ligação comercial profissional.',
- f'Total: {tot} oficinas.' + (' Faltaram: ' + ', '.join(f'{m} {n}' for m, n in falta.items()) + ' (não existem mais oficinas independentes ativas com site ruim nessas marcas nas cidades buscadas).' if falta else ''),
+ ('Filtros: nota 3,8 ou mais no Google, pelo menos 3 avaliações, telefone. Telefones só para ligação comercial profissional.' if SEM else
+  'Filtros: avaliação no Google nos últimos 12 meses, nota 3,8 ou mais, telefone. Telefones só para ligação comercial profissional.'),
+ f'Total: {tot} oficinas.' + (' Faltaram: ' + ', '.join(f'{m} {n}' for m, n in falta.items()) + ' (não achamos mais oficinas independentes dessas marcas com site ruim ou sem site nas cidades buscadas).' if falta else ''),
  'Reservas: oficinas que sobraram (marca já completa ou evidência mais fraca).']:
     ws.append([t])
 ws.column_dimensions['A'].width = 150
@@ -61,21 +65,43 @@ for c in ws['A']:
     if c.value in ('Onde buscamos', 'Como decidimos a marca de cada oficina', 'Site', 'Sinais para vender o sistema'): c.font = Font(bold=True)
 wb.save(xlsx)
 os.makedirs(docsdir, exist_ok=True)
-docs = []
+import glob, re
+from urllib.parse import urlparse
+# não repete quem já está no canvas (mesmo telefone ou mesmo domínio)
+dig = lambda t: re.sub(r'\D', '', t or '')[-10:]
+dom = lambda u: urlparse(u if '://' in (u or '') else 'http://' + (u or '')).netloc.lower().removeprefix('www.') if u else ''
+ja_tel, ja_dom = set(), set()
+for f in glob.glob(os.environ.get('EXISTENTES', '/nonexistent') + '/*.json'):
+    d = json.load(open(f)); d = d.get('data', d)
+    c = d.get('contato') or {}
+    for t in (c.get('telefone'), c.get('whatsapp')):
+        if dig(t): ja_tel.add(dig(t))
+    if d.get('site') and not any(x in d['site'] for x in ('instagram', 'facebook', 'wa.me')): ja_dom.add(dom(d['site']))
+def repetida(r):
+    return (dig(tel(r)) and dig(tel(r)) in ja_tel) or (r['situacao'].startswith('site') and dom(r['site']) in ja_dom)
+def doc(r, m, k, did, rank, reserva):
+    return {'id': did, 'data': {
+        'lista': 'premium-' + k, 'reserva': reserva, 'nome': r['nome'], 'site': r['site'] if r['situacao'] != 'sem site' else '', 'cidade': r['cidade'],
+        'segmento': f'Oficina {m}', 'status': 'novo', 'rank': rank, 'triagem': '',
+        'notas': f'{r["situacao"].capitalize()}. ' + ('Problemas: ' + '; '.join(r['P']) + '. ' if r['P'] else '') + 'Para o sistema: ' + '; '.join(r['S']) + '.',
+        'contato': {'telefone': tel(r), 'email': r.get('email') or '', 'whatsapp': wa(r)},
+        'extra': {'notaGoogle': r['nota_google'], 'avaliacoes': r['avaliacoes'], 'notaSite': r['nota'], 'maps': r['maps'],
+                  'endereco': r.get('endereco') or '', 'bairro': ', '.join(r['bairros'] or []), 'ultimaAvaliacao': r['ult_txt'],
+                  'problemas': r['P'], 'marca': m, 'porQueMarca': r['evidencia'], 'situacaoSite': r['situacao'],
+                  'sinaisSistema': r['S'], 'trechosAvaliacoes': r['trechos']},
+        'criadoEm': 1791600000000 - rank - (100000 if reserva else 0)}}
+docs, puladas = [], 0
 for m, v in S['marcas'].items():
     k = CHAVE[m]
     for i, r in enumerate(v, 1):
-        docs.append({'id': f'{k}-{i:03d}', 'data': {
-            'lista': 'premium-' + k, 'nome': r['nome'], 'site': r['site'] if r['situacao'] != 'sem site' else '', 'cidade': r['cidade'],
-            'segmento': f'Oficina {m}', 'status': 'novo', 'rank': i, 'triagem': '',
-            'notas': f'{r["situacao"].capitalize()}. ' + ('Problemas: ' + '; '.join(r['P']) + '. ' if r['P'] else '') + 'Para o sistema: ' + '; '.join(r['S']) + '.',
-            'contato': {'telefone': tel(r), 'email': r.get('email') or '', 'whatsapp': wa(r)},
-            'extra': {'notaGoogle': r['nota_google'], 'avaliacoes': r['avaliacoes'], 'notaSite': r['nota'], 'maps': r['maps'],
-                      'endereco': r.get('endereco') or '', 'bairro': ', '.join(r['bairros'] or []), 'ultimaAvaliacao': r['ult_txt'],
-                      'problemas': r['P'], 'marca': m, 'porQueMarca': r['evidencia'], 'situacaoSite': r['situacao'],
-                      'sinaisSistema': r['S'], 'trechosAvaliacoes': r['trechos']},
-            'criadoEm': 1791600000000 - len(docs)}})
+        if repetida(r): puladas += 1; continue
+        docs.append(doc(r, m, k, f'{k}-{i:03d}', i, False))
+nres = {}
+for r in S['res']:
+    if r['marca'] not in CHAVE or repetida(r): continue
+    k = CHAVE[r['marca']]; nres[k] = nres.get(k, 0) + 1
+    docs.append(doc(r, r['marca'], k, f'{k}-r{nres[k]:03d}', nres[k], True))
 for j in range(0, len(docs), 50):
     json.dump([{'op': 'set', 'collection': 'empresas', 'doc_id': d['id'], 'data': d['data']} for d in docs[j:j + 50]],
               open(f'{docsdir}/lote-{j // 50:02d}.json', 'w'), ensure_ascii=False)
-print('planilha ok,', len(docs), 'documentos')
+print('planilha ok,', len(docs), 'documentos (', sum(not d['data']['reserva'] for d in docs), 'principais,', nres, 'reservas ), já no canvas:', puladas)

@@ -11,10 +11,14 @@ cand = {c['id']: c for c in json.load(open('saida/candidatos.json'))}
 for f in glob.glob('saida/detalhe-*.json'):
     for d in json.load(open(f)):
         if d['id'] in cand: cand[d['id']]['detalhe'] = d
+import os
+SEM = os.environ.get('SEM_DETALHE') == '1'   # sem a etapa de fichas: usa só Maps (lista, posição na busca) e site
+if SEM:
+    for c in cand.values(): c.setdefault('detalhe', {})
 R = [c for c in cand.values() if 'detalhe' in c and not c['detalhe'].get('erro_maps')]
 # categorias do Google que não são oficina, e oficinas de diesel/caminhão
 CAT_FORA = re.compile(r'revendedora|usados|celular|estacionamento|escrit[oó]rio|lava|acess[oó]rios|inspe[cç][aã]o|seguro|loja de pneu|guincho', re.I)
-R = [c for c in R if not CAT_FORA.search(c['categoria'] or '') and not re.search(r'diesel|caminh|truck|pesad', (c['nome'] or '') + ' ' + (c['categoria'] or ''), re.I)]
+R = [c for c in R if not CAT_FORA.search(c['categoria'] or '') and not re.search(r'diesel|caminh|truck|pesad|\bfh\b|scania|[oô]nibus', (c['nome'] or '') + ' ' + (c['categoria'] or ''), re.I)]
 print('candidatas', len(cand), 'com ficha', len(R))
 
 UN = {'minuto': 0, 'hora': 0, 'dia': 1, 'semana': 7, 'mês': 30, 'mes': 30, 'meses': 30, 'ano': 365, 'anos': 365}
@@ -27,13 +31,17 @@ DOR = {'orçamento': r'or[cç]amento', 'demora/prazo': r'demor|prazo|atras|esper
        'transparência/preço': r'cobr|caro|pre[cç]o|nota fiscal|explic|transpar|confian'}
 PREMIUM = re.compile(r'importad|alem[aã]|premium|europe|luxo', re.I)
 
+CTX = re.compile(r'especiali|service|servi[cç]o|import|premium|oficina|mec[aâ]nic|garage|motors|land ?rover|range')
 def marca_score(r):
     d = r['detalhe']; s = defaultdict(float); ev = defaultdict(list)
     nome = (r['nome'] or '').lower()
     ficha = (d.get('ficha') or '')[:1200].lower()
     revs = [x.lower() for x in d.get('reviews') or []]
     for m, rx in MARCAS_RX.items():
-        if re.search(rx, nome): s[m] += 100; ev[m].append('nome')
+        if re.search(rx, nome):
+            # "Jaguar Eletrônicos", "Porsche Auto Elétrica": a palavra da marca sem dizer que atende a marca vale menos
+            if CTX.search(nome) or m in ('BMW', 'Mercedes-Benz', 'Audi'): s[m] += 100; ev[m].append('nome')
+            else: s[m] += 10; ev[m].append('nome (sem dizer especializada)')
         n = (r.get('marcas_site') or {}).get(m, 0)
         if n: s[m] += 4 + min(n, 15); ev[m].append(f'site ({n}x)')
         if re.search(rx, ficha): s[m] += 10; ev[m].append('ficha do Google')
@@ -42,6 +50,8 @@ def marca_score(r):
     for m, pos in r['buscas'].items():
         if m in MARCAS and s[m] > 0:
             s[m] += 3 if pos <= 5 else 1 if pos <= 20 else 0
+        elif m in MARCAS and SEM and pos <= 20:
+            s[m] += 9 if pos <= 3 else 7 if pos <= 10 else 6; ev[m].append(f'{pos}º na busca "oficina {m}" do Google Maps')
     return s, ev
 
 out = []
@@ -80,7 +90,9 @@ for r in R:
     # sinais para o sistema
     S = []
     if r['tipo_site'] != 'site próprio': S.append('atende só por telefone/WhatsApp/redes, sem site')
-    if not r.get('agenda_online') and not d.get('agendar_maps'): S.append('sem agendamento on-line (nem no Google)')
+    if SEM:
+        if not r.get('agenda_online'): S.append('sem agendamento on-line')
+    elif not r.get('agenda_online') and not d.get('agendar_maps'): S.append('sem agendamento on-line (nem no Google)')
     if r['tipo_site'] == 'site próprio' and not r.get('orcamento_form'): S.append('site sem pedido de orçamento')
     revs = d.get('reviews') or []
     trechos = []
@@ -89,33 +101,37 @@ for r in R:
         if k:
             S.append(f'{len(k)} avaliação(ões) recente(s) falam de {nome}')
             trechos.append(k[0][:220].replace('\n', ' '))
+    if r['avaliacoes'] >= 150: S.append(f'movimento alto: {r["avaliacoes"]} avaliações no Google')
     if r['recentes_90d'] >= 5: S.append(f'movimento alto: {r["recentes_90d"]} avaliações nos últimos 3 meses')
     r['S'] = S; r['trechos'] = trechos[:2]
     r['endereco'] = next((l for l in (d.get('ficha') or '').split('\n') if re.search(r'\d{5}-\d{3}', l)), '')
     out.append(r)
 
-ativo = lambda r: r['ult_dias'] is not None and r['ult_dias'] <= 365
+ativo = lambda r: SEM or (r['ult_dias'] is not None and r['ult_dias'] <= 365)
 ok = [r for r in out if ativo(r) and (r['telefone'] or r.get('tel_site'))]
 ok = [r for r in ok if r['nota'] >= 3]
 print('elegíveis (ativas, com telefone, site ruim/sem site)', len(ok))
 
 def q(r):
-    rec = 2 if r['ult_dias'] <= 60 else 1 if r['ult_dias'] <= 180 else 0
+    rec = 0 if r['ult_dias'] is None else 2 if r['ult_dias'] <= 60 else 1 if r['ult_dias'] <= 180 else 0
     return r['nota'] * 0.6 + rec + 1.5 * math.log10(1 + r['avaliacoes']) + (r['nota_google'] or 4)
 
 escolha = {m: [] for m in MARCAS}; usado = set()
-# 1) evidência forte (nome, site, ficha ou avaliações), marca principal primeiro, depois a segunda
-for rodada in range(2):
-    fila = []
-    for r in ok:
-        if id(r) in usado: continue
-        ms = sorted(((v, m) for m, v in r['score_marca'].items() if v >= 6), reverse=True)
-        if len(ms) > rodada:
-            v, m = ms[rodada]; fila.append((m, math.log10(v) * 3 + q(r), r))
-    fila.sort(key=lambda x: -x[1])
-    for m, _, r in fila:
-        if id(r) in usado or len(escolha[m]) >= META: continue
-        escolha[m].append(r); usado.add(id(r)); r['marca'] = m; r['evidencia'] = r['evid'].get(m, '')
+# 1) cada marca escolhe a sua melhor oficina da vez (rodízio), primeiro só com marca no nome/site/ficha/avaliações,
+#    depois também pela posição na busca da marca
+FORTE = lambda r, m: any(k in r['evid'].get(m, '') for k in ('nome', 'site', 'ficha', 'avalia'))
+for so_forte in (True, False):
+    fila = {m: sorted([r for r in ok if r['score_marca'].get(m, 0) >= 6 and (FORTE(r, m) or not so_forte)],
+                      key=lambda r: -(math.log10(r['score_marca'][m]) * 3 + q(r))) for m in MARCAS}
+    pos = {m: 0 for m in MARCAS}
+    while True:
+        mexeu = False
+        for m in MARCAS:
+            if len(escolha[m]) >= META: continue
+            while pos[m] < len(fila[m]) and id(fila[m][pos[m]]) in usado: pos[m] += 1
+            if pos[m] < len(fila[m]):
+                r = fila[m][pos[m]]; escolha[m].append(r); usado.add(id(r)); r['marca'] = m; r['evidencia'] = r['evid'].get(m, ''); mexeu = True
+        if not mexeu: break
 # 2) oficinas de importados sem marca escrita, que apareceram no topo da busca da marca que faltar
 for m in MARCAS:
     if len(escolha[m]) >= META: continue
