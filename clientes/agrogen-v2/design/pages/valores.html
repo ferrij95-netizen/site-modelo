@@ -16,9 +16,14 @@
     <p class="quote"><small>Nossa visão</small>Ser reconhecida pela excelência em nossas atividades.</p>
   </div>
 </div></section>
-<section class="sec sand"><div class="wrap">
-  <div class="sec-head reveal"><div><span class="eyebrow">Valores centrais</span><h2>Cinco valores que guiam a Agrogen</h2></div></div>
-  <div class="facts">{{#each t.valores}}<div class="fact reveal"><i>{{num}}</i><b>{{it.name}}</b><p>{{it.text}}</p></div>{{/each}}</div>
+<section class="sec sand"><div class="wrap vals">
+  <div class="vals-head reveal">
+    <span class="eyebrow">Valores centrais</span>
+    <h2>Cinco valores que guiam a Agrogen</h2>
+    <p>Do campo ao escritório, são eles que orientam cada decisão da empresa.</p>
+    <img src="/img/incubatorio-montenegro.jpg" alt="Incubatório da Agrogen em Montenegro, RS" width="1176" height="595" loading="lazy">
+  </div>
+  <ol class="vrows">{{#each t.valores}}<li class="reveal"><i>{{num}}</i><div><h3>{{it.name}}</h3><p>{{it.text}}</p></div></li>{{/each}}</ol>
 </div></section>
 <section class="sec"><div class="wrap">
   <div class="cert reveal">
@@ -27,7 +32,7 @@
     <a class="btn" href="/{{lang}}/sanidade">{{t.more}}</a>
   </div>
 </div></section>
-<section class="sec white"><div class="wrap split">
+<section class="sec"><div class="wrap split">
   <div class="reveal">
     <span class="eyebrow">Ética e transparência</span>
     <h2 class="h2">Código de Conduta e Ética</h2>
