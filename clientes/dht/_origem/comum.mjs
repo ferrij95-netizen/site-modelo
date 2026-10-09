@@ -8,7 +8,7 @@ export const linha = id => linhas.find(l => l.id === id);
 export const todos = () => linhas.flatMap(l => l.itens.map(([cod, nome, ico, mat, med]) => ({ cod, nome, ico, mat, med, linha: l })));
 export const zap = (txt = 'Olá! Vim pelo site e gostaria de uma cotação.') => `https://wa.me/${site.whats}?text=${encodeURIComponent(txt)}`;
 
-export const marca = (cls = '') => `<span class="marca ${cls}"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="currentColor"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="var(--marca-cruz, #fff)"/></svg><span class="marca-txt"><b>DHT</b><small>Indústria Médica</small></span></span>`;
+export const marca = (cls = '') => `<span class="marca ${cls}"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="gm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".32"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".12"/></linearGradient></defs><rect width="32" height="32" rx="6" fill="currentColor"/><rect width="32" height="32" rx="6" fill="url(#gm)"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="var(--marca-cruz, #fff)"/></svg><span class="marca-txt"><b>DHT</b><small>Indústria Médica</small></span></span>`;
 
 export const selo = l => `<span class="selo selo-${l.origem}">${l.origem === 'fab' ? 'Fabricação própria' : 'Distribuição'}</span>`;
 
