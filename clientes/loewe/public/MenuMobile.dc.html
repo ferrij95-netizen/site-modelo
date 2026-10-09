@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex;align-items:center">
+  <button onClick="{{ toggle }}" aria-label="Abrir menu" aria-expanded="{{ isOpen }}" style="width:48px;height:48px;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0" style-hover="background:rgba(255,255,255,.12)">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="display:block"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+  </button>
+  <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:200;display:flex;justify-content:flex-end">
+      <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(28,27,26,.6)"></div>
+      <div style="position:relative;width:min(100%,420px);height:100%;background:#F7F6F3;color:#1C1B1A;display:flex;flex-direction:column;overflow-y:auto;box-shadow:-20px 0 50px -20px rgba(0,0,0,.4)">
+        <div style="background:#9C0016;color:#fff;min-height:72px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0">
+          <img src="/assets/loewe-logo.png" alt="Loewe" style="height:32px;width:auto;display:block">
+          <button onClick="{{ close }}" aria-label="Fechar menu" style="width:48px;height:48px;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="display:block"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </div>
+        <nav style="display:flex;flex-direction:column;padding:8px 20px">
+          <sc-for list="{{ items }}" as="it" hint-placeholder-count="6">
+            <div style="display:flex;flex-direction:column;border-bottom:1px solid #E2DFD8">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+                <a href="{{ it.href }}" onClick="{{ close }}" style="flex:1;min-height:56px;display:flex;align-items:center;gap:12px;font-size:18px;font-weight:{{ it.weight }};letter-spacing:-.01em;color:{{ it.color }}">{{ it.label }}</a>
+                <sc-if value="{{ it.hasSub }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ it.toggle }}" aria-label="Expandir" style="width:48px;height:48px;border:0;background:transparent;color:#1C1B1A;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;transform:{{ it.rot }};transition:transform .2s"><path d="M6 9l6 6 6-6"></path></svg>
+                  </button>
+                </sc-if>
+              </div>
+              <sc-if value="{{ it.open }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;padding:0 0 12px 14px;border-left:2px solid #9C0016;margin-bottom:12px">
+                  <sc-for list="{{ it.subs }}" as="s" hint-placeholder-count="3">
+                    <a href="{{ s.href }}" onClick="{{ close }}" style="min-height:44px;display:flex;align-items:center;font-size:15px;font-weight:500;color:#55534F">{{ s.label }}</a>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </nav>
+        <div style="padding:20px;display:flex;flex-direction:column;gap:12px;margin-top:auto">
+          <a href="/contato" onClick="{{ close }}" style="background:#9C0016;color:#fff;min-height:54px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase" style-hover="background:#7E0012;color:#fff">Solicitar proposta <span>→</span></a>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <a href="tel:5134582525" style="border:1px solid #1C1B1A;min-height:50px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#1C1B1A">Ligar</a>
+            <a href="https://api.whatsapp.com/send?phone=5551997307129" target="_blank" rel="noopener" style="border:1px solid #1C1B1A;min-height:50px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#1C1B1A">WhatsApp</a>
+          </div>
+          <span style="font-size:13px;line-height:1.6;color:#6e6e73;padding-top:4px">R. 24 de Agosto, 2436 — Esteio, RS<br>comercial@loewe.ind.br</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:720},&quot;current&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Início&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { o: false, sub: null };
+  setOpen(o) {
+    this.setState({ o, sub: null });
+    document.body.style.overflow = o ? 'hidden' : '';
+    const wa = document.querySelector('[aria-label="Falar no WhatsApp"]');
+    if (wa) wa.style.display = o ? 'none' : '';
+  }
+  componentWillUnmount() { document.body.style.overflow = ''; }
+  renderVals() {
+    const cur = this.props.current || '';
+    const { sub } = this.state;
+    const items = [
+      ['Início', '/'],
+      ['A empresa', '/quem-somos'],
+      ['Serviços', '/servicos', [['Engenharia', '/servicos#eng'], ['Manutenção', '/servicos#man']]],
+      ['Produtos', '/produtos', [['Industriais', '/produtos#ind'], ['Consumidores', '/produtos#cons'], ['Catálogo 2026', '/catalogo']]],
+      ['Trabalhe conosco', '/trabalhe-conosco'],
+      ['Contato', '/contato']
+    ].map(([label, href, subs]) => {
+      const on = label === cur, open = sub === label;
+      return { label, href, color: on ? '#9C0016' : '#1C1B1A', weight: on ? 700 : 600, hasSub: !!subs, open, rot: open ? 'rotate(180deg)' : 'none',
+        subs: (subs || []).map(([l, h]) => ({ label: l, href: h })),
+        toggle: () => this.setState({ sub: open ? null : label }) };
+    });
+    return { isOpen: this.state.o, items, toggle: () => this.setOpen(!this.state.o), close: () => this.setOpen(false) };
+  }
+}
+</script>
+</body>
+</html>
