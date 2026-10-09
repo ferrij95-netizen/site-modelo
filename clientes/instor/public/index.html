@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instor · escolha a versão do novo site</title>
+<meta name="description" content="Duas versões do novo site da Instor Projetos e Robótica para escolher: Engenharia e Operação.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://instor.overtus.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Instor Projetos e Robótica">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Instor · escolha a versão do novo site">
+<meta property="og:description" content="Duas versões do novo site da Instor Projetos e Robótica para escolher: Engenharia e Operação.">
+<meta property="og:url" content="https://instor.overtus.com.br/">
+<meta property="og:image" content="https://instor.overtus.com.br/assets/og-a.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Instor · escolha a versão do novo site">
+<meta name="twitter:description" content="Duas versões do novo site da Instor Projetos e Robótica para escolher: Engenharia e Operação.">
+<meta name="twitter:image" content="https://instor.overtus.com.br/assets/og-a.jpg">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="/assets/instor-base.css">
+<style>
+  :root { --fundo: #f3f4f1; --texto: #2a2d2b; --suave: #5f6461; --borda: #dfe2dc; }
+  html, body { height: 100%; }
+  body { display: grid; grid-template-rows: auto 1fr; }
+  header { background: #fff; border-bottom: 1px solid var(--borda); }
+  header .in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; min-height: 72px; }
+  header small { font: 500 13px/1.2 var(--fh); letter-spacing: .1em; text-transform: uppercase; color: var(--suave); }
+  main { display: grid; min-height: 0; }
+  main .in { display: grid; grid-template-columns: 1fr 1fr 0.8fr; gap: 20px; width: 100%; padding-top: clamp(16px, 3vh, 32px); padding-bottom: clamp(16px, 3vh, 32px); align-content: center; }
+  .v { display: grid; grid-template-rows: auto 1fr; background: #fff; border: 1px solid var(--borda); border-radius: 4px; overflow: hidden; text-decoration: none; transition: border-color .15s, box-shadow .15s; min-height: 0; }
+  .v:hover { border-color: var(--verde); box-shadow: 0 12px 32px rgba(30,33,31,.1); }
+  .v img { width: 100%; aspect-ratio: 16 / 10; max-height: 48vh; object-fit: cover; object-position: top; border-bottom: 1px solid var(--borda); }
+  .v div { display: grid; gap: 8px; padding: clamp(14px, 2vh, 22px) 22px clamp(16px, 2.4vh, 24px); align-content: start; }
+  .v span.e { font: 500 13px/1.2 var(--fh); letter-spacing: .1em; text-transform: uppercase; color: var(--verde-esc); }
+  .v h2 { font-size: clamp(22px, 1.4vw + 8px, 28px); color: #1e211f; }
+  .v p { color: var(--suave); font-size: 16px; line-height: 1.5; }
+  .v b.l { font-weight: 600; color: var(--verde-esc); }
+  .v.atual { background: transparent; border-style: dashed; }
+  .v.atual img { filter: grayscale(.3); }
+  .v.atual span.e { color: var(--suave); }
+  @media (max-width: 1000px) {
+    html, body { height: auto; }
+    main .in { grid-template-columns: 1fr; }
+    .v img { max-height: none; }
+  }
+</style>
+</head>
+<body>
+<header><div class="in"><span class="logo"><svg class="emblema" viewBox="0 0 100 112" aria-hidden="true">
+  <path d="M50 4 93 28.5v55L50 108 7 83.5v-55Z" fill="none" stroke="#606060" stroke-width="11"/>
+  <rect x="0" y="46" width="100" height="20" fill="#fff"/>
+  <rect x="2" y="51" width="27" height="10" fill="#606060"/><rect x="71" y="51" width="27" height="10" fill="#606060"/>
+  <path d="M50 26 75 40.5v31L50 86 25 71.5v-31Z" fill="none" stroke="#606060" stroke-width="7"/>
+  <path d="M60 22 68 36M40 90 32 76" stroke="#fff" stroke-width="5"/>
+  <circle cx="50" cy="56" r="14.5" fill="none" stroke="#80b838" stroke-width="6.5"/>
+</svg><span class="logo-txt"><b>instor</b><i>Projetos &amp; Robótica</i></span></span><small>Proposta de novo site · duas versões</small></div></header>
+<main><div class="in">
+  <a class="v" href="/a/"><img src="/assets/versao-a.jpg" alt="Página inicial da versão A">
+    <div><span class="e">Versão A</span><h2>Engenharia</h2><p>Clara, branca e cinza com o verde do logo. Abertura com foto do Tupã Ex, setores em cartões e ficha técnica em tabela.</p><b class="l">Abrir a versão A →</b></div></a>
+  <a class="v" href="/b/"><img src="/assets/versao-b.jpg" alt="Página inicial da versão B">
+    <div><span class="e">Versão B</span><h2>Operação</h2><p>Escura, grafite com o verde aceso. Foto de campo em tela cheia, a frota em lista técnica e a trajetória em régua.</p><b class="l">Abrir a versão B →</b></div></a>
+  <a class="v atual" href="https://instor.com.br/" target="_blank" rel="noopener"><img src="/assets/site-atual.jpg" alt="Página inicial do site atual da Instor">
+    <div><span class="e">Para comparar</span><h2>Site atual</h2><p>instor.com.br como está hoje.</p><b class="l">Abrir o site atual ↗</b></div></a>
+</div></main>
+</body>
+</html>
