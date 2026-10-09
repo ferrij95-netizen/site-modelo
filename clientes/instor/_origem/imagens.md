@@ -142,3 +142,11 @@ Lista das imagens usadas no site atual, para referência.
 
   ![15-Apoio-da-Finep-viabiliza-construcao-do-primeiro-robo-autonomo-para-desinfeccao-de-ambientes-da-America-Latina-pr9j9urjyropqvdolln8e0furwo6mrxv4pxyis1arc.jpg](https://instor.com.br/wp-content/uploads/elementor/thumbs/15-Apoio-da-Finep-viabiliza-construcao-do-primeiro-robo-autonomo-para-desinfeccao-de-ambientes-da-America-Latina-pr9j9urjyropqvdolln8e0furwo6mrxv4pxyis1arc.jpg)
 
+
+## Print do site atual (serviços de captura de tela)
+
+![print](https://s0.wp.com/mshots/v1/https%3A%2F%2Finstor.com.br%2F?w=1440&h=900)
+
+![print2](https://image.thum.io/get/width/1440/crop/900/https://instor.com.br/)
+
+![print3](https://image.thum.io/get/width/1440/fullpage/https://instor.com.br/)
