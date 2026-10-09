@@ -1,142 +1,163 @@
-// Versão B, "Plantão": mesma marca, cores e fontes da A, mas escura por padrão, como a tela de um monitor
-// à noite. Capítulos numerados, índice lateral nas subpáginas e folhas brancas de documentação.
-import { site, nav, specs, passos, solucoes, recursosPlataforma, specsPlataforma, fichaSensor, seguranca, valores } from './conteudo.mjs';
-import { marca, desenhoTopo, desenhoLado, monitor, painel } from './pecas.mjs';
-import { documento } from './comum.mjs';
+// Versão B, "Indústria": mesma marca, cores e fonte da A, com cara de fábrica. Faixas azul-marinho,
+// números grandes, catálogo em tabela técnica (código, material, medidas) e o processo em linha do tempo.
+import { site, nav, linhas, clientes, numeros, etapasFab, passosCompra, qualidade } from './conteudo.mjs';
+import { ilustra } from './ilustra.mjs';
+import { documento, marca, selo, todos, formCotacao, zap, num, botaoCotacao, esc } from './comum.mjs';
 
 const V = 'b';
 const L = s => `/${V}/${s === 'index' ? '' : s + '/'}`;
-const num = i => String(i + 1).padStart(2, '0');
 
-const header = slug => `<header class="barra">
-  <a class="barra-marca" href="${L('index')}" aria-label="DHT, início">${marca()}</a>
+const header = slug => `<header class="barra"><div class="barra-in">
+  <a class="barra-marca" href="${L('index')}" aria-label="DHT Indústria Médica, início">${marca('marca-clara')}</a>
   <nav class="barra-nav" id="menu" aria-label="Principal">
-    ${nav.map(([s, n], i) => `<a href="${L(s)}"${s === slug ? ' aria-current="page"' : ''}><small>${num(i)}</small>${n}</a>`).join('\n    ')}
+    ${nav.map(([s, n]) => `<a href="${L(s)}"${slug.split('/')[0] === s ? ' aria-current="page"' : ''}>${n}</a>`).join('\n    ')}
   </nav>
-  <a class="pilula pilula-clara barra-cta" href="${L('contato')}">Agendar demonstração</a>
-  <button class="topo-menu" type="button" aria-expanded="false" aria-controls="menu" data-menu>Menu</button>
-</header>`;
+  <a class="barra-tel" href="${zap()}">${site.telefone}</a>
+  <a class="barra-cot" href="${L('contato')}">Cotação <b data-contador>0</b></a>
+  <button class="topo-menu" type="button" aria-expanded="false" aria-controls="menu" data-menu><span></span>Menu</button>
+</div></header>`;
 
-const footer = () => `<footer class="rodape">
-  <div class="rodape-palavra" aria-hidden="true">DHT</div>
-  <div class="rodape-linhas">
-    <div class="rodape-grupo"><h2>Produto</h2><a href="${L('plataforma')}">Plataforma</a><a href="${L('sensor')}">Sensor</a><a href="${L('seguranca')}">Segurança</a></div>
-    <div class="rodape-grupo"><h2>Soluções</h2>${solucoes.map(([id, n]) => `<a href="${L('solucoes')}#${id}">${n}</a>`).join('')}</div>
-    <div class="rodape-grupo"><h2>DHT</h2><a href="${L('empresa')}">Empresa</a><a href="${L('contato')}">Contato</a><a href="mailto:${site.email}">${site.email}</a></div>
-    <div class="rodape-grupo"><h2>Proposta</h2><a href="/">Ver as duas versões</a><a href="/a/">Versão A</a></div>
-  </div>
-  <div class="rodape-base"><span>© 2026 DHT · ${site.tagline}</span><span>${site.cidade}</span></div>
-</footer>`;
+const footer = () => `<footer class="rodape"><div class="in rodape-in">
+  <div>${marca('marca-clara')}<p class="rodape-tag">${site.tagline}.</p></div>
+  <div class="rodape-col"><h2>Linhas</h2>${linhas.map(l => `<a href="${L('produtos/' + l.id)}">${l.nome}</a>`).join('')}</div>
+  <div class="rodape-col"><h2>DHT</h2><a href="${L('fabricacao')}">Fabricação</a><a href="${L('distribuicao')}">Distribuição</a><a href="${L('qualidade')}">Qualidade</a><a href="${L('empresa')}">Empresa</a></div>
+  <div class="rodape-col"><h2>Fábrica</h2><p>${site.endereco}<br>${site.cidade}</p><a href="${zap()}">${site.telefone}</a><a href="mailto:${site.email}">${site.email}</a></div>
+</div><div class="in rodape-base"><span>${site.razao} · CNPJ ${site.cnpj}</span><a href="/">Ver as duas versões</a></div></footer>`;
 
-const grade = lista => `<dl class="grade-specs">${lista.map(([v, r]) => `<div><dd>${v}</dd><dt>${r}</dt></div>`).join('')}</dl>`;
+const faixa = (eyebrow, titulo, lead, trilha = []) => `<section class="faixa"><div class="in">
+  <nav class="trilha" aria-label="Você está em"><a href="${L('index')}">Início</a>${trilha.map(([h, n]) => h ? `<a href="${L(h)}">${n}</a>` : `<span>${n}</span>`).join('')}</nav>
+  <span class="eyebrow">${eyebrow}</span><h1>${titulo}</h1><p class="lead">${lead}</p>
+</div></section>`;
 
-const cta = (titulo = 'Veja a DHT funcionando na sua ala.') => `<section class="folha cta">
-  <p class="rotulo">Próximo passo</p>
-  <h2 class="display-m">${titulo}</h2>
-  <div class="cta-acoes"><a class="pilula" href="${L('contato')}">Agendar demonstração</a><a class="sublinhado" href="mailto:${site.email}">${site.email}</a></div>
-</section>`;
+const tabela = itens => `<div class="tabela-rolagem"><table class="tabela-prod">
+  <thead><tr><th class="col-img"><span class="sr">Imagem</span></th><th>Código</th><th>Produto</th><th>Material</th><th>Medidas / embalagem</th><th><span class="sr">Cotação</span></th></tr></thead>
+  <tbody>${itens.map(p => `<tr data-busca="${esc((p.cod + ' ' + p.nome + ' ' + p.mat).toLowerCase())}"><td class="col-img">${ilustra(p.ico, p.nome)}</td><td class="cod">${p.cod}</td><td class="nome">${p.nome}</td><td>${p.mat}</td><td>${p.med}</td><td>${botaoCotacao(p)}</td></tr>`).join('')}</tbody>
+</table></div>`;
 
-// Subpáginas: índice fixo à esquerda com as seções da página.
-const sub = (i, nome, titulo, lead, secoes, html) => `
-<section class="sub-cab">
-  <span class="sub-num" aria-hidden="true">${num(i)}</span>
-  <div><p class="rotulo">${nome}</p><h1 class="display-m">${titulo}</h1><p class="lead">${lead}</p></div>
-</section>
-<div class="sub-corpo">
-  <aside class="indice" aria-label="Nesta página"><p class="rotulo">Nesta página</p>${secoes.map(([id, n]) => `<a href="#${id}">${n}</a>`).join('')}</aside>
-  <div class="sub-conteudo">${html}</div>
-</div>`;
+const linhaDoTempo = () => `<ol class="tempo">${etapasFab.map(([t, d], i) => `<li><span class="tempo-n">${num(i)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>`;
+
+const cta = () => `<section class="cta"><div class="in cta-in">
+  <h2>Mande sua lista de compras.<br>Orçamento em até 24 horas úteis.</h2>
+  <div class="cta-acoes"><a class="btn btn-prim" href="${zap()}">Falar no WhatsApp</a><a class="btn btn-contorno-claro" href="${L('contato')}">Montar cotação</a></div>
+</div></section>`;
 
 const pag = {
   index: () => `
-<section class="abertura">
-  <div class="abertura-monitor">${monitor('monitor-fundo')}</div>
-  <div class="abertura-texto">
-    <h1 class="display">Sinais vitais, sem pausa.</h1>
-    <div class="abertura-lado">
-      <p>Sensor de braço e plataforma clínica que acompanham cada paciente 24 horas por dia e avisam a equipe antes que o quadro piore.</p>
-      <div class="acoes"><a class="pilula pilula-clara" href="${L('contato')}">Agendar demonstração</a><a class="sublinhado" href="${L('plataforma')}">Ver a plataforma</a></div>
-    </div>
+<section class="abertura"><div class="in abertura-in">
+  <div class="abertura-txt">
+    <span class="eyebrow">DHT Indústria Médica · Porto Alegre</span>
+    <h1>Fabricamos o instrumental. Distribuímos o resto do pedido.</h1>
+    <p class="lead">Instrumentais cirúrgicos e inox hospitalar de fabricação própria, mais os descartáveis de maior giro. Um fornecedor, uma nota, uma entrega.</p>
+    <div class="acoes"><a class="btn btn-prim" href="${L('produtos')}">Ver catálogo</a><a class="btn btn-contorno-claro" href="${zap()}">WhatsApp</a></div>
   </div>
-</section>
-<nav class="sumario" aria-label="Capítulos">
-  ${nav.slice(0, 5).map(([s, n], i) => `<a href="${L(s)}"><span>${num(i)}</span>${n}</a>`).join('\n  ')}
-</nav>
-<section class="folha folha-produto">
-  <div class="folha-cab"><p class="rotulo">Ficha 01 · Sensor DHT</p><h2 class="titulo-ed">Dezoito gramas, cinco sinais vitais, uma semana de bateria.</h2></div>
-  <figure class="folha-desenho">${desenhoTopo()}</figure>
-  ${grade(specs)}
-</section>
-<section class="passos-b">
-  <p class="rotulo">Como funciona</p>
-  ${passos.map(([t, d], i) => `<div class="passo"><span class="passo-num">${num(i)}</span><h2 class="display-s">${t}</h2><p>${d}</p></div>`).join('\n  ')}
-</section>
-<section class="tela">
-  <div class="tela-cab"><p class="rotulo">Plataforma</p><h2 class="media">Uma ala inteira em uma tela.</h2><p>Todos os leitos ao mesmo tempo. Só quem precisa de atenção agora fica em destaque.</p></div>
-  ${painel()}
-</section>
-<section class="paineis">
-  <p class="rotulo">Para quem</p>
-  <div class="paineis-grade">${solucoes.map(([id, n, d], i) => `<a class="painel-sol" href="${L('solucoes')}#${id}"><span class="rotulo">${num(i)}</span><h2 class="media">${n}</h2><p>${d}</p><span class="seta" aria-hidden="true">→</span></a>`).join('')}</div>
-</section>
+  <div class="ficha-linhas" aria-label="Linhas de produto">
+    <div class="ficha-topo"><span>Linhas de produto</span><span>Códigos</span></div>
+    ${linhas.map((l, i) => `<a href="${L('produtos/' + l.id)}"><span class="fl-ico">${ilustra(l.ico)}</span><span class="fl-nome">${l.nome}<small>${l.origem === 'fab' ? 'Fabricação própria' : 'Distribuição'}</small></span><span class="fl-cod">DHT-${i + 1}00</span></a>`).join('')}
+  </div>
+</div></section>
+<section class="numeros"><div class="in">${numeros.map(([v, r]) => `<div><b>${v}</b><span>${r}</span></div>`).join('')}</div></section>
+<section class="bloco"><div class="in">
+  <div class="bloco-cab"><span class="eyebrow">Catálogo</span><h2>Ficha rápida dos produtos</h2>
+    <div class="abas" role="tablist">${linhas.map((l, i) => `<button type="button" role="tab" class="aba${i ? '' : ' ativa'}" data-aba="${l.id}" aria-selected="${!i}">${l.nome}</button>`).join('')}</div></div>
+  ${linhas.map((l, i) => `<div class="aba-painel" data-painel="${l.id}"${i ? ' hidden' : ''}>${tabela(todos().filter(p => p.linha === l))}</div>`).join('')}
+  <a class="link" href="${L('produtos')}">Abrir catálogo completo →</a>
+</div></section>
+<section class="bloco bloco-escuro"><div class="in">
+  <div class="bloco-cab"><span class="eyebrow">Fabricação própria</span><h2>Da barra de aço à peça gravada com lote</h2><a class="link" href="${L('fabricacao')}">Conhecer a fábrica →</a></div>
+  ${linhaDoTempo()}
+</div></section>
+<section class="bloco"><div class="in duas">
+  <div><span class="eyebrow">Quem atendemos</span><h2>Hospitais, clínicas, laboratórios e revendas</h2><p class="lead">Atendimento direto, sem pedido mínimo para começar, e documentação pronta para compras públicas.</p></div>
+  <ul class="lista">${clientes.map(([t, d]) => `<li><h3>${t}</h3><p>${d}</p></li>`).join('')}</ul>
+</div></section>
+<section class="bloco bloco-tinta"><div class="in">
+  <div class="bloco-cab"><span class="eyebrow">Como comprar</span><h2>Três passos</h2></div>
+  <ol class="passos">${passosCompra.map(([t, d], i) => `<li><span class="passo-n">${num(i)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+</div></section>
 ${cta()}`,
 
-  plataforma: () => sub(0, 'Plataforma', 'O plantão inteiro, em uma tela.', 'A plataforma recebe os sinais de cada sensor, calcula o risco de cada paciente e organiza o trabalho da equipe por prioridade.',
-    [['painel', 'Painel da ala'], ['recursos', 'Recursos'], ['tecnico', 'Ficha técnica']], `
-<section id="painel" class="bloco">${painel()}<p class="legenda">Painel da ala 3B: oito leitos, um em alerta (NEWS2 6). Dados fictícios.</p></section>
-<section id="recursos" class="bloco linhas">${recursosPlataforma.map(([t, d], i) => `<div class="linha"><span class="rotulo">${num(i)}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</section>
-<section id="tecnico" class="folha bloco">${grade(specsPlataforma)}<p class="corpo-g">Nada para instalar no hospital: o painel abre no navegador e o app da equipe roda em iOS e Android. Integração com o prontuário por HL7 FHIR.</p></section>`) + cta(),
+  produtos: () => `
+${faixa('Catálogo', 'Produtos', 'Busque pelo nome ou código, adicione à cotação e envie a lista. Preço e prazo em até 24 horas úteis.', [[null, 'Produtos']])}
+<section class="bloco"><div class="in">
+  <div class="filtro-barra"><label class="sr" for="q">Buscar produto</label><input id="q" type="search" placeholder="Buscar por nome, código ou material" data-busca-tabela><span class="resultado" data-resultado></span></div>
+  ${linhas.map(l => `<div class="grupo" data-grupo><div class="grupo-cab"><h2><a href="${L('produtos/' + l.id)}">${l.nome}</a></h2>${selo(l)}</div>${tabela(todos().filter(p => p.linha === l))}</div>`).join('')}
+</div></section>
+${cta()}`,
 
-  sensor: () => sub(1, 'Sensor', 'Dezoito gramas de vigilância.', 'Cinco sinais vitais a cada segundo, uma semana com uma carga, e pode ir ao banho com o paciente.',
-    [['desenho', 'Desenho técnico'], ['ficha', 'Ficha técnica'], ['sinais', 'Sinais ao vivo'], ['colocar', 'Como colocar']], `
-<section id="desenho" class="folha bloco folha-dupla"><figure>${desenhoTopo()}</figure><figure>${desenhoLado()}</figure></section>
-<section id="ficha" class="bloco linhas">${fichaSensor.map(([k, v]) => `<div class="linha linha-ficha"><h3>${k}</h3><p>${v}</p></div>`).join('')}</section>
-<section id="sinais" class="bloco">${monitor()}<p class="legenda">Leitura simulada de um paciente estável.</p></section>
-<section id="colocar" class="bloco linhas">${[['Encaixar', 'Prender o sensor na pulseira até ouvir o clique.'], ['Ajustar', 'Fechar a pulseira no braço, dois dedos acima do cotovelo.'], ['Vincular', 'Ler o código do leito no app da equipe. Pronto.']].map(([t, d], i) => `<div class="linha"><span class="rotulo">${num(i)}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</section>`) + cta(),
+  fabricacao: () => `
+${faixa('Fabricação própria', 'Feito em Porto Alegre, conferido peça por peça', 'Instrumentais cirúrgicos, inox hospitalar e utensílios odontológicos e de laboratório.', [[null, 'Fabricação']])}
+<section class="bloco"><div class="in"><div class="bloco-cab"><span class="eyebrow">Processo</span><h2>Seis etapas</h2></div>${linhaDoTempo()}</div></section>
+<section class="bloco bloco-tinta"><div class="in duas">
+  <div><span class="eyebrow">Matéria-prima</span><h2>Dois aços, duas funções</h2><p class="lead">Dureza para cortar e prender; resistência à corrosão para lavar e autoclavar.</p></div>
+  <table class="tabela-spec"><tbody>
+    <tr><th>AISI 420</th><td>Pinças, tesouras, porta-agulhas. Aceita têmpera: pontas e lâminas mais duras.</td></tr>
+    <tr><th>AISI 304</th><td>Cubas, bandejas, caixas e utensílios. Maior resistência à corrosão.</td></tr>
+  </tbody></table>
+</div></section>
+<section class="bloco"><div class="in duas">
+  <div><span class="eyebrow">Sob encomenda</span><h2>Para a sua marca ou o seu centro cirúrgico</h2></div>
+  <ul class="lista">${[['Medidas especiais', 'Instrumentais e caixas fora do padrão de catálogo.'], ['Marca própria', 'Gravação da marca do distribuidor ou do hospital.'], ['Kits montados', 'Caixas cirúrgicas montadas conforme a sua lista.']].map(([t, d]) => `<li><h3>${t}</h3><p>${d}</p></li>`).join('')}</ul>
+</div></section>
+${cta()}`,
 
-  solucoes: () => sub(2, 'Soluções', 'Onde houver um paciente, há um sinal.', 'Do leito do hospital à casa do paciente, com a mesma plataforma e o mesmo sensor.',
-    solucoes.map(([id, n]) => [id, n]), solucoes.map(([id, n, d, itens], i) => `
-<section id="${id}" class="bloco${i === 1 ? ' folha' : ''}">
-  <p class="rotulo">${num(i)}</p><h2 class="display-s">${n}</h2><p class="corpo-g">${d}</p>
-  <div class="linhas">${itens.map(([t, x]) => `<div class="linha"><h3>${t}</h3><p>${x}</p></div>`).join('')}</div>
-</section>`).join('')) + cta(),
+  distribuicao: () => `
+${faixa('Distribuição', 'O pedido inteiro de um fornecedor só', 'Além do que fabricamos, distribuímos os descartáveis de maior giro, de fabricantes com registro na ANVISA.', [[null, 'Distribuição']])}
+<section class="bloco"><div class="in duas">
+  <div><span class="eyebrow">Segmentos</span><h2>Quem compra da DHT</h2></div>
+  <ul class="lista">${clientes.map(([t, d]) => `<li><h3>${t}</h3><p>${d}</p></li>`).join('')}</ul>
+</div></section>
+<section class="bloco bloco-tinta"><div class="in duas">
+  <div><span class="eyebrow">Logística</span><h2>Condições comerciais</h2></div>
+  <table class="tabela-spec"><tbody>${[['Faturamento', 'Nota fiscal para CNPJ e órgãos públicos'], ['Pagamento', 'Boleto, PIX ou transferência; prazo para clientes recorrentes'], ['Envio', 'Transportadora parceira ou a escolhida por você, para todo o Brasil'], ['Retirada', `${site.endereco}, Porto Alegre`], ['Licitações', 'Documentação técnica e certidões sob consulta']].map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')}</tbody></table>
+</div></section>
+<section class="bloco"><div class="in"><div class="bloco-cab"><span class="eyebrow">Linha de distribuição</span><h2>Descartáveis</h2></div>${tabela(todos().filter(p => p.linha.origem === 'dist'))}</div></section>
+${cta()}`,
 
-  seguranca: () => sub(3, 'Segurança', 'Dado de saúde é dado sensível.', 'Cada leitura sai do sensor criptografada e só chega a quem cuida do paciente.',
-    [['principios', 'Princípios'], ['brasil', 'Dados no Brasil']], `
-<section id="principios" class="bloco linhas">${seguranca.map(([t, d], i) => `<div class="linha"><span class="rotulo">${num(i)}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</section>
-<section id="brasil" class="folha bloco"><p class="display-s">Os dados dos seus pacientes não saem do Brasil.</p></section>`) + cta('Quer ver a documentação de segurança?'),
+  qualidade: () => `
+${faixa('Qualidade', 'Rastreável do aço à embalagem', 'Cada instrumental sai gravado com lote. Cada lote tem ficha.', [[null, 'Qualidade']])}
+<section class="bloco"><div class="in"><ol class="passos passos-3">${qualidade.map(([t, d], i) => `<li><span class="passo-n">${num(i)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol></div></section>
+<section class="bloco bloco-tinta"><div class="in duas">
+  <div><span class="eyebrow">Conservação</span><h2>Como fazer o instrumental durar</h2></div>
+  <table class="tabela-spec"><tbody>${[['1. Lavar', 'Logo após o uso, sem deixar sangue ou soro secar.'], ['2. Detergente', 'Enzimático; nunca produtos com cloro.'], ['3. Secar', 'Umidade nas articulações causa ferrugem.'], ['4. Lubrificar', 'Lubrificante hospitalar antes da autoclave.']].map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')}</tbody></table>
+</div></section>
+${cta()}`,
 
-  empresa: () => sub(4, 'Empresa', 'Cuidar entre uma ronda e outra.', 'Uma healthtech brasileira que junta engenharia biomédica, enfermagem e software.',
-    [['origem', 'Origem'], ['valores', 'Valores'], ['equipe', 'Equipe']], `
-<section id="origem" class="bloco"><p class="corpo-g">A ideia veio de quem já passou noites contando leitos: a tecnologia precisava trabalhar enquanto a equipe cuida, e não o contrário. A DHT existe para que nenhuma piora passe despercebida nas horas em que ninguém está olhando.</p>${monitor()}</section>
-<section id="valores" class="bloco linhas">${valores.map(([t, d], i) => `<div class="linha"><span class="rotulo">${num(i)}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</section>
-<section id="equipe" class="folha bloco">${grade([['2026', 'primeiros hospitais parceiros'], ['3', 'áreas sob o mesmo teto'], ['100%', 'desenvolvido no Brasil']])}<p class="corpo-g">Engenheiros, enfermeiros e médicos na mesma mesa, do desenho do sensor ao texto de cada alerta.</p></section>`) + cta(),
+  empresa: () => `
+${faixa('Empresa', 'Indústria de Porto Alegre desde 2021', 'Fabricamos instrumentais e utensílios em aço inox e distribuímos os descartáveis que nossos clientes compram junto.', [[null, 'Empresa']])}
+<section class="numeros numeros-claro"><div class="in">${numeros.map(([v, r]) => `<div><b>${v}</b><span>${r}</span></div>`).join('')}</div></section>
+<section class="bloco"><div class="in duas">
+  <div><span class="eyebrow">Quem somos</span><h2>Fábrica pequena, atendimento de perto</h2></div>
+  <div class="texto"><p class="lead">A DHT Indústria Médica nasceu no bairro Passo da Areia para fabricar instrumentais e utensílios em aço inox com prazo curto e qualidade conferida peça por peça.</p><p>Com o tempo, passamos a distribuir também os descartáveis que nossos clientes compravam junto, para que o pedido saia completo de um lugar só. Quem atende conhece o produto e o uso dele no hospital.</p></div>
+</div></section>
+<section class="bloco bloco-tinta"><div class="in duas">
+  <div><span class="eyebrow">Dados</span><h2>Onde estamos</h2><table class="tabela-spec"><tbody><tr><th>Razão social</th><td>${site.razao}</td></tr><tr><th>CNPJ</th><td>${site.cnpj}</td></tr><tr><th>Endereço</th><td>${site.endereco}<br>${site.cidade}</td></tr><tr><th>Horário</th><td>${site.horario}</td></tr></tbody></table></div>
+  <iframe class="mapa" title="Mapa da DHT Indústria Médica" loading="lazy" src="https://www.google.com/maps?q=${encodeURIComponent('Rua Barão de Tramandaí, 196, Porto Alegre, RS')}&output=embed"></iframe>
+</div></section>
+${cta()}`,
 
   contato: () => `
-<section class="contato">
-  <div class="contato-info">
-    <p class="rotulo">06 · Contato</p>
-    <h1 class="display-m">Agende uma demonstração.</h1>
-    <p class="lead">Levamos o sensor e o painel até a sua ala. Em trinta minutos você vê a DHT funcionando com o seu fluxo.</p>
-    ${grade([[site.email, 'E-mail'], [site.telefone, 'Telefone'], [site.cidade, 'Sede']])}
-  </div>
-  <form class="folha form" data-form>
-    <label><span>Nome</span><input name="nome" required autocomplete="name"></label>
-    <label><span>Instituição</span><input name="instituicao" required autocomplete="organization"></label>
-    <label><span>Cargo</span><input name="cargo" autocomplete="organization-title"></label>
-    <label><span>E-mail</span><input name="email" type="email" required autocomplete="email"></label>
-    <label><span>Telefone</span><input name="telefone" type="tel" autocomplete="tel"></label>
-    <label><span>Número de leitos</span><input name="leitos" inputmode="numeric"></label>
-    <label class="cheia"><span>Mensagem</span><textarea name="mensagem" rows="3"></textarea></label>
-    <button class="pilula" type="submit">Enviar</button>
-    <p class="form-ok" hidden>Recebemos sua mensagem. A equipe da DHT responde em até um dia útil.</p>
-  </form>
-</section>`,
+${faixa('Contato', 'Cotação', 'Revise a lista, preencha seus dados e envie. Resposta em até 24 horas úteis.', [[null, 'Contato']])}
+<section class="bloco"><div class="in contato">
+  ${formCotacao(L('produtos'))}
+  <aside class="contato-lado"><table class="tabela-spec"><tbody>
+    <tr><th>WhatsApp</th><td><a href="${zap()}">${site.telefone}</a></td></tr>
+    <tr><th>E-mail</th><td><a href="mailto:${site.email}">${site.email}</a></td></tr>
+    <tr><th>Horário</th><td>${site.horario}</td></tr>
+    <tr><th>Fábrica</th><td>${site.endereco}<br>${site.cidade}</td></tr>
+  </tbody></table></aside>
+</div></section>`,
 };
+
+for (const l of linhas) pag[`produtos/${l.id}`] = () => `
+${faixa(l.origem === 'fab' ? 'Fabricação própria' : 'Distribuição', l.nome, l.resumo, [['produtos', 'Produtos'], [null, l.nome]])}
+<section class="bloco"><div class="in">${tabela(todos().filter(p => p.linha === l))}
+  <div class="outras"><span class="eyebrow">Outras linhas</span>${linhas.filter(o => o !== l).map(o => `<a class="link" href="${L('produtos/' + o.id)}">${o.nome} →</a>`).join('')}</div>
+</div></section>
+${cta()}`;
 
 export function versaoB() {
   return Object.fromEntries(Object.entries(pag).map(([slug, f]) => [slug, documento({
-    versao: V, slug, css: 'b.css', tema: '#000000',
+    versao: V, slug, css: 'b.css', tema: '#0e2a47',
     corpo: `${header(slug)}\n<main id="conteudo">${f()}\n</main>\n${footer()}`,
   })]));
 }

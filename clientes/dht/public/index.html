@@ -3,45 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DHT · escolha a versão do site</title>
-<meta name="description" content="Duas versões do site da DHT para escolher: Laboratório (clara) e Plantão (escura).">
+<title>DHT Indústria Médica · escolha a versão do site</title>
+<meta name="description" content="Duas versões do site da DHT Indústria Médica para escolher: Catálogo e Indústria.">
 <meta name="robots" content="noindex">
 <meta property="og:type" content="website">
-<meta property="og:title" content="DHT · escolha a versão do site">
-<meta property="og:description" content="Duas versões do site da DHT para escolher: Laboratório (clara) e Plantão (escura).">
+<meta property="og:title" content="DHT Indústria Médica · escolha a versão do site">
+<meta property="og:description" content="Duas versões do site da DHT Indústria Médica para escolher: Catálogo e Indústria.">
 <meta property="og:url" content="https://dht.overtus.com.br/">
 <meta property="og:image" content="https://dht.overtus.com.br/assets/og-a.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/dht-base.css">
 <style>
-  body { background: #fff; color: #0c0c0c; min-height: 100svh; display: grid; grid-template-rows: auto 1fr; }
-  header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px var(--lateral); border-bottom: 1px solid var(--regua); }
-  main { display: grid; grid-template-columns: 1fr 1fr; }
-  a.v { display: grid; grid-template-rows: 1fr auto; text-decoration: none; border-right: 1px solid var(--regua); min-height: 0; }
-  a.v:last-child { border-right: 0; }
-  .v figure { overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 32px var(--lateral); min-height: 0; }
-  .v img { width: 100%; height: auto; max-height: 56svh; object-fit: cover; object-position: top; border: 1px solid var(--regua); transition: transform .4s; }
-  .v:hover img { transform: scale(1.015); }
-  .v div { display: grid; gap: 12px; align-content: start; min-height: 250px; padding: 24px var(--lateral) 40px; border-top: 1px solid var(--regua); }
-  .v h2 { font: 400 clamp(32px, 3.6vw, 52px)/1.11 var(--f-display); text-transform: uppercase; }
-  .v p { color: #3a3a3a; max-width: 46ch; }
-  .v .sublinhado { justify-self: start; margin-top: 8px; }
-  .b { background: #000; color: #fff; }
-  .b p { color: #cfcfcf; }
-  .b img { border-color: #262626; }
-  .b div { border-color: #262626; }
-  @media (max-width: 800px) { main { grid-template-columns: 1fr; } a.v { border-right: 0; } }
+  body { background: var(--tinta); min-height: 100svh; display: grid; grid-template-rows: auto 1fr; }
+  header { background: #fff; border-bottom: 1px solid var(--borda); }
+  header .in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 16px; padding-bottom: 16px; }
+  header span.eyebrow { color: var(--suave); }
+  main .in { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 32px; padding-bottom: 32px; align-content: center; }
+  a.v { display: grid; grid-template-rows: auto 1fr; background: #fff; border: 1px solid var(--borda); border-radius: 12px; overflow: hidden; text-decoration: none; transition: border-color .15s, box-shadow .15s; }
+  a.v:hover { border-color: var(--azul); box-shadow: 0 10px 30px rgba(14,42,71,.1); }
+  .v img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--borda); }
+  .v div { display: grid; gap: 8px; padding: 20px 24px 24px; align-content: start; }
+  .v h2 { font-size: 26px; color: var(--marinho); }
+  .v p { color: var(--suave); }
+  .v .link { margin-top: 4px; }
+  @media (max-width: 760px) { main .in { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-<header><span class="marca"><svg viewBox="0 0 28 24" aria-hidden="true"><path d="M1 14h6V3h6v18h6V9h8" fill="none" stroke="currentColor" stroke-width="2.6"/></svg><span>DHT</span></span><span class="rotulo">Proposta de site · duas versões</span></header>
-<main>
-  <a class="v" href="/a/"><figure><img src="/assets/versao-a.jpg" alt="Página inicial da versão A"></figure>
-    <div><span class="rotulo">Versão A</span><h2>Laboratório</h2><p>Clara, como uma ficha técnica: fundo branco, desenho do sensor em destaque e capítulos pretos mostrando os sinais ao vivo.</p><span class="sublinhado">Abrir a versão A</span></div></a>
-  <a class="v b" href="/b/"><figure><img src="/assets/versao-b.jpg" alt="Página inicial da versão B"></figure>
-    <div><span class="rotulo">Versão B</span><h2>Plantão</h2><p>Escura, como um monitor à noite: os sinais vitais abrem o site e as fichas técnicas aparecem como folhas brancas.</p><span class="sublinhado">Abrir a versão B</span></div></a>
-</main>
+<header><div class="in"><span class="marca"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="currentColor"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#fff"/></svg><span class="marca-txt"><b>DHT</b><small>Indústria Médica</small></span></span><span class="eyebrow">Proposta de site · duas versões</span></div></header>
+<main><div class="in">
+  <a class="v" href="/a/"><img src="/assets/versao-a.jpg" alt="Página inicial da versão A">
+    <div><span class="eyebrow">Versão A</span><h2>Catálogo</h2><p>Branca e azul, com busca e linhas de produto logo na abertura, cartões de produto e lista de cotação.</p><span class="link">Abrir a versão A →</span></div></a>
+  <a class="v" href="/b/"><img src="/assets/versao-b.jpg" alt="Página inicial da versão B">
+    <div><span class="eyebrow">Versão B</span><h2>Indústria</h2><p>Azul-marinho, com cara de fábrica: números grandes, catálogo em tabela técnica e o processo de fabricação em linha do tempo.</p><span class="link">Abrir a versão B →</span></div></a>
+</div></main>
 </body>
 </html>
