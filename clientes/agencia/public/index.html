@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overtus · escolha a versão do novo site</title>
+<meta name="description" content="Duas versões do site da Overtus para escolher: Editorial (areia e marinho) e Marinho (no visual do Overtus Hub).">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://agencia.overtus.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Overtus">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Overtus · escolha a versão do novo site">
+<meta property="og:description" content="Duas versões do site da Overtus para escolher: Editorial e Marinho.">
+<meta property="og:url" content="https://agencia.overtus.com.br/">
+<meta property="og:image" content="https://agencia.overtus.com.br/assets/og-b.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Overtus · escolha a versão do novo site">
+<meta name="twitter:description" content="Duas versões do site da Overtus para escolher: Editorial e Marinho.">
+<meta name="twitter:image" content="https://agencia.overtus.com.br/assets/og-b.jpg">
+<link rel="icon" href="/assets/img/favicon-48.png">
+<link rel="stylesheet" href="/assets/base.css">
+<style>
+  :root { --fundo: #eef1f6; --texto: #1c2436; --titulo: #182644; --suave: #4c5870; --borda: #d9dfe9; }
+  html, body { height: 100%; }
+  body { display: grid; grid-template-rows: auto 1fr; }
+  header .in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; min-height: 76px; }
+  header small { font: 500 13px/1.2 var(--ft); letter-spacing: .1em; text-transform: uppercase; color: var(--suave); }
+  main .in { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: clamp(12px, 3vh, 32px) 0; align-content: center; height: 100%; }
+  .v { display: grid; grid-template-rows: auto 1fr; background: #fff; border: 1px solid var(--borda); border-radius: 18px; overflow: hidden; text-decoration: none; transition: box-shadow .2s, transform .2s; min-height: 0; }
+  .v:hover { box-shadow: 0 24px 48px -24px rgba(24,38,68,.35); transform: translateY(-2px); }
+  .v img { width: 100%; aspect-ratio: 16 / 10; max-height: 56vh; object-fit: cover; object-position: top; border-bottom: 1px solid var(--borda); }
+  .v div { display: grid; gap: 6px; padding: clamp(14px, 2.2vh, 24px) 24px; }
+  .v span { font: 500 13px/1.2 var(--ft); letter-spacing: .1em; text-transform: uppercase; color: #a4541c; }
+  .v h2 { font-size: clamp(24px, 1.4vw + 10px, 32px); }
+  .v p { color: var(--suave); font-size: 16px; line-height: 1.5; }
+  .v b { font-weight: 600; color: var(--titulo); margin-top: 4px; }
+  @media (max-width: 860px) { html, body { height: auto; } main .in { grid-template-columns: 1fr; } .v img { max-height: none; } }
+</style>
+</head>
+<body>
+<header><div class="in"><span class="marca"><span class="logo-o" aria-hidden="true">O<i></i></span><span class="logo-t">Overtus</span></span><small>Site da agência · duas versões</small></div></header>
+<main><div class="in">
+  <a class="v" href="/a/"><img src="/assets/versao-a.jpg" alt="Página inicial da versão A">
+    <div><span>Versão A</span><h2>Editorial</h2><p>Areia e marinho alternados, títulos grandes, projetos em destaque logo na abertura e laranja só como acento.</p><b>Abrir a versão A →</b></div></a>
+  <a class="v" href="/b/"><img src="/assets/versao-b.jpg" alt="Página inicial da versão B">
+    <div><span>Versão B</span><h2>Marinho</h2><p>No visual do Overtus Hub: marinho com brilhos, a forma 3D na abertura, cartões de vidro e faixas claras para leitura.</p><b>Abrir a versão B →</b></div></a>
+</div></main>
+</body>
+</html>
