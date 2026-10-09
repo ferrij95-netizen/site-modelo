@@ -43,3 +43,12 @@ a:hover > .seta, .btn:hover .seta { transform: translateX(3px); }
 .form-acoes { display: flex; flex-wrap: wrap; gap: 12px; }
 
 @media (max-width: 640px) { .form { grid-template-columns: 1fr; } }
+
+/* Seletor de idioma (PT e EN), com bandeiras como no site atual */
+.idiomas { display: flex; gap: 4px; }
+.idiomas a { display: inline-flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: var(--raio); font: 500 13px/1 var(--fh); letter-spacing: .06em; text-decoration: none; color: inherit; opacity: .6; border: 1px solid transparent; }
+.idiomas a:hover { opacity: 1; }
+.idiomas a[aria-current] { opacity: 1; border-color: currentColor; }
+.idiomas svg { width: 20px; height: 14px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.12); }
+@media (max-width: 1000px) { .idiomas a span { display: none; } .idiomas a { padding: 6px; } }
+@media (max-width: 640px) { .topo-in { gap: 14px; } }
