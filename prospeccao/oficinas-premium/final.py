@@ -12,6 +12,9 @@ for f in glob.glob('saida/detalhe-*.json'):
     for d in json.load(open(f)):
         if d['id'] in cand: cand[d['id']]['detalhe'] = d
 R = [c for c in cand.values() if 'detalhe' in c and not c['detalhe'].get('erro_maps')]
+# categorias do Google que não são oficina, e oficinas de diesel/caminhão
+CAT_FORA = re.compile(r'revendedora|usados|celular|estacionamento|escrit[oó]rio|lava|acess[oó]rios|inspe[cç][aã]o|seguro|loja de pneu|guincho', re.I)
+R = [c for c in R if not CAT_FORA.search(c['categoria'] or '') and not re.search(r'diesel|caminh|truck|pesad', (c['nome'] or '') + ' ' + (c['categoria'] or ''), re.I)]
 print('candidatas', len(cand), 'com ficha', len(R))
 
 UN = {'minuto': 0, 'hora': 0, 'dia': 1, 'semana': 7, 'mês': 30, 'mes': 30, 'meses': 30, 'ano': 365, 'anos': 365}
