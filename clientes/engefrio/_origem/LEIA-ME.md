@@ -1,9 +1,8 @@
 # Engefrio: proposta de home (só a página inicial)
 
 - Cliente: Engefrio Industrial Ltda, CNPJ 10.064.798/0001-99, Av. Abdias de Carvalho, 1111, Recife/PE. Loja de equipamentos e utensílios para gastronomia desde 1975. Site atual: https://engefrio.com.br (loja Nuvemshop).
-- Pedido do Joao (2026-10-09): ver como ficaria só a home refeita. A primeira versão (ilustrações e logo digitado) foi recusada: "cara de IA, não usou tipografia e identidade atual, nem produtos e informações". Esta segunda versão parte da loja atual.
+- Pedido do Joao (2026-10-09): ver como ficaria só a home refeita. A primeira versão (ilustrações e logo digitado) foi recusada: "cara de IA, não usou tipografia e identidade atual, nem produtos e informações". A segunda (tudo numa tela, sem rolagem) também foi recusada: "o formato está ruim, a atual é mais longa, parece um conceito". A terceira segue o formato da home atual: página longa, com rolagem, na mesma ordem (banner, benefícios, 3 banners de categoria, prateleiras A partir de R$ 8,10, A partir de R$ 1,90, Qualquer peça R$ 9,90, Equipamentos) e rodapé completo. Aqui a regra de caber na janela não vale: é loja.
 - `public/index.html` é gerado por `_origem/gerar.mjs` (produtos, preços, parcelas e fotos lidos da loja em 2026-10-09). Depois de mudar qualquer dado: `node clientes/engefrio/_origem/gerar.mjs`. Estilo em `public/assets/engefrio.css`.
 - Logo e fotos são os arquivos reais da loja, carregados direto do CDN da Nuvemshop (o nosso servidor não consegue baixá-los, então não foram copiados para cá nem conferidos em print).
-- Mesmos menus, prateleiras ("Equipamentos", "A partir de R$ 8,10", "A partir de R$ 1,90", "Qualquer peça R$ 9,90"), faixa de benefícios e textos do site atual. Texto da chamada a partir da descrição e do "Quem somos".
+- Mesmos menus (com as subcategorias reais), prateleiras, benefícios e textos do site atual. O preço no PIX é o preço à vista com os 5% que a loja anuncia. Os links de subcategoria usam a busca da loja. Texto da chamada a partir da descrição e do "Quem somos".
 - Pendente: a fonte. Usa Arial até conferir a fonte do logo e do tema atual.
-- Computador: cabe na janela; só a prateleira rola por dentro. Celular rola normal.
