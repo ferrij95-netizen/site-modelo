@@ -332,28 +332,28 @@ Lista das imagens usadas no site atual, para referência.
 
 - print 
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2F?w=1440&h=2400&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2F?w=1440&h=2400&v=3)
 
 - print sobre/
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fsobre%2F?w=1440&h=2400&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fsobre%2F?w=1440&h=2400&v=3)
 
 - print produtos/
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fprodutos%2F?w=1440&h=2400&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fprodutos%2F?w=1440&h=2400&v=3)
 
 - print corte-a-laser/
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fcorte-a-laser%2F?w=1440&h=2400&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fcorte-a-laser%2F?w=1440&h=2400&v=3)
 
 - print produtos/telas/
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fprodutos%2Ftelas%2F?w=1440&h=2400&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fprodutos%2Ftelas%2F?w=1440&h=2400&v=3)
 
 - print contato/
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fcontato%2F?w=1440&h=2400&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fcontato%2F?w=1440&h=2400&v=3)
 
 - print celular
 
-  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2F?w=420&h=1600&vpw=420&vph=900&v=2)
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2F?w=420&h=1600&vpw=420&vph=900&v=3)
