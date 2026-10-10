@@ -397,3 +397,338 @@ Lista das imagens usadas no site atual, para referência.
 
   ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2F?w=420&h=3600&vpw=420&vph=3600&v=4)
 
+
+## Mais imagens (biblioteca de mídia do site)
+
+- 2025/12/BM-Site-Banner-Natal-scaled.png
+
+  ![BM-Site-Banner-Natal-scaled.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2025/12/BM-Site-Banner-Natal-scaled.png)
+
+- 2025/06/646544654684.png
+
+  ![646544654684.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2025/06/646544654684.png)
+
+- 2025/05/898989899889.png
+
+  ![898989899889.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2025/05/898989899889.png)
+
+- 2025/05/comercializacaodeaco.png
+
+  ![comercializacaodeaco.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2025/05/comercializacaodeaco.png)
+
+- 2025/05/telasbmsolucoes.png
+
+  ![telasbmsolucoes.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2025/05/telasbmsolucoes.png)
+
+- 2024/09/Sem-Titulo-1.jpg
+
+  ![Sem-Titulo-1.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/09/Sem-Titulo-1.jpg)
+
+- 2024/08/84684684684.png
+
+  ![84684684684.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/08/84684684684.png)
+
+- 2024/07/img8.png
+
+  ![img8.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/img8.png)
+
+- 2024/07/img5.png
+
+  ![img5.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/img5.png)
+
+- 2024/07/img2-1.png
+
+  ![img2-1.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/img2-1.png)
+
+- 2024/07/321321321.jpg
+
+  ![321321321.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/321321321.jpg)
+
+- 2024/07/321213213.png
+
+  ![321213213.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/321213213.png)
+
+- 2024/07/Novo-Projeto.webp
+
+  ![Novo-Projeto.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/Novo-Projeto.webp)
+
+- 2024/07/32323232-1.jpg
+
+  ![32323232-1.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/32323232-1.jpg)
+
+- 2024/07/51654656.jpg
+
+  ![51654656.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/51654656.jpg)
+
+- 2024/07/233121321.jpg
+
+  ![233121321.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/233121321.jpg)
+
+- 2024/07/87897798.jpg
+
+  ![87897798.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/87897798.jpg)
+
+- 2024/07/1123321213.jpg
+
+  ![1123321213.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/1123321213.jpg)
+
+- 2024/07/78987798.jpg
+
+  ![78987798.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/78987798.jpg)
+
+- 2024/07/222.jpg
+
+  ![222.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/222.jpg)
+
+- 2024/07/1.jpg
+
+  ![1.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/1.jpg)
+
+- 2024/07/1.png
+
+  ![1.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/1.png)
+
+- 2024/07/444444.png
+
+  ![444444.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/444444.png)
+
+- 2024/07/vecteezy_abstract-line-grid-seamless-pattern-texture-background-of_7875508.jpg
+
+  ![vecteezy_abstract-line-grid-seamless-pattern-texture-background-of_7875508.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/vecteezy_abstract-line-grid-seamless-pattern-texture-background-of_7875508.jpg)
+
+- 2024/07/488486484.png
+
+  ![488486484.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/488486484.png)
+
+- 2024/07/21313132.png
+
+  ![21313132.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/21313132.png)
+
+- 2024/07/848484684.png
+
+  ![848484684.png](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/848484684.png)
+
+- 2024/07/BM-Solucoes-Banner-2.jpg
+
+  ![BM-Solucoes-Banner-2.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/BM-Solucoes-Banner-2.jpg)
+
+- 2024/07/BM-Solucoes-Banner-1-1.jpg
+
+  ![BM-Solucoes-Banner-1-1.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/BM-Solucoes-Banner-1-1.jpg)
+
+- 2024/07/48864864-1.jpg
+
+  ![48864864-1.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/48864864-1.jpg)
+
+- 2024/07/84846648864.jpg
+
+  ![84846648864.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2024/07/84846648864.jpg)
+
+- 2023/08/grupo-linha-5.svg
+
+  ![grupo-linha-5.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/08/grupo-linha-5.svg)
+
+- 2023/08/grupo-linha-1.svg
+
+  ![grupo-linha-1.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/08/grupo-linha-1.svg)
+
+- 2023/08/BG-HERO.webp
+
+  ![BG-HERO.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/08/BG-HERO.webp)
+
+- 2023/06/img-Gradil.webp
+
+  ![img-Gradil.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Gradil.webp)
+
+- 2023/06/img-Tela-viveiro.jpg
+
+  ![img-Tela-viveiro.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Tela-viveiro.jpg)
+
+- 2023/06/img-Tela-soldada-revestida-pvc-5x10-fio-2.5mm.jpg
+
+  ![img-Tela-soldada-revestida-pvc-5x10-fio-2.5mm.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Tela-soldada-revestida-pvc-5x10-fio-2.5mm.jpg)
+
+- 2023/06/BG-SECAO2.jpg
+
+  ![BG-SECAO2.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/BG-SECAO2.jpg)
+
+- 2023/06/11-Chapas-expandidas.webp
+
+  ![11-Chapas-expandidas.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/11-Chapas-expandidas.webp)
+
+- 2023/06/12-Corte-a-laser.webp
+
+  ![12-Corte-a-laser.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/12-Corte-a-laser.webp)
+
+- 2023/06/10-Concertinas.webp
+
+  ![10-Concertinas.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/10-Concertinas.webp)
+
+- 2023/06/img-Obras10.webp
+
+  ![img-Obras10.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras10.webp)
+
+- 2023/06/img-Obras9.webp
+
+  ![img-Obras9.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras9.webp)
+
+- 2023/06/img-Obras8.webp
+
+  ![img-Obras8.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras8.webp)
+
+- 2023/06/img-Obras7.webp
+
+  ![img-Obras7.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras7.webp)
+
+- 2023/06/img-Obras6.webp
+
+  ![img-Obras6.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras6.webp)
+
+- 2023/06/img-Obras5.webp
+
+  ![img-Obras5.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras5.webp)
+
+- 2023/06/img-Obras4.webp
+
+  ![img-Obras4.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras4.webp)
+
+- 2023/06/img-Obras3.webp
+
+  ![img-Obras3.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras3.webp)
+
+- 2023/06/img-Obras2.webp
+
+  ![img-Obras2.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras2.webp)
+
+- 2023/06/img-Obras1.webp
+
+  ![img-Obras1.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-Obras1.webp)
+
+- 2023/06/img-sobre-a-empresa-6.webp
+
+  ![img-sobre-a-empresa-6.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-sobre-a-empresa-6.webp)
+
+- 2023/06/img-sobre-a-empresa-5.webp
+
+  ![img-sobre-a-empresa-5.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/img-sobre-a-empresa-5.webp)
+
+- 2023/06/icon-Estrutura.svg
+
+  ![icon-Estrutura.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/icon-Estrutura.svg)
+
+- 2023/06/icon-Industria-da-Saude.svg
+
+  ![icon-Industria-da-Saude.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/icon-Industria-da-Saude.svg)
+
+- 2023/06/icon-Infraestrutura.svg
+
+  ![icon-Infraestrutura.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/icon-Infraestrutura.svg)
+
+- 2023/06/icon-Metalomecanica.svg
+
+  ![icon-Metalomecanica.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/icon-Metalomecanica.svg)
+
+- 2023/06/icon-Agroalimentar.svg
+
+  ![icon-Agroalimentar.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/icon-Agroalimentar.svg)
+
+- 2023/06/icon-Industria.svg
+
+  ![icon-Industria.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/icon-Industria.svg)
+
+- 2023/06/icon-Petroquimica.svg
+
+  ![icon-Petroquimica.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/icon-Petroquimica.svg)
+
+- 2023/06/icon-Construcao-civil.svg
+
+  ![icon-Construcao-civil.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/06/icon-Construcao-civil.svg)
+
+- 2023/05/img-pg-corte-a-laser-1.webp
+
+  ![img-pg-corte-a-laser-1.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/img-pg-corte-a-laser-1.webp)
+
+- 2023/05/img-aluminio.webp
+
+  ![img-aluminio.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/img-aluminio.webp)
+
+- 2023/05/comercializacao-de-aco.webp
+
+  ![comercializacao-de-aco.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/comercializacao-de-aco.webp)
+
+- 2023/05/img-chapa-em-inox-1.webp
+
+  ![img-chapa-em-inox-1.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/img-chapa-em-inox-1.webp)
+
+- 2023/05/banner-corte-a-laser.webp
+
+  ![banner-corte-a-laser.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/banner-corte-a-laser.webp)
+
+- 2023/05/banner-chapa-de-aco-1.webp
+
+  ![banner-chapa-de-aco-1.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/banner-chapa-de-aco-1.webp)
+
+- 2023/05/banner-conexoes.webp
+
+  ![banner-conexoes.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/banner-conexoes.webp)
+
+- 2023/05/banner-telas.webp
+
+  ![banner-telas.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/banner-telas.webp)
+
+- 2023/05/Kit-Lanca-para-Muro-Perfurante-.webp
+
+  ![Kit-Lanca-para-Muro-Perfurante-.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/Kit-Lanca-para-Muro-Perfurante-.webp)
+
+- 2023/05/Concertina-Flat.webp
+
+  ![Concertina-Flat.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/Concertina-Flat.webp)
+
+- 2023/05/Concertina-Clipada.webp
+
+  ![Concertina-Clipada.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/Concertina-Clipada.webp)
+
+- 2023/05/Rede-Laminada.webp
+
+  ![Rede-Laminada.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/05/Rede-Laminada.webp)
+
+- 2023/04/img-Haste-para-concertina-45cm-min.jpg
+
+  ![img-Haste-para-concertina-45cm-min.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/04/img-Haste-para-concertina-45cm-min.jpg)
+
+- 2023/04/img-Concertina-clipada-45cm-min.jpg
+
+  ![img-Concertina-clipada-45cm-min.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/04/img-Concertina-clipada-45cm-min.jpg)
+
+- 2023/04/img-Concertina-simples-30cm-min.jpg
+
+  ![img-Concertina-simples-30cm-min.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/04/img-Concertina-simples-30cm-min.jpg)
+
+- 2023/04/BRIZE-12-min.jpg
+
+  ![BRIZE-12-min.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/04/BRIZE-12-min.jpg)
+
+- 2023/04/1-4-Malha-50x100-min.jpg
+
+  ![1-4-Malha-50x100-min.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/04/1-4-Malha-50x100-min.jpg)
+
+- 2023/04/MT-42-Malha-11x42-min.jpg
+
+  ![MT-42-Malha-11x42-min.jpg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/04/MT-42-Malha-11x42-min.jpg)
+
+- 2023/04/manometro.webp
+
+  ![manometro.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/04/manometro.webp)
+
+- 2023/04/Tubo-de-Nylon.webp
+
+  ![Tubo-de-Nylon.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/04/Tubo-de-Nylon.webp)
+
+- 2023/04/Conectores-pneumaticos.webp
+
+  ![Conectores-pneumaticos.webp](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/04/Conectores-pneumaticos.webp)
+
+- 2023/02/atendimento-ao-cliente.svg
+
+  ![atendimento-ao-cliente.svg](https://bmsolucoesemacos.com.br/wp-content/uploads/2023/02/atendimento-ao-cliente.svg)
+
