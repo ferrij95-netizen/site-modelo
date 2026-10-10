@@ -1,0 +1,105 @@
+/* Versão B "Institucional": branco com o vermelho dos cabeçalhos atuais, as três barras do símbolo como grafismo
+   e o degradê vermelho-azul dos slides antigos da empresa. */
+:root {
+  --cta-fundo: var(--grad-slide);
+  --ft-fundo: #9f1520;
+  --btn-raio: 6px;
+  --eyebrow: var(--vermelho);
+}
+.v-b .topo { box-shadow: 0 1px 0 var(--borda), 0 4px 0 var(--vermelho); }
+.v-b .cab { background: linear-gradient(100deg, #c91b27 0%, #a3141f 60%, #7a2350 100%); }
+.v-b .cab-barras { opacity: .2; }
+
+/* Hero: texto no branco e foto da equipe cortada em diagonal, como as barras do logo */
+.v-b .hero { position: relative; background: #fff; overflow: hidden; }
+.v-b .hero .in { display: grid; grid-template-columns: 1fr 1.1fr; align-items: stretch; width: 100%; max-width: none; margin: 0; }
+.v-b .hero-txt { position: relative; padding: clamp(56px, 7vw, 110px) clamp(24px, 4vw, 64px) clamp(56px, 7vw, 110px) max(var(--gutter), calc((100vw - var(--larg)) / 2)); display: flex; flex-direction: column; justify-content: center; }
+.v-b .hero-barras { width: 150px; margin-bottom: 30px; --corte: 26px; }
+.v-b .hero h1 { font-size: clamp(40px, 4.2vw + 12px, 78px); line-height: 1.02; max-width: 11ch; }
+.v-b .hero .lead { color: var(--suave); }
+.v-b .hero-foto { position: relative; min-height: 520px; clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%); }
+.v-b .hero-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 60%; }
+.v-b .hero-foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(201,27,39,.35), transparent 40%); }
+@media (max-width: 900px) {
+  .v-b .hero .in { grid-template-columns: 1fr; }
+  .v-b .hero-txt { padding: 48px var(--gutter) 40px; }
+  .v-b .hero-foto { min-height: 300px; clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%); }
+}
+
+/* Diferenciais como as barras inclinadas do logo */
+.v-b .difs { background: #fff; padding-bottom: clamp(40px, 5vw, 72px); }
+.v-b .difs-barras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.v-b .db { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; color: #fff; padding: 32px 52px 34px 30px; border-radius: 18px 0 0 18px; clip-path: polygon(0 0, 100% 0, calc(100% - 34px) 100%, 0 100%); --ico-cor: #fff; }
+.v-b .db-1 { background: linear-gradient(100deg, #1f2a61, #15438a); }
+.v-b .db-2 { background: linear-gradient(100deg, #15438a, #0d6cb5); }
+.v-b .db-3 { background: linear-gradient(100deg, #c91b27, #a3141f); }
+.v-b .db h2 { color: #fff; font-size: 21px; margin: 4px 0 8px; }
+.v-b .db p { margin: 0; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,.9); }
+@media (max-width: 960px) { .v-b .difs-barras { grid-template-columns: 1fr; } .v-b .db { padding-right: 60px; } }
+@media (max-width: 480px) { .v-b .db { grid-template-columns: 1fr; } }
+
+/* Institucional em azul-marinho */
+.v-b .inst { background: var(--navy); color: rgba(255,255,255,.86); }
+.v-b .inst h2 { color: #fff; margin-bottom: 22px; }
+.v-b .inst .link { color: #fff; }
+.v-b .inst .eyebrow { --eyebrow: #ff9aa1; }
+.v-b .inst-fotos { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 14px; }
+.v-b .inst-fotos figure { border-radius: 14px; overflow: hidden; }
+.v-b .inst-fotos img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1.15; }
+.v-b .if1 { grid-row: 1 / 3; }
+.v-b .if1 img { aspect-ratio: auto; height: 100%; object-position: 0 50%; }
+.v-b .if-frase { margin: 0; padding: 22px 22px 24px; border-radius: 14px; background: var(--vermelho); color: #fff; font: 700 19px/1.35 var(--fh); }
+
+/* Processo: da venda à entrega, com a van na estrada */
+.v-b .processo { background: #fff; }
+.v-b .trilha { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: t; position: relative; }
+.v-b .trilha li { position: relative; padding-top: 74px; }
+.v-b .trilha li::before { content: ''; position: absolute; left: 0; right: -20px; top: 27px; height: 2px; background: repeating-linear-gradient(90deg, var(--borda) 0 10px, transparent 10px 18px); }
+.v-b .trilha li:last-child::before { right: 0; }
+.v-b .tr-n { position: absolute; top: 0; left: 0; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%; background: #fff; border: 2px solid var(--navy); font: 800 18px/1 var(--fh); color: var(--navy); z-index: 1; }
+.v-b .trilha li:last-child .tr-n { background: var(--vermelho); border-color: var(--vermelho); color: #fff; }
+.v-b .trilha h3 { font-size: 24px; margin-bottom: 8px; }
+.v-b .trilha p { color: var(--suave); font-size: 15.5px; margin: 0; }
+.v-b .estrada { position: relative; height: 120px; margin-top: 40px; border-radius: 12px; background: linear-gradient(180deg, #e9eef5 0 62%, #2b3142 62% 100%); overflow: hidden; }
+.v-b .estrada::after { content: ''; position: absolute; left: 0; right: 0; bottom: 20px; height: 4px; background: repeating-linear-gradient(90deg, #fff 0 34px, transparent 34px 70px); opacity: .8; }
+.v-b .estrada-van { position: absolute; bottom: 16px; left: 0; width: 210px; animation: estrada 9s linear infinite; z-index: 1; }
+@keyframes estrada { from { transform: translateX(-240px); } to { transform: translateX(calc(min(100vw, 1240px) + 20px)); } }
+@media (prefers-reduced-motion: reduce) { .v-b .estrada-van { animation: none; left: 60%; } }
+@media (max-width: 900px) {
+  .v-b .trilha { grid-template-columns: 1fr 1fr; row-gap: 36px; }
+  .v-b .trilha li::before { display: none; }
+}
+@media (max-width: 520px) { .v-b .trilha { grid-template-columns: 1fr; } .v-b .trilha li { padding: 0 0 0 76px; min-height: 56px; } .v-b .estrada { height: 90px; } .v-b .estrada-van { width: 150px; } }
+
+/* Mapa no branco-gelo */
+.v-b .mapa-home { background: var(--fundo-alt); }
+.v-b .mapa-home h2 { margin-bottom: 4px; }
+.v-b .mapa-home .busca { margin-top: 8px; }
+
+/* Números na faixa vermelha */
+.v-b .faixa-num { position: relative; overflow: hidden; background: linear-gradient(100deg, #c91b27 0%, #a3141f 55%, #7a2350 100%); padding: clamp(52px, 5vw, 80px) 0; --num-cor: #fff; --num-cor2: #ffd2d5; --num-suave: rgba(255,255,255,.82); --num-linha: rgba(255,255,255,.25); }
+.v-b .fn-barras { position: absolute; left: -90px; top: 50%; transform: translateY(-50%); width: 380px; --corte: 60px; opacity: .1; }
+.v-b .fn-barras i, .v-b .fn-barras i:nth-child(3) { background: #fff; }
+
+/* Marcas em linhas */
+.v-b .marcas-home { background: #fff; }
+.v-b .marcas-linhas { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+.v-b .marcas-linhas a { display: grid; grid-template-columns: 120px 1fr auto; gap: 20px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--borda); text-decoration: none; }
+.v-b .ml-logo { display: grid; place-items: center; height: 64px; }
+.v-b .ml-logo img { max-height: 60px; width: auto; max-width: 110px; object-fit: contain; }
+.v-b .ml-txt { display: grid; }
+.v-b .ml-txt b { font: 800 20px/1.2 var(--fh); color: var(--titulo); }
+.v-b .ml-txt small { font-size: 14px; color: var(--suave); }
+.v-b .marcas-linhas i { font-style: normal; color: var(--vermelho); font-weight: 700; transition: transform .15s; }
+.v-b .marcas-linhas a:hover i { transform: translateX(5px); }
+.v-b .marcas-linhas a:hover b { color: var(--vermelho); }
+@media (max-width: 800px) { .v-b .marcas-linhas { grid-template-columns: 1fr; } .v-b .marcas-linhas a { grid-template-columns: 90px 1fr auto; } }
+
+/* Páginas internas */
+.v-b .norte { background: #fff; }
+.v-b .secao-num { background: var(--navy); --num-cor: #fff; --num-cor2: #ffb3b8; --num-suave: rgba(255,255,255,.78); --num-linha: rgba(255,255,255,.2); }
+.v-b .mc { border-radius: 4px; border-left: 5px solid var(--navy); }
+.v-b .chip[aria-pressed="true"] { background: var(--vermelho); border-color: var(--vermelho); }
+.v-b .cad-form { border-top: 5px solid var(--vermelho); border-radius: 6px; }
+@media (max-width: 800px) { .v-b .ml-logo img { max-width: 84px; max-height: 48px; } }
+@media (max-width: 600px) { .v-b .inst-fotos { grid-template-columns: 1fr 1fr; } .v-b .if1 { grid-row: auto; grid-column: 1 / -1; } .v-b .if1 img { aspect-ratio: 920 / 664; height: auto; } }
