@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dispra Distribuidora · escolha a versão do novo site</title>
+<meta name="description" content="Duas versões do novo site da Dispra Distribuidora para escolher: Tradicional e Campo.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://dispra.overtus.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dispra Distribuidora">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Dispra Distribuidora · escolha a versão do novo site">
+<meta property="og:description" content="Duas versões do novo site da Dispra Distribuidora para escolher: Tradicional e Campo.">
+<meta property="og:url" content="https://dispra.overtus.com.br/">
+<meta property="og:image" content="https://dispra.overtus.com.br/assets/og-a.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dispra Distribuidora · escolha a versão do novo site">
+<meta name="twitter:description" content="Duas versões do novo site da Dispra Distribuidora para escolher: Tradicional e Campo.">
+<meta name="twitter:image" content="https://dispra.overtus.com.br/assets/og-a.jpg">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,600;0,700;0,800;1,800&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/base.css">
+<style>
+  :root { --fundo: #f2f2f2; --titulo: #1d1d1d; --suave: #5d5d5d; --borda: #dcdcdc; }
+  html, body { height: 100%; }
+  body { display: grid; grid-template-rows: auto 1fr; }
+  header { background: #fff; border-bottom: 4px solid; border-image: linear-gradient(90deg, #D40E1E 50%, #06589C 50%) 1; }
+  header .in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; min-height: 76px; }
+  header img { width: 74px; }
+  header small { font: 600 13px/1.2 var(--fh); letter-spacing: .1em; text-transform: uppercase; color: var(--suave); }
+  main { display: grid; min-height: 0; }
+  main .in { display: grid; grid-template-columns: 1fr 1fr 0.8fr; gap: 20px; width: min(100% - 2 * var(--gutter), 1360px); padding-block: clamp(16px, 3vh, 32px); align-content: center; }
+  .v { display: grid; grid-template-rows: auto 1fr; background: #fff; border: 1px solid var(--borda); border-radius: 6px; overflow: hidden; text-decoration: none; transition: border-color .15s, box-shadow .15s; min-height: 0; }
+  .v:hover { border-color: #06589C; box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+  .v img { width: 100%; aspect-ratio: 16 / 10; max-height: 48vh; object-fit: cover; object-position: top; border-bottom: 1px solid var(--borda); }
+  .v div { display: grid; gap: 8px; padding: clamp(14px, 2vh, 22px) 22px clamp(16px, 2.4vh, 24px); align-content: start; }
+  .v span.e { font: 700 13px/1.2 var(--fh); letter-spacing: .12em; text-transform: uppercase; color: #D40E1E; }
+  .v.b span.e { color: #06589C; }
+  .v h2 { font-size: clamp(22px, 1.4vw + 8px, 28px); margin: 0; }
+  .v p { color: var(--suave); font-size: 15.5px; line-height: 1.5; margin: 0; }
+  .v b.l { font: 700 15px/1.3 var(--fh); color: var(--titulo); }
+  .v.atual { background: transparent; border-style: dashed; }
+  .v.atual img { filter: grayscale(.25); object-position: left center; }
+  .v.atual span.e { color: var(--suave); }
+  @media (max-width: 1000px) { html, body { height: auto; } main .in { grid-template-columns: 1fr; } .v img { max-height: none; } }
+</style>
+</head>
+<body>
+<header><div class="in"><img src="/assets/img/logo-dispra.svg" alt="Dispra Distribuidora" width="74" height="60"><small>Proposta de novo site · duas versões</small></div></header>
+<main><div class="in">
+  <a class="v a" href="/a/"><img src="/assets/versao-a.jpg" alt="Página inicial da versão A">
+    <div><span class="e">Versão A</span><h2>Tradicional</h2><p>O vermelho-vinho e o cinza do site atual, com o logo na aba branca e o menu em abas como hoje, só que moderno e rápido no celular.</p><b class="l">Abrir a versão A →</b></div></a>
+  <a class="v b" href="/b/"><img src="/assets/versao-b.jpg" alt="Página inicial da versão B">
+    <div><span class="e">Versão B</span><h2>Campo</h2><p>O azul e o vermelho do logo, fotos grandes em tela cheia e fundo claro, com a mesma ordem de seções e os mesmos textos.</p><b class="l">Abrir a versão B →</b></div></a>
+  <a class="v atual" href="https://www.dispra.com.br/" target="_blank" rel="noopener"><img src="/assets/site-atual.jpg" alt="Banner do site atual da Dispra">
+    <div><span class="e">Para comparar</span><h2>Site atual</h2><p>dispra.com.br como está hoje.</p><b class="l">Abrir o site atual ↗</b></div></a>
+</div></main>
+</body>
+</html>
