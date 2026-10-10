@@ -357,3 +357,43 @@ Lista das imagens usadas no site atual, para referência.
 - print celular
 
   ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2F?w=420&h=1600&vpw=420&vph=900&v=3)
+- longo 
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2F?w=1280&h=4200&vpw=1280&vph=4200&v=4)
+
+- longo sobre/
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fsobre%2F?w=1280&h=4200&vpw=1280&vph=4200&v=4)
+
+- longo produtos/
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fprodutos%2F?w=1280&h=4200&vpw=1280&vph=4200&v=4)
+
+- longo corte-a-laser/
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fcorte-a-laser%2F?w=1280&h=4200&vpw=1280&vph=4200&v=4)
+
+- longo produtos/chapas-expandidas/
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fprodutos%2Fchapas-expandidas%2F?w=1280&h=4200&vpw=1280&vph=4200&v=4)
+
+- longo produtos/conexoes-2/
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fprodutos%2Fconexoes-2%2F?w=1280&h=4200&vpw=1280&vph=4200&v=4)
+
+- longo produtos/concertinas/
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fprodutos%2Fconcertinas%2F?w=1280&h=4200&vpw=1280&vph=4200&v=4)
+
+- longo obras/
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fobras%2F?w=1280&h=4200&vpw=1280&vph=4200&v=4)
+
+- longo produtos/comercializacao-de-aco/
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2Fprodutos%2Fcomercializacao-de-aco%2F?w=1280&h=4200&vpw=1280&vph=4200&v=4)
+
+- longo celular
+
+  ![print](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbmsolucoesemacos.com.br%2F?w=420&h=3600&vpw=420&vph=3600&v=4)
+
