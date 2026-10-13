@@ -120,6 +120,28 @@ textarea{resize:vertical;min-height:44px}
 .add .ttl h2{font-size:22px}
 @media (max-width:760px){.add{grid-template-columns:1fr 1fr}.add .notes,.add .act{grid-column:1 / -1}}
 
+/* fazer site */
+.add.ped{grid-template-columns:1.4fr 1fr}
+.add.ped .notes{grid-column:1 / -1}
+.add.ped .act{grid-column:1 / -1}
+.add.ped .hint{grid-column:1 / -1;margin:0}
+@media (max-width:760px){.add.ped{grid-template-columns:1fr}}
+.pedcols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+@media (max-width:1100px){.pedcols{grid-template-columns:1fr}}
+.pedcol{background:var(--sand);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pedcol>h3{margin:2px 4px 4px;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+.pedcol>h3 .n{font-size:12px;color:var(--muted);font-weight:500}
+.pedi{background:var(--panel);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:0 0 0 1px var(--line);min-width:0}
+.pedi .nm{font-weight:600;overflow-wrap:anywhere;background:none;border:0;padding:0;text-align:left;cursor:pointer;color:var(--ink);font-size:15px}
+.pedi .nm:hover{text-decoration:underline}
+.pedi .sb{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.pedi .tools{display:flex;gap:6px;flex-wrap:wrap}
+.pedst{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.s-pfila{background:var(--orange-soft);color:var(--orange-ink)}
+.s-pproducao{background:var(--sky);color:#0c1018}
+.s-ppronto{background:var(--ok-soft);color:var(--ok)}
+.s-pcancelado{background:var(--dead-soft);color:var(--dead)}
+
 /* filtros: controle segmentado */
 .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:20px}
 .filters .segc{display:flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:14px;background:var(--sand)}
@@ -402,7 +424,7 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
 <div class="app">
   <aside class="rail">
     <a class="logo" href="/" title="Overtus Hub"><span>O</span></a>
-    <button class="rb" type="button" data-tab="visao" title="Visão geral" aria-label="Visão geral"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg></button><button class="rb" type="button" data-tab="triagem" title="Triagem" aria-label="Triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></button><button class="rb" type="button" data-tab="aprovar" title="Aprovar" aria-label="Aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg></button><button class="rb" type="button" data-tab="empresas" title="Empresas e CRM" aria-label="Empresas e CRM"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><i class=dot id=dotEmp hidden></i></button><button class="rb" type="button" data-tab="roteiro" title="Roteiro e bônus" aria-label="Roteiro e bônus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></button>
+    <button class="rb" type="button" data-tab="visao" title="Visão geral" aria-label="Visão geral"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg></button><button class="rb" type="button" data-tab="triagem" title="Triagem" aria-label="Triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></button><button class="rb" type="button" data-tab="aprovar" title="Aprovar" aria-label="Aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg></button><button class="rb" type="button" data-tab="pedidos" title="Fazer site" aria-label="Fazer site"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM8 20h8M12 16v4M12 8v5M9.5 10.5h5"/></svg><i class=dot id=dotPed hidden></i></button><button class="rb" type="button" data-tab="empresas" title="Empresas e CRM" aria-label="Empresas e CRM"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><i class=dot id=dotEmp hidden></i></button><button class="rb" type="button" data-tab="roteiro" title="Roteiro e bônus" aria-label="Roteiro e bônus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></button>
     <span class="sp"></span>
     <a class="rb" href="/sites/" title="Sites dos clientes" aria-label="Sites dos clientes"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg></a>
     <a class="rb" href="/busca/" title="Buscar sites antigos" aria-label="Buscar sites antigos"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a>
@@ -419,7 +441,7 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
         <button class="resbtn" type="button" id="resBtn" hidden></button>
         <button class="pbtn" type="button" id="newBtn"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Nova empresa</button>
       </div>
-      <div class="menu"><button class="mi" type="button" data-tab="visao"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span class="l">Visão geral</span><span class="n" id="nVis"></span></button><button class="mi" type="button" data-tab="triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg><span class="l">Triagem</span><span class="n" id="nTri"></span></button><button class="mi" type="button" data-tab="aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg><span class="l">Aprovar</span><span class="n" id="nApr"></span></button><button class="mi" type="button" data-tab="empresas"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><span class="l">Empresas e CRM</span><span class="n" id="nEmp"></span></button><button class="mi" type="button" data-tab="roteiro"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="l">Roteiro e bônus</span></button><a class="mi" href="/sites/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg><span class="l">Sites dos clientes</span></a></div>
+      <div class="menu"><button class="mi" type="button" data-tab="visao"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span class="l">Visão geral</span><span class="n" id="nVis"></span></button><button class="mi" type="button" data-tab="triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg><span class="l">Triagem</span><span class="n" id="nTri"></span></button><button class="mi" type="button" data-tab="aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg><span class="l">Aprovar</span><span class="n" id="nApr"></span></button><button class="mi" type="button" data-tab="pedidos"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM8 20h8M12 16v4M12 8v5M9.5 10.5h5"/></svg><span class="l">Fazer site</span><span class="n" id="nPed"></span></button><button class="mi" type="button" data-tab="empresas"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><span class="l">Empresas e CRM</span><span class="n" id="nEmp"></span></button><button class="mi" type="button" data-tab="roteiro"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="l">Roteiro e bônus</span></button><a class="mi" href="/sites/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg><span class="l">Sites dos clientes</span></a></div>
     </nav>
     <main>
       <div class="mx">
@@ -587,6 +609,18 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
         </div>
 
         <div id="paneAprovar" hidden></div>
+
+        <div id="panePedidos" hidden>
+          <form class="add ped" id="pedForm" autocomplete="off">
+            <div class="ttl"><h2>Fazer site de…</h2></div>
+            <label class="f">Site atual da empresa *<input type="text" id="pUrl" required placeholder="empresa.com.br" inputmode="url"></label>
+            <label class="f">Nome da empresa<input type="text" id="pNome" placeholder="Se deixar em branco, uso o nome do site"></label>
+            <label class="f notes">Algum pedido especial?<textarea id="pObs" rows="1" placeholder="Ex.: cliente pediu catálogo de produtos, manter o azul do logo…"></textarea></label>
+            <div class="act"><button class="btn primary" type="submit" id="pBtn">Fazer site</button></div>
+            <p class="small muted hint">Se a empresa já estiver em alguma lista, o pedido vai para a ficha dela. Se não, ela entra em Minhas empresas. Para quem já está no canvas, use também o botão “Fazer site” na ficha.</p>
+          </form>
+          <div id="pedList"></div>
+        </div>
 
         <div id="paneEmpresas" hidden>
   <form class="add" id="addForm" autocomplete="off" hidden>
@@ -780,7 +814,7 @@ function renderDetail(){
     D.innerHTML=`
     <button class="btn sm back" type="button" id="back">← Lista</button>
     <div class="dhead"><div class="t"><h2 id="dNome"></h2><a id="dSite" target="_blank" rel="noopener"></a></div>
-      <div class="tools"><select id="dStatus" aria-label="Etapa">${STATUS.map(([k,l])=>`<option value="${k}">${l}</option>`).join("")}</select>
+      <div class="tools"><span id="dPed" class="pedst"></span><select id="dStatus" aria-label="Etapa">${STATUS.map(([k,l])=>`<option value="${k}">${l}</option>`).join("")}</select>
       <span id="delWrap"><button class="btn sm danger" type="button" id="del">Excluir</button></span></div></div>
     <div class="facts" id="dFacts"></div><div class="why" id="dWhy" hidden></div>
     <div class="cols">
@@ -854,6 +888,7 @@ function renderDetail(){
   setv("pAcao",d.proxAcao);setv("pData",d.proxData);
   const c=d.contato||{};setv("cNome",c.nome);setv("cTel",c.telefone);setv("cEmail",c.email);setv("cRec",c.recepcionista);setv("cHora",c.horario);setv("cPrev",c.preview);setv("cHist",c.historico);
   const m=d.marca||{};setv("mCores",m.cores);setv("mFT",m.fonteTitulo);setv("mFX",m.fonteTexto);
+  renderPedFicha(d);
   renderEnr(d);
 }
 function askDelete(){
@@ -915,7 +950,7 @@ function renderEnr(d){
         <div class="tools">${url?`<a class="btn sm" href="${esc(siteUrl(url))}" target="_blank" rel="noopener">Abrir ↗</a>`:""}<button class="btn sm ${P.escolhida===L?"primary":""}" type="button" data-pick="${L}">${P.escolhida===L?"Escolhida pelo cliente":"Cliente escolheu esta"}</button></div>
       </div>`}).join("")}</div>`:`<p class="muted small">Clique em “${e.script?"Refazer análise":"Gerar script e proposta"}” para o Claude propor as duas versões.</p>`}
       ${copies.proposta?`<div><div class="hd"><h3>Mensagem da proposta</h3><button class="btn sm" type="button" data-copy="proposta">Copiar</button></div><div class="quote">${esc(copies.proposta)}</div></div>`:""}
-      <p class="small muted" style="margin:0">Para montar os dois previews, peça no chat do projeto: “monta as duas versões da ${esc(d.nome)} do canvas”.</p>
+      <p class="small muted" style="margin:0">Para montar os dois previews, use o botão “Fazer site” no alto da ficha.</p>
     </section>
     <section class="blk"><h3>Próximo passo sugerido</h3><p style="margin:0">${esc(e.proximoPasso)}</p>
       <p class="ex">Análise feita sem acesso à internet. Telefone, e-mail, nomes e cores: confirme antes de usar. Para pesquisa na web, peça no chat do projeto.</p></section>`;
@@ -937,6 +972,9 @@ function renderSide(){
   $("#nApr").textContent=loaded?docs.filter(d=>!d.triagem&&d.temPrint).length||"":"";
   $("#nEmp").textContent=loaded?(hoje?hoje+" hoje":docs.filter(d=>d.triagem!=="descartar").length):"";
   $("#dotEmp").hidden=!hoje;
+  const ab=pedidos.filter(p=>["fila","producao"].includes(p.pedidoSite.estado)).length, ok=pedidos.filter(p=>p.pedidoSite.estado==="pronto"&&!vistoPed(p)).length;
+  $("#nPed").textContent=ab?ab+" na fila":ok?ok+" pronto"+(ok>1?"s":""):"";
+  $("#dotPed").hidden=!ok;
 }
 const ICS={tri:"M4 5h16l-6 7v6l-4 2v-8z",prev:"M4 5h16v11H4zM8 20h8M12 16v4",lig:"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2",prop:"M7 3h7l5 5v13H7zM14 3v5h5",ok:"M21 12a9 9 0 1 1-6-8.5M8 12l3 3 9-9"};
 const ic=k=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICS[k]}"/></svg>`;
@@ -1076,9 +1114,9 @@ $("#triTable").addEventListener("click",e=>{
   const t=e.target.closest("[data-tri]");if(t){setTri(t.dataset.id,t.dataset.tri);return}
   const o=e.target.closest("[data-open]");if(o){sel=o.dataset.open;builtFor=null;showTab("empresas");renderAll();if(innerWidth<=900)$("#detail").scrollIntoView({block:"start"})}
 });
-const TITLES={visao:["Visão geral","Como está cada etapa da lista escolhida."],aprovar:["Aprovar","Uma ficha por vez: arraste para a direita para fazer o site, para a esquerda para rejeitar."],triagem:["Triagem","Decida rápido quem merece um site novo. Os piores sites aparecem primeiro."],empresas:["Empresas e CRM","Ficha de cada empresa, próximo passo, script e proposta com duas versões."],roteiro:["Roteiro e bônus","Script de ligação, bônus para fidelizar e como pegar o domínio do cliente."]};
+const TITLES={pedidos:["Fazer site","Peça um site novo sem sair do hub. O pedido entra na fila e o site aparece aqui quando ficar pronto."],visao:["Visão geral","Como está cada etapa da lista escolhida."],aprovar:["Aprovar","Uma ficha por vez: arraste para a direita para fazer o site, para a esquerda para rejeitar."],triagem:["Triagem","Decida rápido quem merece um site novo. Os piores sites aparecem primeiro."],empresas:["Empresas e CRM","Ficha de cada empresa, próximo passo, script e proposta com duas versões."],roteiro:["Roteiro e bônus","Script de ligação, bônus para fidelizar e como pegar o domínio do cliente."]};
 function showTab(t){if(!TITLES[t])t="visao";tab=t;
-  $("#paneVisao").hidden=t!=="visao";$("#paneRoteiro").hidden=t!=="roteiro";$("#paneEmpresas").hidden=t!=="empresas";$("#paneTriagem").hidden=t!=="triagem";$("#paneAprovar").hidden=t!=="aprovar";
+  $("#paneVisao").hidden=t!=="visao";$("#paneRoteiro").hidden=t!=="roteiro";$("#paneEmpresas").hidden=t!=="empresas";$("#paneTriagem").hidden=t!=="triagem";$("#paneAprovar").hidden=t!=="aprovar";$("#panePedidos").hidden=t!=="pedidos";if(t==="pedidos")loadPedidos();
   document.querySelectorAll("[data-tab]").forEach(b=>{if(b.dataset.tab===t)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
   $("#pTitle").textContent=TITLES[t][0];$("#pSub").textContent=TITLES[t][1];
   if(t==="triagem")renderTri();if(t==="visao")renderVisao();Aprovar.show(t==="aprovar");
@@ -1090,6 +1128,72 @@ function openAdd(){showTab("empresas");$("#addForm").hidden=false;$("#aNome").fo
 $("#newBtn").addEventListener("click",openAdd);
 $("#addClose").addEventListener("click",()=>{$("#addForm").hidden=true});
 
+
+/* ---------- fazer site (pedidos) ---------- */
+// O pedido fica na empresa (campo pedidoSite) e ela entra na fila de desenvolvimento. Rotas em src/prospeccao.js.
+var pedidos=[], pedTimer=null;
+const PEST={fila:"Na fila",producao:"Em produção",pronto:"Site pronto",cancelado:"Cancelado"};
+const pedApi=(body)=>fetch("/api/empresas/_pedidos",{method:body?"POST":"GET",credentials:"same-origin",headers:body?{"Content-Type":"application/json"}:{},body:body?JSON.stringify(body):undefined})
+  .then(async r=>{if(r.status===401){location.href="/entrar/";throw new Error("sessão expirada")}const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.erro||"erro "+r.status);return j});
+function vistoPed(p){try{return localStorage.getItem("pedVisto:"+p.id)===String(p.pedidoSite.prontoEm||p.pedidoSite.em)}catch{return false}}
+function pedLinks(p){
+  const P=p.pedidoSite||{}, L=[];
+  (Array.isArray(P.versoes)?P.versoes:[]).forEach((v,i)=>{if(v&&v.url)L.push(`<a class="btn sm ${i?"":"primary"}" href="${esc(siteUrl(v.url))}" target="_blank" rel="noopener">${esc(v.nome||"Versão "+"AB"[i])} ↗</a>`)});
+  if(P.sub)L.push(`<a class="btn sm" href="/ver/${encodeURIComponent(P.sub)}/">Abrir no hub</a>`);
+  return L.join("");
+}
+const pedPill=P=>`<span class="pill s-p${esc(P.estado)}">${PEST[P.estado]||esc(P.estado)}</span>`;
+const quando=s=>{if(!s)return"";const d=new Date(s);return isNaN(d)?"":d.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"})+" "+d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})};
+function renderPedFicha(d){
+  const el=$("#dPed");if(!el)return;const P=d.pedidoSite;
+  if(!P||P.estado==="cancelado")el.innerHTML=`<button class="btn sm primary" type="button" id="pedFazer">Fazer site</button>`;
+  else el.innerHTML=pedPill(P)+(P.estado==="pronto"?pedLinks({pedidoSite:P}):"")+(P.estado==="pronto"?`<button class="btn sm" type="button" id="pedFazer" title="Pedir um site novo de novo">Refazer</button>`:"");
+  const b=$("#pedFazer");if(b)b.onclick=()=>pedirSite({id:d.id},b);
+}
+async function pedirSite(body,b){
+  if(b)b.disabled=true;
+  try{
+    const j=await pedApi(body);const p=j.pedido;
+    const i=pedidos.findIndex(x=>x.id===p.id);if(i>=0)pedidos[i]=p;else pedidos.unshift(p);
+    const cur=allDocs.find(x=>x.id===p.id);
+    if(cur){Object.assign(cur,{pedidoSite:p.pedidoSite,status:p.status,triagem:"fazer"});}
+    toast(body.cancelar?"Pedido cancelado":j.nova?`${p.nome} entrou em Minhas empresas e na fila`:`Pedido feito: ${p.nome} está na fila`);
+    renderAll();if(tab==="pedidos")renderPedidos();
+    return p;
+  }catch(e){toast("Não deu certo: "+(e.message||"erro"))}
+  finally{if(b)b.disabled=false}
+}
+async function loadPedidos(){
+  clearTimeout(pedTimer);
+  try{pedidos=(await pedApi()).pedidos||[];renderSide();if(tab==="pedidos")renderPedidos()}catch(e){if(tab==="pedidos"&&!pedidos.length)$("#pedList").innerHTML=`<div class="empty">Não consegui carregar os pedidos. Recarregue a página.</div>`}
+  pedTimer=setTimeout(()=>{if(!document.hidden)loadPedidos();else pedTimer=setTimeout(loadPedidos,20000)},tab==="pedidos"?20000:120000);
+}
+function renderPedidos(){
+  const col=(k,t,vazio)=>{const v=pedidos.filter(p=>p.pedidoSite.estado===k);
+    return `<div class="pedcol"><h3>${t}<span class="n">${v.length||""}</span></h3>${v.length?v.map(p=>{const P=p.pedidoSite;
+      return `<div class="pedi"><button class="nm" type="button" data-pficha="${esc(p.id)}">${esc(p.nome)}</button>
+        <span class="sb">${esc((p.site||"").replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,""))}${p.lista&&p.lista!=="minhas"?" · "+esc(LLABEL[p.lista]||p.lista):""}</span>
+        <span class="sb">${k==="pronto"?"Pronto "+quando(P.prontoEm||P.em):k==="producao"?(P.quem==="linha"?"Linha de produção":"Claude está fazendo")+(P.inicio?" desde "+quando(P.inicio):""):"Pedido "+quando(P.em)}</span>
+        ${P.obs?`<span class="sb">“${esc(P.obs)}”</span>`:""}
+        <div class="tools">${k==="pronto"?pedLinks(p):""}${k==="fila"?`<button class="btn sm" type="button" data-pcancel="${esc(p.id)}">Cancelar</button>`:""}</div></div>`}).join(""):`<div class="sb" style="padding:4px">${vazio}</div>`}</div>`};
+  $("#pedList").innerHTML=`<div class="pedcols">${col("fila","Na fila","Nenhum pedido esperando.")}${col("producao","Em produção","Nada sendo feito agora.")}${col("pronto","Prontos","Os sites prontos aparecem aqui com o link das versões.")}</div>`;
+  pedidos.filter(p=>p.pedidoSite.estado==="pronto").forEach(p=>{try{localStorage.setItem("pedVisto:"+p.id,String(p.pedidoSite.prontoEm||p.pedidoSite.em))}catch{}});
+  renderSide();
+}
+$("#pedList").addEventListener("click",e=>{
+  const c=e.target.closest("[data-pcancel]");if(c){pedirSite({id:c.dataset.pcancel,cancelar:true},c);return}
+  const o=e.target.closest("[data-pficha]");if(!o)return;
+  const p=pedidos.find(x=>x.id===o.dataset.pficha);if(!p)return;
+  if(p.lista!==lista)setLista(p.lista);
+  if(!!p.reserva!==reservas){reservas=!!p.reserva;docs=allDocs.filter(d=>!!d.reserva===reservas)}
+  sel=p.id;builtFor=null;filter="todos";q="";showTab("empresas");renderAll();
+});
+$("#pedForm").addEventListener("submit",async ev=>{
+  ev.preventDefault();const url=$("#pUrl").value.trim();if(!url)return;
+  const p=await pedirSite({url,nome:$("#pNome").value.trim(),obs:$("#pObs").value.trim()},$("#pBtn"));
+  if(p)["pUrl","pNome","pObs"].forEach(i=>$("#"+i).value="");
+});
+loadPedidos();
 
 /* ---------- aba Aprovar: ligação com o banco ---------- */
 // Os prints ficam na própria tabela de empresas, em registros "print:<id>" da lista "_prints" (nunca aparecem nas listas).
