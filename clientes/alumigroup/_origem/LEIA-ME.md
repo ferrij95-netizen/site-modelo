@@ -1,0 +1,11 @@
+# Alumigroup: como este site é feito
+
+- Cliente: Alumigroup · Metais e Moldes, empresa familiar de Novo Hamburgo/RS (matriz na R. João Pedro Schmitt, 830; filial na Rua Nações Unidas, 3009). Mais de 40 anos em reforma de pneus com a marca Schmidt, divisão de metais não ferrosos, moldes planos e circulares e sinterizados. Site atual: alumigroup.com.br, só em português (sem bandeiras), por isso o novo também é só em português.
+- Site estático em `public/`: `/` é a página de escolha (com o print do site atual), `/a/` é a versão A "Industrial" (preta e vermelha, como o site atual) e `/b/` a versão B "Alumínio" (prata, como os banners). 8 páginas em cada: home, empresa, metais, moldes planos, moldes circulares, sinterizados, trabalhe conosco e orçamento. Menu na mesma ordem do site atual.
+- Páginas geradas: textos em `conteudo.mjs`, peças comuns (logo, ícones, topo, rodapé, formulários) em `comum.mjs`, páginas internas em `paginas.mjs`, home de cada versão em `versao-a.mjs` e `versao-b.mjs`. Depois de mudar texto: `node clientes/alumigroup/_origem/gerar.mjs`.
+- Imagens: o servidor não abre alumigroup.com.br; as fotos vieram pelo proxy de imagens do GitHub (lista em `imagens.md`, originais em `img/`). Todas as fotos são do site atual (no máximo 800 px de largura). `imagens.mjs` converte para `public/assets/img/*.webp`.
+- Logo: o PNG do site tem só 143 x 50 px, então o símbolo foi redesenhado em vetor (função `logo()` em `comum.mjs`) e o nome escrito em Montserrat. Pedir o logo original em vetor à empresa.
+- Marca: preto, grafite, vermelho #a81d27 (faixas do site) e o azul do logo #1d4ea6. Títulos em Montserrat (a fonte dos banners e do logo), texto em Inter.
+- Formulários (orçamento e currículo) abrem o WhatsApp da empresa já preenchidos, porque o site atual não mostra e-mail.
+- Confirmar com a empresa: e-mail de contato e de RH, links reais de Instagram/Facebook/YouTube (no site atual apontam só para as páginas iniciais das redes, por isso ficaram fora), cidade da filial (o site só mostra bairro e CEP; o CEP é de Novo Hamburgo), ligas e dimensões disponíveis, e o vídeo da página Empresa (está vazio no site atual).
+- `public/assets/versao-*.jpg`, `og-*.jpg` e `../capa.jpg` são prints das páginas, refeitos à mão quando o visual mudar.
