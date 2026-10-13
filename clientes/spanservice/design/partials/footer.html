@@ -1,0 +1,7 @@
+<footer><div class="wrap">
+  <div><img class="flogo" src="/img/logo-branco.png" alt="{{site.name}}" width="900" height="450" loading="lazy"><p>{{t.footerText}}</p></div>
+  <div><h4>{{t.footerServices}}</h4><ul>{{#each t.services}}<li><a href="/{{lang}}/{{it.id}}">{{it.name}}</a></li>{{/each}}</ul></div>
+  <div><h4>{{t.footerCompany}}</h4><ul><li><a href="/{{lang}}/empresa">{{t.nav.empresa}}</a></li><li><a href="/{{lang}}/projetos">{{t.nav.projetos}}</a></li><li><a href="/{{lang}}/servicos">{{t.nav.servicos}}</a></li><li><a href="/{{lang}}/contato">{{t.nav.contato}}</a></li></ul></div>
+  <div><h4>{{t.footerContact}}</h4><ul><li><a href="tel:{{site.phoneHref}}">{{site.phone}}</a></li><li><a href="mailto:{{site.email}}">{{site.email}}</a></li><li><a href="{{site.mapsUrl}}" target="_blank" rel="noopener">{{site.city}}</a></li></ul></div>
+  <div class="legal"><span>© {{year}} {{site.name}}. {{t.rights}}</span><span>{{site.tagline}}</span></div>
+</div></footer>

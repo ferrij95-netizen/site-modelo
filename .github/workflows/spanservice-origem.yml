@@ -1,0 +1,104 @@
+# Baixa logo, imagens, HTML, textos, cores e prints do site atual da Span Service para clientes/spanservice/_origem/.
+# Navega pelos links internos (até 40 páginas), então serve para qualquer estrutura de site.
+name: spanservice-origem
+on:
+  push:
+    branches: [claude/project-thread-xra65w]
+    paths: [.github/workflows/spanservice-origem.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Navegar, salvar páginas, imagens e prints
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          cat > crawl.cjs <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          const path = require('path');
+          const O = 'clientes/spanservice/_origem';
+          for (const d of ['html', 'txt', 'img', 'prints']) fs.mkdirSync(`${O}/${d}`, { recursive: true });
+          const START = 'https://spanservice.com.br/';
+          const MAX = 40;
+          const norm = u => { try { const x = new URL(u); x.hash = ''; x.search = ''; return x.href.replace(/\/$/, '') + '/'; } catch { return null; } };
+          const slug = u => { const p = new URL(u).pathname.replace(/^\/|\/$/g, ''); return (p || 'home').replace(/[^A-Za-z0-9_-]+/g, '-').slice(0, 80); };
+          (async () => {
+            const b = await chromium.launch();
+            const ctx = await b.newContext({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36', ignoreHTTPSErrors: true });
+            const queue = [START], seen = new Set(), visited = [], imgs = new Set(), externos = new Set();
+            let host = null;
+            while (queue.length && visited.length < MAX) {
+              const u = queue.shift(); if (seen.has(u)) continue; seen.add(u);
+              const pg = await ctx.newPage({ viewport: { width: 1440, height: 900 } });
+              let resp; try { resp = await pg.goto(u, { waitUntil: 'networkidle', timeout: 60000 }); } catch (e) { console.log('erro', u, e.message); }
+              await pg.waitForTimeout(2500);
+              for (const sel of ['text=Aceitar', 'text=Aceito', 'text=Concordo', 'text=Accept', 'text=OK']) await pg.click(sel, { timeout: 600 }).catch(() => {});
+              const final = norm(pg.url()); if (!host) host = new URL(pg.url()).hostname.replace(/^www\./, '');
+              if (visited.includes(final) && final !== u) { await pg.close(); continue; }
+              const n = slug(final); visited.push(final);
+              console.log(resp ? resp.status() : '---', final, '->', n);
+              fs.writeFileSync(`${O}/html/${n}.html`, await pg.content());
+              // rola até o fim para carregar imagens preguiçosas
+              await pg.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 120)); } window.scrollTo(0, 0); });
+              await pg.waitForTimeout(1500);
+              const info = await pg.evaluate(() => {
+                const est = {};
+                for (const el of document.querySelectorAll('*')) {
+                  const s = getComputedStyle(el);
+                  for (const k of ['color', 'backgroundColor', 'borderTopColor']) { const v = s[k]; if (v && v !== 'rgba(0, 0, 0, 0)') est[v] = (est[v] || 0) + 1; }
+                  est['font:' + s.fontFamily] = (est['font:' + s.fontFamily] || 0) + 1;
+                }
+                const im = [];
+                document.querySelectorAll('img').forEach(i => { im.push(i.currentSrc || i.src); (i.getAttribute('srcset') || '').split(',').forEach(s => { const x = s.trim().split(' ')[0]; if (x) im.push(new URL(x, location.href).href); }); ['data-src', 'data-lazy-src', 'data-bg'].forEach(a => { const v = i.getAttribute(a); if (v) im.push(new URL(v, location.href).href); }); });
+                document.querySelectorAll('*').forEach(e => { const bg = getComputedStyle(e).backgroundImage; (bg.match(/url\(["']?([^"')]+)["']?\)/g) || []).forEach(m => im.push(new URL(m.replace(/^url\(["']?|["']?\)$/g, ''), location.href).href)); const db = e.getAttribute('data-bg') || e.getAttribute('data-background'); if (db) im.push(new URL(db, location.href).href); });
+                document.querySelectorAll('link[rel*=icon], meta[property="og:image"]').forEach(l => im.push(new URL(l.href || l.content, location.href).href));
+                const links = [...document.querySelectorAll('a[href]')].map(a => a.href);
+                const menu = [...document.querySelectorAll('nav a, header a')].map(a => ({ t: a.innerText.trim(), h: a.href }));
+                return { est: Object.entries(est).sort((a, b) => b[1] - a[1]).slice(0, 60), txt: document.body.innerText, im, links, menu, title: document.title, desc: (document.querySelector('meta[name=description]') || {}).content || '' };
+              });
+              fs.writeFileSync(`${O}/txt/${n}.txt`, `# ${info.title}\n# ${info.desc}\n# ${final}\n\n${info.txt}`);
+              if (visited.length === 1) { fs.writeFileSync(`${O}/estilos.json`, JSON.stringify(info.est, null, 1)); fs.writeFileSync(`${O}/menu.json`, JSON.stringify(info.menu, null, 1)); }
+              info.im.forEach(x => imgs.add(x));
+              for (const l of info.links) {
+                const h = norm(l); if (!h) continue;
+                const hh = new URL(h).hostname.replace(/^www\./, '');
+                if (hh !== host) { externos.add(l); continue; }
+                if (/\.(pdf|jpe?g|png|gif|webp|zip|docx?|xlsx?|mp4)\/$/i.test(h) || /wp-(content|json|admin)|\/feed\/|\/tag\/|\/author\//.test(h)) { if (/\.pdf\/$/i.test(h)) imgs.add(l); continue; }
+                if (!seen.has(h) && !queue.includes(h)) queue.push(h);
+              }
+              await pg.screenshot({ path: `${O}/prints/${n}-computador.png`, fullPage: true }).catch(() => {});
+              await pg.close();
+              const m = await ctx.newPage({ viewport: { width: 390, height: 844 } });
+              await m.goto(final, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+              await m.waitForTimeout(2000);
+              await m.screenshot({ path: `${O}/prints/${n}-celular.png`, fullPage: true }).catch(() => {});
+              await m.close();
+            }
+            fs.writeFileSync(`${O}/paginas.txt`, visited.join('\n') + '\n\nNa fila (não visitadas):\n' + queue.join('\n'));
+            fs.writeFileSync(`${O}/links-externos.txt`, [...externos].sort().join('\n'));
+            fs.writeFileSync(`${O}/img/lista.txt`, [...imgs].filter(x => x.startsWith('http')).sort().join('\n'));
+            await b.close();
+          })();
+          JS
+          node crawl.cjs
+      - name: Baixar imagens (versão original, sem -300x200)
+        run: |
+          O=clientes/spanservice/_origem
+          { cat $O/img/lista.txt; sed -E 's#-[0-9]+x[0-9]+(\.[a-zA-Z]+)$#\1#' $O/img/lista.txt; } | sort -u | grep -vE '^data:' | while read u; do
+            f=$(echo "$u" | sed -E 's#^https?://##; s#\?.*$##; s#^[^/]*/##; s#^wp-content/uploads/##; s#[/ ]#_#g' | cut -c1-150)
+            [ -n "$f" ] && [ ! -f "$O/img/$f" ] && curl -sSL --fail -m 60 -A "Mozilla/5.0" -o "$O/img/$f" "$u" || true
+          done
+          # Remove arquivos enormes que não cabem bem no repositório
+          find $O -type f -size +15M -print -delete
+          du -sh $O; ls $O/img | head -200
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add clientes/spanservice/_origem
+          git commit -m "Span Service: arquivos do site atual" && git pull --rebase origin claude/project-thread-xra65w && git push

@@ -1,0 +1,15 @@
+<section class="phero">
+  <img src="/img/solda.jpg" alt="Soldador trabalhando" width="1920" height="1256" fetchpriority="high">
+  <div class="wrap">
+    <nav class="crumbs"><a href="/{{lang}}/">{{t.nav.index}}</a> / <span>{{t.nav.contato}}</span></nav>
+    <div class="eyebrow">Contato</div>
+    <h1>Peça um orçamento ou uma <em>visita técnica</em></h1>
+    <p>Venha nos visitar ou ligue para a gente. Venha conhecer a sua solução, teremos grande prazer em receber você.</p>
+    <div class="ctas"><a class="btn" href="{{wa}}" target="_blank" rel="noopener">{{t.wa}}</a><a class="btn ghost" href="tel:{{site.phoneHref}}">{{site.phone}}</a></div>
+  </div>
+</section>
+
+<section class="sec light"><div class="wrap">
+  <div class="head"><div><div class="eyebrow">Como funciona</div><h2>Do primeiro contato<br>ao pós-venda</h2></div><p>Não sabe ao certo do que precisa? Conte a sua demanda; nosso atendimento especializado ajuda a definir a solução.</p></div>
+  <div class="why four">{{#each t.steps}}<div class="card"><b>{{num}}</b><h3>{{it.t}}</h3><p>{{it.d}}</p></div>{{/each}}</div>
+</div></section>
