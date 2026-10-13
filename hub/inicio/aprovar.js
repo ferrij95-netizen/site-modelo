@@ -110,6 +110,7 @@ function paintMedia(card) {
   else if (kind === "cel") txt = "No celular";
   else if (p && p.erro) { txt = "Site fora do ar"; bad = true; }
   b.className = "ap-badge" + (bad ? " bad" : ""); b.innerHTML = "<i></i>" + esc(txt);
+  const al = card.querySelector(".ap-alerts"); if (al) al.innerHTML = d.site && p && Array.isArray(p.sinais) ? p.sinais.slice(0, 4).map(s => `<span>${esc(s)}</span>`).join("") : "";
 }
 function cardHtml(d, pos) {
   const x = d.extra || {}, c = d.contato || {}, nota = num(x.notaGoogle), av = num(x.avaliacoes), ns = num(x.notaSite);
@@ -128,6 +129,7 @@ function cardHtml(d, pos) {
       <div class="ap-head"><h2 class="ap-name">${esc(d.nome)}</h2>${sc}</div>
       <div class="ap-sub">${esc([d.segmento, [d.cidade, x.uf || d.uf].filter(Boolean).join("/")].filter(Boolean).join(" · "))}</div>
       <div class="ap-chips">${chips.join("")}</div>
+      <div class="ap-alerts"></div>
       <p class="ap-why">${why ? esc(why) : "Sem observações ainda."}</p>
       <div class="ap-foot">${d.site ? `<a href="${esc(siteUrl(d.site))}" target="_blank" rel="noopener">Abrir site ↗</a>` : ""}<button type="button" data-act="ficha">Ver ficha completa →</button></div>
     </div>
@@ -347,7 +349,11 @@ async function importFiles(files) {
     const m = f.name.match(/^(.+)\.(d|m)\.(jpe?g|png|webp)$/i); if (!m) { bad.push(f.name); continue; }
     (by[m[1]] = by[m[1]] || {})[m[2].toLowerCase()] = f;
   }
-  (Array.isArray(manifest) ? manifest : (manifest && manifest.itens) || []).forEach(it => { if (it && it.id && it.erro) (by[it.id] = by[it.id] || {}).erro = String(it.erro).slice(0, 160); });
+  (Array.isArray(manifest) ? manifest : (manifest && manifest.itens) || []).forEach(it => {
+    if (!it || !it.id) return;
+    if (it.erro) (by[it.id] = by[it.id] || {}).erro = String(it.erro).slice(0, 160);
+    if (Array.isArray(it.sinais) && it.sinais.length && by[it.id]) by[it.id].sinais = it.sinais.slice(0, 6).map(x => String(x).slice(0, 60));
+  });
   const ids = Object.keys(by); let ok = 0, sem = 0;
   L(ids.length + " empresas nos arquivos.");
   for (const id of ids) {
@@ -357,6 +363,8 @@ async function importFiles(files) {
       if (o.d) obj.d = await toData(o.d, 1000, 150000);
       if (o.m) obj.m = await toData(o.m, 340, 70000);
       if (o.erro && !o.d) obj.erro = o.erro;
+      if (o.sinais) obj.sinais = o.sinais;
+      if (!obj.d && !obj.m && !obj.erro) continue;
       await cfg.savePrint(id, obj); S.pv.delete(id); ok++;
       if (ok % 5 === 0) L(ok + " de " + ids.length + "…");
     } catch (e) { sem++; L(id + ": " + (e && e.message || "não salvou")); }

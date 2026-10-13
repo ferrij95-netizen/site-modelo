@@ -41,9 +41,10 @@ export function publicar(slug) {
   }
 
   // Documento para o canvas de prospecção (coleção "empresas").
+  // "id" é o da empresa no canvas (coluna id da lista); com ele, `node hub.mjs devolver` atualiza a empresa lá.
   gravarJson(path.join(DADOS, 'canvas', `${slug}.json`), {
-    lista: emp.lista || 'linha', nome: ligacao.empresa, site: cap.home.url, cidade: [ligacao.cidade, ligacao.uf].filter(Boolean).join('/'),
-    segmento: ligacao.segmento, status: 'proposta',
+    id: emp.id || '', lista: emp.lista || 'linha', nome: ligacao.empresa, site: cap.home.url, cidade: [ligacao.cidade, ligacao.uf].filter(Boolean).join('/'),
+    segmento: ligacao.segmento, status: 'ligar',
     contato: { telefone: telefones[0] || '', email: ligacao.email, whatsapp },
     proposta: { urlA: links.a, urlB: links.b },
     enr: {

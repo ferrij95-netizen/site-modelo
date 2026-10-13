@@ -45,6 +45,20 @@ Sem Batch API nesse modo. O custo da DeepSeek entra em `node rodar.mjs custo`.
 
 Sem chave (`LINHA_MODO=manual`), cada etapa de IA só grava o pedido em `dados/empresas/<cliente>/ia/<etapa>.pedido.json`; quem responde grava `<etapa>.resposta.json` com `{"json": ...}`. Foi assim que a linha foi testada na nuvem.
 
+## Aprovar antes de gastar: a aba "Aprovar" do hub
+
+Antes de montar um site, o João aprova a empresa no hub (página inicial > Aprovar): uma ficha por vez, com o print do site atual (ou a ficha do Google para quem não tem site).
+Aprovar (seta para a direita, ou arrastar) manda a empresa para a fila de desenvolvimento (triagem "fazer", status "produzir"); rejeitar descarta; talvez volta depois.
+Tudo fica no banco do hub (D1 `prospeccao`). A linha conversa com ele pelo wrangler: uma vez `npx wrangler login` (conta Cloudflare da Overtus); dentro de `linha/`:
+
+1. `node hub.mjs lista --lista agro --limite 36`: baixa para `<dados>/lista.json` empresas da lista ainda sem triagem, com site e telefone (as de pior site primeiro).
+2. `node prints.mjs <dados>/lista.json`: abre cada site num navegador de verdade e grava em `<dados>/prints/` dois prints pequenos (`<id>.d.jpg` computador, `<id>.m.jpg` celular) e `prints.json` com o que não abriu e os alertas (sem HTTPS, não cabe no celular, rodapé antigo).
+3. No hub: Aprovar > Importar prints > escolher todos os arquivos dessa pasta. As fichas com print passam a aparecer primeiro.
+4. O João desliza as fichas. Depois: `node hub.mjs fila` baixa as aprovadas para `<dados>/fila.json`, e `node rodar.mjs entrada <dados>/fila.json` seguido de `node rodar.mjs` monta os sites (o `id` do canvas acompanha cada empresa).
+5. Quando as empresas estiverem prontas: `node hub.mjs devolver` escreve `<dados>/devolver.sql` (confira) e `node hub.mjs devolver --aplicar` grava no canvas: status "ligar", proposta A/B, script de ligação e alertas.
+
+Empresas aprovadas que não têm site (ficha do Google) saem em `fila-sem-site.json`; a linha ainda não monta site a partir só do Google.
+
 ## Cuidados
 
 - Nada é enviado para as empresas. A linha só prepara; quem liga é o João.

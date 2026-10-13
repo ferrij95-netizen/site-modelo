@@ -32,7 +32,7 @@ function entrada(arquivo) {
     // subdomínio: o slug, sem colidir com cliente feito à mão
     let sub = slug; for (let n = 2; ocupados.has(sub); n++) sub = `${slug}-${n}`;
     ocupados.add(sub);
-    gravarJson(arq(slug, 'empresa.json'), { ...e, slug, sub, lista, entrou: new Date().toISOString() });
+    gravarJson(arq(slug, 'empresa.json'), { ...e, slug, sub, lista: e.lista || lista, entrou: new Date().toISOString() });
     marcar(slug, 'entrada', 'ok'); novas++;
   }
   log(`${novas} empresas novas na fila (lista "${lista}")`);
