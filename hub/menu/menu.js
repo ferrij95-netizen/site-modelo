@@ -1,4 +1,4 @@
-// Menu lateral do hub, igual ao da prospecção (página inicial), para as outras páginas: /sites/, /ver/<cliente>/, /busca/, /importar/.
+// Menu lateral do hub, igual ao da prospecção (página inicial), para as outras páginas: /sites/, /ver/<cliente>/, /busca/, /importar/, /empresa/.
 // Uso: <script src="/menu/menu.js"></script> logo depois de <body>. No celular vira uma barra fixa embaixo.
 // As abas da prospecção abrem por endereço (/#triagem, /#empresas...), que a página inicial lê ao carregar.
 (() => {
@@ -7,6 +7,7 @@
     ['/#visao', 'Visão geral', '<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>'],
     ['/#triagem', 'Triagem', '<path d="M4 5h16l-6 7v6l-4 2v-8z"/>'],
     ['/#aprovar', 'Aprovar', '<rect x="6" y="3" width="12" height="18" rx="2.5"/><path d="M9.5 12.5l2 2 3.5-4"/>'],
+    ['/#pedidos', 'Fazer site', '<path d="M4 5h16v11H4zM8 20h8M12 16v4M12 8v5M9.5 10.5h5"/>'],
     ['/#empresas', 'Empresas e CRM', '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>'],
     ['/#roteiro', 'Roteiro e bônus', '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'],
     null,
@@ -14,6 +15,7 @@
     ['/sites/', 'Sites dos clientes', '<path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/>'],
     ['/busca/', 'Buscar sites antigos', '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'],
     ['/ligar/', 'Para ligar', '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>'],
+    ['/empresa/', 'Sobre a empresa', '<path d="M4 21V5l8-3 8 3v16M9 21v-5h6v5M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01"/>'],
     ['/sair', 'Sair', '<path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/>'],
   ];
   const aqui = location.pathname;
