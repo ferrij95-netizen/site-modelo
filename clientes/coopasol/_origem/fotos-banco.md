@@ -4,7 +4,7 @@ Todas com crédito no rodapé de cada página que usa a foto ("Foto ilustrativa:
 
 - banco-milho-dourados: colheitadeira em lavoura de milho em Dourados/MS. Valter Campanato/Agência Brasil, CC BY 3.0 BR
 
-  ![banco-milho-dourados](https://upload.wikimedia.org/wikipedia/commons/e/e6/Dourados_MS_milho_%28Valter_Campanato%294set2009.jpg)
+  ![banco-milho-dourados](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Dourados_MS_milho_%28Valter_Campanato%294set2009.jpg/1920px-Dourados_MS_milho_%28Valter_Campanato%294set2009.jpg)
 
 - banco-terra-ms: terra preparada para plantar soja em MS. James Martins, CC BY 3.0
 
@@ -26,14 +26,10 @@ Todas com crédito no rodapé de cada página que usa a foto ("Foto ilustrativa:
 
   ![banco-carretas](https://upload.wikimedia.org/wikipedia/commons/8/88/Rondon%C3%B3polis_transporte_soja_%28Roosevelt_Pinheiro%29_28mar09.JPG)
 
-- banco-por-do-sol: colheita de soja após o pôr do sol. Tiago Firmino Boaventura (Panoramio), CC BY 3.0
-
-  ![banco-por-do-sol](https://upload.wikimedia.org/wikipedia/commons/c/ce/Colheita_de_soja_ap%C3%B3s_o_p%C3%B4r_do_sol_na_fazenda_S%C3%A3o_Jos%C3%A9._-_panoramio.jpg)
-
 - banco-safrinha: milho safrinha em fileiras. Tiago Firmino Boaventura (Panoramio), CC BY 3.0
 
-  ![banco-safrinha](https://upload.wikimedia.org/wikipedia/commons/1/1a/Milho_safrinha_fazenda_Santana._-_panoramio.jpg)
+  ![banco-safrinha](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Milho_safrinha_fazenda_Santana._-_panoramio.jpg/1920px-Milho_safrinha_fazenda_Santana._-_panoramio.jpg)
 
 - banco-fileiras: fileiras de soja jovem. Marcelo Camargo/Agência Brasil, CC BY 3.0 BR
 
-  ![banco-fileiras](https://upload.wikimedia.org/wikipedia/commons/4/4c/Chapada_dos_Veadeiros_08.jpg)
+  ![banco-fileiras](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Chapada_dos_Veadeiros_08.jpg/1920px-Chapada_dos_Veadeiros_08.jpg)
