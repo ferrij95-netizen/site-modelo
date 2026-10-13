@@ -93,6 +93,7 @@ export function paginaLigar(clientes, esc) {
 </style>
 </head>
 <body>
+<script src="/menu/menu.js"></script>
 <div class="topo"><h1>Para ligar · ${ordem.length} ${ordem.length === 1 ? 'empresa' : 'empresas'}</h1><a href="/">Voltar ao hub</a></div>
 <div class="corpo">
   <nav class="lista">${ordem.map(item).join('') || '<p class="vazio">Nenhuma empresa pronta ainda.</p>'}</nav>
