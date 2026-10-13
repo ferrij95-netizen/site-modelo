@@ -118,6 +118,12 @@ export const projetos = [
 ];
 export const legendaProjetos = 'Projetos desenvolvidos pela Overtus como estudos de redesenho. Marcas e conteúdos pertencem às respectivas empresas. A apresentação não indica relação comercial.';
 
+// Páginas por segmento (sites próprios, ligados pela inicial e pelo rodapé): [chave, nome, texto, endereço].
+export const especialidades = [
+  ['construtoras', 'Construtoras e incorporadoras', 'Sites de empreendimento, pré-lançamento, tabela de disponibilidade online, portal do corretor e CRM, do lançamento à entrega das chaves.', 'https://construtoras.overtus.com.br'],
+  ['industrias', 'Indústrias', 'Site institucional em três idiomas, catálogo com pedido de cotação, portal de representantes e CRM para venda técnica.', 'https://industrias.overtus.com.br'],
+];
+
 // Segmentos que atendemos (página Sobre).
 export const segmentos = ['Indústria', 'Agronegócio', 'Saúde e indústria médica', 'Engenharia e construção', 'Automotivo', 'Consultorias e serviços B2B', 'Imobiliárias', 'Clínicas e consultórios'];
 
