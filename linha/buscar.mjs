@@ -66,7 +66,7 @@ const VIES_INICIAL = -2.6;
 function pesos() {
   const p = lerJson(path.join(PASTA, 'pesos.json'));
   if (p?.pesos) return p;
-  return { vies: VIES_INICIAL, pesos: Object.fromEntries(Object.entries(SINAIS).map(([k, v]) => [k, v.peso])), corte: 6, origem: 'pesos iniciais' };
+  return { vies: VIES_INICIAL, pesos: Object.fromEntries(Object.entries(SINAIS).map(([k, v]) => [k, v.peso])), corte: 4, origem: 'pesos iniciais (corte medido em 15 decisões do João, 13/10/2026)' };
 }
 const sig = z => 1 / (1 + Math.exp(-z));
 export function notaObjetiva(x, p = pesos()) {
@@ -139,6 +139,8 @@ function medirPc() {
     antigo, anoRodape: m ? +m[1] : 0, anoMaisNovo: anos.length ? Math.max(...anos) : 0, gerador, jquery: jq,
     construtor: /websitex5|website x5/i.test(html) ? 'WebSite X5' : /mobirise/i.test(html) ? 'Mobirise' : /wixstatic|wix\.com/i.test(scripts + gerador) ? 'Wix' : /joomla/i.test(gerador) ? 'Joomla' : /drupal/i.test(gerador + scripts) ? 'Drupal' : /wordpress|wp-content/i.test(gerador + scripts) ? 'WordPress' : '',
     moderno: /elementor|webflow|next\/static|_next\/|framer|tailwind|squarespace|gatsby|nuxt/i.test(scripts + html.slice(0, 200000)),
+    // "Nosso novo site está chegando": já contrataram alguém, não é cliente (Yamadiesel, rejeitada pelo João).
+    siteNovoChegando: /novo site (est[aá] )?(chegando|em breve|no ar em breve)|site novo (chegando|em breve)/i.test(texto),
     placeholder: (texto.match(/lorem ipsum|dolor sit amet|site em constru[cç][aã]o|em manuten[cç][aã]o|under construction|coming soon|hello world|t[ií]tulo da not[ií]cia/i) || [''])[0],
     titulo: document.title.slice(0, 160),
     descricao: document.querySelector('meta[name="description"]')?.content?.slice(0, 300) || '',
@@ -292,7 +294,7 @@ function ranking(lista) {
     return {
       id: e.id, nome: e.nome, site: e.site, situacao: 'abre', nota: obj, visual: v?.nota ?? null, porqueVisual: v?.porque || '', final,
       // A ficha da DeepSeek tira da fila quem não é empresa (associação, órgão público) ou é gigante (não compra site de R$ 3 mil).
-      passa: final >= p.corte && f?.empresaReal !== false && f?.porte !== 'grande', motivos: motivos(x), sinais: x,
+      passa: final >= p.corte && !s.pc.siteNovoChegando && f?.empresaReal !== false && f?.porte !== 'grande', motivos: motivos(x), sinais: x,
       ficha: f && { empresaReal: f.empresaReal, segmento: f.segmento, oQueFaz: f.oQueFaz, porte: f.porte, telefones: f.telefones, whatsapp: f.whatsapp, email: f.email, abandono: f.sinaisAbandono, ficha: f.ficha },
       notaAntiga: e.nota ?? null, rotulo: e.rotulo ?? null,
     };
