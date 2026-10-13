@@ -1,0 +1,87 @@
+/* Versão A · Classic. Azul do logo #27568e, azul escuro #083974, texto Inter, títulos Montserrat (a mais próxima da fonte do logo). */
+:root{--azul:#27568e;--azul-f:#083974;--azul-c:#5277ac;--ink:#1d2430;--mut:#55606e;--line:#dfe5ec;--cinza:#f4f6f9;--branco:#fff}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--branco);font-size:17px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:var(--azul)}
+h1,h2,h3{font-family:Montserrat,Arial,sans-serif;font-weight:800;line-height:1.15;color:var(--azul-f)}
+h1{font-size:clamp(28px,4vw,44px);margin:0 0 12px}
+h2{font-size:clamp(24px,3vw,32px);margin:0 0 22px}
+h3{font-size:19px;margin:0 0 8px}
+p{margin:0 0 14px}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 40px;background:var(--branco);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.marca img{height:64px;width:auto}
+.menu{display:flex;gap:6px;flex-wrap:wrap}
+.menu a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;padding:8px 14px;border-radius:4px}
+.menu a:hover,.menu a.on{background:var(--azul);color:#fff}
+
+.hero{position:relative;min-height:520px;display:flex;align-items:center;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(95deg,rgba(8,57,116,.94) 0%,rgba(39,86,142,.78) 48%,rgba(8,57,116,.25) 100%)}
+.hero-txt{position:relative;z-index:2;padding:72px 40px;max-width:760px}
+.hero h1{color:#fff}
+.kicker{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--azul);margin:0 0 10px}
+.hero .kicker{color:#cfe0f5}
+.botoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-block;background:#fff;color:var(--azul-f);text-decoration:none;font-weight:700;padding:12px 22px;border-radius:4px}
+.btn.ghost{background:transparent;color:#fff;border:2px solid #fff}
+
+.faixa{background:var(--azul);color:#fff;padding:18px 40px}
+.faixa p{margin:0;max-width:1100px}
+.faixa a{color:#fff;font-weight:700}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--cinza);border-bottom:1px solid var(--line)}
+.num{padding:34px 20px;text-align:center;border-right:1px solid var(--line)}
+.num:last-child{border-right:0}
+.num b{display:block;font-family:Montserrat,Arial,sans-serif;font-size:clamp(30px,4vw,44px);color:var(--azul);font-weight:800}
+.num span{font-size:15px;color:var(--mut)}
+
+.bloco{padding:64px 40px;max-width:1200px;margin:0 auto}
+.bloco.topo{padding-bottom:20px}
+.bloco.cinza{background:var(--cinza);max-width:none;padding-left:40px;padding-right:40px}
+.bloco.cinza>*{max-width:1120px;margin-left:auto;margin-right:auto}
+.bloco.cinza{padding-top:48px;padding-bottom:48px}
+.bloco.contato{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.duas{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:start}
+.certs{display:grid;gap:20px}
+.cert{margin:0;border:1px solid var(--line);padding:22px;text-align:center;background:#fff}
+.cert img{height:120px;width:auto;object-fit:contain;margin:0 auto 12px}
+.cert figcaption{font-weight:700;color:var(--azul-f)}
+
+.industrias{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.industrias li{background:#fff;border-left:4px solid var(--azul);padding:16px 18px;font-weight:600;color:var(--azul-f)}
+
+.servicos{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{border:1px solid var(--line);padding:28px;background:#fff;position:relative}
+.card .n{font-family:Montserrat,Arial,sans-serif;font-weight:800;color:var(--azul-c);font-size:14px;letter-spacing:.1em}
+.card p{margin:0;color:var(--mut)}
+
+.contato .cartao{border:1px solid var(--line);padding:28px;background:#fff;border-top:4px solid var(--azul)}
+.contato .cartao p{margin:0;color:var(--mut)}
+
+.rodape{background:var(--azul-f);color:#dbe6f3;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:32px 40px;font-size:15px}
+.rodape a{color:#fff}
+.rodape div{display:flex;flex-direction:column;gap:4px}
+.rodape strong{color:#fff}
+
+@media (max-width:900px){
+  .top{padding:12px 16px}
+  .hero-txt{padding:48px 20px}
+  .faixa{padding:16px 20px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .num:nth-child(2){border-right:0}
+  .num:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .bloco{padding:44px 20px}
+  .duas{grid-template-columns:1fr;gap:28px}
+  .industrias{grid-template-columns:repeat(2,1fr)}
+  .servicos{grid-template-columns:1fr}
+  .bloco.contato{grid-template-columns:1fr}
+  .rodape{padding:28px 20px}
+}
+@media (max-width:480px){
+  .menu a{font-size:14px;padding:6px 9px}
+  .marca img{height:52px}
+  .industrias{grid-template-columns:1fr}
+}
