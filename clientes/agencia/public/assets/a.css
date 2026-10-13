@@ -1,0 +1,77 @@
+/* Versão A "Editorial": areia e marinho alternados, títulos grandes em Fraunces, laranja só como acento. */
+:root {
+  --fundo: #fdfcfa; --texto: #1e2638; --titulo: #182644; --suave: #4f5a6e; --rotulo: #a4541c;
+  --borda: #e6dfd7; --borda-forte: #cfc5ba; --cartao: #fff; --alt-bg: #f1ebe4;
+  --icone: var(--azul); --laranja-tx: #c2652a;
+  --btn-bg: var(--azul); --btn-tx: var(--creme); --btn-bg-h: #0f1830;
+  --topo-bg: var(--areia); --topo-bg-rolou: rgba(247,243,240,.88); --menu-bg: var(--areia); --nav: #3d475b;
+  --cabeca-bg: radial-gradient(ellipse 60% 90% at 100% 0%, rgba(193,211,230,.6) 0%, rgba(193,211,230,0) 70%), var(--areia); --cabeca-tx: var(--texto);
+  --sombra-tela: 0 30px 60px -30px rgba(24,38,68,.35), 0 8px 20px -10px rgba(24,38,68,.15); --borda-tela: rgba(24,38,68,.1);
+  --barra-bg: #f3efea; --barra-ponto: #d6cec5;
+  --etapa-linha: rgba(254,249,225,.22); --etapa-bg: var(--azul-2); --etapa-tx: var(--creme); --etapa-borda: rgba(254,249,225,.3);
+}
+/* Faixas escuras: as mesmas peças com as cores invertidas. */
+.dif, .processo, .p-como-trabalhamos .etapas-det {
+  --texto: rgba(254,249,225,.86); --titulo: var(--creme); --suave: rgba(254,249,225,.72); --rotulo: var(--laranja);
+  --borda: rgba(254,249,225,.14); --borda-forte: rgba(254,249,225,.3); --alt-bg: rgba(254,249,225,.06);
+  --barra-bg: #0f1830; --barra-ponto: rgba(254,249,225,.25); --borda-tela: rgba(254,249,225,.12);
+}
+.p-como-trabalhamos .etapas-det { --etapa-linha: var(--borda-forte); }
+.p-como-trabalhamos .cabeca + .secao { background: linear-gradient(180deg, var(--azul) 0%, #13203b 100%); }
+.p-como-trabalhamos .cabeca { background: radial-gradient(ellipse 60% 90% at 100% 0%, rgba(237,148,84,.18) 0%, rgba(237,148,84,0) 70%), var(--areia); }
+
+/* Início: abertura */
+.hero { background: radial-gradient(ellipse 55% 80% at 100% 10%, rgba(193,211,230,.75) 0%, rgba(193,211,230,0) 70%), radial-gradient(ellipse 40% 50% at 0% 100%, rgba(237,148,84,.14) 0%, rgba(237,148,84,0) 70%), var(--areia); padding: clamp(36px, 6vw, 80px) 0 0; overflow: hidden; }
+.hero .in:first-child { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero h1 { font-size: clamp(42px, 4.4vw + 12px, 82px); line-height: 1.04; letter-spacing: -0.03em; margin-top: 18px; }
+.hero h1 em { font-style: normal; color: var(--laranja-tx); }
+.hero .lead { margin-top: 24px; max-width: 30em; }
+.hero-pilha { position: relative; height: clamp(320px, 34vw, 500px); }
+.hero-pilha .tela { position: absolute; width: 78%; }
+.hero-pilha .tela:nth-child(1) { top: 0; right: 0; transform: rotate(2deg); opacity: .9; }
+.hero-pilha .tela:nth-child(2) { top: 18%; left: 0; transform: rotate(-2.5deg); }
+.hero-pilha .tela:nth-child(3) { bottom: 0; right: 6%; width: 72%; }
+.faixa { display: flex; flex-wrap: wrap; gap: 10px 0; margin-top: clamp(40px, 5vw, 72px); padding: 22px 0; border-top: 1px solid var(--borda-forte); }
+.faixa span { font-size: 15px; font-weight: 500; color: var(--titulo); padding-right: 22px; margin-right: 22px; border-right: 1px solid var(--borda-forte); }
+.faixa span:last-child { border: 0; }
+
+/* Diferencial */
+.dif { padding: clamp(72px, 9vw, 128px) 0 clamp(96px, 10vw, 150px); background: radial-gradient(ellipse 50% 70% at 0% 0%, rgba(40,14,1,.8) 0%, rgba(40,14,1,0) 60%), radial-gradient(ellipse 50% 60% at 100% 100%, rgba(90,118,159,.5) 0%, rgba(90,118,159,0) 70%), var(--azul); color: var(--texto); }
+.dif .in { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(36px, 6vw, 88px); align-items: center; }
+.dif h2 { font-size: clamp(32px, 2.4vw + 16px, 52px); margin-top: 14px; }
+.dif .lead { margin-top: 20px; }
+
+/* Serviços em linhas */
+.linhas { border-top: 1px solid var(--borda-forte); }
+.linha { display: grid; grid-template-columns: 60px 1fr 1.4fr 40px; gap: 24px; align-items: center; padding: 30px 0; border-bottom: 1px solid var(--borda-forte); text-decoration: none; transition: background .2s, padding .2s; }
+.linha h3 { font: 400 clamp(26px, 1.6vw + 14px, 38px)/1.1 var(--fh); letter-spacing: -0.02em; color: var(--titulo); }
+.linha p { color: var(--suave); font-size: 16px; }
+.linha .seta { width: 26px; height: 26px; color: var(--titulo); justify-self: end; }
+.linha:hover { background: var(--areia); padding-inline: 18px; }
+
+/* Processo */
+.processo { padding: clamp(72px, 9vw, 120px) 0; background: linear-gradient(160deg, #13203b 0%, var(--azul) 55%, #22345a 100%); color: var(--texto); }
+
+/* Projetos na inicial e na página de projetos: o primeiro maior */
+.p-index .projs .proj:first-child, .p-projetos .projs .proj:first-child { grid-column: span 2; grid-row: span 2; }
+.p-index .projs .proj:first-child .proj-c p, .p-projetos .projs .proj:first-child .proj-c p { font-size: 17px; }
+
+/* Serviços (visão geral): cartão marinho alternado */
+.grupo:nth-child(2), .grupo:nth-child(3) { background: var(--azul); border-color: var(--azul);
+  --titulo: var(--creme); --suave: rgba(254,249,225,.72); --rotulo: var(--laranja); --icone: var(--creme); --laranja-tx: var(--laranja); }
+.grupo:nth-child(2) { background: linear-gradient(150deg, var(--azul) 0%, #2a3f6a 100%); }
+.grupo:nth-child(3) { background: linear-gradient(150deg, #13203b 0%, var(--azul) 100%); }
+
+@media (max-width: 1080px) {
+  .linha { grid-template-columns: 44px 1fr 32px; }
+  .linha p { grid-column: 2; grid-row: 2; }
+  .linha .seta { grid-column: 3; grid-row: 1 / span 2; }
+}
+@media (max-width: 760px) {
+  .hero .in:first-child, .dif .in { grid-template-columns: 1fr; }
+  .hero-pilha { height: 300px; }
+  .faixa span { font-size: 14px; padding-right: 14px; margin-right: 14px; }
+  .p-index .projs .proj:first-child, .p-projetos .projs .proj:first-child { grid-column: auto; grid-row: auto; }
+  .grupo:nth-child(3) { background: var(--cartao); border-color: var(--borda); --titulo: var(--azul); --suave: #4f5a6e; --rotulo: #a4541c; --icone: var(--azul); --laranja-tx: #c2652a; }
+  .grupo:nth-child(4) { background: linear-gradient(150deg, #13203b 0%, var(--azul) 100%); border-color: var(--azul); --titulo: var(--creme); --suave: rgba(254,249,225,.72); --rotulo: var(--laranja); --icone: var(--creme); --laranja-tx: var(--laranja); }
+}
