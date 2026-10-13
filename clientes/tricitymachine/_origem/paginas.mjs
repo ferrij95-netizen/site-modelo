@@ -10,20 +10,55 @@ const FONTES = {
 
 // Versão C, Oficina: foto de fundo no topo, serviços em linhas com foto, faixa de números.
 function paginaHomeC(v) {
-  const linhas = servicos.map((s, i) => `<a class="linha-servico" href="/${v}/servicos/#${s.slug}"><figure class="foto"><img src="/assets/img/${fotos[i].arquivo}.webp" alt="${fotos[i].alt}" loading="lazy" width="1280" height="960"></figure><div><span class="num">0${i + 1}</span><h3>${s.nome}</h3><span class="seta">Learn more →</span></div></a>`).join('');
-  return `<section class="hero-c" style="background-image:linear-gradient(90deg,rgba(1,23,80,.94) 0%,rgba(1,23,80,.75) 55%,rgba(1,23,80,.35) 100%),url(/assets/img/foto-eixo.webp)">
+  const [destaque, ...outros] = servicos;
+  const cardServ = (s, i, f) => `<a class="serv-foto${i === 0 ? ' grande' : ''}" href="/${v}/servicos/#${s.slug}" style="background-image:linear-gradient(180deg,rgba(1,23,80,.05) 30%,rgba(1,23,80,.92)),url(/assets/img/${f}.webp)"><span class="num">0${i + 1}</span><h3>${s.nome}</h3><span class="seta">Learn more <b aria-hidden="true">→</b></span></a>`;
+  const servHtml = cardServ(destaque, 0, fotos[0].arquivo) + outros.map((s, i) => cardServ(s, i + 1, fotos[i + 1].arquivo)).join('');
+  const etapas = [
+    ['Send us what you have', 'A drawing, a sketch, an idea, or the original part.'],
+    ['Project evaluation', 'We review the job and get back to you with a quote.'],
+    ['Machining or repair', 'Precision machining, balancing, waterjet, welding and repair in our Peoria shop.'],
+    ['On-time delivery', 'Accurate, reliable parts delivered when you need them.'],
+  ];
+  return `<div class="aviso"><div class="in"><span><b>Emergency work?</b> We handle critical equipment repairs.</span><a href="tel:${empresa.telefoneHref}">Call ${empresa.telefone}</a></div></div>
+<section class="hero-c" style="background-image:linear-gradient(90deg,rgba(1,23,80,.95) 0%,rgba(1,23,80,.78) 50%,rgba(1,23,80,.25) 100%),url(/assets/img/foto-eixo.webp)">
   <div class="in">
     <p class="kicker">${empresa.desde} · ${empresa.cidade}</p>
-    <h1>${hero.titulo}</h1>
-    <p class="lead">${hero.intro}</p>
-    <div class="botoes">${tel}${mail}</div>
+    <h1>Full Service Machine Shop <span>in Peoria, Illinois</span></h1>
+    <p class="lead">For more than 47 years, our customers have trusted us with their precision machining jobs and critical equipment repairs.</p>
+    <div class="botoes"><a class="botao" href="/${v}/contato/">Request a project evaluation</a><a class="botao claro" href="tel:${empresa.telefoneHref}">Call ${empresa.telefone}</a></div>
+    <ul class="hero-valores">${valores.map(x => `<li>${x.titulo}</li>`).join('')}</ul>
   </div>
 </section>
-<section class="faixa-valores"><ul class="in">${valores.map(x => `<li>${x.titulo}</li>`).join('')}</ul></section>
-<section class="servicos-c"><div class="in"><p class="kicker">What we do</p><h2>Our Services</h2><div class="lista">${linhas}</div></div></section>
-<section class="capacidades"><div class="in"><h2>Expert Capabilities</h2>${chips}</div></section>
-<section class="qualidade-home"><div class="in"><h2>Quality Assurance</h2><p>${qualidade}</p><a class="link" href="/${v}/qualidade/">Read more about our quality</a></div></section>
-${cta(v)}`;
+<section class="numeros"><div class="in">
+  <div><strong>47+</strong><span>years trusted by our customers</span></div>
+  <div><strong>5</strong><span>services under one roof</span></div>
+  <div><strong>28+</strong><span>kinds of parts machined and repaired</span></div>
+  <div><strong>Any</strong><span>start: drawing, sketch, idea or original part</span></div>
+</div></section>
+<section class="servicos-c"><div class="in">
+  <div class="titulo-linha"><div><p class="kicker">What we do</p><h2>Our Services</h2></div><a class="link" href="/${v}/servicos/">All services</a></div>
+  <div class="mosaico">${servHtml}</div>
+</div></section>
+<section class="processo"><div class="in">
+  <p class="kicker">How it works</p><h2>From a sketch to a finished part</h2>
+  <ol>${etapas.map(([t, d], i) => `<li><span class="passo">0${i + 1}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+</div></section>
+<section class="capac-c"><div class="in">
+  <div class="capac-titulo"><p class="kicker">Expert Capabilities</p><h2>What we machine and repair</h2><p>From pumps and fans to gears and flywheels, we make the part or repair it.</p></div>
+  <ul>${capacidades.map(c => `<li>${c}</li>`).join('')}</ul>
+</div></section>
+<section class="qualidade-c"><div class="in">
+  <figure class="foto"><img src="/assets/img/foto-peca.webp" alt="Machined part with bolt pattern" loading="lazy" width="1280" height="960"></figure>
+  <div><p class="kicker">Quality Assurance</p><h2>Accurate and reliable, every part</h2><p>${qualidade}</p><a class="link" href="/${v}/qualidade/">Read more about our quality</a></div>
+</div></section>
+<section class="acoes"><div class="in">
+  <h2>Contact Us for a Project Evaluation</h2>
+  <div class="acoes-grade">
+    <a href="tel:${empresa.telefoneHref}"><small>Call</small><strong>${empresa.telefone}</strong><span>Talk to the shop</span></a>
+    <a href="mailto:${empresa.email}"><small>Email</small><strong>${empresa.email}</strong><span>Send your drawing or photos</span></a>
+    <a href="/${v}/contato/"><small>Visit</small><strong>1506 SW Washington St.</strong><span>${empresa.cidade}</span></a>
+  </div>
+</div></section>`;
 }
 
 const tel = `<a class="botao" href="tel:${empresa.telefoneHref}">Call ${empresa.telefone}</a>`;
