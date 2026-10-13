@@ -334,7 +334,10 @@ if (cmd === 'nota') {
   const t0 = Date.now();
   await emParalelo(lista, Number(opcao('paralelo', 4)), async e => {
     let s = refazer ? null : lerJson(arqSinais(e.id));
-    if (!s && SEM_SITE_PROPRIO.test(e.site)) s = { id: e.id, nome: e.nome, site: e.site, ok: false, semSiteProprio: true, erro: 'Não tem site próprio (só rede social, WhatsApp ou página grátis)', em: new Date().toISOString() };
+    if (!s && SEM_SITE_PROPRIO.test(e.site)) {
+      s = { id: e.id, nome: e.nome, site: e.site, ok: false, semSiteProprio: true, erro: 'Não tem site próprio (só rede social, WhatsApp ou página grátis)', em: new Date().toISOString() };
+      gravarJson(arqSinais(e.id), s);
+    }
     if (!s) {
       try { s = await capturar(e); } catch (err) { s = { id: e.id, nome: e.nome, site: e.site, ok: false, erro: erroLegivel(err), em: new Date().toISOString() }; }
       gravarJson(arqSinais(e.id), s);
