@@ -2,7 +2,7 @@
 // Rodar depois de mudar qualquer texto: node clientes/agencia/_origem/gerar.mjs
 import fs from 'node:fs';
 import path from 'node:path';
-import { site, menu, grupos, diferencial, etapas, principios, projetos, legendaProjetos, segmentos, chamada, paginas } from './conteudo.mjs';
+import { site, menu, grupos, diferencial, etapas, principios, projetos, legendaProjetos, segmentos, chamada, paginas, especialidades } from './conteudo.mjs';
 
 const pub = path.join(path.dirname(new URL(import.meta.url).pathname), '../public');
 
@@ -87,6 +87,7 @@ function gerarVersao(v) {
     <div class="r-marca"><a class="marca" href="${L('index')}">${marca}</a><p>${site.slogan}</p><p class="r-2">${site.linha2}</p></div>
     <div><h3>Serviços</h3><ul>${grupos.map(g => `<li><a href="${L('servicos/' + g.slug)}">${g.nome}</a></li>`).join('')}</ul></div>
     <div><h3>Overtus</h3><ul>${menu.filter(([s]) => s !== 'servicos').map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
+    <div><h3>Segmentos</h3><ul>${especialidades.map(([, n, , u]) => `<li><a href="${u}/${v}/">${n}</a></li>`).join('')}</ul></div>
     <div><h3>Conversar</h3><ul><li><a href="${site.agenda}" data-agendar>Agendar conversa</a></li><li><a href="${site.agenda}" target="_blank" rel="noopener">cal.com/overtus</a></li></ul></div>
   </div>
   <div class="in r-base"><span>© ${new Date().getFullYear()} Overtus</span><span>Sites, sistemas e estrutura comercial</span></div>
@@ -122,6 +123,14 @@ function gerarVersao(v) {
     ${tela(imgProjeto(p), `Página inicial do projeto para ${p[1].toLowerCase()}`)}
     <div class="proj-c"><span class="rotulo">${p[1]}</span><p>${p[2]}</p><ul class="tags">${p[3].map(t => `<li>${t}</li>`).join('')}</ul></div>
   </article>`).join('')}</div>`;
+
+  // Especialistas por segmento: cada cartão leva ao site do segmento, na mesma versão.
+  const espec = cls => `<section class="${cls} espec" id="segmentos">
+  <div class="in">
+    <div class="sec-cab"><div><span class="rotulo">Especialistas no seu segmento</span><h2 class="h-secao">Uma estrutura pensada para a forma como o seu setor vende.</h2></div></div>
+    <div class="espec-g">${especialidades.map(([k, n, t, u]) => `<a class="espec-c espec-${k}" href="${u}/${v}/"><span class="rotulo">Overtus para</span><h3>${n}</h3><p>${t}</p><b class="mais">Conhecer ${seta}</b></a>`).join('')}</div>
+  </div>
+</section>`;
 
   const listaPrincipios = () => `<div class="princ">${principios.map(([t, d], i) => `<div class="pr"><span class="n">${num(i)}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>`;
 
@@ -262,12 +271,12 @@ ${cta()}`;
   </div>
 </section>`;
 
-  return { P, topo, rodape, cabeca, cta, duasVersoes, linhaEtapas, gradeProjetos, listaPrincipios, L };
+  return { P, topo, rodape, cabeca, cta, duasVersoes, linhaEtapas, gradeProjetos, listaPrincipios, espec, L };
 }
 
 // ---------- Página inicial, versão A "Editorial" (areia e marinho) ----------
 function inicioA(k) {
-  const { cta, duasVersoes, linhaEtapas, gradeProjetos, listaPrincipios, L } = k;
+  const { cta, duasVersoes, linhaEtapas, gradeProjetos, listaPrincipios, espec, L } = k;
   return `<section class="hero">
   <div class="in">
     <div class="hero-txt">
@@ -299,6 +308,7 @@ function inicioA(k) {
     </a>`).join('')}</div>
   </div>
 </section>
+${espec('secao secao-alt')}
 <section class="processo">
   <div class="in">
     <div class="sec-cab"><div><span class="rotulo">Como trabalhamos</span><h2 class="h-secao">Cinco etapas, do estudo ao comercial funcionando.</h2></div><a class="link" href="${L('como-trabalhamos')}">Ver em detalhe ${seta}</a></div>
@@ -323,7 +333,7 @@ ${cta()}`;
 
 // ---------- Página inicial, versão B "Marinho" (como o Overtus Hub) ----------
 function inicioB(k) {
-  const { cta, duasVersoes, linhaEtapas, gradeProjetos, listaPrincipios, L } = k;
+  const { cta, duasVersoes, linhaEtapas, gradeProjetos, listaPrincipios, espec, L } = k;
   return `<section class="hero">
   <div class="brilho" aria-hidden="true"></div>
   <img class="hero-forma" src="/assets/img/forma.webp" alt="" width="800" height="800" fetchpriority="high">
@@ -357,6 +367,7 @@ function inicioB(k) {
     </a>`).join('')}</div>
   </div>
 </section>
+${espec('secao')}
 <section class="processo">
   <div class="in">
     <div class="sec-cab"><div><span class="rotulo">Como trabalhamos</span><h2 class="h-secao">Cinco etapas, do estudo ao comercial funcionando.</h2></div><a class="link" href="${L('como-trabalhamos')}">Ver em detalhe ${seta}</a></div>
