@@ -256,3 +256,18 @@ a:hover > .seta, a:hover .mais .seta, .link:hover .seta { transform: translateX(
   .tela-barra { height: 22px; }
   .tela-barra i { width: 7px; height: 7px; }
 }
+
+/* Especialistas por segmento (inicial): dois cartões que levam aos sites de cada segmento */
+.espec-g { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.espec-c { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; min-height: 280px; padding: clamp(28px, 3.4vw, 46px); border-radius: var(--raio); text-decoration: none; color: rgba(254,249,225,.78);
+  background: radial-gradient(ellipse 70% 80% at 100% 0%, rgba(90,118,159,.55) 0%, rgba(90,118,159,0) 70%), radial-gradient(ellipse 60% 70% at 0% 100%, rgba(237,148,84,.22) 0%, rgba(237,148,84,0) 70%), var(--azul); transition: transform .2s; }
+.espec-c:hover { transform: translateY(-3px); }
+.espec-c .rotulo { color: var(--laranja); }
+.espec-c h3 { font: 400 clamp(30px, 2vw + 16px, 44px)/1.08 var(--fh); letter-spacing: -0.02em; color: var(--creme); max-width: 12em; }
+.espec-c p { font-size: 16.5px; max-width: 30em; }
+.espec-c .mais { color: var(--creme); margin-top: auto; padding-top: 14px; }
+.espec-industrias { background: radial-gradient(ellipse 70% 80% at 100% 0%, rgba(237,148,84,.3) 0%, rgba(237,148,84,0) 70%), linear-gradient(150deg, #13203b 0%, #22345a 100%); }
+.v-b .espec { background: radial-gradient(ellipse 50% 70% at 0% 0%, rgba(237,148,84,.16) 0%, rgba(237,148,84,0) 65%), var(--areia); }
+@media (max-width: 760px) { .espec-g { grid-template-columns: 1fr; } .espec-c { min-height: 0; } }
+@media (min-width: 1081px) { .rodape .in:has(> :nth-child(5)) { grid-template-columns: 1.6fr 1fr 1fr 1.2fr 1fr; } }
+@media (max-width: 1080px) and (min-width: 761px) { .rodape .in:has(> :nth-child(5)) { grid-template-columns: repeat(4, 1fr); } }
