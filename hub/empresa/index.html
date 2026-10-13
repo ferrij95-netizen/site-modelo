@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Overtus · Sobre a empresa</title>
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#182644">
+<link rel="icon" href="/app/favicon-48.png">
+<link rel="apple-touch-icon" href="/app/icone-apple-180.png">
+<style>
+  /* Mesmo visual do hub. Cabe na janela: a lista de documentos fica à esquerda e só a prévia rola. */
+  :root { --bg:#f4f4f1; --card:#fff; --ink:#16181b; --muted:#6b7079; --line:#e3e3de; --azul:#182644; --laranja:#ed9454; --borda:clamp(12px, min(2.6vh, 2.2vw), 28px); }
+  * { box-sizing:border-box; }
+  [hidden] { display:none !important; }
+  html, body { height:100%; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; display:flex; flex-direction:column; height:100vh; height:100dvh; padding:var(--borda); gap:clamp(10px, 2vh, 20px); }
+  header { width:100%; max-width:1600px; margin:0 auto; display:flex; justify-content:space-between; align-items:end; gap:4px 16px; flex-wrap:wrap; flex:none; }
+  h1 { margin:0; font-size:clamp(20px, 3.2vh, 28px); line-height:1.2; letter-spacing:-.02em; }
+  header p { margin:2px 0 0; color:var(--muted); font-size:clamp(13px, 1.8vh, 16px); }
+  .resumo { color:var(--muted); font-size:14px; }
+  .resumo a { color:inherit; }
+  .layout { width:100%; max-width:1600px; margin:0 auto; flex:1; min-height:0; display:grid; grid-template-columns:minmax(260px, 320px) 1fr; gap:clamp(10px, 1.8vh, 20px); }
+
+  aside { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; overflow:auto; display:flex; flex-direction:column; gap:8px; }
+  aside h2 { margin:4px 4px 2px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+  .doc { display:grid; grid-template-columns:40px 1fr; gap:10px; align-items:center; text-align:left; width:100%; font:inherit; color:inherit; background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px; cursor:pointer; }
+  .doc:hover { border-color:#c9ccd3; }
+  .doc[aria-current="true"] { border-color:var(--azul); box-shadow:inset 3px 0 0 var(--laranja); background:#f6f7fa; }
+  .doc .ic { width:40px; height:48px; border-radius:6px; background:linear-gradient(160deg, #182644, #5a769f); color:#fef9e1; display:grid; place-items:center; font-size:10px; font-weight:700; letter-spacing:.06em; }
+  .doc strong { display:block; font-size:14px; line-height:1.3; }
+  .doc span { display:block; font-size:12px; color:var(--muted); margin-top:2px; }
+  .nota { margin-top:auto; border-top:1px solid var(--line); padding:12px 4px 0; font-size:13px; color:var(--muted); }
+
+  .previa { background:var(--card); border:1px solid var(--line); border-radius:12px; min-height:0; display:flex; flex-direction:column; overflow:hidden; }
+  .barra { display:flex; justify-content:space-between; align-items:center; gap:8px 14px; flex-wrap:wrap; padding:10px 14px; border-bottom:1px solid var(--line); background:linear-gradient(90deg, #eef1f6, #fff); }
+  .barra h2 { margin:0; font-size:16px; }
+  .barra p { margin:0; font-size:13px; color:var(--muted); }
+  .acoes { display:flex; gap:6px; }
+  .acoes a { font-size:13px; font-weight:600; padding:7px 12px; border-radius:8px; text-decoration:none; white-space:nowrap; }
+  .acoes a.prim { background:var(--azul); color:#fff; border:1px solid var(--azul); }
+  .acoes a.sec { background:#fff; color:var(--ink); border:1px solid var(--line); }
+  /* Prévia em imagens das páginas: aparece igual em qualquer navegador e no celular (o PDF de verdade abre em "tela cheia"). */
+  .paginas { flex:1; overflow:auto; background:#e9e9e4; padding:clamp(10px, 2vh, 20px); display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .paginas img { width:100%; max-width:860px; height:auto; display:block; border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,.12); background:#fff; }
+
+  @media (max-width:900px) {
+    html, body { height:auto; }
+    body { height:auto; min-height:100dvh; }
+    .layout { grid-template-columns:1fr; }
+    aside { overflow:visible; }
+    .nota { margin-top:4px; }
+    .paginas { overflow:visible; padding:10px; }
+  }
+</style>
+</head>
+<body>
+<script src="/menu/menu.js"></script>
+<header>
+  <div>
+    <h1>Sobre a empresa</h1>
+    <p>Documentos da Overtus num lugar só: contratos, modelos e informações da empresa.</p>
+  </div>
+  <span class="resumo"><a href="/">Prospecção</a> · <a href="/sites/">Sites dos clientes</a> · <a href="/sair">Sair</a></span>
+</header>
+<main class="layout">
+  <aside>
+    <h2>Documentos</h2>
+    <div id="lista"></div>
+    <p class="nota">Para incluir um documento, peça ao Claude no projeto Overtus: ele adiciona o PDF aqui.</p>
+  </aside>
+  <section class="previa" aria-live="polite">
+    <div class="barra">
+      <div><h2 id="titulo"></h2><p id="detalhe"></p></div>
+      <div class="acoes"><a class="sec" id="abrir" target="_blank" rel="noopener">Abrir em tela cheia</a><a class="prim" id="baixar" download>Baixar PDF</a></div>
+    </div>
+    <div class="paginas" id="paginas"></div>
+  </section>
+</main>
+<script>
+  // Documentos da aba. Para incluir outro: coloque o PDF e as páginas em imagem (pdftoppm -r 110 -jpeg) em hub/empresa/ e some uma linha aqui.
+  const DOCS = [
+    { id: 'contrato', titulo: 'Contrato de prestação de serviços (modelo)', detalhe: 'Site, manutenção, Instagram, anúncios, sistema e garantia de leads. Campos em branco para cada cliente.', data: '10/10/2026', pdf: 'contrato-modelo.pdf', paginas: 6, img: 'contrato-p-' },
+  ];
+  const $ = s => document.querySelector(s);
+  const lista = $('#lista');
+  function mostrar(d) {
+    for (const b of lista.children) b.setAttribute('aria-current', String(b.dataset.id === d.id));
+    $('#titulo').textContent = d.titulo;
+    $('#detalhe').textContent = `${d.paginas} páginas · atualizado em ${d.data}`;
+    $('#abrir').href = d.pdf;
+    $('#baixar').href = d.pdf;
+    $('#paginas').scrollTop = 0;
+    $('#paginas').innerHTML = Array.from({ length: d.paginas }, (_, i) => `<img src="${d.img}${i + 1}.jpg" alt="Página ${i + 1}" loading="lazy">`).join('');
+    history.replaceState(null, '', '#' + d.id);
+  }
+  for (const d of DOCS) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'doc';
+    b.dataset.id = d.id;
+    b.innerHTML = `<span class="ic">PDF</span><div><strong></strong><span></span></div>`;
+    b.querySelector('strong').textContent = d.titulo;
+    b.querySelector('div span').textContent = d.detalhe;
+    b.onclick = () => mostrar(d);
+    lista.appendChild(b);
+  }
+  mostrar(DOCS.find(d => '#' + d.id === location.hash) || DOCS[0]);
+</script>
+</body>
+</html>
