@@ -10,7 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { DADOS } from './config.mjs';
 import { lerLista, lerJson, gravarJson, slugDe, log } from './lib/util.mjs';
-import { UA_PC, UA_CEL, abrirNavegador as abrir, fecharNavegador, abrirPagina, reduzir, erroLegivel } from './lib/navegador.mjs';
+import { UA_PC, UA_CEL, abrirNavegador as abrir, fecharNavegador, abrirPagina, reduzir, semGoogle, erroLegivel } from './lib/navegador.mjs';
 
 const args = process.argv.slice(2);
 const opcao = (n, padrao) => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : padrao; };
@@ -28,6 +28,7 @@ async function capturar(e) {
   const out = { id: e.id, nome: e.nome, site: e.site, em: new Date().toISOString() };
   // Computador (1366 x 800): só a primeira tela, que é o que o dono vê ao abrir.
   const pc = await b.newContext({ viewport: { width: 1366, height: 800 }, userAgent: UA_PC, locale: 'pt-BR', ignoreHTTPSErrors: true });
+  await semGoogle(pc);
   try {
     const pg = await pc.newPage();
     const t0 = Date.now();
@@ -45,6 +46,7 @@ async function capturar(e) {
   } finally { await pc.close(); }
   // Celular (390 x 844): também só a primeira tela, e confere se o site cabe na largura.
   const cel = await b.newContext({ viewport: { width: 390, height: 844 }, userAgent: UA_CEL, isMobile: true, hasTouch: true, locale: 'pt-BR', ignoreHTTPSErrors: true });
+  await semGoogle(cel);
   try {
     const pg = await cel.newPage();
     await pg.goto(out.url_final, { waitUntil: 'domcontentloaded', timeout: 30000 });

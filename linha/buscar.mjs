@@ -25,7 +25,7 @@ import { spawnSync } from 'node:child_process';
 import sharp from 'sharp';
 import { DADOS, REPO, PRECOS, DOLAR } from './config.mjs';
 import { lerLista, lerJson, gravarJson, slugDe, log } from './lib/util.mjs';
-import { UA_PC, UA_CEL, abrirNavegador, fecharNavegador, abrirPagina, reduzir, erroLegivel } from './lib/navegador.mjs';
+import { UA_PC, UA_CEL, abrirNavegador, fecharNavegador, abrirPagina, reduzir, semGoogle, erroLegivel } from './lib/navegador.mjs';
 import { deepseekJson } from './lib/claude.mjs';
 
 const args = process.argv.slice(2);
@@ -102,7 +102,9 @@ function medirPc() {
   tamanhos.sort((a, b) => a[0] - b[0]);
   let acum = 0; const totalLetras = tamanhos.reduce((s, t) => s + t[1], 0);
   let tamanho = 0; for (const [fs, n] of tamanhos) { acum += n; if (acum >= totalLetras / 2) { tamanho = fs; break; } }
-  let webfont = false; try { webfont = [...document.fonts].some(f => f.status === 'loaded'); } catch {}
+  // A fonte do Google não carrega (o Google é bloqueado na captura): conta como fonte da web se a página pede uma.
+  let webfont = !!document.querySelector('link[href*="fonts.googleapis"],link[href*="typekit"],link[href*="fonts.bunny"]') || /fonts\.googleapis|@font-face/i.test([...document.querySelectorAll('style')].map(s => s.textContent).join(' ').slice(0, 200000));
+  try { webfont ||= [...document.fonts].some(f => f.status === 'loaded'); } catch {}
   // Imagens: quebradas, borradas (esticadas além do tamanho real) e a maior foto da primeira tela.
   let quebradas = 0, borradas = 0, topo = 0;
   for (const img of document.querySelectorAll('img')) {
@@ -172,6 +174,7 @@ async function capturar(e) {
   const b = await abrirNavegador();
   const out = { id: e.id, nome: e.nome, site: e.site, em: new Date().toISOString() };
   const pc = await b.newContext({ viewport: { width: 1366, height: 800 }, userAgent: UA_PC, locale: 'pt-BR', ignoreHTTPSErrors: true });
+  await semGoogle(pc);
   try {
     const pg = await pc.newPage();
     let falhas = 0; pg.on('requestfailed', () => falhas++); pg.on('response', r => { if (r.status() >= 400 && r.request().resourceType() === 'image') falhas++; });
@@ -188,6 +191,7 @@ async function capturar(e) {
     fs.writeFileSync(path.join(PRINTS, `${e.id}.d.jpg`), await reduzir(buf, 1000, 62));
   } finally { await pc.close(); }
   const cel = await b.newContext({ viewport: { width: 390, height: 844 }, userAgent: UA_CEL, isMobile: true, hasTouch: true, locale: 'pt-BR', ignoreHTTPSErrors: true });
+  await semGoogle(cel);
   try {
     const pg = await cel.newPage();
     await pg.goto(out.url_final, { waitUntil: 'domcontentloaded', timeout: 30000 });
@@ -214,7 +218,7 @@ export function sinais(s, ficha) {
   x.fotosQuebradas = Math.min(1, (pc.quebradas || 0) / 2);
   x.fotosBorradas = Math.min(1, (pc.borradas || 0) / 3);
   x.semFotoNoTopo = pc.topoFrac < 0.15 ? 1 : pc.topoFrac < 0.3 ? 0.4 : 0;
-  x.fonteDoSistema = !pc.webfont && FONTES_SISTEMA.test(pc.fonte) ? 1 : FONTES_SISTEMA.test(pc.fonteTitulo) && FONTES_SISTEMA.test(pc.fonte) ? 0.5 : 0;
+  x.fonteDoSistema = FONTES_SISTEMA.test(pc.fonte) && !pc.webfont ? 1 : FONTES_SISTEMA.test(pc.fonteTitulo) && FONTES_SISTEMA.test(pc.fonte) ? 0.5 : 0;
   x.letraPequenaPc = pc.tamanho && pc.tamanho < 13 ? 1 : 0;
   const a = pc.antigo || {};
   x.estruturaAntiga = Math.min(1, (a.flash ? 1 : 0) + (a.molduras ? 1 : 0) + (a.letreiro ? 0.6 : 0) + (a.tabelas ? 0.6 : 0) + (a.tagsVelhas > 5 ? 0.4 : 0));
