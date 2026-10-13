@@ -1,0 +1,73 @@
+/* Versão A "Institucional": a ordem do site atual (capa, quem somos, missão/visão/valores, seja um cooperado),
+   cabeçalho claro, faixas retas alternando branco, areia e verde. */
+
+/* Capa: texto à esquerda, foto da unidade à direita com faixa verde por trás */
+.capa-a { position: relative; padding-block: clamp(40px, 5vw, 80px); background: var(--areia); overflow: hidden; border-bottom: 1px solid var(--borda); }
+.capa-a::before { content: ''; position: absolute; right: 0; top: 0; width: 34%; height: 100%; background: linear-gradient(160deg, var(--verde) 0%, var(--verde-esc) 100%); }
+.capa-grid { position: relative; display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+.capa-txt h1 { max-width: 15ch; }
+.capa-foto { margin: 0; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 70px -35px rgba(11,38,23,.6); background: #fff; }
+.capa-foto img { width: 100%; aspect-ratio: 16 / 10.5; object-fit: cover; }
+.capa-foto figcaption { display: flex; gap: 8px; align-items: center; padding: 14px 18px; font-size: 14px; color: var(--suave); }
+.capa-foto figcaption .ico { width: 18px; height: 18px; color: var(--terra); }
+
+/* Missão, visão e valores: três colunas, valores em lista com ícone */
+.sobre { background: #fff; }
+.p-index .sobre { padding-top: clamp(56px, 6vw, 88px); }
+.mvv-a { display: grid; grid-template-columns: 1fr 1fr 1.3fr; border-top: 4px solid var(--sol); border-radius: 4px; background: var(--areia); }
+.mvv-a article { padding: clamp(24px, 3vw, 40px); }
+.mvv-a article + article { border-left: 1px solid var(--borda); }
+.mvv-n { display: block; font: 800 15px/1 var(--fh); letter-spacing: .16em; text-transform: uppercase; color: var(--verde); margin-bottom: 16px; }
+.mvv-a p { font: 500 20px/1.45 var(--fh); color: var(--verde-esc); margin: 0; }
+.mvv-a ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.mvv-a li { display: flex; gap: 14px; align-items: flex-start; }
+.mvv-a li .ico { width: 38px; height: 38px; padding: 8px; border-radius: 50%; background: var(--verde); color: #fff; }
+.mvv-a li b { display: block; font: 700 18px/1.2 var(--fh); color: var(--verde-esc); }
+.mvv-a li span { font-size: 15px; color: var(--suave); }
+
+/* Serviços: lista em duas colunas com divisórias, ícone em quadrado dourado */
+.servicos-a { background: var(--areia); }
+.serv-lista { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--borda); }
+.serv { display: grid; grid-template-rows: auto auto 1fr auto; padding: 30px 28px 28px 0; border-bottom: 1px solid var(--borda); text-decoration: none; color: var(--texto); }
+.serv:not(:nth-child(3n + 1)) { padding-left: 28px; border-left: 1px solid var(--borda); }
+.serv > .ico { width: 48px; height: 48px; padding: 11px; border-radius: 12px; background: var(--sol-claro); color: var(--sol-esc); margin-bottom: 18px; }
+.serv h3 { margin-bottom: 8px; }
+.serv p { color: var(--suave); font-size: 15.5px; }
+.serv .mais { display: inline-flex; gap: 8px; align-items: center; font: 700 14.5px/1 var(--fh); color: var(--verde); }
+.serv .mais .ico { width: 16px; height: 16px; transition: transform .15s; }
+.serv:hover h3 { color: var(--verde); }
+.serv:hover .mais .ico { transform: translateX(4px); }
+body.p-servicos .serv-lista { background: #fff; }
+
+/* O caminho do grão: linha numerada com conectores */
+.caminho { background: #fff; }
+.etapas-a { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; counter-reset: e; }
+.etapas-a li { position: relative; padding: 22px 18px; border-radius: 14px; background: var(--areia); border: 1px solid var(--borda); }
+.etapas-a li:not(:last-child)::after { content: ''; position: absolute; top: 44px; right: -14px; width: 14px; height: 2px; background: var(--sol); }
+.etapas-a .e-num { display: block; font: 800 34px/1 var(--fh); color: var(--sol); margin-bottom: 12px; }
+.etapas-a .ico { position: absolute; top: 22px; right: 18px; color: var(--verde); }
+.etapas-a h3 { font-size: 17px; }
+.etapas-a p { font-size: 14.5px; color: var(--suave); margin: 0; }
+
+@media (max-width: 1080px) {
+  .etapas-a { grid-template-columns: repeat(3, 1fr); }
+  .etapas-a li:nth-child(3)::after { display: none; }
+}
+@media (max-width: 820px) {
+  .capa-a { background: var(--areia); }
+  .capa-a::before { width: 100%; height: 42%; top: auto; bottom: 0; }
+  .capa-grid { grid-template-columns: 1fr; }
+  .mvv-a { grid-template-columns: 1fr; }
+  .mvv-a article + article { border-left: 0; border-top: 1px solid var(--borda); }
+  .serv-lista { grid-template-columns: 1fr 1fr; }
+  .serv, .serv:not(:nth-child(3n + 1)) { padding: 26px 20px; border-left: 0; }
+  .serv:nth-child(even) { border-left: 1px solid var(--borda); }
+  .etapas-a { grid-template-columns: 1fr 1fr; }
+  .etapas-a li::after { display: none; }
+}
+@media (max-width: 540px) {
+  .serv-lista { grid-template-columns: 1fr; }
+  .serv:nth-child(even) { border-left: 0; }
+  .serv, .serv:not(:nth-child(3n + 1)) { padding-inline: 0; }
+  .etapas-a { grid-template-columns: 1fr; }
+}
