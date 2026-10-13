@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectora Indústria · escolha a versão do novo site</title>
+<meta name="description" content="Duas versões do novo site da Vectora Indústria para escolher: Clássica e Telemetria.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://vectora.overtus.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vectora Indústria">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Vectora Indústria · escolha a versão do novo site">
+<meta property="og:description" content="Duas versões do novo site da Vectora Indústria para escolher: Clássica e Telemetria.">
+<meta property="og:url" content="https://vectora.overtus.com.br/">
+<meta property="og:image" content="https://vectora.overtus.com.br/assets/og-b.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vectora Indústria · escolha a versão do novo site">
+<meta name="twitter:description" content="Duas versões do novo site da Vectora Indústria para escolher: Clássica e Telemetria.">
+<meta name="twitter:image" content="https://vectora.overtus.com.br/assets/og-b.jpg">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/base.css">
+<style>
+  html, body { height: 100%; }
+  body { display: grid; grid-template-rows: auto 1fr; background: #eef3f7; }
+  header { background: #121a21; border-bottom: 4px solid; border-image: linear-gradient(90deg, #015581, #0587c9, #14a7e3) 1; }
+  header .in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; min-height: 76px; }
+  header img { width: 200px; }
+  header small { font: 600 13px/1.2 var(--fh); letter-spacing: .1em; text-transform: uppercase; color: #9fd3f2; }
+  main { display: grid; min-height: 0; }
+  main .in { display: grid; grid-template-columns: 1fr 1fr 0.8fr; gap: 20px; width: min(100% - 2 * var(--gutter), 1360px); padding-block: clamp(16px, 3vh, 32px); align-content: center; }
+  .v { display: grid; grid-template-rows: auto 1fr; background: #fff; border: 1px solid var(--borda); border-radius: 8px; overflow: hidden; text-decoration: none; transition: border-color .15s, box-shadow .15s; min-height: 0; }
+  .v:hover { border-color: #0587c9; box-shadow: 0 12px 32px rgba(1,40,66,.14); }
+  .v img { width: 100%; aspect-ratio: 16 / 10; max-height: 48vh; object-fit: cover; object-position: top; border-bottom: 1px solid var(--borda); }
+  .v div { display: grid; gap: 8px; padding: clamp(14px, 2vh, 22px) 22px clamp(16px, 2.4vh, 24px); align-content: start; }
+  .v span.e { font: 700 13px/1.2 var(--fh); letter-spacing: .12em; text-transform: uppercase; color: #0587c9; }
+  .v h2 { font-size: clamp(22px, 1.4vw + 8px, 28px); margin: 0; color: #015581; }
+  .v p { color: var(--suave); font-size: 15.5px; line-height: 1.5; margin: 0; }
+  .v b.l { font: 600 15px/1.3 var(--fh); color: var(--texto); }
+  .v.atual { background: transparent; border-style: dashed; }
+  .v.atual img { filter: grayscale(.25); }
+  .v.atual span.e { color: var(--suave); }
+  @media (max-width: 1000px) { html, body { height: auto; } main .in { grid-template-columns: 1fr; } .v img { max-height: none; } }
+</style>
+</head>
+<body>
+<header><div class="in"><img src="/assets/img/logo-vectora-branco.svg" alt="Vectora · Soluções em telemetria e gestão de perdas" width="200" height="41"><small>Proposta de novo site · duas versões</small></div></header>
+<main><div class="in">
+  <a class="v a" href="/a/"><img src="/assets/versao-a.jpg" alt="Página inicial da versão A">
+    <div><span class="e">Versão A</span><h2>Clássica</h2><p>A estrutura do site atual: topo escuro, carrossel com o Autobox e o Datalogger e faixa azul nos títulos, com acabamento novo e pronta para o celular.</p><b class="l">Abrir a versão A →</b></div></a>
+  <a class="v b" href="/b/"><img src="/assets/versao-b.jpg" alt="Página inicial da versão B">
+    <div><span class="e">Versão B</span><h2>Telemetria</h2><p>O azul-marinho e o ciano do logo em gradientes, fotos grandes e o caminho do sensor em campo até o gráfico no VectoraSys, com os mesmos textos e produtos.</p><b class="l">Abrir a versão B →</b></div></a>
+  <a class="v atual" href="http://www.vectora.com.br/portal/" target="_blank" rel="noopener"><img src="/assets/site-atual.jpg" alt="Página inicial do site atual da Vectora">
+    <div><span class="e">Para comparar</span><h2>Site atual</h2><p>vectora.com.br como está hoje.</p><b class="l">Abrir o site atual ↗</b></div></a>
+</div></main>
+</body>
+</html>

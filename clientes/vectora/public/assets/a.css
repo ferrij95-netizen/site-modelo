@@ -1,0 +1,116 @@
+/* Versão A "Clássica": a estrutura do site atual (topo escuro, carrossel com os produtos, faixa azul nos títulos), com acabamento novo. */
+.v-a .topo { background: rgba(18,26,33,.96); color: #fff; backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(255,255,255,.06); }
+.v-a #nav > a, .v-a .sub > a { color: rgba(255,255,255,.9); }
+.v-a #nav > a:hover, .v-a .sub > a:hover, .v-a #nav [aria-current="page"] { color: #fff; background: rgba(255,255,255,.08); }
+.v-a #nav [aria-current="page"] { box-shadow: inset 0 -2px 0 var(--ciano); border-radius: 4px 4px 0 0; }
+
+/* Carrossel */
+.carrossel { position: relative; height: clamp(520px, 78vh, 760px); overflow: hidden; background: var(--escuro); }
+.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .8s, visibility .8s; }
+.slide.ativo { opacity: 1; visibility: visible; }
+.slide-fundo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); transition: transform 8s linear; }
+.slide.ativo .slide-fundo { transform: scale(1); }
+.slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,20,30,.78), rgba(10,20,30,.35) 60%, rgba(10,20,30,.55)), linear-gradient(0deg, rgba(10,20,30,.6), transparent 40%); }
+.slide-itens { position: relative; z-index: 1; height: 100%; display: grid; align-items: center; gap: 40px; padding-bottom: 40px; }
+.slide-itens.n2 { grid-template-columns: 1fr 1fr; }
+.slide-item { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px; color: #fff; }
+.slide-itens.n1 .slide-item { grid-template-columns: minmax(0, 560px) auto; justify-content: space-between; }
+.slide-txt { display: grid; justify-items: start; }
+.slide-txt .pre { font: 600 clamp(15px, 1vw + 8px, 21px)/1.2 var(--fh); letter-spacing: .06em; text-transform: uppercase; }
+.slide-txt strong { font: 700 clamp(38px, 3.6vw + 14px, 72px)/1.02 var(--fh); text-transform: uppercase; margin: 4px 0; letter-spacing: -.01em; }
+.slide-txt .sub { font: 600 clamp(14px, .8vw + 8px, 19px)/1.3 var(--fh); letter-spacing: .05em; text-transform: uppercase; color: #9fdcf8; margin-bottom: 22px; }
+.slide-corte { width: clamp(150px, 15vw, 280px); filter: drop-shadow(0 24px 30px rgba(0,0,0,.5)); transform: translateY(20px); opacity: 0; transition: transform .9s .3s, opacity .9s .3s; }
+.slide-itens.n1 .slide-corte { width: clamp(200px, 22vw, 340px); }
+.slide.ativo .slide-corte { transform: none; opacity: 1; }
+.car-ctrl { position: absolute; z-index: 2; left: 50%; bottom: 24px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; }
+.car-ctrl button { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.4); background: rgba(0,0,0,.25); color: #fff; border-radius: 50%; cursor: pointer; }
+.car-ctrl button[data-ir] { width: 12px; height: 12px; padding: 0; background: rgba(255,255,255,.4); border: 0; }
+.car-ctrl button[aria-current] { background: var(--ciano); width: 32px; border-radius: 99px; }
+
+/* Linha vertical com ponto, marca do site atual */
+.linha-ponto { position: relative; padding-top: 96px; }
+.linha-ponto::before { content: ''; position: absolute; left: 50%; top: 0; height: 74px; border-left: 1px solid #c9d0d6; }
+.linha-ponto::after { content: ''; position: absolute; left: calc(50% - 4px); top: 74px; width: 9px; height: 9px; border-radius: 50%; background: var(--azul); }
+
+.sobre { text-align: center; padding-bottom: clamp(56px, 6vw, 96px); }
+.sobre h2 { font-size: clamp(32px, 2.6vw + 14px, 50px); font-weight: 500; }
+.sobre h2 span { color: var(--azul); }
+.sobre p { max-width: 860px; margin: 0 auto 24px; font-size: clamp(16px, .4vw + 14px, 19px); line-height: 1.75; color: var(--suave); }
+
+.pilares { background: var(--cinza); border-top: 1px solid var(--borda); }
+.pilares .in { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; padding-block: clamp(52px, 6vw, 88px); }
+.pil-cab { display: flex; gap: 18px; align-items: center; margin-bottom: 16px; }
+.quadro { display: grid; place-items: center; width: 56px; height: 56px; flex: none; border-radius: 6px; background: linear-gradient(140deg, var(--ciano), var(--azul) 55%, var(--navy)); color: #fff; box-shadow: 0 10px 20px rgba(5,135,201,.25); }
+.quadro .ico { width: 28px; height: 28px; }
+.pilares h3 { font-size: 23px; margin: 0; }
+.pilares small { color: var(--azul); font-size: 15px; }
+.pilares p { color: var(--suave); margin: 0; }
+
+.v-a .vitrine { background: linear-gradient(180deg, #eaf3f9, #f6fafd); padding-bottom: clamp(56px, 6vw, 96px); }
+.vitrine .titulo-centro { padding-top: 96px; }
+.vitrine .titulo-centro.linha-ponto::before { top: 0; }
+.v-a .pc { border: 1px solid var(--borda); }
+.v-a .pc:hover { border-color: var(--azul); box-shadow: 0 16px 34px rgba(1,85,129,.14); transform: translateY(-3px); }
+.v-a .pc-img { background: radial-gradient(circle at 50% 60%, #fff 40%, #eef2f5); border-bottom: 1px solid var(--borda); }
+
+.sol-home { padding-block: clamp(56px, 6vw, 96px); }
+.cli-home { background: var(--cinza); padding-block: clamp(56px, 6vw, 96px); border-top: 1px solid var(--borda); }
+.cli-home .logos { grid-template-columns: repeat(6, 1fr); }
+
+/* Páginas internas: faixa azul + trilha, como no site atual */
+.v-a .cabeca { position: relative; overflow: hidden; color: #fff; background: linear-gradient(110deg, var(--navy) 0%, var(--azul) 70%, var(--ciano) 120%); }
+.v-a .cabeca::after { content: ''; position: absolute; right: -6%; top: -60%; width: 46%; aspect-ratio: 1; border: 60px solid rgba(255,255,255,.06); border-radius: 50%; }
+.v-a .cabeca .in { position: relative; z-index: 1; padding-block: clamp(36px, 4vw, 56px); }
+.v-a .cabeca h1 { font-size: clamp(30px, 2.4vw + 14px, 46px); font-weight: 500; margin: 0; }
+.v-a .cabeca p { margin: 6px 0 0; color: rgba(255,255,255,.82); font-size: 17px; }
+.trilha-faixa { background: #f4f2ef; border-bottom: 1px solid #e7e3dd; }
+.trilha { display: flex; flex-wrap: wrap; gap: 10px; padding-block: 12px; font-size: 14.5px; color: var(--suave); }
+.trilha a { text-decoration: none; color: var(--texto); }
+.trilha a:hover { color: var(--azul); }
+.trilha b { font-weight: 500; }
+
+.v-a .catalogo { background: var(--cinza); padding-block: clamp(52px, 6vw, 88px); }
+.v-a .servicos { padding-block: clamp(52px, 6vw, 88px); }
+.v-a .serv-grade li { border: 1px solid var(--borda); background: #fff; }
+.v-a .serv-ico { background: #e8f3fa; color: var(--azul); }
+.v-a .prod-img { background: var(--cinza); }
+.v-a .specs { background: var(--cinza); }
+.v-a .specs h2 { margin-bottom: 18px; }
+.v-a .clientes { padding-block: clamp(52px, 6vw, 88px); }
+.v-a .cases { padding-block: clamp(52px, 6vw, 88px); }
+.v-a .tec { background: var(--cinza); padding-block: clamp(52px, 6vw, 88px); }
+.v-a .case-pontos { background: var(--cinza); }
+.v-a .case-pontos li { background: #fff; border-top: 4px solid var(--azul); }
+.v-a .case-pontos li span { color: var(--azul); }
+.v-a .case-pontos li p { color: var(--suave); }
+.v-a .emp-links { background: #fff; }
+.v-a .emp-links a { border: 1px solid var(--borda); color: var(--texto); }
+.v-a .emp-links a:hover { border-color: var(--azul); }
+.v-a .emp-links .ico { color: var(--azul); }
+
+.v-a .cta { color: #fff; background: linear-gradient(110deg, var(--azul), var(--navy)); }
+.v-a .cta p { color: rgba(255,255,255,.85); }
+.v-a .cta .btn-prim { background: #fff; color: var(--navy); }
+.v-a .cta .btn-prim:hover { background: var(--escuro); color: #fff; }
+.v-a .rodape { background: var(--escuro); }
+
+@media (max-width: 1000px) {
+  .pilares .in { grid-template-columns: 1fr; gap: 28px; }
+  .cli-home .logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .slide-itens.n2 { grid-template-columns: 1fr; gap: 18px; align-content: center; }
+  .slide-itens.n2 .slide-corte { width: 130px; }
+  .slide-itens.n2 .sub { margin-bottom: 12px; }
+}
+@media (max-width: 640px) {
+  .carrossel { height: 600px; }
+  .slide-item, .slide-itens.n1 .slide-item { grid-template-columns: 1fr; }
+  .slide-itens.n1 .slide-corte { width: 190px; justify-self: center; }
+  .slide-itens.n2 .slide-item { grid-template-columns: 1fr auto; }
+  .slide-itens.n2 .slide-corte { width: 104px; }
+  .slide-itens.n2 strong { font-size: 30px; }
+  .slide-itens.n2 .btn { min-height: 42px; padding: 0 16px; }
+  .cli-home .logos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .linha-ponto { padding-top: 70px; }
+  .linha-ponto::before { height: 50px; }
+  .linha-ponto::after { top: 50px; }
+}
