@@ -8,9 +8,10 @@
 // Não usa IA: só abre o site num navegador de verdade e tira dois prints da primeira tela (≈ 60 KB e 25 KB).
 import fs from 'node:fs';
 import path from 'node:path';
-import sharp from 'sharp';
 import { DADOS } from './config.mjs';
 import { lerLista, lerJson, gravarJson, slugDe, log } from './lib/util.mjs';
+import { UA_PC, UA_CEL, abrirNavegador as abrir, fecharNavegador, abrirPagina, reduzir, erroLegivel } from './lib/navegador.mjs';
+import { semGoogle } from './lib/semgoogle.mjs';
 
 const args = process.argv.slice(2);
 const opcao = (n, padrao) => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : padrao; };
@@ -22,63 +23,13 @@ const pasta = path.join(DADOS, 'prints');
 fs.mkdirSync(pasta, { recursive: true });
 const manifesto = path.join(pasta, 'prints.json');
 
-const UA_PC = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36';
-const UA_CEL = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
-
-// Endereços a tentar, na ordem: como veio, outro protocolo, com/sem www (sites antigos só abrem de um jeito).
-export function candidatos(site) {
-  const base = site.startsWith('http') ? site : 'http://' + site;
-  let u; try { u = new URL(base); } catch { return []; }
-  const lista = [u.href];
-  const outro = new URL(u.href); outro.protocol = u.protocol === 'https:' ? 'http:' : 'https:'; lista.push(outro.href);
-  const www = new URL(u.href); www.hostname = u.hostname.startsWith('www.') ? u.hostname.slice(4) : 'www.' + u.hostname; lista.push(www.href);
-  const www2 = new URL(outro.href); www2.hostname = www.hostname; lista.push(www2.href);
-  return [...new Set(lista)];
-}
-export function erroLegivel(e) {
-  const m = String(e?.message || e);
-  if (/ERR_NAME_NOT_RESOLVED/.test(m)) return 'O endereço não existe mais (domínio não encontrado)';
-  if (/ERR_CONNECTION_REFUSED|ERR_CONNECTION_RESET|ERR_CONNECTION_CLOSED|ERR_EMPTY_RESPONSE/.test(m)) return 'O servidor recusou ou derrubou a conexão';
-  if (/ERR_CONNECTION_TIMED_OUT|Timeout/.test(m)) return 'Demorou mais de 30 segundos para abrir';
-  if (/ERR_TOO_MANY_REDIRECTS/.test(m)) return 'O site entra em loop de redirecionamento';
-  if (/^HTTP (\d+)/.test(m)) return 'O site responde com erro ' + m.match(/^HTTP (\d+)/)[1];
-  return m.split('\n')[0].replace(/^page\.goto: /, '').slice(0, 140);
-}
-
-let navegador = null;
-// Um único navegador para todos os trabalhadores (guarda a promessa, senão cada um abriria o seu).
-function abrir() {
-  navegador ??= (async () => {
-    const { chromium } = await import('playwright');
-    const opc = { args: ['--ignore-certificate-errors'] };
-    if (process.env.CHROME) opc.executablePath = process.env.CHROME;
-    if (process.env.LINHA_PROXY) opc.proxy = { server: process.env.LINHA_PROXY };
-    return chromium.launch(opc);
-  })();
-  return navegador;
-}
-
-async function abrirPagina(pg, site) {
-  let primeiro;
-  for (const [n, url] of candidatos(site).entries()) {
-    try {
-      // A primeira tentativa espera até 30 s; as alternativas (outro protocolo, com/sem www) só 12 s.
-      const r = await pg.goto(url, { waitUntil: 'domcontentloaded', timeout: n === 0 ? 30000 : 12000 });
-      if (r && r.status() >= 400) { primeiro ??= new Error('HTTP ' + r.status()); continue; }
-      return r;
-    } catch (e) { primeiro ??= e; }
-  }
-  // O erro que vale é o do endereço como veio na lista (os outros foram só tentativas).
-  throw primeiro || new Error('endereço inválido');
-}
-const reduzir = (buf, largura, qualidade) => sharp(buf).resize({ width: largura, withoutEnlargement: true }).jpeg({ quality: qualidade, mozjpeg: true }).toBuffer();
-
 async function capturar(e) {
   const b = await abrir();
   const sinais = [];
   const out = { id: e.id, nome: e.nome, site: e.site, em: new Date().toISOString() };
   // Computador (1366 x 800): só a primeira tela, que é o que o dono vê ao abrir.
   const pc = await b.newContext({ viewport: { width: 1366, height: 800 }, userAgent: UA_PC, locale: 'pt-BR', ignoreHTTPSErrors: true });
+  await semGoogle(pc);
   try {
     const pg = await pc.newPage();
     const t0 = Date.now();
@@ -96,6 +47,7 @@ async function capturar(e) {
   } finally { await pc.close(); }
   // Celular (390 x 844): também só a primeira tela, e confere se o site cabe na largura.
   const cel = await b.newContext({ viewport: { width: 390, height: 844 }, userAgent: UA_CEL, isMobile: true, hasTouch: true, locale: 'pt-BR', ignoreHTTPSErrors: true });
+  await semGoogle(cel);
   try {
     const pg = await cel.newPage();
     await pg.goto(out.url_final, { waitUntil: 'domcontentloaded', timeout: 30000 });
@@ -128,5 +80,5 @@ async function trabalhador() {
   }
 }
 await Promise.all(Array.from({ length: Math.max(1, Number(opcao('paralelo', 3))) }, trabalhador));
-if (navegador) await (await navegador).close();
+await fecharNavegador();
 log(`pronto: ${ok} com print, ${falha} que não abriram. No hub: Aprovar > Importar prints > escolha os arquivos de ${pasta}`);
