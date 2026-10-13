@@ -8,26 +8,28 @@
 <link rel="icon" href="assets/logo-pp.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 <style>
-:root{--azul:#27568e;--azul-f:#083974;--ink:#1d2430;--mut:#55606e;--line:#dfe5ec}
+:root{--azul:#27568e;--azul-f:#083974;--ink:#1d2430;--mut:#55606e}
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:#f5f7fa;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px}
-img.logo{width:150px;height:auto}
-h1{font-family:Montserrat,Arial,sans-serif;font-weight:800;font-size:clamp(22px,4vw,30px);margin:18px 0 6px;text-align:center}
-p.s{color:var(--mut);margin:0 0 26px;text-align:center}
+body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:#eef2f7;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 16px}
+img{width:150px;height:auto}
+h1{font-family:Montserrat,Arial,sans-serif;font-weight:800;font-size:clamp(22px,4vw,30px);margin:18px 0 6px;text-align:center;color:var(--azul-f)}
+p{color:var(--mut);margin:0 0 26px;text-align:center}
 .opcoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;width:min(760px,100%)}
-.opcoes a{display:block;background:#fff;border:1px solid var(--line);border-top:5px solid var(--azul);padding:22px;text-decoration:none;color:inherit}
-.opcoes a:hover{border-color:var(--azul-f)}
+.opcoes a{display:block;background:#fff;padding:24px;text-decoration:none;color:inherit;border-left:5px solid var(--azul);box-shadow:0 6px 24px rgba(8,57,116,.08)}
+.opcoes a.b{background:#0c1520;border-left-color:#5277ac;color:#e9eef5}
+.opcoes a.b span{color:#a9b7c9}
 .opcoes b{font-family:Montserrat,Arial,sans-serif;font-size:19px;color:var(--azul-f)}
+.opcoes a.b b{color:#fff}
 .opcoes span{display:block;margin-top:8px;color:var(--mut);font-size:15px;line-height:1.5}
 </style>
 </head>
 <body>
-<img class="logo" src="assets/logo-pp.png" alt="Performance Pattern &amp; Machine">
+<img src="assets/logo-pp.png" alt="Performance Pattern &amp; Machine">
 <h1>Two versions of the new site</h1>
-<p class="s">Both keep the company's real logo, colors, certifications and text.</p>
+<p>Both use the company's real logo, photo, certifications and text.</p>
 <div class="opcoes">
-  <a href="a/index.html"><b>Version A · Classic</b><span>Clean white layout with the building photo, a blue stats band and a simple, direct structure.</span></a>
-  <a href="b/index.html"><b>Version B · Industrial</b><span>Darker, bolder layout: split hero, numbered service rows and a dark section for the company history.</span></a>
+  <a href="a/index.html"><b>Version A · Modern light</b><span>Bright layout with a bento grid of stats, the diamond from the logo as a graphic element, and cards of different sizes.</span></a>
+  <a class="b" href="b/index.html"><b>Version B · Industrial dark</b><span>Dark layout with a full-width hero, animated counters, service steps on diamond nodes, and a bold contrast.</span></a>
 </div>
 </body>
 </html>

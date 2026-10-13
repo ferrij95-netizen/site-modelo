@@ -11,34 +11,32 @@
 <link rel="icon" href="../assets/logo-pp.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:ital,wght@0,700;0,800;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/a.css">
 </head>
 <body class="v-a">
+<a class="pular" href="#conteudo">Skip to content</a>
 <header class="top">
   <a class="marca" href="index.html"><img src="../assets/logo-pp.png" alt="Performance Pattern &amp; Machine"></a>
-  <nav class="menu" aria-label="Main menu"><a href="index.html">Home</a><a href="sobre.html">About PPM</a><a href="servicos.html">Services</a><a href="contato.html" class="on">Contact</a></nav>
+  <button class="abrir" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav class="menu" id="menu" aria-label="Main menu"><a href="index.html">Home</a><a href="sobre.html">About</a><a href="servicos.html">Services</a><a href="contato.html" aria-current="page">Contact</a><a class="pill" href="contato.html">Contact us</a></nav>
 </header>
-<main>
-<section class="bloco topo">
+<main id="conteudo">
+<section class="cabeca">
   <p class="kicker">Contact</p>
-  <h1>Talk to Performance Pattern &amp; Machine</h1>
+  <h1 class="reveal">Talk to Performance Pattern &amp; Machine</h1>
 </section>
-<section class="bloco contato">
-  <div class="cartao"><h3>Email</h3><p><a href="mailto:info@performancepattern.com">info@performancepattern.com</a></p></div>
-  <div class="cartao"><h3>Location</h3><p>Peoria, Illinois</p></div>
-  <div class="cartao"><h3>Join our team</h3><p>We are adding pattern maker and mold maker positions. Send your résumé to info@performancepattern.com.</p></div>
+<section class="bloco contatos">
+  <a class="contato-card reveal" href="mailto:info@performancepattern.com"><b>Email</b><span>info@performancepattern.com</span></a>
+  <div class="contato-card reveal"><b>Location</b><span>Peoria, Illinois</span></div>
+  <div class="contato-card reveal"><b>Join our team</b><span>We are adding pattern maker and mold maker positions.</span></div>
 </section>
 </main>
 <footer class="rodape">
-  <div>
-    <strong>Performance Pattern &amp; Machine</strong>
-    <span>Peoria, Illinois</span>
-  </div>
-  <div>
-    <a href="mailto:info@performancepattern.com">info@performancepattern.com</a>
-    <span>ISO 9001:2015 · AS9100D · ITAR registered</span>
-  </div>
+  <div class="rodape-marca"><img src="../assets/logo-pp.png" alt=""><span>Peoria, Illinois · since 1980</span></div>
+  <div><strong>Contact</strong><a href="mailto:info@performancepattern.com">info@performancepattern.com</a><span>Peoria, Illinois</span></div>
+  <div><strong>Certified</strong><span>AS9100D · ISO 9001:2015</span><span>ITAR registered</span></div>
 </footer>
+<script src="../assets/site.js" defer></script>
 </body>
 </html>
