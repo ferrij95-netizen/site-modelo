@@ -54,8 +54,10 @@ Tudo fica no banco do hub (D1 `prospeccao`). A linha conversa com ele pelo wrang
 1. `node hub.mjs lista --lista agro --limite 36`: baixa para `<dados>/lista.json` empresas da lista ainda sem triagem, com site e telefone (as de pior site primeiro).
 2. `node prints.mjs <dados>/lista.json`: abre cada site num navegador de verdade e grava em `<dados>/prints/` dois prints pequenos (`<id>.d.jpg` computador, `<id>.m.jpg` celular) e `prints.json` com o que não abriu e os alertas (sem HTTPS, não cabe no celular, rodapé antigo).
 3. No hub: Aprovar > Importar prints > escolher todos os arquivos dessa pasta. As fichas com print passam a aparecer primeiro.
-4. O João desliza as fichas. Depois: `node hub.mjs fila` baixa as aprovadas para `<dados>/fila.json`, e `node rodar.mjs entrada <dados>/fila.json` seguido de `node rodar.mjs` monta os sites (o `id` do canvas acompanha cada empresa).
-5. Quando as empresas estiverem prontas: `node hub.mjs devolver` escreve `<dados>/devolver.sql` (confira) e `node hub.mjs devolver --aplicar` grava no canvas: status "ligar", proposta A/B, script de ligação e alertas.
+4. O João desliza as fichas. Depois: `node hub.mjs fila` pega as aprovadas que ainda não têm dono, marca cada uma como "em produção" no hub (`pedidoSite.estado = "producao"`, `quem = "linha"`) e grava `<dados>/fila.json`; `node rodar.mjs entrada <dados>/fila.json` seguido de `node rodar.mjs` monta os sites (o `id` do canvas acompanha cada empresa). Com `--ver` só olha a fila, sem marcar; com `--retomar` inclui as que a linha já pegou e não terminou.
+5. Quando as empresas estiverem prontas: `node hub.mjs devolver` escreve `<dados>/devolver.sql` (confira) e `node hub.mjs devolver --aplicar` grava no canvas: status "ligar", proposta A/B, script de ligação, alertas e `pedidoSite` "pronto" com os links das duas versões.
+
+O campo `pedidoSite` (`estado`: "fila", "producao" ou "pronto"; `quem`: "claude" ou "linha") é compartilhado com o botão "Fazer site" do canvas: quem já está "em produção" não volta para a fila, seja a linha ou o Claude quem pegou. Aprovações da aba Aprovar não têm `pedidoSite` e contam como "fila".
 
 Empresas aprovadas que não têm site (ficha do Google) saem em `fila-sem-site.json`; a linha ainda não monta site a partir só do Google.
 
