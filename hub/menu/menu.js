@@ -11,6 +11,7 @@
     ['/#empresas', 'Empresas e CRM', '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>'],
     ['/#roteiro', 'Roteiro e bônus', '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'],
     null,
+    ['/resultados/', 'Resultados', '<path d="M4 20h16M7 16v-5M12 16V6M17 16v-8"/>'],
     ['/sites/', 'Sites dos clientes', '<path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/>'],
     ['/busca/', 'Buscar sites antigos', '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'],
     ['/ligar/', 'Para ligar', '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>'],
