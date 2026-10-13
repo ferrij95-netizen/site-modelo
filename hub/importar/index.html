@@ -9,6 +9,7 @@
 <style>
   @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-400.woff2) format('woff2'); font-weight:400; }
   @font-face { font-family:'Fraunces'; src:url(/entrar/fontes/fraunces-latin.woff2) format('woff2'); }
+  * { box-sizing:border-box; }
   :root { --navy:#182644; --sand:#f7f3f0; --orange:#ed9454; --muted:#6b7079; }
   body { margin:0; min-height:100dvh; display:grid; place-items:center; background:var(--sand); color:var(--navy); font:16px/1.5 'General Sans', system-ui, sans-serif; }
   main { width:min(560px, calc(100% - 32px)); background:#fff; border-radius:20px; padding:32px; box-shadow:0 20px 50px rgba(24,38,68,.08); }
@@ -25,6 +26,7 @@
 </style>
 </head>
 <body>
+<script src="/menu/menu.js"></script>
 <main>
   <h1>Importar empresas</h1>
   <p>Escolha o arquivo de empresas (.json) que o Claude mandou. Empresas que já estão no hub não são alteradas, então pode repetir sem medo.</p>
