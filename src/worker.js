@@ -28,9 +28,12 @@ async function hub(request, env, url) {
   if (url.pathname === '/entrar' && request.method === 'POST') {
     const form = await request.formData().catch(() => null);
     const cred = `${String(form?.get('ov_u') || form?.get('email') || '').trim().toLowerCase()}:${form?.get('ov_k') || form?.get('senha') || ''}`;
-    if ((await sha256(cred)) !== CRED_HASH) return redirecionar('/entrar/?erro=1');
+    // Depois do login volta para a página que a pessoa tentou abrir (só caminhos do próprio hub).
+    const volta = String(form?.get('volta') || '');
+    const destino = /^\/(?!\/|entrar)[^\\]*$/.test(volta) ? volta : '/';
+    if ((await sha256(cred)) !== CRED_HASH) return redirecionar('/entrar/?erro=1' + (destino !== '/' ? '&volta=' + encodeURIComponent(destino) : ''));
     const validade = form.get('lembrar') ? '; Max-Age=2592000' : '';
-    return redirecionar('/', `hub=${await sha256('sessao:' + cred)}; Path=/; HttpOnly; Secure; SameSite=Lax${validade}`);
+    return redirecionar(destino, `hub=${await sha256('sessao:' + cred)}; Path=/; HttpOnly; Secure; SameSite=Lax${validade}`);
   }
   if (url.pathname === '/sair') return redirecionar('/entrar/', 'hub=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0');
 
@@ -39,7 +42,7 @@ async function hub(request, env, url) {
     const cookie = (request.headers.get('Cookie') || '').match(/(?:^|;\s*)hub=([0-9a-f]{64})/);
     if (!cookie || (await sha256(cookie[1])) !== SESSAO_HASH) {
       if (url.pathname.startsWith('/api/')) return new Response('{"code":"session_expired"}', { status: 401, headers: { 'Content-Type': 'application/json' } });
-      return redirecionar('/entrar/');
+      return redirecionar(url.pathname === '/' ? '/entrar/' : '/entrar/?volta=' + encodeURIComponent(url.pathname + url.search));
     }
   }
   // Dados do canvas de prospecção (página inicial do hub), no D1.
