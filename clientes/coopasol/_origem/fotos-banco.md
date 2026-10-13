@@ -33,3 +33,7 @@ Todas com crédito no rodapé de cada página que usa a foto ("Foto ilustrativa:
 - banco-fileiras: fileiras de soja jovem. Marcelo Camargo/Agência Brasil, CC BY 3.0 BR
 
   ![banco-fileiras](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Chapada_dos_Veadeiros_08.jpg/1920px-Chapada_dos_Veadeiros_08.jpg)
+
+## Print do site atual (para o cartão de comparação)
+
+![site-atual](https://image.thum.io/get/width/1200/crop/760/noanimate/https://coopasol.com.br/coopasol)
