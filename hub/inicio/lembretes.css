@@ -1,0 +1,44 @@
+/* Lembretes e follow-up (hub/inicio/lembretes.js): bloco "Hoje" da Visão geral e a janela de WhatsApp/resultado. */
+.lb{display:flex;flex-direction:column;margin-top:10px}
+.lb-sec{display:flex;align-items:center;gap:8px;margin:14px 0 2px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.lb-sec:first-child{margin-top:4px}
+.lb-sec span{font-size:11px;background:var(--sand);border-radius:20px;padding:1px 8px;letter-spacing:0}
+.lb-item{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n d" "n a";gap:2px 10px;align-items:center;padding:clamp(7px,1.3vh,12px) 0;border-bottom:1px solid var(--line)}
+.lb-nome{grid-area:n;border:0;background:none;padding:0;text-align:left;cursor:pointer;color:var(--ink);min-width:0}
+.lb-nome .tn{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-nome .ts{display:block;font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-nome:hover .tn{color:var(--link)}
+.lb-item .due{grid-area:d;justify-self:end;white-space:nowrap}
+.lb-acoes{grid-area:a;display:flex;gap:4px;justify-self:end}
+.lb-b{width:30px;height:30px;border-radius:50%;border:0;background:var(--sand);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none}
+.lb-b:hover{background:var(--navy);color:var(--cream)}
+.lb-b.wa:hover{background:#25d366;color:#fff}
+.lb-b svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lb-vazio{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.lb-ficha{display:flex;gap:8px;flex-wrap:wrap;margin:-4px 0 14px}
+/* No celular o bloco Hoje vem antes dos números. */
+@media (max-width:900px){.vtop>.lb-box{order:-1}.lb-box .sechead{margin-top:8px}}
+
+.lb-dlg{border:0;border-radius:20px;padding:0;width:min(620px,calc(100vw - 24px));max-height:calc(100dvh - 24px);background:var(--panel);color:var(--ink);box-shadow:0 30px 80px -30px rgba(0,0,0,.5)}
+.lb-dlg::backdrop{background:rgba(12,16,24,.45)}
+.lb-f{display:flex;flex-direction:column;gap:18px;padding:22px 24px 24px}
+.lb-top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.lb-top h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0}
+.lb-top p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.lb-f section{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:16px}
+.lb-f h3{margin:0;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.lb-sits{display:flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:14px;background:var(--sand)}
+.lb-sits .chip{height:32px;padding:0 12px;font-size:13.5px}
+.lb-f textarea{font-size:14.5px;line-height:1.45}
+.lb-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.lb-row.tight{gap:4px}
+.lb-row a.btn{text-decoration:none}
+.lb-dica{font-size:13px;color:var(--muted)}
+.lb-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lb-cols .wide{grid-column:1 / -1}
+.lb-cols div.f{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--muted);font-weight:500;grid-column:1 / -1}
+@media (max-width:560px){
+  .lb-cols{grid-template-columns:1fr}
+  .lb-f{padding:18px 16px 20px}
+  .lb-top h2{font-size:22px}
+}

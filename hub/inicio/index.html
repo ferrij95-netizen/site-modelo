@@ -420,6 +420,7 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
 .side .lists.more{-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
 </style>
 <link rel="stylesheet" href="/inicio/aprovar.css">
+<link rel="stylesheet" href="/inicio/lembretes.css">
 
 <div class="app">
   <aside class="rail">
@@ -649,6 +650,7 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
 
 <script src="/inicio/dados.js"></script>
 <script src="/inicio/aprovar.js"></script>
+<script src="/inicio/lembretes.js"></script>
 <script>
 let myId=null;
 const STATUS=[["novo","Novo"],["produzir","Fazer preview"],["ligar","Ligar"],["enviado","Link enviado"],["proposta","Proposta enviada"],["conversa","Em conversa"],["fechado","Fechado"],["perdido","Perdido"]];
@@ -850,7 +852,7 @@ function renderDetail(){
     D.querySelectorAll("[data-k]").forEach(i=>i.addEventListener("change",()=>{const v=i.value.trim();if(i.dataset.k==="nome"&&!v){i.value=d.nome;return}write(sel,{[i.dataset.k]:v})}));
     D.querySelectorAll("[data-c]").forEach(i=>i.addEventListener("change",()=>{write(sel,{contato:{[i.dataset.c]:i.value.trim()}})}));
     D.querySelectorAll("[data-m]").forEach(i=>i.addEventListener("change",()=>{write(sel,{marca:{[i.dataset.m]:i.value.trim()}})}));
-    $("#dStatus").addEventListener("change",e=>write(sel,{status:e.target.value}));
+    $("#dStatus").addEventListener("change",e=>write(sel,{status:e.target.value,statusEm:Date.now()}));
     $("#back").addEventListener("click",()=>{sel=null;renderAll()});
     $("#del").addEventListener("click",askDelete);
     const log=()=>{const t=$("#logTxt").value.trim();if(!t)return;const cur=docs.find(x=>x.id===sel);const n=new Date();
@@ -890,6 +892,7 @@ function renderDetail(){
   const m=d.marca||{};setv("mCores",m.cores);setv("mFT",m.fonteTitulo);setv("mFX",m.fonteTexto);
   renderPedFicha(d);
   renderEnr(d);
+  Lembretes.ficha(d);
 }
 function askDelete(){
   $("#delWrap").innerHTML=`<span class="confirm">Excluir de vez? <button class="btn sm danger" type="button" id="delYes">Sim</button><button class="btn sm" type="button" id="delNo">Não</button></span>`;
@@ -1006,6 +1009,7 @@ function renderVisao(){
       st("prop","Proposta","Versão A ou B",prop,null,pct(prop,live.length||1)*3,"s","f:proposta")+
       st("ok","Fechado","Novos clientes",fech,alcan||null,pct(fech,alcan),"","f:fechado")
     }</div>`;
+  Lembretes.render(V.querySelector(".vr"));
 }
 $("#paneVisao").addEventListener("click",e=>{
   const o=e.target.closest("[data-open]");if(o){sel=o.dataset.open;builtFor=null;filter="todos";q="";showTab("empresas");renderAll();return}
@@ -1204,6 +1208,8 @@ async function savePrint(id,obj){
 }
 Aprovar.init({root:$("#paneAprovar"),getDocs:()=>docs,lists:()=>LISTS,lista:()=>lista,setLista,loaded:()=>loaded,canWrite:()=>canWrite&&!!db,
   save:(id,p)=>write(id,p),toast,userId:()=>myId,getPrint,savePrint,openFicha:id=>{sel=id;builtFor=null;showTab("empresas");renderAll()}});
+Lembretes.init({save:(id,p)=>write(id,p),toast,status:SLABEL,listas:LLABEL,
+  openFicha:(id,l)=>{if(l&&l!==lista)setLista(l);sel=id;builtFor=null;filter="todos";q="";showTab("empresas");renderAll()}});
 /* ---------- início ---------- */
 renderAll();
 {let t="visao";try{const s=localStorage.getItem("tab");if(TITLES[s])t=s}catch{}const h=location.hash.slice(1);if(TITLES[h]){t=h;history.replaceState(null,"",location.pathname)}showTab(t)}

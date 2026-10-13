@@ -305,7 +305,7 @@ fs.mkdirSync(path.join(out, 'sites'), { recursive: true });
 fs.writeFileSync(path.join(out, 'sites', 'index.html'), html);
 fs.copyFileSync(path.join(repo, 'hub/inicio/index.html'), path.join(out, 'index.html'));
 fs.mkdirSync(path.join(out, 'inicio'), { recursive: true });
-for (const f of ['dados.js', 'aprovar.js', 'aprovar.css']) fs.copyFileSync(path.join(repo, 'hub/inicio', f), path.join(out, 'inicio', f));
+for (const f of ['dados.js', 'aprovar.js', 'aprovar.css', 'lembretes.js', 'lembretes.css']) fs.copyFileSync(path.join(repo, 'hub/inicio', f), path.join(out, 'inicio', f));
 
 // Moldura: o site do cliente aberto dentro do hub, com a barra da Overtus em cima.
 const moldura = c => `<!doctype html>
