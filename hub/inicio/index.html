@@ -780,7 +780,7 @@ function renderDetail(){
     D.innerHTML=`
     <button class="btn sm back" type="button" id="back">← Lista</button>
     <div class="dhead"><div class="t"><h2 id="dNome"></h2><a id="dSite" target="_blank" rel="noopener"></a></div>
-      <div class="tools"><select id="dStatus" aria-label="Etapa">${STATUS.map(([k,l])=>`<option value="${k}">${l}</option>`).join("")}</select>
+      <div class="tools"><a class="btn sm primary" id="docBtn" style="text-decoration:none" href="/documento/?id=${encodeURIComponent(d.id)}" title="Gera a proposta com as duas versões e o contrato preenchido">Proposta e contrato</a><select id="dStatus" aria-label="Etapa">${STATUS.map(([k,l])=>`<option value="${k}">${l}</option>`).join("")}</select>
       <span id="delWrap"><button class="btn sm danger" type="button" id="del">Excluir</button></span></div></div>
     <div class="facts" id="dFacts"></div><div class="why" id="dWhy" hidden></div>
     <div class="cols">

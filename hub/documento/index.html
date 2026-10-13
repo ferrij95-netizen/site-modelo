@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta e contrato · Overtus Hub</title>
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#182644">
+<link rel="icon" href="/app/favicon-48.png">
+<link rel="apple-touch-icon" href="/app/icone-apple-180.png">
+<style>
+  @font-face { font-family:'Fraunces'; src:url(/entrar/fontes/fraunces-latin.woff2) format('woff2'); font-weight:300 700; font-display:swap; }
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-400.woff2) format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-500.woff2) format('woff2'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-600.woff2) format('woff2'); font-weight:600; font-display:swap; }
+  /* Mesmo visual do hub. Cabe na janela: o formulário à esquerda e o documento à direita rolam por dentro. */
+  :root { --bg:#f4f4f1; --card:#fff; --ink:#16181b; --muted:#6b7079; --line:#e3e3de; --azul:#182644; --creme:#fef9e1; --areia:#f3ecdc; --laranja:#ed9454; --marca:#182644;
+    --borda:clamp(12px, min(2.6vh, 2.2vw), 28px); }
+  * { box-sizing:border-box; }
+  [hidden] { display:none !important; }
+  html, body { height:100%; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 'General Sans', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; display:flex; flex-direction:column; height:100vh; height:100dvh; padding:var(--borda); gap:clamp(8px, 1.6vh, 16px); }
+  header.topo { width:100%; max-width:1700px; margin:0 auto; display:flex; justify-content:space-between; align-items:end; gap:6px 16px; flex-wrap:wrap; flex:none; }
+  header.topo h1 { margin:0; font:400 clamp(20px, 3.2vh, 28px)/1.2 'Fraunces', Georgia, serif; letter-spacing:-.01em; }
+  header.topo p { margin:2px 0 0; color:var(--muted); font-size:clamp(13px, 1.8vh, 15px); }
+  header.topo a { color:inherit; }
+  .resumo { color:var(--muted); font-size:14px; }
+  .layout { width:100%; max-width:1700px; margin:0 auto; flex:1; min-height:0; display:grid; grid-template-columns:minmax(300px, 380px) 1fr; gap:clamp(10px, 1.8vh, 18px); }
+
+  /* formulário */
+  .form { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:auto; padding:6px 14px 14px; }
+  .form details { border-bottom:1px solid var(--line); padding:8px 0; }
+  .form details:last-child { border-bottom:0; }
+  .form summary { cursor:pointer; font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--azul); padding:6px 0; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  .form summary::after { content:'+'; font-size:16px; color:var(--muted); }
+  .form details[open] summary::after { content:'–'; }
+  .form .ajuda { margin:0 0 8px; font-size:12px; color:var(--muted); }
+  .f { display:flex; flex-direction:column; gap:3px; margin:0 0 9px; font-size:12px; color:var(--muted); }
+  .f input, .f textarea, .f select { font:inherit; font-size:14px; color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:7px 9px; background:#fff; width:100%; }
+  .f textarea { resize:vertical; }
+  .f input:focus, .f textarea:focus, .f select:focus { outline:2px solid rgba(24,38,68,.25); border-color:var(--azul); }
+  .f.vazio input, .f.vazio textarea { border-color:#e8b06f; background:#fffaf1; }
+  .duas { display:grid; grid-template-columns:1fr 1fr; gap:0 8px; }
+  .pac { border:1px solid var(--line); border-radius:10px; padding:10px; margin:0 0 8px; }
+  .pac .nome { display:flex; align-items:center; gap:8px; font-weight:600; color:var(--ink); font-size:14px; margin-bottom:6px; }
+  .pac .nome label { display:flex; gap:6px; align-items:center; cursor:pointer; }
+  .pac .itens { font-size:12px; color:var(--muted); margin:0 0 8px; }
+  .pac .marcas { display:flex; gap:12px; font-size:12px; color:var(--muted); }
+  .pac .marcas label { display:flex; gap:4px; align-items:center; cursor:pointer; }
+
+  /* documento */
+  .doc { background:var(--card); border:1px solid var(--line); border-radius:12px; min-height:0; display:flex; flex-direction:column; overflow:hidden; }
+  .barra { display:flex; justify-content:space-between; align-items:center; gap:8px 14px; flex-wrap:wrap; padding:10px 14px; border-bottom:1px solid var(--line); background:linear-gradient(90deg, #eef1f6, #fff); }
+  .abas { display:flex; gap:2px; padding:3px; border-radius:99px; background:#e9ebf0; }
+  .abas button { border:0; background:transparent; cursor:pointer; padding:6px 16px; border-radius:99px; font:inherit; font-size:13px; font-weight:500; color:var(--muted); }
+  .abas button[aria-pressed="true"] { background:var(--azul); color:#fff; }
+  .acoes { display:flex; gap:6px; flex-wrap:wrap; }
+  .btn { font:inherit; font-size:13px; font-weight:600; padding:7px 12px; border-radius:8px; text-decoration:none; white-space:nowrap; cursor:pointer; background:#fff; color:var(--ink); border:1px solid var(--line); }
+  .btn.prim { background:var(--azul); color:#fff; border-color:var(--azul); }
+  .btn:disabled { opacity:.5; cursor:default; }
+  .faltas { max-height:76px; overflow:auto; flex:none; padding:8px 14px; font-size:13px; background:#fff7ea; border-bottom:1px solid #f1dfc2; color:#7a4a12; }
+  .faltas button { font:inherit; font-size:12px; border:1px solid #ebcf9f; background:#fff; border-radius:99px; padding:1px 8px; margin:2px 2px 0 0; cursor:pointer; color:#7a4a12; }
+  .papel { flex:1; overflow:auto; background:#e9e9e4; padding:clamp(10px, 2vh, 22px); }
+  .folha { max-width:820px; margin:0 auto; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.12); border-radius:4px; }
+  .msg { max-width:640px; margin:40px auto; text-align:center; color:var(--muted); }
+  mark.falta { background:#ffe7c2; color:#7a4a12; padding:0 3px; border-radius:3px; }
+  #toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:var(--azul); color:#fff; padding:9px 16px; border-radius:99px; font-size:14px; z-index:60; box-shadow:0 4px 16px rgba(0,0,0,.2); }
+
+  /* ---- proposta ---- */
+  .pr { font-size:15px; line-height:1.6; color:#1d2230; }
+  .pr section { padding:44px 56px; border-top:1px solid #ecebe6; }
+  .pr h2 { font:400 30px/1.15 'Fraunces', Georgia, serif; letter-spacing:-.01em; margin:0 0 14px; color:var(--azul); }
+  .pr h3 { font-size:16px; margin:0 0 6px; color:var(--azul); }
+  .pr .rot { font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--laranja); margin:0 0 8px; }
+  .pr .capa { border-top:0; color:var(--creme); padding:0; border-radius:4px 4px 0 0; overflow:hidden;
+    background:radial-gradient(ellipse 60% 80% at 0% 0%, rgba(40,14,1,.8), rgba(40,14,1,0) 70%), radial-gradient(ellipse 55% 70% at 100% 100%, rgba(237,148,84,.35), rgba(237,148,84,0) 70%), var(--azul); }
+  .pr .capa .dentro { padding:56px 56px 48px; min-height:430px; display:flex; flex-direction:column; }
+  .pr .capa .logo { display:flex; align-items:center; gap:10px; font:400 22px/1 'Fraunces', serif; }
+  .pr .capa .logo i { width:38px; height:38px; border-radius:50%; display:grid; place-items:center; font-style:normal; box-shadow:inset 0 0 0 1.5px rgba(254,249,225,.4); }
+  .pr .capa .tit { margin-top:auto; }
+  .pr .capa .tit .rotulo { margin:0 0 6px; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--laranja); font-weight:600; }
+  .pr .capa h1 { font:400 48px/1.08 'Fraunces', Georgia, serif; margin:0 0 14px; letter-spacing:-.015em; }
+  .pr .capa .sub { margin:0; font-size:16px; color:rgba(254,249,225,.82); max-width:520px; }
+  .pr .capa .meta { display:flex; gap:28px; flex-wrap:wrap; margin-top:30px; padding-top:16px; border-top:1px solid rgba(254,249,225,.2); font-size:13px; color:rgba(254,249,225,.75); }
+  .pr .capa .meta b { display:block; color:var(--creme); font-weight:500; font-size:14px; }
+  .pr .faixa { height:8px; background:var(--marca); }
+  .pr ul.pontos { margin:0; padding:0; list-style:none; display:grid; gap:8px; }
+  .pr ul.pontos li { padding:10px 14px 10px 40px; border-radius:10px; background:#f7f5ef; position:relative; }
+  .pr ul.pontos li::before { content:''; position:absolute; left:15px; top:17px; width:10px; height:10px; border-radius:50%; background:var(--laranja); }
+  .pr .versoes { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+  .pr .ver { border:1px solid #e3e1da; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; }
+  .pr .ver .cab { padding:14px 16px; background:linear-gradient(135deg, var(--azul), #34507c); color:var(--creme); }
+  .pr .ver .cab span { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--laranja); font-weight:600; }
+  .pr .ver .cab h3 { color:var(--creme); margin:2px 0 0; font:400 22px/1.2 'Fraunces', serif; }
+  .pr .ver.b .cab { background:linear-gradient(135deg, #2a1a0c, #6b4524); }
+  .pr .ver .corpo { padding:14px 16px; flex:1; display:flex; flex-direction:column; gap:8px; }
+  .pr .ver .corpo p { margin:0; }
+  .pr .ver a { color:var(--azul); font-weight:600; word-break:break-all; }
+  .pr .capa-site { margin-top:16px; border-radius:12px; overflow:hidden; border:1px solid #e3e1da; }
+  .pr .capa-site img { display:block; width:100%; height:auto; }
+  .pr .pacotes { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-top:16px; align-items:stretch; }
+  .pr .pacote { border:1px solid #e3e1da; border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:10px; position:relative; }
+  .pr .pacote.rec { border:2px solid var(--laranja); box-shadow:0 6px 20px rgba(237,148,84,.18); }
+  .pr .pacote .selo { position:absolute; top:-11px; left:16px; background:var(--laranja); color:#2a1606; font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:2px 10px; border-radius:99px; }
+  .pr .pacote h3 { font:400 22px/1.2 'Fraunces', serif; margin:4px 0 0; }
+  .pr .pacote .preco { font-size:26px; font-weight:600; color:var(--azul); line-height:1.1; }
+  .pr .pacote .preco small { display:block; font-size:13px; font-weight:400; color:var(--muted); margin-top:3px; }
+  .pr .pacote ul { margin:0; padding:0 0 0 18px; font-size:14px; }
+  .pr .passos { counter-reset:p; display:grid; gap:10px; margin:14px 0 0; padding:0; list-style:none; }
+  .pr .passos li { counter-increment:p; display:grid; grid-template-columns:36px 1fr; gap:12px; align-items:start; }
+  .pr .passos li::before { content:counter(p); width:36px; height:36px; border-radius:50%; background:var(--azul); color:var(--creme); display:grid; place-items:center; font:400 18px/1 'Fraunces', serif; }
+  .pr .quem { background:var(--areia); }
+  .pr .fim { background:var(--azul); color:var(--creme); border-radius:0 0 4px 4px; }
+  .pr .fim h2 { color:var(--creme); }
+  .pr .fim a { color:var(--laranja); }
+  .pr .nota { font-size:12px; color:var(--muted); margin-top:12px; }
+
+  /* ---- contrato ---- */
+  .ct { padding:56px 64px; font:14px/1.65 'General Sans', system-ui, sans-serif; color:#1b1d22; text-align:justify; }
+  .ct h1 { font:400 26px/1.2 'Fraunces', Georgia, serif; text-align:center; margin:0 0 6px; color:var(--azul); }
+  .ct .subt { text-align:center; color:var(--muted); margin:0 0 26px; font-size:13px; }
+  .ct h2 { font-size:14px; text-transform:uppercase; letter-spacing:.04em; margin:22px 0 6px; color:var(--azul); text-align:left; }
+  .ct p { margin:0 0 8px; }
+  .ct table { width:100%; border-collapse:collapse; margin:10px 0 12px; font-size:13px; text-align:left; }
+  .ct th, .ct td { border:1px solid #d9d9d4; padding:6px 8px; vertical-align:top; }
+  .ct th { background:#f2f3f6; }
+  .ct .ass { display:grid; grid-template-columns:1fr 1fr; gap:36px 40px; margin:40px 0 10px; text-align:center; }
+  .ct .ass div { border-top:1px solid #333; padding-top:6px; font-size:13px; }
+  .ct .x { text-align:center; font-weight:600; }
+
+  @media (max-width:900px) {
+    html, body { height:auto; }
+    body { height:auto; min-height:100dvh; }
+    .layout { grid-template-columns:1fr; }
+    .form, .papel { overflow:visible; }
+    .pr section, .pr .capa .dentro { padding:28px 22px; }
+    .pr .capa h1 { font-size:34px; }
+    .pr .versoes { grid-template-columns:1fr; }
+    .ct { padding:28px 20px; }
+  }
+  @media print {
+    @page { size:A4; margin:14mm 0; }
+    @page :first { margin-top:0; }
+    html, body { height:auto; display:block; padding:0; background:#fff; }
+    .trilho-menu, header.topo, .form, .barra, .faltas, #toast { display:none !important; }
+    html.trilho { padding-left:0 !important; }
+    .layout, .doc, .papel { display:block; overflow:visible; border:0; padding:0; margin:0; max-width:none; background:#fff; }
+    .folha { box-shadow:none; max-width:none; border-radius:0; }
+    mark.falta { background:none; color:inherit; padding:0; }
+    .pr h2, .pr .rot { break-after:avoid; }
+    .pr .capa-site, .pr ul.pontos li, .pr .passos li, .pr .fim { break-inside:avoid; }
+    .pr .capa { break-after:page; border-radius:0; }
+    .pr .capa .dentro { min-height:270mm; }
+    .pr .fim { border-radius:0; }
+    .pr .pacote, .pr .ver, .ct table, .ct .ass { break-inside:avoid; }
+    .ct { padding:0 18mm; }
+    .ct h2 { break-after:avoid; }
+    .ct .anexo { break-before:page; }
+    * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+</style>
+</head>
+<body>
+<script src="/menu/menu.js"></script>
+<header class="topo">
+  <div>
+    <h1 id="titulo">Proposta e contrato</h1>
+    <p id="subtitulo">Preencha à esquerda; o documento à direita já sai pronto para imprimir ou salvar em PDF.</p>
+  </div>
+  <span class="resumo"><a href="/#empresas" id="voltar">← Voltar para a ficha</a> · <a href="/empresa/">Contrato modelo</a></span>
+</header>
+<main class="layout">
+  <div class="form" id="form"></div>
+  <section class="doc">
+    <div class="barra">
+      <div class="abas" role="tablist">
+        <button type="button" data-aba="proposta" aria-pressed="true">Proposta</button>
+        <button type="button" data-aba="contrato" aria-pressed="false">Contrato</button>
+      </div>
+      <div class="acoes">
+        <button class="btn" type="button" id="enviada" title="Muda a etapa da empresa para “Proposta enviada” e anota no histórico">Marcar como enviada</button>
+        <button class="btn prim" type="button" id="imprimir">Imprimir ou salvar PDF</button>
+      </div>
+    </div>
+    <div class="faltas" id="faltas" hidden></div>
+    <div class="papel"><div class="folha" id="folha"><div class="msg">Carregando…</div></div></div>
+  </section>
+</main>
+<div id="toast" hidden></div>
+<script src="/documento/documento.js"></script>
+</body>
+</html>

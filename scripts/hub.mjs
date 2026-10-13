@@ -50,6 +50,8 @@ fs.cpSync(path.join(repo, 'hub/busca'), path.join(out, 'busca'), { recursive: tr
 fs.cpSync(path.join(repo, 'hub/importar'), path.join(out, 'importar'), { recursive: true });
 // Sobre a empresa (hub/empresa/): documentos da Overtus em PDF, com prévia, atrás do login.
 fs.cpSync(path.join(repo, 'hub/empresa'), path.join(out, 'empresa'), { recursive: true });
+// Proposta e contrato de cada empresa do canvas (hub/documento/?id=<empresa>), atrás do login.
+fs.cpSync(path.join(repo, 'hub/documento'), path.join(out, 'documento'), { recursive: true });
 // Menu lateral do hub (o mesmo da prospecção) para as subpáginas: /sites/, /ver/, /busca/, /importar/.
 fs.cpSync(path.join(repo, 'hub/menu'), path.join(out, 'menu'), { recursive: true });
 
@@ -297,6 +299,9 @@ ${head('Overtus Hub · Sites em desenvolvimento')}
 </body>
 </html>
 `;
+
+// A página de proposta acha o site do cliente por aqui: versões (a/, b/...) e a capa de cada pasta clientes/<slug>.
+fs.writeFileSync(path.join(out, 'documento', 'clientes.json'), JSON.stringify(Object.fromEntries(clientes.map(c => [c.slug, { nome: c.nome, capa: c.capa, versoes: c.vistas }]))));
 
 // A lista de sites mora em /sites/; a raiz do hub é o canvas de prospecção (hub/inicio/).
 fs.mkdirSync(path.join(out, 'sites'), { recursive: true });
