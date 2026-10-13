@@ -25,7 +25,8 @@ import { spawnSync } from 'node:child_process';
 import sharp from 'sharp';
 import { DADOS, REPO, PRECOS, DOLAR } from './config.mjs';
 import { lerLista, lerJson, gravarJson, slugDe, log } from './lib/util.mjs';
-import { UA_PC, UA_CEL, abrirNavegador, fecharNavegador, abrirPagina, reduzir, semGoogle, erroLegivel } from './lib/navegador.mjs';
+import { UA_PC, UA_CEL, abrirNavegador, fecharNavegador, abrirPagina, reduzir, erroLegivel } from './lib/navegador.mjs';
+import { semGoogle } from './lib/semgoogle.mjs';
 import { deepseekJson } from './lib/claude.mjs';
 
 const args = process.argv.slice(2);

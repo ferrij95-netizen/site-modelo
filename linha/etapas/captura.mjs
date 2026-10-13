@@ -5,7 +5,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { MAX_PAGINAS, MAX_FOTOS } from '../config.mjs';
 import { arq, gravarJson, log } from '../lib/util.mjs';
-import { semGoogle } from '../lib/navegador.mjs';
+import { semGoogle } from '../lib/semgoogle.mjs';
 
 let navegador = null;
 async function abrir() {

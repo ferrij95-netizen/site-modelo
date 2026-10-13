@@ -37,11 +37,6 @@ export function abrirNavegador() {
   })();
   return navegador;
 }
-// Nada da captura fala com o Google a partir do IP do PC (o João teve erro 403 no Google em 13/10/2026):
-// fontes, analytics, tag manager, reCAPTCHA, mapas e vídeos do YouTube embutidos nas páginas dos clientes são bloqueados.
-export const GOOGLE = /^https?:\/\/([^/]*\.)?(google|googleapis|gstatic|googletagmanager|google-analytics|googlesyndication|googleadservices|doubleclick|youtube|youtube-nocookie|ytimg|recaptcha)\.[a-z.]+(\/|$)/i;
-export async function semGoogle(ctx) { await ctx.route(GOOGLE, r => r.abort()); return ctx; }
-
 export async function fecharNavegador() { if (navegador) await (await navegador).close(); navegador = null; }
 
 export async function abrirPagina(pg, site) {

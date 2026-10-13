@@ -10,7 +10,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { DADOS } from './config.mjs';
 import { lerLista, lerJson, gravarJson, slugDe, log } from './lib/util.mjs';
-import { UA_PC, UA_CEL, abrirNavegador as abrir, fecharNavegador, abrirPagina, reduzir, semGoogle, erroLegivel } from './lib/navegador.mjs';
+import { UA_PC, UA_CEL, abrirNavegador as abrir, fecharNavegador, abrirPagina, reduzir, erroLegivel } from './lib/navegador.mjs';
+import { semGoogle } from './lib/semgoogle.mjs';
 
 const args = process.argv.slice(2);
 const opcao = (n, padrao) => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : padrao; };
