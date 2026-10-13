@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Resultados · Overtus Hub</title>
+<link rel="icon" href="/app/favicon-48.png">
+<link rel="manifest" href="/app/manifest.json">
+<!-- Painel de resultado: números de toda a base de prospecção, lidos de /api/resultados (src/resultados.js). -->
+<style>
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-400.woff2) format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-500.woff2) format('woff2'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-600.woff2) format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Fraunces'; src:url(/entrar/fontes/fraunces-latin.woff2) format('woff2'); font-display:swap; }
+  :root {
+    --navy:#182644; --cream:#fef9e1; --orange:#ed9454; --orange-ink:#c26a2c;
+    --bg:#ffffff; --sand:#f7f3f0; --panel:#ffffff; --ink:#0c1018; --muted:#6d7074; --line:#ececec;
+    --bar:#5a769f; --bar-soft:#eef3f9; --ok:#3d7656; --ok-soft:#e7f2eb; --dead:#8a8d91;
+    --shadow:0 20px 40px -30px rgba(12,16,24,.35),0 0 0 1px var(--line);
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark) { :root:not([data-theme="light"]) {
+    --bg:#0e1526; --sand:#121b30; --panel:#162039; --ink:#eef0f4; --muted:#9aa3b2; --line:#24304a;
+    --bar:#87a1c4; --bar-soft:#1d2a47; --ok:#86c79f; --ok-soft:#183126; --dead:#8d96a6; --orange-ink:#f0a36c;
+    --shadow:0 20px 40px -30px rgba(0,0,0,.7),0 0 0 1px var(--line); color-scheme:dark; }
+    :root:not([data-theme="light"]) .kpi.destaque { background:var(--cream); color:var(--navy); }
+    :root:not([data-theme="light"]) .kpi.destaque b, :root:not([data-theme="light"]) .kpi.destaque small { color:rgba(24,38,68,.7); } }
+  :root[data-theme="dark"] {
+    --bg:#0e1526; --sand:#121b30; --panel:#162039; --ink:#eef0f4; --muted:#9aa3b2; --line:#24304a;
+    --bar:#87a1c4; --bar-soft:#1d2a47; --ok:#86c79f; --ok-soft:#183126; --dead:#8d96a6; --orange-ink:#f0a36c;
+    --shadow:0 20px 40px -30px rgba(0,0,0,.7),0 0 0 1px var(--line); color-scheme:dark; }
+  :root[data-theme="dark"] .kpi.destaque { background:var(--cream); color:var(--navy); }
+  :root[data-theme="dark"] .kpi.destaque b, :root[data-theme="dark"] .kpi.destaque small { color:rgba(24,38,68,.7); }
+  * { box-sizing:border-box; }
+  [hidden] { display:none !important; }
+  html, body { margin:0; }
+  body { background:var(--sand); color:var(--ink); font:15px/1.5 'General Sans', system-ui, sans-serif; letter-spacing:-.01em; -webkit-font-smoothing:antialiased; }
+  h1 { margin:0; font:400 clamp(28px, 4.4vh, 38px)/1.1 Fraunces, Georgia, serif; letter-spacing:-.6px; }
+  h2 { margin:0; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  select, button { font:inherit; color:inherit; }
+  :focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+  .pagina { display:grid; grid-template-rows:auto auto minmax(0, 1fr); gap:clamp(10px, 2vh, 20px); padding:clamp(14px, 3vh, 32px) clamp(16px, 3vw, 36px); }
+  .topo { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:12px 24px; }
+  .topo p { margin:4px 0 0; color:var(--muted); font-size:14px; }
+  .filtro { display:flex; align-items:center; gap:10px; font-size:14px; color:var(--muted); }
+  .filtro select { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:8px 12px; min-width:220px; color:var(--ink); }
+  .cartao { background:var(--panel); border-radius:18px; box-shadow:var(--shadow); padding:clamp(12px, 2.2vh, 20px) clamp(14px, 1.6vw, 22px); min-width:0; min-height:0; display:flex; flex-direction:column; gap:clamp(8px, 1.4vh, 14px); }
+  .cartao .hd { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  .cartao .hd span { font-size:13px; color:var(--muted); }
+
+  /* números grandes */
+  .kpis { display:grid; grid-template-columns:repeat(7, minmax(0, 1fr)); gap:clamp(8px, 1vw, 14px); }
+  .kpi { background:var(--panel); border-radius:16px; box-shadow:var(--shadow); padding:clamp(10px, 1.8vh, 18px) clamp(12px, 1.2vw, 18px); min-width:0; }
+  .kpi b { display:block; font-size:13px; font-weight:500; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .kpi .v { display:block; margin-top:4px; font-size:clamp(26px, 4.4vh, 38px); font-weight:500; line-height:1; letter-spacing:-1.2px; font-variant-numeric:tabular-nums; }
+  .kpi small { display:block; margin-top:6px; font-size:12.5px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .kpi.destaque { background:var(--navy); color:var(--cream); box-shadow:none; }
+  .kpi.destaque b, .kpi.destaque small { color:rgba(254,249,225,.72); }
+
+  .grade { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1fr); gap:clamp(10px, 1.2vw, 18px); min-height:0; }
+  .rolar { overflow:auto; min-height:0; flex:1; }
+
+  /* funil */
+  .funil { display:flex; flex-direction:column; gap:clamp(4px, 1vh, 10px); }
+  .etapa { display:grid; grid-template-columns:118px minmax(0, 1fr) 52px; align-items:center; gap:10px; font-size:14px; border-radius:8px; }
+  .etapa .nm { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .etapa .trilha { position:relative; height:clamp(14px, 2.2vh, 20px); }
+  .etapa .trilha i { position:absolute; left:0; top:0; bottom:0; min-width:2px; background:var(--bar); border-radius:0 4px 4px 0; }
+  .etapa.fechado .trilha i { background:var(--ok); }
+  .etapa.perdido .trilha i { background:var(--dead); }
+  .etapa .n { text-align:right; font-variant-numeric:tabular-nums; font-weight:500; }
+  .etapa:hover { background:var(--bar-soft); }
+  .nota { font-size:12.5px; color:var(--muted); margin:0; }
+
+  /* tabela por lista */
+  table { width:100%; border-collapse:collapse; font-size:13.5px; font-variant-numeric:tabular-nums; }
+  th { position:sticky; top:0; background:var(--panel); text-align:right; font-weight:500; color:var(--muted); font-size:12px; padding:6px 6px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  td { text-align:right; padding:7px 6px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; padding-left:0; white-space:normal; }
+  tr.grupo td { font-weight:600; }
+  tr.total td { font-weight:600; border-bottom:none; }
+  tbody tr:hover td { background:var(--bar-soft); }
+  td .tx { color:var(--muted); font-weight:400; }
+
+  /* custo e negociações */
+  .duplo { display:grid; grid-template-rows:auto minmax(0, 1fr); gap:clamp(10px, 1.2vw, 18px); min-height:0; }
+  .custo-n { display:flex; gap:24px; }
+  .custo-n div { min-width:0; }
+  .custo-n b { display:block; font-size:12.5px; color:var(--muted); font-weight:500; }
+  .custo-n span { font-size:clamp(22px, 3.4vh, 28px); font-weight:500; letter-spacing:-.8px; font-variant-numeric:tabular-nums; }
+  ul.itens { list-style:none; margin:0; padding:0; }
+  ul.itens li { display:flex; justify-content:space-between; gap:12px; padding:7px 0; border-bottom:1px solid var(--line); font-size:14px; }
+  ul.itens li:last-child { border-bottom:none; }
+  ul.itens li > span:first-child { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  ul.itens .lista { color:var(--muted); font-size:12.5px; }
+  .pill { font-size:12px; font-weight:600; border-radius:50px; padding:2px 10px; white-space:nowrap; background:var(--bar-soft); color:var(--bar); }
+  .pill.fechado { background:var(--ok-soft); color:var(--ok); }
+  .vazio { color:var(--muted); font-size:14px; margin:0; }
+  .erro { color:var(--orange-ink); }
+  a { color:var(--bar); }
+
+  /* computador: tudo cabe na janela, só as caixas internas rolam */
+  @media (min-width:901px) {
+    html, body { height:100%; overflow:hidden; }
+    .pagina { height:100vh; height:100dvh; }
+  }
+  @media (min-width:1251px) and (max-width:1500px) { .grade { grid-template-columns:minmax(0, .9fr) minmax(0, 1.6fr) minmax(0, .9fr); } th, td { padding-left:4px; padding-right:4px; } table { font-size:13px; } .etapa { grid-template-columns:100px minmax(0, 1fr) 44px; } }
+  @media (min-width:901px) and (max-height:700px) { .kpi small, .topo p { display:none; } }
+  @media (max-width:1250px) { .kpis { grid-template-columns:repeat(4, minmax(0, 1fr)); } }
+  @media (min-width:901px) and (max-width:1250px) { .grade { grid-template-columns:minmax(0, 1fr) minmax(0, 1.4fr); } .duplo { grid-column:1 / -1; grid-template-columns:1fr 1fr; grid-template-rows:auto; } }
+  @media (max-width:900px) {
+    .kpis { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .grade { grid-template-columns:1fr; }
+    .filtro select { min-width:0; flex:1; }
+    .filtro { width:100%; }
+    .rolar { max-height:420px; }
+  }
+</style>
+</head>
+<body>
+<script src="/menu/menu.js"></script>
+<main class="pagina">
+  <div class="topo">
+    <div>
+      <h1>Resultados</h1>
+      <p id="sub">Como a prospecção está andando, da base até o fechamento.</p>
+    </div>
+    <label class="filtro">Mostrar <select id="lista" aria-label="Lista"><option value="">Todas as listas</option></select></label>
+  </div>
+
+  <section class="kpis" id="kpis" aria-label="Números principais"></section>
+
+  <div class="grade">
+    <section class="cartao">
+      <div class="hd"><h2>Funil por etapa</h2><span id="funilTot"></span></div>
+      <div class="funil rolar" id="funil"></div>
+      <p class="nota">Ligadas e atenderam saem da etapa de cada empresa até o registro de ligações estar no hub.</p>
+    </section>
+
+    <section class="cartao">
+      <div class="hd"><h2>Resultado por lista</h2><span>% = fechados sobre quem atendeu</span></div>
+      <div class="rolar"><table id="tabela"></table></div>
+    </section>
+
+    <div class="duplo">
+      <section class="cartao">
+        <div class="hd"><h2>Custo de produção</h2><span id="custoQtd"></span></div>
+        <div id="custo"></div>
+      </section>
+      <section class="cartao">
+        <div class="hd"><h2>Em negociação</h2><span id="negQtd"></span></div>
+        <div class="rolar" id="neg"></div>
+      </section>
+    </div>
+  </div>
+</main>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const fmt = n => Number(n || 0).toLocaleString('pt-BR');
+  const pct = (a, b) => b ? Math.round(100 * a / b) + '%' : '–';
+  const reais = n => 'R$ ' + Number(n || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const DOLAR = 5.5;
+
+  // Mesmos nomes do canvas (LISTS em hub/inicio/index.html); lista nova aparece com a própria chave até entrar aqui.
+  const LISTAS = { minhas: 'Minhas empresas', carros: 'Oficinas e carros', agro: 'Indústrias agro', medicos: 'Médicos', clinicas: 'Clínicas',
+    imobiliarias: 'Imobiliárias', medicas: 'Indústrias médicas', expointer: 'Expointer 2026', 'feiras-assoc': 'Feiras e associações',
+    'premium-bmw': 'Oficinas BMW', 'premium-mercedes': 'Oficinas Mercedes', 'premium-audi': 'Oficinas Audi', 'premium-porsche': 'Oficinas Porsche',
+    'premium-landrover': 'Oficinas Land Rover/Jaguar', 'premium-volvo': 'Oficinas Volvo', linha: 'Linha de produção' };
+  const grupo = k => k.startsWith('premium-') ? 'Oficinas premium' : '';
+  const nomeLista = k => LISTAS[k] || k;
+  const ETAPAS = [['novo', 'Novo'], ['produzir', 'Fazer preview'], ['ligar', 'Ligar'], ['enviado', 'Link enviado'], ['proposta', 'Proposta enviada'], ['conversa', 'Em conversa'], ['fechado', 'Fechado'], ['perdido', 'Perdido']];
+  const SLABEL = Object.fromEntries(ETAPAS);
+  const CAMPOS = ['empresas', 'triadas', 'aprovadas', 'descartadas', 'prontos', 'ligadas', 'atenderam', 'propostas', 'escolheram', 'fechados', 'perdidos'];
+
+  let dados = null;
+  let escolha = '';
+  try { escolha = localStorage.getItem('resultados.lista') || ''; } catch {}
+
+  function soma(chaves) {
+    const t = Object.fromEntries(CAMPOS.map(c => [c, 0]));
+    t.status = {};
+    for (const k of chaves) {
+      const c = dados.listas[k]; if (!c) continue;
+      for (const f of CAMPOS) t[f] += c[f] || 0;
+      for (const [s, n] of Object.entries(c.status)) t.status[s] = (t.status[s] || 0) + n;
+    }
+    return t;
+  }
+  const chavesDa = sel => {
+    const todas = Object.keys(dados.listas);
+    if (!sel) return todas;
+    if (sel.startsWith('g:')) return todas.filter(k => grupo(k) === sel.slice(2));
+    return todas.filter(k => k === sel);
+  };
+
+  function montarFiltro() {
+    const todas = Object.keys(dados.listas).sort((a, b) => nomeLista(a).localeCompare(nomeLista(b), 'pt-BR'));
+    const grupos = [...new Set(todas.map(grupo).filter(Boolean))];
+    $('#lista').innerHTML = '<option value="">Todas as listas</option>' +
+      grupos.map(g => `<option value="g:${esc(g)}">${esc(g)} (todas)</option>`).join('') +
+      todas.map(k => `<option value="${esc(k)}">${esc(nomeLista(k))}</option>`).join('');
+    if (![...$('#lista').options].some(o => o.value === escolha)) escolha = '';
+    $('#lista').value = escolha;
+  }
+
+  function render() {
+    const chaves = chavesDa(escolha);
+    const t = soma(chaves);
+    const kpi = (titulo, v, nota, destaque) => `<div class="kpi${destaque ? ' destaque' : ''}"><b>${titulo}</b><span class="v">${fmt(v)}</span><small>${nota}</small></div>`;
+    $('#kpis').innerHTML =
+      kpi('Na base', t.empresas, `${fmt(t.triadas)} já triadas`) +
+      kpi('Aprovadas', t.aprovadas, `para fazer site, de ${fmt(t.triadas)}`) +
+      kpi('Sites prontos', t.prontos, 'com preview no ar') +
+      kpi('Ligadas', t.ligadas, `${pct(t.ligadas, t.prontos)} dos prontos`) +
+      kpi('Atenderam', t.atenderam, `${pct(t.atenderam, t.ligadas)} das ligadas`) +
+      kpi('Pediram proposta', t.propostas, `${pct(t.propostas, t.atenderam)} de quem atendeu`) +
+      kpi('Fechados', t.fechados, `${pct(t.fechados, t.propostas)} das propostas`, true);
+
+    // Funil: uma barra por etapa, na mesma escala.
+    const max = Math.max(1, ...ETAPAS.map(([k]) => t.status[k] || 0));
+    $('#funilTot').textContent = `${fmt(t.empresas)} empresas`;
+    $('#funil').innerHTML = ETAPAS.map(([k, l]) => {
+      const n = t.status[k] || 0;
+      return `<div class="etapa ${k}" title="${esc(l)}: ${fmt(n)} empresas (${pct(n, t.empresas)} da base)"><span class="nm">${l}</span><span class="trilha"><i style="width:${(100 * n / max).toFixed(2)}%"></i></span><span class="n">${fmt(n)}</span></div>`;
+    }).join('');
+
+    // Tabela por lista (ou só a escolhida), com linha de total.
+    const linha = (nome, c, cls = '') => `<tr class="${cls}"><td>${esc(nome)}</td><td>${fmt(c.empresas)}</td><td>${fmt(c.aprovadas)}</td><td>${fmt(c.prontos)}</td><td>${fmt(c.ligadas)}</td><td>${fmt(c.atenderam)}</td><td>${fmt(c.propostas)}</td><td>${fmt(c.fechados)} <span class="tx">${pct(c.fechados, c.atenderam)}</span></td></tr>`;
+    const ordem = [...chaves].sort((a, b) => (dados.listas[b].empresas - dados.listas[a].empresas));
+    $('#tabela').innerHTML = '<thead><tr><th>Lista</th><th>Base</th><th>Aprov.</th><th>Prontos</th><th>Ligadas</th><th>Atend.</th><th>Propostas</th><th>Fechados</th></tr></thead><tbody>' +
+      ordem.map(k => linha(nomeLista(k), dados.listas[k])).join('') +
+      (ordem.length > 1 ? linha('Total', t, 'total') : '') + '</tbody>';
+
+    // Custo de produção por site (vem da linha de produção).
+    const custos = dados.custos.filter(c => chaves.includes(c.lista)).map(c => ({ ...c, r: c.reais ?? (c.usd || 0) * DOLAR }));
+    $('#custoQtd').textContent = custos.length ? `${custos.length} sites` : '';
+    if (!custos.length) {
+      $('#custo').innerHTML = '<p class="vazio">Nenhum site com custo registrado ainda. Cada site que a linha de produção termina passa a aparecer aqui com o gasto de IA.</p>';
+    } else {
+      const total = custos.reduce((a, c) => a + c.r, 0);
+      const caros = [...custos].sort((a, b) => b.r - a.r).slice(0, 4);
+      $('#custo').innerHTML = `<div class="custo-n"><div><b>Por site, em média</b><span>${reais(total / custos.length)}</span></div><div><b>Total</b><span>${reais(total)}</span></div></div>` +
+        `<ul class="itens">${caros.map(c => `<li><span>${esc(c.nome)}</span><span>${reais(c.r)}</span></li>`).join('')}</ul>`;
+    }
+
+    // Quem está em proposta, conversa ou já fechou.
+    const neg = dados.andamento.filter(a => chaves.includes(a.lista));
+    const peso = { conversa: 0, proposta: 1, fechado: 2 };
+    neg.sort((a, b) => peso[a.status] - peso[b.status] || a.nome.localeCompare(b.nome, 'pt-BR'));
+    $('#negQtd').textContent = neg.length ? `${neg.length} empresas` : '';
+    $('#neg').innerHTML = neg.length
+      ? `<ul class="itens">${neg.map(a => `<li><span>${esc(a.nome)} <span class="lista">· ${esc(nomeLista(a.lista))}</span></span><span class="pill ${a.status}">${esc(SLABEL[a.status])}${a.escolhida ? ' · ' + esc(String(a.escolhida).toUpperCase()) : ''}</span></li>`).join('')}</ul>`
+      : '<p class="vazio">Nenhuma proposta em andamento. Quando uma empresa passar para "Proposta enviada" no CRM, ela aparece aqui.</p>';
+
+    $('#sub').textContent = `${escolha ? $('#lista').selectedOptions[0].textContent : 'Todas as listas'}, atualizado às ${new Date(dados.agora).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}.`;
+  }
+
+  async function carregar() {
+    try {
+      const r = await fetch('/api/resultados', { credentials: 'same-origin' });
+      if (r.status === 401 || (r.redirected && /\/entrar\//.test(r.url))) { location.href = '/entrar/'; return; }
+      if (!r.ok) throw new Error('erro ' + r.status);
+      dados = await r.json();
+      montarFiltro();
+      render();
+    } catch (e) {
+      $('#sub').innerHTML = `<span class="erro">Não consegui ler os números agora (${esc(e.message)}). Recarregue a página.</span>`;
+    }
+  }
+
+  $('#lista').addEventListener('change', e => {
+    escolha = e.target.value;
+    try { localStorage.setItem('resultados.lista', escolha); } catch {}
+    render();
+  });
+  carregar();
+  setInterval(() => { if (!document.hidden) carregar(); }, 60000);
+})();
+</script>
+</body>
+</html>

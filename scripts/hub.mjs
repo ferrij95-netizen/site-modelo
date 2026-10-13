@@ -48,6 +48,8 @@ fs.copyFileSync(path.join(repo, 'hub/sw.js'), path.join(out, 'sw.js'));
 fs.cpSync(path.join(repo, 'hub/busca'), path.join(out, 'busca'), { recursive: true });
 // Importar empresas de um arquivo para o banco do canvas (hub/importar/), também atrás do login.
 fs.cpSync(path.join(repo, 'hub/importar'), path.join(out, 'importar'), { recursive: true });
+// Painel de resultado (hub/resultados/): números da prospecção lidos de /api/resultados, atrás do login.
+fs.cpSync(path.join(repo, 'hub/resultados'), path.join(out, 'resultados'), { recursive: true });
 // Menu lateral do hub (o mesmo da prospecção) para as subpáginas: /sites/, /ver/, /busca/, /importar/.
 fs.cpSync(path.join(repo, 'hub/menu'), path.join(out, 'menu'), { recursive: true });
 

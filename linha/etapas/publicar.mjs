@@ -4,7 +4,7 @@
 //  - dados/canvas/<slug>.json: o mesmo conteúdo no formato do canvas de prospecção, para importar lá.
 import fs from 'node:fs';
 import path from 'node:path';
-import { REPO, DADOS, DOMINIO } from '../config.mjs';
+import { REPO, DADOS, DOMINIO, DOLAR } from '../config.mjs';
 import { arq, lerJson, gravarJson, log } from '../lib/util.mjs';
 import { VERSOES } from '../modelos/versoes.mjs';
 
@@ -40,6 +40,11 @@ export function publicar(slug) {
     fs.writeFileSync(wr, txt);
   }
 
+  // Quanto este site custou na linha (soma de custo.jsonl): o painel Resultados do hub mostra por site.
+  const fc = path.join(DADOS, 'custo.jsonl');
+  const gastos = fs.existsSync(fc) ? fs.readFileSync(fc, 'utf8').trim().split('\n').filter(Boolean).map(l => JSON.parse(l)).filter(l => l.slug === slug) : [];
+  const usd = gastos.reduce((t, l) => t + (l.usd || 0), 0);
+
   // Documento para o canvas de prospecção (coleção "empresas").
   // "id" é o da empresa no canvas (coluna id da lista); com ele, `node hub.mjs devolver` atualiza a empresa lá.
   gravarJson(path.join(DADOS, 'canvas', `${slug}.json`), {
@@ -47,6 +52,7 @@ export function publicar(slug) {
     segmento: ligacao.segmento, status: 'ligar',
     contato: { telefone: telefones[0] || '', email: ligacao.email, whatsapp },
     proposta: { urlA: links.a, urlB: links.b },
+    custo: { usd: +usd.toFixed(4), reais: +(usd * DOLAR).toFixed(2), pedidos: gastos.length, estimado: gastos.some(l => l.estimado) },
     enr: {
       script, subdominio: emp.sub, mensagemProposta: script.whatsapp,
       versoes: ['a', 'b'].map(v => ({ nome: VERSOES[v].nome, estilo: v === 'a' ? 'fiel ao site atual' : 'moderna', descricao: VERSOES[v].descricao, destaques: [] })),
