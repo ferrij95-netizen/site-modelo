@@ -1,0 +1,134 @@
+/* Versão A "Lar": fiel ao site atual. Branco, rosa do logo (#e6636f), azul (#2f6fb7), azul-claro e os arcos do G. */
+:root{
+  --rosa:#e6636f;--rosa-f:#d9475a;--rosa-c:#fc899a;--azul:#2f6fb7;--azul-f:#1f528f;--azul-c:#6ac1ec;
+  --fundo:#fff;--tx:#2a3247;--tx2:#5d6579;--tit:#1f2a44;--acento:#e6636f;--foco:#2f6fb7;--linha:#e7e8ee;--suave:#fdf0f2;
+  --topo:#fff;--nav:#1f2a44;--bt:#e6636f;--bt-h:#d9475a;--bt-tx:#fff;--bt-lin:#2f6fb7;
+  --ft:Nunito,Inter,sans-serif;--raio:18px;--raio-g:26px;--raio-bt:99px;--r-linha:rgba(255,255,255,.2);
+}
+h1,h2,h3{font-weight:900}
+h2{text-transform:uppercase;letter-spacing:-.005em;color:var(--rosa)}
+.sec-tit h2,.fale h2{color:var(--rosa)}
+.arco{position:absolute;pointer-events:none;z-index:0}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding:clamp(28px,4vw,56px) 0 0;background:linear-gradient(180deg,#f3f3f5 0,#f3f3f5 calc(100% - 64px),#fff calc(100% - 64px))}
+.hero-g1{width:min(42vw,520px);right:-6vw;top:-4vw;color:#fff;opacity:.9}
+.hero-g2{width:180px;left:-60px;bottom:120px;color:var(--rosa-c);opacity:.35;transform:rotate(180deg)}
+.hero-in{position:relative;z-index:1;display:grid;grid-template-columns:.85fr 1.15fr;gap:24px;align-items:center}
+.hero h1{font-size:clamp(34px,4.6vw,60px);text-transform:uppercase;line-height:1.02}
+.hero h1 em{display:block;font-style:normal;color:var(--rosa)}
+.hero-foto img{width:100%;filter:drop-shadow(0 30px 30px rgba(31,42,68,.18))}
+.marcas-faixa{position:relative;z-index:1}
+.hero .marcas-faixa{margin-top:28px;padding:16px 20px;background:#fff;border-radius:24px;box-shadow:0 14px 40px rgba(31,42,68,.08)}
+
+/* Novidades */
+.promo-grid{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:repeat(3,auto);gap:18px}
+.promo{display:flex;flex-direction:column;border-radius:var(--raio-g);overflow:hidden;background:#fff;border:1px solid var(--linha);transition:.22s}
+.promo:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(31,42,68,.12)}
+.promo.grande{grid-row:span 3}
+.promo:not(.grande){display:grid;grid-template-columns:44% 1fr}
+.promo:not(.grande) .promo-foto{aspect-ratio:auto;height:100%;min-height:150px}
+.promo-foto{display:block;aspect-ratio:1922/800;overflow:hidden}
+.promo.grande .promo-foto{aspect-ratio:auto;flex:1;min-height:260px}
+.promo-foto img{width:100%;height:100%;object-fit:cover}
+.promo-txt{display:grid;gap:4px;padding:18px 20px 20px}
+.promo-txt small{font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--azul)}
+.promo-txt b{font-family:var(--ft);font-weight:900;font-size:21px;line-height:1.15;color:var(--tit)}
+.promo.grande .promo-txt b{font-size:28px}
+.promo-txt span{color:var(--tx2);font-size:15px}
+.promo-txt em{display:flex;align-items:center;gap:6px;font-style:normal;font-weight:700;color:var(--rosa);margin-top:6px}
+
+/* Categorias e trilho */
+.cats{background:linear-gradient(180deg,#fff,#f6f8fc)}
+.amados{background:#f6f8fc}
+
+/* Presença: faixa azul com degradê, como os blocos azuis do site atual */
+.presenca{background:linear-gradient(120deg,var(--azul-f),var(--azul) 55%,#3f86d0);color:#fff;overflow:hidden}
+.presenca h2{color:#fff}
+.presenca .selo{color:var(--azul-c)}
+.pres-g{width:420px;right:-120px;bottom:-140px;color:var(--azul-c);opacity:.25}
+.pres-in{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.pres-txt p{margin-top:14px;opacity:.92}
+.presenca .num{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.presenca .num b{color:#fff}
+.presenca .nums{grid-template-columns:1fr 1fr}
+.rank li{background:#fff;color:var(--tit)}
+.rank b{background:var(--rosa);color:#fff}
+
+/* Sustentabilidade */
+.sust{background:#f2f8ef}
+.sust h2{color:#2e5a1c}
+.selo.verde{color:#3f7d23}
+.sust-foto img{margin:auto;max-height:420px;width:auto}
+
+.quem h2,.time h2{color:var(--rosa)}
+.time{background:#fdf0f2;overflow:hidden}
+.time-foto img{max-height:480px;width:auto;margin-left:auto}
+
+/* Onde comprar */
+.onde{background:linear-gradient(110deg,var(--rosa-f),var(--rosa) 60%,var(--rosa-c));color:#fff}
+.onde h2{color:#fff;text-transform:none}
+.onde .selo{color:#fff;opacity:.85}
+.onde-bt{background:#fff;color:var(--tit);box-shadow:0 10px 26px rgba(120,20,40,.18)}
+.onde-bt>.ico{color:var(--rosa)}
+.onde-bt:hover{transform:translateX(6px)}
+
+.fale{background:#f6f8fc}
+
+/* Páginas internas */
+.capa{position:relative;overflow:hidden;background:#f3f3f5;padding:clamp(36px,6vw,80px) 0}
+.capa.com-foto{min-height:clamp(320px,40vw,500px);display:grid;align-items:center}
+.capa-foto{position:absolute;inset:0}
+.capa-foto img{width:100%;height:100%;object-fit:cover}
+.capa.com-foto::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0,rgba(255,255,255,.88) 42%,rgba(255,255,255,0) 75%);z-index:0}
+.capa-g1{width:220px;right:-40px;bottom:-60px;color:var(--rosa-c);opacity:.5}
+.capa-g2{width:130px;right:130px;bottom:-40px;color:var(--azul);opacity:.75;transform:scaleX(-1)}
+.capa-in{position:relative;z-index:1}
+.capa h1{max-width:20ch;color:var(--azul)}
+.catalogo,.linha{background:#fafbfd}
+
+.marca-capa{padding:clamp(28px,4vw,56px) 0;background:linear-gradient(135deg,#fff 0,var(--mc2) 100%)}
+.marca-capa h1{color:var(--mc);text-transform:none}
+.marca-docs{background:var(--mc2,#fdf0f2)}
+.marca-docs h2{text-transform:none}
+
+.proposito{overflow:hidden}
+.prop-g1{width:300px;left:-90px;top:30px;color:var(--azul)}
+.prop-g2{width:300px;right:-90px;bottom:20px;color:var(--rosa-c);transform:rotate(180deg)}
+.prop-in{position:relative;z-index:1;display:grid;gap:48px;max-width:760px;text-align:center;margin-inline:auto}
+.prop .selo{font-family:var(--ft);font-size:clamp(22px,2.6vw,32px);letter-spacing:0;color:var(--rosa)}
+.prop blockquote{font-size:clamp(19px,2vw,24px)}
+.numeros{background:linear-gradient(120deg,var(--azul-f),var(--azul));color:#fff}
+.numeros .num{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.historia{background:#fafbfd}
+.linha-tempo li:nth-child(odd){border-top:4px solid var(--rosa)}
+.linha-tempo li:nth-child(even){border-top:4px solid var(--azul)}
+.linha-tempo li:nth-child(even) b{color:var(--azul)}
+
+.pd-info h1{text-transform:none;color:var(--tit)}
+.rel{background:#f6f8fc}
+.rel h2{text-transform:none}
+.grupo h2{text-transform:none;color:var(--tit)}
+.produto{background:linear-gradient(180deg,var(--mc2) 0,#fff 380px)}
+
+/* Rodapé */
+.rodape{background:#1f2a44;color:#e7eaf3}
+.rodape .r-marca img{background:#fff;padding:10px 14px;border-radius:12px;width:160px}
+
+@media (max-width:1080px){
+  .hero{background:#f3f3f5}
+  .hero-in{grid-template-columns:1fr}
+  .promo-grid{grid-template-columns:1fr}
+  .promo.grande{grid-row:auto}
+  .promo.grande .promo-foto{aspect-ratio:1922/800}
+  .pres-in{grid-template-columns:1fr}
+  .capa.com-foto::before{background:rgba(255,255,255,.85)}
+  .time-foto img{margin:auto}
+}
+@media (max-width:640px){
+  .promo:not(.grande){grid-template-columns:1fr}
+  .promo:not(.grande) .promo-foto{aspect-ratio:1922/800;min-height:0}
+  .hero .marcas-faixa{gap:8px;padding:12px}
+  .presenca .nums{grid-template-columns:1fr 1fr}
+  .capa-g1,.capa-g2,.hero-g2{display:none}
+}
