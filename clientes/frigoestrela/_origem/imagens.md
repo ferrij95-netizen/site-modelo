@@ -1,0 +1,380 @@
+# Imagens do site atual da Frigo Estrela (frigoestrela.com.br)
+
+Lista das imagens usadas no site atual, para referência.
+
+- 2021-03-logo-frigoestrela-e1652098539611.png
+
+  ![2021-03-logo-frigoestrela-e1652098539611.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/logo-frigoestrela-e1652098539611.png)
+
+- 2021-06-logo-frigoestrela-contraste.png
+
+  ![2021-06-logo-frigoestrela-contraste.png](https://frigoestrela.com.br/wp-content/uploads/2021/06/logo-frigoestrela-contraste.png)
+
+- 2021-03-cropped-favicon-270x270.png
+
+  ![2021-03-cropped-favicon-270x270.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/cropped-favicon-270x270.png)
+
+- 2021-03-pagina-home-slide-01.png
+
+  ![2021-03-pagina-home-slide-01.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-home-slide-01.png)
+
+- 2021-03-pagina-home-slide-02.png
+
+  ![2021-03-pagina-home-slide-02.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-home-slide-02.png)
+
+- 2021-03-pagina-home-slide-03.png
+
+  ![2021-03-pagina-home-slide-03.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-home-slide-03.png)
+
+- 2023-03-1-banner_linha.png
+
+  ![2023-03-1-banner_linha.png](https://frigoestrela.com.br/wp-content/uploads/2023/03/1-banner_linha.png)
+
+- 2023-03-2-banner-t_bone.png
+
+  ![2023-03-2-banner-t_bone.png](https://frigoestrela.com.br/wp-content/uploads/2023/03/2-banner-t_bone.png)
+
+- 2023-03-2-banner-t-bone.png
+
+  ![2023-03-2-banner-t-bone.png](https://frigoestrela.com.br/wp-content/uploads/2023/03/2-banner-t-bone.png)
+
+- 2023-03-3-banner-ancho.png
+
+  ![2023-03-3-banner-ancho.png](https://frigoestrela.com.br/wp-content/uploads/2023/03/3-banner-ancho.png)
+
+- 2023-03-4-banner_tche.png
+
+  ![2023-03-4-banner_tche.png](https://frigoestrela.com.br/wp-content/uploads/2023/03/4-banner_tche.png)
+
+- 2023-03-4-banner-tche.png
+
+  ![2023-03-4-banner-tche.png](https://frigoestrela.com.br/wp-content/uploads/2023/03/4-banner-tche.png)
+
+- 2026-04-BANNER-SITE-VADAO-2.png
+
+  ![2026-04-BANNER-SITE-VADAO-2.png](https://frigoestrela.com.br/wp-content/uploads/2026/04/BANNER-SITE-VADAO-2.png)
+
+- 2023-11-BANNER-SITE_NATALINOS.png
+
+  ![2023-11-BANNER-SITE_NATALINOS.png](https://frigoestrela.com.br/wp-content/uploads/2023/11/BANNER-SITE_NATALINOS.png)
+
+- 2022-12-4-banner-site-t-bone-angus-series.png
+
+  ![2022-12-4-banner-site-t-bone-angus-series.png](https://frigoestrela.com.br/wp-content/uploads/2022/12/4-banner-site-t-bone-angus-series.png)
+
+- 2022-12-3-banner-site-denver-novilha.png
+
+  ![2022-12-3-banner-site-denver-novilha.png](https://frigoestrela.com.br/wp-content/uploads/2022/12/3-banner-site-denver-novilha.png)
+
+- 2022-12-2-banner-site-linguica-cuiabana-frango-e-queijo-estrela.png
+
+  ![2022-12-2-banner-site-linguica-cuiabana-frango-e-queijo-estrela.png](https://frigoestrela.com.br/wp-content/uploads/2022/12/2-banner-site-linguica-cuiabana-frango-e-queijo-estrela.png)
+
+- 2022-08-Banner_Angus-Series.png
+
+  ![2022-08-Banner_Angus-Series.png](https://frigoestrela.com.br/wp-content/uploads/2022/08/Banner_Angus-Series.png)
+
+- 2023-03-nova-t-bone.png
+
+  ![2023-03-nova-t-bone.png](https://frigoestrela.com.br/wp-content/uploads/2023/03/nova-t-bone.png)
+
+- 2021-03-Pag-Inicial_Nossas-Marcas_01.png
+
+  ![2021-03-Pag-Inicial_Nossas-Marcas_01.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/Pag-Inicial_Nossas-Marcas_01.png)
+
+- 2021-03-Pag-Inicial_Nossas-Marcas_02.png
+
+  ![2021-03-Pag-Inicial_Nossas-Marcas_02.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/Pag-Inicial_Nossas-Marcas_02.png)
+
+- 2021-03-Pag-Inicial_Nossas-Marcas_03.png
+
+  ![2021-03-Pag-Inicial_Nossas-Marcas_03.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/Pag-Inicial_Nossas-Marcas_03.png)
+
+- 2021-03-Pag-Inicial_Nossas-Marcas_04.png
+
+  ![2021-03-Pag-Inicial_Nossas-Marcas_04.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/Pag-Inicial_Nossas-Marcas_04.png)
+
+- 2021-03-pagina-home-nossas-marcas.png
+
+  ![2021-03-pagina-home-nossas-marcas.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-home-nossas-marcas.png)
+
+- 2021-03-frigoestrela.png
+
+  ![2021-03-frigoestrela.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/frigoestrela.png)
+
+- 2021-03-frigoalimentos.png
+
+  ![2021-03-frigoalimentos.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/frigoalimentos.png)
+
+- 2021-03-donna-estrela.png
+
+  ![2021-03-donna-estrela.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/donna-estrela.png)
+
+- 2021-03-tche-1.png
+
+  ![2021-03-tche-1.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/tche-1.png)
+
+- 2021-04-Slogan_Aestrela.png
+
+  ![2021-04-Slogan_Aestrela.png](https://frigoestrela.com.br/wp-content/uploads/2021/04/Slogan_Aestrela.png)
+
+- 2021-03-pagina-produtos-estrela.png
+
+  ![2021-03-pagina-produtos-estrela.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-produtos-estrela.png)
+
+- 2021-03-pagina-produtos-estrela-suinos.png
+
+  ![2021-03-pagina-produtos-estrela-suinos.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-produtos-estrela-suinos.png)
+
+- 2021-03-pagina-produtos-estrela-industrializados-1.png
+
+  ![2021-03-pagina-produtos-estrela-industrializados-1.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-produtos-estrela-industrializados-1.png)
+
+- 2021-03-pagina-produtos-estrela-embutidos.png
+
+  ![2021-03-pagina-produtos-estrela-embutidos.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-produtos-estrela-embutidos.png)
+
+- 2021-03-pagina-produto-linhas-especiais-banner.png
+
+  ![2021-03-pagina-produto-linhas-especiais-banner.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-produto-linhas-especiais-banner.png)
+
+- 2021-03-pagina-produtos-linha-especial-suinos-botao.png
+
+  ![2021-03-pagina-produtos-linha-especial-suinos-botao.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-produtos-linha-especial-suinos-botao.png)
+
+- 2021-03-pagina-produtos-linha-especial-novilha-jovem-botao.png
+
+  ![2021-03-pagina-produtos-linha-especial-novilha-jovem-botao.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-produtos-linha-especial-novilha-jovem-botao.png)
+
+- 2021-03-pagina-produtos-linha-especial-angus-series-botao.png
+
+  ![2021-03-pagina-produtos-linha-especial-angus-series-botao.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-produtos-linha-especial-angus-series-botao.png)
+
+- 2021-03-pagina-produtos-linha-especial-angus-selection-botao.png
+
+  ![2021-03-pagina-produtos-linha-especial-angus-selection-botao.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-produtos-linha-especial-angus-selection-botao.png)
+
+- 2021-03-angus-carne-certificada.png
+
+  ![2021-03-angus-carne-certificada.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/angus-carne-certificada.png)
+
+- 2021-03-carne_bovina.jpg
+
+  ![2021-03-carne_bovina.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/carne_bovina.jpg)
+
+- 2021-03-carne_suina.png
+
+  ![2021-03-carne_suina.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/carne_suina.png)
+
+- 2021-03-Mortadela-Donna-Estrela-e-salame-Banner-site_-002-1.png
+
+  ![2021-03-Mortadela-Donna-Estrela-e-salame-Banner-site_-002-1.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/Mortadela-Donna-Estrela-e-salame-Banner-site_-002-1.png)
+
+- 2021-03-Mortadela-Donna-Estrela-e-Salame.png
+
+  ![2021-03-Mortadela-Donna-Estrela-e-Salame.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/Mortadela-Donna-Estrela-e-Salame.png)
+
+- 2021-03-DonnaEstrela_novacapa_02.jpg
+
+  ![2021-03-DonnaEstrela_novacapa_02.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/DonnaEstrela_novacapa_02.jpg)
+
+- 2021-03-Capa_DonnaEstrela.png
+
+  ![2021-03-Capa_DonnaEstrela.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/Capa_DonnaEstrela.png)
+
+- 2021-03-embutidos-donna-estrela.jpg
+
+  ![2021-03-embutidos-donna-estrela.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/embutidos-donna-estrela.jpg)
+
+- 2021-03-salame-donna-estrela.jpg
+
+  ![2021-03-salame-donna-estrela.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/salame-donna-estrela.jpg)
+
+- 2022-01-Tche-Linguica-suina-Apimentada.png
+
+  ![2022-01-Tche-Linguica-suina-Apimentada.png](https://frigoestrela.com.br/wp-content/uploads/2022/01/Tche-Linguica-suina-Apimentada.png)
+
+- 2021-03-refeicao-tche-frigoestrela.jpg
+
+  ![2021-03-refeicao-tche-frigoestrela.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/refeicao-tche-frigoestrela.jpg)
+
+- 2021-03-refeicao-tche-frigoestrela-2.jpg
+
+  ![2021-03-refeicao-tche-frigoestrela-2.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/refeicao-tche-frigoestrela-2.jpg)
+
+- 2021-03-tche-frigoestrela.jpg
+
+  ![2021-03-tche-frigoestrela.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/tche-frigoestrela.jpg)
+
+- 2021-03-tche-banner.jpg
+
+  ![2021-03-tche-banner.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/tche-banner.jpg)
+
+- 2021-03-Capa_banner.png
+
+  ![2021-03-Capa_banner.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/Capa_banner.png)
+
+- 2021-03-Capa_SobreNos_02.png
+
+  ![2021-03-Capa_SobreNos_02.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/Capa_SobreNos_02.png)
+
+- 2021-03-foto-quem-somos.png
+
+  ![2021-03-foto-quem-somos.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/foto-quem-somos.png)
+
+- 2021-03-topo-pagina-quem-somos.jpg
+
+  ![2021-03-topo-pagina-quem-somos.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/topo-pagina-quem-somos.jpg)
+
+- 2021-03-topo-pagina-sobre-nos.png
+
+  ![2021-03-topo-pagina-sobre-nos.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/topo-pagina-sobre-nos.png)
+
+- 2021-04-MAPA-pg-Sobre-Nos.png
+
+  ![2021-04-MAPA-pg-Sobre-Nos.png](https://frigoestrela.com.br/wp-content/uploads/2021/04/MAPA-pg-Sobre-Nos.png)
+
+- 2021-04-assinatura-vadao-png.png
+
+  ![2021-04-assinatura-vadao-png.png](https://frigoestrela.com.br/wp-content/uploads/2021/04/assinatura-vadao-png.png)
+
+- 2021-03-topo-pagina-exportacao.png
+
+  ![2021-03-topo-pagina-exportacao.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/topo-pagina-exportacao.png)
+
+- 2021-03-topo-pagina-exportacao-1.png
+
+  ![2021-03-topo-pagina-exportacao-1.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/topo-pagina-exportacao-1.png)
+
+- 2021-03-exportar-image.png
+
+  ![2021-03-exportar-image.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/exportar-image.png)
+
+- 2021-03-banner-exportacao.jpg
+
+  ![2021-03-banner-exportacao.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/banner-exportacao.jpg)
+
+- 2021-03-pagina-boutique-topo.png
+
+  ![2021-03-pagina-boutique-topo.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-boutique-topo.png)
+
+- 2021-03-BANNER_BOUTIQUE_02.png
+
+  ![2021-03-BANNER_BOUTIQUE_02.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/BANNER_BOUTIQUE_02.png)
+
+- 2021-03-pagina-contato-topo.jpg
+
+  ![2021-03-pagina-contato-topo.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-contato-topo.jpg)
+
+- 2021-03-pagina-atuacao-topo.jpg
+
+  ![2021-03-pagina-atuacao-topo.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-atuacao-topo.jpg)
+
+- 2021-03-pagina-topo-nossas-unidades.jpg
+
+  ![2021-03-pagina-topo-nossas-unidades.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-topo-nossas-unidades.jpg)
+
+- 2021-06-Banner_Unidades.png
+
+  ![2021-06-Banner_Unidades.png](https://frigoestrela.com.br/wp-content/uploads/2021/06/Banner_Unidades.png)
+
+- 2021-03-topo-bagina-qualidade.jpg
+
+  ![2021-03-topo-bagina-qualidade.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/topo-bagina-qualidade.jpg)
+
+- 2021-03-pagina-qualidade-foto-01.jpg
+
+  ![2021-03-pagina-qualidade-foto-01.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-qualidade-foto-01.jpg)
+
+- 2021-03-pagina-qualidade-foto-02.jpg
+
+  ![2021-03-pagina-qualidade-foto-02.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-qualidade-foto-02.jpg)
+
+- 2021-03-pagina-qualidade-foto-03.jpg
+
+  ![2021-03-pagina-qualidade-foto-03.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/03/pagina-qualidade-foto-03.jpg)
+
+- 2021-04-Graxaria-img-Site-002.jpg
+
+  ![2021-04-Graxaria-img-Site-002.jpg](https://frigoestrela.com.br/wp-content/uploads/2021/04/Graxaria-img-Site-002.jpg)
+
+- 2021-03-gordura-animal.png
+
+  ![2021-03-gordura-animal.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/gordura-animal.png)
+
+- 2021-03-couros.png
+
+  ![2021-03-couros.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/couros.png)
+
+- 2021-03-pets.png
+
+  ![2021-03-pets.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/pets.png)
+
+- 2021-03-tripas.png
+
+  ![2021-03-tripas.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/tripas.png)
+
+- 2021-03-farmaceutico.png
+
+  ![2021-03-farmaceutico.png](https://frigoestrela.com.br/wp-content/uploads/2021/03/farmaceutico.png)
+
+- 2022-11-logosustentabilidade.png
+
+  ![2022-11-logosustentabilidade.png](https://frigoestrela.com.br/wp-content/uploads/2022/11/logosustentabilidade.png)
+
+- 2022-11-sustentabilidade-logo.png
+
+  ![2022-11-sustentabilidade-logo.png](https://frigoestrela.com.br/wp-content/uploads/2022/11/sustentabilidade-logo.png)
+
+- 2022-11-banner-sustentabilidade.png
+
+  ![2022-11-banner-sustentabilidade.png](https://frigoestrela.com.br/wp-content/uploads/2022/11/banner-sustentabilidade.png)
+
+- 2026-03-Screenshot_17.png
+
+  ![2026-03-Screenshot_17.png](https://frigoestrela.com.br/wp-content/uploads/2026/03/Screenshot_17.png)
+
+- 2026-03-imagem_2026-03-31_144703599.png
+
+  ![2026-03-imagem_2026-03-31_144703599.png](https://frigoestrela.com.br/wp-content/uploads/2026/03/imagem_2026-03-31_144703599.png)
+
+- 2025-04-elite-1.png
+
+  ![2025-04-elite-1.png](https://frigoestrela.com.br/wp-content/uploads/2025/04/elite-1.png)
+
+- 2023-02-trainee.png
+
+  ![2023-02-trainee.png](https://frigoestrela.com.br/wp-content/uploads/2023/02/trainee.png)
+
+- 2025-09-Contratacao-de-PCD.png
+
+  ![2025-09-Contratacao-de-PCD.png](https://frigoestrela.com.br/wp-content/uploads/2025/09/Contratacao-de-PCD.png)
+
+- 2026-09-reciclar.jpeg
+
+  ![2026-09-reciclar.jpeg](https://frigoestrela.com.br/wp-content/uploads/2026/09/reciclar.jpeg)
+
+- 2026-09-equoterapia.jpeg
+
+  ![2026-09-equoterapia.jpeg](https://frigoestrela.com.br/wp-content/uploads/2026/09/equoterapia.jpeg)
+
+- 2026-09-regiao.jpeg
+
+  ![2026-09-regiao.jpeg](https://frigoestrela.com.br/wp-content/uploads/2026/09/regiao.jpeg)
+
+- 2026-09-dataagro.webp
+
+  ![2026-09-dataagro.webp](https://frigoestrela.com.br/wp-content/uploads/2026/09/dataagro.webp)
+
+- 2026-09-eua.webp
+
+  ![2026-09-eua.webp](https://frigoestrela.com.br/wp-content/uploads/2026/09/eua.webp)
+
+- 2026-09-Cuidar.png
+
+  ![2026-09-Cuidar.png](https://frigoestrela.com.br/wp-content/uploads/2026/09/Cuidar.png)
+
+- 2026-09-Reciclar.webp
+
+  ![2026-09-Reciclar.webp](https://frigoestrela.com.br/wp-content/uploads/2026/09/Reciclar.webp)
+
