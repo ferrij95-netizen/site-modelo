@@ -1,0 +1,178 @@
+/* Versão B "Vitrine": as embalagens na frente. Azul da marca com degradês, rosa do logo nos destaques
+   e uma prateleira por marca, cada uma com a cor da própria marca. */
+:root{
+  --rosa:#e6636f;--azul:#1f5aa6;--azul-m:#2f6fb7;--azul-f:#0f2f5c;--azul-c:#6ac1ec;
+  --fundo:#f4f6fa;--tx:#26324d;--tx2:#5b6680;--tit:#0f2346;--acento:#1f5aa6;--foco:#e6636f;--linha:#dfe4ee;--suave:#eaf0f8;
+  --topo:#0f2f5c;--nav:#fff;--bt:#e6636f;--bt-h:#d4495a;--bt-tx:#fff;--bt-lin:#1f5aa6;
+  --ft:Rubik,Inter,sans-serif;--raio:12px;--raio-g:16px;--raio-bt:10px;--r-linha:rgba(255,255,255,.18);
+}
+h1,h2,h3{font-weight:700;letter-spacing:-.015em}
+
+/* Topo escuro */
+.topo .logo img{background:#fff;border-radius:10px;padding:8px 12px;width:132px}
+.topo.rolou{box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.nav>a:hover,.tem-sub:hover>a,.tem-sub:hover>button,.nav [aria-current],.tem-sub>button.on{color:var(--azul-c)}
+@media (max-width:1080px){.menu-btn{color:#fff}}
+
+/* Hero */
+.hero{background:radial-gradient(120% 90% at 85% 10%,#3f86d0 0,var(--azul) 38%,var(--azul-f) 100%);color:#fff;padding:clamp(36px,5vw,72px) 0 0;overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:center}
+.hero h1{color:#fff;font-size:clamp(34px,4.4vw,58px)}
+.hero .selo{color:var(--azul-c)}
+.hero .lead{color:#dce8f7}
+.hero-busca{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:6px 6px 6px 16px;margin-top:28px;max-width:560px;color:var(--tx)}
+.hero-busca .ico{color:var(--tx2)}
+.hero-busca input{flex:1;min-width:0;border:0;outline:0;padding:10px 0;background:none}
+.hero-busca .btn{min-height:44px}
+.hero-atalhos{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.hero-atalhos a{padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);font-size:14px;font-weight:600}
+.hero-atalhos a:hover{background:#fff;color:var(--azul)}
+.hero-foto img{width:100%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
+.hero-nums{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border-top:1px solid rgba(255,255,255,.18)}
+.hero-nums div{padding:22px 18px;display:grid}
+.hero-nums div+div{border-left:1px solid rgba(255,255,255,.18)}
+.hero-nums b{font-family:var(--ft);font-size:clamp(28px,3vw,40px);line-height:1;color:#fff}
+.hero-nums span{color:#bcd3ef;font-size:14.5px;margin-top:4px}
+
+/* Carrossel de destaques */
+.promos{padding-top:48px;padding-bottom:24px}
+.carrossel{position:relative}
+.car-trilho{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:var(--raio-g);scrollbar-width:none}
+.car-trilho::-webkit-scrollbar{display:none}
+.slide{position:relative;scroll-snap-align:start;display:block;aspect-ratio:1922/700;min-height:300px;background:#e9edf3}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slide-txt{position:absolute;right:clamp(16px,4vw,48px);bottom:clamp(16px,4vw,40px);max-width:400px;display:grid;gap:6px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);padding:20px 22px;border-radius:var(--raio);border-left:5px solid var(--rosa)}
+.slide-txt small{font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--rosa)}
+.slide-txt b{font-family:var(--ft);font-size:24px;line-height:1.15;color:var(--tit)}
+.slide-txt span{color:var(--tx2);font-size:15px}
+.slide-txt em{font-style:normal;font-weight:700;color:var(--azul);display:flex;gap:6px;align-items:center;margin-top:4px}
+.car-pontos{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.car-pontos button{width:10px;height:10px;border-radius:99px;background:#c3cbda;transition:.25s}
+.car-pontos button[aria-current=true]{width:30px;background:var(--rosa)}
+
+/* Prateleiras por marca */
+.prateleira{padding:clamp(40px,5vw,64px) 0;background:linear-gradient(180deg,var(--mc2),#fff 85%);border-top:4px solid var(--mc)}
+.prat-cab{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;margin-bottom:28px}
+.prat-logo{display:grid;place-items:center;width:150px;height:110px;background:#fff;border-radius:var(--raio-g);box-shadow:0 10px 24px rgba(15,35,70,.1);padding:12px}
+.prat-logo img{max-height:86px;width:auto}
+.prat-cab h2{font-size:clamp(22px,2.4vw,32px);color:var(--mc)}
+.prat-cab p{color:var(--tx2);margin-top:6px;max-width:70ch}
+.prateleira .btn.lin{color:var(--mc)}
+.prateleira .btn.lin:hover{background:var(--mc);border-color:var(--mc);color:#fff}
+.prateleira .trilho-setas button:hover:not(:disabled){border-color:var(--mc);color:var(--mc)}
+
+/* Cartões com faixa da marca */
+.pc>a{border:0;box-shadow:0 2px 0 var(--mc) inset,0 6px 18px rgba(15,35,70,.07)}
+.pc>a:hover{box-shadow:0 4px 0 var(--mc) inset,0 18px 36px rgba(15,35,70,.16)}
+.pc-foto{border-bottom:1px solid var(--linha)}
+
+/* Categorias com cor por ambiente */
+.cats{background:#fff}
+.cat::after{background:linear-gradient(180deg,transparent 30%,rgba(15,47,92,.88))}
+.cat.c0::after{background:linear-gradient(180deg,transparent 30%,rgba(31,90,166,.9))}
+.cat.c3::after{background:linear-gradient(180deg,transparent 30%,rgba(46,90,28,.88))}
+
+/* Liderança */
+.lideranca{background:linear-gradient(120deg,var(--azul-f),var(--azul));color:#fff}
+.lideranca h2{color:#fff}
+.lideranca .selo{color:var(--azul-c)}
+.lideranca p{color:#cfe0f5;margin-top:14px}
+.lid-in{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:center}
+.podio{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:end}
+.podio li{display:grid;gap:8px;text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--raio);padding:18px 10px;font-weight:600;font-size:14.5px}
+.podio li:nth-child(-n+2){padding-top:42px;background:linear-gradient(180deg,var(--rosa),#c94456);border-color:transparent}
+.podio b{font-family:var(--ft);font-size:34px;line-height:1}
+
+.sust{background:linear-gradient(135deg,#eef6e9,#fff)}
+.sust h2{color:#2e5a1c}
+.sust .selo{color:#3f7d23}
+.sust .btn{background:#2e5a1c;border-color:#2e5a1c}
+.sust-foto{position:relative;display:grid;place-items:center}
+.sust-foto .selo-er{position:absolute;left:0;top:0;width:90px}
+.sust-foto img:not(.selo-er){max-height:400px;width:auto}
+
+.quem{background:#fff}
+.quem h2{color:var(--tit)}
+.onde{background:linear-gradient(110deg,#c94456,var(--rosa) 55%,#f08a96);color:#fff}
+.onde h2{color:#fff}
+.onde .selo{color:#fff;opacity:.85}
+.onde-bt{background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4);color:#fff}
+.onde-bt:hover{background:#fff;color:var(--tit)}
+.onde-bt:hover>.ico{color:var(--rosa)}
+.fale{background:var(--fundo)}
+
+/* Páginas internas */
+.capa{background:radial-gradient(120% 120% at 90% 0,#3f86d0 0,var(--azul) 40%,var(--azul-f) 100%);color:#fff;padding:clamp(36px,5vw,72px) 0;overflow:hidden}
+.capa-in{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.capa-in>div:only-child{grid-column:1/-1}
+.capa h1{color:#fff;max-width:22ch}
+.capa .selo{color:var(--azul-c)}
+.capa .lead{color:#dce8f7}
+.capa .lead b{color:#fff}
+.capa .trilha{color:#bcd3ef}
+.capa .trilha a:hover{color:#fff}
+.capa-foto img{width:100%;border-radius:var(--raio-g);max-height:380px;object-fit:cover}
+.capa .btn.lin{color:#fff}
+
+.marca-capa{padding:clamp(28px,4vw,56px) 0;background:linear-gradient(135deg,var(--mc) 0,color-mix(in srgb,var(--mc) 70%,#000) 100%);color:#fff}
+.marca-capa h1{color:#fff}
+.marca-capa .trilha{color:rgba(255,255,255,.75)}
+.mc-logo{display:inline-grid;place-items:center;background:#fff;border-radius:var(--raio-g);padding:12px 20px;margin-bottom:18px}
+.mc-logo img{margin:0;height:84px}
+.marca-capa .mc-frase{color:#fff;opacity:.9}
+.marca-capa .btn{background:#fff;color:var(--mc);border-color:#fff}
+.marca-capa .btn.lin{background:transparent;color:#fff;border-color:#fff}
+.marca-capa .btn.lin:hover{background:#fff;color:var(--mc)}
+.mc-foto img{background:rgba(255,255,255,.08)}
+.linha{background:var(--mc2,var(--fundo))}
+.grupo h2{color:var(--mc,var(--tit))}
+.marca-docs{background:#fff}
+
+.produto{background:linear-gradient(180deg,var(--mc2) 0,var(--fundo) 420px)}
+.pd-marca{display:inline-block;background:#fff;border-radius:var(--raio);padding:8px 14px;box-shadow:0 6px 16px rgba(15,35,70,.08);margin-bottom:14px}
+.pd-marca img{margin:0;height:56px}
+.pd-foto{box-shadow:0 20px 40px rgba(15,35,70,.12)}
+.pd-info h1{color:var(--tit)}
+.pd .btn{background:var(--mc);border-color:var(--mc)}
+.pd .btn.lin{background:transparent;color:var(--mc)}
+.pd .btn.lin:hover{background:var(--mc);color:#fff}
+.rel{background:#fff}
+
+.proposito{background:#fff}
+.proposito .arco{display:none}
+.prop-in{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.prop{padding:32px;border-radius:var(--raio-g);background:var(--suave);border-left:6px solid var(--rosa)}
+.prop+.prop{border-left-color:var(--azul)}
+.prop blockquote{font-size:clamp(19px,2vw,24px);margin-top:4px}
+.numeros{background:linear-gradient(120deg,var(--azul-f),var(--azul));color:#fff}
+.numeros .num{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.rank li{background:#fff;color:var(--tit)}
+.rank b{background:var(--rosa);color:#fff}
+.historia{background:var(--fundo)}
+.linha-tempo{position:relative;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.linha-tempo li{background:#fff;border:0;box-shadow:0 6px 18px rgba(15,35,70,.07)}
+.linha-tempo li::before{content:"";position:absolute;left:20px;top:-6px;width:12px;height:12px;border-radius:50%;background:var(--rosa);box-shadow:0 0 0 4px #fff}
+.linha-tempo b{color:var(--azul)}
+
+.rodape{background:var(--azul-f);color:#dbe5f3}
+.rodape .r-marca img{background:#fff;padding:10px 14px;border-radius:10px;width:160px}
+
+@media (max-width:1080px){
+  .nav{background:#fff}
+  .hero-in,.capa-in,.lid-in,.prop-in{grid-template-columns:1fr}
+  .hero-nums{grid-template-columns:1fr 1fr}
+  .hero-nums div:nth-child(3){border-left:0}
+  .prat-cab{grid-template-columns:auto 1fr}
+  .prat-cab .btn{grid-column:1/-1;justify-self:start}
+  .podio{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:640px){
+  .prat-cab{grid-template-columns:1fr;gap:14px}
+  .prat-logo{width:120px;height:86px}
+  .slide{aspect-ratio:4/5;min-height:0}
+  .slide img{object-position:30% center}
+  .slide-txt{left:12px;right:12px;bottom:12px;max-width:none;padding:14px 16px}
+  .slide-txt b{font-size:19px}
+  .podio{grid-template-columns:1fr 1fr}
+  .podio li:nth-child(-n+2){padding-top:18px}
+}
