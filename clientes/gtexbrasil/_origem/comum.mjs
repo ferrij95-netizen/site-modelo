@@ -154,7 +154,7 @@ export function cartao(p, v, { h = 'h3' } = {}) {
     <span class="pc-info">
       <span class="pc-marca">${m.nome} · ${tipoNome(p.tipo)}</span>
       <${h} class="pc-nome">${esc(p.nome)}</${h}>
-      <span class="pc-emb">${p.emb.slice(0, 4).map(x => `<span>${esc(x.r)}</span>`).join('')}${p.emb.length > 4 ? `<span>+${p.emb.length - 4}</span>` : ''}</span>
+      <span class="pc-emb">${p.emb.slice(0, 3).map(x => `<span>${esc(x.r)}</span>`).join('')}${p.emb.length > 3 ? `<span>+${p.emb.length - 3}</span>` : ''}</span>
     </span>
   </a>
 </article>`;

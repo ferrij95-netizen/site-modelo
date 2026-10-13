@@ -345,3 +345,7 @@ a.canal:hover{border-color:var(--acento)}
   .doc-grupo ul{grid-template-columns:1fr}
   .btn{white-space:normal;text-align:left}
 }
+/* Filhos de grade não podem estourar a largura no celular. */
+.hero-in>*,.capa-in>*,.pd>*,.mc-in>*,.onde-in>*,.fale-in>*,.faq-in>*,.cat-lay>*,.quem-in>*,.time-in>*,.sust-in>*,.val-in>*,.pres-in>*,.lid-in>*{min-width:0}
+.pc-nome{text-transform:none!important;letter-spacing:0}
+@media (min-width:1081px){.filtros{max-height:none;overflow:visible}}
