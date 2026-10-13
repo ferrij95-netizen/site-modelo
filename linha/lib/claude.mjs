@@ -83,31 +83,37 @@ function guardar(slug, etapa, r, lote) {
 // conferida (campos obrigatórios do primeiro nível); se faltar algo, pede de novo uma vez.
 async function deepseek(slug, etapa, sistema, conteudo, esquema, maxTokens) {
   const texto = conteudo.filter(b => typeof b === 'string').join('\n\n');
-  const messages = [
-    { role: 'system', content: `${sistema}\n\nResponda só com um objeto JSON que siga exatamente este JSON Schema:\n${JSON.stringify(esquema)}` },
-    { role: 'user', content: texto },
-  ];
   for (let tentativa = 1; ; tentativa++) {
-    const r = await fetch('https://api.deepseek.com/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}` },
-      body: JSON.stringify({ model: MODELO_DEEPSEEK, messages, response_format: { type: 'json_object' }, max_tokens: Math.min(maxTokens, 8192), temperature: 0.7 }),
-    });
-    if (!r.ok) throw new Error(`${etapa}: DeepSeek respondeu ${r.status} ${(await r.text()).slice(0, 300)}`);
-    const d = await r.json();
-    const u = d.usage || {};
-    const usage = { input_tokens: u.prompt_cache_miss_tokens ?? u.prompt_tokens ?? 0, cache_read_input_tokens: u.prompt_cache_hit_tokens || 0, output_tokens: u.completion_tokens || 0 };
-    registrarCusto({ slug, etapa, modelo: d.model || MODELO_DEEPSEEK, lote: false, usage });
-    let json = null;
-    try { json = JSON.parse(d.choices[0].message.content); } catch {}
+    const { json, usage, modelo } = await deepseekJson({ sistema, texto, esquema, maxTokens, rotulo: etapa });
+    registrarCusto({ slug, etapa, modelo, lote: false, usage });
     const faltam = json ? (esquema.required || []).filter(k => !(k in json)) : ['JSON inválido'];
     if (!faltam.length) {
-      gravarJson(respostaDe(slug, etapa), { json, modelo: d.model || MODELO_DEEPSEEK, usage, lote: false });
+      gravarJson(respostaDe(slug, etapa), { json, modelo, usage, lote: false });
       return json;
     }
     if (tentativa >= 2) throw new Error(`${etapa}: resposta da DeepSeek sem ${faltam.join(', ')}`);
     log(`${slug} ${etapa}: faltou ${faltam.join(', ')}, pedindo de novo`);
   }
+}
+
+// Uma chamada à DeepSeek que devolve { json (ou null se não veio JSON), usage no formato da Anthropic, modelo }. Usada também pelo buscador.
+export async function deepseekJson({ sistema, texto, esquema, maxTokens = 2000, temperatura = 0.7, rotulo = 'deepseek' }) {
+  const messages = [
+    { role: 'system', content: `${sistema}\n\nResponda só com um objeto JSON que siga exatamente este JSON Schema:\n${JSON.stringify(esquema)}` },
+    { role: 'user', content: texto },
+  ];
+  const r = await fetch('https://api.deepseek.com/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}` },
+    body: JSON.stringify({ model: MODELO_DEEPSEEK, messages, response_format: { type: 'json_object' }, max_tokens: Math.min(maxTokens, 8192), temperature: temperatura }),
+  });
+  if (!r.ok) throw new Error(`${rotulo}: DeepSeek respondeu ${r.status} ${(await r.text()).slice(0, 300)}`);
+  const d = await r.json();
+  const u = d.usage || {};
+  const usage = { input_tokens: u.prompt_cache_miss_tokens ?? u.prompt_tokens ?? 0, cache_read_input_tokens: u.prompt_cache_hit_tokens || 0, output_tokens: u.completion_tokens || 0 };
+  let json = null;
+  try { json = JSON.parse(d.choices[0].message.content); } catch {}
+  return { json, usage, modelo: d.model || MODELO_DEEPSEEK };
 }
 
 // ---------- Lote (Batch API) ----------

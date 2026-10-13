@@ -59,6 +59,15 @@ Tudo fica no banco do hub (D1 `prospeccao`). A linha conversa com ele pelo wrang
 
 Empresas aprovadas que não têm site (ficha do Google) saem em `fila-sem-site.json`; a linha ainda não monta site a partir só do Google.
 
+## Antes do Aprovar: o buscador (`buscar.mjs`)
+
+Dá nota a cada site da lista pelo que o dono VÊ, para só chegar ao Aprovar quem tem site feio, velho ou quebrado.
+
+1. `node buscar.mjs nota <dados>/lista.json --paralelo 4 --ia 6 --teto 2`: abre cada site (os mesmos prints da aba Aprovar, em `<dados>/prints/`), mede o que aparece na tela (cabe no celular, layout estreito, fontes do Windows, fotos quebradas ou borradas, foto no topo, tabelas/Flash, "em construção", lentidão, HTTPS, ano) e, com `DEEPSEEK_API_KEY`, pede em paralelo uma ficha de texto (o que faz, segmento, porte, contatos, conteúdo abandonado). `--teto` é o gasto máximo em reais; o custo fica em `<dados>/buscador/custo.jsonl`. Endereço de Instagram, WhatsApp ou link de bio vira "sem site próprio" sem abrir.
+2. `node buscar.mjs mosaico`: junta os prints em folhas de 12 sites (computador + celular). A sessão do Claude no PC olha as folhas e grava a nota visual em `<dados>/buscador/visual.json` (regras em `mosaicos/COMO-DAR-NOTA.md`).
+3. `node buscar.mjs ranking`: nota final (a visual manda), motivos em português e quem passa do corte. Grava `prints.json` com os motivos, para a importação na aba Aprovar.
+4. `node buscar.mjs calibrar --aplicar`: lê do hub cada aprovar/rejeitar e reajusta os pesos e o corte (`<dados>/buscador/pesos.json`).
+
 ## Cuidados
 
 - Nada é enviado para as empresas. A linha só prepara; quem liga é o João.
