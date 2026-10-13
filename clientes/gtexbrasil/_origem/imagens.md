@@ -646,3 +646,14 @@ Lista das imagens usadas no site atual, para referência.
 
   ![2025/09/Lava-Roupas-em-Po-1kg.jpg](https://www.gtexbrasil.com.br/wp-content/uploads/2025/09/Lava-Roupas-em-Po-1kg.jpg)
 
+## Prints do site atual
+
+![home](https://image.thum.io/get/width/1400/crop/5200/noanimate/https://www.gtexbrasil.com.br/)
+
+![home-cel](https://image.thum.io/get/width/420/crop/2400/noanimate/https://www.gtexbrasil.com.br/)
+
+![urca](https://image.thum.io/get/width/1400/crop/3500/noanimate/https://www.gtexbrasil.com.br/urca/)
+
+![produtos](https://image.thum.io/get/width/1400/crop/3000/noanimate/https://www.gtexbrasil.com.br/produtos/)
+
+![quem](https://image.thum.io/get/width/1400/crop/4500/noanimate/https://www.gtexbrasil.com.br/quem-somos/)
