@@ -1,0 +1,48 @@
+/* Versão B "Moderna": topo escuro fixo, chamada com foto em tela cheia, títulos maiores e mais contraste. */
+.topo { background: color-mix(in srgb, var(--escura) 94%, transparent); backdrop-filter: blur(8px); color: #fff; }
+.topo #nav a:not(.botao) { color: rgba(255,255,255,.85); }
+.topo #nav a:not(.botao):hover, .topo #nav a[aria-current="page"] { color: #fff; }
+.topo #nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--destaque); }
+.topo .logo-caixa { padding: 7px 12px; }
+.topo .logo { max-height: 46px; }
+.menu-btn { color: #fff; }
+
+h1 { font-size: clamp(38px, 5.6vw, 76px); letter-spacing: -.02em; }
+h2 { font-size: clamp(28px, 3.4vw, 46px); letter-spacing: -.015em; }
+.sec-cab:not(.centro) h2 { position: relative; padding-top: 22px; }
+.sec-cab:not(.centro) h2::before { content: ''; position: absolute; top: 0; left: 0; width: 56px; height: 4px; background: var(--destaque); border-radius: 2px; }
+
+.chamada { position: relative; color: #fff; overflow: hidden; background: var(--escura); }
+.chamada .ch-fundo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); }
+.chamada::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(100deg, color-mix(in srgb, var(--escura) 92%, transparent) 0%, color-mix(in srgb, var(--escura) 70%, transparent) 45%, color-mix(in srgb, var(--escura) 15%, transparent) 100%); }
+.chamada.sem-foto::before { background: radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--cor) 55%, transparent), transparent 60%); }
+.chamada .in { position: relative; z-index: 2; }
+.ch-home .in { min-height: min(760px, 88vh); display: flex; align-items: center; padding: 80px 0; }
+.ch-interna .in { min-height: 360px; display: flex; align-items: flex-end; padding: 80px 0 56px; }
+.ch-texto { max-width: 720px; }
+.chamada h1 { color: #fff; }
+.chamada .sobretitulo { color: #fff; opacity: .8; border-left: 3px solid var(--destaque); padding-left: 12px; }
+.chamada p { font-size: clamp(17px, 1.5vw, 21px); opacity: .92; max-width: 600px; }
+.chamada .botao.vazado { color: #fff; }
+
+/* Processo em fundo escuro: etapas em linha com numeração grande. */
+.f-escuro .etapas li { background: rgba(255,255,255,.07); }
+.f-escuro .etapas li:nth-child(even) { background: rgba(255,255,255,.12); }
+.f-escuro .etapas h3 { color: #fff; }
+.f-escuro .etapas p { color: rgba(255,255,255,.8); }
+.f-escuro .etapas .passo { font-size: 34px; color: var(--destaque); filter: brightness(1.3); }
+
+.c-foto { border-radius: 4px; }
+.c-foto figure, .c-foto .sem-foto { aspect-ratio: 16 / 11; }
+.c-num { border-top: 0; border-left: 4px solid var(--destaque); border-radius: 4px; }
+
+@media (max-width: 960px) {
+  .ch-home .in { min-height: 560px; }
+  .chamada::before { background: linear-gradient(180deg, color-mix(in srgb, var(--escura) 55%, transparent), color-mix(in srgb, var(--escura) 92%, transparent)); }
+}
+/* Celular: sem desfoque no topo (o desfoque prende o menu lateral dentro do topo e alarga a página). */
+@media (max-width: 960px) {
+  .topo { backdrop-filter: none; background: var(--escura); }
+  .topo #nav a:not(.botao) { color: var(--escura); }
+  .topo #nav a[aria-current="page"] { box-shadow: none; color: var(--cor); }
+}

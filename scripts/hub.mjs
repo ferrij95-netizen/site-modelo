@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { repo } from './paths.mjs';
+import { paginaLigar } from './hub-ligar.mjs';
 
 const out = path.join(repo, 'dist/_hub');
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -25,7 +26,9 @@ fs.cpSync(path.join(repo, 'hub/busca'), path.join(out, 'busca'), { recursive: tr
 const clientes = slugs.map(slug => {
   const base = path.join(dir, slug);
   const cfg = JSON.parse(fs.readFileSync(path.join(base, 'site.config.json'), 'utf8'));
-  const completo = fs.existsSync(path.join(base, 'design/layout.html'));
+  // Sites da linha de produção (linha/) são estáticos em public/ e já saem completos.
+  const completo = fs.existsSync(path.join(base, 'design/layout.html')) || !!cfg.linha;
+  const ligacao = fs.existsSync(path.join(base, 'ligacao.json')) ? JSON.parse(fs.readFileSync(path.join(base, 'ligacao.json'), 'utf8')) : null;
   const lang = cfg.defaultLang || 'pt';
   const og = path.join(repo, 'dist/_clientes', slug, `assets/img/og/${lang}-index.jpg`);
   const fonte = [path.join(base, 'capa.jpg'), og].find(f => fs.existsSync(f));
@@ -43,6 +46,7 @@ const clientes = slugs.map(slug => {
     direcoes: fs.existsSync(path.join(base, 'public/direcoes')),
     url: `https://${slug}.overtus.com.br/`,
     capa,
+    ligacao,
   };
 });
 
@@ -53,12 +57,13 @@ const card = c => `
       </a>
       <div class="info">
         <div class="nome">
-          <span class="status ${c.completo ? 'ok' : 'dir'}">${c.completo ? 'Site completo' : 'Direções'}</span>
+          <span class="status ${c.ligacao ? 'ligar' : c.completo ? 'ok' : 'dir'}">${c.ligacao ? 'Pronto para ligar' : c.completo ? 'Site completo' : 'Direções'}</span>
           <h2>${esc(c.nome)}</h2>
           <p title="${esc(c.slug)}.overtus.com.br">${esc(c.tagline || c.slug + '.overtus.com.br')}</p>
         </div>
         <div class="links">
           ${c.completo ? `<a href="${c.url}">Ver site</a>` : ''}
+          ${c.ligacao ? `<a href="/ligar/#${esc(c.slug)}">Ligar</a>` : ''}
           ${c.direcoes ? `<a href="${c.url}direcoes/">${c.completo ? 'Direções' : 'Ver direções'}</a>` : ''}
         </div>
       </div>
@@ -98,6 +103,7 @@ const html = `<!doctype html>
   .status { display:inline-block; white-space:nowrap; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; padding:1px 8px; border-radius:99px; }
   .status.ok { color:var(--ok); background:#e3f3ea; }
   .status.dir { color:var(--dir); background:#fbefdc; }
+  .status.ligar { color:#fff; background:#ed9454; }
   h2 { margin:2px 0 0; font-size:clamp(15px, 2vh, 18px); line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .info p { margin:0; color:var(--muted); font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .links { display:flex; gap:6px; }
@@ -121,7 +127,7 @@ const html = `<!doctype html>
     <h1>Sites em desenvolvimento</h1>
     <p>Previews dos clientes da Overtus.</p>
   </div>
-  <span class="resumo"><button class="instalar" hidden>Instalar app</button>${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/busca/">Buscar sites antigos</a> · <a href="/sair">Sair</a></span>
+  <span class="resumo"><button class="instalar" hidden>Instalar app</button>${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} ${clientes.some(c => c.ligacao) ? `· <a href="/ligar/">Para ligar (${clientes.filter(c => c.ligacao).length})</a> ` : ''}· <a href="/busca/">Buscar sites antigos</a> · <a href="/sair">Sair</a></span>
 </header>
 <main>${clientes.map(card).join('')}
 </main>
@@ -166,4 +172,7 @@ const html = `<!doctype html>
 `;
 
 fs.writeFileSync(path.join(out, 'index.html'), html);
+// Página "Para ligar": empresas que a linha de produção deixou prontas (site + telefone + script).
+fs.mkdirSync(path.join(out, 'ligar'), { recursive: true });
+fs.writeFileSync(path.join(out, 'ligar', 'index.html'), paginaLigar(clientes.filter(c => c.ligacao), esc));
 console.log(`hub: ${clientes.length} clientes em dist/_hub/`);
