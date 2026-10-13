@@ -36,6 +36,13 @@ A nuvem do Claude não abre os sites dos clientes, então a linha roda no PC (ou
 6. Ver: `node rodar.mjs situacao` e `node rodar.mjs custo`.
 7. Commit de `clientes/` e `wrangler.jsonc` num branch, PR, merge: os previews e a página "Para ligar" vão ao ar.
 
+### Com a chave da DeepSeek
+
+`set DEEPSEEK_API_KEY=...` (sem a da Anthropic) faz as etapas de texto (ficha, redação, tradução, script) irem para a DeepSeek (`deepseek-chat`, ou `DEEPSEEK_MODELO`).
+A DeepSeek não lê imagens, então a triagem e a revisão, que olham prints, ficam como pedido em `dados/empresas/<cliente>/ia/triagem.pedido.json` e `revisao.pedido.json`:
+a sessão do Claude no PC abre os prints indicados, grava `triagem.resposta.json` / `revisao.resposta.json` com `{"json": ...}` no formato do esquema do pedido e roda `node rodar.mjs` de novo.
+Sem Batch API nesse modo. O custo da DeepSeek entra em `node rodar.mjs custo`.
+
 Sem chave (`LINHA_MODO=manual`), cada etapa de IA só grava o pedido em `dados/empresas/<cliente>/ia/<etapa>.pedido.json`; quem responde grava `<etapa>.resposta.json` com `{"json": ...}`. Foi assim que a linha foi testada na nuvem.
 
 ## Cuidados

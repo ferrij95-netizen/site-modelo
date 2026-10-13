@@ -19,6 +19,12 @@ export const MODELOS = {
 };
 
 // Esforço de raciocínio por etapa (menos esforço = menos tokens de saída).
+// Provedor da IA: 'anthropic' (padrão) ou 'deepseek' (DEEPSEEK_API_KEY). A DeepSeek só lê texto, então as etapas
+// que olham prints (triagem e revisão) ficam no modo manual: a sessão do Claude no PC olha os prints e grava a resposta.
+export const PROVEDOR = process.env.LINHA_IA || (process.env.ANTHROPIC_API_KEY ? 'anthropic' : process.env.DEEPSEEK_API_KEY ? 'deepseek' : 'anthropic');
+export const MODELO_DEEPSEEK = process.env.DEEPSEEK_MODELO || 'deepseek-chat';
+export const ETAPAS_COM_IMAGEM = ['triagem', 'revisao'];
+
 export const ESFORCO = {
   triagem: 'low', conteudo: 'low', redacao: 'medium', traducao: 'low', revisao: 'low', abordagem: 'low',
 };
@@ -28,6 +34,9 @@ export const PRECOS = {
   'claude-haiku-5-5': { entrada: 0.10, saida: 0.50 },
   'claude-sonnet-5-5': { entrada: 2.00, saida: 10.00 },
   'claude-opus-5-5': { entrada: 4.00, saida: 20.00 },
+  // DeepSeek (tabela pública no fim de 2025; conferir em api-docs.deepseek.com/quick_start/pricing). Cache lido: 0,1x.
+  'deepseek-chat': { entrada: 0.28, saida: 0.42 },
+  'deepseek-reasoner': { entrada: 0.28, saida: 0.42 },
 };
 export const DOLAR = Number(process.env.DOLAR || 5.5);
 

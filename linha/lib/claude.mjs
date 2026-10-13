@@ -2,13 +2,16 @@
 //  - direto: chama a API na hora (precisa de ANTHROPIC_API_KEY).
 //  - lote:   junta os pedidos de todas as empresas e manda pela Batch API (metade do preço, resposta em até 24 h).
 //  - manual: só grava o pedido em disco; alguém (uma sessão do Claude) grava a resposta. Usado nos testes sem chave.
+// Com LINHA_IA=deepseek, as etapas de texto vão para a API da DeepSeek e as que olham prints ficam no manual.
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import { DADOS, MODELOS, ESFORCO, PRECOS } from '../config.mjs';
+import { DADOS, MODELOS, ESFORCO, PRECOS, PROVEDOR, MODELO_DEEPSEEK, ETAPAS_COM_IMAGEM } from '../config.mjs';
 import { arq, lerJson, gravarJson, log } from './util.mjs';
 
-export const MODO = process.env.LINHA_MODO || (process.env.ANTHROPIC_API_KEY ? 'direto' : 'manual');
+export const MODO = process.env.LINHA_MODO || (process.env.ANTHROPIC_API_KEY || process.env.DEEPSEEK_API_KEY ? 'direto' : 'manual');
+const DEEPSEEK = PROVEDOR === 'deepseek';
+const modoDa = etapa => (DEEPSEEK && ETAPAS_COM_IMAGEM.includes(base(etapa)) ? 'manual' : MODO);
 let cliente = null;
 async function api() {
   if (!cliente) { const { default: Anthropic } = await import('@anthropic-ai/sdk'); cliente = new Anthropic(); }
@@ -52,12 +55,14 @@ export async function pedir({ slug, etapa, sistema, conteudo, esquema, maxTokens
   const salva = lerJson(respostaDe(slug, etapa));
   if (salva?.json) return salva.json;
 
-  if (MODO === 'manual') {
-    gravarJson(pedidoDe(slug, etapa), { etapa, modelo: MODELOS[base(etapa)], sistema, conteudo: await blocos(conteudo, true), esquema, maxTokens });
+  const modo = modoDa(etapa);
+  if (modo === 'manual') {
+    gravarJson(pedidoDe(slug, etapa), { etapa, modelo: DEEPSEEK ? 'manual' : MODELOS[base(etapa)], sistema, conteudo: await blocos(conteudo, true), esquema, maxTokens });
     return null;
   }
+  if (DEEPSEEK) return deepseek(slug, etapa, sistema, conteudo, esquema, maxTokens);
   const params = parametros(etapa, sistema, await blocos(conteudo), esquema, maxTokens);
-  if (MODO === 'lote') { fila.push({ custom_id: `${slug}__${etapa}`.slice(0, 64), params }); return null; }
+  if (modo === 'lote') { fila.push({ custom_id: `${slug}__${etapa}`.slice(0, 64), params }); return null; }
 
   const c = await api();
   const r = await c.messages.stream(params).finalMessage();
@@ -71,6 +76,38 @@ function guardar(slug, etapa, r, lote) {
   gravarJson(respostaDe(slug, etapa), { json, modelo: r.model, usage: r.usage, lote });
   registrarCusto({ slug, etapa, modelo: r.model, lote, usage: r.usage });
   return json;
+}
+
+// ---------- DeepSeek ----------
+// API no formato da OpenAI. Não tem esquema obrigatório, só "json_object": o esquema vai no texto e a resposta é
+// conferida (campos obrigatórios do primeiro nível); se faltar algo, pede de novo uma vez.
+async function deepseek(slug, etapa, sistema, conteudo, esquema, maxTokens) {
+  const texto = conteudo.filter(b => typeof b === 'string').join('\n\n');
+  const messages = [
+    { role: 'system', content: `${sistema}\n\nResponda só com um objeto JSON que siga exatamente este JSON Schema:\n${JSON.stringify(esquema)}` },
+    { role: 'user', content: texto },
+  ];
+  for (let tentativa = 1; ; tentativa++) {
+    const r = await fetch('https://api.deepseek.com/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}` },
+      body: JSON.stringify({ model: MODELO_DEEPSEEK, messages, response_format: { type: 'json_object' }, max_tokens: Math.min(maxTokens, 8192), temperature: 0.7 }),
+    });
+    if (!r.ok) throw new Error(`${etapa}: DeepSeek respondeu ${r.status} ${(await r.text()).slice(0, 300)}`);
+    const d = await r.json();
+    const u = d.usage || {};
+    const usage = { input_tokens: u.prompt_cache_miss_tokens ?? u.prompt_tokens ?? 0, cache_read_input_tokens: u.prompt_cache_hit_tokens || 0, output_tokens: u.completion_tokens || 0 };
+    registrarCusto({ slug, etapa, modelo: d.model || MODELO_DEEPSEEK, lote: false, usage });
+    let json = null;
+    try { json = JSON.parse(d.choices[0].message.content); } catch {}
+    const faltam = json ? (esquema.required || []).filter(k => !(k in json)) : ['JSON inválido'];
+    if (!faltam.length) {
+      gravarJson(respostaDe(slug, etapa), { json, modelo: d.model || MODELO_DEEPSEEK, usage, lote: false });
+      return json;
+    }
+    if (tentativa >= 2) throw new Error(`${etapa}: resposta da DeepSeek sem ${faltam.join(', ')}`);
+    log(`${slug} ${etapa}: faltou ${faltam.join(', ')}, pedindo de novo`);
+  }
 }
 
 // ---------- Lote (Batch API) ----------

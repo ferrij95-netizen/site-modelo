@@ -5,7 +5,8 @@
 //   node rodar.mjs custo                              mostra quanto cada etapa custou
 //   node rodar.mjs situacao                           mostra em que etapa cada empresa está
 //
-// Modo (variável LINHA_MODO): direto (padrão com ANTHROPIC_API_KEY), lote (Batch API, metade do preço) ou manual (sem chave).
+// Modo (variável LINHA_MODO): direto (padrão com ANTHROPIC_API_KEY ou DEEPSEEK_API_KEY), lote (Batch API, metade do preço) ou manual (sem chave).
+// Com DEEPSEEK_API_KEY (ou LINHA_IA=deepseek), triagem e revisão ficam aguardando a sessão do Claude olhar os prints.
 import fs from 'node:fs';
 import path from 'node:path';
 import { DADOS, REPO, NOTA_MINIMA } from './config.mjs';
