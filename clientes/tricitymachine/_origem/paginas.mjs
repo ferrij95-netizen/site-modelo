@@ -5,8 +5,38 @@ import { paginas, head, cabecalho, rodape } from './comum.mjs';
 const FONTES = {
   a: 'https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap',
   b: 'https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap',
+  d: 'https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap',
   c: 'https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap',
 };
+
+// Versão D, Estrutura Loewe: barra utilitária, hero de foto inteira, rótulos com fio, cards numerados, grade de serviços com célula de chamada, bloco sobre com selo de anos, faixa escura de contato.
+function paginaHomeD(v) {
+  const grade = servicos.map((s, i) => `<a class="g-serv" href="/${v}/servicos/#${s.slug}"><span class="num">0${i + 1}</span><h3>${s.nome}</h3><span class="seta">Learn more <b aria-hidden="true">→</b></span></a>`).join('')
+    + `<a class="g-serv g-cta" href="/${v}/contato/"><span class="num">Project evaluation</span><h3>Send us a drawing, a sketch or the part</h3><span class="seta">Contact us <b aria-hidden="true">→</b></span></a>`;
+  return `<section class="hero-d" style="background-image:linear-gradient(100deg,rgba(1,23,80,.92) 0%,rgba(1,23,80,.7) 48%,rgba(1,23,80,.15) 100%),url(/assets/img/foto-ventilador.webp)">
+  <div class="in">
+    <p class="eyebrow">${empresa.desde} · ${empresa.cidade}</p>
+    <h1>${hero.titulo}</h1>
+    <p class="lead">For more than 47 years, our customers have trusted us with their precision machining jobs and critical equipment repairs.</p>
+    <div class="botoes"><a class="botao" href="/${v}/contato/">Request a project evaluation</a><a class="botao claro" href="/${v}/servicos/">Our services</a></div>
+  </div>
+</section>
+<section class="cards-d"><div class="in">${valores.map((x, i) => `<div class="card-d"><span class="num">0${i + 1}</span><h3>${x.titulo}</h3></div>`).join('')}</div></section>
+<section class="servicos-d"><div class="in">
+  <p class="eyebrow">What we do</p><h2>Our Services</h2>
+  <div class="grade-d">${grade}</div>
+</div></section>
+<section class="sobre-d"><div class="in">
+  <div class="sobre-foto"><img src="/assets/img/foto-eixo.webp" alt="Shaft and wheel work in the Tri-City shop" width="1280" height="960"><div class="selo"><strong>47+</strong><span>years of precision machining</span></div></div>
+  <div><p class="eyebrow">About Tri-City</p><h2>A full service machine shop in Peoria</h2><p>${hero.intro}</p><a class="botao escuro" href="/${v}/sobre/">About us</a></div>
+</div></section>
+<section class="capac-d"><div class="in"><div><p class="eyebrow">Expert Capabilities</p><h2>What we machine and repair</h2></div>${chips}</div></section>
+<section class="qual-d"><div class="in"><div><p class="eyebrow">Quality Assurance</p><h2>Accurate and reliable parts</h2></div><div><p>${qualidade}</p><a class="link" href="/${v}/qualidade/">Read more about our quality</a></div></div></section>
+<section class="contato-d"><div class="in">
+  <div><p class="eyebrow">Contact Us</p><h2>Contact Us for a Project Evaluation</h2><p>Emergency work? We handle critical equipment repairs.</p></div>
+  <div class="contato-d-dados"><a href="tel:${empresa.telefoneHref}"><small>Phone</small>${empresa.telefone}</a><a href="mailto:${empresa.email}"><small>Email</small>${empresa.email}</a><span><small>Address</small>${empresa.endereco}</span></div>
+</div></section>`;
+}
 
 // Versão C, Oficina: foto de fundo no topo, serviços em linhas com foto, faixa de números.
 function paginaHomeC(v) {
@@ -69,6 +99,7 @@ const fotosHtml = (n) => fotos.slice(0, n).map((f, i) => `<figure class="foto f$
 
 function paginaHome(v) {
   if (v === 'c') return paginaHomeC(v);
+  if (v === 'd') return paginaHomeD(v);
   const valoresHtml = valores.map((x, i) => `<li><span class="num">0${i + 1}</span><h3>${x.titulo}</h3></li>`).join('');
   const servicosHtml = servicos.map((s, i) => `<a class="servico" href="/${v}/servicos/#${s.slug}"><span class="num">0${i + 1}</span><h3>${s.nome}</h3><span class="seta">Learn more →</span></a>`).join('');
   return `<section class="hero">

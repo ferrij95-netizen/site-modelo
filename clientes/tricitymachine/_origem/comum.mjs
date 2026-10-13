@@ -41,7 +41,8 @@ export function head({ v, titulo, descricao, caminho, fontes }) {
 
 export function cabecalho(v, ativa) {
   const links = paginas.map(p => `<a href="/${v}/${p.caminho}"${p.slug === ativa ? ' aria-current="page"' : ''}>${p.nome}</a>`).join('');
-  return `<header class="topo">
+  const util = v === 'd' ? `<div class="util"><div class="in"><span>${empresa.endereco}</span><span><a href="mailto:${empresa.email}">${empresa.email}</a> · <a href="tel:${empresa.telefoneHref}">${empresa.telefone}</a></span></div></div>\n` : '';
+  return `${util}<header class="topo">
   <a class="marca" href="/${v}/"><img src="/assets/img/logo-branco.png" alt="${empresa.nome} logo" width="60" height="78"><span>${empresa.curto}<small>${empresa.cidade}</small></span></a>
   <button class="menu-btn" aria-expanded="false" aria-controls="menu" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');document.getElementById('menu').classList.toggle('aberto')">Menu</button>
   <nav id="menu" class="menu" aria-label="Main">${links}<a class="menu-tel" href="tel:${empresa.telefoneHref}">${empresa.telefone}</a></nav>
