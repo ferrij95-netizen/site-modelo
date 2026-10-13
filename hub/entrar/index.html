@@ -121,6 +121,7 @@
     <div class="lado">
       <div class="vidro">
         <form id="login" method="post" action="/entrar" autocomplete="off" novalidate>
+          <input type="hidden" name="volta" id="volta">
           <div class="rotulo">Área do cliente</div>
           <h2>Entrar no painel</h2>
           <label class="primeiro" for="ov-email">Usuário</label>
@@ -159,6 +160,7 @@
 </div>
 <script>
   const $ = id => document.getElementById(id);
+  $('volta').value = new URLSearchParams(location.search).get('volta') || '';
   const form = $('login'), erro = $('erro'), email = $('ov-email'), senha = $('ov-pass');
   const mostrarErro = msg => { erro.textContent = msg; erro.hidden = !msg; };
   // Navegador sem máscara por CSS (raro): volta ao campo de senha comum para a senha nunca aparecer.
