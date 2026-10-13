@@ -12,6 +12,7 @@ const clientes = fs.existsSync(path.join(repo, 'clientes'))
 // Cliente ainda sem design/ (fase de direções visuais): publica só a pasta public/.
 const temDesign = c => fs.existsSync(path.join(repo, 'clientes', c, 'design/layout.html'));
 
+run('check-rotas.mjs');
 run('build.mjs');
 for (const c of clientes) {
   if (temDesign(c)) run('build.mjs', `clientes/${c}`);
