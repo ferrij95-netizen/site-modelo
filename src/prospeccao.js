@@ -42,6 +42,22 @@ export async function prospeccao(request, env, url) {
     });
   }
 
+  // Carga em lote (cópia inicial do artifact): só cria o que ainda não existe, então rodar de novo não estraga nada.
+  if (request.method === 'POST' && url.pathname === '/api/empresas/_lote') {
+    const docs = await request.json().catch(() => null);
+    if (!docs || typeof docs !== 'object' || Array.isArray(docs)) return erro('invalid_argument', 'envie {id: doc}', 400);
+    const agora = Date.now();
+    const st = db.prepare('INSERT INTO empresas (id, lista, doc, versao, atualizado, apagado) VALUES (?, ?, ?, 1, ?, 0) ON CONFLICT(id) DO NOTHING');
+    const lote = Object.entries(docs).filter(([k, d]) => k && !k.includes('/') && d && typeof d === 'object')
+      .map(([k, d]) => st.bind(k, String(d.lista || 'minhas'), JSON.stringify({ ...d, lista: String(d.lista || 'minhas') }), agora));
+    const r = lote.length ? await db.batch(lote) : [];
+    return json({ recebidos: lote.length, criados: r.reduce((n, x) => n + (x.meta?.changes || 0), 0) });
+  }
+  if (request.method === 'GET' && url.pathname === '/api/empresas/_contagem') {
+    const { results } = await db.prepare('SELECT lista, COUNT(*) AS n FROM empresas WHERE apagado = 0 GROUP BY lista ORDER BY lista').all();
+    return json({ listas: results });
+  }
+
   if (!id || id.includes('/') || id.length > 200) return erro('invalid_argument', 'id inválido', 400);
 
   if (request.method === 'GET') {

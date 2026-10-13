@@ -45,6 +45,8 @@ fs.cpSync(path.join(repo, 'hub/app'), path.join(out, 'app'), { recursive: true }
 fs.copyFileSync(path.join(repo, 'hub/sw.js'), path.join(out, 'sw.js'));
 // Busca de sites antigos (hub/busca/): só gera links de pesquisa do Google, protegida pelo mesmo login.
 fs.cpSync(path.join(repo, 'hub/busca'), path.join(out, 'busca'), { recursive: true });
+// Importar empresas de um arquivo para o banco do canvas (hub/importar/), também atrás do login.
+fs.cpSync(path.join(repo, 'hub/importar'), path.join(out, 'importar'), { recursive: true });
 
 const clientes = slugs.map(slug => {
   const base = path.join(dir, slug);

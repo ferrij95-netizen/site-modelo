@@ -42,6 +42,10 @@ async function hub(request, env, url) {
   }
   // Dados do canvas de prospecção (página inicial do hub), no D1.
   if (url.pathname === '/api/empresas' || url.pathname.startsWith('/api/empresas/')) return prospeccao(request, env, url);
+  // Enquanto o banco do canvas estiver vazio (antes da cópia dos dados), a raiz continua mostrando a lista de sites.
+  if (url.pathname === '/' && env.PROSPECCAO && !(await env.PROSPECCAO.prepare('SELECT 1 FROM empresas LIMIT 1').first().catch(() => null))) {
+    url.pathname = '/sites/';
+  }
   url.pathname = '/_hub' + url.pathname;
   const res = await env.ASSETS.fetch(new Request(url, request));
   const out = new Response(res.body, res);
