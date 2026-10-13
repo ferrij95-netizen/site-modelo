@@ -1,0 +1,21 @@
+# Imagens do site atual da Matacura (matacura.com.br)
+
+Lista das imagens do site atual, para referência.
+
+- logo.png ![logo](https://www.matacura.com.br/Site/Resources/Assets/img/site/logo.png)
+- logo-fixo.png ![logo-fixo](https://www.matacura.com.br/Site/Resources/Assets/img/site/logo-fixo.png)
+- logo-rodape.png ![logo-rodape](https://www.matacura.com.br/Site/Resources/Assets/img/site/logo-rodape.png)
+- og-logo.png ![og](https://www.matacura.com.br/image/uploads/logo-57cec9d050f15.png)
+- l-classicos.png ![](https://www.matacura.com.br/image/uploads/classicos1945transparentesite180x84-6ac5785879a4f.png)
+- l-petmoments.png ![](https://www.matacura.com.br/image/uploads/petmoments180x60-6ac576609f6a3.png)
+- l-caofiel.png ![](https://www.matacura.com.br/image/uploads/caofiel-57d4219dbe3af.png)
+- l-saralogo.png ![](https://www.matacura.com.br/image/uploads/saralogo01180x60-6ac57623cdd34.png)
+- l2-matacura.png ![](https://www.matacura.com.br/image/uploads/matacura-57d421992824d.png)
+- l2-petmoments.png ![](https://www.matacura.com.br/image/uploads/petmoments-6ab426cb8e17c.png)
+- l2-saralogo.png ![](https://www.matacura.com.br/image/uploads/saralogo-57d421a2494c4.png)
+- p-test.png ![](https://www.matacura.com.br/image/uploads/linha-classicos-shampoo-sarnicida-e-antipulgas-200ml-6ac53bd3ae8cf.png)
+- p-test2.png ![](https://www.matacura.com.br//image/uploads/linha-classicos-shampoo-sarnicida-e-antipulgas-200ml-6ac53bd3ae8cf.png&w=800&h=840&q=90)
+- print-home.jpg ![](https://image.thum.io/get/width/1400/crop/3000/https://www.matacura.com.br/)
+- print-home-cel.jpg ![](https://image.thum.io/get/width/420/crop/2200/iphoneX/https://www.matacura.com.br/)
+- print-empresa.jpg ![](https://image.thum.io/get/width/1400/crop/4000/https://www.matacura.com.br/empresa/)
+- print-produto.jpg ![](https://image.thum.io/get/width/1400/crop/2200/https://www.matacura.com.br/produtos/matacura-shampoo-matacura-sarnicida-e-antipulgas-200ml/)
