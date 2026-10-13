@@ -1,0 +1,21 @@
+<section class="contact" id="contato"><div class="wrap">
+  <div class="l">
+    <div class="eyebrow">{{t.nav.contato}}</div>
+    <h2>{{t.contactTitle}}</h2>
+    <p>{{t.contactText}}</p>
+    <dl>
+      <div><dt>{{t.labels.phone}}</dt><dd><a href="{{wa}}" target="_blank" rel="noopener">{{site.phone}}</a></dd></div>
+      <div><dt>{{t.labels.email}}</dt><dd class="mail"><a href="mailto:{{site.email}}">{{site.email}}</a></dd></div>
+      <div><dt>{{t.labels.address}}</dt><dd><a href="{{site.mapsUrl}}" target="_blank" rel="noopener">Estrada Nossa Senhora Aparecida, 811<br>Faxinal · Montenegro/RS</a></dd></div>
+    </dl>
+  </div>
+  <form id="orcamento" data-wa="{{site.whatsapp}}">
+    <h3>{{t.form.title}}</h3>
+    <div class="row"><div><label for="f-nome">{{t.form.name}}</label><input id="f-nome" name="nome" required autocomplete="name"></div><div><label for="f-emp">{{t.form.company}}</label><input id="f-emp" name="empresa" autocomplete="organization"></div></div>
+    <label for="f-cont">{{t.form.contact}}</label><input id="f-cont" name="contato" required>
+    <label for="f-serv">{{t.form.service}}</label><select id="f-serv" name="servico">{{#each t.services}}<option>{{it.name}}</option>{{/each}}<option>{{t.form.consult}}</option></select>
+    <label for="f-msg">{{t.form.message}}</label><textarea id="f-msg" name="mensagem" rows="4"></textarea>
+    <button class="btn" type="submit">{{t.form.send}}</button>
+    <p class="note">{{t.form.note}}</p>
+  </form>
+</div></section>

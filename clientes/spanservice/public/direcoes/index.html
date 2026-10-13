@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Span Service · Direções visuais</title>
+<link rel="icon" href="../img/favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.6 Inter,system-ui,sans-serif;color:#1C1C1E;background:#F4F3F0;padding:56px 24px}
+.wrap{max-width:1100px;margin:0 auto}
+.logo{height:56px;width:auto;display:block;margin-bottom:28px}
+h1{font-size:32px;letter-spacing:-.02em}
+p.lead{color:#5F5E5B;margin:8px 0 36px;max-width:680px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+a{display:block;background:#fff;border:1px solid #E1DED7;color:inherit;text-decoration:none;transition:.2s}
+a:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.08)}
+iframe{width:1280px;height:900px;border:0;transform:scale(.27);transform-origin:0 0;pointer-events:none}
+.thumb{height:243px;overflow:hidden;border-bottom:1px solid #E1DED7}
+.txt{padding:18px 20px}
+.txt b{font-size:18px}.txt span{display:block;color:#5F5E5B;font-size:14px;margin-top:4px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.thumb{height:auto}.thumb iframe{display:none}}
+</style>
+</head>
+<body><div class="wrap">
+<img class="logo" src="../img/logo-grafite.png" alt="Span Service"><h1>Escolha a direção visual</h1>
+<p class="lead">Três propostas para a nova página inicial da Span Service, com o logo, as fotos e os textos do site atual. Abra cada uma (funcionam no celular também) e escolha a preferida. Dá para misturar pontos de duas. Depois da escolha, o site ganha as páginas internas: uma por serviço, A empresa, Projetos e Contato.</p>
+<div class="grid">
+  <a href="a"><div class="thumb"><iframe src="a.html" loading="lazy" tabindex="-1"></iframe></div><div class="txt"><b>A · Oficina</b><span>Escura e forte, grafite e amarelo do logo, títulos condensados grandes e foto de solda em tela cheia.</span></div></a>
+  <a href="b"><div class="thumb"><iframe src="b.html" loading="lazy" tabindex="-1"></iframe></div><div class="txt"><b>B · Perto de você</b><span>Clara e acolhedora, cantos arredondados, as fotos dos trabalhos em destaque e o passo a passo do atendimento.</span></div></a>
+  <a href="c"><div class="thumb"><iframe src="c.html" loading="lazy" tabindex="-1"></iframe></div><div class="txt"><b>C · Projeto técnico</b><span>Azul-marinho dos ícones atuais com amarelo, linhas de grade e numeração de prancha, como um projeto de engenharia.</span></div></a>
+</div>
+</div></body>
+</html>

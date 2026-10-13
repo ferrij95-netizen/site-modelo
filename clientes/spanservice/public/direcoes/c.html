@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Span Service · Direção C · Projeto técnico</title>
+<link rel="icon" href="../img/favicon.svg">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--n:#132651;--n2:#0D1B3B;--n3:#1C3366;--y:#FAB830;--w:#FFFFFF;--p:#EEF1F6;--ink:#0F1A33;--g:#5A6478;--line:#D5DBE6;--bl:rgba(255,255,255,.13)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:17px/1.6 "Space Grotesk",system-ui,sans-serif;color:var(--ink);background:var(--w);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.02}
+.mono{font:500 12.5px/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.lbl{display:flex;gap:10px;align-items:center;color:var(--g)}
+.lbl b{color:var(--n);background:var(--y);padding:3px 7px;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:12px;font:600 16px/1 "Space Grotesk";text-decoration:none;padding:18px 24px;background:var(--y);color:var(--n2);transition:.2s;border:0}
+.btn:hover{background:#fff}
+.btn.line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.btn.line:hover{box-shadow:inset 0 0 0 1px var(--y);color:var(--y)}
+.btn svg{width:18px}
+.grid-bg{background-image:linear-gradient(var(--bl) 1px,transparent 1px),linear-gradient(90deg,var(--bl) 1px,transparent 1px);background-size:64px 64px}
+
+/* topo */
+header{background:var(--n2);color:#fff;position:sticky;top:0;z-index:30;border-bottom:1px solid var(--bl)}
+header .wrap{display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;height:78px}
+header .logo{display:flex;align-items:center;padding-right:36px;border-right:1px solid var(--bl)}
+header .logo img{height:46px;width:auto}
+header nav{display:flex;align-items:stretch;padding-left:12px}
+header nav a{display:flex;align-items:center;gap:8px;padding:0 20px;text-decoration:none;font-weight:500;font-size:15.5px;border-bottom:2px solid transparent}
+header nav a span{font:400 11px "IBM Plex Mono";color:var(--y)}
+header nav a:hover{border-color:var(--y)}
+header .right{display:flex;align-items:center;gap:22px}
+header .right a.tel{text-decoration:none;font:500 14px "IBM Plex Mono"}
+header .btn{padding:13px 18px;font-size:15px}
+.burger{display:none;background:none;border:1px solid var(--bl);color:#fff;width:46px;height:46px}
+
+/* hero */
+.hero{background:var(--n);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;min-height:calc(100vh - 78px);min-height:calc(100svh - 78px)}
+.hero .txt{padding:80px 56px 64px 0;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--bl);position:relative;z-index:2}
+.hero .mono{color:#A9B6D3}
+.hero h1{font-size:clamp(48px,6.2vw,92px);margin:28px 0 28px}
+.hero h1 span{color:var(--y)}
+.hero p{font-size:19px;color:#C7D0E4;max-width:520px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.hero .spec{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--bl);margin-top:56px}
+.hero .spec div{padding:20px 18px 0 0}
+.hero .spec b{display:block;font-size:26px;font-weight:600;letter-spacing:-.02em}
+.hero .spec span{font:400 12px/1.4 "IBM Plex Mono";color:#A9B6D3;text-transform:uppercase;letter-spacing:.06em}
+.hero .pic{position:relative;margin-right:min(-32px,calc((1280px - 100vw) / 2 - 32px))}
+.hero .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .pic:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--n) 0,rgba(19,38,81,.15) 30%,rgba(19,38,81,0))}
+.hero .pic .tag{position:absolute;z-index:2;left:28px;bottom:28px;background:var(--n2);padding:14px 16px;border-left:3px solid var(--y)}
+.hero .pic .tag .mono{color:#fff}
+.cross{position:absolute;width:22px;height:22px;z-index:3}
+.cross:before,.cross:after{content:"";position:absolute;background:var(--y)}
+.cross:before{left:10px;top:0;width:2px;height:22px}.cross:after{top:10px;left:0;height:2px;width:22px}
+
+/* serviços tabela */
+section{padding:120px 0}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:56px}
+.sh h2{font-size:clamp(40px,5vw,72px);margin-top:20px}
+.sh p{color:var(--g);font-size:18px}
+.list{border-top:1px solid var(--ink)}
+.list a{display:grid;grid-template-columns:90px 1.2fr 1.5fr 200px 48px;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none;position:relative;transition:.25s}
+.list a:hover{background:var(--p);padding-left:16px;padding-right:16px}
+.list .num{font:500 14px "IBM Plex Mono";color:var(--g)}
+.list h3{font-size:30px}
+.list p{color:var(--g);font-size:16px}
+.list img{width:200px;height:110px;object-fit:cover;filter:grayscale(.3)}
+.list a:hover img{filter:none}
+.list .arr{width:48px;height:48px;border:1px solid var(--line);display:grid;place-items:center;transition:.2s}
+.list a:hover .arr{background:var(--y);border-color:var(--y)}
+.list .arr svg{width:20px}
+.list a.cons{background:var(--n);color:#fff;border-color:var(--n);padding-left:24px;padding-right:24px;margin-top:20px}
+.list a.cons p,.list a.cons .num{color:#A9B6D3}
+.list a.cons .arr{border-color:var(--y);background:var(--y);color:var(--n)}
+
+/* sobre */
+.about{background:var(--p)}
+.about .wrap{display:grid;grid-template-columns:5fr 7fr;gap:0;border:1px solid var(--line);background:#fff}
+.about .side{padding:48px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.about .side .big{font-size:clamp(80px,10vw,150px);font-weight:600;letter-spacing:-.05em;line-height:.85;color:var(--n)}
+.about .side .big span{color:var(--y)}
+.about .side dl{display:grid;gap:0;border-top:1px solid var(--line)}
+.about .side dl div{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}
+.about .side dt{font:400 12.5px "IBM Plex Mono";text-transform:uppercase;letter-spacing:.06em;color:var(--g)}
+.about .side dd{font-weight:600}
+.about .main{padding:56px}
+.about h2{font-size:clamp(34px,3.8vw,52px);margin:20px 0 24px}
+.about p{color:var(--g);margin-bottom:14px}
+.about .imgs{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-top:36px}
+.about .imgs img{height:220px;width:100%;object-fit:cover}
+
+/* destaques */
+.feat{background:var(--n2);color:#fff}
+.feat .sh p{color:#A9B6D3}
+.feat .lbl{color:#A9B6D3}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--bl);border-left:1px solid var(--bl)}
+.cols div{padding:40px 36px 44px;border-right:1px solid var(--bl);border-bottom:1px solid var(--bl);position:relative}
+.cols svg{width:44px;height:44px;color:var(--y);margin-bottom:46px}
+.cols h3{font-size:26px;margin-bottom:12px}
+.cols p{color:#A9B6D3}
+.cols .mono{position:absolute;top:22px;right:24px;color:#6C7DA3}
+
+/* projetos */
+.proj .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.proj figure{background:#fff;padding:14px}
+.proj figure img{width:100%;aspect-ratio:4/3.3;object-fit:cover}
+.proj figcaption{display:flex;justify-content:space-between;padding:14px 4px 4px;font-weight:600}
+.proj figcaption .mono{color:var(--g)}
+
+/* depoimento */
+.quote{background:var(--y);padding:96px 0}
+.quote .wrap{display:grid;grid-template-columns:240px 1fr;gap:40px}
+.quote .mono{color:var(--n)}
+.quote blockquote{font-size:clamp(28px,3.4vw,46px);font-weight:500;letter-spacing:-.025em;line-height:1.15;color:var(--n2)}
+.quote cite{display:block;margin-top:28px;font-style:normal}
+
+/* contato */
+.contact{background:var(--n);color:#fff}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+.contact h2{font-size:clamp(44px,5.4vw,80px);margin:20px 0 22px}
+.contact .lbl{color:#A9B6D3}
+.contact .l>p{color:#C7D0E4;font-size:18px;max-width:460px;margin-bottom:40px}
+.contact dl div{display:grid;grid-template-columns:150px 1fr;padding:18px 0;border-top:1px solid var(--bl)}
+.contact dt{font:400 12.5px/1.8 "IBM Plex Mono";text-transform:uppercase;letter-spacing:.06em;color:#A9B6D3}
+.contact dd{font-size:19px;font-weight:500}
+.contact dd a{text-decoration:none}.contact dd a:hover{color:var(--y)}
+form{background:#fff;color:var(--ink);padding:44px}
+form .mono{color:var(--g);margin-bottom:22px;display:block}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.f label{display:block;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 14px 4px}
+.f label.full{grid-column:1/-1}
+.f span{font:400 11.5px "IBM Plex Mono";text-transform:uppercase;letter-spacing:.06em;color:var(--g)}
+.f input,.f textarea,.f select{display:block;width:100%;border:0;font:17px "Space Grotesk";padding:6px 0 10px;background:transparent;color:var(--ink)}
+.f input:focus,.f textarea:focus,.f select:focus{outline:0}
+.f label:focus-within{background:#FFF8E6}
+form .btn{width:100%;justify-content:space-between;margin-top:20px;background:var(--n);color:#fff}
+form .btn:hover{background:var(--y);color:var(--n)}
+
+footer{background:var(--n2);color:#fff;padding:72px 0 30px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer img{height:58px;width:auto;margin-bottom:20px}
+footer h4{font:500 12px "IBM Plex Mono";letter-spacing:.1em;text-transform:uppercase;color:var(--y);margin-bottom:16px}
+footer ul{list-style:none;display:grid;gap:9px;color:#A9B6D3}
+footer p{color:#A9B6D3;max-width:320px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+.legal{grid-column:1/-1;display:flex;justify-content:space-between;border-top:1px solid var(--bl);padding-top:22px;margin-top:40px;color:#6C7DA3}
+.wa{position:fixed;right:22px;bottom:22px;z-index:50;width:58px;height:58px;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.wa svg{width:28px;fill:#fff}
+
+@media (max-width:1080px){
+ header nav,header .right .tel,header .right .btn{display:none}
+ .burger{display:block}
+ header .logo{border-right:0}
+ .hero .wrap{grid-template-columns:1fr}
+ .hero .txt{border-right:0;padding:56px 0 48px}
+ .hero .pic{height:340px;margin:0 -32px}
+ .hero .pic:after{background:linear-gradient(0deg,rgba(19,38,81,.2),transparent)}
+ .sh{grid-template-columns:1fr;gap:18px}
+ .list a{grid-template-columns:60px 1fr 48px;gap:6px 18px}
+ .list p{grid-column:2/3}
+ .list img{display:none}
+ .list .arr{grid-row:1/3;grid-column:3}
+ .about .wrap{grid-template-columns:1fr}
+ .about .side{border-right:0;border-bottom:1px solid var(--line)}
+ .cols{grid-template-columns:1fr}
+ .proj .gal{grid-template-columns:1fr 1fr}
+ .quote .wrap,.contact .wrap{grid-template-columns:1fr;gap:20px}
+ .contact .wrap{gap:56px}
+ footer .wrap{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+ body{font-size:16px}
+ .wrap{padding:0 20px}
+ header .wrap{height:68px}header .logo img{height:40px}
+ .hero .pic{margin:0 -20px;height:260px}
+ .hero .spec{grid-template-columns:1fr 1fr 1fr}
+ .hero .spec b{font-size:19px}
+ .hero .spec span{font-size:10.5px}
+ section{padding:84px 0}
+ .list a{grid-template-columns:40px 1fr 40px}
+ .list h3{font-size:23px}
+ .list .arr{width:40px;height:40px}
+ .about .side,.about .main{padding:28px 22px}
+ .about .imgs{grid-template-columns:1fr}
+ .about .imgs img{height:200px}
+ .cols div{padding:32px 24px}
+ .proj .gal{grid-template-columns:1fr}
+ .contact dl div{grid-template-columns:1fr;gap:4px}
+ form{padding:28px 20px;margin:0 -20px}
+ .f{grid-template-columns:1fr}
+ footer .wrap{grid-template-columns:1fr}
+ .legal{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><img src="../img/logo-branco.png" alt="Span Service · Soluções industriais e residenciais"></a>
+  <nav><a href="#servicos"><span>01</span>Serviços</a><a href="#sobre"><span>02</span>A empresa</a><a href="#projetos"><span>03</span>Projetos</a><a href="#contato"><span>04</span>Contato</a></nav>
+  <div class="right"><a class="tel" href="tel:+5551998481127">(51) 99848-1127</a><a class="btn" href="#contato">Pedir orçamento</a><button class="burger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></button></div>
+</div></header>
+
+<section class="hero grid-bg" style="padding:0">
+  <div class="wrap">
+    <div class="txt">
+      <div>
+        <div class="mono">[ Span Service · Montenegro/RS ] — Manutenção industrial</div>
+        <h1>Analisar, projetar e executar <span>soluções em metal.</span></h1>
+        <p>Da visita técnica à montagem: serralheria, estruturas industriais, solda em inox TIG, tubulações e isopainel para empresas.</p>
+        <div class="cta">
+          <a class="btn" href="#contato">Solicitar visita técnica <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn line" href="#servicos">Ver serviços</a>
+        </div>
+      </div>
+      <div class="spec">
+        <div><b>2015</b><span>Início das atividades</span></div>
+        <div><b>5 serviços</b><span>Em metal e isopainel</span></div>
+        <div><b>B2B</b><span>Atendimento a empresas</span></div>
+      </div>
+    </div>
+    <div class="pic">
+      <img src="../img/corte.jpg" alt="Disco de corte em peça metálica">
+      <i class="cross" style="top:26px;right:56px"></i>
+      <div class="tag"><div class="mono">Fig. 01 — Corte e acabamento</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="wrap">
+    <div class="sh">
+      <div><div class="mono lbl"><b>01</b>Serviços</div><h2>O que a Span Service faz pela sua indústria</h2></div>
+      <p>Projetamos e desenvolvemos soluções metálicas com foco na manutenção industrial. Nosso lema: integridade, qualidade e segurança, sempre com tecnologia e inovação.</p>
+    </div>
+    <div class="list">
+      <a href="#"><span class="num">S/01</span><h3>Serralheria</h3><p>Grades, portões, janelas e esquadrias sob medida.</p><img src="../img/projeto-grade.jpg" alt=""><i class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a>
+      <a href="#"><span class="num">S/02</span><h3>Estruturas industriais</h3><p>Suportes, artefatos de ferro e inox, proteções e guarda-corpos.</p><img src="../img/projeto-guarda-corpo.jpg" alt=""><i class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a>
+      <a href="#"><span class="num">S/03</span><h3>Solda em inox TIG</h3><p>Manutenção e fabricação em aço inox, com solda TIG de acabamento limpo.</p><img src="../img/solda.jpg" alt=""><i class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a>
+      <a href="#"><span class="num">S/04</span><h3>Tubulação metálica</h3><p>Tubos roscados para hidráulica, pneumática e hidrantes de combate a incêndio.</p><img src="../img/tubos.jpg" alt=""><i class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a>
+      <a href="#"><span class="num">S/05</span><h3>Paredes frigoríficas</h3><p>Montagem de câmaras e paredes em isopainel.</p><img src="../img/projeto-maquina.jpg" alt=""><i class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a>
+      <a href="#contato" class="cons"><span class="num">+</span><h3>Consultoria</h3><p>Não sabe ao certo do que precisa? Nosso atendimento especializado ajuda a definir o projeto.</p><span></span><i class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="wrap">
+    <div class="side">
+      <div><div class="mono lbl"><b>02</b>A empresa</div></div>
+      <div class="big">20<span>15</span></div>
+      <dl>
+        <div><dt>Início</dt><dd>Junho de 2015</dd></div>
+        <div><dt>Sede</dt><dd>Montenegro/RS</dd></div>
+        <div><dt>Foco</dt><dd>Manutenção industrial</dd></div>
+        <div><dt>Clientes</dt><dd>Empresas</dd></div>
+      </dl>
+    </div>
+    <div class="main">
+      <h2>Especialistas em soluções industriais e montagens em metal</h2>
+      <p>A Span Service começou em junho de 2015 com o objetivo de oferecer soluções acessíveis e de qualidade. Nos primeiros anos fizemos serviços para pessoas físicas e empresas; depois decidimos atender só empresas.</p>
+      <p>Hoje trabalhamos com manutenção industrial de ponta. Não nos contentamos com menos que a perfeição: cada solução em metal é pensada para o negócio do cliente, com segurança e qualidade em primeiro lugar.</p>
+      <div class="imgs"><img src="../img/ferramentas.jpg" alt="Ferramentas de usinagem"><img src="../img/faiscas.jpg" alt="Faíscas de corte"></div>
+    </div>
+  </div>
+</section>
+
+<section class="feat grid-bg">
+  <div class="wrap">
+    <div class="sh"><div><div class="mono lbl"><b>03</b>Destaques</div><h2>A melhor solução com o melhor custo</h2></div><p>Um projeto bem estruturado, de qualidade, que traz flexibilidade, durabilidade, confiança e segurança para quem usa.</p></div>
+    <div class="cols">
+      <div><span class="mono">D/01</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 7v6c0 4.4 3.4 7.6 8 8 4.6-.4 8-3.6 8-8V7z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><h3>Durabilidade</h3><p>Matérias-primas de qualidade, com alta durabilidade e flexibilidade.</p></div>
+      <div><span class="mono">D/02</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg><h3>Tecnologia e inovação</h3><p>Sempre buscando novas maneiras de melhorar nossos serviços e atentos às tendências.</p></div>
+      <div><span class="mono">D/03</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg><h3>Segurança e praticidade</h3><p>Métodos de produção próprios para entregar um resultado seguro e confiável.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="proj" id="projetos">
+  <div class="wrap">
+    <div class="sh"><div><div class="mono lbl"><b>04</b>Projetos</div><h2>Trabalhos entregues</h2></div><p>Referência no ramo de soluções metálicas. Algumas das soluções que já executamos.</p></div>
+    <div class="gal">
+      <figure><img src="../img/projeto-guarda-corpo.jpg" alt="Guarda-corpo"><figcaption>Guarda-corpo<span class="mono">P/01</span></figcaption></figure>
+      <figure><img src="../img/projeto-cacamba.jpg" alt="Caçamba"><figcaption>Caçamba metálica<span class="mono">P/02</span></figcaption></figure>
+      <figure><img src="../img/projeto-grade.jpg" alt="Grade"><figcaption>Grade de janela<span class="mono">P/03</span></figcaption></figure>
+      <figure><img src="../img/projeto-janela.jpg" alt="Janela"><figcaption>Janela<span class="mono">P/04</span></figcaption></figure>
+      <figure><img src="../img/projeto-persiana.jpg" alt="Persiana"><figcaption>Persiana<span class="mono">P/05</span></figcaption></figure>
+      <figure><img src="../img/projeto-maquina.jpg" alt="Montagem industrial"><figcaption>Montagem industrial<span class="mono">P/06</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="quote"><div class="wrap">
+  <div class="mono">[ Depoimento ]</div>
+  <div><blockquote>“Agradecemos à Span Service pelo incrível trabalho, pela entrega ágil, pelo profissionalismo e pela paciência no planejamento e no pós-venda.”</blockquote><cite><b>Henrique Castro</b> · Cliente</cite></div>
+</div></section>
+
+<section class="contact grid-bg" id="contato">
+  <div class="wrap">
+    <div class="l">
+      <div class="mono lbl"><b>05</b>Contato</div>
+      <h2>Solicite um orçamento ou uma visita técnica.</h2>
+      <p>Venha nos visitar ou ligue para a gente. Teremos prazer em receber você.</p>
+      <dl>
+        <div><dt>WhatsApp</dt><dd><a href="https://api.whatsapp.com/send?phone=5551998481127">(51) 99848-1127</a></dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:adm@spanservice.com.br">adm@spanservice.com.br</a></dd></div>
+        <div><dt>Endereço</dt><dd><a href="https://goo.gl/maps/7nitmbVuKgjiHEYY6">Estrada Nossa Senhora Aparecida, 811<br>Faxinal · Montenegro/RS</a></dd></div>
+      </dl>
+    </div>
+    <form onsubmit="return false">
+      <span class="mono">Formulário de orçamento</span>
+      <div class="f">
+        <label><span>Nome</span><input></label>
+        <label><span>Empresa</span><input></label>
+        <label><span>E-mail</span><input type="email"></label>
+        <label><span>Telefone</span><input></label>
+        <label class="full"><span>Serviço</span><select><option>Serralheria</option><option>Estruturas industriais</option><option>Solda em inox TIG</option><option>Tubulação metálica</option><option>Paredes frigoríficas</option><option>Consultoria</option></select></label>
+        <label class="full"><span>Descreva a demanda</span><textarea rows="4"></textarea></label>
+      </div>
+      <button class="btn">Enviar solicitação <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div><img src="../img/logo-branco.png" alt="Span Service"><p>Soluções industriais e montagens em metal para empresas.</p></div>
+  <div><h4>Serviços</h4><ul><li><a href="#">Serralheria</a></li><li><a href="#">Estruturas industriais</a></li><li><a href="#">Solda em inox TIG</a></li><li><a href="#">Tubulação metálica</a></li><li><a href="#">Paredes frigoríficas</a></li></ul></div>
+  <div><h4>Empresa</h4><ul><li><a href="#sobre">A empresa</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#contato">Contato</a></li></ul></div>
+  <div><h4>Contato</h4><ul><li><a href="tel:+5551998481127">(51) 99848-1127</a></li><li><a href="mailto:adm@spanservice.com.br">adm@spanservice.com.br</a></li><li>Montenegro/RS</li></ul></div>
+  <div class="legal mono"><span>© 2026 Span Service</span><span>Soluções industriais e residenciais</span></div>
+</div></footer>
+<a class="wa" href="https://api.whatsapp.com/send?phone=5551998481127" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></a>
+</body>
+</html>
