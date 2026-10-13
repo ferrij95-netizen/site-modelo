@@ -64,10 +64,18 @@ export default {
     // Painel e notícias dinâmicas (só para clientes com notícias; os demais seguem direto).
     // O conteúdo muda sem novo build, então aqui o arquivo é pedido sem cache condicional (sem 304).
     const dyn = await noticias(request, env, cliente, url, u => servir(env, cliente, new URL(u), request, true));
-    if (dyn) return dyn;
-    return servir(env, cliente, url, request);
+    return noHub(dyn || await servir(env, cliente, url, request));
   },
 };
+
+// O hub abre os sites dos clientes dentro da sua moldura (hub.overtus.com.br/ver/<cliente>/), num iframe.
+// O _headers manda X-Frame-Options: SAMEORIGIN para todo o resto; aqui o hub passa a poder emoldurar os previews.
+function noHub(res) {
+  const out = new Response(res.body, res);
+  out.headers.delete('X-Frame-Options');
+  out.headers.set('Content-Security-Policy', "frame-ancestors 'self' https://hub.overtus.com.br");
+  return out;
+}
 
 async function servir(env, cliente, url, request, fresco = false) {
   const base = PREFIX + cliente;

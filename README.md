@@ -18,6 +18,8 @@ Cada cliente pode morar em `clientes/<cliente>/` (mesma estrutura da raiz: `site
 
 `hub.overtus.com.br` lista todos os clientes de `clientes/` (gerado por `scripts/hub.mjs` a cada build, protegido por senha no worker). A capa de cada cliente é `clientes/<cliente>/capa.jpg` (print 1440×756 da home); sem ela, o hub usa a imagem Open Graph ou a cor da marca.
 
+Cada cliente tem um `"setor"` no `site.config.json` (agro, industria, metalmecanica, saude, oficinas, distribuicao, consultoria, construcao; a tabela fica em `scripts/hub.mjs`), que vira etiqueta e filtro no hub. Ao abrir um cliente pelo hub, o site aparece em `hub.overtus.com.br/ver/<cliente>/`, dentro da moldura da Overtus: troca entre versão A/B, site antigo e direções, visão de computador ou celular, telefone e WhatsApp do `site.config.json`, e o script de ligação de `clientes/<cliente>/script.md`, quando existir. O site do cliente continua igual em `<cliente>.overtus.com.br`.
+
 ## Como funciona
 
 | Onde | O quê |
