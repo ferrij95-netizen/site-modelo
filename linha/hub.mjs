@@ -21,8 +21,14 @@ const opcao = (n, padrao) => { const i = args.indexOf('--' + n); return i >= 0 ?
 const jsonDe = out => JSON.parse(out.slice(out.indexOf('[')));
 const aspas = s => "'" + String(s).replace(/'/g, "''") + "'";
 
+// No Windows, passar pelo cmd.exe estraga o SQL (o "<>" vira redirecionamento); quando der, chama o npx pelo próprio Node, sem shell.
+const NPX_CLI = path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npx-cli.js');
 function wrangler(extra) {
-  const r = spawnSync('npx', ['--yes', 'wrangler', 'd1', 'execute', BANCO, '--remote', ...extra], { cwd: REPO, encoding: 'utf8', shell: process.platform === 'win32', maxBuffer: 64 * 1024 * 1024 });
+  const resto = ['--yes', 'wrangler', 'd1', 'execute', BANCO, '--remote', ...extra];
+  const opcoes = { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 };
+  const r = process.platform === 'win32' && fs.existsSync(NPX_CLI)
+    ? spawnSync(process.execPath, [NPX_CLI, ...resto], opcoes)
+    : spawnSync('npx', resto, { ...opcoes, shell: process.platform === 'win32' });
   if (r.status !== 0) throw new Error((r.stderr || r.stdout || 'wrangler falhou').split('\n').filter(Boolean).slice(-6).join('\n'));
   return r.stdout;
 }
