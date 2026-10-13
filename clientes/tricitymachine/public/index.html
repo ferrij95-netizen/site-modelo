@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tri-City Machine · choose a version</title>
+<meta name="description" content="Two versions of the new Tri-City Machine website: A Classic and B Industrial.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/img/icone.png" type="image/png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;600;700&display=swap">
+<style>
+:root{--navy:#011750;--ink:#16202E;--muted:#55606F;--amarelo:#F2B705}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#F2F4F8;overflow-x:hidden}
+header{background:var(--navy);color:#fff;padding:28px 16px;border-bottom:4px solid var(--amarelo)}
+header h1{margin:0;font-family:Merriweather,Georgia,serif;font-size:clamp(22px,4vw,32px)}
+header p{margin:6px 0 0;opacity:.85}
+main{display:grid;gap:16px;padding:24px 16px 40px;max-width:900px;margin:0 auto}
+@media (min-width:720px){main{grid-template-columns:1fr 1fr}}
+.opcao{display:block;background:#fff;padding:24px;text-decoration:none;color:var(--ink);border-top:6px solid var(--navy)}
+.opcao:hover{border-top-color:var(--amarelo)}
+.opcao h2{margin:0 0 8px;font-size:20px;color:var(--navy)}
+.opcao p{margin:0;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Tri-City Machine Products, Inc.</h1>
+  <p>Two versions of the new website. Pick one to open the full site.</p>
+</header>
+<main>
+  <a class="opcao" href="/a/"><h2>Version A · Classic</h2><p>Navy and white, serif headings, the photo strip from the current site.</p></a>
+  <a class="opcao" href="/b/"><h2>Version B · Industrial</h2><p>Navy gradient, condensed headings, angled blocks and a tiled capabilities grid.</p></a>
+</main>
+</body>
+</html>
