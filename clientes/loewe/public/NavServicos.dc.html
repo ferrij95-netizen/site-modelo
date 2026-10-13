@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<div ref="{{ wrapRef }}" onMouseEnter="{{ open }}" onMouseLeave="{{ close }}" style="position:relative;display:flex;align-items:center;align-self:stretch">
+  <a href="/servicos" onFocus="{{ open }}" style="padding:6px 0;display:flex;align-items:center;gap:6px;color:#fff;box-shadow:{{ shadow }}" style-hover="color:#fff">Serviços <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" style="display:block;opacity:.75;transform:{{ caret }};transition:transform .25s ease"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+  <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:{{ panelLeft }};padding-top:30px;z-index:60;cursor:default">
+      <div style="width:{{ panelW }};background:#fff;color:#1C1B1A;box-shadow:0 30px 60px -24px rgba(28,27,26,.45);border-top:3px solid #9C0016;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));white-space:normal;text-align:left">
+        <sc-for list="{{ areas }}" as="a" hint-placeholder-count="2">
+          <div style="padding:28px 28px 24px;display:flex;flex-direction:column;gap:4px;border-right:1px solid #E6E3DD">
+            <a href="{{ a.href }}" onClick="{{ close }}" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:12px;margin-bottom:6px;border-bottom:1px solid #E6E3DD;color:#1C1B1A" style-hover="color:#9C0016">
+              <span style="font-size:19px;font-weight:700;letter-spacing:-.02em">{{ a.title }}</span>
+              <span style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9C0016;white-space:nowrap">{{ a.count }} →</span>
+            </a>
+            <sc-for list="{{ a.roles }}" as="r" hint-placeholder-count="6">
+              <a href="{{ a.href }}" onClick="{{ close }}" style="font-size:14px;font-weight:500;padding:5px 0;color:#1C1B1A" style-hover="color:#9C0016">{{ r }}</a>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:700,&quot;height&quot;:460},&quot;active&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { o: false, left: 0, w: 640 };
+  wrapRef = React.createRef();
+  place() {
+    const el = this.wrapRef.current; if (!el) return;
+    const r = el.getBoundingClientRect(), vw = document.documentElement.clientWidth;
+    const w = Math.min(640, vw - 48);
+    let left = r.width / 2 - w / 2;
+    left = Math.max(24 - r.left, Math.min(left, vw - 24 - r.left - w));
+    this.setState({ left, w });
+  }
+  renderVals() {
+    const { left, w, o } = this.state;
+    return {
+      wrapRef: this.wrapRef, panelLeft: left + 'px', panelW: w + 'px', isOpen: o,
+      open: () => { clearTimeout(this.t); if (!this.state.o) this.place(); this.setState({ o: true }); },
+      close: () => { clearTimeout(this.t); this.t = setTimeout(() => this.setState({ o: false }), 120); },
+      shadow: this.props.active ? 'inset 0 -2px 0 #fff' : 'none',
+      caret: o ? 'rotate(180deg)' : 'none',
+      areas: [
+        { title: 'Engenharia', count: '11 funções', href: '/servicos#eng', roles: ['Desenhista Detalhista', 'Projetista Júnior, Pleno e Sênior', 'Engenheiro Mecânico', 'Engenheiro Eletricista', 'Engenheiro Civil', 'Arquiteto', 'Supervisor de Engenharia', 'Analista Administrativo', 'Analista de Processos'] },
+        { title: 'Manutenção', count: '13 funções', href: '/servicos#man', roles: ['Técnico de Segurança no Trabalho', 'Engenheiro de Segurança no Trabalho', 'Supervisor de Manutenção', 'Técnico de Manutenção', 'Caldeireiro, Soldador e Serralheiro', 'Mecânico Industrial', 'Eletricista Industrial Pleno e Sênior', 'Encanador', 'Pintor'] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

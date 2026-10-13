@@ -1,9 +1,10 @@
 // Um worker para todos os previews: <cliente>.overtus.com.br serve dist/_clientes/<cliente>/,
 // qualquer outro endereço serve o site da raiz (dist/).
 import { noticias } from './noticias.js';
+import { prospeccao } from './prospeccao.js';
 
 const PREFIX = '/_clientes/';
-// hub.overtus.com.br: lista de todos os clientes (dist/_hub/), com tela de login em /entrar/.
+// hub.overtus.com.br (dist/_hub/), com tela de login em /entrar/: na raiz o canvas de prospecção, em /sites/ a lista de clientes.
 // Nada secreto fica no código: CRED_HASH = sha256("usuario:senha"); o cookie leva sha256("sessao:usuario:senha"),
 // que só quem sabe a senha consegue gerar, e o worker confere sha256(cookie) === SESSAO_HASH.
 // Para trocar a senha, gere os dois hashes de novo.
@@ -34,7 +35,16 @@ async function hub(request, env, url) {
   const publico = url.pathname.startsWith('/entrar/') || url.pathname.startsWith('/app/') || url.pathname === '/sw.js';
   if (!publico) {
     const cookie = (request.headers.get('Cookie') || '').match(/(?:^|;\s*)hub=([0-9a-f]{64})/);
-    if (!cookie || (await sha256(cookie[1])) !== SESSAO_HASH) return redirecionar('/entrar/');
+    if (!cookie || (await sha256(cookie[1])) !== SESSAO_HASH) {
+      if (url.pathname.startsWith('/api/')) return new Response('{"code":"session_expired"}', { status: 401, headers: { 'Content-Type': 'application/json' } });
+      return redirecionar('/entrar/');
+    }
+  }
+  // Dados do canvas de prospecção (página inicial do hub), no D1.
+  if (url.pathname === '/api/empresas' || url.pathname.startsWith('/api/empresas/')) return prospeccao(request, env, url);
+  // Enquanto o banco do canvas estiver vazio (antes da cópia dos dados), a raiz continua mostrando a lista de sites.
+  if (url.pathname === '/' && env.PROSPECCAO && !(await env.PROSPECCAO.prepare('SELECT 1 FROM empresas LIMIT 1').first().catch(() => null))) {
+    url.pathname = '/sites/';
   }
   url.pathname = '/_hub' + url.pathname;
   const res = await env.ASSETS.fetch(new Request(url, request));
@@ -64,10 +74,18 @@ export default {
     // Painel e notícias dinâmicas (só para clientes com notícias; os demais seguem direto).
     // O conteúdo muda sem novo build, então aqui o arquivo é pedido sem cache condicional (sem 304).
     const dyn = await noticias(request, env, cliente, url, u => servir(env, cliente, new URL(u), request, true));
-    if (dyn) return dyn;
-    return servir(env, cliente, url, request);
+    return noHub(dyn || await servir(env, cliente, url, request));
   },
 };
+
+// O hub abre os sites dos clientes dentro da sua moldura (hub.overtus.com.br/ver/<cliente>/), num iframe.
+// O _headers manda X-Frame-Options: SAMEORIGIN para todo o resto; aqui o hub passa a poder emoldurar os previews.
+function noHub(res) {
+  const out = new Response(res.body, res);
+  out.headers.delete('X-Frame-Options');
+  out.headers.set('Content-Security-Policy', "frame-ancestors 'self' https://hub.overtus.com.br");
+  return out;
+}
 
 async function servir(env, cliente, url, request, fresco = false) {
   const base = PREFIX + cliente;

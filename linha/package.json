@@ -1,0 +1,14 @@
+{
+  "name": "overtus-linha",
+  "private": true,
+  "type": "module",
+  "description": "Linha de produção: lista de empresas -> site novo em duas versões + telefone + script de ligação no hub.",
+  "scripts": {
+    "linha": "node rodar.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
+    "playwright": "1.56.1",
+    "sharp": "^0.35.5"
+  }
+}

@@ -1,0 +1,132 @@
+/* Versão B "Técnica": clara como o site atual, tela de alambrado ao fundo, logo grafite metálico, azul nos destaques. */
+:root { --fundo: #fff; --alt: #f2f4f7; }
+.v-b .topo { background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--borda); }
+.v-b .topo::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: linear-gradient(90deg, var(--azul) 0 22%, #c9ccd1 22% 100%); }
+.v-b #nav > a, .v-b .sub > a { color: var(--titulo); }
+.v-b #nav > a:hover, .v-b .sub > a:hover { color: var(--azul); background: var(--alt); }
+.v-b #nav > a[aria-current], .v-b .sub > a[aria-current] { background: var(--azul); color: #fff; }
+.v-b .faixa-topo { background: var(--azul); color: #dbe5f2; }
+
+/* Cabeçalho interno: claro, com o alambrado do site atual ao fundo e a foto recortada à direita. */
+.v-b .cab { background: #fff url(/assets/img/fundo-alambrado.webp) center / 760px; }
+.v-b .cab::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.93) 55%, rgba(255,255,255,.8) 100%); }
+.v-b .cab-foto .cab-fundo { left: auto; width: 42%; clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%); z-index: 1; }
+.v-b .cab-foto .in > * { max-width: 56%; }
+.v-b .cab h1 { color: var(--azul); }
+.v-b .cab .trilha { color: var(--suave); }
+.v-b .cab .btn-claro { border-color: var(--azul); color: var(--azul); }
+.v-b .cab .btn-claro:hover { background: var(--azul); color: #fff; }
+.v-b .cta { background: var(--grad-azul); }
+.v-b .cta::before { content: ""; position: absolute; inset: 0; background: url(/assets/img/fundo-alambrado.webp) center / 700px; opacity: .1; mix-blend-mode: screen; }
+.v-b .cta .in { z-index: 1; }
+
+/* Home: texto à esquerda, banners do site atual numa moldura à direita. */
+.v-b .hero { position: relative; background: #fff url(/assets/img/fundo-alambrado.webp) center / 760px; padding: clamp(40px, 5vw, 76px) 0 clamp(70px, 7vw, 110px); overflow: hidden; }
+.v-b .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.9) 50%, rgba(241,244,248,.86) 100%); }
+.v-b .hero-grade { display: grid; grid-template-columns: 1fr 1.08fr; gap: clamp(30px, 5vw, 70px); align-items: center; }
+.v-b .hero h1 { color: var(--titulo); }
+.v-b .hero h1 span { display: block; color: var(--azul); }
+.v-b .hero-fotos { position: relative; aspect-ratio: 5 / 4; }
+.v-b .hero-fotos .slide { position: absolute; inset: 0; margin: 0; border-radius: 18px; overflow: hidden; opacity: 0; transition: opacity .9s; box-shadow: 0 40px 70px -40px rgba(10,37,71,.65); }
+.v-b .hero-fotos .slide.ativo { opacity: 1; }
+.v-b .hero-fotos .slide img { width: 100%; height: 100%; object-fit: cover; }
+.v-b .hero-fotos figcaption { position: absolute; left: 18px; top: 18px; padding: 9px 14px; border-radius: 99px; background: rgba(255,255,255,.92); font: 700 14px/1 var(--fh); letter-spacing: .1em; text-transform: uppercase; color: var(--azul); }
+.v-b .hero-fotos::before { content: ""; position: absolute; inset: -14px -14px 14px 14px; border-radius: 22px; background: var(--metal); opacity: .55; z-index: -1; }
+.v-b .hero-fotos .car-pontos { position: absolute; right: 18px; bottom: 18px; display: flex; gap: 8px; z-index: 2; }
+.v-b .hero-fotos .car-pontos button { width: 12px; height: 12px; padding: 0; border-radius: 99px; border: 2px solid #fff; background: transparent; cursor: pointer; transition: width .3s; }
+.v-b .hero-fotos .car-pontos button.ativo { width: 34px; background: #fff; }
+.v-b .selo { position: absolute; left: -28px; bottom: -28px; z-index: 2; padding: 18px 22px; border-radius: 14px; background: var(--grad-azul); color: #cfdcf0; box-shadow: 0 20px 40px -20px rgba(10,37,71,.8); }
+.v-b .selo b { display: block; font: 800 44px/1 var(--fh); color: #fff; }
+.v-b .selo span { font: 600 14px/1.2 var(--fh); letter-spacing: .1em; text-transform: uppercase; }
+
+/* Especialidades em faixa azul, fotos redondas com aro de aço. */
+.v-b .especialidades { background: var(--grad-azul); padding: clamp(56px, 6vw, 90px) 0; position: relative; }
+.v-b .especialidades h2 { color: #fff; }
+.v-b .especialidades .t2 small { color: #9fb9db; }
+.v-b .esp { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; }
+.v-b .esp::before { content: ""; position: absolute; left: 10%; right: 10%; top: 80px; height: 2px; background: repeating-linear-gradient(90deg, rgba(255,255,255,.35) 0 8px, transparent 8px 16px); }
+.v-b .esp a { position: relative; display: grid; justify-items: center; gap: 8px; text-align: center; text-decoration: none; color: #fff; }
+.v-b .esp .circ { width: 160px; height: 160px; border-radius: 50%; padding: 6px; background: var(--metal); box-shadow: 0 18px 30px -16px rgba(0,0,0,.6); transition: transform .3s; }
+.v-b .esp .circ img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.v-b .esp small { font: 700 13px/1 var(--fh); letter-spacing: .14em; color: #8fb3e6; margin-top: 8px; }
+.v-b .esp b { font: 700 21px/1.1 var(--fh); text-transform: uppercase; letter-spacing: .03em; }
+.v-b .esp a:hover .circ { transform: scale(1.06); }
+
+/* A BM: foto do outdoor com moldura e texto. */
+.v-b .quem-foto { position: relative; border-radius: 16px; overflow: hidden; }
+.v-b .quem-foto figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 18px 14px; color: #fff; font-size: 14px; background: linear-gradient(transparent, rgba(10,37,71,.85)); }
+.v-b .quem-txt h2 { color: var(--azul); margin-bottom: 18px; }
+
+/* Diferenciais em cartões claros com borda de aço. */
+.v-b .secao-dif { background: var(--alt); padding: 56px 0; }
+.v-b .dif-cartoes li { background: #fff; border-radius: 14px; border: 1px solid var(--borda); position: relative; overflow: hidden; }
+.v-b .dif-cartoes li::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--metal); }
+.v-b .dif-cartoes li:hover::before { background: var(--azul); }
+
+/* Produtos: lista numerada com a foto que acompanha o item. */
+.v-b .prod-lista-home { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(30px, 5vw, 70px); align-items: start; }
+.v-b .pl-cab { position: sticky; top: 110px; display: grid; gap: 16px; }
+.v-b .pl-cab p { color: var(--suave); margin: 0; }
+.v-b .pl-foto { position: relative; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--alt); }
+.v-b .pl-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .4s; }
+.v-b .pl-foto img.ativo { opacity: 1; }
+.v-b .pl { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--borda); }
+.v-b .pl a { display: grid; grid-template-columns: 52px 1fr auto; gap: 16px; align-items: center; padding: 20px 8px; border-bottom: 1px solid var(--borda); text-decoration: none; transition: background .2s, padding .2s; }
+.v-b .pl b { display: block; font: 700 clamp(21px, .8vw + 15px, 27px)/1.1 var(--fh); text-transform: uppercase; color: var(--titulo); }
+.v-b .pl em { font-style: normal; font-size: 14.5px; color: var(--suave); }
+.v-b .pl .ic-seta { width: 26px; height: 26px; fill: var(--azul); opacity: .4; transition: .2s; }
+.v-b .pl a:hover { background: var(--alt); padding-left: 18px; }
+.v-b .pl a:hover b { color: var(--azul); }
+.v-b .pl a:hover .ic-seta { opacity: 1; transform: translateX(4px); }
+
+/* Faixa do corte a laser, escura. */
+.v-b .laser-faixa { position: relative; padding: clamp(64px, 8vw, 110px) 0; color: #d4dbe4; overflow: hidden; }
+.v-b .lf-fundo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.v-b .laser-faixa::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(20,23,28,.95) 0%, rgba(20,23,28,.82) 50%, rgba(13,58,112,.7) 100%); }
+.v-b .laser-faixa .in { z-index: 2; }
+.v-b .laser-faixa h2 { color: #fff; }
+.v-b .laser-faixa .t2 small { color: #9aa3ae; }
+.v-b .laser-faixa p { margin-top: 16px; }
+.v-b .lf-num { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.v-b .lf-num li { padding: 22px; border-radius: 12px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.05); }
+.v-b .lf-num li:first-child { grid-column: 1 / -1; background: rgba(17,71,135,.55); }
+.v-b .lf-num b { display: block; font: 800 clamp(30px, 1.5vw + 18px, 44px)/1 var(--fh); color: #fff; }
+.v-b .lf-num span { font-size: 14px; }
+
+/* Obras em faixa rolável. */
+.v-b .obras-rolo { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 22%); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; }
+.v-b .obras-rolo figure { aspect-ratio: 1; border-radius: 12px; overflow: hidden; scroll-snap-align: start; }
+.v-b .obras-rolo img { width: 100%; height: 100%; object-fit: cover; }
+.v-b .secao-areas { background: #fff; border-top: 1px solid var(--borda); }
+.v-b .secao-areas .areas li { border-radius: 99px; }
+
+/* Páginas internas: cartões claros com borda azul no hover, numeração em azul. */
+.v-b .vantagens li:nth-child(even) { background: var(--titulo); }
+
+@media (max-width: 1100px) {
+  .v-b .esp .circ { width: 128px; height: 128px; }
+  .v-b .esp::before { top: 64px; }
+}
+@media (max-width: 860px) {
+  .v-b .hero-grade, .v-b .prod-lista-home { grid-template-columns: 1fr; }
+  .v-b .hero-fotos { margin: 10px 14px 20px 0; }
+  .v-b .selo { left: 12px; bottom: -22px; padding: 12px 16px; }
+  .v-b .selo b { font-size: 32px; }
+  .v-b .esp { grid-template-columns: repeat(3, 1fr); row-gap: 28px; }
+  .v-b .esp::before { display: none; }
+  .v-b .pl-cab { position: static; }
+  .v-b .pl-foto { display: none; }
+  .v-b .cab-foto .cab-fundo { display: none; }
+  .v-b .cab-foto .in > * { max-width: none; }
+  .v-b .obras-rolo { grid-auto-columns: 70%; }
+}
+@media (max-width: 600px) {
+  .v-b .esp { grid-template-columns: 1fr 1fr; }
+  .v-b .esp li:last-child { grid-column: span 2; }
+  .v-b .esp .circ { width: 120px; height: 120px; }
+  .v-b .pl a { grid-template-columns: 36px 1fr; }
+  .v-b .pl .ic-seta { display: none; }
+  .v-b .lf-num { grid-template-columns: 1fr 1fr 1fr; } .v-b .lf-num li { padding: 16px; }
+}
+.v-b #nav > a.nav-cta { color: #fff; background: var(--azul); }
+.v-b #nav > a.nav-cta:hover { background: var(--azul-forte); }

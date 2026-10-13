@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex">
+  <button type="button" onClick="{{ open }}" style="flex-shrink:0;border:0;cursor:pointer;background:#F7F6F3;color:#9C0016;padding:clamp(12px,1.2vw,15px) clamp(16px,1.8vw,26px);font-size:clamp(12px,1.1vw,14px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;font-family:inherit" style-hover="background:#1C1B1A;color:#fff">Solicitar proposta</button>
+  <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:200;background:rgba(28,27,26,.72);display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto;cursor:default;white-space:normal;text-transform:none;letter-spacing:normal">
+      <div onClick="{{ stop }}" role="dialog" aria-modal="true" aria-label="Solicitar proposta" style="position:relative;width:100%;max-width:880px;background:#fff;color:#1C1B1A;display:grid;grid-template-columns:{{ cols }};box-shadow:0 40px 80px -30px rgba(0,0,0,.55);text-align:left">
+        <button type="button" onClick="{{ close }}" aria-label="Fechar" style="position:absolute;right:0;top:0;z-index:2;width:48px;height:48px;border:0;background:#1C1B1A;color:#fff;font-size:20px;cursor:pointer;font-family:inherit" style-hover="background:#9C0016">×</button>
+        <sc-if value="{{ showSide }}" hint-placeholder-val="{{ true }}">
+          <div style="position:relative;overflow:hidden;color:#fff;padding:40px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;background-color:#8A0014;background-image:radial-gradient(ellipse 80% 70% at 100% 0%, rgba(214,30,56,.75) 0%, rgba(214,30,56,0) 65%),linear-gradient(150deg,#A30B22 0%,#8A0014 55%,#6E0010 100%)">
+            <div style="display:flex;flex-direction:column;gap:18px">
+              <div style="display:flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase"><span style="width:32px;height:2px;background:#fff;display:block"></span>Proposta</div>
+              <span style="font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1.1">Conte sobre o seu projeto</span>
+              <span style="font-size:15px;line-height:1.6;color:rgba(255,255,255,.88)">Nossa equipe comercial retorna com uma proposta em até 1 dia útil.</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;border-top:1px solid rgba(255,255,255,.28);padding-top:18px">
+              <span style="font-weight:700">(51) 3458-2525</span>
+              <span style="font-weight:700">comercial@loewe.ind.br</span>
+            </div>
+          </div>
+        </sc-if>
+        <form onSubmit="{{ submit }}" style="padding:40px 36px 36px;display:flex;flex-direction:column;gap:18px">
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:14px;padding:32px 0">
+              <span style="width:48px;height:48px;background:#9C0016;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px">✓</span>
+              <span style="font-size:26px;font-weight:700;letter-spacing:-.03em">Solicitação enviada.</span>
+              <span style="font-size:15px;line-height:1.7;color:#55534F">Recebemos seu pedido sobre <strong style="color:#1C1B1A">{{ interestLabel }}</strong>. Retornaremos em até 1 dia útil.</span>
+              <button type="button" onClick="{{ close }}" style="align-self:flex-start;margin-top:6px;border:1px solid #1C1B1A;background:transparent;color:#1C1B1A;padding:13px 22px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit" style-hover="background:#1C1B1A;color:#fff">Fechar</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size:22px;font-weight:700;letter-spacing:-.02em;padding-right:40px">Solicitar proposta</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ interests }}" as="it" hint-placeholder-count="5">
+                <button type="button" onClick="{{ it.pick }}" style="border:1px solid {{ it.bd }};background:{{ it.bg }};color:{{ it.fg }};padding:9px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit">{{ it.label }}</button>
+              </sc-for>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+              <sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
+                <label style="display:flex;flex-direction:column;gap:6px">
+                  <span style="font-size:13px;font-weight:600">{{ f.label }}</span>
+                  <input type="{{ f.type }}" required="{{ f.req }}" placeholder="{{ f.ph }}" style="height:46px;border:1px solid #C9C6BF;padding:10px 12px;font-size:15px;color:#1C1B1A;background:#fff;outline:none;font-family:inherit" style-focus="border-color:#9C0016;box-shadow:0 0 0 1px #9C0016">
+                </label>
+              </sc-for>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;font-weight:600">Descreva sua necessidade</span>
+              <textarea rows="4" required="{{ true }}" placeholder="Equipamento, quantidade, prazo ou problema a resolver." style="border:1px solid #C9C6BF;padding:10px 12px;font-size:15px;line-height:1.55;color:#1C1B1A;background:#fff;outline:none;resize:vertical;font-family:inherit" style-focus="border-color:#9C0016;box-shadow:0 0 0 1px #9C0016"></textarea>
+            </label>
+            <button type="submit" style="align-self:flex-start;background:#9C0016;color:#fff;border:0;padding:16px 28px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;display:flex;gap:12px;font-family:inherit" style-hover="background:#7E0012">Enviar solicitação <span>→</span></button>
+          </sc-if>
+        </form>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:960,&quot;height&quot;:640}}">
+class Component extends DCLogic {
+  state = { o: false, sent: false, i: 0, w: window.innerWidth };
+  I = ['Produto do catálogo', 'Projeto sob medida', 'Mão de obra técnica', 'Assistência técnica', 'Adequação NR-12'];
+  componentDidMount() {
+    this.onK = e => { if (e.key === 'Escape') this.setState({ o: false }); };
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('keydown', this.onK); window.addEventListener('resize', this.onR);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onK); window.removeEventListener('resize', this.onR); }
+  chip(on) { return on ? { bg: '#9C0016', fg: '#ffffff', bd: '#9C0016' } : { bg: '#ffffff', fg: '#1C1B1A', bd: '#DAD8D3' }; }
+  renderVals() {
+    const { o, sent, i, w } = this.state;
+    const side = w >= 760;
+    return {
+      isOpen: o, sent, notSent: !sent, showSide: side,
+      cols: side ? 'minmax(0,.8fr) minmax(0,1.2fr)' : 'minmax(0,1fr)',
+      open: () => this.setState({ o: true, sent: false }),
+      close: () => this.setState({ o: false }),
+      stop: e => e.stopPropagation(),
+      interests: this.I.map((label, k) => ({ label, ...this.chip(k === i), pick: () => this.setState({ i: k }) })),
+      interestLabel: this.I[i].toLowerCase(),
+      fields: [
+        { label: 'Nome', type: 'text', ph: 'Seu nome', req: true },
+        { label: 'Empresa', type: 'text', ph: 'Nome da empresa', req: true },
+        { label: 'E-mail', type: 'email', ph: 'voce@empresa.com.br', req: true },
+        { label: 'Telefone / WhatsApp', type: 'tel', ph: '(51) 00000-0000', req: true }
+      ],
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Importar empresas · Overtus Hub</title>
+<link rel="icon" href="/app/favicon-48.png">
+<style>
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-400.woff2) format('woff2'); font-weight:400; }
+  @font-face { font-family:'Fraunces'; src:url(/entrar/fontes/fraunces-latin.woff2) format('woff2'); }
+  * { box-sizing:border-box; }
+  :root { --navy:#182644; --sand:#f7f3f0; --orange:#ed9454; --muted:#6b7079; }
+  body { margin:0; min-height:100dvh; display:grid; place-items:center; background:var(--sand); color:var(--navy); font:16px/1.5 'General Sans', system-ui, sans-serif; }
+  main { width:min(560px, calc(100% - 32px)); background:#fff; border-radius:20px; padding:32px; box-shadow:0 20px 50px rgba(24,38,68,.08); }
+  h1 { font:400 30px/1.2 Fraunces, Georgia, serif; margin:0 0 8px; }
+  p { margin:0 0 16px; color:var(--muted); }
+  label.arquivo { display:block; border:2px dashed #d8d2cc; border-radius:14px; padding:28px 16px; text-align:center; cursor:pointer; font-weight:500; color:var(--navy); }
+  label.arquivo:hover { border-color:var(--orange); }
+  input[type=file] { display:none; }
+  .barra { height:8px; background:#eee; border-radius:99px; overflow:hidden; margin:18px 0 8px; }
+  .barra i { display:block; height:100%; width:0; background:var(--orange); transition:width .2s; }
+  table { width:100%; border-collapse:collapse; font-size:14px; margin-top:12px; }
+  td { padding:4px 0; border-bottom:1px solid #f0ece8; } td:last-child { text-align:right; font-variant-numeric:tabular-nums; }
+  a.ir { display:inline-block; margin-top:18px; background:var(--navy); color:#fff; text-decoration:none; padding:10px 18px; border-radius:10px; font-weight:500; }
+</style>
+</head>
+<body>
+<script src="/menu/menu.js"></script>
+<main>
+  <h1>Importar empresas</h1>
+  <p>Escolha o arquivo de empresas (.json) que o Claude mandou. Empresas que já estão no hub não são alteradas, então pode repetir sem medo.</p>
+  <label class="arquivo"><input type="file" id="arq" accept=".json,application/json">Escolher arquivo</label>
+  <div id="prog" hidden><div class="barra"><i id="fill"></i></div><p id="msg"></p></div>
+  <table id="tab" hidden></table>
+  <a class="ir" href="/" id="ir" hidden>Abrir a prospecção</a>
+</main>
+<script>
+// Manda o arquivo {id: empresa} em lotes para /api/empresas/_lote (só cria o que falta) e mostra a contagem por lista.
+const $ = s => document.querySelector(s);
+$('#arq').addEventListener('change', async e => {
+  const f = e.target.files[0]; if (!f) return;
+  $('#prog').hidden = false; $('#msg').textContent = 'Lendo o arquivo…';
+  let docs;
+  try { docs = JSON.parse(await f.text()); } catch { $('#msg').textContent = 'Este arquivo não é o de empresas.'; return; }
+  const ids = Object.keys(docs); let criados = 0;
+  for (let i = 0; i < ids.length; i += 50) {
+    const lote = Object.fromEntries(ids.slice(i, i + 50).map(k => [k, docs[k]]));
+    const r = await fetch('/api/empresas/_lote', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lote) });
+    if (!r.ok) { $('#msg').textContent = 'Parou no meio (erro ' + r.status + '). Recarregue a página e escolha o arquivo de novo.'; return; }
+    criados += (await r.json()).criados;
+    $('#fill').style.width = Math.round(100 * Math.min(i + 50, ids.length) / ids.length) + '%';
+    $('#msg').textContent = `${Math.min(i + 50, ids.length)} de ${ids.length} empresas…`;
+  }
+  $('#msg').textContent = `Pronto: ${ids.length} empresas no arquivo, ${criados} novas no hub.`;
+  const c = await (await fetch('/api/empresas/_contagem')).json();
+  $('#tab').innerHTML = c.listas.map(l => `<tr><td>${l.lista}</td><td>${l.n}</td></tr>`).join('');
+  $('#tab').hidden = false; $('#ir').hidden = false;
+});
+</script>
+</body>
+</html>

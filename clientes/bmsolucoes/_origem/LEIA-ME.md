@@ -1,0 +1,11 @@
+# BM Soluções em Aços: como este site é feito
+
+- Cliente: BM Soluções em Aços Ltda., Rua Marques de Olinda, 360/380, São José, Canoas/RS. Site atual: bmsolucoesemacos.com.br (só em português, sem troca de idioma). Textos, produtos e especificações tirados do site atual em 2026-10-10.
+- Site estático em `public/`: `/` é a página de escolha (com o print do site atual), `/a/` é a versão A "Distribuidora" (azul da marca em peso, banners em tela cheia) e `/b/` a versão B "Técnica" (clara como o site atual, alambrado ao fundo). 13 páginas em cada: início, sobre, produtos, as 8 linhas de produto, obras e contato.
+- Páginas geradas: textos em `conteudo.mjs`, peças comuns em `comum.mjs`, páginas internas em `paginas.mjs`, página inicial de cada versão em `versao-a.mjs` e `versao-b.mjs`. Depois de mudar qualquer texto: `node clientes/bmsolucoes/_origem/gerar.mjs`.
+- Imagens: o servidor não abre o site atual, então vieram pelo proxy de imagens do GitHub (lista em `imagens.md`, originais em `img/`; a lista da biblioteca de mídia saiu de /wp-json/wp/v2/media). `imagens.mjs` converte para `public/assets/img/*.webp`, recorta as argolas das artes de concertina e transforma os ícones dos diferenciais em máscara. Logos `logo-bm-grafite.png` e `logo-bm-branco.png` são os PNGs do site (logo-2023 e logo-branco) reduzidos.
+- Marca: azul #114787 (topo e rodapé do site atual), grafite metálico do logo. Títulos em Barlow Semi Condensed (a família Barlow do site atual, perto do letreiro estreito do logo), texto em Inter.
+- Formulários: o site é estático, então o contato abre o WhatsApp ou o e-mail já preenchidos.
+- Tabela de bitolas (alambrado e otis): o site atual mostra fio 18 a fio 8; os diâmetros intermediários são os da tabela BWG padrão.
+- Confirmar com a BM: WhatsApp (51) 9.9634-8662 (a página de corte a laser ainda mostra (51) 98445-6746 e o e-mail antigo bm@bmtelaseacos.com.br); o link do "Catálogo de Acessórios" de conexões (aqui o botão pede pelo WhatsApp); legendas das fotos de obra (o site atual não tem); textos curtos de arames, linha sanitária inox e suinocultura, que escrevemos a partir das fotos.
+- `public/assets/versao-*.jpg`, `og-*.jpg` e `../capa.jpg` são prints das páginas, refeitos à mão quando o visual mudar.

@@ -1,0 +1,172 @@
+/* Versão A "Tradicional": o vermelho-vinho e o cinza do site atual, com abas no menu como hoje. */
+.v-a {
+  --vinho: #871717;
+  --vinho-2: #9d1a15;
+  --vinho-esc: #4a0b0b;
+  --fundo: #ececec;
+  --prim: #b3121b;
+  --prim-esc: #871717;
+  --titulo: #2a1414;
+  --raio: 3px;
+  --alt-topo: 104px;
+}
+.v-a .faixa-topo { background: var(--vinho-esc); color: #f3dede; }
+.v-a .topo { background: linear-gradient(180deg, #a01c17 0%, var(--vinho) 55%, #5e0f0f 100%); box-shadow: 0 6px 18px rgba(60, 8, 8, .25); }
+.v-a .topo .in { min-height: 104px; align-items: stretch; }
+.v-a .marca { background: linear-gradient(180deg, #fff, #ececec); display: grid; place-items: center; padding: 8px 22px; margin-block: 0 -14px; box-shadow: 0 6px 16px rgba(0,0,0,.25); border-radius: 0 0 var(--raio) var(--raio); position: relative; z-index: 2; }
+.v-a .marca img { width: 108px; }
+.v-a #nav { align-self: end; gap: 3px; }
+.v-a #nav a { color: #fff; padding: 30px 14px 16px; position: relative; border-top: 1px solid rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(0,0,0,.08)); border-radius: var(--raio) var(--raio) 0 0; }
+.v-a #nav a:hover { background: rgba(255,255,255,.14); }
+.v-a #nav a[aria-current] { background: linear-gradient(180deg, #fff, #ececec); color: var(--prim); clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%); padding-bottom: 26px; margin-bottom: -10px; }
+.v-a .menu-btn { color: #fff; }
+
+/* Carrossel em duas metades: texto no vinho, foto à direita */
+.v-a .hero { background: radial-gradient(120% 140% at 0% 0%, #b01d17 0%, var(--vinho) 40%, var(--vinho-esc) 100%); }
+.v-a .slide { min-height: clamp(460px, 44vw, 600px); display: grid; align-items: center; }
+.v-a .slide-foto { left: 44%; clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%); }
+.v-a .slide-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(74,11,11,.45), transparent 35%); }
+.v-a .slide-txt { padding-block: 64px 96px; }
+.v-a .slide-txt > * { max-width: min(540px, 46%); }
+.v-a .slide-txt .eyebrow { color: #ffb4b4; }
+.v-a .slide-txt p { color: #f6dede; }
+.v-a .hero .btn-prim { background: #fff; color: var(--vinho); }
+.v-a .hero .btn-prim:hover { background: #f1d3d3; }
+
+/* Atalhos: caixas cinza com aba vermelha, como as do site atual */
+.v-a .atalhos { padding-block: 0; margin-top: -40px; z-index: 4; }
+.v-a .atalhos .in { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.v-a .atalho { display: grid; grid-template-rows: 120px 1fr; background: linear-gradient(180deg, #fff, #f2f2f2); border: 1px solid #d6d6d6; box-shadow: 0 10px 24px rgba(0,0,0,.12); text-decoration: none; border-radius: var(--raio); overflow: hidden; position: relative; transition: transform .2s; }
+.v-a .atalho:hover { transform: translateY(-4px); }
+.v-a .atalho-foto img { width: 100%; height: 120px; object-fit: cover; }
+.v-a .atalho-txt { display: grid; gap: 4px; padding: 18px 20px 22px; }
+.v-a .atalho-txt .ico { color: var(--prim); width: 26px; height: 26px; margin-top: -40px; background: #fff; box-sizing: content-box; padding: 9px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,.15); }
+.v-a .atalho-txt b { font: 700 18px/1.2 var(--fh); color: var(--titulo); }
+.v-a .atalho-txt span { font-size: 14px; color: var(--suave); }
+.v-a .atalho-seta { position: absolute; right: 14px; bottom: 14px; color: var(--prim); }
+
+.v-a .sobre-home { background: #fff; margin-top: 64px; }
+.v-a .valores li { background: #f6e6e6; color: var(--vinho); }
+.v-a .selo-sul { background: var(--vinho); color: #fff; }
+
+/* Espécies: grade de fotos com faixa vinho */
+.v-a .especies { background: var(--fundo); }
+.v-a .esp-grade { grid-template-columns: repeat(4, 1fr); }
+.v-a .esp-0 { grid-column: span 2; grid-row: span 2; min-height: 452px; }
+.v-a .esp span { background: linear-gradient(transparent, rgba(74,11,11,.9)); }
+
+/* Etapas como setas vinho */
+.v-a .como { background: linear-gradient(180deg, var(--vinho) 0%, var(--vinho-esc) 100%); color: #f6dede; }
+.v-a .como h2, .v-a .como h3 { color: #fff; }
+.v-a .como .eyebrow { color: #ffb4b4; }
+.v-a .etapas { gap: 6px; }
+.v-a .etapas li { background: rgba(255,255,255,.08); padding: 28px 44px 30px 26px; clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%, 26px 50%); }
+.v-a .etapas li:first-child { clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%); }
+.v-a .etapas li:nth-child(2) { background: rgba(255,255,255,.12); }
+.v-a .etapas li:nth-child(3) { background: rgba(255,255,255,.16); }
+.v-a .etapas li:nth-child(4) { background: rgba(255,255,255,.2); }
+.v-a .etapas li:not(:first-child) { padding-left: 46px; }
+.v-a .etapa-n { color: #ffb4b4; }
+.v-a .etapa-i { color: #fff; }
+
+/* PNI: painel branco com faixa azul e vermelha como na peça do site atual */
+.v-a .pni-home { background: #fff; overflow: hidden; }
+.v-a .pni-home::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: linear-gradient(90deg, var(--vermelho) 0 50%, var(--azul) 50%); }
+.v-a .pni-foto img { border-radius: var(--raio); box-shadow: 0 18px 40px rgba(0,0,0,.18); }
+
+.v-a .eventos-home { background: var(--fundo); }
+.v-a .ev-lista li { background: #fff; border-left: 4px solid var(--prim); box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.v-a .ev-lista .ico { color: var(--prim); }
+
+.v-a .utilidades { background: #fff; }
+.v-a .util-card { background: linear-gradient(180deg, #f7f7f7, #ececec); border: 1px solid #dcdcdc; border-radius: var(--raio); }
+.v-a .util-cad { background: linear-gradient(160deg, var(--vinho), var(--vinho-esc)); color: #f6dede; border: 0; }
+.v-a .util-cad h2 { color: #fff; }
+.v-a .util-cad .eyebrow { color: #ffb4b4; }
+.v-a .util-cad .btn-prim { background: #fff; color: var(--vinho); }
+
+.v-a .chamada { background: linear-gradient(90deg, #e9e9e9, #fafafa 60%, #e9e9e9); border-top: 1px solid #d8d8d8; }
+.v-a .chamada h2 b { color: var(--prim); white-space: nowrap; }
+
+/* Internas */
+.v-a .cabeca { background: linear-gradient(120deg, var(--vinho-esc), var(--vinho) 70%, #a01c17); color: #f6dede; }
+.v-a .cabeca.com-foto .cabeca-foto { left: 50%; clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%); }
+.v-a .cabeca.com-foto .cabeca-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(74,11,11,.6), rgba(74,11,11,.1)); }
+.v-a .cabeca.com-foto .in > * { max-width: min(680px, 52%); }
+.v-a .cabeca h1 { color: #fff; }
+.v-a .trilha { color: #ffcaca; }
+.v-a .sub-nav { background: #fff; border-bottom: 1px solid #ddd; }
+.v-a .sub-nav a { color: var(--vinho); background: #f6e6e6; }
+.v-a .sub-nav a:hover { background: var(--vinho); color: #fff; }
+.v-a .bloco { background: #fff; }
+.v-a .bloco:nth-of-type(even) { background: var(--fundo); }
+.v-a .missao { background: linear-gradient(90deg, #f6e6e6, #fff) !important; }
+.v-a .missao blockquote { color: var(--vinho); border-left: 6px solid var(--prim); padding-left: 26px; }
+.v-a .destaque-hora { background: linear-gradient(160deg, var(--vinho), var(--vinho-esc)); color: #f6dede; border-radius: var(--raio); }
+.v-a .destaque-hora b { color: #fff; }
+.v-a .destaque-hora .btn-prim { background: #fff; color: var(--vinho); }
+.v-a .foto-moldura img { border-radius: var(--raio); box-shadow: 0 16px 36px rgba(0,0,0,.16); }
+.v-a .valores-grandes li { background: #fff; border-top: 4px solid var(--prim); box-shadow: 0 4px 14px rgba(0,0,0,.06); color: var(--titulo); }
+.v-a .valores-grandes span { color: var(--prim); }
+.v-a .mapa-sul .uf { fill: #e8d3d3; }
+.v-a .mapa-sul .uf:nth-child(2) { fill: #d9b3b3; }
+.v-a .mapa-sul .rota line { stroke: var(--vinho); }
+.v-a .mapa-sul .cap circle { fill: var(--vinho); }
+.v-a .mapa-sul .sede circle:first-child { fill: rgba(179,18,27,.2); }
+.v-a .mapa-sul .sede circle:last-child { fill: var(--prim); }
+.v-a .mapa-sul text { fill: var(--titulo); }
+.v-a .linha, .v-a .cat, .v-a .promo, .v-a .esp-linha, .v-a .art-card, .v-a .art-vazio, .v-a .ind, .v-a .form-caixa, .v-a .contato-dados > a, .v-a .temas li { background: #fff; border: 1px solid #ddd; border-radius: var(--raio); box-shadow: 0 4px 14px rgba(0,0,0,.05); }
+.v-a .bloco:nth-of-type(odd) .cat, .v-a .bloco:nth-of-type(odd) .esp-linha, .v-a .bloco:nth-of-type(odd) .ind { background: #f7f7f7; }
+.v-a .cat > .ico, .v-a .temas .ico, .v-a .ind > .ico:first-child, .v-a .contato-dados .ico, .v-a .art-vazio .ico { color: var(--prim); }
+.v-a .ind:hover, .v-a .art-card:hover { border-color: var(--prim); }
+.v-a .ind-ext { color: var(--suave); }
+.v-a .tag { background: #f6e6e6; color: var(--vinho); }
+.v-a .etapa-n { color: var(--prim); }
+.v-a .esp-linha .etapa-n { color: var(--prim); }
+.v-a .qualidade { background: linear-gradient(120deg, #f4f4f4, #fff) !important; }
+.v-a .q-passos li { background: #fff; border-top: 4px solid var(--vinho); margin-right: 8px; }
+.v-a .q-passos li::before { color: var(--prim); }
+.v-a .ev-linha::before { background: #d9b3b3; }
+.v-a .ev-linha li::before { border-color: var(--prim); background: #fff; }
+.v-a .contato-dados small { color: var(--suave); }
+.v-a .busca-rep, .v-a .busca-prod { }
+
+.v-a .rodape { background: linear-gradient(180deg, var(--vinho) 0%, #5e0f0f 70%, var(--vinho-esc) 100%); color: #f3dede; }
+.v-a .rodape h3 { color: #fff; }
+.v-a .r-base { border-top: 1px solid rgba(255,255,255,.15); color: #e6c4c4; }
+
+@media (max-width: 1100px) {
+  .v-a { --alt-topo: 86px; }
+  .v-a .topo .in { min-height: 86px; align-items: center; }
+  .v-a .marca { margin-block: 0; align-self: stretch; }
+  .v-a .marca img { width: 84px; }
+  .v-a #nav { background: var(--vinho-esc); align-self: auto; }
+  .v-a #nav a, .v-a #nav a[aria-current] { clip-path: none; margin: 0; border-radius: 0; background: none; border-top: 0; border-bottom: 1px solid rgba(255,255,255,.12); padding: 16px 6px; color: #fff; }
+  .v-a #nav a[aria-current] { color: #ffb4b4; }
+  .v-a .atalhos .in { grid-template-columns: 1fr 1fr; }
+  .v-a .esp-grade { grid-template-columns: repeat(3, 1fr); }
+  .v-a .etapas li, .v-a .etapas li:first-child { clip-path: none; padding: 24px; }
+  .v-a .etapas li:not(:first-child) { padding-left: 24px; }
+}
+@media (max-width: 800px) {
+  .v-a .slide { min-height: 0; display: block; }
+  .v-a .slide-foto { position: relative; left: 0; clip-path: none; height: 240px; }
+  .v-a .slide-foto::after { background: linear-gradient(0deg, rgba(74,11,11,.5), transparent 50%); }
+  .v-a .slide-txt { padding-block: 30px 90px; }
+  .v-a .slide-txt > * { max-width: none; }
+  .v-a .hero-nav { bottom: 24px; }
+  .v-a .atalhos { margin-top: 0; padding-top: 24px; }
+  .v-a .esp-grade { grid-template-columns: 1fr 1fr; }
+  .v-a .esp-0 { min-height: 300px; }
+  .v-a .cabeca.com-foto { padding-top: 0; }
+  .v-a .cabeca.com-foto .cabeca-foto { position: relative; left: 0; clip-path: none; height: 200px; margin-bottom: 30px; }
+  .v-a .cabeca.com-foto .in > * { max-width: none; }
+}
+
+/* Ajustes */
+.v-a .esp-5, .v-a .esp-6 { grid-column: span 2; }
+.v-a .como .etapa-n { color: #ffb4b4; }
+.v-a .hero-nav { bottom: 64px; }
+.v-a .slide-txt { padding-bottom: 130px; }
+@media (max-width: 1100px) { .v-a .esp-5, .v-a .esp-6 { grid-column: auto; } .v-a .esp-6 { grid-column: span 2; } }
+@media (max-width: 800px) { .v-a .hero-nav { bottom: 24px; } .v-a .slide-txt { padding-bottom: 90px; } .v-a .esp-6 { grid-column: auto; } }
