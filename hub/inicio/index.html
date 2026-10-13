@@ -397,11 +397,12 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
 @media (max-width:900px){.lists .lgrp{width:100%}}
 .side .lists.more{-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
 </style>
+<link rel="stylesheet" href="/inicio/aprovar.css">
 
 <div class="app">
   <aside class="rail">
     <a class="logo" href="/" title="Overtus Hub"><span>O</span></a>
-    <button class="rb" type="button" data-tab="visao" title="Visão geral" aria-label="Visão geral"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg></button><button class="rb" type="button" data-tab="triagem" title="Triagem" aria-label="Triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></button><button class="rb" type="button" data-tab="empresas" title="Empresas e CRM" aria-label="Empresas e CRM"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><i class=dot id=dotEmp hidden></i></button><button class="rb" type="button" data-tab="roteiro" title="Roteiro e bônus" aria-label="Roteiro e bônus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></button>
+    <button class="rb" type="button" data-tab="visao" title="Visão geral" aria-label="Visão geral"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg></button><button class="rb" type="button" data-tab="triagem" title="Triagem" aria-label="Triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></button><button class="rb" type="button" data-tab="aprovar" title="Aprovar" aria-label="Aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg></button><button class="rb" type="button" data-tab="empresas" title="Empresas e CRM" aria-label="Empresas e CRM"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><i class=dot id=dotEmp hidden></i></button><button class="rb" type="button" data-tab="roteiro" title="Roteiro e bônus" aria-label="Roteiro e bônus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></button>
     <span class="sp"></span>
     <a class="rb" href="/sites/" title="Sites dos clientes" aria-label="Sites dos clientes"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg></a>
     <a class="rb" href="/busca/" title="Buscar sites antigos" aria-label="Buscar sites antigos"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a>
@@ -417,7 +418,7 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
         <button class="resbtn" type="button" id="resBtn" hidden></button>
         <button class="pbtn" type="button" id="newBtn"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Nova empresa</button>
       </div>
-      <div class="menu"><button class="mi" type="button" data-tab="visao"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span class="l">Visão geral</span><span class="n" id="nVis"></span></button><button class="mi" type="button" data-tab="triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg><span class="l">Triagem</span><span class="n" id="nTri"></span></button><button class="mi" type="button" data-tab="empresas"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><span class="l">Empresas e CRM</span><span class="n" id="nEmp"></span></button><button class="mi" type="button" data-tab="roteiro"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="l">Roteiro e bônus</span></button><a class="mi" href="/sites/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg><span class="l">Sites dos clientes</span></a></div>
+      <div class="menu"><button class="mi" type="button" data-tab="visao"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span class="l">Visão geral</span><span class="n" id="nVis"></span></button><button class="mi" type="button" data-tab="triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg><span class="l">Triagem</span><span class="n" id="nTri"></span></button><button class="mi" type="button" data-tab="aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg><span class="l">Aprovar</span><span class="n" id="nApr"></span></button><button class="mi" type="button" data-tab="empresas"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><span class="l">Empresas e CRM</span><span class="n" id="nEmp"></span></button><button class="mi" type="button" data-tab="roteiro"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="l">Roteiro e bônus</span></button><a class="mi" href="/sites/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg><span class="l">Sites dos clientes</span></a></div>
     </nav>
     <main>
       <div class="mx">
@@ -584,6 +585,8 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
           <div class="tablewrap" id="triTable"></div>
         </div>
 
+        <div id="paneAprovar" hidden></div>
+
         <div id="paneEmpresas" hidden>
   <form class="add" id="addForm" autocomplete="off" hidden>
     <div class="ttl"><h2>Nova empresa</h2><button class="btn sm" type="button" id="addClose">Fechar</button></div>
@@ -610,7 +613,9 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
 <div class="toast" id="toast" hidden></div>
 
 <script src="/inicio/dados.js"></script>
+<script src="/inicio/aprovar.js"></script>
 <script>
+let myId=null;
 const STATUS=[["novo","Novo"],["produzir","Fazer preview"],["ligar","Ligar"],["enviado","Link enviado"],["proposta","Proposta enviada"],["conversa","Em conversa"],["fechado","Fechado"],["perdido","Perdido"]];
 const SLABEL=Object.fromEntries(STATUS);
 const PRIO={alta:"prioridade alta",media:"prioridade média",baixa:"prioridade baixa"};
@@ -922,12 +927,13 @@ function renderEnr(d){
   B.querySelectorAll("[data-pick]").forEach(b=>b.onclick=()=>{const cur=(d.proposta||{}).escolhida===b.dataset.pick?"":b.dataset.pick;write(d.id,{proposta:{escolhida:cur}})});
 }
 async function copy(t,b){const o=b.textContent;try{await navigator.clipboard.writeText(t);b.textContent="Copiado";setTimeout(()=>b.textContent=o,1500)}catch{toast("Selecione o texto e copie manualmente")}}
-function renderAll(){renderLists();renderSide();renderFilters();renderList();renderDetail();if(tab==="triagem")renderTri();if(tab==="visao")renderVisao()}
+function renderAll(){renderLists();renderSide();renderFilters();renderList();renderDetail();if(tab==="triagem")renderTri();if(tab==="visao")renderVisao();if(tab==="aprovar")Aprovar.render()}
 
 /* ---------- visão geral ---------- */
 function renderSide(){
   const hoje=docs.filter(isDue).length;
   $("#nTri").textContent=loaded?docs.filter(d=>!d.triagem).length||"":"";
+  $("#nApr").textContent=loaded?docs.filter(d=>!d.triagem&&d.temPrint).length||"":"";
   $("#nEmp").textContent=loaded?(hoje?hoje+" hoje":docs.filter(d=>d.triagem!=="descartar").length):"";
   $("#dotEmp").hidden=!hoje;
 }
@@ -1069,12 +1075,12 @@ $("#triTable").addEventListener("click",e=>{
   const t=e.target.closest("[data-tri]");if(t){setTri(t.dataset.id,t.dataset.tri);return}
   const o=e.target.closest("[data-open]");if(o){sel=o.dataset.open;builtFor=null;showTab("empresas");renderAll();if(innerWidth<=900)$("#detail").scrollIntoView({block:"start"})}
 });
-const TITLES={visao:["Visão geral","Como está cada etapa da lista escolhida."],triagem:["Triagem","Decida rápido quem merece um site novo. Os piores sites aparecem primeiro."],empresas:["Empresas e CRM","Ficha de cada empresa, próximo passo, script e proposta com duas versões."],roteiro:["Roteiro e bônus","Script de ligação, bônus para fidelizar e como pegar o domínio do cliente."]};
+const TITLES={visao:["Visão geral","Como está cada etapa da lista escolhida."],aprovar:["Aprovar","Uma ficha por vez: arraste para a direita para fazer o site, para a esquerda para rejeitar."],triagem:["Triagem","Decida rápido quem merece um site novo. Os piores sites aparecem primeiro."],empresas:["Empresas e CRM","Ficha de cada empresa, próximo passo, script e proposta com duas versões."],roteiro:["Roteiro e bônus","Script de ligação, bônus para fidelizar e como pegar o domínio do cliente."]};
 function showTab(t){if(!TITLES[t])t="visao";tab=t;
-  $("#paneVisao").hidden=t!=="visao";$("#paneRoteiro").hidden=t!=="roteiro";$("#paneEmpresas").hidden=t!=="empresas";$("#paneTriagem").hidden=t!=="triagem";
+  $("#paneVisao").hidden=t!=="visao";$("#paneRoteiro").hidden=t!=="roteiro";$("#paneEmpresas").hidden=t!=="empresas";$("#paneTriagem").hidden=t!=="triagem";$("#paneAprovar").hidden=t!=="aprovar";
   document.querySelectorAll("[data-tab]").forEach(b=>{if(b.dataset.tab===t)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
   $("#pTitle").textContent=TITLES[t][0];$("#pSub").textContent=TITLES[t][1];
-  if(t==="triagem")renderTri();if(t==="visao")renderVisao();
+  if(t==="triagem")renderTri();if(t==="visao")renderVisao();Aprovar.show(t==="aprovar");
   window.scrollTo(0,0);
   try{localStorage.setItem("tab",t)}catch{}
 }
@@ -1083,12 +1089,22 @@ function openAdd(){showTab("empresas");$("#addForm").hidden=false;$("#aNome").fo
 $("#newBtn").addEventListener("click",openAdd);
 $("#addClose").addEventListener("click",()=>{$("#addForm").hidden=true});
 
+
+/* ---------- aba Aprovar: ligação com o banco ---------- */
+// Os prints ficam na própria tabela de empresas, em registros "print:<id>" da lista "_prints" (nunca aparecem nas listas).
+async function getPrint(id){if(!db)return null;const s=await col().doc("print:"+id).get();return s.exists?s.data():null}
+async function savePrint(id,obj){
+  const r=await col().doc(id).get();if(!r.exists)throw new Error("empresa não está no canvas");
+  await col().doc("print:"+id).set({...obj,lista:"_prints"});await write(id,{temPrint:true,printEm:Date.now()});
+}
+Aprovar.init({root:$("#paneAprovar"),getDocs:()=>docs,lists:()=>LISTS,lista:()=>lista,setLista,loaded:()=>loaded,canWrite:()=>canWrite&&!!db,
+  save:(id,p)=>write(id,p),toast,userId:()=>myId,getPrint,savePrint,openFicha:id=>{sel=id;builtFor=null;showTab("empresas");renderAll()}});
 /* ---------- início ---------- */
 renderAll();
 {let t="visao";try{const s=localStorage.getItem("tab");if(TITLES[s])t=s}catch{}const h=location.hash.slice(1);if(TITLES[h]){t=h;history.replaceState(null,"",location.pathname)}showTab(t)}
 (async()=>{
   const [dbNs,sNs,uNs]=await Promise.all([claude.use("db"),claude.use("sample"),claude.use("user")]);
-  db=dbNs;sample=sNs;
+  db=dbNs;sample=sNs;try{if(uNs&&uNs.id)myId=await uNs.id()}catch{}
   if(uNs){try{const w=await uNs.can("data.write");if(w===false){canWrite=false;$("#addForm").hidden=true;$("#newBtn").hidden=true}}catch{}}
   if(!db){loaded=true;$("#conn").textContent="Sem conexão com o armazenamento";renderAll();return}
   $("#conn").textContent=sample?"Salvando automaticamente · Claude ativo":"Salvando automaticamente";

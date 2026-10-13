@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { repo } from './paths.mjs';
+import { paginaLigar } from './hub-ligar.mjs';
 
 const out = path.join(repo, 'dist/_hub');
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -54,7 +55,9 @@ const clientes = slugs.map(slug => {
   const base = path.join(dir, slug);
   const pub = path.join(base, 'public');
   const cfg = JSON.parse(fs.readFileSync(path.join(base, 'site.config.json'), 'utf8'));
-  const completo = fs.existsSync(path.join(base, 'design/layout.html'));
+  // Sites da linha de produção (linha/) são estáticos em public/ e já saem completos.
+  const completo = fs.existsSync(path.join(base, 'design/layout.html')) || !!cfg.linha;
+  const ligacao = fs.existsSync(path.join(base, 'ligacao.json')) ? JSON.parse(fs.readFileSync(path.join(base, 'ligacao.json'), 'utf8')) : null;
   const lang = cfg.defaultLang || 'pt';
   const og = path.join(repo, 'dist/_clientes', slug, `assets/img/og/${lang}-index.jpg`);
   const fonte = [path.join(base, 'capa.jpg'), og].find(f => fs.existsSync(f));
@@ -93,6 +96,7 @@ const clientes = slugs.map(slug => {
     script: fs.existsSync(scriptMd) ? fs.readFileSync(scriptMd, 'utf8') : '',
     vistas,
     capa,
+    ligacao,
   };
 });
 
@@ -142,7 +146,7 @@ const card = c => `
       </a>
       <div class="info">
         <div class="nome">
-          <div class="tags"><span class="tag setor">${esc(nomeSetor(c.setor))}</span><span class="tag ${c.completo || c.versoes ? 'ok' : 'dir'}">${c.completo ? 'Site completo' : c.versoes ? c.versoes + ' versões' : 'Direções'}</span></div>
+          <div class="tags"><span class="tag setor">${esc(nomeSetor(c.setor))}</span><span class="tag ${c.ligacao ? 'ligar' : c.completo || c.versoes ? 'ok' : 'dir'}">${c.ligacao ? 'Pronto para ligar' : c.completo ? 'Site completo' : c.versoes ? c.versoes + ' versões' : 'Direções'}</span></div>
           <h2>${esc(c.nome)}</h2>
           <p title="${esc(c.slug)}.overtus.com.br">${esc(c.tagline || c.slug + '.overtus.com.br')}</p>
         </div>
@@ -190,6 +194,7 @@ ${head('Overtus Hub · Sites em desenvolvimento')}
   .tags { display:flex; gap:4px; overflow:hidden; }
   .tag.ok { color:var(--ok); background:#e3f3ea; }
   .tag.dir { color:var(--dir); background:#fbefdc; }
+  .tag.ligar { color:#fff; background:var(--laranja); }
   h2 { margin:3px 0 0; font:400 clamp(16px, 2.2vh, 20px)/1.2 'Fraunces', serif; letter-spacing:-.01em; color:var(--azul); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .info p { margin:0; color:var(--muted); font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .links { display:flex; gap:6px; }
@@ -217,7 +222,7 @@ ${head('Overtus Hub · Sites em desenvolvimento')}
     <a class="marca" href="/" title="Voltar à prospecção"><img src="/app/icone-192.png" alt=""><b>OVERTUS HUB</b></a>
     <h1>Sites em desenvolvimento</h1>
   </div>
-  <span class="resumo"><button class="instalar" hidden>Instalar app</button>${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/">Prospecção</a> · <a href="/busca/">Buscar sites antigos</a> · <a href="/sair">Sair</a></span>
+  <span class="resumo"><button class="instalar" hidden>Instalar app</button>${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/">Prospecção</a> ${clientes.some(c => c.ligacao) ? `· <a href="/ligar/">Para ligar (${clientes.filter(c => c.ligacao).length})</a> ` : ''}· <a href="/busca/">Buscar sites antigos</a> · <a href="/sair">Sair</a></span>
 </header>
 <div class="filtros">
   <div class="chips" role="toolbar" aria-label="Filtrar por setor">${chip('', 'Todos', clientes.length)}${setores.map(s => chip(s, nomeSetor(s), clientes.filter(c => c.setor === s).length)).join('')}</div>
@@ -296,7 +301,7 @@ fs.mkdirSync(path.join(out, 'sites'), { recursive: true });
 fs.writeFileSync(path.join(out, 'sites', 'index.html'), html);
 fs.copyFileSync(path.join(repo, 'hub/inicio/index.html'), path.join(out, 'index.html'));
 fs.mkdirSync(path.join(out, 'inicio'), { recursive: true });
-fs.copyFileSync(path.join(repo, 'hub/inicio/dados.js'), path.join(out, 'inicio', 'dados.js'));
+for (const f of ['dados.js', 'aprovar.js', 'aprovar.css']) fs.copyFileSync(path.join(repo, 'hub/inicio', f), path.join(out, 'inicio', f));
 
 // Moldura: o site do cliente aberto dentro do hub, com a barra da Overtus em cima.
 const moldura = c => `<!doctype html>
@@ -425,4 +430,7 @@ for (const c of clientes) {
   fs.mkdirSync(path.join(out, 'ver', c.slug), { recursive: true });
   fs.writeFileSync(path.join(out, 'ver', c.slug, 'index.html'), moldura(c));
 }
+// Página "Para ligar": empresas que a linha de produção (linha/) deixou prontas: site + telefone + script.
+fs.mkdirSync(path.join(out, 'ligar'), { recursive: true });
+fs.writeFileSync(path.join(out, 'ligar', 'index.html'), paginaLigar(clientes.filter(c => c.ligacao), esc));
 console.log(`hub: ${clientes.length} clientes em dist/_hub/, ${setores.length} setores`);

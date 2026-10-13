@@ -1,0 +1,43 @@
+/* Versão A "Fiel": faixa de contato no alto, topo branco, chamada dividida (texto no painel da marca, foto ao lado). */
+.faixa { background: var(--escura); color: rgba(255,255,255,.88); font-size: 13.5px; }
+.faixa .in { display: flex; align-items: center; gap: 24px; min-height: 40px; }
+.faixa a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.faixa .dir { margin-left: auto; }
+.topo { background: #fff; border-bottom: 1px solid var(--linha); box-shadow: 0 4px 20px rgba(14,22,38,.05); }
+.topo-escuro { background: var(--escura); color: #fff; border-color: transparent; }
+.topo #nav a { color: var(--escura); position: relative; padding: 6px 0; }
+.topo-escuro #nav a { color: #fff; }
+.topo #nav a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: 0; height: 2px; background: var(--cor); transition: right .2s; }
+.topo #nav a:hover::after, .topo #nav a[aria-current="page"]::after { right: 0; }
+.topo #nav a[aria-current="page"] { color: var(--cor); }
+
+.chamada.ch-home { background: linear-gradient(115deg, var(--escura) 0%, color-mix(in srgb, var(--cor) 70%, var(--escura)) 100%); color: #fff; overflow: hidden; }
+.ch-home .in { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(32px, 5vw, 72px); min-height: min(640px, 78vh); }
+.ch-home.sem-foto .in { grid-template-columns: 1fr; max-width: 900px; }
+.ch-home h1 { color: #fff; }
+.ch-home .sobretitulo { color: rgba(255,255,255,.75); }
+.ch-home p { font-size: clamp(17px, 1.4vw, 20px); opacity: .9; max-width: 560px; }
+.ch-home .botao.vazado { color: #fff; }
+.ch-foto { margin: 0; align-self: stretch; position: relative; margin-right: calc(-1 * max(var(--gutter), (100vw - var(--larg)) / 2)); }
+.ch-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%); }
+
+.ch-interna { position: relative; padding: clamp(56px, 7vw, 96px) 0; background: var(--escura); color: #fff; overflow: hidden; }
+.ch-interna .in { position: relative; z-index: 1; }
+.ch-interna h1 { color: #fff; font-size: clamp(32px, 4vw, 50px); max-width: 860px; }
+.ch-interna p { max-width: 700px; opacity: .88; font-size: 18px; margin: 0; }
+.ch-interna .ch-fundo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .28; }
+.ch-interna::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--escura) 30%, transparent); }
+.trilha { font-size: 14px; opacity: .75; margin-bottom: 18px; }
+.trilha a { text-decoration: none; }
+
+/* Site atual com muita cor de fundo: a versão A mantém esse peso. */
+.pesado .f-tinta { background: var(--marca-suave); }
+.pesado .topo { border-bottom: 4px solid var(--cor); }
+
+@media (max-width: 960px) {
+  .ch-home .in { grid-template-columns: 1fr; min-height: 0; padding: 56px 0 0; }
+  .ch-foto { margin: 0 calc(-1 * var(--gutter)); height: 300px; }
+  .ch-foto img { clip-path: none; }
+  .faixa .dir { display: none; }
+  .topo-escuro .menu-btn { color: #fff; }
+}
