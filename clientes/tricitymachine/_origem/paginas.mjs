@@ -1,11 +1,30 @@
-// Gera as páginas de cada versão. A: Clássica (faixa de fotos, navy e branco). B: Industrial (navy com gradiente, blocos numerados).
+// Gera as páginas de cada versão. A: Clássica (faixa de fotos, navy e branco). B: Industrial (navy com gradiente, blocos numerados). C: Oficina (foto de fundo, serviços com foto).
 import { empresa, hero, valores, servicos, capacidades, qualidade, fotos } from './conteudo.mjs';
 import { paginas, head, cabecalho, rodape } from './comum.mjs';
 
 const FONTES = {
   a: 'https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap',
   b: 'https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap',
+  c: 'https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap',
 };
+
+// Versão C, Oficina: foto de fundo no topo, serviços em linhas com foto, faixa de números.
+function paginaHomeC(v) {
+  const linhas = servicos.map((s, i) => `<a class="linha-servico" href="/${v}/servicos/#${s.slug}"><figure class="foto"><img src="/assets/img/${fotos[i].arquivo}.webp" alt="${fotos[i].alt}" loading="lazy" width="1280" height="960"></figure><div><span class="num">0${i + 1}</span><h3>${s.nome}</h3><span class="seta">Learn more →</span></div></a>`).join('');
+  return `<section class="hero-c" style="background-image:linear-gradient(90deg,rgba(1,23,80,.94) 0%,rgba(1,23,80,.75) 55%,rgba(1,23,80,.35) 100%),url(/assets/img/foto-eixo.webp)">
+  <div class="in">
+    <p class="kicker">${empresa.desde} · ${empresa.cidade}</p>
+    <h1>${hero.titulo}</h1>
+    <p class="lead">${hero.intro}</p>
+    <div class="botoes">${tel}${mail}</div>
+  </div>
+</section>
+<section class="faixa-valores"><ul class="in">${valores.map(x => `<li>${x.titulo}</li>`).join('')}</ul></section>
+<section class="servicos-c"><div class="in"><p class="kicker">What we do</p><h2>Our Services</h2><div class="lista">${linhas}</div></div></section>
+<section class="capacidades"><div class="in"><h2>Expert Capabilities</h2>${chips}</div></section>
+<section class="qualidade-home"><div class="in"><h2>Quality Assurance</h2><p>${qualidade}</p><a class="link" href="/${v}/qualidade/">Read more about our quality</a></div></section>
+${cta(v)}`;
+}
 
 const tel = `<a class="botao" href="tel:${empresa.telefoneHref}">Call ${empresa.telefone}</a>`;
 const mail = `<a class="botao claro" href="mailto:${empresa.email}">Email us</a>`;
@@ -14,6 +33,7 @@ const chips = `<ul class="chips">${capacidades.map(c => `<li>${c}</li>`).join(''
 const fotosHtml = (n) => fotos.slice(0, n).map((f, i) => `<figure class="foto f${i}"><img src="/assets/img/${f.arquivo}.webp" alt="${f.alt}" loading="lazy" width="1280" height="960"></figure>`).join('');
 
 function paginaHome(v) {
+  if (v === 'c') return paginaHomeC(v);
   const valoresHtml = valores.map((x, i) => `<li><span class="num">0${i + 1}</span><h3>${x.titulo}</h3></li>`).join('');
   const servicosHtml = servicos.map((s, i) => `<a class="servico" href="/${v}/servicos/#${s.slug}"><span class="num">0${i + 1}</span><h3>${s.nome}</h3><span class="seta">Learn more →</span></a>`).join('');
   return `<section class="hero">
