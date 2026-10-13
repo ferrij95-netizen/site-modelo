@@ -47,6 +47,8 @@ fs.copyFileSync(path.join(repo, 'hub/sw.js'), path.join(out, 'sw.js'));
 fs.cpSync(path.join(repo, 'hub/busca'), path.join(out, 'busca'), { recursive: true });
 // Importar empresas de um arquivo para o banco do canvas (hub/importar/), também atrás do login.
 fs.cpSync(path.join(repo, 'hub/importar'), path.join(out, 'importar'), { recursive: true });
+// Menu lateral do hub (o mesmo da prospecção) para as subpáginas: /sites/, /ver/, /busca/, /importar/.
+fs.cpSync(path.join(repo, 'hub/menu'), path.join(out, 'menu'), { recursive: true });
 
 const clientes = slugs.map(slug => {
   const base = path.join(dir, slug);
@@ -209,6 +211,7 @@ ${head('Overtus Hub · Sites em desenvolvimento')}
 </style>
 </head>
 <body>
+<script src="/menu/menu.js"></script>
 <header>
   <div>
     <a class="marca" href="/" title="Voltar à prospecção"><img src="/app/icone-192.png" alt=""><b>OVERTUS HUB</b></a>
@@ -352,6 +355,7 @@ ${head(`${c.nome} · Overtus Hub`)}
 </style>
 </head>
 <body>
+<script src="/menu/menu.js"></script>
 <div class="barra">
   <a class="voltar" href="/sites/" title="Voltar para a lista de sites"><img src="/app/icone-192.png" alt=""><span class="rotulo">Hub</span></a>
   <div class="quem"><h1>${esc(c.nome)}</h1><span class="tag setor">${esc(nomeSetor(c.setor))}</span></div>
