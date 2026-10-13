@@ -348,7 +348,7 @@ if (cmd === 'nota') {
   const manifesto = path.join(PRINTS, 'prints.json');
   const feitos = Object.fromEntries((lerJson(manifesto, []) || []).map(r => [r.id, r]));
   const linhas = ranking(lista);
-  for (const r of linhas) feitos[r.id] = r.situacao === 'abre' ? { id: r.id, nome: r.nome, site: r.site, ok: true, sinais: r.motivos.slice(0, 4), nota: r.final, em: new Date().toISOString() } : { id: r.id, nome: r.nome, site: r.site, erro: r.erro, em: new Date().toISOString() };
+  for (const r of linhas) feitos[r.id] = r.situacao === 'abre' ? { id: r.id, nome: r.nome, site: r.site, url_final: lerJson(arqSinais(r.id))?.url_final, ok: true, sinais: r.motivos.slice(0, 4), nota: r.final, em: new Date().toISOString() } : { id: r.id, nome: r.nome, site: r.site, erro: r.erro, em: new Date().toISOString() };
   gravarJson(manifesto, Object.values(feitos));
   const custo = fs.existsSync(path.join(PASTA, 'custo.jsonl')) ? fs.readFileSync(path.join(PASTA, 'custo.jsonl'), 'utf8').split('\n').filter(Boolean).map(JSON.parse).filter(c => lista.some(e => e.id === c.id)) : [];
   const reais = custo.reduce((s, c) => s + c.reais, 0);
@@ -396,17 +396,18 @@ Depois: node buscar.mjs ranking
   for (const r of linhas) console.log(`${String(r.final ?? 'X').padStart(4)} ${r.passa ? '✔' : ' '} ${r.id.padEnd(16)} ${(r.nome || '').slice(0, 30).padEnd(30)} ${r.situacao === 'abre' ? r.motivos.slice(0, 3).join('; ') : r.erro}`);
   log(`corte ${p.corte} (${p.origem}). ${linhas.filter(l => l.passa).length} de ${linhas.length} passam.`);
 } else if (cmd === 'calibrar') {
-  // Exemplos: decisões do Aprovar no D1 (aprovacao.acao "fazer" = 1, "descartar" = 0) e, se houver, rótulos à mão.
+  // Exemplos: decisões do Aprovar no D1 (aprovou = 1, rejeitou = 0) e, se houver, rótulos à mão.
   const lista = listaSalva();
   const rot = {};
   for (const e of lista) if (e.rotulo === 0 || e.rotulo === 1) rot[e.id] = e.rotulo;
   Object.assign(rot, lerJson(opcao('rotulos', ''), {}) || {});
   if (!args.includes('--sem-hub')) {
     try {
-      const sql = "SELECT id, json_extract(doc,'$.aprovacao.acao') AS acao FROM empresas WHERE apagado = 0 AND json_extract(doc,'$.aprovacao.acao') IN ('fazer','descartar')";
+      // Aprovar grava aprovacao.acao = ok | nope | maybe e triagem = fazer | descartar | talvez. "talvez" não entra.
+      const sql = "SELECT id, json_extract(doc,'$.aprovacao.acao') AS acao, json_extract(doc,'$.triagem') AS triagem FROM empresas WHERE apagado = 0 AND (json_extract(doc,'$.aprovacao.acao') IN ('ok','nope') OR json_extract(doc,'$.triagem') IN ('fazer','descartar'))";
       const r = spawnSync('npx', ['--yes', 'wrangler', 'd1', 'execute', 'prospeccao', '--remote', '--json', '--command', sql], { cwd: REPO, encoding: 'utf8', shell: process.platform === 'win32', maxBuffer: 64 << 20 });
       const linhas = JSON.parse(r.stdout.slice(r.stdout.indexOf('[')))[0]?.results || [];
-      for (const l of linhas) rot[l.id] = l.acao === 'fazer' ? 1 : 0;
+      for (const l of linhas) rot[l.id] = l.acao === 'ok' || (!l.acao && l.triagem === 'fazer') ? 1 : 0;
       log(`${linhas.length} decisões do Aprovar lidas do hub`);
     } catch (e) { log('não consegui ler o hub (npx wrangler login?): ' + e.message.split('\n')[0]); }
   }
