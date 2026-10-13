@@ -1,4 +1,5 @@
-// Monta o hub (hub.overtus.com.br): uma página com todos os clientes de clientes/, gerada a cada build.
+// Monta o hub (hub.overtus.com.br). Raiz: canvas de prospecção (hub/inicio/, dados no D1 via src/prospeccao.js).
+// /sites/: uma página com todos os clientes de clientes/, gerada a cada build.
 // Capa de cada cliente: clientes/<cliente>/capa.jpg se existir; senão a imagem Open Graph da home; senão a cor da marca.
 // Setor: campo "setor" do site.config.json (chave da tabela SETORES abaixo); vira etiqueta e filtro no hub.
 // Cada cliente também ganha /ver/<cliente>/: o site aberto dentro da moldura do hub (versões, telefone, script).
@@ -55,7 +56,7 @@ const clientes = slugs.map(slug => {
   const fonte = [path.join(base, 'capa.jpg'), og].find(f => fs.existsSync(f));
   let capa = null;
   if (fonte) {
-    capa = `capas/${slug}.jpg`;
+    capa = `/capas/${slug}.jpg`;
     fs.copyFileSync(fonte, path.join(out, capa));
   }
   const tem = p => fs.existsSync(path.join(pub, p, 'index.html'));
@@ -208,10 +209,10 @@ ${head('Overtus Hub · Sites em desenvolvimento')}
 <body>
 <header>
   <div>
-    <span class="marca"><img src="/app/icone-192.png" alt=""><b>OVERTUS HUB</b></span>
+    <a class="marca" href="/" title="Voltar à prospecção"><img src="/app/icone-192.png" alt=""><b>OVERTUS HUB</b></a>
     <h1>Sites em desenvolvimento</h1>
   </div>
-  <span class="resumo"><button class="instalar" hidden>Instalar app</button>${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/busca/">Buscar sites antigos</a> · <a href="/sair">Sair</a></span>
+  <span class="resumo"><button class="instalar" hidden>Instalar app</button>${clientes.length} clientes · ${(n => n === 1 ? '1 site completo' : n + ' sites completos')(clientes.filter(c => c.completo).length)} · <a href="/">Prospecção</a> · <a href="/busca/">Buscar sites antigos</a> · <a href="/sair">Sair</a></span>
 </header>
 <div class="filtros">
   <div class="chips" role="toolbar" aria-label="Filtrar por setor">${chip('', 'Todos', clientes.length)}${setores.map(s => chip(s, nomeSetor(s), clientes.filter(c => c.setor === s).length)).join('')}</div>
@@ -285,7 +286,12 @@ ${head('Overtus Hub · Sites em desenvolvimento')}
 </html>
 `;
 
-fs.writeFileSync(path.join(out, 'index.html'), html);
+// A lista de sites mora em /sites/; a raiz do hub é o canvas de prospecção (hub/inicio/).
+fs.mkdirSync(path.join(out, 'sites'), { recursive: true });
+fs.writeFileSync(path.join(out, 'sites', 'index.html'), html);
+fs.copyFileSync(path.join(repo, 'hub/inicio/index.html'), path.join(out, 'index.html'));
+fs.mkdirSync(path.join(out, 'inicio'), { recursive: true });
+fs.copyFileSync(path.join(repo, 'hub/inicio/dados.js'), path.join(out, 'inicio', 'dados.js'));
 
 // Moldura: o site do cliente aberto dentro do hub, com a barra da Overtus em cima.
 const moldura = c => `<!doctype html>
@@ -345,7 +351,7 @@ ${head(`${c.nome} · Overtus Hub`)}
 </head>
 <body>
 <div class="barra">
-  <a class="voltar" href="/" title="Voltar para a lista de sites"><img src="/app/icone-192.png" alt=""><span class="rotulo">Hub</span></a>
+  <a class="voltar" href="/sites/" title="Voltar para a lista de sites"><img src="/app/icone-192.png" alt=""><span class="rotulo">Hub</span></a>
   <div class="quem"><h1>${esc(c.nome)}</h1><span class="tag setor">${esc(nomeSetor(c.setor))}</span></div>
   <div class="vistas" role="toolbar" aria-label="Versão do site">${c.vistas.map(v => `<button data-vista="${esc(v.id)}" aria-pressed="false">${esc(v.nome)}</button>`).join('')}</div>
   <span class="espaco"></span>

@@ -33,9 +33,11 @@
     { "pattern": "dispra.overtus.com.br", "custom_domain": true },
     { "pattern": "bmsolucoes.overtus.com.br", "custom_domain": true }
   ],
-  // Notícias e painel /admin dos clientes que têm notícias (src/noticias.js).
+  // Notícias e painel /admin dos clientes que têm notícias (src/noticias.js) e dados do canvas do hub.
   "d1_databases": [
-    { "binding": "NOTICIAS", "database_name": "noticias", "database_id": "57f5cc1b-a111-4f03-a28a-af57c4d3427d" }
+    { "binding": "NOTICIAS", "database_name": "noticias", "database_id": "57f5cc1b-a111-4f03-a28a-af57c4d3427d" },
+    // Canvas de prospecção na página inicial do hub (src/prospeccao.js).
+    { "binding": "PROSPECCAO", "database_name": "prospeccao", "database_id": "bdceb7e0-1023-440e-86da-5b52a2a29ffa" }
   ],
   "assets": {
     "directory": "./dist",

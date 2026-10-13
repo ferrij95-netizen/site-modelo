@@ -1,9 +1,10 @@
 // Um worker para todos os previews: <cliente>.overtus.com.br serve dist/_clientes/<cliente>/,
 // qualquer outro endereço serve o site da raiz (dist/).
 import { noticias } from './noticias.js';
+import { prospeccao } from './prospeccao.js';
 
 const PREFIX = '/_clientes/';
-// hub.overtus.com.br: lista de todos os clientes (dist/_hub/), com tela de login em /entrar/.
+// hub.overtus.com.br (dist/_hub/), com tela de login em /entrar/: na raiz o canvas de prospecção, em /sites/ a lista de clientes.
 // Nada secreto fica no código: CRED_HASH = sha256("usuario:senha"); o cookie leva sha256("sessao:usuario:senha"),
 // que só quem sabe a senha consegue gerar, e o worker confere sha256(cookie) === SESSAO_HASH.
 // Para trocar a senha, gere os dois hashes de novo.
@@ -34,8 +35,13 @@ async function hub(request, env, url) {
   const publico = url.pathname.startsWith('/entrar/') || url.pathname.startsWith('/app/') || url.pathname === '/sw.js';
   if (!publico) {
     const cookie = (request.headers.get('Cookie') || '').match(/(?:^|;\s*)hub=([0-9a-f]{64})/);
-    if (!cookie || (await sha256(cookie[1])) !== SESSAO_HASH) return redirecionar('/entrar/');
+    if (!cookie || (await sha256(cookie[1])) !== SESSAO_HASH) {
+      if (url.pathname.startsWith('/api/')) return new Response('{"code":"session_expired"}', { status: 401, headers: { 'Content-Type': 'application/json' } });
+      return redirecionar('/entrar/');
+    }
   }
+  // Dados do canvas de prospecção (página inicial do hub), no D1.
+  if (url.pathname === '/api/empresas' || url.pathname.startsWith('/api/empresas/')) return prospeccao(request, env, url);
   url.pathname = '/_hub' + url.pathname;
   const res = await env.ASSETS.fetch(new Request(url, request));
   const out = new Response(res.body, res);
