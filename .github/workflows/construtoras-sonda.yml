@@ -1,0 +1,13 @@
+# Testa fontes públicas de CNPJ e reclamações (prospecção construtoras).
+name: construtoras-sonda
+on:
+  push:
+    branches: [claude/project-thread-ecegz6]
+    paths: [.github/workflows/construtoras-sonda.yml, prospeccao/construtoras/sonda.sh]
+  workflow_dispatch:
+jobs:
+  sonda:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash prospeccao/construtoras/sonda.sh
