@@ -1,0 +1,61 @@
+/* Versão A "Institucional": a ordem do site atual, fundo claro com faixas marinho e turquesa alternadas. */
+
+/* Capa com a foto da sede */
+.capa-a { position: relative; isolation: isolate; min-height: min(92vh, 860px); display: flex; align-items: flex-end; color: #fff; padding: calc(var(--topo) + 40px) 0 clamp(56px, 8vh, 96px); }
+.capa-a .capa-foto { position: absolute; inset: 0; z-index: -1; }
+.capa-a .capa-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; }
+.capa-a .capa-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6,32,51,.92) 0%, rgba(6,32,51,.72) 42%, rgba(6,32,51,.1) 75%), linear-gradient(0deg, rgba(6,32,51,.55), transparent 40%); }
+.capa-txt { max-width: 680px; }
+.capa-a h1 { color: #fff; }
+.capa-a h1 em { color: var(--ouro); }
+.capa-a p { font-size: clamp(17px, .4vw + 15px, 20px); color: rgba(255,255,255,.88); max-width: 54ch; }
+.capa-a .kicker { color: var(--ouro-claro); }
+
+/* Institucional: três pilares com formatos diferentes */
+.pilares { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: clamp(16px, 2vw, 26px); align-items: stretch; }
+.pilar { position: relative; padding: clamp(26px, 3vw, 38px); border-radius: var(--raio); }
+.pilar p { margin: 0; color: var(--suave); }
+.pilar-ico { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; margin-bottom: 20px; }
+.pilar-ico .ico { width: 26px; height: 26px; }
+.pilar-1 { background: var(--creme); }
+.pilar-1 .pilar-ico { background: #fff; color: var(--teal-esc); }
+.pilar-2 { background: linear-gradient(150deg, var(--marinho) 0%, var(--marinho-2) 70%, #10465A 100%); }
+.pilar-2 h3 { color: #fff; } .pilar-2 p { color: rgba(255,255,255,.82); }
+.pilar-2 .pilar-ico { background: rgba(255,255,255,.1); color: var(--ouro); }
+.pilar-3 { border: 1.5px solid var(--ouro); background: linear-gradient(180deg, #fff 0%, var(--ouro-claro) 160%); }
+.pilar-3 .pilar-ico { background: var(--ouro-claro); color: #8A6A28; }
+@media (max-width: 900px) { .pilares { grid-template-columns: 1fr; } }
+
+/* Beneficiamento: faixa turquesa clara */
+.benef-a { background: linear-gradient(180deg, var(--teal-claro) 0%, #F1F8F8 100%); }
+.benef-cab { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-bottom: clamp(36px, 4vw, 56px); }
+.benef-cab h2 { margin: 0; } .benef-cab p { color: var(--suave); font-size: 18px; margin: 0; }
+.benef-a .link-seta { margin-top: 36px; }
+@media (max-width: 820px) { .benef-cab { grid-template-columns: 1fr; } }
+
+/* Faixa de fotos (como a galeria do site atual) */
+.faixa-galeria .galeria { gap: 0; }
+.faixa-galeria .g-item { border-radius: 0; }
+
+/* Tratamento */
+.trat-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.trat-foto { position: relative; margin: 0; }
+.trat-foto img { width: 100%; aspect-ratio: 4 / 4.2; object-fit: cover; border-radius: var(--raio); box-shadow: var(--sombra); }
+.trat-foto::before { content: ""; position: absolute; inset: 22px -22px -22px 22px; border: 2px solid var(--ouro); border-radius: var(--raio); z-index: -1; }
+.trat-foto figcaption { position: absolute; left: 18px; bottom: 18px; background: rgba(6,32,51,.82); color: #fff; font-size: 13.5px; padding: 8px 12px; border-radius: 6px; }
+.trat-a .lead { margin-bottom: 0; }
+@media (max-width: 860px) { .trat-grid { grid-template-columns: 1fr; } .trat-foto::before { inset: 14px -10px -14px 14px; } }
+
+.armaz-a { background: var(--creme); }
+
+/* Onde destacamos: sobre a foto do acesso, como no site atual */
+.destaque-a { position: relative; isolation: isolate; padding-block: clamp(72px, 9vw, 120px); color: #fff; }
+.destaque-foto { position: absolute; inset: 0; z-index: -1; }
+.destaque-foto img { width: 100%; height: 100%; object-fit: cover; }
+.destaque-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(6,32,51,.93), rgba(6,32,51,.8) 55%, rgba(3,86,90,.78)); }
+.destaque-a .pr { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); backdrop-filter: blur(6px); }
+.destaque-a .pr b { color: #fff; }
+.destaque-a .pr span:last-child { color: rgba(255,255,255,.8); }
+.destaque-a .pr-ico { background: rgba(215,178,106,.18); color: var(--ouro); }
+.destaque-a h2 { font-size: clamp(24px, 1.4vw + 16px, 36px); }
+@media (max-width: 760px) { .capa-a .capa-foto::after { background: linear-gradient(180deg, rgba(6,32,51,.55) 0%, rgba(6,32,51,.82) 45%, rgba(6,32,51,.94) 100%); } }
