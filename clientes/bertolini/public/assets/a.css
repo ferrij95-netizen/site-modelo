@@ -1,0 +1,79 @@
+/* Versão A "Clássica": grafite e vermelho do site atual, mesma ordem de seções da home atual. */
+:root { --verm: #951a1d; --verm2: #b5272b; --laranja: #e2913e; --ama: #f2c21a; --escuro: #23242f; --txt: #2a2b33; --suave: #5e5f69; --fundo: #fff; --card: #f4f4f6; --form: #f4f4f6; --campo: #fff; --borda: #dedee3; --kicker: #951a1d; --icone: #951a1d;
+  --barra: #1a1b23; --barra-txt: #c9c9d1; --topo: #23242f; --topo-linha: #23242f; --menu: #fff; --menu-ativo: #f2c21a; --sub: #23242f; --rodape: #1a1b23; }
+.btn-pri { background: var(--verm); color: #fff; }
+.btn-pri:hover { background: var(--verm2); }
+.btn-sec { border-color: rgba(255,255,255,.7); color: #fff; }
+.btn-sec:hover { background: #fff; color: var(--escuro); }
+.btn-sec2 { border-color: var(--verm); color: var(--verm); }
+.btn-sec2:hover { background: var(--verm); color: #fff; }
+.btn-ama { background: var(--ama); color: #23242f; }
+.btn-ama:hover { background: #ffd23d; }
+
+.hero { position: relative; color: #fff; padding-block: clamp(90px, 12vw, 170px); overflow: hidden; background: #111; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,20,26,.92) 0%, rgba(20,20,26,.55) 55%, rgba(149,26,29,.25) 100%); }
+.hero .in { position: relative; z-index: 1; }
+.hero .kicker { color: var(--ama); }
+.hero h1 { font-weight: 700; max-width: 880px; }
+.hero .lead { color: #e4e4ea; margin-bottom: 30px; }
+
+.empresa-home .in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
+.fotos { position: relative; display: grid; gap: 0; margin-top: -150px; z-index: 2; box-shadow: 0 30px 60px rgba(0,0,0,.25); }
+.fotos img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; }
+.selo { position: absolute; right: -24px; bottom: 36px; background: var(--verm); color: #fff; padding: 18px 22px; font-size: 13px; text-transform: uppercase; letter-spacing: .1em; }
+.selo b { display: block; font: 700 40px/1 Oswald, sans-serif; letter-spacing: 0; }
+.empresa-home h2 { color: var(--verm); }
+.empresa-home p { color: var(--suave); }
+
+.vitrine { background: var(--card); }
+.vitrine .sec-tit, .informativo .sec-tit { margin-inline: auto; text-align: center; }
+.vitrine h2, .informativo h2 { color: var(--escuro); }
+.trilho { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 4 * 18px) / 5); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: none; }
+.trilho::-webkit-scrollbar { display: none; }
+.fam { scroll-snap-align: start; display: flex; flex-direction: column; text-decoration: none; background: #fff; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.fam img { aspect-ratio: 1; object-fit: contain; padding: 18px; width: 100%; }
+.fam .lin { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--suave); }
+.fam b { font: 600 18px/1.2 Oswald, sans-serif; color: var(--verm); padding: 4px 14px 14px; flex: 1; }
+.fam .mais { display: block; background: var(--verm); color: #fff; padding: 11px; font: 500 15px Oswald, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.fam:hover .mais { background: var(--escuro); }
+.trilho-nav { display: flex; justify-content: center; gap: 10px; margin-top: 24px; }
+.trilho-nav button { width: 46px; height: 46px; border: 2px solid var(--verm); background: none; color: var(--verm); font-size: 26px; line-height: 1; cursor: pointer; }
+.trilho-nav button:hover { background: var(--verm); color: #fff; }
+
+.faixa-vermelha { background: linear-gradient(135deg, #7d1316 0%, #951a1d 55%, #b0302a 100%); color: #fff; }
+.numeros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 44px; margin-bottom: 44px; }
+.numeros div { padding: 0 24px; border-left: 3px solid var(--ama); }
+.numeros b { display: block; font: 700 clamp(32px, 3.4vw, 48px)/1.05 Oswald, sans-serif; }
+.numeros span { color: #f3d9d9; font-size: 15px; }
+.aplic-faixa h2 { font-size: 28px; }
+.aplic-faixa ul { list-style: none; padding: 0; margin: 0 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 32px; }
+.aplic-faixa li { padding: 11px 0 11px 22px; border-bottom: 1px solid rgba(255,255,255,.15); position: relative; font-weight: 500; }
+.aplic-faixa li::before { content: ''; position: absolute; left: 0; top: 19px; width: 8px; height: 8px; border-top: 2px solid var(--ama); border-right: 2px solid var(--ama); transform: rotate(45deg); }
+
+.informativo { background: #fff; }
+.noticia { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+.noticia h3 { color: var(--escuro); }
+
+.contato-home { background: var(--escuro); color: #fff; }
+.contato-home .kicker { color: var(--ama); }
+.contato-home p { color: #c9c9d1; }
+.contato-home .ct svg { color: var(--ama); }
+.contato-home .form { background: #2d2e3a; }
+.contato-home .form input, .contato-home .form select, .contato-home .form textarea { background: #23242f; border-color: #444554; }
+.contato-home .form .aviso { color: #e4e4ea; }
+
+.capa { background: linear-gradient(110deg, #1a1b23 0%, #23242f 55%, #5a1416 100%); color: #fff; position: relative; overflow: hidden; }
+.capa::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 8px; background: var(--ama); }
+.capa .kicker { color: var(--ama); }
+.capa .lead { color: #d6d6dc; margin: 0; }
+.pilares { background: var(--card); }
+.pilar { background: #fff; padding: 28px; border-bottom: 4px solid var(--verm); }
+.cta { background: var(--verm); color: #fff; }
+.catalogo { background: #fff; }
+.aplic-pag { background: #fff; }
+.informativo .noticias.todas { margin: 0; }
+.cat-card { border-bottom: 4px solid var(--verm); }
+@media (max-width: 1080px) { .trilho { grid-auto-columns: calc((100% - 2 * 18px) / 3); } .numeros { grid-template-columns: 1fr 1fr; gap: 28px 0; } }
+@media (max-width: 820px) { .empresa-home .in { grid-template-columns: 1fr; } .fotos { margin-top: -110px; } .selo { right: 12px; } .aplic-faixa ul { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .trilho { grid-auto-columns: 72%; } .numeros { grid-template-columns: 1fr; } .aplic-faixa ul { grid-template-columns: 1fr; } }
