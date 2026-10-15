@@ -1,0 +1,144 @@
+/* Versão B "Campo Vermelho": o vermelho do boi em tela cheia, logo branco, painéis escuros e dourado. */
+.v-b .topo { background: var(--bordo-2); color: #fff; }
+.v-b .topo.sobre-capa { position: absolute; top: 0; left: 0; right: 0; background: linear-gradient(180deg, rgba(40,4,6,.55), transparent); }
+.v-b .topo.sobre-capa .marca { visibility: hidden; }
+.v-b .nav a[aria-current="page"] { color: var(--ouro); }
+.v-b .nav > a:hover, .v-b .nav .sub > a:hover { color: var(--ouro); }
+.v-b .btn-principal { background: var(--ouro); color: var(--bordo-2); }
+.v-b .btn-principal:hover { background: #d8bd72; }
+.v-b .topo .btn-principal { background: #fff; color: var(--vermelho-esc); }
+.v-b .eyebrow { color: var(--vermelho); }
+
+/* Capa */
+.capa-b { background: var(--vermelho-esc); color: #fff; overflow: hidden; }
+.capa-fundo { position: absolute; inset: 0; background: url(/assets/img/fundo-boi.webp) center top / cover no-repeat; }
+.capa-b > .in { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: center; min-height: min(100svh, 860px); padding: 120px 0 70px; }
+.capa-logo { width: clamp(170px, 16vw, 250px); margin-bottom: 26px; filter: drop-shadow(0 8px 24px rgba(40,0,0,.35)); }
+.capa-b h1 { font-size: clamp(34px, 3.2vw + 14px, 60px); max-width: 14ch; }
+.capa-b .lead { color: rgba(255,255,255,.9); }
+.capa-foto { position: relative; margin: 0; border-radius: 200px 24px 24px 24px; overflow: hidden; aspect-ratio: 1 / 1.05; border: 6px solid rgba(255,255,255,.18); box-shadow: 0 30px 60px rgba(30,0,0,.4); }
+.capa-foto img { width: 100%; height: 100%; object-fit: cover; }
+.capa-foto figcaption { position: absolute; right: 16px; bottom: 12px; }
+.faixa-rolante { position: relative; background: var(--ouro); color: var(--bordo-2); overflow: hidden; white-space: nowrap; }
+.faixa-rolante div { display: inline-flex; animation: rolar 36s linear infinite; }
+.faixa-rolante span { font: 900 17px/1 var(--fh); letter-spacing: .12em; text-transform: uppercase; padding: 17px 26px; }
+.faixa-rolante span::after { content: '●'; margin-left: 52px; font-size: 9px; vertical-align: middle; opacity: .55; }
+@keyframes rolar { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .faixa-rolante div { animation: none; } }
+
+/* Números */
+.v-b .numeros { background: var(--bordo-2); color: #fff; }
+.v-b .num { padding: 44px 26px; }
+.v-b .num b { color: var(--ouro); font-size: clamp(42px, 3.2vw + 16px, 68px); }
+.v-b .num span { color: rgba(255,255,255,.8); }
+
+/* Mosaico */
+.mosaico { background: var(--creme); padding: clamp(64px, 8vw, 110px) 0; }
+.mosaico .in { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.mo-txt p { color: var(--suave); }
+.mo-fotos { display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; height: clamp(380px, 38vw, 520px); }
+.mo-fotos .foto-moldura { border-radius: 18px; }
+.mo-1 { grid-row: 1 / 3; border-radius: 120px 18px 18px 18px !important; }
+.mo-3 { border-radius: 18px 18px 90px 18px !important; }
+
+/* Serviços em painéis com foto */
+.servicos-b { background: linear-gradient(180deg, var(--bordo-2), #1a0304); color: #fff; padding: clamp(64px, 8vw, 110px) 0; }
+.servicos-b .eyebrow { color: var(--ouro); }
+.painel-serv { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.ps { position: relative; display: block; min-height: 440px; border-radius: 18px; overflow: hidden; text-decoration: none; color: #fff; isolation: isolate; }
+.ps img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .5s; }
+.ps::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(42,6,7,.15) 20%, rgba(42,6,7,.92) 75%); transition: background .3s; }
+.ps:hover img { transform: scale(1.06); }
+.ps:hover::before { background: linear-gradient(180deg, rgba(200,20,28,.35) 0%, rgba(110,8,12,.95) 70%); }
+.ps-n { position: absolute; top: 18px; left: 20px; font: 900 44px/1 var(--fh); color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.75); }
+.ps-txt { position: absolute; left: 0; right: 0; bottom: 0; display: grid; gap: 8px; padding: 22px; }
+.ps-txt .ico { width: 30px; height: 30px; color: var(--ouro); }
+.ps-txt b { font: 800 22px/1.2 var(--fh); }
+.ps-txt small { font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,.85); }
+
+/* Processo: cartões claros ligados por uma linha vermelha */
+.v-b .processo { background: var(--creme); }
+.v-b .etapas { gap: 16px; position: relative; }
+.v-b .etapas::before { content: ''; position: absolute; left: 4%; right: 4%; top: 52px; height: 3px; background: repeating-linear-gradient(90deg, var(--vermelho) 0 14px, transparent 14px 24px); }
+.v-b .etapas li, .v-b .etapas li:first-child, .v-b .etapas li:last-child { clip-path: none; margin: 0; padding: 0 6px; background: transparent; border-radius: 0; }
+.v-b .et-n { display: grid; place-items: center; width: 64px; height: 64px; margin: 20px 0 18px; border-radius: 50%; background: var(--vermelho); color: #fff; font-size: 20px; opacity: 1; position: relative; box-shadow: 0 0 0 8px var(--creme); }
+.v-b .et-ico { color: var(--vermelho); width: 30px; height: 30px; }
+.v-b .etapas p { color: var(--suave); }
+
+/* Unidades: painéis vermelhos */
+.v-b .unidades-sec { background: linear-gradient(135deg, var(--vermelho-vivo), var(--vermelho-esc) 60%, var(--bordo)); color: #fff; }
+.v-b .unidades-sec .eyebrow { color: var(--ouro); }
+.v-b .unid { background: rgba(30,2,3,.38); border: 1px solid rgba(255,255,255,.16); }
+.v-b .unid-sif { color: var(--ouro); }
+.v-b .unid p .ico { color: var(--ouro); }
+.v-b .unid .btn-linha { color: #fff; }
+.v-b .unid .btn-linha:hover { background: #fff; color: var(--vermelho-esc); border-color: #fff; }
+
+/* Mercados: tipografia grande */
+.v-b .mercados-sec { background: #fff; }
+.v-b .mercados-sec p { color: var(--suave); }
+.v-b .paises { gap: 0; border-top: 2px solid var(--tinta); }
+.v-b .paises li { border-radius: 0; border-bottom: 1px solid var(--borda); padding: 22px 6px; font-size: 17px; color: var(--suave); }
+.v-b .paises li:not(:nth-child(3n+1)) { border-left: 1px solid var(--borda); padding-left: 18px; }
+.v-b .iso { font-size: 44px; color: var(--vermelho); }
+
+/* Notícia */
+.v-b .noticia-sec { background: var(--areia); }
+.v-b .nd-txt .eyebrow { color: var(--vermelho); }
+
+/* Chamada final */
+.v-b .cta .btn-branco { color: var(--vermelho-esc); }
+
+/* Páginas internas */
+.v-b .cab-pag { background: var(--vermelho-esc); color: #fff; overflow: hidden; }
+.v-b .cab-pag::before { content: ''; position: absolute; inset: 0; background: url(/assets/img/fundo-boi.webp) center 30% / cover no-repeat; }
+.v-b .cab-pag .in { position: relative; }
+.v-b .cab-pag .eyebrow { color: var(--ouro); }
+.v-b .cab-pag .lead { color: rgba(255,255,255,.88); }
+.v-b .sobre-a { background: var(--creme); }
+.v-b .historia { background: #fff; }
+.v-b .tempo li::before { border-color: #fff; }
+.v-b .missao { background: var(--bordo-2); color: #fff; }
+.v-b .missao .eyebrow { color: var(--ouro); }
+.v-b .serv-lista { background: #fff; }
+.v-b .serv-bloco .eyebrow { color: var(--vermelho); }
+.v-b .serv-bloco .foto-moldura { border-radius: 90px 18px 18px 18px; }
+.v-b .serv-det { background: #fff; }
+.v-b .unid-det { background: var(--creme); }
+.v-b .form-sec { background: var(--creme); }
+.v-b .artigo { background: #fff; }
+.v-b.p-mercados .sobre-a { background: var(--creme); }
+.v-b.p-qualidade .mercados-sec { background: #fff; }
+.v-b .selos-grandes li { background: #fff; }
+.v-b .numeros + .historia { border-top: 0; }
+
+@media (max-width: 1180px) {
+  .v-b .nav { background: var(--bordo-2); color: #fff; }
+  .v-b .nav > a, .v-b .nav .sub > a, .v-b .sub-btn { border-color: rgba(255,255,255,.14); }
+  .v-b .sub-lista { background: transparent; color: #fff; }
+  .v-b .sub-lista a:hover { background: rgba(255,255,255,.08); color: var(--ouro); }
+  .v-b .sub-lista .ico { color: var(--ouro); }
+  .v-b .nav .nav-trab { color: var(--ouro); border-color: var(--ouro); }
+  .v-b .topo.sobre-capa .marca { visibility: visible; }
+  .capa-logo { display: none; }
+  .painel-serv { grid-template-columns: 1fr 1fr; }
+  .v-b .etapas::before { display: none; }
+  .v-b .etapas li, .v-b .etapas li:first-child, .v-b .etapas li:last-child { background: #fff; padding: 0 20px 22px; border-radius: 16px; }
+  .v-b .et-n { box-shadow: none; }
+}
+@media (max-width: 900px) {
+  .capa-b > .in { grid-template-columns: 1fr; padding-top: 100px; min-height: 0; }
+  .capa-foto { aspect-ratio: 16 / 11; border-radius: 120px 20px 20px 20px; }
+  .mosaico .in { grid-template-columns: 1fr; }
+  .v-b .paises li:not(:nth-child(3n+1)) { border-left: 0; padding-left: 6px; }
+  .v-b .paises li:nth-child(even) { border-left: 1px solid var(--borda); padding-left: 18px; }
+}
+@media (max-width: 600px) {
+  .painel-serv { grid-template-columns: 1fr; }
+  .ps { min-height: 320px; }
+  .mo-fotos { height: 420px; grid-template-columns: 1fr 1fr; }
+  .capa-fundo { background-image: url(/assets/img/fundo-boi-celular.webp); background-position: right top; }
+}
+.v-b .cta .eyebrow { color: var(--ouro); }
+.v-b .etapas::before { right: 12%; }
+@media (max-width: 600px) { .v-b .num { padding: 26px 16px; } .v-b .num b { font-size: 38px; } }

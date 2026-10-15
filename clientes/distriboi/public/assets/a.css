@@ -1,0 +1,108 @@
+/* Versão A "Tradição": fundo claro, logo vermelho, faixas retas. */
+.faixa-topo { background: var(--bordo-2); color: rgba(255,255,255,.85); font-size: 13.5px; }
+.faixa-topo .in { display: flex; justify-content: space-between; gap: 16px; min-height: 38px; align-items: center; }
+.faixa-topo span, .faixa-topo a { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; }
+.faixa-topo .ico { width: 15px; height: 15px; color: var(--ouro); }
+.faixa-c { display: flex; gap: 22px; }
+.v-a .topo { background: #fff; border-bottom: 1px solid var(--borda); }
+.v-a .nav > a:hover, .v-a .nav .sub > a:hover { color: var(--vermelho); }
+.v-a .nav .nav-trab { color: var(--vermelho); }
+
+/* Capa */
+.capa-a { background: linear-gradient(180deg, var(--creme), #fff); padding: clamp(40px, 6vw, 80px) 0 clamp(52px, 7vw, 96px); overflow: hidden; }
+.capa-a .in { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.capa-a h1 { color: var(--tinta); }
+.capa-a h1 em { font-style: normal; color: var(--vermelho); }
+.capa-a .selos li { background: #fff; border: 1.5px solid var(--borda); color: var(--bordo); }
+.capa-a .selos .ico { color: var(--verde-esc); width: 18px; }
+.capa-fotos { position: relative; padding: 0 0 56px 0; }
+.capa-fotos::before { content: ''; position: absolute; right: -40px; top: 40px; bottom: 0; left: 18%; border-radius: 26px; background: url(/assets/img/fundo-boi.webp) 30% center / cover; }
+.cf-grande { position: relative; margin: 0; border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 3; box-shadow: var(--sombra); width: 92%; }
+.cf-grande img { width: 100%; height: 100%; object-fit: cover; }
+.cf-grande figcaption { position: absolute; left: 14px; bottom: 10px; }
+.cf-placa { position: absolute; right: 0; bottom: 0; margin: 0; width: 46%; background: #fff; padding: 10px 10px 8px; border-radius: 16px; box-shadow: var(--sombra); }
+.cf-placa img { border-radius: 10px; aspect-ratio: 394 / 300; object-fit: cover; }
+.cf-placa figcaption { font: 700 13px/1.3 var(--fh); color: var(--suave); padding: 8px 4px 0; }
+
+/* Números */
+.v-a .numeros { background: linear-gradient(100deg, var(--vermelho-esc), var(--vermelho) 55%, var(--vermelho-vivo)); color: #fff; }
+.v-a .num + .num { border-left: 1px solid rgba(255,255,255,.22); }
+.v-a .num span { color: rgba(255,255,255,.88); }
+
+/* Sobre */
+.v-a .sobre-a { background: #fff; }
+
+/* Serviços em lista */
+.servicos-a { background: var(--areia); padding: clamp(64px, 8vw, 110px) 0; }
+.servicos-a .in { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.sa-foto .foto-moldura { aspect-ratio: 4 / 5; box-shadow: var(--sombra); }
+.lista-serv { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 2px solid var(--vermelho); }
+.lista-serv a { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; padding: 22px 6px; border-bottom: 1px solid #d9cabb; text-decoration: none; transition: background .15s, padding .15s; }
+.lista-serv a:hover { background: #fff; padding-inline: 16px; }
+.lista-serv b { display: block; font: 800 20px/1.2 var(--fh); margin-bottom: 4px; }
+.lista-serv span { color: var(--suave); font-size: 15.5px; line-height: 1.5; }
+.ls-ico { width: 44px; height: 44px; padding: 10px; border-radius: 50%; background: var(--vermelho); color: #fff; }
+.ls-seta { color: var(--vermelho); }
+
+/* Processo em setas */
+.v-a .processo { background: linear-gradient(160deg, var(--bordo), var(--bordo-2)); color: #fff; }
+.v-a .processo .eyebrow { color: var(--ouro); }
+.v-a .processo .sec-cab p { color: rgba(255,255,255,.78); }
+.v-a .etapas li { background: var(--vermelho-esc); }
+.v-a .etapas li:nth-child(2) { background: #9c0d13; }
+.v-a .etapas li:nth-child(3) { background: #aa1017; }
+.v-a .etapas li:nth-child(4) { background: #b8121a; }
+.v-a .etapas li:nth-child(5) { background: var(--vermelho); }
+.v-a .etapas li:nth-child(6) { background: var(--vermelho-vivo); }
+.v-a .et-ico { color: var(--ouro); }
+.v-a .etapas p { color: rgba(255,255,255,.86); }
+
+/* Unidades */
+.v-a .unidades-sec { background: #fff; }
+.v-a .unid { background: var(--creme); border: 1px solid var(--borda); }
+.v-a .unid-sif { color: var(--vermelho); background: #fff; }
+
+/* Mercados */
+.v-a .mercados-sec { background: linear-gradient(180deg, #F3F6EA, #E8EFD8); }
+.v-a .mercados-sec .eyebrow { color: var(--verde-esc); }
+.v-a .mercados-sec p { color: var(--suave); }
+.v-a .paises li { background: #fff; box-shadow: 0 6px 18px rgba(63,107,42,.12); }
+.v-a .iso { color: var(--verde-esc); }
+
+/* Notícia */
+.v-a .noticia-sec { background: var(--creme); }
+
+/* Páginas internas */
+.v-a .cab-pag { background: linear-gradient(180deg, var(--creme), var(--areia)); border-bottom: 4px solid var(--vermelho); }
+.v-a .cab-pag .migalha { color: var(--suave); }
+.v-a .historia { background: var(--creme); }
+.v-a .missao { background: #fff; }
+.v-a .missao blockquote { color: var(--vermelho-esc); }
+.v-a .serv-lista { background: #fff; }
+.v-a .p-a-distriboi .numeros, .v-a.p-a-distriboi .numeros { margin-top: 0; }
+.v-a.p-unidades .unidades-sec { background: var(--creme); }
+.v-a .unid-det { background: #fff; }
+.v-a .form-sec { background: var(--creme); }
+.v-a.p-contato .unidades-sec { background: #fff; }
+.v-a .artigo { background: #fff; }
+.v-a.p-qualidade .sobre-a, .v-a.p-mercados .sobre-a, .v-a.p-unidades .sobre-a { background: #fff; }
+
+@media (max-width: 1180px) {
+  .faixa-topo .in > span:first-child { display: none; }
+  .faixa-c { width: 100%; justify-content: space-between; }
+}
+@media (max-width: 900px) {
+  .capa-a .in, .servicos-a .in { grid-template-columns: 1fr; }
+  .sa-foto .foto-moldura { aspect-ratio: 16 / 10; }
+  .v-a .num + .num { border-left: 0; }
+  .v-a .num:nth-child(even) { border-left: 1px solid rgba(255,255,255,.22); }
+  .v-a .num:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.22); }
+  .capa-fotos::before { right: calc(-1 * var(--gutter)); }
+}
+@media (max-width: 600px) {
+  .faixa-c a:last-child { display: none; }
+  .faixa-c { justify-content: center; }
+  .cf-placa { width: 58%; }
+  .lista-serv a { grid-template-columns: auto 1fr; }
+  .ls-seta { display: none; }
+}
