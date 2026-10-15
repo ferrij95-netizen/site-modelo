@@ -1,0 +1,11 @@
+# Reina Sementes: como este site é feito
+
+- Cliente: Reina Sementes Ltda, Patos de Minas (MG), CNPJ 20.057.786/0001-90, aberta em 10/04/2014. Pedido feito pelo hub (canvas agro-075). A lista dizia "sem site", mas a empresa tem reinasementes.com (só http, certificado https inválido): um modelo "Blue One Page" de uma página, da TeleSET. Só em português, sem troca de idioma (por isso o novo também é só pt).
+- O que veio do site atual (exato, com erros de digitação corrigidos): lema da capa e o segundo lema "Reinando qualidade", Família, Posição geográfica, Qualidade, as 6 etapas do beneficiamento, os 4 itens do tratamento, as duas modalidades de armazenagem com seus itens, "Onde destacamos" (100% em HSE, qualidade de serviço e profissionais capacitados, os mesmos números do site atual), endereço, mapa e o link "Interno > Sistema" (sistema.reinasementes.com). As frases curtas que explicam cada etapa e cada item do tratamento são descrições gerais, sem número inventado.
+- Telefone: (34) 3823-3004, do Google Maps. O site atual mostra (35) 3823-3444; o DDD de Patos de Minas é 34. Confirmar com a empresa.
+- Logo: redesenhado em vetor (`public/assets/logo-cor.svg`, `logo-claro.svg`, `coroa.svg`) a partir do `footer-logo.png` do site atual (114x48 px), contornado com potrace. Mesmo desenho e cores (turquesa #07A4A9 e coroa creme). Trocar pelo vetor original quando a empresa mandar.
+- Fotos: todas reais, do site atual (`img/`): `banner.jpg` e `city.jpg` em 1600 px; as 8 da galeria só existem em 400x300 e foram ampliadas 2x (`imagens.mjs`). Nenhuma foto de banco.
+- Estrutura: `/` escolha, `/a/` versão A "Institucional" (ordem do site atual), `/b/` versão B "Reinando Qualidade". 7 páginas em cada: Início, A Empresa, Beneficiamento, Tratamento, Armazenagem, Estrutura (galeria), Contato.
+- Gerar: textos em `conteudo.mjs`, páginas em `paginas.mjs`, `node clientes/reina/_origem/gerar.mjs`. Estilos em `public/assets/base.css`, `a.css`, `b.css`; script `reina.js` (menu, cabeçalho, galeria). Fontes: Marcellus (títulos, a mais próxima do logo) e Inter.
+- Falta da Reina: logo em vetor, fotos maiores (planta, silos, tratamento), WhatsApp, e-mail comercial, culturas que trabalham, confirmação do telefone.
+- `public/assets/versao-*.jpg`, `og-*.jpg`, `site-atual.jpg` e `../capa.jpg` são prints, refeitos à mão quando o visual mudar.

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reina Sementes · escolha a versão do novo site</title>
+<meta name="description" content="Duas versões do novo site da Reina Sementes para escolher: Institucional e Reinando Qualidade.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://reina.overtus.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reina Sementes">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Reina Sementes · escolha a versão do novo site">
+<meta property="og:description" content="Duas versões do novo site da Reina Sementes para escolher: Institucional e Reinando Qualidade.">
+<meta property="og:url" content="https://reina.overtus.com.br/">
+<meta property="og:image" content="https://reina.overtus.com.br/assets/og-b.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reina Sementes · escolha a versão do novo site">
+<meta name="twitter:description" content="Duas versões do novo site da Reina Sementes para escolher: Institucional e Reinando Qualidade.">
+<meta name="twitter:image" content="https://reina.overtus.com.br/assets/og-b.jpg">
+<link rel="icon" href="/assets/coroa.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/base.css">
+<style>
+  html, body { height: 100%; }
+  body { display: grid; grid-template-rows: auto 1fr; background: var(--creme); }
+  header { background: var(--marinho); color: #fff; }
+  header .in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; min-height: 72px; }
+  header .logo img { height: 46px; width: auto; }
+  header small { font: 600 12.5px/1.2 var(--fb); letter-spacing: .1em; text-transform: uppercase; color: var(--ouro); }
+  main { display: grid; min-height: 0; }
+  main .in { display: grid; grid-template-columns: 1fr 1fr 0.8fr; gap: 20px; width: min(100% - 2 * var(--gutter), 1360px); padding-block: clamp(16px, 3vh, 32px); align-content: center; }
+  .v { display: grid; grid-template-rows: auto 1fr; background: #fff; border: 1px solid var(--borda); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s; min-height: 0; }
+  .v:hover { border-color: var(--teal-esc); box-shadow: 0 12px 32px rgba(0,40,70,.14); }
+  .v img { width: 100%; aspect-ratio: 16 / 10; max-height: 48vh; object-fit: cover; object-position: top; border-bottom: 1px solid var(--borda); }
+  .v div { display: grid; gap: 8px; padding: clamp(14px, 2vh, 22px) 22px clamp(16px, 2.4vh, 24px); align-content: start; }
+  .v span.e { font: 600 12.5px/1.2 var(--fb); letter-spacing: .12em; text-transform: uppercase; color: var(--teal-esc); }
+  .v h2 { font-size: clamp(22px, 1.4vw + 8px, 28px); margin: 0; }
+  .v p { color: var(--suave); font-size: 15.5px; line-height: 1.5; margin: 0; }
+  .v b.l { font: 600 15px/1.3 var(--fb); color: var(--marinho); }
+  .v.atual { background: transparent; border-style: dashed; }
+  .v.atual img { object-position: center; }
+  .v.atual span.e { color: var(--suave); }
+  @media (max-width: 1000px) { html, body { height: auto; } main .in { grid-template-columns: 1fr; } .v img { max-height: none; } }
+</style>
+</head>
+<body>
+<header><div class="in"><span class="logo"><img src="/assets/logo-claro.svg" alt="Reina Sementes" width="137" height="46"></span><small>Proposta de novo site · duas versões</small></div></header>
+<main><div class="in">
+  <a class="v a" href="/a/"><img src="/assets/versao-a.jpg" alt="Página inicial da versão A">
+    <div><span class="e">Versão A</span><h2>Institucional</h2><p>A mesma ordem do site de hoje: o lema na capa, a empresa, o beneficiamento com a galeria de fotos, o tratamento, a armazenagem, "Onde destacamos" e o contato com mapa. Cada serviço ganhou página própria.</p><b class="l">Abrir a versão A →</b></div></a>
+  <a class="v b" href="/b/"><img src="/assets/versao-b.jpg" alt="Página inicial da versão B">
+    <div><span class="e">Versão B</span><h2>Reinando Qualidade</h2><p>Capa em tela cheia com o lema "Reinando qualidade", os números da empresa, os serviços em painéis com foto e a linha de beneficiamento em seis etapas, com o mesmo logo, cores e textos.</p><b class="l">Abrir a versão B →</b></div></a>
+  <a class="v atual" href="http://reinasementes.com/" target="_blank" rel="noopener"><img src="/assets/site-atual.jpg" alt="Site atual da Reina Sementes">
+    <div><span class="e">Para comparar</span><h2>Site atual</h2><p>reinasementes.com como está hoje.</p><b class="l">Abrir o site atual ↗</b></div></a>
+</div></main>
+</body>
+</html>
