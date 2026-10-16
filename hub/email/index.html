@@ -42,6 +42,8 @@
   .bt.lar { background:var(--orange); color:#280e01; box-shadow:none; }
   .bt.lar:hover { background:#f1a46b; }
   .bt:disabled { opacity:.55; cursor:default; }
+  .bt.girando svg { animation:girar .8s linear infinite; }
+  @keyframes girar { to { transform:rotate(360deg); } }
   .bt svg, .ic svg { width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 
   .pagina { display:grid; grid-template-rows:auto minmax(0, 1fr); gap:clamp(10px, 2vh, 18px); padding:clamp(14px, 3vh, 30px) clamp(16px, 3vw, 36px); }
@@ -389,7 +391,16 @@
   }
   function aviso(t, erro) { const s = $('#fMsg'); if (s) { s.textContent = t; s.className = erro ? 'erro' : ''; } }
   $('#novo').onclick = () => { const a = st.aberta; st.aberta = null; escrever('novo'); st.aberta = a; };
-  $('#atualizar').onclick = () => Promise.all([carregarPastas(), carregarLista()]).catch(erroLista);
+  // Atualizar: busca de novo pastas e mensagens. Se a tela estiver no aviso (sem lista), recarrega a página inteira.
+  $('#atualizar').onclick = async () => {
+    const b = $('#atualizar');
+    if (!$('#itens')) { location.reload(); return; }
+    if (b.disabled) return;
+    b.disabled = true; b.classList.add('girando');
+    try { await carregarPastas(); await carregarLista(); }
+    catch (e) { if (e.code === 'sem_token' || e.code === 'token_invalido') semLigacao(e); else erroLista(e); }
+    finally { b.disabled = false; b.classList.remove('girando'); }
+  };
 
   carregarPastas().then(carregarLista).catch(semLigacao);
 })();
