@@ -418,6 +418,41 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
 }
 @media (max-width:900px){.lists .lgrp{width:100%}}
 .side .lists.more{-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
+/* Menu areia na ordem da venda (encontrar, produzir, vender, acompanhar) e a lista em uso compacta embaixo, abrindo para cima. */
+.rsep{flex:none;width:24px;height:1px;background:rgba(254,249,225,.16);margin:clamp(1px,.5vh,4px) 0}
+.side{gap:0}
+.side .menu{gap:2px}
+.mg{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 14px;margin:14px 0 4px}
+.lbox{margin-top:auto;padding-top:14px;border-top:1px solid var(--line2);position:relative;display:flex;flex-direction:column;gap:8px;flex:none}
+.lbox>.lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 4px}
+.lrow{display:flex;gap:6px;align-items:stretch}
+.lsel{flex:1;min-width:0;display:flex;align-items:center;gap:8px;border:0;background:var(--panel);border-radius:14px;padding:8px 10px;cursor:pointer;text-align:left;color:var(--ink);box-shadow:var(--shadow-sm)}
+.lsel:hover{box-shadow:0 0 0 1px var(--sky)}
+.lsel .avatar{width:30px;height:30px;font-size:11px}
+.lsel .lt{flex:1;min-width:0;display:flex;flex-direction:column}
+.lsel .nm{font-size:14px;font-weight:600;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lsel .sb{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lsel .chev{width:18px;height:18px;color:var(--muted);transition:transform .15s}
+.lsel[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.lnew{flex:none;width:40px;border:0;border-radius:14px;background:var(--accent);color:var(--accent-ink);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lnew:hover{filter:brightness(1.12)}
+.lpop{position:absolute;left:0;right:0;bottom:calc(100% + 6px);z-index:20;background:var(--panel);border-radius:16px;padding:12px;box-shadow:0 24px 48px -20px rgba(12,16,24,.45),0 0 0 1px var(--line);max-height:min(72vh,560px);display:flex;flex-direction:column}
+.side .lpop .lists{margin-top:0;min-height:0;flex:1 1 auto;overflow-y:auto}
+.lbox .live{margin:0;padding:0 4px;border:0;font-size:12px;color:var(--muted);gap:8px}
+.lbox .live i{width:6px;height:6px;box-shadow:0 0 0 3px rgba(90,118,159,.2)}
+@media (min-width:901px){
+  .side .mi{height:clamp(30px,4.4vh,42px)}
+  .mg{margin:clamp(6px,1.5vh,14px) 0 clamp(2px,.4vh,4px)}
+  .lbox{padding-top:clamp(8px,1.6vh,14px);gap:clamp(4px,.8vh,8px)}
+}
+@media (min-width:901px) and (max-height:700px){.lbox>.lbl{display:none}.lsel .sb{display:block}}
+@media (max-width:900px){
+  .rsep{display:none}
+  .rail{overflow-x:auto}
+  .lbox{margin-top:0;padding-top:0;border-top:0}
+  .lbox>.lbl,.lbox .live{display:none}
+  .lpop{bottom:auto;top:calc(100% + 6px)}
+}
 </style>
 <link rel="stylesheet" href="/inicio/aprovar.css">
 <link rel="stylesheet" href="/inicio/lembretes.css">
@@ -426,25 +461,43 @@ table.tri{border-collapse:collapse;width:100%;min-width:880px;font-size:14px}
 <div class="app">
   <aside class="rail">
     <a class="logo" href="/" title="Overtus Hub"><span>O</span></a>
-    <button class="rb" type="button" data-tab="visao" title="Visão geral" aria-label="Visão geral"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg></button><button class="rb" type="button" data-tab="triagem" title="Triagem" aria-label="Triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></button><button class="rb" type="button" data-tab="aprovar" title="Aprovar" aria-label="Aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg></button><button class="rb" type="button" data-tab="pedidos" title="Fazer site" aria-label="Fazer site"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM8 20h8M12 16v4M12 8v5M9.5 10.5h5"/></svg><i class=dot id=dotPed hidden></i></button><button class="rb" type="button" data-tab="empresas" title="Empresas e CRM" aria-label="Empresas e CRM"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><i class=dot id=dotEmp hidden></i></button><button class="rb" type="button" data-tab="roteiro" title="Roteiro e bônus" aria-label="Roteiro e bônus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></button>
+    <button class="rb" type="button" data-tab="visao" title="Visão geral" aria-label="Visão geral"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg></button>
+    <span class="rsep" aria-hidden="true"></span>
+    <a class="rb" href="/busca/" title="Buscar sites antigos" aria-label="Buscar sites antigos"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a><button class="rb" type="button" data-tab="triagem" title="Triagem" aria-label="Triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></button>
+    <span class="rsep" aria-hidden="true"></span>
+    <button class="rb" type="button" data-tab="aprovar" title="Aprovar" aria-label="Aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg></button><button class="rb" type="button" data-tab="pedidos" title="Fazer site" aria-label="Fazer site"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM8 20h8M12 16v4M12 8v5M9.5 10.5h5"/></svg><i class=dot id=dotPed hidden></i></button><a class="rb" href="/sites/" title="Sites dos clientes" aria-label="Sites dos clientes"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg></a>
+    <span class="rsep" aria-hidden="true"></span>
+    <a class="rb" href="/ligar/" title="Para ligar" aria-label="Para ligar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a><button class="rb" type="button" data-tab="empresas" title="Empresas e CRM" aria-label="Empresas e CRM"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><i class=dot id=dotEmp hidden></i></button><a class="rb" href="/email/" title="E-mail" aria-label="E-mail"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></a><button class="rb" type="button" data-tab="roteiro" title="Roteiro e bônus" aria-label="Roteiro e bônus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6"/></svg></button>
+    <span class="rsep" aria-hidden="true"></span>
+    <a class="rb" href="/resultados/" title="Resultados" aria-label="Resultados"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8"/></svg></a>
     <span class="sp"></span>
-    <a class="rb" href="/resultados/" title="Resultados" aria-label="Resultados"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8"/></svg></a><a class="rb" href="/sites/" title="Sites dos clientes" aria-label="Sites dos clientes"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg></a>
-    <a class="rb" href="/busca/" title="Buscar sites antigos" aria-label="Buscar sites antigos"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a>
-    <a class="rb" href="/email/" title="E-mail" aria-label="E-mail"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></a>
-    <a class="rb" href="/empresa/" title="Sobre a empresa" aria-label="Sobre a empresa"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5l8-3 8 3v16M9 21v-5h6v5M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01"/></svg></a>
-    <a class="rb" href="/sair" title="Sair" aria-label="Sair"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg></a>
+    <a class="rb" href="/empresa/" title="Sobre a empresa" aria-label="Sobre a empresa"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5l8-3 8 3v16M9 21v-5h6v5M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01"/></svg></a><a class="rb" href="/sair" title="Sair" aria-label="Sair"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg></a>
   </aside>
   <div class="shell">
     <nav class="side" aria-label="Navegação">
-      <a class="backlink" href="/sites/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg>Sites dos clientes</a>
-      <div class="card">
-        <div class="camp"><span class="avatar" id="lAv">MI</span><div style="min-width:0"><div class="nm" id="lNome">Minhas</div><div class="sb" id="lSub">Prospecção Overtus</div></div></div>
-        <div class="live"><i></i><span id="conn">Conectando…</span></div>
-        <div class="lists" id="lists"></div>
-        <button class="resbtn" type="button" id="resBtn" hidden></button>
-        <button class="pbtn" type="button" id="newBtn"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Nova empresa</button>
+      <div class="menu">
+        <button class="mi" type="button" data-tab="visao"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span class="l">Visão geral</span><span class="n" id="nVis"></span></button>
+        <span class="mg">Encontrar</span>
+        <a class="mi" href="/busca/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span class="l">Buscar sites antigos</span></a><button class="mi" type="button" data-tab="triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg><span class="l">Triagem</span><span class="n" id="nTri"></span></button>
+        <span class="mg">Produzir</span>
+        <button class="mi" type="button" data-tab="aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg><span class="l">Aprovar</span><span class="n" id="nApr"></span></button><button class="mi" type="button" data-tab="pedidos"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM8 20h8M12 16v4M12 8v5M9.5 10.5h5"/></svg><span class="l">Fazer site</span><span class="n" id="nPed"></span></button><a class="mi" href="/sites/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg><span class="l">Sites dos clientes</span></a>
+        <span class="mg">Vender</span>
+        <a class="mi" href="/ligar/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="l">Para ligar</span></a><button class="mi" type="button" data-tab="empresas"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><span class="l">Empresas e CRM</span><span class="n" id="nEmp"></span></button><a class="mi" href="/email/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg><span class="l">E-mail</span></a><button class="mi" type="button" data-tab="roteiro"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6"/></svg><span class="l">Roteiro e bônus</span></button>
+        <span class="mg">Acompanhar</span>
+        <a class="mi" href="/resultados/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8"/></svg><span class="l">Resultados</span></a>
       </div>
-      <div class="menu"><button class="mi" type="button" data-tab="visao"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span class="l">Visão geral</span><span class="n" id="nVis"></span></button><button class="mi" type="button" data-tab="triagem"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg><span class="l">Triagem</span><span class="n" id="nTri"></span></button><button class="mi" type="button" data-tab="aprovar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zM8.500 4.500h7"/></svg><span class="l">Aprovar</span><span class="n" id="nApr"></span></button><button class="mi" type="button" data-tab="pedidos"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM8 20h8M12 16v4M12 8v5M9.5 10.5h5"/></svg><span class="l">Fazer site</span><span class="n" id="nPed"></span></button><button class="mi" type="button" data-tab="empresas"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><span class="l">Empresas e CRM</span><span class="n" id="nEmp"></span></button><button class="mi" type="button" data-tab="roteiro"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="l">Roteiro e bônus</span></button><a class="mi" href="/resultados/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8"/></svg><span class="l">Resultados</span></a><a class="mi" href="/sites/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg><span class="l">Sites dos clientes</span></a></div>
+      <div class="lbox" id="lbox">
+        <span class="lbl">Lista em uso</span>
+        <div class="lrow">
+          <button class="lsel" type="button" id="lSel" aria-expanded="false" aria-controls="lPop" title="Trocar de lista"><span class="avatar" id="lAv">MI</span><span class="lt"><span class="nm" id="lNome">Minhas</span><span class="sb" id="lSub">Prospecção Overtus</span></span><svg class="i chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14l5-5 5 5"/></svg></button>
+          <button class="lnew" type="button" id="newBtn" title="Nova empresa" aria-label="Nova empresa"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        </div>
+        <div class="lpop" id="lPop" hidden>
+          <div class="lists" id="lists"></div>
+          <button class="resbtn" type="button" id="resBtn" hidden></button>
+        </div>
+        <div class="live"><i></i><span id="conn">Conectando…</span></div>
+      </div>
     </nav>
     <main>
       <div class="mx">
@@ -743,7 +796,7 @@ function fadeLists(){const el=$("#lists");el.classList.toggle("more",el.scrollHe
 function renderLists(){
   $("#lists").innerHTML=`<span class="lbl">Listas</span>`+LISTS.map(([k,l,g],i)=>{const hd=g&&(!LISTS[i-1]||LISTS[i-1][2]!==g)?`<span class="lgrp">${g}</span>`:"";const n=k===lista&&loaded?allDocs.filter(d=>!d.reserva).length:LSIZE[k];return hd+`<button class="lchip" type="button" data-l="${k}" aria-pressed="${lista===k}">${l}<span class="n">${n??""}</span></button>`}).join("");
   fadeLists();
-  const nm=LLABEL[lista];$("#lNome").textContent=nm;$("#lAv").textContent=nm.split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase();
+  const nm=LLABEL[lista];$("#lNome").textContent=nm;$("#lSel").title=`Lista em uso: ${nm}. Clique para trocar.`;$("#lAv").textContent=nm.split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase();
   const nRes=allDocs.filter(d=>d.reserva).length;
   $("#lSub").textContent=loaded?`${docs.length} ${reservas?"reservas":"empresas"} · ${docs.filter(d=>!d.triagem).length} sem triagem`:"Carregando…";
   const rb=$("#resBtn");rb.hidden=!loaded||(!nRes&&!reservas);
@@ -1115,9 +1168,14 @@ $("#list").addEventListener("click",e=>{
   if(e.target.closest("a"))return;
   const b=e.target.closest("[data-id]");if(!b)return;sel=b.dataset.id;renderList();renderDetail()});
 $("#list").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches(".row")){e.preventDefault();e.target.click()}});
-$("#resBtn").addEventListener("click",()=>{reservas=!reservas;sel=null;builtFor=null;filter="todos";triFilter="pendentes";docs=allDocs.filter(d=>!!d.reserva===reservas);shown=150;triShown=150;renderAll()});
+$("#resBtn").addEventListener("click",()=>{lpop(false);reservas=!reservas;sel=null;builtFor=null;filter="todos";triFilter="pendentes";docs=allDocs.filter(d=>!!d.reserva===reservas);shown=150;triShown=150;renderAll()});
 $("#lists").addEventListener("scroll",fadeLists);addEventListener("resize",fadeLists);
-$("#lists").addEventListener("click",e=>{const b=e.target.closest("[data-l]");if(b)setLista(b.dataset.l)});
+const lPop=$("#lPop"),lSel=$("#lSel");
+function lpop(open){lPop.hidden=!open;lSel.setAttribute("aria-expanded",String(open));if(open)fadeLists()}
+lSel.addEventListener("click",()=>lpop(lPop.hidden));
+document.addEventListener("click",e=>{if(!lPop.hidden&&!e.target.closest("#lbox"))lpop(false)});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!lPop.hidden){lpop(false);lSel.focus()}});
+$("#lists").addEventListener("click",e=>{const b=e.target.closest("[data-l]");if(b){setLista(b.dataset.l);lpop(false)}});
 $("#triFilters").addEventListener("click",e=>{const b=e.target.closest("[data-tf]");if(!b)return;triFilter=b.dataset.tf;triShown=150;renderTri()});
 $("#triFilters").addEventListener("change",e=>{if(e.target.id==="triSort"){triSort=e.target.value;renderTri()}});
 $("#triTable").addEventListener("click",e=>{
