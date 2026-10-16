@@ -140,6 +140,8 @@ export async function capturar(emp) {
   home.status = resp?.status();
   home.https = pg.url().startsWith('https://');
   home.tempoCarga = carregou;
+  // Página de erro (proxy, servidor fora do ar): não segue como se fosse o site.
+  if (home.blocos.length < 2 && !home.imagens.length) { await ctx.close(); throw new Error(`site não abriu (status ${home.status}, ${home.blocos.map(b => b.t).join(' ').slice(0, 80) || 'página vazia'})`); }
 
   // Páginas internas do menu (mesmo domínio, sem âncoras), até MAX_PAGINAS.
   const host = new URL(pg.url()).hostname;

@@ -64,6 +64,7 @@ async function processar(slug) {
   // A abordagem só depende da ficha: pede junto com a redação (no modo lote, vão no mesmo lote).
   const [red, abo] = [await etapa(slug, 'redacao', () => IA.redacao(slug)), await etapa(slug, 'abordagem', () => IA.abordagem(slug))];
   if (red !== PRONTO) return;
+  if (await etapa(slug, 'critica', () => IA.critica(slug)) !== PRONTO) return;
   for (const l of ['en', 'es'].filter(l => ficha.idiomas.includes(l)))
     if (await etapa(slug, `traducao-${l}`, () => IA.traducao(slug, l)) !== PRONTO) return;
 
