@@ -1,0 +1,31 @@
+/* Pós-venda (hub/inicio/posvenda.js): bloco da Visão geral e lista de tarefas na ficha do cliente. */
+.pv-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:10px 16px;margin-top:16px}
+.pv-cli{display:flex;align-items:center;gap:14px;justify-content:space-between;background:var(--panel);border:0;border-radius:14px;padding:12px 16px;box-shadow:0 0 0 1px var(--line);cursor:pointer;color:var(--ink);text-align:left;min-width:0}
+.pv-cli:hover{box-shadow:0 0 0 1px var(--sky)}
+.pv-nome{min-width:0;display:flex;flex-direction:column}
+.pv-nome .tn{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pv-nome .ts{font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pv-prog{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.pv-bar{width:64px;height:6px;border-radius:6px;background:var(--grey-soft);overflow:hidden}
+.pv-bar i{display:block;height:100%;border-radius:6px;background:var(--orange)}
+.pv-prog.ok .pv-bar i{background:var(--ok)}
+.pv-n{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--muted)}
+
+.pv-tarefas{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;counter-reset:pv}
+.pv-t{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 16px;align-items:center;padding:12px 0 12px 40px;border-bottom:1px solid var(--line);position:relative;counter-increment:pv}
+.pv-t:last-child{border-bottom:0}
+.pv-t::before{content:counter(pv);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;background:var(--sand);color:var(--muted);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.pv-t.feita::before{content:"✓";background:var(--ok-soft);color:var(--ok)}
+.pv-ck{display:flex;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;min-width:0}
+.pv-ck input{width:18px;height:18px;margin:0;accent-color:var(--ok);flex-shrink:0}
+.pv-tn{font-weight:600}
+.pv-t.feita .pv-tn{color:var(--muted)}
+.pv-em{font-size:12px;font-weight:600;color:var(--ok);background:var(--ok-soft);border-radius:20px;padding:2px 9px}
+.pv-dica{grid-column:1;margin:0;font-size:13px;color:var(--muted)}
+.pv-dica a{color:var(--link)}
+.pv-nota{grid-column:2;grid-row:1 / span 2;font-size:14px}
+@media (max-width:700px){
+  .pv-t{grid-template-columns:1fr}
+  .pv-nota{grid-column:1;grid-row:auto}
+}
+.pv-blk{margin-top:10px}
