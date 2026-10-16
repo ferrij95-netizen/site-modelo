@@ -220,8 +220,127 @@ html:has(.escolha), .escolha { height: 100%; }
   .mock-tela { position: relative; width: 100%; }
   .flutua-1 { position: relative; left: auto; top: auto; bottom: auto; justify-self: start; margin: -22px 0 0 14px; }
 }
+
 /* Troca de idioma (indústrias: PT / EN) */
-.topo nav a.lang { font-size: 13px; font-weight: 600; letter-spacing: .06em; border: 1px solid currentColor; border-radius: 999px; padding: 4px 10px; opacity: .8; }
-.topo nav a.lang:hover { opacity: 1; border-color: var(--laranja); }
-@media (max-width: 900px) { .topo nav a.lang { align-self: flex-start; margin-top: 12px; border-bottom: 1px solid currentColor; padding: 6px 14px; } }
+.idioma { display: inline-flex; gap: 2px; padding: 3px; border-radius: 90px; border: 1px solid var(--borda-forte); }
+.topo nav .idioma a { font-size: 12.5px; font-weight: 600; letter-spacing: .06em; padding: 5px 10px; border-radius: 90px; border: 0; color: var(--nav); }
+.topo nav .idioma a:hover { color: var(--titulo); }
+.topo nav .idioma a[aria-current] { background: var(--titulo); color: var(--fundo); }
+.v-b .topo nav .idioma a[aria-current] { background: var(--creme); color: var(--azul); }
 .escolha small a { color: inherit; }
+@media (max-width: 960px) { .topo nav .idioma { align-self: flex-start; margin-top: 16px; } .topo nav .idioma a { padding: 8px 16px; font-size: 14px; } }
+
+/* Demonstração: catálogo com lista de cotação. Cores próprias (faixa clara ou escura). */
+.cotacao { --c-tit: #182644; --c-tx: #3c4659; --c-suave: #5e6880; --c-borda: #dde2ea; --c-laranja: #a4541c;
+  display: grid; grid-template-columns: 1.55fr 1fr; border-radius: var(--raio); overflow: hidden; background: #fff; border: 1px solid var(--c-borda); box-shadow: 0 30px 60px -36px rgba(24,38,68,.45); color: var(--c-tx); }
+.cot-cat { padding: clamp(18px, 2.4vw, 30px); display: grid; gap: 14px; align-content: start; min-width: 0; }
+.cot-cab { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.cot-cab b { font: 400 26px/1 var(--fh); color: var(--c-tit); letter-spacing: -0.02em; }
+.cot-cab span { font-size: 14px; color: var(--c-suave); }
+.cot-busca { display: flex; align-items: center; gap: 10px; padding: 0 14px; height: 46px; border-radius: 10px; border: 1px solid var(--c-borda); background: #f7f8fb; }
+.cot-busca:focus-within { border-color: #182644; background: #fff; }
+.cot-busca svg { width: 18px; height: 18px; color: var(--c-suave); flex-shrink: 0; }
+.cot-busca input { flex: 1; min-width: 0; border: 0; background: transparent; font: 400 15.5px/1 var(--ft); color: var(--c-tit); outline: none; }
+.cot-filtros { display: flex; flex-wrap: wrap; gap: 6px; }
+.cot-filtros button { font: 500 13.5px/1 var(--ft); padding: 8px 13px; border-radius: 90px; border: 1px solid var(--c-borda); background: #fff; color: var(--c-tx); cursor: pointer; }
+.cot-filtros button:hover { border-color: #b9c3d3; }
+.cot-filtros button[aria-pressed="true"] { background: #182644; border-color: #182644; color: #fef9e1; }
+.cot-lista { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-height: 470px; overflow: auto; }
+.cot-lista li { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: center; padding: 10px 10px 10px 8px; border-radius: 10px; border: 1px solid var(--c-borda); transition: border-color .15s, background .15s; }
+.cot-lista li:hover { border-color: #b9c3d3; }
+.cot-lista li.na-lista { border-color: #ed9454; background: #fff8f1; }
+.cot-peca { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 9px; background: linear-gradient(160deg, #eef1f6, #e2e7ef); color: #24365d; }
+.cot-peca svg { width: 36px; height: 36px; }
+.cot-info { display: grid; gap: 1px; min-width: 0; }
+.cot-info code { font: 600 11.5px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; color: var(--c-laranja); }
+.cot-info b { font-size: 15px; font-weight: 600; color: var(--c-tit); line-height: 1.25; }
+.cot-info span { font-size: 12.5px; color: var(--c-suave); line-height: 1.35; }
+.cot-add { font: 600 13px/1 var(--ft); padding: 9px 12px; border-radius: 90px; border: 1px solid #182644; background: #fff; color: #182644; cursor: pointer; white-space: nowrap; }
+.cot-add:hover { background: #182644; color: #fef9e1; }
+.na-lista .cot-add { border-color: #ed9454; background: #ed9454; color: #182644; }
+.cot-nada { font-size: 15px; color: var(--c-suave); padding: 12px 0; }
+.cot-painel { display: grid; align-content: start; gap: 12px; padding: clamp(22px, 2.6vw, 34px); background: linear-gradient(170deg, #f7f3f0 0%, #efe8e1 100%); border-left: 1px solid var(--c-borda); }
+.cot-painel .rotulo { color: var(--c-laranja); }
+.cot-total { font-size: 15px; color: var(--c-suave); }
+.cot-total b { font: 400 clamp(40px, 3vw + 16px, 56px)/1 var(--fh); color: var(--c-tit); letter-spacing: -0.03em; margin-right: 6px; font-variant-numeric: tabular-nums; }
+.cot-itens { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.cot-itens li { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center; padding: 10px 0; border-top: 1px solid #e2d9cf; font-size: 14px; }
+.cot-itens li b { display: block; color: var(--c-tit); font-weight: 600; }
+.cot-itens li code { font: 600 11px/1.2 ui-monospace, Menlo, monospace; color: var(--c-laranja); }
+.cot-itens input { width: 64px; height: 36px; padding: 0 8px; border-radius: 8px; border: 1px solid #d6ccc0; background: #fff; font: 500 14px/1 var(--ft); color: var(--c-tit); text-align: center; }
+.cot-itens button { width: 32px; height: 32px; border-radius: 50%; border: 1px solid transparent; background: transparent; color: var(--c-suave); font-size: 18px; line-height: 1; cursor: pointer; }
+.cot-itens button:hover { border-color: #d6ccc0; color: var(--c-tit); }
+.cot-vazio { font-size: 14.5px; color: var(--c-suave); padding: 12px 14px; border-radius: 10px; border: 1px dashed #d6ccc0; }
+.cot-anexo { position: relative; display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px; border: 1px dashed #b9a99a; background: rgba(255,255,255,.6); cursor: pointer; }
+.cot-anexo:hover, .cot-anexo:focus-within { border-color: #182644; background: #fff; }
+.cot-anexo input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.cot-anexo svg { width: 22px; height: 22px; color: #182644; flex-shrink: 0; }
+.cot-anexo span { display: grid; gap: 1px; }
+.cot-anexo b { font-size: 14.5px; font-weight: 600; color: var(--c-tit); }
+.cot-anexo small { font-size: 12.5px; color: var(--c-suave); }
+.cot-painel .btn { background: #182644; color: #fef9e1; border-color: #182644; }
+.cot-painel .btn:hover { background: #0f1830; }
+.cot-painel .btn[disabled] { opacity: .45; cursor: not-allowed; }
+.cot-msg { font-size: 14px; color: #1d5a33; min-height: 1.4em; }
+.cot-painel .esp-aviso { border-color: #e2d9cf; }
+
+/* O site por dentro: abas de páginas + tela com o que entra em cada uma */
+.anatomia { display: grid; grid-template-columns: minmax(200px, 270px) 1fr; gap: clamp(18px, 3vw, 40px); align-items: start; }
+.ana-abas { display: grid; gap: 4px; }
+.ana-abas button { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 12px; border: 1px solid transparent; background: transparent; font: 500 16.5px/1.2 var(--ft); color: var(--suave); text-align: left; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+.ana-abas button .n { color: var(--suave); }
+.ana-abas button:hover { color: var(--titulo); background: var(--alt-bg); }
+.ana-abas button[aria-selected="true"] { color: var(--titulo); border-color: var(--borda-forte); background: var(--cartao, #fff); font-weight: 600; }
+.ana-abas button[aria-selected="true"] .n { color: var(--laranja-tx); }
+.ana-tela { min-height: 100%; }
+.ana-corpo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.6vw, 34px); padding: clamp(18px, 2.4vw, 30px); background: #fff; }
+.ana-wire { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; align-content: start; }
+.ana-wire li { position: relative; display: flex; align-items: flex-end; min-height: 44px; padding: 10px 14px; border-radius: 8px; background: #eef1f6; color: #24365d; font-size: 13.5px; font-weight: 500; animation: ana-entra .35s both; }
+.ana-wire li::before { content: ''; position: absolute; left: 14px; top: 12px; width: 34%; height: 6px; border-radius: 3px; background: rgba(36,54,93,.18); }
+.ana-wire li span { position: relative; padding-top: 12px; }
+.ana-wire .w-topo { min-height: 128px; color: #fef9e1; background: radial-gradient(ellipse 70% 90% at 90% 0%, rgba(237,148,84,.45), rgba(237,148,84,0) 60%), linear-gradient(150deg, #24365d, #182644); }
+.ana-wire .w-topo::before { background: rgba(254,249,225,.35); width: 54%; height: 10px; top: 18px; }
+.ana-wire .w-2 { background: #f7f3f0; }
+.ana-wire .w-3 { background: #fbe9da; }
+.ana-wire li:nth-child(2) { animation-delay: .05s; } .ana-wire li:nth-child(3) { animation-delay: .1s; } .ana-wire li:nth-child(4) { animation-delay: .15s; } .ana-wire li:nth-child(5) { animation-delay: .2s; }
+@keyframes ana-entra { from { opacity: 0; transform: translateY(6px); } }
+.ana-txt { display: grid; align-content: start; gap: 12px; color: #3c4659; }
+.ana-txt h3 { font: 400 clamp(28px, 1.4vw + 18px, 38px)/1.08 var(--fh); letter-spacing: -0.02em; color: #182644; }
+.ana-txt p { font-size: 16px; color: #4c5870; }
+.ana-porque { display: grid; gap: 4px; margin-top: 6px; padding: 14px 16px; border-left: 3px solid #ed9454; background: #f7f3f0; border-radius: 0 10px 10px 0; }
+.ana-porque b { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 500; color: #a4541c; }
+@media (prefers-reduced-motion: reduce) { .ana-wire li { animation: none; } }
+
+/* Página de setores: cartões com faixa de "procura" e lista do que o site mostra */
+.setores { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.setor { display: grid; grid-template-rows: auto auto 1fr; border-radius: var(--raio); border: 1px solid var(--borda); background: var(--cartao, #fff); overflow: hidden; }
+.setor-cab { display: flex; align-items: baseline; gap: 16px; padding: clamp(22px, 2.4vw, 30px) clamp(22px, 2.4vw, 30px) 16px; }
+.setor-cab .n { font: 400 34px/1 var(--fh); color: var(--laranja-tx); letter-spacing: -0.02em; }
+.setor-cab h2 { font-size: clamp(24px, 1vw + 16px, 30px); }
+.setor-procura { margin: 0 clamp(22px, 2.4vw, 30px); padding: 14px 18px; border-radius: 10px; background: var(--alt-bg); display: grid; gap: 4px; }
+.setor-procura p { font-size: 16px; color: var(--titulo); }
+.setor-mostra { padding: 18px clamp(22px, 2.4vw, 30px) clamp(22px, 2.4vw, 30px); display: grid; gap: 10px; align-content: start; }
+.setor-mostra ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+.setor-mostra li { display: flex; gap: 8px; align-items: baseline; font-size: 15px; font-weight: 500; color: var(--titulo); }
+.setor-mostra li svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--laranja-tx); transform: translateY(2px); }
+.v-b .setor { background: #fff; }
+.v-b .secao-alt .ana-abas button[aria-selected="true"] { background: rgba(254,249,225,.08); }
+
+@media (max-width: 960px) {
+  .cotacao { grid-template-columns: 1fr; }
+  .cot-painel { border-left: 0; border-top: 1px solid var(--c-borda); }
+  .anatomia { grid-template-columns: 1fr; }
+  .ana-abas { display: flex; overflow-x: auto; gap: 6px; padding-bottom: 4px; scrollbar-width: none; }
+  .ana-abas button { flex-shrink: 0; padding: 10px 14px; font-size: 15px; border-color: var(--borda); }
+  .setores { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .cot-lista { grid-template-columns: 1fr; max-height: 400px; }
+  .ana-corpo { grid-template-columns: 1fr; }
+  .ana-wire .w-topo { min-height: 96px; }
+  .setor-mostra ul { grid-template-columns: 1fr; }
+}
+/* Seis setores em "Para quem": 3 x 2 em vez de 5 + 1 */
+@media (min-width: 1081px) { .quem:has(> li:nth-child(6)) { grid-template-columns: repeat(3, 1fr); } }
+.s-industrias .topo nav a:not(.btn) { white-space: nowrap; }
+@media (min-width: 961px) and (max-width: 1180px) { .s-industrias .topo .nav-cta { display: none; } }
