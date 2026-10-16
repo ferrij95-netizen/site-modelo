@@ -8,7 +8,15 @@ Dois arquivos sem dependência: `apresenta.css` e `apresenta.js`. Copie os dois 
 ```
 
 Cor de destaque: `--ap-cor` (padrão teal). Quem marca "reduzir movimento" no aparelho vê tudo parado e visível. Sem JavaScript, tudo aparece normal.
-Exemplo no ar: https://northeastprecision.overtus.com.br/c/ (gerado por `clientes/northeastprecision/_origem/paginas.mjs`, função `homeC`, estilos em `public/assets/c.css`).
+Exemplo no ar: a página de escolha https://northeastprecision.overtus.com.br/ (antes de entrar nas versões A e B).
+
+## Página de escolha pronta (`escolha.mjs`)
+
+A página que o cliente abre antes de entrar no site: abertura com notebook e celular, uma tela para cada versão (letra grande, texto, pontos, notebook e celular rolando o print da página inteira), o site atual numa janela de navegador e a escolha final. Exemplo de uso em `clientes/northeastprecision/_origem/gerar.mjs`.
+
+1. Tire prints de página inteira de cada versão: computador 1440 px (salvar com 1000 px de largura) e celular 390 px com escala 2 (salvar com 600 px), em `public/assets/apresentacao/<a|b>-pc.webp` e `<a|b>-cel.webp`.
+2. Copie `apresenta.css` e `apresenta.js` para `public/assets/`.
+3. Gere `public/index.html` com `paginaEscolha({ nome, url, lang: 'en'|'pt', cor, fundo, claro, fonteTitulo, fonteTexto, googleFonts, favicon, ogImagem, versoes: [{ letra, nome, texto, pontos, paginas }], antigo: { url, img } })`.
 
 ## Molduras
 

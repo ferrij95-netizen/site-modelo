@@ -23,6 +23,3 @@ document.querySelectorAll('form[data-mailto]').forEach(f => f.addEventListener('
   const linhas = [...new FormData(f)].filter(([, v]) => String(v).trim()).map(([k, v]) => `${k}: ${v}`);
   location.href = `mailto:${f.dataset.mailto}?subject=${encodeURIComponent(f.dataset.assunto)}&body=${encodeURIComponent(linhas.join('\n'))}`;
 }));
-
-// Versão C: topo transparente sobre a abertura, fica sólido ao rolar.
-if (document.body.classList.contains('c-home')) { const f = () => document.body.classList.toggle('c-rolou', scrollY > 40); f(); addEventListener('scroll', f, { passive: true }); }
