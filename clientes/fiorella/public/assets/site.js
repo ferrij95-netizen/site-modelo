@@ -38,6 +38,16 @@
     open(`https://wa.me/${f.dataset.zap}?text=${encodeURIComponent(linhas.join('\n'))}`, '_blank', 'noopener');
   }));
 
+  // loja: miniaturas trocam a foto principal
+  document.querySelectorAll('[data-galeria]').forEach(g => {
+    const prin = g.querySelector('[data-principal]');
+    g.addEventListener('click', e => {
+      const b = e.target.closest('button[data-src]'); if (!b || !prin) return;
+      prin.src = b.dataset.src; prin.removeAttribute('srcset');
+      g.querySelectorAll('button[data-src]').forEach(x => x.setAttribute('aria-pressed', x === b));
+    });
+  });
+
   const tl = document.querySelector('[data-topo-link]');
   if (tl) tl.addEventListener('click', e => { e.preventDefault(); scrollTo({ top: 0, behavior: 'smooth' }); });
 

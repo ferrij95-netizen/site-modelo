@@ -224,3 +224,53 @@ export const especificar = [
   ['Características: rigidez, maciez, resistência, permeabilidade, absorção', 'Properties: stiffness, softness, strength, permeability, absorbency', 'Características: rigidez, suavidad, resistencia, permeabilidad, absorción'],
   ['Volume mensal estimado', 'Estimated monthly volume', 'Volumen mensual estimado'],
 ];
+
+// ---------- Loja (nova FiorellaShop, no estilo da versão A) ----------
+// Preço "a partir de": menor preço de variação na FiorellaShop em 16/10/2026 (o checkout continua na Tray).
+export const LOJA_PRECO = {
+  'BDO 45': 23.8, 'BDO 61': 26.3, 'BDO 80': 27.5, 'BDO 102': 171.5, 'BDO 105': 35.8, 'BDO 120': 226.7,
+  'BDO 46': 23.9, 'BDO 86': 156.7, 'BDO 107': 514.3, 'APLIC PATCH': 40.7,
+  'TELA 30': 152.5, 'TELA 40': 177.6, 'TELA 50': 195.2, 'TELA 70': 270.7, 'NT LASER': 253.87,
+  'NTD 40': 180.9, 'NTD 50': 209.3,
+};
+export const LOJA_FOTOS = { 'NT LASER': 1 };
+export const lojaCats = [
+  { slug: 'bordado', nome: ['Bordado', 'Embroidery', 'Bordado'], cods: ['BDO 45', 'BDO 61', 'BDO 80', 'BDO 102', 'BDO 105', 'BDO 120', 'BDO 46', 'BDO 86', 'BDO 107', 'APLIC PATCH'], banner: 'banner-bordados' },
+  { slug: 'confeccao', nome: ['Confecção', 'Clothing', 'Confección'], cods: ['TELA 30', 'TELA 40', 'TELA 50', 'TELA 70', 'NT LASER'], banner: 'banner-confeccao' },
+  { slug: 'artesanato', nome: ['Artesanato', 'Crafts', 'Artesanía'], cods: ['NTD 40', 'NTD 50', 'APLIC PATCH'], banner: 'banner-artesanato' },
+];
+export const lojaNomeLinha = {
+  rigido: ['Entretela para bordado · toque rígido', 'Embroidery backing · stiff hand', 'Entretela para bordado · tacto rígido'],
+  macio: ['Entretela para bordado · toque macio', 'Embroidery backing · soft hand', 'Entretela para bordado · tacto suave'],
+  soft: ['Entretela para bordado · soft', 'Embroidery backing · extra soft', 'Entretela para bordado · soft'],
+  dupla: ['Entretela dupla face termocolante e autoadesiva', 'Double-sided fusible and self-adhesive interlining', 'Entretela doble faz termoadhesiva y autoadhesiva'],
+  colante: ['Entretela nãotecida colante · toque rígido', 'Nonwoven fusible interlining · stiff hand', 'Entretela no tejida adhesiva · tacto rígido'],
+  etiqueta: ['Etiqueta de composição têxtil nãotecida, A4 para impressora laser', 'Nonwoven care label, A4 for laser printers', 'Etiqueta de composición textil no tejida, A4 para impresora láser'],
+  moldavel: ['Entretela para forminha de doces · 100% viscose', 'Interlining for sweet cups · 100% viscose', 'Entretela para pirotines · 100% viscosa'],
+};
+export const LOJA = {
+  titulo: ['Entretelas direto da fábrica', 'Interlinings straight from the factory', 'Entretelas directo de la fábrica'],
+  lead: ['A loja oficial da Fiorella: entretelas para bordado, confecção e artesanato com a ficha técnica de cada referência. Escolha largura e metragem e finalize no checkout seguro.', 'Fiorella’s official store: embroidery, clothing and craft interlinings with full specifications for each reference. Choose width and length and check out securely (deliveries in Brazil).', 'La tienda oficial de Fiorella: entretelas para bordado, confección y artesanía con la ficha técnica de cada referencia. Elija ancho y largo y finalice en el checkout seguro (envíos en Brasil).'],
+  vantagens: [
+    ['Em até 5x no cartão', 'Up to 5 card instalments', 'Hasta 5 cuotas con tarjeta'],
+    ['Loja da fábrica', 'Factory store', 'Tienda de fábrica'],
+    ['Compre na loja e receba em casa', 'Order online, delivered to your door', 'Compre en línea y reciba en casa'],
+    ['Qualidade Fiorella · ISO 9001', 'Fiorella quality · ISO 9001', 'Calidad Fiorella · ISO 9001'],
+  ],
+  aPartir: ['a partir de', 'from', 'desde'],
+  verProduto: ['Ver produto', 'View product', 'Ver producto'],
+  comprar: ['Comprar', 'Buy', 'Comprar'],
+  checkout: ['Pagamento e frete no checkout seguro da FiorellaShop', 'Payment and shipping on the secure FiorellaShop checkout', 'Pago y envío en el checkout seguro de FiorellaShop'],
+  pedirZap: ['Pedir pelo WhatsApp', 'Order via WhatsApp', 'Pedir por WhatsApp'],
+  largura: ['Largura', 'Width', 'Ancho'],
+  metragem: ['Metragem', 'Roll length', 'Metraje'],
+  quantidade: ['Quantidade', 'Quantity', 'Cantidad'],
+  modelo: ['Modelo', 'Model', 'Modelo'],
+  descricao: ['Descrição', 'Description', 'Descripción'],
+  relacionados: ['Veja também', 'You may also like', 'Vea también'],
+  outrasCats: ['Mais na loja', 'More in the store', 'Más en la tienda'],
+  precoNota: ['Preços de referência; o valor de cada largura e metragem aparece no checkout.', 'Reference prices; each width and length is priced at checkout.', 'Precios de referencia; el valor de cada ancho y metraje aparece en el checkout.'],
+  cartao: ['ou em até 5x no cartão', 'or up to 5 card instalments', 'o hasta 5 cuotas con tarjeta'],
+  entrega: ['Envio para todo o Brasil', 'Shipping across Brazil', 'Envíos a todo Brasil'],
+  todos: ['Todos os produtos', 'All products', 'Todos los productos'],
+};

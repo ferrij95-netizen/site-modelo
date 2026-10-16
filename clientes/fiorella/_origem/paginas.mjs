@@ -50,6 +50,9 @@ const LNOME = { pt: 'Português', en: 'English', es: 'Español' };
 
 // ---------- partes comuns ----------
 const MERC = Object.fromEntries(C.mercados.map(m => [m.slug, m]));
+const pslug = p => p.cod.toLowerCase().replace(/\s+/g, '-');
+const PROD = Object.fromEntries(C.produtos.map(p => [pslug(p), p]));
+const lojaUrl = (p = null) => url(p ? 'loja/' + pslug(p) : 'loja', 'a');
 
 function titulo(slug) {
   const nome = site.nome;
@@ -57,6 +60,8 @@ function titulo(slug) {
   if (slug === 'produtos') return [`${t(UI.produtos)} · ${nome}`, t(X.produtosLead)];
   if (slug === 'empresa') return [`${t(UI.empresa)} · ${nome}`, t(X.sobre[0])];
   if (slug === 'contato') return [`${t(UI.contato)} · ${nome}`, t(X.contatoLead)];
+  if (slug === 'loja') return [`FiorellaShop · ${t(C.LOJA.titulo)}`, t(C.LOJA.lead)];
+  if (slug.startsWith('loja/')) { const p = PROD[slug.split('/')[1]]; return [`${p.cod} · ${t(C.lojaNomeLinha[p.linha])} · FiorellaShop`, t(p.apl)]; }
   const m = MERC[slug.split('/')[1]];
   return [`${t(m.nome)} · ${nome}`, t(m.resumo)];
 }
@@ -120,7 +125,7 @@ function header(slug) {
       </div>
       <a href="${url('empresa')}"${ativo('empresa')}>${esc(t(UI.empresa))}</a>
       <a href="${url('contato')}"${ativo('contato')}>${esc(t(UI.contato))}</a>
-      <a href="${site.loja}" target="_blank" rel="noopener" class="nav-loja">${ico('sacola')}${esc(t(UI.loja))}</a>
+      <a href="${lojaUrl()}" class="nav-loja"${slug.startsWith('loja') ? ' aria-current="page"' : ''}>${ico('sacola')}${esc(t(UI.loja))}</a>
       <div class="langs" aria-label="${esc(t(UI.idioma))}">${langs}</div>
       <a class="bt bt-p nav-cta" href="${wa(MSG[LI])}" target="_blank" rel="noopener">${ico('whats')}${esc(t(UI.falar))}</a>
     </nav>
@@ -141,7 +146,7 @@ function footer() {
     <div><h3>${esc(t(UI.links))}</h3><ul>
       <li><a href="${url('empresa')}">${esc(t(UI.empresa))}</a></li>
       <li><a href="${url('contato')}">${esc(t(UI.contato))}</a></li>
-      <li><a href="${site.loja}" target="_blank" rel="noopener">FiorellaShop ↗</a></li>
+      <li><a href="${lojaUrl()}">FiorellaShop</a></li>
       <li><a href="${site.instagram}" target="_blank" rel="noopener">Instagram ↗</a></li>
     </ul></div>
     <div class="rod-ct">
@@ -207,7 +212,7 @@ function cardProduto(p) {
       <p>${esc(t(p.apl))}</p>
       ${espec}${vari}
       <div class="prod-bt">
-        <a class="bt bt-p" href="${p.url}" target="_blank" rel="noopener">${ico('sacola')}${esc(t(UI.comprar))}</a>
+        <a class="bt bt-p" href="${lojaUrl(p)}">${ico('sacola')}${esc(t(UI.comprar))}</a>
         <a class="bt bt-l" href="${wa(MSGPROD[LI] + p.cod + '.')}" target="_blank" rel="noopener">${esc(t(UI.orcamento))}</a>
       </div>
     </div>
@@ -256,11 +261,11 @@ const lojaBloco = cls => `<section class="${cls}">
       <span class="eyebrow">FiorellaShop · ${esc(t(UI.lojaNome))}</span>
       <h2>${esc(t(X.lojaTitulo))}</h2>
       <p>${esc(t(X.lojaLead))}</p>
-      <a class="bt bt-p" href="${site.loja}" target="_blank" rel="noopener">${ico('sacola')}${t(['Ir para a loja', 'Visit the store', 'Ir a la tienda'])}</a>
+      <a class="bt bt-p" href="${lojaUrl()}">${ico('sacola')}${t(['Ir para a loja', 'Visit the store', 'Ir a la tienda'])}</a>
     </div>
     <div class="loja-img">
-      <a href="https://www.fiorellashop.com.br/entretelas-para-bordados" target="_blank" rel="noopener">${img('banner-bordados', t(['Entretelas para bordados na FiorellaShop', 'Embroidery backings at FiorellaShop', 'Entretelas para bordados en FiorellaShop']), 'width="554" height="352"')}</a>
-      <a href="https://www.fiorellashop.com.br/entretelas-colantes-para-confeccao" target="_blank" rel="noopener">${img('banner-confeccao', t(['Entretelas para confecção na FiorellaShop', 'Clothing interlinings at FiorellaShop', 'Entretelas para confección en FiorellaShop']), 'width="554" height="352"')}</a>
+      <a href="${lojaUrl()}#bordado">${img('banner-bordados', t(['Entretelas para bordados na FiorellaShop', 'Embroidery backings at FiorellaShop', 'Entretelas para bordados en FiorellaShop']), 'width="554" height="352"')}</a>
+      <a href="${lojaUrl()}#confeccao">${img('banner-confeccao', t(['Entretelas para confecção na FiorellaShop', 'Clothing interlinings at FiorellaShop', 'Entretelas para confección en FiorellaShop']), 'width="554" height="352"')}</a>
     </div>
   </div>
 </section>`;
@@ -291,7 +296,7 @@ function homeA() {
       <ul class="hA-sel"><li>${ico('selo')}${esc(t(X.iso))}</li><li>${ico('pin')}Mairinque (SP) · ${esc(t(X.americas))}</li></ul>
     </div>
     <figure class="hA-fig">
-      ${img('bordadeiras', t(['Bordadeiras industriais bordando sobre entretela Fiorella', 'Industrial embroidery machines working on Fiorella backing', 'Bordadoras industriales sobre entretela Fiorella']), 'fetchpriority="high" loading="eager" width="1790" height="1239"')}
+      ${img('bordadeiras', t(['Bordadeiras industriais bordando sobre entretela Fiorella', 'Industrial embroidery machines working on Fiorella backing', 'Bordadoras industriales sobre entretela Fiorella']), 'fetchpriority="high" loading="eager" width="1507" height="1044"')}
       <div class="hA-amostra">${img('fibra-vermelha-2', '')}<span>${t(['Nãotecido resinado', 'Chemical bonded nonwoven', 'No tejido resinado'])}<small>${t(['poliéster · viscose', 'polyester · viscose', 'poliéster · viscosa'])}</small></span></div>
       <figcaption class="hA-anos"><b>49</b><span>${t(['anos de<br>tradição', 'years of<br>tradition', 'años de<br>tradición'])}</span></figcaption>
     </figure>
@@ -414,7 +419,7 @@ function homeB() {
     <div class="fabB-img">
       ${img('fabrica-aerea', t(['Vista aérea da fábrica em Mairinque (SP)', 'Aerial view of the plant in Mairinque (SP)', 'Vista aérea de la fábrica en Mairinque (SP)']), 'width="728" height="599"')}
       ${img('bordado-lilia', t(['Bordado sobre entretela Fiorella', 'Embroidery on Fiorella backing', 'Bordado sobre entretela Fiorella']))}
-      ${img('bordado-flores', t(['Bordadeira trabalhando sobre entretela Fiorella', 'Embroidery machine working on Fiorella backing', 'Bordadora trabajando sobre entretela Fiorella']))}
+      ${img('bordadeiras', t(['Bordadeiras industriais bordando sobre entretela Fiorella', 'Industrial embroidery machines working on Fiorella backing', 'Bordadoras industriales sobre entretela Fiorella']))}
       <span class="selo-iso">ISO<b>9001</b><small>2015</small></span>
     </div>
   </div>
@@ -551,20 +556,83 @@ ${cta()}`;
 
 // ---------- CONTATO ----------
 function contato() {
+  const T3 = x => t(x);
   const card = (ic, h, linhas) => `<div class="cc">${ico(ic)}<h2>${esc(h)}</h2>${linhas}</div>`;
-  return `${pageHero(t(X.contatoTitulo), t(X.contatoLead), [[t(UI.contato)]], 'fibra-vermelha')}
-<section class="sec">
-  <div class="in ct">
-    <div class="ccs">
-      ${card('fone', t(X.comercial), `<p><a href="tel:${site.foneHref}">${site.fone}</a></p><p><a href="mailto:${site.email}">${site.email}</a></p>`)}
-      ${card('whats', 'WhatsApp', `<p><a href="${wa(MSG[LI])}" target="_blank" rel="noopener">+55 (11) 4718-8000</a></p>`)}
-      ${card('sacola', t(X.lojaSac), `<p><a href="${site.loja}" target="_blank" rel="noopener">fiorellashop.com.br</a></p><p><a href="mailto:${site.emailLoja}">${site.emailLoja}</a></p>`)}
-      ${card('pin', t(UI.localizacao), `<p>${esc(t(site.endereco))}</p><p><a href="${site.waze}" target="_blank" rel="noopener">Waze ↗</a> · <a href="${site.mapa}" target="_blank" rel="noopener">Google Maps ↗</a></p>`)}
-    </div>
-    <div class="ct-form"><h2>${t(['Envie sua mensagem', 'Send your message', 'Envíe su mensaje'])}</h2>${formContato()}</div>
+  const areas = C.mercados.map(m => `<article class="ct-area" style="--c:${m.cor}">
+      <a class="ct-area-img" href="${url('produtos/' + m.slug)}">${img(m.foto, '')}</a>
+      <div class="ct-area-txt">
+        <h3>${esc(t(m.curto))}</h3>
+        <p>${esc(t(m.resumo))}</p>
+        <div class="ct-area-bt">
+          <a class="bt bt-p" href="${wa(MSGPROD[LI] + t(m.nome).toLowerCase() + '.')}" target="_blank" rel="noopener">${ico('whats')}WhatsApp</a>
+          <a class="link" href="${url('produtos/' + m.slug)}">${esc(T3(['Ver linha', 'See range', 'Ver línea']))} ${ico('seta')}</a>
+        </div>
+      </div>
+    </article>`).join('');
+  const refs = C.produtos.map(p => `<option>${p.cod} · ${p.g} g/m²</option>`).join('');
+  const f = (lab, campo, extra = '', cls = '') => `<label${cls ? ` class="${cls}"` : ''}><span>${esc(lab)}</span>${campo.replace('NAME', esc(lab)) + extra}</label>`;
+  const informe = [
+    ['Aplicação (bordado, confecção, automotivo, filtro, limpeza...)', 'Application (embroidery, clothing, automotive, filter, cleaning...)', 'Aplicación (bordado, confección, automotriz, filtro, limpieza...)'],
+    ['Gramatura ou referência que você já usa', 'The weight or reference you already use', 'Gramaje o referencia que ya utiliza'],
+    ['Largura e metragem do rolo', 'Roll width and length', 'Ancho y metraje del rollo'],
+    ['Quantidade e frequência de compra', 'Quantity and purchase frequency', 'Cantidad y frecuencia de compra'],
+  ];
+  return `${pageHero(t(X.contatoTitulo), t(X.contatoLead), [[t(UI.contato)]], 'bordadeiras')}
+<section class="ct-faixa">
+  <div class="in ct-faixa-in">
+    <a href="tel:${site.foneHref}">${ico('fone')}<span><small>${esc(t(X.comercial))}</small>${site.fone}</span></a>
+    <a href="${wa(MSG[LI])}" target="_blank" rel="noopener">${ico('whats')}<span><small>WhatsApp</small>+55 (11) 4718-8000</span></a>
+    <a href="mailto:${site.email}">${ico('mail')}<span><small>E-mail</small>${site.email}</span></a>
+    <a href="${site.mapa}" target="_blank" rel="noopener">${ico('pin')}<span><small>${esc(t(UI.localizacao))}</small>Mairinque/SP</span></a>
   </div>
 </section>
-<section class="mapa"><iframe title="${esc(t(UI.localizacao))}" src="${site.mapaEmbed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></section>`;
+<section class="sec">
+  <div class="in">
+    <header class="sec-h sec-h-l"><span class="eyebrow">${esc(T3(['Atendimento por área', 'Contact by field', 'Atención por área']))}</span><h2>${esc(T3(['Fale direto sobre a sua aplicação', 'Talk to us about your application', 'Hable directamente sobre su aplicación']))}</h2></header>
+    <div class="ct-areas">${areas}</div>
+  </div>
+</section>
+<section class="sec sec-alt">
+  <div class="in ct">
+    <div class="ct-lado">
+      <span class="eyebrow">${esc(T3(['Orçamento', 'Quote', 'Presupuesto']))}</span>
+      <h2>${esc(T3(['Para um orçamento rápido, informe', 'For a fast quote, tell us', 'Para un presupuesto rápido, indique']))}</h2>
+      <ul class="ct-lista">${informe.map(x => `<li>${ico('check')}${esc(t(x))}</li>`).join('')}</ul>
+      <div class="ccs">
+        ${card('sacola', t(X.lojaSac), `<p><a href="${lojaUrl()}">FiorellaShop</a></p><p><a href="mailto:${site.emailLoja}">${site.emailLoja}</a></p>`)}
+        ${card('insta', 'Instagram', `<p><a href="${site.instagram}" target="_blank" rel="noopener">@fiorellabrasil_</a></p>`)}
+      </div>
+      <div class="ct-iso">${img('iso-sgs-ukas', 'ISO 9001:2015', 'width="294" height="177"')}<p><b>ISO 9001:2015</b>${esc(T3(['Sistema de gestão da qualidade certificado.', 'Certified quality management system.', 'Sistema de gestión de calidad certificado.']))}<small>${site.razao} · CNPJ ${site.cnpj}</small></p></div>
+    </div>
+    <div class="ct-form">
+      <h2>${t(['Peça seu orçamento', 'Request a quote', 'Solicite su presupuesto'])}</h2>
+      <form class="form" data-zap="${site.whats}" data-intro="${esc(MSG[LI])}">
+        ${f(t(UI.nome), '<input name="NAME" required autocomplete="name">')}
+        ${f(t(UI.empresaCampo), '<input name="NAME" autocomplete="organization">')}
+        ${f(t(UI.telefone), '<input name="NAME" type="tel" autocomplete="tel">')}
+        ${f('E-mail', '<input name="NAME" type="email" autocomplete="email">')}
+        ${f(t(UI.mercadoCampo), `<select name="NAME">${C.mercados.map(m => `<option>${esc(t(m.nome))}</option>`).join('')}<option>${esc(T3(['Materiais de limpeza', 'Cleaning materials', 'Materiales de limpieza']))}</option><option>${esc(t(UI.outro))}</option></select>`)}
+        ${f(T3(['Referência / gramatura', 'Reference / weight', 'Referencia / gramaje']), `<select name="NAME"><option>${esc(T3(['Ainda não sei', 'Not sure yet', 'Aún no sé']))}</option>${refs}<option>${esc(T3(['Desenvolvimento sob medida', 'Custom development', 'Desarrollo a medida']))}</option></select>`)}
+        ${f(T3(['Quantidade (rolos ou metros)', 'Quantity (rolls or metres)', 'Cantidad (rollos o metros)']), '<input name="NAME" inputmode="numeric">')}
+        ${f(T3(['Cidade / UF', 'City / State', 'Ciudad / Estado']), '<input name="NAME" autocomplete="address-level2">')}
+        ${f(t(UI.mensagem), `<textarea name="NAME" rows="4" placeholder="${esc(t(UI.mensagemPh))}" required></textarea>`, '', 'full')}
+        <button class="bt bt-p full" type="submit">${ico('whats')}${esc(t(UI.enviar))}</button>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="sec ct-visita">
+  <div class="in ct-visita-in">
+    <div class="ct-visita-txt">
+      ${img('fabrica-aerea', t(['Vista aérea da fábrica em Mairinque (SP)', 'Aerial view of the plant in Mairinque (SP)', 'Vista aérea de la fábrica en Mairinque (SP)']), 'width="728" height="599"')}
+      <span class="eyebrow">${esc(T3(['Fábrica', 'Plant', 'Fábrica']))}</span>
+      <h2>${esc(T3(['Visite a Fiorella', 'Visit Fiorella', 'Visite Fiorella']))}</h2>
+      <p>${esc(t(site.endereco))}</p>
+      <div class="ct-area-bt"><a class="bt bt-p" href="${site.mapa}" target="_blank" rel="noopener">${ico('pin')}Google Maps</a><a class="bt bt-l" href="${site.waze}" target="_blank" rel="noopener">Waze ↗</a></div>
+    </div>
+    <div class="ct-mapa"><iframe title="${esc(t(UI.localizacao))}" src="${site.mapaEmbed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
+</section>`;
 }
 
 export function gerar(v, l) {
@@ -579,6 +647,108 @@ export function gerar(v, l) {
     else corpo = mercado(slug.split('/')[1]);
     out[slug] = pagina(slug, corpo, cls);
   }
+  if (v === 'a') {
+    out.loja = pagina('loja', lojaHome(), 'loja');
+    for (const p of C.produtos) out['loja/' + pslug(p)] = pagina('loja/' + pslug(p), lojaProduto(p), 'loja');
+  }
   return out;
 }
 export { VNOME };
+
+// ---------- LOJA (nova FiorellaShop, só no estilo da versão A) ----------
+const reais = n => 'R$ ' + n.toFixed(2).replace('.', ',');
+const opcoes = v => (Array.isArray(v) ? [] : String(v).replace(/\s*m$/, '').split(' · ').map(x => x.trim() + ' m'));
+const fotosDe = p => Array.from({ length: C.LOJA_FOTOS[p.cod] || 4 }, (_, i) => `loja/${pslug(p)}-${i + 1}`);
+
+function cardLoja(p) {
+  const f = fotosDe(p);
+  return `<a class="lj-card" href="${lojaUrl(p)}" style="--c:${C.linhas[p.linha].cor}">
+    <span class="lj-img">${img(p.ficha, p.cod)}${f[0] ? img(f[0], '', 'class="lj-alt"') : ''}</span>
+    <span class="lj-info">
+      <span class="ln">${esc(t(C.linhas[p.linha].nome))}</span>
+      <b>${p.cod}</b>
+      <small>${esc(t(C.lojaNomeLinha[p.linha]))} · ${p.g} g/m²</small>
+      <span class="lj-preco"><em>${esc(t(C.LOJA.aPartir))}</em> ${reais(C.LOJA_PRECO[p.cod])}</span>
+    </span>
+  </a>`;
+}
+
+function lojaHome() {
+  const P = Object.fromEntries(C.produtos.map(p => [p.cod, p]));
+  const tabs = C.lojaCats.map(c => `<a href="#${c.slug}">${esc(t(c.nome))} <small>${c.cods.length}</small></a>`).join('');
+  const secs = C.lojaCats.map(c => `<section class="lj-sec" id="${c.slug}">
+    <header class="lj-sec-h"><h2>${esc(t(c.nome))}</h2><span>${c.cods.length} ${t(['produtos', 'products', 'productos'])}</span></header>
+    <div class="lj-grid">${c.cods.map(k => cardLoja(P[k])).join('')}</div>
+  </section>`).join('');
+  const mais = Object.values(C.tambem).flat();
+  return `<section class="lj-hero">
+  <div class="in lj-hero-in">
+    <div class="lj-hero-txt">
+      ${migalha([[t(UI.loja)]])}
+      <span class="eyebrow">FiorellaShop · ${esc(t(UI.lojaNome))}</span>
+      <h1>${esc(t(C.LOJA.titulo))}</h1>
+      <p class="lead">${esc(t(C.LOJA.lead))}</p>
+    </div>
+    <div class="lj-hero-img">${img('bordadeiras', t(['Bordadeiras industriais bordando sobre entretela Fiorella', 'Industrial embroidery machines working on Fiorella backing', 'Bordadoras industriales sobre entretela Fiorella']), 'width="1507" height="1044"')}</div>
+  </div>
+  <div class="in"><ul class="lj-vant">${C.LOJA.vantagens.map((v, i) => `<li>${ico(['sacola', 'selo', 'pin', 'check'][i])}${esc(t(v))}</li>`).join('')}</ul></div>
+</section>
+<nav class="lj-tabs" aria-label="${t(['Categorias', 'Categories', 'Categorías'])}"><div class="in">${tabs}</div></nav>
+<div class="in lj-corpo">
+  ${secs}
+  <section class="lj-sec lj-mais">
+    <header class="lj-sec-h"><h2>${esc(t(C.LOJA.outrasCats))}</h2></header>
+    <div class="tambem">${mais.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${esc(t(n))} ↗</a>`).join('')}</div>
+    <p class="lj-nota">${esc(t(C.LOJA.precoNota))} ${esc(t(C.LOJA.checkout))}.</p>
+  </section>
+</div>
+${cta()}`;
+}
+
+function lojaProduto(p) {
+  const f = [p.ficha, ...fotosDe(p)];
+  const cat = C.lojaCats.find(c => c.cods.includes(p.cod));
+  const chips = (nome, lista, campo) => lista.length ? `<fieldset class="lj-op"><legend>${esc(t(nome))}</legend>${lista.map((o, i) => `<label><input type="radio" name="${campo}" value="${esc(o)}"${i === 0 ? ' checked' : ''}><span>${esc(o)}</span></label>`).join('')}</fieldset>` : '';
+  const ops = p.variacoes
+    ? chips(C.LOJA.modelo, p.variacoes.map(v => `${v[0]} · ${v[1]}`), t(C.LOJA.modelo))
+    : chips(C.LOJA.largura, opcoes(p.larg), t(C.LOJA.largura)) + chips(C.LOJA.metragem, opcoes(p.compr), t(C.LOJA.metragem));
+  const rel = cat.cods.filter(k => k !== p.cod).slice(0, 4).map(k => cardLoja(C.produtos.find(x => x.cod === k))).join('');
+  const vari = p.variacoes ? `<table class="vari"><thead><tr><th>${esc(t(UI.referencia))}</th><th>${t(['Medida', 'Size', 'Medida'])}</th><th>${t(['Por folha', 'Per sheet', 'Por hoja'])}</th><th>${t(['Por caixa', 'Per box', 'Por caja'])}</th></tr></thead><tbody>${p.variacoes.map(v => `<tr><td>${v[0]}</td><td>${v[1]}</td><td>${v[2]}</td><td>${v[3]}</td></tr>`).join('')}</tbody></table>` : '';
+  return `<section class="lj-prod" style="--c:${C.linhas[p.linha].cor}">
+  <div class="in">
+    ${migalha([[t(UI.loja), 'loja'], [t(cat.nome), null], [p.cod]]).replace(`<span aria-current="page">${esc(t(cat.nome))}</span>`, `<a href="${lojaUrl()}#${cat.slug}">${esc(t(cat.nome))}</a>`)}
+    <div class="lj-prod-in">
+      <div class="lj-gal" data-galeria>
+        <figure class="lj-gal-main">${img(f[0], `${p.cod}, ${t(C.lojaNomeLinha[p.linha])}`, 'loading="eager" data-principal')}</figure>
+        <div class="lj-thumbs">${f.map((x, i) => `<button type="button" aria-label="${t(['Foto', 'Photo', 'Foto'])} ${i + 1}"${i === 0 ? ' aria-pressed="true"' : ''} data-src="/assets/img/${x}.webp">${img(x, '')}</button>`).join('')}</div>
+      </div>
+      <form class="lj-buy" data-compra data-zap="${site.whats}" data-intro="${esc(MSGPROD[LI] + p.cod + ' (' + t(C.lojaNomeLinha[p.linha]) + ').')}" action="${p.url}" target="_blank">
+        ${linhaTag(p)}
+        <h1>${p.cod}</h1>
+        <p class="lj-nome">${esc(t(C.lojaNomeLinha[p.linha]))}</p>
+        <p class="lj-preco-g"><em>${esc(t(C.LOJA.aPartir))}</em> <b>${reais(C.LOJA_PRECO[p.cod])}</b><small>${esc(t(C.LOJA.cartao))}</small></p>
+        ${ops}
+        <label class="lj-qt"><span>${esc(t(C.LOJA.quantidade))}</span><input type="number" name="${esc(t(C.LOJA.quantidade))}" value="1" min="1" inputmode="numeric"></label>
+        <div class="lj-bts">
+          <a class="bt bt-p" href="${p.url}" target="_blank" rel="noopener">${ico('sacola')}${esc(t(C.LOJA.comprar))}</a>
+          <button class="bt bt-l" type="submit">${ico('whats')}${esc(t(C.LOJA.pedirZap))}</button>
+        </div>
+        <p class="lj-seg">${ico('check')}${esc(t(C.LOJA.checkout))}</p>
+        <ul class="lj-trust"><li>${ico('selo')}ISO 9001:2015</li><li>${ico('pin')}${esc(t(C.LOJA.entrega))}</li><li>${ico('sacola')}${esc(t(UI.lojaNome))}</li></ul>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="sec sec-alt">
+  <div class="in lj-desc">
+    <div><h2>${esc(t(C.LOJA.descricao))}</h2><p>${esc(t(p.apl))}</p><p>${esc(t(MERC[p.merc].texto))}</p></div>
+    <div><h2>${esc(t(UI.fichaTecnica))}</h2><dl class="espec">
+      <div><dt>${esc(t(UI.gramatura))}</dt><dd>${gTxt(p)}</dd></div>
+      <div><dt>${esc(t(UI.composicao))}</dt><dd>${esc(t(p.comp))}</dd></div>
+      <div><dt>${esc(t(UI.larguras))}</dt><dd>${esc(t(p.larg))}</dd></div>
+      <div><dt>${esc(t(UI.comprimentos))}</dt><dd>${esc(t(p.compr))}</dd></div>
+    </dl>${vari}</div>
+  </div>
+</section>
+${rel ? `<section class="sec"><div class="in"><header class="sec-h sec-h-l"><h2>${esc(t(C.LOJA.relacionados))}</h2></header><div class="lj-grid">${rel}</div></div></section>` : ''}`;
+}
