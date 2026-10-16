@@ -8,7 +8,7 @@ import {
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const img = (n, alt, extra = '') => `<img src="/assets/img/${n}.webp" alt="${esc(alt)}" loading="lazy" decoding="async"${extra}>`;
 
-export const nomesVersao = { a: 'Precision', b: 'Lights-out' };
+export const nomesVersao = { a: 'Precision', b: 'Lights-out', c: 'Presentation' };
 
 const nav = [
   { slug: 'index', nome: 'Home', caminho: '' },
@@ -82,9 +82,9 @@ function head(v, p, titulo, descricao) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="/assets/base.css">
-<link rel="stylesheet" href="/assets/${v}.css">
+${v === 'c' ? '<link rel="stylesheet" href="/assets/a.css">\n<link rel="stylesheet" href="/assets/apresenta.css">\n' : ''}<link rel="stylesheet" href="/assets/${v}.css">
 </head>
-<body class="v-${v}">
+<body class="${v === 'c' ? `v-a v-c${p ? '' : ' c-home'}" data-ap-auto="${autoRev}` : `v-${v}`}">
 <a class="pular" href="#conteudo">Skip to content</a>
 `;
 }
@@ -120,7 +120,7 @@ function rodape(v) {
 </div>
 <div class="rodape-base"><span>© ${new Date().getFullYear()} ${E.nome}. All rights reserved.</span><span>Website by Overtus</span></div>
 </footer>
-<script src="/assets/site.js" defer></script>
+<script src="/assets/site.js" defer></script>${v === 'c' ? '\n<script src="/assets/apresenta.js" defer></script>' : ''}
 </body>
 </html>
 `;
@@ -131,6 +131,7 @@ const pagina = (v, slug, caminho, titulo, desc, corpo) => head(v, caminho, titul
 // Topo das páginas internas: A é faixa escura com foto e gradiente; B é título grande no creme com foto recortada ao lado.
 function topoPagina(v, { eyebrow, titulo, texto, foto, migalha }) {
   const trilha = `<nav class="migalha" aria-label="Breadcrumb"><a href="/${v}/">Home</a><span>/</span>${migalha ? `<span>${migalha}</span><span>/</span>` : ''}<span aria-current="page">${esc(eyebrow)}</span></nav>`;
+  if (v === 'c') return `<section class="ph" style="--foto:url('/assets/img/${foto}.webp')"><div class="in">${trilha}<p class="eyebrow" data-rev>${esc(eyebrow)}</p><h1 data-palavras>${titulo}</h1>${texto ? `<p class="lead" data-rev style="--ap-d:350ms">${texto}</p>` : ''}</div></section>`;
   if (v === 'a') return `<section class="ph" style="--foto:url('/assets/img/${foto}.webp')"><div class="in">${trilha}<p class="eyebrow">${esc(eyebrow)}</p><h1>${titulo}</h1>${texto ? `<p class="lead">${texto}</p>` : ''}</div></section>`;
   return `<section class="ph"><div class="in ph-grid"><div>${trilha}<p class="eyebrow">${esc(eyebrow)}</p><h1>${titulo}</h1>${texto ? `<p class="lead">${texto}</p>` : ''}</div><figure class="ph-foto">${img(foto, '')}</figure></div></section>`;
 }
@@ -140,6 +141,9 @@ const cta = (v, titulo = 'Have a drawing? <em>Let’s make it.</em>') => `<secti
   <div class="botoes"><a class="btn btn-cta" href="/${v}/contact/#quote">Request a quote</a><a class="btn-tel" href="tel:${E.telefoneHref}">or call <strong>${E.telefone}</strong></a></div></div>
   <a class="drop" href="/${v}/contact/#quote">${icone('upload', 'ic-l')}<strong>Send your technical drawing</strong><span>Attach it to your quote request</span><small>PDF drawings</small></a>
 </div></div></section>`;
+
+// Versão C: o que as páginas internas revelam ao rolar (apresenta.js marca sozinho).
+const autoRev = '.secao .cab, .grupo, .cert, .insp figure, .soft, .porque article, .noticias li, .galeria figure, .cartao-lista, .maq-grid figure, .video, .tabela-graus, .verde-grid > *, .cta-card, .duas > *, .atalhos, .ct';
 
 // ---------- homes ----------
 function homeA() {
@@ -242,6 +246,110 @@ function homeB() {
   <a class="link-seta" href="/b/about/#environment">Our environmental commitment ${icone('seta', 'ic-s')}</a></div>
 </div></section>
 ${cta(v, 'Ready to quote <em>your next run?</em>')}`;
+}
+
+// Versão C "Presentation": cada seção ocupa a tela com uma ideia só, como slides; animações do kit componentes/apresentacao.
+function homeC() {
+  const v = 'c';
+  const passos = [
+    ['Quote', 'Send your drawing, annual volume and material. We quote steel and aluminum runs from 100 to 25,000 pieces.'],
+    ['Plan & track', 'Every order is tracked in JobBOSS from quotation to shipment, with 15-year record retention.'],
+    ['Machine 24/7', 'Mori Seiki, Brother Speedio and Okuma centers, tended day and night by Universal Robots.'],
+    ['Inspect', 'Fowler CMM, Keyence LM-X and OGP vision systems, with FAI, APQP and PPAP documentation in High QA.'],
+    ['Wash & ship', 'Ramco ultrasonic parts washer with deionized water option, then out the door on time.'],
+  ];
+  const robo = videos[1];
+  return `<section class="c-hero" data-slide="Intro"><div class="c-hero-foto">${img('shop-robots', 'Brother machining centers with Universal Robots at North East Precision CNC', ' class="ap-kenburns" fetchpriority="high" loading="eager"')}</div>
+  <div class="in">
+    <p class="eyebrow" data-rev><span class="ponto"></span>Dover, New Hampshire · since 1985</p>
+    <h1 data-palavras>Measuring success <em>one part at a time.</em></h1>
+    <p class="lead" data-rev style="--ap-d:600ms">High-volume CNC turning and milling of steel and aluminum, in a climate-controlled shop that never stops.</p>
+    <div class="botoes" data-rev style="--ap-d:800ms"><a class="btn btn-cta" href="/c/contact/#quote">Request a quote</a><a class="btn btn-ghost" href="#c-historia">Take the tour</a></div>
+  </div>
+  <span class="ap-rolar-dica" aria-hidden="true"></span>
+</section>
+
+<section class="c-tela c-creme" id="c-historia" data-slide="Since 1985"><div class="in c-split">
+  <div><p class="eyebrow" data-rev>Our story</p>
+    <p class="c-gigante" data-conta data-conta-de="1900" data-conta-tempo="2200">1985</p>
+    <h2 data-palavras>Four decades of <em>on-time, high-quality parts.</em></h2>
+    <p class="c-texto" data-rev>${sobre.historia}</p>
+    <a class="link-seta" data-rev href="/c/about/">Our story ${icone('seta', 'ic-s')}</a></div>
+  <figure class="c-foto-recorte" data-rev="cortina">${img('building', 'North East Precision CNC building at 4 Progress Drive, Dover, NH')}<figcaption>4 Progress Drive, Dover, NH</figcaption></figure>
+</div></section>
+
+<section class="c-tela c-escura" data-slide="24/7"><div class="in c-split c-split-inv">
+  <figure class="c-foto-alta" data-rev="esq"><div data-paralaxe="-.08">${img('robot-cart', 'Universal Robot loading a Brother Speedio machining center')}</div></figure>
+  <div><p class="eyebrow" data-rev>Lights-out production</p>
+    <p class="c-gigante c-claro">24/7</p>
+    <h2 data-palavras>The spindles keep cutting <em>while the lights are off.</em></h2>
+    <p class="c-texto" data-rev>Universal Robots load and unload our lathes and mills day and night, so a high-volume order keeps moving around the clock.</p>
+    <div class="c-mini" data-rev-filhos=""><div><b data-conta>17</b><span>UR10e robots</span></div><div><b data-conta>3</b><span>UR5e robots</span></div><div><b data-conta>18</b><span>CNC machines</span></div></div></div>
+</div></section>
+
+<section class="c-tela c-teal" data-slide="Numbers"><div class="in">
+  <p class="eyebrow" data-rev>By the numbers</p>
+  <h2 class="c-titulo-num" data-palavras>Built for production runs.</h2>
+  <div class="c-nums" data-rev-filhos="" data-rev-passo="140">${numeros.map(n => `<div><b data-conta>${n.n}</b><span>${n.t}</span><small>${n.d}</small></div>`).join('')}</div>
+</div></section>
+
+<section class="c-servicos" data-slide="Capabilities"><div class="in">
+  <div class="c-cab"><p class="eyebrow" data-rev>What we do</p><h2 data-palavras>Five capabilities, <em>one roof.</em></h2></div>
+  <div class="c-troca" data-troca>
+    <div class="ap-troca-midia">${servicos.map(sv => `<figure>${img(sv.img, sv.nome)}</figure>`).join('')}</div>
+    <div class="c-troca-txt">${servicos.map((sv, i) => `<article class="ap-troca-passo"><span class="c-idx">0${i + 1} / 0${servicos.length}</span><figure class="c-troca-foto-cel">${img(sv.img, sv.nome)}</figure><h3>${sv.nome}</h3><p>${sv.texto}</p><a class="link-seta" href="/c/${sv.link}">Learn more ${icone('seta', 'ic-s')}</a></article>`).join('')}</div>
+  </div>
+</div></section>
+
+<section class="c-tela c-escura c-processo" data-slide="Process"><div class="in">
+  <p class="eyebrow" data-rev>How a job moves</p>
+  <h2 data-palavras>From drawing <em>to shipment.</em></h2>
+  <ol class="c-etapas" data-etapas><span class="ap-trilho" aria-hidden="true"></span>${passos.map(([t, d], i) => `<li class="ap-etapa"><span class="c-bola">0${i + 1}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+</div></section>
+
+<section class="c-tela c-creme c-aparelhos" data-slide="See it run"><div class="in c-split">
+  <div><p class="eyebrow" data-rev>See it run</p>
+    <h2 data-palavras>Watch a robot <em>tend our machines.</em></h2>
+    <p class="c-texto" data-rev>${robo.titulo}, filmed on our shop floor. When you are ready, the quote request works just as well from your phone.</p>
+    <div class="botoes" data-rev><a class="btn btn-cta" href="/c/videos/">All videos</a><a class="btn btn-linha" href="/c/contact/#quote">Request a quote</a></div></div>
+  <div class="c-palco">
+    <div class="mk mk-notebook" data-rev><div class="mk-tela"><div class="mk-vis"><button type="button" class="yt" data-yt="${robo.id}" aria-label="Play: ${esc(robo.titulo)}"><img src="https://i.ytimg.com/vi/${robo.id}/hqdefault.jpg" alt="" loading="lazy">${icone('play', 'ic-play')}</button></div></div><div class="mk-base"></div></div>
+    <a class="mk mk-celular c-cel" data-rev style="--ap-d:500ms" href="/c/contact/#quote" aria-label="Open the quote request form"><div class="mk-vis c-cel-tela">
+      <div class="c-app-topo"><b>NE Precision CNC</b><small>Request a quote</small></div>
+      <div class="c-app-corpo"><span class="c-app-rot">Material</span><div class="c-app-chips"><i class="on">Steel</i><i>Aluminum</i></div>
+      <span class="c-app-rot">Estimated annual volume</span><div class="c-app-chips"><i>&lt;1,000</i><i class="on c-app-anim">1,000-5,000</i><i>5,000-25,000</i><i>25,000+</i></div>
+      <span class="c-app-rot">Contract intent</span><div class="c-app-chips"><i>One-time</i><i class="on">Multi-year</i></div>
+      <div class="c-app-drop">${icone('upload', 'ic-s')}<span>Project drawing.pdf</span><em></em></div>
+      <span class="c-app-btn">Submit request</span></div>
+    </div></a>
+  </div>
+</div></section>
+
+<section class="c-tela c-qual" data-slide="Quality"><div class="c-qual-foto" data-paralaxe=".12">${img('qc-room', 'Temperature and humidity-controlled quality control room')}</div><div class="in">
+  <p class="eyebrow" data-rev>Quality control</p>
+  <h2 data-palavras>Only the best parts <em>leave our shop.</em></h2>
+  <p class="c-texto" data-rev>Two full-time inspectors, CMMs and vision systems in a temperature and humidity-controlled room.</p>
+  <ul class="c-certs" data-rev-filhos="" data-rev-passo="120">${certificados.map(c => `<li>${c.img ? img(c.img, '') : `<b>${c.selo}</b>`}<span>${c.nome}</span></li>`).join('')}</ul>
+  <a class="btn btn-cta" data-rev href="/c/quality/">Quality control</a>
+</div></section>
+
+<section class="c-tela c-industrias" data-slide="Industries"><div class="in">
+  <p class="eyebrow" data-rev>Industries served</p>
+  <ul class="c-palavras-grandes" data-rev-filhos="esq" data-rev-passo="80">${industrias.map(x => `<li>${x.nome}</li>`).join('')}</ul>
+</div></section>
+
+<section class="c-tela c-escura c-solar" data-slide="Solar"><div class="c-solar-foto">${img('solar-field', '137 kW solar array next to the shop')}</div><div class="in">
+  <p class="eyebrow" data-rev>Solar & environment</p>
+  <h2 data-palavras>Powered by the sun, <em>zero-waste stream.</em></h2>
+  <div class="c-nums c-nums-3" data-rev-filhos="" data-rev-passo="140"><div><b data-conta>137 kW</b><span>Solar array</span></div><div><b data-conta>365</b><span>Solar panels</span></div><div><b data-conta>100%</b><span>Chips and cutting fluids recycled</span></div></div>
+</div></section>
+
+<section class="c-tela c-teal c-final" data-slide="Quote"><div class="in">
+  <p class="eyebrow" data-rev>Let’s get started</p>
+  <h2 data-palavras>Have a drawing? <em>Let’s make it.</em></h2>
+  <p class="c-texto" data-rev>${orcamento}</p>
+  <div class="botoes" data-rev><a class="btn c-btn-branco" href="/c/contact/#quote">Request a quote ${icone('seta', 'ic-s')}</a><a class="btn btn-ghost" href="tel:${E.telefoneHref}">${icone('tel', 'ic-s')} ${E.telefone}</a></div>
+</div></section>`;
 }
 
 // ---------- páginas internas ----------
@@ -385,7 +493,7 @@ function contact(v) {
 export function gerarVersao(v) {
   const t = n => `${n} | ${E.nome}`;
   return {
-    index: pagina(v, 'index', '', `${E.nome} | ${E.tagline}`, 'High-volume CNC machining of steel and aluminum in Dover, NH. ISO 9001:2015, ITAR registered, running 24/7 with Universal Robots.', v === 'a' ? homeA() : homeB()),
+    index: pagina(v, 'index', '', `${E.nome} | ${E.tagline}`, 'High-volume CNC machining of steel and aluminum in Dover, NH. ISO 9001:2015, ITAR registered, running 24/7 with Universal Robots.', { a: homeA, b: homeB, c: homeC }[v]()),
     about: pagina(v, 'about', 'about/', t('Our Story'), 'Since 1985, North East Precision CNC has become a leader in precision manufacturing in Dover, New Hampshire.', about(v)),
     facilities: pagina(v, 'facilities', 'facilities/', t('Facilities'), 'CNC lathes, 5-axis mills, Universal Robots, EDM, finishing and quality control equipment.', facilities(v)),
     quality: pagina(v, 'quality', 'quality/', t('Quality Control'), 'ISO 9001:2015 certified, ITAR registered, FFL Type 7, CMMC Level 1 and CAGE Code 0FLD1.', quality(v)),
