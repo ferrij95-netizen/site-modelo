@@ -13,9 +13,12 @@ const VNOME = { a: 'Fábrica', b: 'Fibra' };
 export const PAGINAS = ['', 'produtos', ...C.mercados.map(m => 'produtos/' + m.slug), 'empresa', 'contato'];
 
 // t(['pt','en','es']) devolve o texto da língua atual
-let L = 'pt', LI = 0, V = 'a';
+let L = 'pt', LI = 0, V = 'a', SHOP = false;
+// A FiorellaShop nova mora no domínio próprio (fiorellashop.overtus.com.br, gerada em clientes/fiorellashop/public);
+// lá os links do site institucional viram absolutos para a versão A.
+export const SHOPDOM = 'https://fiorellashop.overtus.com.br';
 const t = x => (Array.isArray(x) ? (x[LI] ?? x[0]) : x);
-const url = (slug = '', v = V, l = L) => `/${v}/${l === 'pt' ? '' : l + '/'}${slug ? slug + '/' : ''}`;
+const url = (slug = '', v = V, l = L) => `${SHOP ? site.dominio : ''}/${v}/${l === 'pt' ? '' : l + '/'}${slug ? slug + '/' : ''}`;
 const img = (n, alt, extra = '') => `<img src="/assets/img/${n}.webp" alt="${esc(alt)}" loading="lazy" decoding="async"${extra ? ' ' + extra : ''}>`;
 const wa = msg => `https://wa.me/${site.whats}?text=${encodeURIComponent(msg)}`;
 const MSG = [
@@ -52,7 +55,7 @@ const LNOME = { pt: 'Português', en: 'English', es: 'Español' };
 const MERC = Object.fromEntries(C.mercados.map(m => [m.slug, m]));
 const pslug = p => p.cod.toLowerCase().replace(/\s+/g, '-');
 const PROD = Object.fromEntries(C.produtos.map(p => [pslug(p), p]));
-const lojaUrl = (p = null) => url(p ? 'loja/' + pslug(p) : 'loja', 'a');
+const lojaUrl = (p = null) => `${SHOP ? '' : SHOPDOM}/${p ? 'produto/' + pslug(p) + '/' : ''}`;
 
 function titulo(slug) {
   const nome = site.nome;
@@ -68,8 +71,8 @@ function titulo(slug) {
 
 function head(slug) {
   const [tt, d] = titulo(slug);
-  const can = site.dominio + url(slug);
-  const alt = LANGS.map(l => `<link rel="alternate" hreflang="${C.HTMLLANG[l]}" href="${site.dominio}${url(slug, V, l)}">`).join('\n');
+  const can = SHOP ? SHOPDOM + lojaUrl(slug === 'loja' ? null : PROD[slug.split('/')[1]]) : site.dominio + url(slug);
+  const alt = SHOP ? '' : LANGS.map(l => `<link rel="alternate" hreflang="${C.HTMLLANG[l]}" href="${site.dominio}${url(slug, V, l)}">`).join('\n');
   return `<!doctype html>
 <html lang="${C.HTMLLANG[L]}">
 <head>
@@ -80,20 +83,20 @@ function head(slug) {
 <meta name="robots" content="noindex">
 <link rel="canonical" href="${can}">
 ${alt}
-<link rel="alternate" hreflang="x-default" href="${site.dominio}${url(slug, V, 'pt')}">
+${SHOP ? '' : `<link rel="alternate" hreflang="x-default" href="${site.dominio}${url(slug, V, 'pt')}">`}
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="${site.nome}">
+<meta property="og:site_name" content="${SHOP ? 'FiorellaShop' : site.nome}">
 <meta property="og:locale" content="${C.LOCALE[L]}">
 <meta property="og:title" content="${esc(tt)}">
 <meta property="og:description" content="${esc(d)}">
 <meta property="og:url" content="${can}">
-<meta property="og:image" content="${site.dominio}/assets/og-${V}.jpg">
+<meta property="og:image" content="${SHOP ? SHOPDOM : site.dominio}/assets/og-${V}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(tt)}">
 <meta name="twitter:description" content="${esc(d)}">
-<meta name="twitter:image" content="${site.dominio}/assets/og-${V}.jpg">
+<meta name="twitter:image" content="${SHOP ? SHOPDOM : site.dominio}/assets/og-${V}.jpg">
 <meta name="theme-color" content="${V === 'a' ? '#ffffff' : '#1a0b0d'}">
 <link rel="icon" href="/assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,13 +111,13 @@ ${alt}
 function header(slug) {
   const ativo = s => (slug === s || (s === 'produtos' && slug.startsWith('produtos')) ? ' aria-current="page"' : '');
   const sub = C.mercados.map(m => `<a href="${url('produtos/' + m.slug)}"><i style="--c:${m.cor}"></i>${esc(t(m.nome))}</a>`).join('');
-  const langs = LANGS.map(l => `<a href="${url(slug, V, l)}" hreflang="${C.HTMLLANG[l]}" lang="${C.HTMLLANG[l]}" title="${LNOME[l]}"${l === L ? ' aria-current="true"' : ''}>${BAND[l]}<span>${l.toUpperCase()}</span></a>`).join('');
+  const langs = SHOP ? '' : LANGS.map(l => `<a href="${url(slug, V, l)}" hreflang="${C.HTMLLANG[l]}" lang="${C.HTMLLANG[l]}" title="${LNOME[l]}"${l === L ? ' aria-current="true"' : ''}>${BAND[l]}<span>${l.toUpperCase()}</span></a>`).join('');
   return `<a class="pular" href="#conteudo">${t(['Ir para o conteúdo', 'Skip to content', 'Ir al contenido'])}</a>
 <header class="topo" data-topo>
   <div class="in topo-in">
-    <a class="marca" href="${url()}" aria-label="Fiorella Brasil, ${esc(t(UI.inicio))}">
+    <a class="marca" href="${SHOP ? '/' : url()}" aria-label="${SHOP ? 'FiorellaShop' : 'Fiorella Brasil, ' + esc(t(UI.inicio))}">
       <img src="/assets/img/${V === 'b' ? 'logo-branco' : 'logo'}.webp" alt="Fiorella" width="800" height="291">
-      <small>${esc(t(UI.tag))}</small>
+      <small>${SHOP ? 'FiorellaShop · ' + esc(t(UI.lojaNome)) : esc(t(UI.tag))}</small>
     </a>
     <button class="menu-bt" type="button" aria-expanded="false" aria-controls="nav" data-menu>${ico('menu')}<span>${esc(t(UI.menu))}</span></button>
     <nav id="nav" class="nav" aria-label="${esc(t(UI.menu))}">
@@ -126,7 +129,7 @@ function header(slug) {
       <a href="${url('empresa')}"${ativo('empresa')}>${esc(t(UI.empresa))}</a>
       <a href="${url('contato')}"${ativo('contato')}>${esc(t(UI.contato))}</a>
       <a href="${lojaUrl()}" class="nav-loja"${slug.startsWith('loja') ? ' aria-current="page"' : ''}>${ico('sacola')}${esc(t(UI.loja))}</a>
-      <div class="langs" aria-label="${esc(t(UI.idioma))}">${langs}</div>
+      ${langs ? `<div class="langs" aria-label="${esc(t(UI.idioma))}">${langs}</div>` : ''}
       <a class="bt bt-p nav-cta" href="${wa(MSG[LI])}" target="_blank" rel="noopener">${ico('whats')}${esc(t(UI.falar))}</a>
     </nav>
   </div>
@@ -138,7 +141,7 @@ function footer() {
   return `<footer class="rodape">
   <div class="in rod-grid">
     <div class="rod-marca">
-      <img src="/assets/img/logo-branco.webp" alt="Fiorella" width="800" height="291" loading="lazy">
+      <img src="/assets/img/logo.webp" alt="Fiorella" width="800" height="291" loading="lazy">
       <p>${esc(site.razao)}<br>CNPJ ${site.cnpj}</p>
       <img class="rod-iso" src="/assets/img/iso-sgs-ukas.webp" alt="ISO 9001 SGS UKAS" width="294" height="177" loading="lazy">
     </div>
@@ -173,7 +176,8 @@ ${footer()}
 </html>
 `;
 
-const migalha = itens => `<nav class="migalha" aria-label="breadcrumb"><a href="${url()}">${esc(t(UI.inicio))}</a>${itens.map(([n, s]) => ` <span>/</span> ${s != null ? `<a href="${url(s)}">${esc(n)}</a>` : `<span aria-current="page">${esc(n)}</span>`}`).join('')}</nav>`;
+const ehLink = s => /^(\/|https?:)/.test(s);
+const migalha = itens => `<nav class="migalha" aria-label="breadcrumb"><a href="${url()}">${esc(t(UI.inicio))}</a>${itens.map(([n, s]) => ` <span>/</span> ${s != null ? `<a href="${ehLink(s) ? s : url(s)}">${esc(n)}</a>` : `<span aria-current="page">${esc(n)}</span>`}`).join('')}</nav>`;
 
 const numerosHtml = cls => `<ul class="${cls}">${C.numeros.map(n => `<li><b>${n.n}<small>${esc(t(n.u))}</small></b><span>${esc(t(n.t))}</span></li>`).join('')}</ul>`;
 
@@ -647,10 +651,15 @@ export function gerar(v, l) {
     else corpo = mercado(slug.split('/')[1]);
     out[slug] = pagina(slug, corpo, cls);
   }
-  if (v === 'a') {
-    out.loja = pagina('loja', lojaHome(), 'loja');
-    for (const p of C.produtos) out['loja/' + pslug(p)] = pagina('loja/' + pslug(p), lojaProduto(p), 'loja');
-  }
+  return out;
+}
+
+// FiorellaShop: só em português, no estilo da versão A. Chaves = caminho no domínio da loja.
+export function gerarLoja() {
+  V = 'a'; L = 'pt'; LI = 0; SHOP = true;
+  const out = { '': pagina('loja', lojaHome(), 'loja') };
+  for (const p of C.produtos) out['produto/' + pslug(p)] = pagina('loja/' + pslug(p), lojaProduto(p), 'loja');
+  SHOP = false;
   return out;
 }
 export { VNOME };
@@ -716,7 +725,7 @@ function lojaProduto(p) {
   const vari = p.variacoes ? `<table class="vari"><thead><tr><th>${esc(t(UI.referencia))}</th><th>${t(['Medida', 'Size', 'Medida'])}</th><th>${t(['Por folha', 'Per sheet', 'Por hoja'])}</th><th>${t(['Por caixa', 'Per box', 'Por caja'])}</th></tr></thead><tbody>${p.variacoes.map(v => `<tr><td>${v[0]}</td><td>${v[1]}</td><td>${v[2]}</td><td>${v[3]}</td></tr>`).join('')}</tbody></table>` : '';
   return `<section class="lj-prod" style="--c:${C.linhas[p.linha].cor}">
   <div class="in">
-    ${migalha([[t(UI.loja), 'loja'], [t(cat.nome), null], [p.cod]]).replace(`<span aria-current="page">${esc(t(cat.nome))}</span>`, `<a href="${lojaUrl()}#${cat.slug}">${esc(t(cat.nome))}</a>`)}
+    ${migalha([[t(UI.loja), lojaUrl()], [t(cat.nome), null], [p.cod]]).replace(`<span aria-current="page">${esc(t(cat.nome))}</span>`, `<a href="${lojaUrl()}#${cat.slug}">${esc(t(cat.nome))}</a>`)}
     <div class="lj-prod-in">
       <div class="lj-gal" data-galeria>
         <figure class="lj-gal-main">${img(f[0], `${p.cod}, ${t(C.lojaNomeLinha[p.linha])}`, 'loading="eager" data-principal')}</figure>
