@@ -144,7 +144,7 @@ function gerarVersao(seg, v) {
     <a class="marca" href="${L('index')}" aria-label="Overtus para ${seg.segmento.toLowerCase()}, início">${marcaHTML(seg)}</a>
     <button class="menu-btn" data-menu aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span><em>Menu</em></button>
     <nav id="nav">${seg.menu.map(([s, t]) => `<a href="${L(s)}"${slug === s || slug.startsWith(s + '/') ? ' aria-current="page"' : ''}>${t}</a>`).join('')}
-      ${agendar('Agendar conversa', 'btn btn-prim nav-cta')}</nav>
+      ${seg.slug === 'industrias' ? `<a class="lang" href="/en${L(slug)}" hreflang="en" lang="en">EN</a>` : ''}${agendar('Agendar conversa', 'btn btn-prim nav-cta')}</nav>
   </div>
 </header>`;
 
@@ -464,3 +464,6 @@ for (const seg of SEGMENTOS) {
     console.log(`${seg.slug}: versão ${v.toUpperCase()}, ${Object.keys(k.P).length} páginas`);
   }
 }
+
+// Versão em inglês de indústrias (industrias.overtus.com.br/en/), traduzida das páginas acima.
+await import('./traduzir-en.mjs');
