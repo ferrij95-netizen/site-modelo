@@ -18,10 +18,18 @@ const json = (v, status = 200) => new Response(JSON.stringify(v), {
 
 let caixa = null; // { id, endereco }, descoberto em /me na primeira chamada
 
+// Acha o token mesmo se o nome no painel vier com espaço, minúsculas ou traço no lugar do sublinhado.
+function tokenDe(env) {
+  if (typeof env.HOSTINGER_MAIL_TOKEN === 'string' && env.HOSTINGER_MAIL_TOKEN.trim()) return env.HOSTINGER_MAIL_TOKEN.trim();
+  const nome = Object.keys(env).find(k => typeof env[k] === 'string' && /^hostinger[\s_-]*mail[\s_-]*token$/i.test(k.trim()));
+  return nome ? env[nome].trim() : '';
+}
+
 async function api(env, caminho, init = {}) {
   const headers = { Accept: 'application/json', ...(init.headers || {}) };
   // Nos testes locais o proxy da nuvem já põe o token; no Worker ele vem do segredo.
-  if (env.HOSTINGER_MAIL_TOKEN) headers.Authorization = 'Bearer ' + env.HOSTINGER_MAIL_TOKEN;
+  const token = tokenDe(env);
+  if (token) headers.Authorization = 'Bearer ' + token.replace(/^Bearer\s+/i, '');
   return fetch(API + caminho, { ...init, headers });
 }
 
@@ -54,8 +62,10 @@ const emailOk = e => /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(e);
 
 export async function email(request, env, url) {
   const rota = url.pathname.replace(/^\/api\/email\/?/, '');
-  if (!env.HOSTINGER_MAIL_TOKEN && !env.EMAIL_TESTE_LOCAL) {
-    return json({ code: 'sem_token', erro: 'Falta o segredo HOSTINGER_MAIL_TOKEN no Worker.' }, 503);
+  if (!tokenDe(env) && !env.EMAIL_TESTE_LOCAL) {
+    // Só os nomes (nunca os valores) das variáveis de texto que o Worker recebeu, para achar um nome trocado.
+    const nomes = Object.keys(env).filter(k => typeof env[k] === 'string');
+    return json({ code: 'sem_token', erro: 'Falta o segredo HOSTINGER_MAIL_TOKEN no Worker.', nomes }, 503);
   }
   try {
     const cx = await descobrirCaixa(env);

@@ -197,7 +197,7 @@
     const r = await fetch(caminho, { credentials:'same-origin', ...init });
     if (r.status === 401) { location.href = '/entrar/?volta=' + encodeURIComponent(location.pathname); throw new Error('sessão'); }
     const d = await r.json().catch(() => ({}));
-    if (!r.ok) { const e = new Error(d.erro || 'Erro ' + r.status); e.code = d.code; throw e; }
+    if (!r.ok) { const e = new Error(d.erro || 'Erro ' + r.status); e.code = d.code; e.nomes = d.nomes; throw e; }
     return d;
   }
 
@@ -210,6 +210,7 @@
         ? 'O hub ainda não tem a chave da caixa joaovitor@overtus.com.br. Depois que ela for salva no Cloudflare, esta tela passa a mostrar a caixa de entrada.'
         : recusado ? 'O hub encontrou a chave, mas a Hostinger respondeu que ela não vale para a caixa (' + esc(e.message) + '). Confira se é a mesma chave da Hostinger que funciona hoje.'
         : 'A ligação com a Hostinger falhou (' + esc(e.message) + '). Tente atualizar daqui a pouco.'}</p>
+      ${token ? `<p>Variáveis que o hub recebeu do Cloudflare: <b>${e.nomes && e.nomes.length ? e.nomes.map(esc).join(', ') : 'nenhuma'}</b>.</p>` : ''}
       <p>Enquanto isso, o webmail abre numa aba nova.</p>
       <div class="acoes"><a class="bt pri" href="https://mail.hostinger.com/" target="_blank" rel="noopener">Abrir webmail</a>${token ? '' : '<button class="bt" type="button" onclick="location.reload()">Tentar de novo</button>'}</div>
     </div></div>`;
