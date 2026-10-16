@@ -52,6 +52,8 @@ fs.cpSync(path.join(repo, 'hub/importar'), path.join(out, 'importar'), { recursi
 fs.cpSync(path.join(repo, 'hub/resultados'), path.join(out, 'resultados'), { recursive: true });
 // Sobre a empresa (hub/empresa/): documentos da Overtus em PDF, com prévia, atrás do login.
 fs.cpSync(path.join(repo, 'hub/empresa'), path.join(out, 'empresa'), { recursive: true });
+// E-mail da Overtus (hub/email/): caixa de entrada, leitura e resposta pela /api/email/ (src/email.js), atrás do login.
+fs.cpSync(path.join(repo, 'hub/email'), path.join(out, 'email'), { recursive: true });
 // Menu lateral do hub (o mesmo da prospecção) para as subpáginas: /sites/, /ver/, /busca/, /importar/.
 fs.cpSync(path.join(repo, 'hub/menu'), path.join(out, 'menu'), { recursive: true });
 
