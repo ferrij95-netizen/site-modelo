@@ -39,3 +39,13 @@ for f in sorted(os.listdir(src)):
     a = im.getchannel('A'); br = Image.new('RGBA', im.size, (255, 255, 255, 255)); br.putalpha(a)
     br.save(os.path.join(out, 'logo-branco.webp'), quality=90)
   print(n, im.size)
+
+# fotos da loja (4 por produto, da FiorellaShop) -> public/assets/img/loja/
+srcl, outl = os.path.join(base, 'img-loja'), os.path.join(out, 'loja')
+os.makedirs(outl, exist_ok=True)
+for f in sorted(os.listdir(srcl)):
+  im = ImageOps.exif_transpose(Image.open(os.path.join(srcl, f))).convert('RGB')
+  im = sem_borda(im)
+  im.thumbnail((1200, 1200))
+  im.save(os.path.join(outl, os.path.splitext(f)[0] + '.webp'), quality=80, method=6)
+print('loja', len(os.listdir(outl)))
