@@ -179,3 +179,35 @@ export const financiamentos = {
 };
 
 export const contato = 'Entre em contato conosco para esclarecer suas dúvidas, solicitar orçamentos ou obter mais informações sobre nossos produtos e serviços. Estamos à disposição para atendê-lo da melhor forma possível!';
+
+// Escolha pelo produto final: as linhas vêm da composição dos conjuntos nos vídeos do site atual
+// e das páginas de equipamentos (telhas, compostos). Nada de número novo.
+export const aplicacoes = [
+  { id: 'tubos', nome: 'Tubos de PVC', foto: 'pc-cabecote-duplo', video: 'tubos-pvc', extrusora: 'extrusoras-dupla-roscas-contra-rotantes',
+    texto: 'Linha para tubos de PVC rígido com cabeçote simples ou duplo, calibração a vácuo e corte automático.',
+    linha: ['Extrusora Dupla Roscas', 'Tanque a Vácuo', 'Puxador Caterpillar Simples com Tacos', 'Serra Automática', 'Calha Receptora Simples'] },
+  { id: 'forros', nome: 'Forros de PVC', foto: 'lf-puxador-duplo', video: 'forro-duplo', extrusora: 'extrusoras-dupla-roscas-contra-rotantes',
+    texto: 'Conjuntos simples ou duplos: duas réguas de forro saindo ao mesmo tempo da mesma extrusora.',
+    linha: ['Extrusora Dupla Roscas Contra-Rotantes', 'Mesa de Calibração', 'Puxador Caterpillar Duplo', 'Serra Automática Dupla', 'Calha Receptora Dupla'] },
+  { id: 'perfis', nome: 'Perfis', foto: 'lf-mesa', video: 'coletor-solar', extrusora: 'extrusoras-dupla-roscas-contra-rotantes',
+    texto: 'Perfis técnicos como os do coletor solar, com mesa de calibração e sistema de corte para perfis.',
+    linha: ['Extrusora Dupla Roscas Contra-Rotantes', 'Mesa de Calibração', 'Puxador Caterpillar', 'Sistema de Corte para Perfis', 'Calha Receptora'] },
+  { id: 'chapas', nome: 'Chapas laminadas', foto: 'lf-corte-perfis', video: 'chapas-laminadas', extrusora: 'extrusoras-mono-rosca',
+    texto: 'Chapas extrudadas com extrusora mono rosca, calibração e corte por guilhotina pneumática.',
+    linha: ['Extrusora Mono Rosca', 'Mesa de Calibração', 'Puxador Caterpillar Simples com Tacos', 'Guilhotina Pneumática', 'Calha Receptora Simples'] },
+  { id: 'telhas', nome: 'Telhas de PVC', foto: 'telhas-conjunto', video: '', extrusora: 'conjunto-completo-para-fabricacao-de-telhas-em-pvc',
+    texto: 'Conjunto completo para telhas Colonial e Minionda, com produtividade de 10 a 1.000 kg/hora.',
+    linha: ['Misturador / Resfriador', 'Extrusora Dupla Roscas', 'Cabeçote e calibração da telha', 'Puxador', 'Corte e recebimento'] },
+  { id: 'granulacao', nome: 'Granulação e reciclagem', foto: 'lf-cabecote-granulacao', video: 'granulacao-seco', extrusora: 'extrusoras-dupla-roscas-co-rotantes',
+    texto: 'Granulação a seco de PVC ou com banheira de resfriamento, para reciclagem e produção de grânulos.',
+    linha: ['Extrusora Dupla Roscas Contra-Rotantes Cônicas', 'Cabeçote Granulador', 'Sistema de Transporte', 'Conjunto de Resfriamento'] },
+  { id: 'compostos', nome: 'Compostos e masterbatches', foto: 'drc-roscas', video: 'granulacao-co-rotante', extrusora: 'extrusoras-dupla-roscas-co-rotantes',
+    texto: 'Co-rotantes com cilindro e roscas segmentados para compostos com fibras e cargas minerais e masterbatches.',
+    linha: ['Extrusora Dupla Roscas Co-Rotantes', 'Cabeçote p/ Granulação', 'Banheira de Resfriamento', 'Granulador SAGEC'] },
+];
+
+export const pilares = [
+  ['Engenharia própria', 'Know-how tecnológico diferenciado: roscas com geometria especial para cada termoplástico e finalidade de produção, com ou sem estágio de degasagem.'],
+  ['Fabricação completa', 'Extrusoras mono rosca, dupla roscas contra-rotantes e co-rotantes, linhas de frente e periféricos como misturadores, tudo do mesmo fabricante.'],
+  ['Pós-venda ágil', 'Instalação, assistência técnica e reposição de peças originais, com o suporte de uma equipe especializada.'],
+];

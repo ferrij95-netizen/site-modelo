@@ -1,14 +1,20 @@
-// Páginas das duas versões do site da Extrusão Brasil.
-// A = "Fiel": a mesma estrutura do site atual (faixa de contato, cabeçalho com logo e botão de peças, menu cinza,
-//     carrossel com as três máquinas da capa, "Fale conosco" em faixa escura, equipamentos, vídeos, números,
-//     feiras, financiamentos e rodapé em três colunas), com o verde e o amarelo do logo.
-// B = "Linha em operação": capa escura com o vídeo das linhas funcionando, números, equipamentos em linhas
-//     alternadas com a ficha de cada série, a linha de extrusão interativa, vídeos e linha do tempo das feiras.
+// Páginas das duas versões do site da Extrusão Brasil (remodeladas depois do retorno do João em 16/10).
+// A = "Engenharia": clara e técnica, inspirada em Sandvik e Bausano. Título grande, máquina em "estúdio" com cotas
+//     técnicas, escolha da linha pelo produto final, séries com tabela de modelos, cantos retos e linhas finas.
+// B = "Linha em operação": escura, inspirada em battenfeld-cincinnati, Formlabs e AMUT. Vídeo em tela cheia,
+//     mosaico de aplicações, vitrine de máquinas, linha de extrusão interativa e números grandes.
+// Os mesmos textos, fotos, vídeos e páginas nas duas.
+import fs from 'node:fs';
+import path from 'node:path';
 import * as C from './conteudo.mjs';
 
 const { site } = C;
 export const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const img = (n, alt, extra = '') => `<img src="/assets/img/${n}.webp" alt="${esc(alt)}" loading="lazy" decoding="async"${extra ? ' ' + extra : ''}>`;
+const dois = n => String(n).padStart(2, '0');
+
+const dirFeiras = path.join(path.dirname(new URL(import.meta.url).pathname), '../public/assets/img/feiras');
+const FEIRAS = new Set(fs.existsSync(dirFeiras) ? fs.readdirSync(dirFeiras).map(f => f.replace(/\.webp$/, '')) : []);
 
 const I = {
   fone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
@@ -18,17 +24,27 @@ const I = {
   seta: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   check: '<path d="m5 12 5 5 9-10"/>',
   play: '<path d="M8 5v14l11-7z"/>',
-  chave: '<path d="M14.5 6.5a4 4 0 1 0 3 6.7L21 16.7V20h-3v-2h-2v-2l-2.2-2.2"/><circle cx="10.5" cy="10.5" r="1"/>',
-  engrenagem: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/>',
-  ferramenta: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>',
   menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
   alerta: '<path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/>',
   banco: '<path d="M3 10h18L12 4zM5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>',
   externo: '<path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/>',
+  mais: '<path d="M12 5v14M5 12h14"/>',
 };
 const ico = (n, cls = 'ico') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
 
 const EQ = Object.fromEntries(C.equipamentos.map(e => [e.slug, e]));
+const VD = Object.fromEntries(C.videos.map(v => [v[0], v]));
+const EXTRUSORAS = ['extrusoras-mono-rosca', 'extrusoras-dupla-roscas-contra-rotantes', 'extrusoras-dupla-roscas-co-rotantes'];
+const SERIE_COD = { 'extrusoras-mono-rosca': 'MR', 'extrusoras-dupla-roscas-contra-rotantes': 'DR · DRcn', 'extrusoras-dupla-roscas-co-rotantes': 'DRC' };
+
+// "Ø 25 mm · mod. EB-MR 25:30" -> { mod: 'EB-MR 25:30', d: '25', ld: '1:30' }
+const modelo = s => {
+  const m = s.match(/Ø\s*(\d+)\s*mm · mod\. (.+)$/);
+  if (!m) return { mod: s, d: '', ld: '' };
+  const ld = (m[2].match(/:(\d+)$/) || [])[1];
+  return { mod: m[2], d: m[1], ld: ld ? `1:${ld}` : '' };
+};
+
 const PAG = {
   index: ['Extrusão Brasil · Extrusoras e linhas completas para extrusão de termoplásticos', 'Fabricante de extrusoras mono rosca, dupla roscas contra-rotantes e co-rotantes, linhas de frente, misturadores e conjuntos para telhas de PVC. Diadema (SP).'],
   empresa: ['Empresa · Extrusão Brasil', 'Desenvolvimento, fabricação e comercialização de extrusoras e linhas completas para extrusão, com instalação, assistência técnica e reposição de peças.'],
@@ -41,7 +57,7 @@ const PAG = {
 };
 for (const e of C.equipamentos) PAG[e.slug] = [`${e.nome} · Extrusão Brasil`, e.resumo];
 
-const MENU = [['index', 'Home'], ['empresa', 'Empresa'], ['equipamentos', 'Equipamentos'], ['videos', 'Vídeos'], ['feiras-e-eventos', 'Feiras e Eventos'], ['financiamentos', 'Financiamentos'], ['contato', 'Contato']];
+const MENU = [['equipamentos', 'Equipamentos'], ['empresa', 'Empresa'], ['videos', 'Vídeos'], ['pecas-de-reposicao', 'Peças de reposição'], ['feiras-e-eventos', 'Feiras'], ['financiamentos', 'Financiamentos'], ['contato', 'Contato']];
 
 export function gerarVersao(v) {
   const A = v === 'a';
@@ -49,7 +65,9 @@ export function gerarVersao(v) {
   const LE = s => L(`equipamentos/${s}`);
   const atual = slug => (EQ[slug] ? 'equipamentos' : slug);
   const nav = slug => MENU.map(([s, t]) => `<a href="${L(s)}"${atual(slug) === s ? ' aria-current="page"' : ''}>${t}</a>`).join('');
-  const zap = (txt = 'WhatsApp', cls = 'btn btn-zap') => `<a class="${cls}" href="${site.whatsHref}" target="_blank" rel="noopener">${ico('whats')}${txt}</a>`;
+  const zapHref = site.whatsHref;
+  const zap = (txt = 'WhatsApp', cls = 'btn btn-zap') => `<a class="${cls}" href="${zapHref}" target="_blank" rel="noopener">${ico('whats')}${txt}</a>`;
+  const rot = t => `<span class="rot">${t}</span>`; // rótulo em fonte mono
 
   const head = slug => {
     const [titulo, desc] = PAG[slug];
@@ -79,7 +97,7 @@ export function gerarVersao(v) {
 <link rel="icon" href="/assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800&family=Fira+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="/assets/base.css">
 <link rel="stylesheet" href="/assets/${v}.css">
 </head>
@@ -87,431 +105,448 @@ export function gerarVersao(v) {
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>`;
   };
 
-  const logo = `<a class="logo" href="${L('index')}"><img src="/assets/img/logo.webp" alt="Extrusão Brasil" width="206" height="154"></a>`;
-  const header = slug => A ? `
-<div class="topo"><div class="in">
-  <span>${ico('pin')}${site.endereco}</span>
-  <span><a href="${site.foneHref}">${ico('fone')}${site.fone}</a><a href="${site.whatsHref}" target="_blank" rel="noopener">${ico('whats')}${site.whats} (WhatsApp)</a></span>
-</div></div>
-<header class="cab"><div class="in">
-  ${logo}
-  <div class="cab-ct">
-    <a href="mailto:${site.email}">${ico('mail')}<span><small>E-mail</small>${site.email}</span></a>
-    <a href="${site.foneHref}">${ico('fone')}<span><small>Vendas</small>${site.fone}</span></a>
-  </div>
-  <a class="btn btn-pecas" href="${L('pecas-de-reposicao')}">${ico('chave')}Possuímos peças de reposição. Clique aqui!</a>
+  const header = slug => `
+<header class="cab${slug === 'index' ? ' cab-home' : ''}"><div class="in">
+  <a class="logo" href="${L('index')}"><img src="/assets/img/logo.webp" alt="Extrusão Brasil" width="206" height="154"></a>
+  <nav class="menu" aria-label="Principal">${nav(slug)}</nav>
+  <a class="cab-fone" href="${site.foneHref}">${ico('fone')}<span>${site.fone}</span></a>
+  <a class="btn cab-bt" href="${zapHref}" target="_blank" rel="noopener">Solicitar orçamento</a>
   <button class="abre-menu" aria-label="Abrir menu" aria-expanded="false">${ico('menu')}</button>
-</div></header>
-<nav class="menu" aria-label="Principal"><div class="in">${nav(slug)}</div></nav>` : `
-<header class="cab"><div class="in">
-  ${logo}
-  <nav class="menu" aria-label="Principal">${nav(slug)}<a class="m-pecas" href="${L('pecas-de-reposicao')}"${slug === 'pecas-de-reposicao' ? ' aria-current="page"' : ''}>Peças de reposição</a></nav>
-  <a class="btn btn-zap cab-zap" href="${site.whatsHref}" target="_blank" rel="noopener">${ico('whats')}<span>Orçamento</span></a>
-  <button class="abre-menu" aria-label="Abrir menu" aria-expanded="false">${ico('menu')}</button>
-</div><i class="faixa-br" aria-hidden="true"></i></header>`;
+</div></header>`;
 
   const footer = `
 <footer class="rod">
+  <div class="in rod-topo">
+    <div class="rod-cta"><h2>Vamos projetar a sua linha?</h2><p>Diga o produto que você quer extrudar e a produção desejada. A engenharia indica a extrusora e a linha de frente.</p></div>
+    <div class="rod-bts">${zap('Falar no WhatsApp')}<a class="btn btn-claro" href="mailto:${site.email}">${ico('mail')}${site.email}</a></div>
+  </div>
   <div class="in rod-g">
     <div class="rod-marca">
       <img src="/assets/img/logo.webp" alt="Extrusão Brasil" width="140" height="105" loading="lazy">
       <p>${site.resumo}</p>
     </div>
-    <div><h3>Equipamentos</h3><ul>${C.equipamentos.map(e => `<li><a href="${LE(e.slug)}">${e.nome}</a></li>`).join('')}<li><a href="${L('pecas-de-reposicao')}">Peças de reposição</a></li></ul></div>
-    <div><h3>Vídeos</h3><ul>${C.videos.map(x => `<li><a href="${L('videos')}#${x[0]}">${x[1]}</a></li>`).join('')}</ul></div>
+    <div><h3>Equipamentos</h3><ul>${C.equipamentos.map(e => `<li><a href="${LE(e.slug)}">${e.nome}</a></li>`).join('')}</ul></div>
+    <div><h3>Empresa</h3><ul>${[['empresa', 'Quem somos'], ['pecas-de-reposicao', 'Peças de reposição'], ['videos', 'Vídeos'], ['feiras-e-eventos', 'Feiras e eventos'], ['financiamentos', 'Financiamentos'], ['contato', 'Contato']].map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
     <div class="rod-ct"><h3>Contato</h3>
       <p>${ico('pin')}<span>${site.endereco}</span></p>
       <p>${ico('fone')}<span><a href="${site.foneHref}">${site.fone}</a><br>${site.fonesExtra.join(' · ')}</span></p>
-      <p>${ico('whats')}<a href="${site.whatsHref}" target="_blank" rel="noopener">${site.whats} (WhatsApp)</a></p>
+      <p>${ico('whats')}<a href="${zapHref}" target="_blank" rel="noopener">${site.whats} (WhatsApp)</a></p>
       <p>${ico('mail')}<a href="mailto:${site.email}">${site.email}</a></p>
     </div>
   </div>
   <div class="rod-base"><div class="in"><span>© 2026 Extrusão Brasil · Todos os direitos reservados</span><span>Proposta de novo site · Overtus</span></div></div>
 </footer>
-<a class="zap-flut" href="${site.whatsHref}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">${ico('whats')}</a>
+<a class="zap-flut" href="${zapHref}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">${ico('whats')}</a>
 <script src="/assets/site.js" defer></script>
 </body>
 </html>
 `;
 
-  // Faixa de título das páginas internas.
-  const titulo = (h1, migalhas, sub = '', foto = '') => A ? `
-<section class="pg-tit"><div class="in">
-  <div><h1>${h1}</h1>${sub ? `<p>${sub}</p>` : ''}
-  <nav class="migalha" aria-label="Você está em"><a href="${L('index')}">Início</a>${migalhas.map(([t, h]) => h ? ` » <a href="${h}">${t}</a>` : ` » <span>${t}</span>`).join('')}</nav></div>
-  ${foto ? `<div class="pg-tit-foto">${img(foto, h1, 'loading="eager"')}</div>` : ''}
-</div></section>` : `
-<section class="pg-tit"><div class="in">
-  <div class="pg-tit-txt"><nav class="migalha" aria-label="Você está em"><a href="${L('index')}">Início</a>${migalhas.map(([t, h]) => h ? ` / <a href="${h}">${t}</a>` : ` / <span>${t}</span>`).join('')}</nav>
-  <h1>${h1}</h1>${sub ? `<p>${sub}</p>` : ''}</div>
+  const migalha = itens => `<nav class="migalha" aria-label="Você está em"><a href="${L('index')}">Início</a>${itens.map(([t, h]) => `<i>/</i>${h ? `<a href="${h}">${t}</a>` : `<span>${t}</span>`}`).join('')}</nav>`;
+  const titulo = (h1, itens, sub = '', foto = '') => `
+<section class="pg-tit${foto ? ' com-foto' : ''}"><div class="in">
+  <div class="pg-tit-txt">${migalha(itens)}<h1>${h1}</h1>${sub ? `<p>${sub}</p>` : ''}</div>
   ${foto ? `<div class="pg-tit-foto">${img(foto, h1, 'loading="eager"')}</div>` : ''}
 </div></section>`;
 
-  const h2 = (t, sub = '', cls = '') => `<header class="sec-tit ${cls}"><h2>${t}</h2>${sub ? `<p>${sub}</p>` : ''}</header>`;
+  const h2 = (t, sub = '', r = '') => `<header class="sec-tit">${r ? rot(r) : ''}<h2>${t}</h2>${sub ? `<p>${sub}</p>` : ''}</header>`;
 
-  const form = (cls = '') => `
-<form class="form-zap ${cls}" data-zap="${site.whatsHref.split('?')[0]}">
+  const form = () => `
+<form class="form-zap" data-zap="${zapHref.split('?')[0]}">
   <label><span>Nome</span><input name="nome" required autocomplete="name"></label>
-  <label><span>E-mail</span><input name="email" type="email" autocomplete="email"></label>
+  <label><span>Empresa</span><input name="empresa" autocomplete="organization"></label>
   <label><span>DDD/Telefone</span><input name="fone" required autocomplete="tel"></label>
-  <label class="f-cid"><span>Cidade/UF</span><input name="cidade"></label>
-  <label class="f-msg"><span>Mensagem</span><textarea name="msg" rows="3" placeholder="Qual equipamento ou peça você procura?"></textarea></label>
+  <label><span>Cidade/UF</span><input name="cidade"></label>
+  <label class="f-msg"><span>O que você quer produzir?</span><textarea name="msg" rows="3" placeholder="Ex.: tubos de PVC de 20 a 100 mm, 300 kg/h"></textarea></label>
   <button class="btn" type="submit">${ico('whats')}Enviar pelo WhatsApp</button>
 </form>`;
 
-  const faleConosco = () => `
+  const contatoSec = () => `
 <section class="sec fale"><div class="in fale-g">
-  <div>${h2('Fale conosco', C.contato)}
+  <div>${h2('Fale com a engenharia', C.contato, 'Orçamento')}
     <ul class="fale-ct">
       <li>${ico('fone')}<a href="${site.foneHref}">${site.fone}</a></li>
-      <li>${ico('whats')}<a href="${site.whatsHref}" target="_blank" rel="noopener">${site.whats}</a></li>
+      <li>${ico('whats')}<a href="${zapHref}" target="_blank" rel="noopener">${site.whats}</a></li>
       <li>${ico('mail')}<a href="mailto:${site.email}">${site.email}</a></li>
     </ul></div>
   ${form()}
 </div></section>`;
 
-  // --- blocos reaproveitados ---
-  const cardEq = (e, i) => `
-<a class="eq-card" href="${LE(e.slug)}">
-  <span class="eq-foto">${img(e.img, e.nome)}</span>
-  <span class="eq-txt"><small>${e.serie}</small><b>${e.nome}</b><span>${e.resumo}</span><em>Saiba + ${ico('seta')}</em></span>
-</a>`;
+  const fichas = (e, cls = 'fichas') => `<dl class="${cls}">${e.fichas.map(([k, val]) => `<div><dt>${k}</dt><dd>${val}</dd></div>`).join('')}</dl>`;
 
-  const etapasLinha = () => A ? `
-<section class="sec linha"><div class="in">
-  ${h2('Como funciona uma linha de extrusão', 'Do composto à peça pronta: cada etapa com um equipamento fabricado pela Extrusão Brasil.')}
-  <ol class="trilho">${C.etapas.map(([f, t, eq, d], i) => `
-    <li><span class="tr-foto">${img(f, eq)}</span><span class="tr-n">${String(i + 1).padStart(2, '0')}</span><b>${t}</b><small>${eq}</small><p>${d}</p></li>`).join('')}
+  // Escolha pelo produto final (abas)
+  const aplicacoesSec = (claro = true) => `
+<section class="sec apl" id="aplicacoes"><div class="in">
+  ${h2('Escolha pelo produto que você vai fabricar', 'Cada produto pede uma extrusora e uma linha de frente. Veja como a Extrusão Brasil monta a linha completa.', 'Aplicações')}
+  <div class="apl-g" data-abas data-ids="${C.aplicacoes.map(a => a.id).join(',')}">
+    <div class="apl-lista" role="tablist">${C.aplicacoes.map((a, i) => `
+      <button role="tab" aria-selected="${i === 0}" data-i="${i}"><span>${dois(i + 1)}</span>${a.nome}${ico('seta')}</button>`).join('')}
+    </div>
+    <div class="apl-paineis">${C.aplicacoes.map((a, i) => {
+      const vd = a.video && VD[a.video];
+      return `
+      <article class="apl-p${i === 0 ? ' on' : ''}" role="tabpanel" data-i="${i}">
+        <div class="apl-midia">${vd
+          ? `<button class="vd" data-video="${vd[2]}" data-titulo="${esc(vd[1])}"><span class="vd-poster"><img src="/assets/video/${vd[0]}.webp" alt="${esc(vd[1])}" loading="lazy"><i>${ico('play')}</i></span></button>`
+          : `<div class="apl-foto">${img(a.foto, a.nome)}</div>`}</div>
+        <div class="apl-txt">
+          <h3>${a.nome}</h3><p>${a.texto}</p>
+          ${rot('Configuração da linha')}
+          <ol class="apl-linha">${a.linha.map(x => `<li>${x}</li>`).join('')}</ol>
+          <div class="apl-bts"><a class="btn" href="${LE(a.extrusora)}">${EQ[a.extrusora].curto} ${ico('seta')}</a>${zap('Orçar esta linha', 'btn btn-vazado')}</div>
+        </div>
+      </article>`;
+    }).join('')}
+    </div>
+  </div>
+</div></section>`;
+
+  // Séries de extrusoras com tabela de modelos
+  const seriesSec = () => `
+<section class="sec series"><div class="in">
+  ${h2('Três famílias de extrusoras, 23 modelos', 'De 22 a 150 mm de diâmetro de rosca. Toque na série para ver aplicação, características e fotos.', 'Extrusoras')}
+  <div class="series-g">${EXTRUSORAS.map(s => {
+    const e = EQ[s];
+    const mods = e.grupos.flatMap(([, l]) => l).map(modelo);
+    return `
+    <article class="serie">
+      <a class="serie-foto" href="${LE(s)}">${img(e.img, e.nome)}<span class="serie-cod">${SERIE_COD[s]}</span></a>
+      <div class="serie-txt">
+        <h3><a href="${LE(s)}">${e.nome}</a></h3>
+        <p>${e.resumo}</p>
+        ${fichas(e)}
+        <a class="lnk" href="${LE(s)}">Ver a série completa ${ico('seta')}</a>
+      </div>
+      <div class="serie-tab"><table><thead><tr><th>Modelo</th><th>Ø rosca</th>${mods.some(m => m.ld) ? '<th>L/D</th>' : ''}</tr></thead><tbody>${mods.map(m => `<tr><td>${m.mod}</td><td>${m.d} mm</td>${mods.some(x => x.ld) ? `<td>${m.ld || '—'}</td>` : ''}</tr>`).join('')}</tbody></table></div>
+    </article>`;
+  }).join('')}
+  </div>
+</div></section>`;
+
+  const alemSec = () => {
+    const [m, lf, t] = ['misturadores-resfriadores', 'equipamentos-para-linhas-de-frente', 'conjunto-completo-para-fabricacao-de-telhas-em-pvc'].map(s => EQ[s]);
+    return `
+<section class="sec alem"><div class="in">
+  ${h2('Além da extrusora', 'Periféricos e linhas de frente do mesmo fabricante, para a linha funcionar como um conjunto.', 'Linha completa')}
+  <div class="bento">
+    <a class="bt bt-g" href="${LE(t.slug)}"><span class="bt-foto">${img('telhas-1', t.nome)}</span><span class="bt-txt">${rot(t.serie)}<b>${t.nome}</b><span>${t.resumo}</span></span></a>
+    <a class="bt" href="${LE(lf.slug)}"><span class="bt-foto">${img('lf-puxador-duplo', lf.nome)}</span><span class="bt-txt">${rot('11 equipamentos')}<b>${lf.nome}</b></span></a>
+    <a class="bt" href="${LE(m.slug)}"><span class="bt-foto">${img('misturador-duplo', m.nome)}</span><span class="bt-txt">${rot('10 a 1.500 kg/h')}<b>${m.nome}</b></span></a>
+  </div>
+</div></section>`;
+  };
+
+  const pilaresSec = () => `
+<section class="sec pilares"><div class="in">
+  ${h2('Por que Extrusão Brasil', C.empresa.quemSomos[2], 'A empresa')}
+  <ol class="pil">${C.pilares.map(([t, d], i) => `<li><span>${dois(i + 1)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+</div></section>`;
+
+  const pecasSec = () => `
+<section class="pecas-faixa"><div class="in pf-g">
+  <div class="pf-foto">${img('pecas-slide', 'Roscas e canhões de reposição Extrusão Brasil')}</div>
+  <div class="pf-txt">
+    ${rot('Peças de reposição')}
+    <h2>Peças originais, com as especificações do projeto</h2>
+    <p>${C.pecas.intro[1]}</p>
+    <ul class="pf-lista">${C.pecas.consulte.map(x => `<li>${x}</li>`).join('')}</ul>
+    <p class="pf-obs">${C.pecas.outros}</p>
+    <div class="apl-bts"><a class="btn btn-am" href="${L('pecas-de-reposicao')}">Ver peças ${ico('seta')}</a>${zap('Consultar uma peça', 'btn btn-vazado')}</div>
+  </div>
+</div></section>`;
+
+  const feiraFoto = (f, n) => `/assets/img/feiras/${f[0]}-${f[1]}-${dois(n)}.webp`;
+  const FCAPA = { 'feiplastic-2015': 3, 'interplast-2014': 7, 'feiplastic-2013': 18, 'interplast-2012': 25, 'brasilplast-2011': 13, 'interplast-2010': 4 };
+  const feirasSec = () => `
+<section class="sec feiras-home"><div class="in fh-g">
+  <div>${h2('Parceira da Feiplastic e da Interplast desde a primeira edição', '', 'Feiras e eventos')}<a class="lnk" href="${L('feiras-e-eventos')}">Ver as fotos dos estandes ${ico('seta')}</a></div>
+  <ol class="tempo">${C.feiras.lista.slice().reverse().map(f => `
+    <li><a href="${L('feiras-e-eventos')}#${f[0]}-${f[1]}"><img src="${feiraFoto(f, FCAPA[f[0] + '-' + f[1]])}" alt="Estande da Extrusão Brasil na ${f[2]}" loading="lazy"><b>${f[1]}</b><span>${f[2].replace(/ \d+$/, '')}</span></a></li>`).join('')}
   </ol>
-</div></section>` : `
+</div></section>`;
+
+  const finSec = () => `
+<section class="sec fin-home"><div class="in fin-h">
+  <div>${rot('Financiamentos')}<h2>Sua linha pelo FINAME, Leasing, BNDES ou Proger</h2><p>${C.financiamentos.intro}</p><a class="lnk" href="${L('financiamentos')}">Ver as modalidades ${ico('seta')}</a></div>
+  <ul>${C.financiamentos.itens.map(([f, t]) => `<li><img src="/assets/img/${f}.webp" alt="${esc(t)}"></li>`).join('')}</ul>
+</div></section>`;
+
+  const numerosSec = () => `<section class="numeros"><div class="in">${C.numeros.map(([n, t, d]) => `<div><b>${n}</b><span>${t}</span><small>${d}</small></div>`).join('')}</div></section>`;
+
+  const linhaB = () => `
 <section class="sec linha" id="linha"><div class="in">
-  ${h2('A linha de extrusão, etapa por etapa', 'Toque em cada estação para ver o equipamento.', 'claro')}
+  ${h2('A linha de extrusão, estação por estação', 'Toque em cada estação para ver o equipamento.', 'Como funciona')}
   <div class="ln" data-linha>
     <div class="ln-palco">${C.etapas.map(([f, t, eq, d], i) => `
-      <figure class="ln-slide${i === 1 ? ' on' : ''}" data-i="${i}">${img(f, eq)}<figcaption><span>${String(i + 1).padStart(2, '0')} · ${t}</span><b>${eq}</b><p>${d}</p></figcaption></figure>`).join('')}
+      <figure class="ln-slide${i === 1 ? ' on' : ''}" data-i="${i}">${img(f, eq)}<figcaption><span>${dois(i + 1)} · ${t}</span><b>${eq}</b><p>${d}</p></figcaption></figure>`).join('')}
     </div>
     <ol class="ln-est" role="tablist">${C.etapas.map(([, t], i) => `
-      <li><button role="tab" data-i="${i}" aria-selected="${i === 1}"><i></i><span>${String(i + 1).padStart(2, '0')}</span>${t}</button></li>`).join('')}
+      <li><button role="tab" data-i="${i}" aria-selected="${i === 1}"><i></i><span>${dois(i + 1)}</span>${t}</button></li>`).join('')}
     </ol>
   </div>
 </div></section>`;
 
-  const videoCard = (x, grande = false) => `
+  const videoCard = (x, legenda = true) => `
 <button class="vd" data-video="${x[2]}" data-titulo="${esc(x[1])}">
   <span class="vd-poster"><img src="/assets/video/${x[0]}.webp" alt="" loading="lazy" decoding="async"><i>${ico('play')}</i></span>
-  <b>${x[1]}</b>${grande && x[3].length ? `<small>${x[3].join(' · ')}</small>` : ''}
+  ${legenda ? `<b>${x[1]}</b>` : ''}
 </button>`;
 
-  const feiraFoto = (f, n) => `/assets/img/feiras/${f[0]}-${f[1]}-${String(n).padStart(2, '0')}.webp`;
-  const FCAPA = { 'feiplastic-2015': 3, 'interplast-2014': 7, 'feiplastic-2013': 18, 'interplast-2012': 25, 'brasilplast-2011': 13, 'interplast-2010': 4 };
-
-  // --- páginas ---
+  // ---------- páginas ----------
   const P = {};
 
   P.index = () => A ? `
 <main id="conteudo">
-<section class="hero" data-carrossel>
-  <div class="hero-slides">
-    ${[['co-rotante-slide', 'Extrusoras Dupla Roscas Co-Rotantes', EQ['extrusoras-dupla-roscas-co-rotantes'].resumo, LE('extrusoras-dupla-roscas-co-rotantes'), 'h1'],
-      ['contra-rotante-slide', 'Extrusoras Dupla Roscas Contra-Rotantes', 'As extrusoras dupla roscas contra-rotantes são equipamentos utilizados basicamente para trabalhar com PVC rígido ou flexível.', LE('extrusoras-dupla-roscas-contra-rotantes'), 'h2'],
-      ['pecas-slide', 'Precisa de peças de reposição? Fique tranquilo!', 'A Extrusão Brasil possui peças de reposição para diversos equipamentos.', L('pecas-de-reposicao'), 'h2']]
-      .map(([f, t, d, h, tag], i) => `
-    <div class="hero-s${i === 0 ? ' on' : ''}">
-      <div class="in">
-        <div class="hero-foto">${img(f, t, i === 0 ? 'loading="eager" fetchpriority="high"' : '')}</div>
-        <div class="hero-txt"><${tag}>${t}</${tag}><p>${d}</p><a class="btn" href="${h}">Saiba + ${ico('seta')}</a></div>
-      </div>
-    </div>`).join('')}
+<section class="hero"><div class="in hero-g">
+  <div class="hero-txt">
+    ${rot('Fabricante de extrusoras · Diadema, SP')}
+    <h1>Extrusoras e linhas completas para termoplásticos</h1>
+    <p>Mono rosca, dupla roscas contra-rotantes e co-rotantes, linhas de frente e misturadores: a Extrusão Brasil projeta, fabrica, instala e dá assistência à sua linha.</p>
+    <div class="apl-bts"><a class="btn" href="#aplicacoes">Escolher pelo produto ${ico('seta')}</a><a class="btn btn-vazado" href="${L('equipamentos')}">Ver equipamentos</a></div>
   </div>
-  <div class="hero-pts" role="tablist" aria-label="Destaques"><button aria-label="Destaque 1" class="on"></button><button aria-label="Destaque 2"></button><button aria-label="Destaque 3"></button></div>
+  <figure class="estudio">
+    ${img('co-rotante-slide', 'Extrusora dupla roscas co-rotante Extrusão Brasil', 'loading="eager" fetchpriority="high"')}
+    <span class="cota c1"><i></i>Ø 22 – 65 mm</span>
+    <span class="cota c2"><i></i>0 – 600 RPM</span>
+    <span class="cota c3"><i></i>L/D 1:36 – 1:48</span>
+    <figcaption>${rot('Série DRC')} Dupla Roscas Co-Rotantes</figcaption>
+  </figure>
+</div>
+${numerosSec()}
 </section>
-
-<section class="fale-faixa"><div class="in">
-  <h2>Fale conosco</h2>
-  <form class="form-zap form-linha" data-zap="${site.whatsHref.split('?')[0]}">
-    <label><span class="sr">Nome</span><input name="nome" placeholder="Nome" required></label>
-    <label><span class="sr">E-mail</span><input name="email" type="email" placeholder="E-mail"></label>
-    <label><span class="sr">DDD/Telefone</span><input name="fone" placeholder="DDD/Telefone" required></label>
-    <button class="btn" type="submit">Enviar</button>
-  </form>
-</div></section>
-
-<section class="sec"><div class="in">
-  ${h2('Nossos equipamentos', 'Extrusoras, linhas de frente e periféricos para extrusão de termoplásticos.')}
-  <div class="eq-grade">${C.equipamentos.map(cardEq).join('')}</div>
-</div></section>
-
-${etapasLinha()}
-
-<section class="sec videos-home"><div class="in vh-g">
-  <div class="vh-maq">${img('contra-rotante-slide', 'Extrusora dupla roscas Extrusão Brasil')}</div>
-  <div class="vh-txt">
-    ${h2('Vídeos', 'Assista aos vídeos e veja como nossos equipamentos para extrusão oferecem alto desempenho, qualidade e inovação em cada processo.')}
-    <div class="vh-lista">${C.videos.slice(1, 4).map(x => videoCard(x)).join('')}</div>
-    <a class="btn btn-sec" href="${L('videos')}">Ver todos os vídeos ${ico('seta')}</a>
-  </div>
-</div></section>
-
-<section class="numeros"><div class="in">${C.numeros.map(([n, t, d]) => `<div><b>${n}</b><span>${t}</span><small>${d}</small></div>`).join('')}</div></section>
-
-<section class="sec"><div class="in">
-  ${h2('Feiras e eventos', C.feiras.texto)}
-  <div class="fe-g">
-    ${C.feiras.lista.slice(0, 5).map((f, i) => `
-    <a class="fe-card${i === 0 ? ' fe-dest' : ''}" href="${L('feiras-e-eventos')}#${f[0]}-${f[1]}">
-      <img src="${feiraFoto(f, FCAPA[f[0] + '-' + f[1]])}" alt="Estande da Extrusão Brasil na ${f[2]}" loading="lazy">
-      <span><b>${f[2]}</b><small>${f[3]}</small></span>
-    </a>`).join('')}
-  </div>
-</div></section>
-
-<section class="fin-faixa"><div class="in">
-  <div>${h2('Financiamentos', 'Veja como adquirir os nossos produtos.')}<a class="btn btn-am" href="${L('financiamentos')}">Saiba mais ${ico('seta')}</a></div>
-  <ul>${C.financiamentos.itens.map(([f, t]) => `<li>${img(f, t)}</li>`).join('')}</ul>
-</div></section>
+${aplicacoesSec()}
+${seriesSec()}
+${alemSec()}
+${pilaresSec()}
+${pecasSec()}
+${feirasSec()}
+${finSec()}
+${contatoSec()}
 </main>` : `
 <main id="conteudo">
 <section class="hero">
   <video class="hero-vd" autoplay muted loop playsinline preload="metadata" poster="/assets/video/linha-em-operacao.webp"><source src="/assets/video/linha-em-operacao.mp4" type="video/mp4"></video>
   <div class="in hero-g">
-    <div class="hero-txt">
-      <span class="sobre">Fabricante nacional · Diadema (SP)</span>
-      <h1>Extrusoras e linhas completas para extrusão de termoplásticos</h1>
-      <p>Mono rosca, dupla roscas contra-rotantes e co-rotantes, linhas de frente e misturadores, com instalação, assistência técnica e reposição de peças.</p>
-      <div class="hero-bt"><a class="btn btn-am" href="${L('equipamentos')}">Conheça os equipamentos ${ico('seta')}</a>${zap('Pedir orçamento', 'btn btn-vazado')}</div>
+    ${rot('Extrusão Brasil · Diadema, SP')}
+    <h1>Linhas de extrusão<br>que não param.</h1>
+    <div class="hero-pe">
+      <p>Extrusoras mono rosca, dupla roscas contra-rotantes e co-rotantes e linhas completas para tubos, perfis, forros, chapas, telhas e granulação.</p>
+      <div class="apl-bts"><a class="btn btn-am" href="${L('equipamentos')}">Conhecer as máquinas ${ico('seta')}</a><a class="btn btn-vazado" href="${L('videos')}">${ico('play')}Ver as linhas funcionando</a></div>
     </div>
-    <a class="hero-pecas" href="${L('pecas-de-reposicao')}">
-      ${img('pecas-slide', 'Roscas e canhões de reposição', 'loading="eager"')}
-      <span><small>Peças de reposição</small><b>Precisa de peças? Fique tranquilo!</b><em>Ver peças ${ico('seta')}</em></span>
-    </a>
   </div>
+  <div class="hero-fita" aria-hidden="true"><div>${[...C.aplicacoes, ...C.aplicacoes].map(a => `<span>${a.nome}</span>`).join('')}</div></div>
 </section>
 
-<section class="numeros"><div class="in">${C.numeros.map(([n, t, d]) => `<div><b>${n}</b><span>${t}</span><small>${d}</small></div>`).join('')}</div></section>
+<section class="sec mosaico"><div class="in">
+  ${h2('O que sai das nossas linhas', 'Tubos, forros, perfis, chapas, telhas e grânulos: veja a linha certa para cada produto.', 'Aplicações')}
+  <div class="mz">${C.aplicacoes.map((a, i) => {
+    const vd = a.video && VD[a.video];
+    const fundo = vd ? `<img src="/assets/video/${vd[0]}.webp" alt="" loading="lazy">` : img(a.id === 'telhas' ? 'telhas-1' : a.foto, '');
+    return `<a class="mz-it mz-${i}" href="${L('equipamentos')}#${a.id}">${fundo}<span>${rot(dois(i + 1))}<b>${a.nome}</b><small>${a.texto}</small></span></a>`;
+  }).join('')}</div>
+</div></section>
 
-<section class="sec eq-sec"><div class="in">
-  ${h2('Nossos equipamentos', 'Da extrusora ao corte: a Extrusão Brasil projeta e fabrica a linha inteira.')}
-  <div class="eq-mosaico">
-    ${C.equipamentos.map((e, i) => `
-    <a class="eqm eqm-${i}" href="${LE(e.slug)}">
-      <span class="eqm-foto">${img(e.img, e.nome)}</span>
-      <span class="eqm-txt"><small>${e.serie}</small><b>${e.nome}</b>${i < 2 ? `<span>${e.resumo}</span>` : ''}<span class="fichas">${e.fichas.map(([k, v]) => `<i><em>${k}</em>${v}</i>`).join('')}</span></span>
+<section class="sec vitrine"><div class="in">
+  ${h2('As máquinas', 'Seis linhas de produto, projetadas e fabricadas pela Extrusão Brasil.', 'Equipamentos')}
+  <div class="vt">${C.equipamentos.map((e, i) => `
+    <a class="vt-it vt-${i}" href="${LE(e.slug)}">
+      <span class="vt-foto">${img(e.img, e.nome)}</span>
+      <span class="vt-txt">${rot(e.serie)}<b>${e.nome}</b>${fichas(e)}</span>
+      <span class="vt-mais">${ico('mais')}</span>
     </a>`).join('')}
   </div>
 </div></section>
 
-${etapasLinha()}
+${linhaB()}
+
+<section class="numeros"><div class="in">${C.numeros.map(([n, t, d]) => `<div><b>${n}</b><span>${t}</span><small>${d}</small></div>`).join('')}</div></section>
 
 <section class="sec emp-home"><div class="in eh-g">
+  <div class="eh-foto">${img('telhas-2', 'Telhas de PVC saindo de uma linha Extrusão Brasil')}</div>
   <div class="eh-txt">
-    <span class="sobre">A empresa</span>
+    ${rot('A empresa')}
     <h2>Entre os principais fabricantes de equipamentos para extrusão do Brasil</h2>
     <p>${C.empresa.quemSomos[1]}</p>
-    <ul class="pv">${C.empresa.posVenda.map(([t, d], i) => `<li>${ico(['engrenagem', 'ferramenta', 'chave'][i])}<b>${t}</b><span>${d}</span></li>`).join('')}</ul>
-    <a class="btn" href="${L('empresa')}">Conheça a empresa ${ico('seta')}</a>
+    <ol class="pil">${C.pilares.map(([t, d], i) => `<li><span>${dois(i + 1)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+    <a class="lnk" href="${L('empresa')}">Conheça a empresa ${ico('seta')}</a>
   </div>
-  <div class="eh-foto">${img('telhas-1', 'Linha de telhas de PVC Extrusão Brasil em operação')}</div>
 </div></section>
+
+${pecasSec()}
 
 <section class="sec videos-home"><div class="in">
-  ${h2('Linhas em operação', 'Assista aos conjuntos da Extrusão Brasil funcionando.', 'claro')}
-  <div class="vd-trilho">${C.videos.map(x => videoCard(x, true)).join('')}</div>
+  ${h2('Linhas em operação', 'Assista aos conjuntos da Extrusão Brasil funcionando.', 'Vídeos')}
+  <div class="vd-trilho">${C.videos.map(x => videoCard(x)).join('')}</div>
 </div></section>
 
-<section class="sec"><div class="in">
-  ${h2('Feiras e eventos', C.feiras.texto)}
-  <ol class="tempo">${C.feiras.lista.slice().reverse().map(f => `
-    <li><a href="${L('feiras-e-eventos')}#${f[0]}-${f[1]}"><img src="${feiraFoto(f, FCAPA[f[0] + '-' + f[1]])}" alt="Estande da Extrusão Brasil na ${f[2]}" loading="lazy"><b>${f[1]}</b><span>${f[2].replace(/ \d+$/, '')}</span></a></li>`).join('')}
-  </ol>
-</div></section>
-
-<section class="sec fin-home"><div class="in fh-g">
-  <div><span class="sobre">Financiamentos</span><h2>Compre sua linha com FINAME, Leasing, BNDES ou Proger</h2><p>${C.financiamentos.intro}</p><a class="btn btn-am" href="${L('financiamentos')}">Ver as modalidades ${ico('seta')}</a></div>
-  <ul>${C.financiamentos.itens.map(([f, t]) => `<li>${img(f, t)}</li>`).join('')}</ul>
-</div></section>
-
-${faleConosco()}
+${feirasSec()}
+${finSec()}
+${contatoSec()}
 </main>`;
 
   P.empresa = () => `
 <main id="conteudo">
-${titulo('Empresa', [['Empresa']], A ? '' : 'Desenvolvimento, fabricação e comercialização de extrusoras e linhas completas para extrusão.', A ? '' : 'contra-rotante-slide')}
+${titulo('Projetamos, fabricamos e acompanhamos a sua linha', [['Empresa']], C.empresa.quemSomos[0], A ? 'mr-90' : 'contra-rotante-slide')}
 <section class="sec"><div class="in emp-g">
   <div class="emp-txt">
-    ${h2('Quem somos')}
-    ${C.empresa.quemSomos.map(p => `<p>${p}</p>`).join('')}
+    ${h2('Quem somos', '', 'Empresa')}
+    ${C.empresa.quemSomos.slice(1).map(p => `<p>${p}</p>`).join('')}
+    <p>${C.empresa.fabricamos} ${C.empresa.linhaFrente} ${C.empresa.perifericos}</p>
   </div>
   <aside class="emp-fab">
-    <h3>O que fabricamos</h3>
-    <p>${C.empresa.fabricamos}</p>
-    <ul>${C.equipamentos.map(e => `<li><a href="${LE(e.slug)}">${ico('check')}${e.nome}</a></li>`).join('')}</ul>
+    ${rot('O que fabricamos')}
+    <ul>${C.equipamentos.map(e => `<li><a href="${LE(e.slug)}"><span>${e.nome}</span>${ico('seta')}</a></li>`).join('')}</ul>
   </aside>
 </div></section>
-<section class="sec emp-lf"><div class="in emp-lf-g">
-  <div class="emp-lf-foto">${img('mr-90', 'Extrusora mono rosca Extrusão Brasil')}</div>
-  <div>
-    ${h2('Linhas completas')}
-    <p>${C.empresa.linhaFrente}</p>
-    <p>${C.empresa.perifericos}</p>
-    <ul class="chips">${C.empresa.aplicacoes.map(a => `<li>${a}</li>`).join('')}</ul>
-  </div>
+<section class="sec emp-apl"><div class="in">
+  ${h2('Para extrusão de', '', 'Aplicações')}
+  <ul class="chips">${C.empresa.aplicacoes.map(a => `<li>${a}</li>`).join('')}</ul>
 </div></section>
+${pilaresSec()}
 <section class="sec queremos"><div class="in">
-  ${h2('O que queremos', C.empresa.queremos)}
-  <p class="q-sub">${C.empresa.queremos2}</p>
-  <div class="mvv">${C.empresa.mvv.map(([t, d], i) => `<article class="mvv-${i}"><span>${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p></article>`).join('')}</div>
+  ${h2('O que queremos', `${C.empresa.queremos} ${C.empresa.queremos2}`, 'Propósito')}
+  <div class="mvv">${C.empresa.mvv.map(([t, d], i) => `<article class="mvv-${i}">${rot(dois(i + 1))}<h3>${t}</h3><p>${d}</p></article>`).join('')}</div>
 </div></section>
-<section class="sec pv-sec"><div class="in">
-  ${h2('Pós-venda', 'Agilidade no atendimento depois da entrega da linha.')}
-  <ul class="pv">${C.empresa.posVenda.map(([t, d], i) => `<li>${ico(['engrenagem', 'ferramenta', 'chave'][i])}<b>${t}</b><span>${d}</span></li>`).join('')}</ul>
-</div></section>
-${faleConosco()}
+${contatoSec()}
 </main>`;
 
   P.equipamentos = () => `
 <main id="conteudo">
-${titulo('Equipamentos', [['Equipamentos']], 'Extrusoras, linhas de frente e periféricos para extrusão de termoplásticos.', A ? '' : 'drc-30')}
-<section class="sec"><div class="in">
-  ${A ? `${h2('Nossos equipamentos')}<div class="eq-grade">${C.equipamentos.map(cardEq).join('')}</div>` : `
-  <div class="eq-linhas">${C.equipamentos.map((e, i) => `
-    <article class="eql">
-      <a class="eql-foto" href="${LE(e.slug)}">${img(e.img, e.nome)}</a>
-      <div class="eql-txt"><small>${String(i + 1).padStart(2, '0')} · ${e.serie}</small><h2><a href="${LE(e.slug)}">${e.nome}</a></h2><p>${e.resumo}</p>
-        <span class="fichas">${e.fichas.map(([k, v]) => `<i><em>${k}</em>${v}</i>`).join('')}</span>
-        <a class="btn btn-sec" href="${LE(e.slug)}">Ver modelos e detalhes ${ico('seta')}</a></div>
-    </article>`).join('')}
-  </div>`}
-</div></section>
-${etapasLinha()}
-${faleConosco()}
+${titulo('Equipamentos para extrusão de termoplásticos', [['Equipamentos']], 'Extrusoras, linhas de frente e periféricos, do mesmo fabricante.', A ? '' : 'drc-30')}
+${seriesSec()}
+${alemSec()}
+${aplicacoesSec()}
+${contatoSec()}
 </main>`;
 
   const pagEq = e => () => {
     const lf = e.slug === 'equipamentos-para-linhas-de-frente';
     const outros = C.equipamentos.filter(x => x.slug !== e.slug);
+    const mods = e.grupos.map(([t, l]) => [t, l.map(modelo)]);
+    const temLd = mods.some(([, l]) => l.some(m => m.ld));
+    const usado = C.aplicacoes.filter(a => a.extrusora === e.slug);
     return `
 <main id="conteudo">
-${titulo(e.nome, [['Equipamentos', L('equipamentos')], [e.curto]], e.serie, A ? '' : e.img)}
+<section class="eq-hero"><div class="in eqh-g">
+  <div class="eqh-txt">
+    ${migalha([['Equipamentos', L('equipamentos')], [e.curto]])}
+    ${rot(e.serie)}
+    <h1>${e.nome}</h1>
+    <p>${e.resumo}</p>
+    ${fichas(e, 'fichas fichas-g')}
+    <div class="apl-bts"><a class="btn" href="${zapHref}" target="_blank" rel="noopener">Solicitar orçamento ${ico('seta')}</a><a class="btn btn-vazado" href="${L('contato')}">Falar com vendas</a></div>
+  </div>
+  <div class="eqh-foto">${img(e.img, e.nome, 'loading="eager"')}</div>
+</div></section>
 <section class="sec"><div class="in det-g${lf ? ' det-lf' : ''}">
   <div class="det-txt">
-    <span class="fichas fichas-g">${e.fichas.map(([k, v]) => `<i><em>${k}</em>${v}</i>`).join('')}</span>
-    ${e.grupos.map(([t, l]) => `<div class="modelos"><h2>${t}</h2><ul>${l.map(m => `<li>${m}</li>`).join('')}</ul></div>`).join('')}
-    <h2>${e.textoTitulo}</h2>
+    ${rot(e.textoTitulo)}
     ${e.texto.map(p => `<p>${p}</p>`).join('')}
     ${e.lista.length ? `<h3>${e.listaTitulo}</h3><ul class="${e.chips ? 'chips' : 'checks'}">${e.lista.map(x => `<li>${e.chips ? '' : ico('check')}${x}</li>`).join('')}</ul>` : ''}
-    <div class="det-bt"><a class="btn" href="${L('contato')}">Solicitar orçamento ${ico('seta')}</a>${zap('Falar no WhatsApp', 'btn btn-vazado')}</div>
+    ${usado.length ? `<h3>Usada nas linhas de</h3><ul class="chips">${usado.map(a => `<li><a href="${L('equipamentos')}#aplicacoes">${a.nome}</a></li>`).join('')}</ul>` : ''}
   </div>
-  ${lf ? '' : `<div class="det-gal">${(e.galeria.length ? e.galeria : [[e.img, e.nome]]).map(([f, t], i) => `<button class="gal-it${i === 0 ? ' gal-1' : ''}" data-zoom="/assets/img/${f}.webp" data-legenda="${esc(t)}">${img(f, t)}<span>${t}</span></button>`).join('')}</div>`}
+  ${mods.length ? `<div class="det-mod">${mods.map(([t, l]) => `<div class="serie-tab"><h3>${t}</h3><table><thead><tr><th>Modelo</th><th>${l[0].d ? 'Ø rosca' : ''}</th>${temLd ? '<th>L/D</th>' : ''}</tr></thead><tbody>${l.map(m => `<tr><td>${m.mod}</td><td>${m.d ? m.d + ' mm' : ''}</td>${temLd ? `<td>${m.ld || '—'}</td>` : ''}</tr>`).join('')}</tbody></table></div>`).join('')}</div>` : ''}
 </div></section>
+${e.galeria.length ? `<section class="sec gal-sec"><div class="in">${h2('Fotos', '', e.serie)}<div class="det-gal n${e.galeria.length}">${e.galeria.map(([f, t]) => `<button class="gal-it" data-zoom="/assets/img/${f}.webp" data-legenda="${esc(t)}">${img(f, t)}<span>${t}</span></button>`).join('')}</div></div></section>` : ''}
 ${lf ? `<section class="sec lf-sec"><div class="in">
-  ${h2('Equipamentos da linha de frente', 'Cada linha é montada conforme o produto a ser extrudado.')}
-  <div class="lf-g">${C.linhaFrente.map(([f, t, d]) => `<button class="lf-it" data-zoom="/assets/img/${f}.webp" data-legenda="${esc(t)}"><span>${img(f, t)}</span><b>${t}</b><small>${d}</small></button>`).join('')}
-    <a class="lf-cta" href="${site.whatsHref}" target="_blank" rel="noopener"><b>Monte a sua linha</b><small>Diga o produto que você quer extrudar e indicamos a extrusora e a linha de frente.</small><em>${ico('whats')}Falar com vendas</em></a></div>
+  ${h2('Os equipamentos da linha de frente', 'Cada linha é montada conforme o produto a ser extrudado.', '11 equipamentos')}
+  <div class="lf-g">${C.linhaFrente.map(([f, t, d], i) => `<button class="lf-it" data-zoom="/assets/img/${f}.webp" data-legenda="${esc(t)}"><span class="lf-foto">${img(f, t)}</span>${rot(dois(i + 1))}<b>${t}</b><small>${d}</small></button>`).join('')}
+    <a class="lf-cta" href="${zapHref}" target="_blank" rel="noopener"><b>Monte a sua linha</b><small>Diga o produto que você quer extrudar e indicamos a extrusora e a linha de frente.</small><em>${ico('whats')}Falar com vendas</em></a></div>
 </div></section>` : ''}
 ${e.anuncios ? `<section class="sec anuncios"><div class="in an-g">${e.anuncios.map(([f, t]) => `<button class="gal-it" data-zoom="/assets/img/${f}.webp" data-legenda="${esc(t)}">${img(f, t)}</button>`).join('')}</div></section>` : ''}
 <section class="sec outros"><div class="in">
-  ${h2('Outros equipamentos')}
-  <div class="outros-g">${outros.map(x => `<a href="${LE(x.slug)}">${img(x.img, x.nome)}<b>${x.nome}</b></a>`).join('')}</div>
+  ${h2('Outros equipamentos', '', 'Catálogo')}
+  <div class="outros-g">${outros.map(x => `<a href="${LE(x.slug)}"><span>${img(x.img, x.nome)}</span><b>${x.nome}</b></a>`).join('')}</div>
 </div></section>
-${faleConosco()}
+${contatoSec()}
 </main>`;
   };
   for (const e of C.equipamentos) P[e.slug] = pagEq(e);
 
   P['pecas-de-reposicao'] = () => `
 <main id="conteudo">
-${titulo('Peças de reposição', [['Peças de reposição']], 'Peças originais com as especificações do projeto, que só o fabricante pode oferecer.', A ? '' : 'pecas-slide')}
+${titulo('Peças de reposição originais', [['Peças de reposição']], 'As especificações do projeto original, que só o fabricante pode oferecer, com o menor custo praticado.', 'pecas-slide')}
 <section class="sec"><div class="in pc-g">
   <div class="pc-txt">
-    ${h2('Comunicado', 'Prezados clientes,')}
+    ${h2('Comunicado aos clientes', '', 'Prezados clientes')}
     ${C.pecas.intro.map(p => `<p>${p}</p>`).join('')}
-    <div class="det-bt">${zap('Consultar peça no WhatsApp', 'btn btn-zap')}<a class="btn btn-vazado" href="mailto:${site.email}?subject=Pe%C3%A7as%20de%20reposi%C3%A7%C3%A3o">${ico('mail')}${site.email}</a></div>
+    <div class="apl-bts">${zap('Consultar peça no WhatsApp')}<a class="btn btn-vazado" href="mailto:${site.email}?subject=Pe%C3%A7as%20de%20reposi%C3%A7%C3%A3o">${ico('mail')}Enviar por e-mail</a></div>
   </div>
   <aside class="pc-consulte">
-    <h3>Consulte-nos para o fornecimento de</h3>
+    ${rot('Consulte-nos para o fornecimento de')}
     <ul class="checks">${C.pecas.consulte.map(x => `<li>${ico('check')}${x}</li>`).join('')}</ul>
     <p>${C.pecas.outros}</p>
   </aside>
 </div></section>
 <section class="sec pc-fotos"><div class="in">
-  ${h2('Confira algumas peças de reposição')}
+  ${h2('Algumas peças que fornecemos', '', 'Galeria')}
   <div class="pc-gal">${C.pecas.fotos.map(([f, t]) => `<button class="gal-it" data-zoom="/assets/img/${f}.webp" data-legenda="${esc(t)}">${img(f, t)}<span>${t}</span></button>`).join('')}</div>
 </div></section>
 <section class="sec aviso"><div class="in"><div class="aviso-box">${ico('alerta')}<div><h2>Aviso importante</h2><p>${C.pecas.aviso}</p></div></div></div></section>
-${faleConosco()}
+${contatoSec()}
 </main>`;
 
   P.videos = () => `
 <main id="conteudo">
-${titulo('Vídeos', [['Vídeos']], 'Navegue em nossos vídeos.', A ? '' : '')}
+${titulo('Linhas em operação', [['Vídeos']], 'Assista às extrusoras e linhas completas da Extrusão Brasil funcionando, da extrusão ao corte.')}
 <section class="sec"><div class="in">
-  <p class="intro">Assista aos nossos vídeos e descubra como nossas extrusoras e linhas completas para extrusão de termoplásticos operam com alta performance. Mostramos cada etapa do processo, desde a fabricação até a instalação e manutenção, além de apresentar os benefícios e resultados de nossos equipamentos para diversas aplicações industriais.</p>
-  <div class="vd-lista">${C.videos.map(x => `
+  <div class="vd-lista">${C.videos.map((x, i) => `
     <article class="vd-item" id="${x[0]}">
-      ${videoCard(x)}
-      <div><h2>${x[1]}</h2>${x[3].length ? `<h3>Conjunto composto de:</h3><ol>${x[3].map(i => `<li>${i}</li>`).join('')}</ol>` : '<p>Conjunto de extrusão para perfis de coletor solar em operação.</p>'}</div>
+      ${videoCard(x, false)}
+      <div>${rot(dois(i + 1))}<h2>${x[1]}</h2>${x[3].length ? `<h3>Conjunto composto de</h3><ol>${x[3].map(it => `<li>${it}</li>`).join('')}</ol>` : '<p>Conjunto de extrusão para perfis de coletor solar em operação.</p>'}</div>
     </article>`).join('')}
   </div>
 </div></section>
-${faleConosco()}
+${contatoSec()}
 </main>`;
 
   P['feiras-e-eventos'] = () => `
 <main id="conteudo">
-${titulo('Feiras e Eventos', [['Feiras e Eventos']], 'Acompanhe a Extrusão Brasil nas principais feiras do setor plástico.', A ? '' : '')}
+${titulo('Feiras e eventos', [['Feiras e Eventos']], C.feiras.texto)}
 <section class="sec"><div class="in">
-  <p class="intro">${C.feiras.texto}</p>
   <nav class="fe-anos">${C.feiras.lista.map(f => `<a href="#${f[0]}-${f[1]}">${f[2]}</a>`).join('')}</nav>
   ${C.feiras.lista.map(f => `
   <section class="feira" id="${f[0]}-${f[1]}">
-    <header><h2>${f[2]}</h2><span>${f[3]}</span></header>
-    <div class="fe-gal">${Array.from({ length: 26 }, (_, n) => n + 1).filter(n => FEIRAS.has(`${f[0]}-${f[1]}-${String(n).padStart(2, '0')}`)).map(n => `<button class="gal-it" data-zoom="${feiraFoto(f, n)}" data-legenda="${esc(f[2])}"><img src="${feiraFoto(f, n)}" alt="Extrusão Brasil na ${f[2]}" loading="lazy" decoding="async"></button>`).join('')}</div>
+    <header>${rot(f[3])}<h2>${f[2]}</h2></header>
+    <div class="fe-gal">${Array.from({ length: 26 }, (_, n) => n + 1).filter(n => FEIRAS.has(`${f[0]}-${f[1]}-${dois(n)}`)).map(n => `<button class="gal-it" data-zoom="${feiraFoto(f, n)}" data-legenda="${esc(f[2])}"><img src="${feiraFoto(f, n)}" alt="Extrusão Brasil na ${f[2]}" loading="lazy" decoding="async"></button>`).join('')}</div>
   </section>`).join('')}
 </div></section>
-${faleConosco()}
+${contatoSec()}
 </main>`;
 
   P.financiamentos = () => `
 <main id="conteudo">
-${titulo('Financiamentos', [['Financiamentos']], 'Veja como adquirir os nossos produtos.', A ? '' : '')}
+${titulo('Como financiar a sua linha', [['Financiamentos']], C.financiamentos.intro)}
 <section class="sec"><div class="in">
-  <p class="intro">${C.financiamentos.intro}</p>
   <div class="fin-g">${C.financiamentos.itens.map(([f, t, d], i) => `
-    <article class="fin-it fin-${i}"><span class="fin-logo">${img(f, t)}</span><h2>${t}</h2><p>${d}</p>${i === 3 ? `<h3>O Proger pode ser solicitado nos agentes financeiros:</h3><ul class="checks">${C.financiamentos.proger.map(b => `<li>${ico('banco')}${b}</li>`).join('')}</ul>` : ''}</article>`).join('')}
+    <article class="fin-it fin-${i}"><span class="fin-logo"><img src="/assets/img/${f}.webp" alt="${esc(t)}"></span><h2>${t}</h2><p>${d}</p>${i === 3 ? `<h3>Pode ser solicitado nos agentes financeiros:</h3><ul class="checks">${C.financiamentos.proger.map(b => `<li>${ico('banco')}${b}</li>`).join('')}</ul>` : ''}</article>`).join('')}
   </div>
 </div></section>
-${faleConosco()}
+${contatoSec()}
 </main>`;
 
   P.contato = () => `
 <main id="conteudo">
-${titulo('Contato', [['Contato']], 'Solicite um orçamento ou fale com o nosso time de vendas.', A ? '' : '')}
+${titulo('Fale com a Extrusão Brasil', [['Contato']], 'Orçamentos de extrusoras, linhas completas e peças de reposição.')}
 <section class="sec"><div class="in ct-g">
   <div class="ct-info">
-    ${h2('Encontre-nos')}
+    ${h2('Encontre-nos', '', 'Diadema, SP')}
     <ul class="ct-lista">
       <li>${ico('pin')}<span><b>Endereço</b>${site.endereco}<a href="${site.mapaLink}" target="_blank" rel="noopener">Abrir no mapa ${ico('externo')}</a></span></li>
       <li>${ico('fone')}<span><b>Telefones</b><a href="${site.foneHref}">${site.fone}</a> · ${site.fonesExtra.join(' · ')}</span></li>
-      <li>${ico('whats')}<span><b>WhatsApp</b><a href="${site.whatsHref}" target="_blank" rel="noopener">${site.whats}</a></span></li>
+      <li>${ico('whats')}<span><b>WhatsApp</b><a href="${zapHref}" target="_blank" rel="noopener">${site.whats}</a></span></li>
       <li>${ico('mail')}<span><b>E-mail</b><a href="mailto:${site.email}">${site.email}</a></span></li>
     </ul>
   </div>
-  <div class="ct-form">${h2('Fale conosco', C.contato)}${form()}</div>
+  <div class="ct-form">${h2('Envie a sua necessidade', C.contato, 'Orçamento')}${form()}</div>
 </div></section>
 <section class="mapa"><iframe title="Mapa: ${esc(site.endereco)}" src="${site.mapa}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></section>
 </main>`;
 
   const paginas = {};
   for (const slug of Object.keys(P)) {
-    const corpo = P[slug]();
     const chave = EQ[slug] ? `equipamentos/${slug}` : slug;
-    paginas[chave] = head(slug) + header(slug) + corpo + footer;
+    paginas[chave] = head(slug) + header(slug) + P[slug]() + footer;
   }
   return paginas;
 }
-
-// Fotos de feira que existem (algumas edições têm buracos na numeração).
-import fs from 'node:fs';
-import path from 'node:path';
-const dirFeiras = path.join(path.dirname(new URL(import.meta.url).pathname), '../public/assets/img/feiras');
-const FEIRAS = new Set(fs.existsSync(dirFeiras) ? fs.readdirSync(dirFeiras).map(f => f.replace(/\.webp$/, '')) : []);
