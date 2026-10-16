@@ -1,6 +1,6 @@
 # Fiorella Brasil · script de ligação
 
-**Quem:** Fiorella Brasil Indústria e Comércio Têxtil, Mairinque (SP). Indústria de nãotecidos fundada em 1977, fábrica de cerca de 50.000 m², ISO 9001:2015. Fabrica nãotecidos resinados em poliéster e viscose: entretelas para bordado (linha BDO), entretelas colantes para confecção (Tela 30 a 70), etiquetas de composição NT Laser, entretelas para forminhas de doces (NTD), dupla face (Aplic Patch), além de desmoldantes para a indústria automotiva e nãotecidos para filtros. Diz produzir mais de 18 milhões de metros por ano e atender mais de 2 mil clientes por ano, no Brasil e nas Américas. Tem loja própria (FiorellaShop, plataforma Tray).
+**Quem:** Fiorella Brasil Indústria e Comércio Têxtil, Mairinque (SP). Indústria de nãotecidos fundada em 1977, fábrica de cerca de 50.000 m², ISO 9001:2015. Fabrica nãotecidos resinados em poliéster e viscose: entretelas para bordado (linha BDO), entretelas colantes para confecção (Tela 30 a 70), etiquetas de composição NT Laser, entretelas para forminhas de doces (NTD), dupla face (Aplic Patch), além de matéria-prima para proteção de automotores, desmoldantes, nãotecidos para filtros e materiais de limpeza. No LinkedIn se apresenta como indústria que investiu em modernos sistemas de produção para atingir padrões internacionais (o texto de lá fala em "44 anos", escrito por volta de 2021; o site atual diz 49 anos, de 1977, e é o que o site novo usa). Diz produzir mais de 18 milhões de metros por ano e atender mais de 2 mil clientes por ano, no Brasil e nas Américas. Tem loja própria (FiorellaShop, plataforma Tray).
 **Telefone:** (11) 4718-8000 (também é o WhatsApp). **E-mail:** fiorella@fiorella.ind.br · loja: sac@fiorella.ind.br. **Instagram:** @fiorellabrasil_. **Quem procurar:** diretoria ou quem cuida do comercial/marketing (a política da qualidade é assinada por "A Diretoria").
 
 **Problemas reais do site atual (fiorellaonline.com, Wix), use 1 ou 2:**
@@ -33,6 +33,6 @@ Frase curta para a ligação: *"Hoje quem procura entretela cai num site com fot
 **Se disser que não precisa de site / que a loja já resolve**
 > "A loja é ótima pra quem já sabe o código. Mas o comprador de confecção, de filtro ou de autopeça chega pelo site institucional, e lá hoje não tem nenhum produto. O novo leva ele até a referência certa e até a loja. Te mando o link só pra comparar?"
 
-**Pedir no final:** o logo em vetor, fotos atuais da fábrica por dentro (linha de resinagem, estufa, rolos), fotos de aplicações automotivas e de filtros (hoje são de banco), as fichas técnicas das linhas industriais e confirmar se o WhatsApp é mesmo o (11) 4718-8000.
+**Pedir no final:** o logo em vetor, fotos atuais da fábrica por dentro (linha de resinagem, estufa, rolos), fotos de aplicações automotivas e de filtros (hoje são de banco), as fichas técnicas das linhas industriais (proteção automotiva e limpeza) e confirmar se o WhatsApp é mesmo o (11) 4718-8000.
 
 **Link:** https://fiorella.overtus.com.br/ (versão A "Fábrica" e versão B "Fibra", cada uma em pt/en/es; o site atual está no terceiro cartão para comparar).
