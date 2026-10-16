@@ -1,0 +1,52 @@
+/* Versão A · Institucional: a ordem do site atual, fundo claro com faixas cinza-claro, vermelho do logo e rodapé grafite. */
+.v-a .tit h2 { text-transform: uppercase; letter-spacing: .02em; }
+.v-a .tit.centro h2::after { content: ""; display: block; width: 64px; height: 3px; margin: 18px auto 0; background: var(--vermelho); }
+.v-a .tit:not(.centro) h2::after { content: ""; display: block; width: 64px; height: 3px; margin-top: 18px; background: var(--vermelho); }
+.v-a .lead.centro { max-width: 860px; margin-inline: auto; }
+
+/* Capa em slides, como a do site atual */
+.capa-a { position: relative; min-height: clamp(460px, 72vh, 700px); display: grid; align-items: center; color: #fff; background: #111; overflow: hidden; }
+.slides, .slide { position: absolute; inset: 0; }
+.slide { opacity: 0; transition: opacity 1.2s ease; }
+.slide.ativo { opacity: 1; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.slides::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,12,.82) 0%, rgba(10,10,12,.55) 45%, rgba(10,10,12,.1) 100%); }
+.capa-a .in { position: relative; padding-block: 80px 70px; }
+.capa-txt { max-width: 640px; }
+.capa-a h1 { text-transform: uppercase; letter-spacing: .01em; }
+.capa-a h1::after { content: ""; display: block; width: 80px; height: 4px; background: var(--vermelho); margin-top: 22px; }
+.capa-a p { font-size: clamp(17px, .5vw + 14px, 20px); color: rgba(255,255,255,.9); margin-bottom: 30px; }
+.capa-acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+.pontos { position: absolute; left: 0; right: 0; bottom: 26px; display: flex; gap: 10px; padding-inline: inherit; }
+.pontos button { width: 34px; height: 4px; padding: 0; border: 0; background: rgba(255,255,255,.4); cursor: pointer; }
+.pontos button.ativo { background: var(--vermelho); }
+
+/* Faixa das 3 vantagens logo abaixo da capa */
+.faixa-vant { background: #fff; border-bottom: 1px solid var(--borda); }
+.faixa-vant .in { padding-block: 44px; }
+.faixa-vant .vant { grid-template-columns: repeat(3, 1fr); }
+
+.sec-serv { background: var(--claro); }
+.sec-serv .sv { box-shadow: 0 1px 0 var(--borda); border-top: 3px solid var(--vermelho); }
+.sec-seg .seg-a { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.seg-foto { position: relative; }
+.seg-foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--raio); }
+.selo { position: absolute; left: 18px; bottom: 18px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background: #fff; border-radius: 40px; font: 600 14px/1 var(--fb); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+.selo .ico { color: var(--vermelho); width: 18px; height: 18px; }
+
+.sec-hist { background: var(--claro); }
+.hist-a { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.hist-a p { color: var(--suave); }
+.proc-a { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.sec-ct { background: var(--claro); }
+.v-a.p-contato .sec-ct { background: #fff; }
+.v-a.p-contato .sec-mapa { background: #fff; }
+
+/* Internas */
+.v-a .sec-marcos, .v-a .sec-mats, .v-a .sec-caminho { background: var(--claro); }
+.v-a .sec-vant .vant { margin-top: 10px; }
+
+@media (max-width: 1000px) {
+  .faixa-vant .vant, .sec-seg .seg-a, .hist-a, .proc-a { grid-template-columns: 1fr; }
+  .seg-foto img { aspect-ratio: 16 / 10; }
+}
