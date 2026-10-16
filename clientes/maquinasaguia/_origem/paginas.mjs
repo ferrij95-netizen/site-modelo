@@ -132,7 +132,7 @@ ${footer()}`;
   // ---------- peças ----------
   const cartao = p => `<a class="maq" href="${LP(p.slug)}" data-cats="${p.cats.join(' ')}">
   <span class="maq-foto">${img('c-' + p.slug, nomeCompleto(p))}</span>
-  <span class="maq-txt"><small>${p.modelo || '&nbsp;'}</small><b>${esc(p.nome)}</b><span class="maq-mais">Ver máquina ${ico('seta')}</span></span>
+  <span class="maq-txt">${p.modelo ? `<small>${p.modelo}</small>` : ''}<b>${esc(p.nome)}</b><span class="maq-mais">Ver máquina ${ico('seta')}</span></span>
 </a>`;
 
   const linhaDe = p => p.cats.includes('serraria') ? 'serraria' : 'beneficiamento';

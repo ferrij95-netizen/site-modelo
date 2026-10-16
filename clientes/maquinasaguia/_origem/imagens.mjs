@@ -12,14 +12,23 @@ fs.mkdirSync(dest, { recursive: true });
 const dados = JSON.parse(fs.readFileSync(path.join(aqui, 'dados.json'), 'utf8'));
 const o = f => path.join(orig, f);
 
-// Máquinas: até 4 fotos por máquina (1100 px) e uma miniatura para os cartões do catálogo (560 px).
+// Máquinas: até 4 fotos por máquina (1100 px) e uma miniatura para os cartões do catálogo (640 px).
+// Usa o recorte sem fundo (recortar.py, em <originais>/recortes) quando existe; as fotos listadas em MANTER_FUNDO
+// são de máquina instalada ou detalhe, em que o recorte não fica bom, e ficam com o fundo original.
+const MANTER_FUNDO = new Set(JSON.parse(fs.readFileSync(path.join(aqui, 'manter-fundo.json'), 'utf8')));
+const fonte = f => {
+  const r = path.join(orig, 'recortes', f.replace(/\.[^.]+$/, '.png'));
+  return !MANTER_FUNDO.has(f) && fs.existsSync(r) ? [r, true] : [o(f), false];
+};
 let n = 0;
 for (const p of dados.produtos) {
   for (const [i, f] of p.fotos.slice(0, 4).entries()) {
-    await sharp(o(f)).rotate().flatten({ background: '#ffffff' }).resize({ width: 1100, height: 1100, fit: 'inside', withoutEnlargement: true })
-      .webp({ quality: 78 }).toFile(path.join(dest, `p-${p.slug}-${i + 1}.webp`));
-    if (i === 0) await sharp(o(f)).rotate().flatten({ background: '#ffffff' }).resize({ width: 560, height: 420, fit: 'contain', background: '#ffffff' })
-      .webp({ quality: 76 }).toFile(path.join(dest, `c-${p.slug}.webp`));
+    const [src, recorte] = fonte(f);
+    const base = () => recorte ? sharp(src) : sharp(src).rotate().flatten({ background: '#ffffff' });
+    await base().resize({ width: 1100, height: 1100, fit: 'inside', withoutEnlargement: true })
+      .webp({ quality: 80, alphaQuality: 90 }).toFile(path.join(dest, `p-${p.slug}-${i + 1}.webp`));
+    if (i === 0) await base().resize({ width: 640, height: 480, fit: 'inside', withoutEnlargement: true })
+      .webp({ quality: 80, alphaQuality: 90 }).toFile(path.join(dest, `c-${p.slug}.webp`));
     n++;
   }
 }
