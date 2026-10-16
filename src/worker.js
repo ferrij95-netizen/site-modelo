@@ -4,6 +4,7 @@ import { noticias } from './noticias.js';
 import { prospeccao } from './prospeccao.js';
 import { resultados } from './resultados.js';
 import { lembretes } from './lembretes.js';
+import { email } from './email.js';
 
 const PREFIX = '/_clientes/';
 // hub.overtus.com.br (dist/_hub/), com tela de login em /entrar/: na raiz o canvas de prospecção, em /sites/ a lista de clientes.
@@ -50,6 +51,8 @@ async function hub(request, env, url) {
   if (url.pathname === '/api/resultados') return resultados(request, env);
   // Lembretes e follow-up (bloco "Hoje" da Visão geral), com todas as listas juntas.
   if (url.pathname === '/api/lembretes') return lembretes(request, env);
+  // E-mail da Overtus (aba /email/), pela API do Hostinger Mail; o token fica no segredo HOSTINGER_MAIL_TOKEN.
+  if (url.pathname.startsWith('/api/email/')) return email(request, env, url);
   // Enquanto o banco do canvas estiver vazio (antes da cópia dos dados), a raiz continua mostrando a lista de sites.
   if (url.pathname === '/' && env.PROSPECCAO && !(await env.PROSPECCAO.prepare('SELECT 1 FROM empresas LIMIT 1').first().catch(() => null))) {
     url.pathname = '/sites/';
