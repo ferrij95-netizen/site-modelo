@@ -220,3 +220,8 @@ html:has(.escolha), .escolha { height: 100%; }
   .mock-tela { position: relative; width: 100%; }
   .flutua-1 { position: relative; left: auto; top: auto; bottom: auto; justify-self: start; margin: -22px 0 0 14px; }
 }
+/* Troca de idioma (indústrias: PT / EN) */
+.topo nav a.lang { font-size: 13px; font-weight: 600; letter-spacing: .06em; border: 1px solid currentColor; border-radius: 999px; padding: 4px 10px; opacity: .8; }
+.topo nav a.lang:hover { opacity: 1; border-color: var(--laranja); }
+@media (max-width: 900px) { .topo nav a.lang { align-self: flex-start; margin-top: 12px; border-bottom: 1px solid currentColor; padding: 6px 14px; } }
+.escolha small a { color: inherit; }
