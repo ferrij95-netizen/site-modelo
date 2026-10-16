@@ -852,7 +852,9 @@ function renderDetail(){
     D.querySelectorAll("[data-k]").forEach(i=>i.addEventListener("change",()=>{const v=i.value.trim();if(i.dataset.k==="nome"&&!v){i.value=d.nome;return}write(sel,{[i.dataset.k]:v})}));
     D.querySelectorAll("[data-c]").forEach(i=>i.addEventListener("change",()=>{write(sel,{contato:{[i.dataset.c]:i.value.trim()}})}));
     D.querySelectorAll("[data-m]").forEach(i=>i.addEventListener("change",()=>{write(sel,{marca:{[i.dataset.m]:i.value.trim()}})}));
-    $("#dStatus").addEventListener("change",e=>write(sel,{status:e.target.value,statusEm:Date.now()}));
+    $("#dStatus").addEventListener("change",e=>{const v=e.target.value,t=Date.now();
+      // Proposta enviada agora: começa a contagem dos follow-ups (dia 2 e dia 5 úteis, hub/inicio/lembretes.js).
+      write(sel,v==="proposta"?{status:v,statusEm:t,proposta:{enviadaEm:t},seguimento:{f1:null,f2:null}}:{status:v,statusEm:t})});
     $("#back").addEventListener("click",()=>{sel=null;renderAll()});
     $("#del").addEventListener("click",askDelete);
     const log=()=>{const t=$("#logTxt").value.trim();if(!t)return;const cur=docs.find(x=>x.id===sel);const n=new Date();

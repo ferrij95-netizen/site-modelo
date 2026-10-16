@@ -10,7 +10,8 @@ const CAMPOS = `id, lista,
   json_extract(doc, '$.statusEm') AS statusEm, json_extract(doc, '$.atualizadoEm') AS atualizadoEm,
   json_extract(doc, '$.contatoEm') AS contatoEm,
   json_extract(doc, '$.contato') AS contato, json_extract(doc, '$.proposta') AS proposta,
-  json_extract(doc, '$.extra.whatsapp') AS waExtra, json_extract(doc, '$.enr.subdominio') AS subdominio,
+  json_extract(doc, '$.extra.whatsapp') AS waExtra, json_extract(doc, '$.extra.email') AS emailExtra,
+  json_extract(doc, '$.seguimento') AS seguimento, json_extract(doc, '$.enr.subdominio') AS subdominio,
   json_extract(doc, '$.enr.script.followup') AS followup, json_extract(doc, '$.ligacoes') AS ligacoes`;
 
 export async function lembretes(request, env) {
@@ -32,8 +33,9 @@ export async function lembretes(request, env) {
       id: r.id, lista: r.lista, nome: r.nome || '', cidade: r.cidade || '', segmento: r.segmento || '', site: r.site || '',
       status: r.status || 'novo', proxData: r.proxData || '', proxAcao: r.proxAcao || '',
       statusEm: r.statusEm || null, atualizadoEm: r.atualizadoEm || null, contatoEm: r.contatoEm || null,
-      contato: { nome: c.nome || '', telefone: c.telefone || '', whatsapp: c.whatsapp || r.waExtra || '', preview: c.preview || '', historico: c.historico || '' },
-      proposta: { urlA: p.urlA || '', urlB: p.urlB || '', escolhida: p.escolhida || '' },
+      contato: { nome: c.nome || '', telefone: c.telefone || '', whatsapp: c.whatsapp || r.waExtra || '', email: c.email || r.emailExtra || '', preview: c.preview || '', historico: c.historico || '' },
+      proposta: { urlA: p.urlA || '', urlB: p.urlB || '', escolhida: p.escolhida || '', enviadaEm: p.enviadaEm || null },
+      seguimento: obj(r.seguimento),
       subdominio: r.subdominio || '', followup: r.followup || '',
       ligacoes: lista(r.ligacoes),
     };

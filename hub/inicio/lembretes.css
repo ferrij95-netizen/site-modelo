@@ -42,3 +42,7 @@
   .lb-f{padding:18px 16px 20px}
   .lb-top h2{font-size:22px}
 }
+.lb-mail{display:flex;flex-direction:column;gap:10px}
+.lb-mail summary{cursor:pointer;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:4px 0}
+.lb-mail[open] summary{margin-bottom:8px}
+.lb-mail .lb-cols{margin-bottom:10px}
