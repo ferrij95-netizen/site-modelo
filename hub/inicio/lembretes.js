@@ -4,12 +4,17 @@
 // - Para cada empresa: mensagem de WhatsApp pronta conforme a situação (abre o wa.me já com o texto; nada é enviado sozinho)
 //   e "Registrar resultado": como foi o contato, nota rápida e a data do próximo contato.
 // - O mesmo par de botões aparece na ficha da empresa (aba Empresas e CRM).
+// - Follow-up automático de proposta: quando a empresa vai para "Proposta enviada", o hub agenda o 1º follow-up
+//   para 2 dias úteis depois e o 2º para 5 dias úteis depois, com WhatsApp e e-mail prontos. Nada sai sozinho:
+//   o João revisa, clica para enviar e marca como feito. Datas em proposta.enviadaEm, feitos em seguimento.f1/f2.
 // - No app instalado, o ícone mostra quantos retornos são para hoje.
 // A página liga o módulo com Lembretes.init({...}) e chama Lembretes.render(el) e Lembretes.ficha(doc).
 (() => {
   // Quantos dias sem resposta até a empresa aparecer como "parada".
   const DIAS_PROPOSTA = 3, DIAS_LINK = 2;
   const ASSINATURA = 'João, da Overtus';
+  // Follow-ups da proposta, em dias úteis depois do envio. Propostas com mais de 30 dias saem da régua.
+  const FOLLOWUPS = [[1, 2], [2, 5]], JANELA_FOLLOW = 30;
   let cfg = null, cache = null, carregando = null, ultimo = 0, alvo = null, fichaDoc = null;
 
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -23,6 +28,22 @@
     const d = new Date(); d.setDate(d.getDate() + n);
     while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
     return iso(d);
+  }
+  // n dias úteis depois de uma data (ms).
+  function uteis(ms, n) {
+    const d = new Date(ms);
+    while (n > 0) { d.setDate(d.getDate() + 1); if (d.getDay() !== 0 && d.getDay() !== 6) n--; }
+    return iso(d);
+  }
+  const envioDe = d => (d.proposta || {}).enviadaEm || d.statusEm || d.contatoEm || d.atualizadoEm || null;
+  // Próximo follow-up pendente da proposta: { n, data } ou null.
+  function proximoFollow(d) {
+    if (d.status !== 'proposta') return null;
+    const base = envioDe(d);
+    if (!base || diasDesde(base) > JANELA_FOLLOW) return null;
+    const seg = d.seguimento || {};
+    for (const [n, dias] of FOLLOWUPS) if (!seg['f' + n]) return { n, data: uteis(base, dias) };
+    return null;
   }
   function waNumero(d) {
     const c = d.contato || {};
@@ -46,6 +67,8 @@
     return u ? (/^https?:\/\//.test(u) ? u : 'https://' + u.replace(/^\/+/, '')) : '';
   }
   const SITUACOES = [
+    ['f1', '1º follow-up'],
+    ['f2', '2º follow-up'],
     ['sem', 'Sem resposta'],
     ['link', 'Link enviado'],
     ['proposta', 'Proposta enviada'],
@@ -53,6 +76,8 @@
     ['script', 'Do script da empresa'],
   ];
   function situacaoDe(d) {
+    const f = proximoFollow(d);
+    if (f) return 'f' + f.n;
     if (d.status === 'proposta') return 'proposta';
     if (d.status === 'enviado') return 'link';
     if (d.status === 'conversa') return 'retorno';
@@ -66,6 +91,14 @@
     const emp = d.nome || 'sua empresa', link = linkPreview(d), p = d.proposta || {};
     const fup = d.followup || ((d.enr || {}).script || {}).followup || '';
     if (sit === 'script' && fup) return fup;
+    if (sit === 'f1' || sit === 'f2') {
+      const vs = [p.urlA && `Versão A: ${p.urlA}`, p.urlB && `Versão B: ${p.urlB}`].filter(Boolean).join('\n') || link;
+      if (sit === 'f1') return `${oi} Aqui é o ${ASSINATURA}.\nPassando para saber se você conseguiu ver a proposta do site novo da ${emp}.` +
+        (vs ? `\n${vs}` : '') + `\nFicou alguma dúvida ou quer que eu ajuste alguma coisa antes de decidir?`;
+      return `${oi} Aqui é o ${ASSINATURA}, último toque sobre o site da ${emp}.` +
+        (vs ? `\nAs versões continuam no ar:\n${vs}` : '') +
+        `\nSe ainda fizer sentido para vocês, posso te ligar 5 minutos para fechar os detalhes. Se não for o momento, me avisa que eu não insisto.`;
+    }
     if (sit === 'proposta') {
       const vs = [p.urlA && `Versão A: ${p.urlA}`, p.urlB && `Versão B: ${p.urlB}`].filter(Boolean).join('\n');
       return `${oi} Aqui é o ${ASSINATURA}.\nPassando para saber se você conseguiu ver as duas versões do site da ${emp}.` +
@@ -84,22 +117,51 @@
       `Posso te mostrar em 5 minutos? Qual o melhor horário para eu ligar?`;
   }
 
+  /* ---------- e-mail ---------- */
+  // Assunto e corpo do e-mail para a mesma situação. Mais formal que o WhatsApp.
+  function email(d, sit) {
+    const nome = primeiroNome(d), emp = d.nome || 'sua empresa', p = d.proposta || {}, link = linkPreview(d);
+    const oi = nome ? `Olá, ${nome},` : 'Olá,';
+    const vs = [p.urlA && `Versão A: ${p.urlA}`, p.urlB && `Versão B: ${p.urlB}`].filter(Boolean).join('\n') || link;
+    const fim = `\n\nUm abraço,\nJoão\nOvertus · overtus.com.br`;
+    if (sit === 'f1') return { assunto: `Proposta do site da ${emp}`,
+      corpo: `${oi}\n\nPassando para saber se você conseguiu ver a proposta do site novo da ${emp}.` +
+        (vs ? `\n\n${vs}` : '') + `\n\nSe ficou alguma dúvida, ou se quiser ajustar algo antes de decidir, é só responder este e-mail.` + fim };
+    if (sit === 'f2') return { assunto: `Site da ${emp}: último retorno`,
+      corpo: `${oi}\n\nEscrevo uma última vez sobre a proposta do site da ${emp}.` +
+        (vs ? ` As versões continuam no ar:\n\n${vs}` : '') +
+        `\n\nSe ainda fizer sentido, posso ligar em um horário bom para você e acertar os detalhes em poucos minutos. Se não for o momento, me avise e encerro por aqui.` + fim };
+    // Demais situações: o texto do WhatsApp com abertura e assinatura de e-mail.
+    const corpo = mensagem(d, sit).replace(/^(Bom dia|Boa tarde|Boa noite)[^!\n]*! Aqui é o [^\n]*?\.\s*/, '');
+    return { assunto: sit === 'proposta' ? `Proposta do site da ${emp}` : `Site novo da ${emp}`, corpo: `${oi}\n\n${corpo.trim()}${fim}` };
+  }
+  const emailDe = d => String((d.contato || {}).email || (d.extra || {}).email || '').split(/[;,\s]+/).find(e => /@/.test(e)) || '';
+  // Ponto de ligação com a página de e-mail do hub: se ela definir window.HubEmail.enviar({para, assunto, corpo, empresaId}),
+  // aparece o botão "Enviar pelo e-mail da Overtus". Sem ela, o e-mail abre no programa de e-mail ou é copiado.
+  const hubEmail = () => window.HubEmail && typeof window.HubEmail.enviar === 'function' ? window.HubEmail : null;
+
   /* ---------- quem precisa de atenção ---------- */
   function grupos(docs) {
     const t = hoje(), semana = daqui(7);
-    const atras = [], parados = [], proximos = [];
+    const atras = [], follow = [], parados = [], proximos = [];
     for (const d of docs) {
+      const f = proximoFollow(d);
+      if (f && f.data <= t) { follow.push({ ...d, _f: f }); continue; }
+      if (f && !d.proxData) { if (f.data <= semana) proximos.push({ ...d, _f: f }); continue; }
       if (d.proxData && d.proxData <= t) { atras.push(d); continue; }
       if (d.proxData && d.proxData > t) { if (d.proxData <= semana) proximos.push(d); continue; }
-      const desde = diasDesde(d.statusEm || d.contatoEm || d.atualizadoEm);
+      const seg = d.seguimento || {};
+      const desde = diasDesde(Math.max(seg.f2 || 0, seg.f1 || 0, d.statusEm || d.contatoEm || d.atualizadoEm || 0) || null);
       if (d.status === 'proposta' && (desde == null || desde >= DIAS_PROPOSTA)) parados.push({ ...d, _dias: desde });
       else if (d.status === 'enviado' && (desde == null || desde >= DIAS_LINK)) parados.push({ ...d, _dias: desde });
       else if (d.status === 'conversa' && (desde == null || desde >= DIAS_PROPOSTA)) parados.push({ ...d, _dias: desde });
     }
     atras.sort((a, b) => a.proxData < b.proxData ? -1 : 1);
     parados.sort((a, b) => (b._dias ?? 999) - (a._dias ?? 999));
-    proximos.sort((a, b) => a.proxData < b.proxData ? -1 : 1);
-    return { atras, parados, proximos };
+    follow.sort((a, b) => a._f.data < b._f.data ? -1 : 1);
+    const quando = d => d.proxData || (d._f && d._f.data) || '';
+    proximos.sort((a, b) => quando(a) < quando(b) ? -1 : 1);
+    return { atras, follow, parados, proximos };
   }
   function porque(d, tipo) {
     const t = hoje();
@@ -107,6 +169,12 @@
       const n = diasEntre(d.proxData, t);
       const quando = n <= 0 ? 'hoje' : n === 1 ? 'atrasado 1 dia' : `atrasado ${n} dias`;
       return [d.proxAcao || 'Retorno combinado', quando, n > 0];
+    }
+    if (tipo === 'follow' || (tipo === 'prox' && d._f)) {
+      const o = `${d._f.n}º follow-up da proposta`;
+      if (tipo === 'prox') return [o, ddmm(d._f.data), false];
+      const n = diasEntre(d._f.data, t);
+      return [o, n <= 0 ? 'hoje' : n === 1 ? 'atrasado 1 dia' : `atrasado ${n} dias`, n > 0];
     }
     if (tipo === 'parado') {
       const o = d.status === 'proposta' ? 'Proposta sem resposta' : d.status === 'enviado' ? 'Link enviado sem resposta' : 'Conversa parada';
@@ -149,16 +217,17 @@
   function pintar(el) {
     if (!el || !el.isConnected) return;
     if (!cache) { el.innerHTML = `<div class="sechead"><h2>Hoje</h2></div><div class="empty small">Carregando os retornos…</div>`; return; }
-    const g = grupos(cache), total = g.atras.length + g.parados.length;
-    badge(g.atras.length);
+    const g = grupos(cache), total = g.atras.length + g.follow.length + g.parados.length;
+    badge(g.atras.length + g.follow.length);
     const sec = (titulo, arr, tipo, vazio) => arr.length
       ? `<h3 class="lb-sec">${titulo}<span>${arr.length}</span></h3>${arr.slice(0, 40).map(d => linha(d, tipo)).join('')}`
       : (vazio ? `<p class="lb-vazio">${vazio}</p>` : '');
     el.innerHTML = `<div class="sechead"><h2>Hoje</h2><span>${total ? `${total} para resolver · todas as listas` : 'Todas as listas'}</span></div>
       <div class="lb">` +
       sec('Ligar ou retornar', g.atras, 'atras', 'Nenhum retorno para hoje.') +
+      sec('Follow-up de proposta', g.follow, 'follow', '') +
       sec('Esperando resposta', g.parados, 'parado', '') +
-      sec('Próximos dias', g.proximos, 'prox', g.atras.length || g.parados.length ? '' : 'Ao registrar o resultado de um contato, marque a data do próximo e ele aparece aqui.') +
+      sec('Próximos dias', g.proximos, 'prox', g.atras.length || g.follow.length || g.parados.length ? '' : 'Ao registrar o resultado de um contato, marque a data do próximo e ele aparece aqui.') +
       `</div>`;
   }
   function render(el) {
@@ -178,7 +247,8 @@
     ['naoatendeu', 'Não atendeu', d => ({ status: ['novo', 'produzir', ''].includes(d.status || '') ? 'ligar' : d.status, dias: 1, acao: 'Tentar de novo' }), 'nao_atendeu'],
     ['retornar', 'Pediu para retornar', d => ({ status: d.status === 'novo' ? 'ligar' : d.status, dias: 2, acao: 'Retorno combinado' }), 'atendeu'],
     ['mensagem', 'Mandei mensagem', d => ({ status: ['novo', 'produzir', 'ligar', ''].includes(d.status || '') ? 'enviado' : d.status, dias: DIAS_LINK, acao: 'Ver se respondeu' }), ''],
-    ['proposta', 'Mandei a proposta', () => ({ status: 'proposta', dias: DIAS_PROPOSTA, acao: 'Cobrar resposta da proposta' }), ''],
+    ['follow', 'Mandei o follow-up', d => ({ status: d.status, dias: null, acao: '' }), ''],
+    ['proposta', 'Mandei a proposta', () => ({ status: 'proposta', dias: null, acao: '' }), ''],
     ['fechou', 'Fechou', () => ({ status: 'fechado', dias: null, acao: '' }), ''],
     ['perdido', 'Sem interesse', () => ({ status: 'perdido', dias: null, acao: '' }), ''],
   ];
@@ -189,10 +259,18 @@
     dl.id = 'lbDlg'; dl.className = 'lb-dlg';
     dl.innerHTML = `<form method="dialog" class="lb-f">
       <div class="lb-top"><div><h2 id="lbNome"></h2><p id="lbSub"></p></div><button class="btn sm" value="fechar" type="submit">Fechar</button></div>
-      <section id="lbWaSec"><h3>Mensagem de WhatsApp</h3>
+      <section id="lbWaSec"><h3>Mensagem pronta</h3>
         <div class="lb-sits" id="lbSits"></div>
         <textarea id="lbMsg" rows="6" aria-label="Mensagem"></textarea>
         <div class="lb-row"><a class="btn primary" id="lbWa" target="_blank" rel="noopener">Abrir no WhatsApp</a><button class="btn" type="button" id="lbCopiar">Copiar</button><span class="lb-dica" id="lbWaDica"></span></div>
+        <details class="lb-mail" id="lbMailSec"><summary>E-mail</summary>
+          <div class="lb-cols">
+            <label class="f">Para<input type="text" inputmode="email" id="lbPara" placeholder="e-mail do contato"></label>
+            <label class="f">Assunto<input type="text" id="lbAssunto"></label>
+            <label class="f wide">Texto<textarea id="lbCorpo" rows="8"></textarea></label>
+          </div>
+          <div class="lb-row"><button class="btn primary" type="button" id="lbHubMail" hidden>Enviar pelo e-mail da Overtus</button><a class="btn" id="lbMailto">Abrir no e-mail</a><button class="btn" type="button" id="lbCopiarMail">Copiar e-mail</button><span class="lb-dica" id="lbMailDica"></span></div>
+        </details>
       </section>
       <section><h3>Como foi o contato</h3>
         <div class="lb-sits" id="lbRes"></div>
@@ -218,21 +296,56 @@
       if (d) { $('#lbData').value = d.dataset.d ? daqui(Number(d.dataset.d)) : ''; }
     });
     $('#lbMsg').addEventListener('input', atualizarWa);
+    ['#lbPara', '#lbAssunto', '#lbCorpo'].forEach(s => $(s).addEventListener('input', atualizarMail));
+    $('#lbCopiarMail').addEventListener('click', async () => {
+      const t = `Assunto: ${$('#lbAssunto').value}\n\n${$('#lbCorpo').value}`;
+      try { await navigator.clipboard.writeText(t); } catch { $('#lbCorpo').select(); document.execCommand('copy'); }
+      cfg.toast('E-mail copiado'); depoisDeEnviar('e-mail');
+    });
+    $('#lbMailto').addEventListener('click', () => depoisDeEnviar('e-mail'));
+    // Só envia no clique do João, pela página de e-mail do hub (quando ela existir).
+    $('#lbHubMail').addEventListener('click', async () => {
+      const m = hubEmail(), para = $('#lbPara').value.trim();
+      if (!m) return;
+      if (!/@/.test(para)) { $('#lbMailDica').textContent = 'Coloque o e-mail do contato.'; return; }
+      $('#lbHubMail').disabled = true; $('#lbMailDica').textContent = 'Enviando…';
+      try {
+        await m.enviar({ para, assunto: $('#lbAssunto').value, corpo: $('#lbCorpo').value, empresaId: alvo.d.id });
+        $('#lbMailDica').textContent = 'Enviado.'; cfg.toast('E-mail enviado'); depoisDeEnviar('e-mail');
+      } catch (e) { $('#lbMailDica').textContent = 'Não enviou: ' + (e && e.message || 'erro'); }
+      finally { $('#lbHubMail').disabled = false; }
+    });
     $('#lbCopiar').addEventListener('click', async () => {
       try { await navigator.clipboard.writeText($('#lbMsg').value); cfg.toast('Mensagem copiada'); }
       catch { $('#lbMsg').select(); document.execCommand('copy'); cfg.toast('Mensagem copiada'); }
     });
     // Depois de abrir o WhatsApp, já deixa marcado "Mandei mensagem" para só conferir e salvar.
-    $('#lbWa').addEventListener('click', () => { if (!alvo.res) escolherRes('mensagem'); });
+    $('#lbWa').addEventListener('click', () => depoisDeEnviar('WhatsApp'));
     $('#lbSalvar').addEventListener('click', salvar);
     return dl;
+  }
+  // Depois de abrir o WhatsApp ou o e-mail, já deixa marcado o resultado certo para só conferir e salvar.
+  function depoisDeEnviar(canal) {
+    alvo.canal = canal;
+    if (/^f\d$/.test(alvo.sit || '') && alvo.f) escolherRes('follow');
+    else if (!alvo.res) escolherRes('mensagem');
   }
   function escolherSit(k) {
     const dl = janela();
     alvo.sit = k;
     dl.querySelectorAll('[data-sit]').forEach(b => b.setAttribute('aria-pressed', b.dataset.sit === k));
     dl.querySelector('#lbMsg').value = mensagem(alvo.d, k);
+    const m = email(alvo.d, k);
+    dl.querySelector('#lbAssunto').value = m.assunto;
+    dl.querySelector('#lbCorpo').value = m.corpo;
     atualizarWa();
+    atualizarMail();
+  }
+  function atualizarMail() {
+    const dl = janela(), $ = s => dl.querySelector(s), para = $('#lbPara').value.trim();
+    $('#lbMailto').href = `mailto:${encodeURIComponent(para).replace(/%40/g, '@')}?subject=${encodeURIComponent($('#lbAssunto').value)}&body=${encodeURIComponent($('#lbCorpo').value)}`;
+    $('#lbHubMail').hidden = !hubEmail();
+    $('#lbMailDica').textContent = para ? '' : 'Sem e-mail na ficha: preencha o campo Para.';
   }
   function atualizarWa() {
     const dl = janela(), n = waNumero(alvo.d), a = dl.querySelector('#lbWa');
@@ -252,20 +365,23 @@
   function abrir(d, foco) {
     if (!cfg) return;
     const dl = janela(), $ = s => dl.querySelector(s);
-    alvo = { d, sit: null, res: null };
+    alvo = { d, sit: null, res: null, canal: '', f: proximoFollow(d) };
     $('#lbNome').textContent = d.nome || '';
     const c = d.contato || {};
     $('#lbSub').textContent = [c.nome, c.telefone, d.cidade, SLABEL()[d.status] || 'Novo'].filter(Boolean).join(' · ');
     const fup = d.followup || ((d.enr || {}).script || {}).followup;
-    $('#lbSits').innerHTML = SITUACOES.filter(([k]) => k !== 'script' || fup)
+    $('#lbPara').value = emailDe(d);
+    $('#lbSits').innerHTML = SITUACOES.filter(([k]) => (k !== 'script' || fup) && (!/^f\d$/.test(k) || d.status === 'proposta'))
       .map(([k, l]) => `<button class="chip" type="button" data-sit="${k}">${l}</button>`).join('');
-    $('#lbRes').innerHTML = RESULTADOS.map(([k, l]) => `<button class="chip" type="button" data-res="${k}">${l}</button>`).join('');
+    $('#lbRes').innerHTML = RESULTADOS.filter(([k]) => k !== 'follow' || alvo.f).map(([k, l]) => `<button class="chip" type="button" data-res="${k}">${l}</button>`).join('');
     $('#lbStatus').value = d.status || 'novo';
     $('#lbData').value = d.proxData && d.proxData > hoje() ? d.proxData : '';
     $('#lbAcao').value = d.proxAcao || '';
     $('#lbNota').value = '';
     $('#lbSalvo').textContent = '';
     escolherSit(situacaoDe(d));
+    // Follow-up e e-mail: o bloco de e-mail já vem aberto.
+    $('#lbMailSec').open = !!alvo.f || !!emailDe(d);
     dl.showModal();
     (foco === 'res' ? $('#lbRes .chip') : $('#lbWa')).focus();
     if (foco === 'res') $('#lbRes').scrollIntoView({ block: 'nearest' });
@@ -277,8 +393,12 @@
     const agora = Date.now(), n = new Date();
     const patch = { proxData: data, proxAcao: data ? acao : (acao || ''), contatoEm: agora };
     if (status !== (d.status || 'novo')) { patch.status = status; patch.statusEm = agora; }
+    if (alvo.res === 'follow' && alvo.f) patch.seguimento = { ['f' + alvo.f.n]: agora };
+    if (alvo.res === 'proposta') { patch.proposta = { enviadaEm: agora }; patch.seguimento = { f1: null, f2: null }; }
+    else if (patch.status === 'proposta') { patch.proposta = { enviadaEm: agora }; patch.seguimento = { f1: null, f2: null }; }
     if (r && r[3]) patch.ligacoes = [...(Array.isArray(d.ligacoes) ? d.ligacoes : []), { em: agora, resultado: r[3] }];
-    const texto = [r && r[1], nota].filter(Boolean).join(': ');
+    const rotulo = alvo.res === 'follow' && alvo.f ? `Mandei o ${alvo.f.n}º follow-up${alvo.canal ? ' por ' + alvo.canal : ''}` : r && r[1];
+    const texto = [rotulo, nota].filter(Boolean).join(': ');
     if (texto) {
       const linhaH = `${String(n.getDate()).padStart(2, '0')}/${String(n.getMonth() + 1).padStart(2, '0')}: ${texto}`;
       const h = String((d.contato || {}).historico || '').trim();
@@ -290,7 +410,8 @@
       // Mostra na hora, sem esperar a próxima consulta.
       if (cache) {
         const i = cache.findIndex(x => x.id === d.id);
-        const novo = { ...d, ...patch, status: patch.status || d.status, contato: { ...(d.contato || {}), ...(patch.contato || {}) } };
+        const novo = { ...d, ...patch, status: patch.status || d.status, contato: { ...(d.contato || {}), ...(patch.contato || {}) },
+          proposta: { ...(d.proposta || {}), ...(patch.proposta || {}) }, seguimento: { ...(d.seguimento || {}), ...(patch.seguimento || {}) } };
         const fora = ['fechado', 'perdido'].includes(novo.status) || (!novo.proxData && !['enviado', 'proposta', 'conversa'].includes(novo.status));
         if (i >= 0) { if (fora) cache.splice(i, 1); else cache[i] = novo; } else if (!fora) cache.push(novo);
       }
