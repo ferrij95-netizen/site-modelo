@@ -10,13 +10,22 @@
 - Os ícones de Instagram e Facebook no topo não levam a lugar nenhum.
 - As feiras mostradas param em 2015.
 
+**O apelo (o que o site novo entrega que o atual não entrega):**
+1. **O comprador acha a máquina pelo produto que vai fabricar.** Ele escolhe "tubos", "forros", "telhas", "granulação"... e vê a extrusora certa e a linha montada estação por estação. Hoje ele tem que adivinhar qual página abrir.
+2. **Os 23 modelos com diâmetro e L/D em tabela.** Engenheiro de compra compara modelo em 10 segundos, como nos sites dos fabricantes europeus (Bausano, battenfeld-cincinnati). Passa a mesma confiança de quem concorre com importado.
+3. **Cara de fabricante grande.** Máquina em destaque com as medidas (versão A) ou o vídeo da linha rodando na capa (versão B), no lugar do carrossel antigo com contador "+0".
+4. **Tudo vira orçamento no WhatsApp.** O formulário pergunta "o que você quer produzir?" e manda pronto pro WhatsApp de vendas; cada máquina e cada linha tem botão de orçamento.
+5. **Peças de reposição como fonte de receita**, com destaque próprio na capa (inclusive para máquinas de outros fabricantes).
+
+Frase curta para a ligação: *"Hoje o site mostra a empresa; o novo vende a máquina: o comprador escolhe o produto que vai fabricar e já chega no WhatsApp pedindo orçamento da linha certa."*
+
 ---
 
 **Recepção**
 > "Bom dia! Aqui é o João, da Overtus. Quem aí cuida da parte comercial ou do site da Extrusão Brasil? É rápido: eu montei uma versão nova do site de vocês, já pronta, e queria mandar o link."
 
 **Responsável**
-> "Oi [NOME], aqui é o João, da Overtus. Entrei no site da Extrusão Brasil e vi que os contadores da capa mostram '+0 clientes' e a página de linhas de frente está 'em manutenção'. Montei um site novo, já no ar num link de teste, com todas as extrusoras e os modelos de cada série, as linhas de frente com foto, os vídeos das linhas funcionando, as peças de reposição e o financiamento FINAME. Fiz duas versões pra vocês escolherem. Posso te mandar no WhatsApp pra olhar com calma?"
+> "Oi [NOME], aqui é o João, da Overtus. Entrei no site da Extrusão Brasil e vi que os contadores da capa mostram '+0 clientes' e a página de linhas de frente está 'em manutenção'. Montei um site novo, já no ar num link de teste, com cara de fabricante grande: o cliente escolhe o produto que quer fabricar (tubo, forro, telha, grânulo) e o site mostra a extrusora e a linha completa, com a tabela dos 23 modelos, os vídeos das linhas funcionando e o pedido de orçamento direto no WhatsApp. Fiz duas versões: uma clara e técnica, outra escura com o vídeo da linha na capa. Posso te mandar no WhatsApp pra olhar com calma?"
 
 **Se perguntar o preço**
 > "Pra um site de indústria desse porte fica em torno de R$ 5 mil. Olha o link primeiro; se gostar, te passo a proposta certinha, já com o logo em alta e fotos novas."
@@ -26,4 +35,4 @@
 
 **Pedir no final:** o logo em vetor (o do site é uma imagem pequena, 206 px), os números certos para a capa (anos de mercado, clientes, máquinas entregues), fotos atuais da fábrica e das feiras recentes, e os links de Instagram e Facebook.
 
-**Link:** https://extrusaobrasil.overtus.com.br/ (versões A e B; o site atual está no terceiro cartão para comparar).
+**Link:** https://extrusaobrasil.overtus.com.br/ (versão A "Engenharia" e versão B "Linha em operação"; o site atual está no terceiro cartão para comparar).

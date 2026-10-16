@@ -1,4 +1,4 @@
-// Extrusão Brasil: menu no celular, carrossel da capa (A), linha interativa (B), galeria ampliada, vídeos e formulário pelo WhatsApp.
+// Extrusão Brasil: menu no celular, abas de aplicações, linha interativa (B), galeria ampliada, vídeos e formulário pelo WhatsApp.
 (() => {
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
@@ -6,16 +6,15 @@
   const bt = $('.abre-menu'), menu = $('.menu');
   if (bt && menu) bt.addEventListener('click', () => { const a = menu.classList.toggle('aberto'); bt.setAttribute('aria-expanded', a); });
 
-  // Carrossel da capa (versão A)
-  const car = $('[data-carrossel]');
-  if (car) {
-    const s = $$('.hero-s', car), p = $$('.hero-pts button', car);
-    let i = 0, t;
-    const ir = n => { i = (n + s.length) % s.length; s.forEach((e, k) => e.classList.toggle('on', k === i)); p.forEach((e, k) => e.classList.toggle('on', k === i)); };
-    const auto = () => { clearInterval(t); t = setInterval(() => ir(i + 1), 6000); };
-    p.forEach((b, k) => b.addEventListener('click', () => { ir(k); auto(); }));
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) auto();
-  }
+  // Abas de aplicações: escolha pelo produto final (também abre pela âncora, ex.: #tubos)
+  $$('[data-abas]').forEach(g => {
+    const bs = $$('[role=tab]', g), ps = $$('.apl-p', g);
+    const ir = n => { bs.forEach((b, k) => b.setAttribute('aria-selected', k === n)); ps.forEach((p, k) => p.classList.toggle('on', k === n)); };
+    bs.forEach((b, k) => b.addEventListener('click', () => ir(k)));
+    const ids = (g.dataset.ids || '').split(',');
+    const deHash = () => { const k = ids.indexOf(location.hash.slice(1)); if (k >= 0) { ir(k); g.closest('section').scrollIntoView(); } };
+    addEventListener('hashchange', deHash); deHash();
+  });
 
   // Linha de extrusão interativa (versão B)
   $$('[data-linha]').forEach(l => {
@@ -48,7 +47,7 @@
   $$('.form-zap').forEach(f => f.addEventListener('submit', e => {
     e.preventDefault();
     const d = new FormData(f), l = ['Olá! Vim pelo site da Extrusão Brasil.'];
-    for (const [k, r] of [['nome', 'Nome'], ['email', 'E-mail'], ['fone', 'Telefone'], ['cidade', 'Cidade/UF'], ['msg', 'Mensagem']]) if (d.get(k)) l.push(`${r}: ${d.get(k)}`);
+    for (const [k, r] of [['nome', 'Nome'], ['empresa', 'Empresa'], ['fone', 'Telefone'], ['cidade', 'Cidade/UF'], ['msg', 'Mensagem']]) if (d.get(k)) l.push(`${r}: ${d.get(k)}`);
     open(`${f.dataset.zap}?text=${encodeURIComponent(l.join('\n'))}`, '_blank', 'noopener');
   }));
 })();
