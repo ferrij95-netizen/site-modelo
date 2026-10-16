@@ -7,6 +7,8 @@
   "compatibility_date": "2026-09-01",
   // O wrangler roda o build completo (raiz + clientes/) antes de publicar, seja qual for o comando configurado no painel.
   "build": { "command": "npm run build" },
+  // Mantém as variáveis criadas no painel do Cloudflare a cada publicação (ex.: HOSTINGER_MAIL_TOKEN, se salvo como texto).
+  "keep_vars": true,
   // Endereços no domínio da agência (o domínio precisa estar nesta conta Cloudflare). Um por cliente.
   "routes": [
     { "pattern": "site-modelo.overtus.com.br", "custom_domain": true },

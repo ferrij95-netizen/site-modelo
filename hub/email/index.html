@@ -202,11 +202,13 @@
   }
 
   function semLigacao(e) {
-    const token = e.code === 'sem_token' || e.code === 'token_invalido';
+    const token = e.code === 'sem_token';
+    const recusado = e.code === 'token_invalido';
     $('#app').innerHTML = `<div class="cartao" style="grid-column:1/-1"><div class="aviso">
-      <h2>${token ? 'Falta ligar o e-mail ao hub' : 'O e-mail não respondeu agora'}</h2>
+      <h2>${token ? 'Falta ligar o e-mail ao hub' : recusado ? 'A Hostinger recusou a chave' : 'O e-mail não respondeu agora'}</h2>
       <p>${token
         ? 'O hub ainda não tem a chave da caixa joaovitor@overtus.com.br. Depois que ela for salva no Cloudflare, esta tela passa a mostrar a caixa de entrada.'
+        : recusado ? 'O hub encontrou a chave, mas a Hostinger respondeu que ela não vale para a caixa (' + esc(e.message) + '). Confira se é a mesma chave da Hostinger que funciona hoje.'
         : 'A ligação com a Hostinger falhou (' + esc(e.message) + '). Tente atualizar daqui a pouco.'}</p>
       <p>Enquanto isso, o webmail abre numa aba nova.</p>
       <div class="acoes"><a class="bt pri" href="https://mail.hostinger.com/" target="_blank" rel="noopener">Abrir webmail</a>${token ? '' : '<button class="bt" type="button" onclick="location.reload()">Tentar de novo</button>'}</div>
