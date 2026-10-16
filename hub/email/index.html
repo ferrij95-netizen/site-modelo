@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>E-mail · Overtus Hub</title>
+<link rel="icon" href="/app/favicon-48.png">
+<link rel="manifest" href="/app/manifest.json">
+<!-- E-mail da Overtus (joaovitor@overtus.com.br) dentro do hub: lê e envia pela /api/email/ (src/email.js). Nada é apagado por aqui. -->
+<style>
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-400.woff2) format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-500.woff2) format('woff2'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'General Sans'; src:url(/entrar/fontes/general-sans-600.woff2) format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Fraunces'; src:url(/entrar/fontes/fraunces-latin.woff2) format('woff2'); font-display:swap; }
+  :root {
+    --navy:#182644; --cream:#fef9e1; --orange:#ed9454; --orange-ink:#c26a2c;
+    --sand:#f7f3f0; --panel:#ffffff; --ink:#0c1018; --muted:#6d7074; --line:#ececec; --hover:#f6f4f1; --sel:#eef3f9;
+    --ok:#3d7656; --bad:#b4442c;
+    --shadow:0 20px 40px -30px rgba(12,16,24,.35),0 0 0 1px var(--line);
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark) { :root:not([data-theme="light"]) {
+    --sand:#121b30; --panel:#162039; --ink:#eef0f4; --muted:#9aa3b2; --line:#24304a; --hover:#1b2742; --sel:#1d2a47;
+    --ok:#86c79f; --bad:#f08a72; --orange-ink:#f0a36c;
+    --shadow:0 20px 40px -30px rgba(0,0,0,.7),0 0 0 1px var(--line); color-scheme:dark; } }
+  :root[data-theme="dark"] {
+    --sand:#121b30; --panel:#162039; --ink:#eef0f4; --muted:#9aa3b2; --line:#24304a; --hover:#1b2742; --sel:#1d2a47;
+    --ok:#86c79f; --bad:#f08a72; --orange-ink:#f0a36c;
+    --shadow:0 20px 40px -30px rgba(0,0,0,.7),0 0 0 1px var(--line); color-scheme:dark; }
+  * { box-sizing:border-box; }
+  [hidden] { display:none !important; }
+  html, body { margin:0; }
+  body { background:var(--sand); color:var(--ink); font:15px/1.5 'General Sans', system-ui, sans-serif; letter-spacing:-.01em; -webkit-font-smoothing:antialiased; }
+  h1 { margin:0; font:400 clamp(26px, 4vh, 36px)/1.1 Fraunces, Georgia, serif; letter-spacing:-.6px; }
+  button, input, textarea { font:inherit; color:inherit; }
+  :focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+  .bt { display:inline-flex; align-items:center; gap:8px; border:0; border-radius:999px; padding:9px 16px; cursor:pointer; background:var(--panel); box-shadow:0 0 0 1px var(--line); font-size:14px; font-weight:500; color:var(--ink); text-decoration:none; white-space:nowrap; }
+  .bt:hover { background:var(--hover); }
+  .bt.pri { background:var(--navy); color:var(--cream); box-shadow:none; }
+  .bt.pri:hover { background:#24365e; }
+  .bt.lar { background:var(--orange); color:#280e01; box-shadow:none; }
+  .bt.lar:hover { background:#f1a46b; }
+  .bt:disabled { opacity:.55; cursor:default; }
+  .bt svg, .ic svg { width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+
+  .pagina { display:grid; grid-template-rows:auto minmax(0, 1fr); gap:clamp(10px, 2vh, 18px); padding:clamp(14px, 3vh, 30px) clamp(16px, 3vw, 36px); }
+  .topo { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:12px 24px; }
+  .topo p { margin:4px 0 0; color:var(--muted); font-size:14px; }
+  .acoes { display:flex; gap:8px; flex-wrap:wrap; }
+
+  .app { display:grid; grid-template-columns:190px minmax(280px, 380px) minmax(0, 1fr); gap:clamp(10px, 1.2vw, 16px); min-height:0; }
+  .cartao { background:var(--panel); border-radius:18px; box-shadow:var(--shadow); min-width:0; min-height:0; display:flex; flex-direction:column; overflow:hidden; }
+
+  /* pastas */
+  .pastas { padding:10px; gap:2px; }
+  .pasta { display:flex; align-items:center; gap:10px; width:100%; border:0; background:none; text-align:left; padding:9px 10px; border-radius:10px; cursor:pointer; font-size:14px; }
+  .pasta:hover { background:var(--hover); }
+  .pasta[aria-current="true"] { background:var(--sel); font-weight:500; }
+  .pasta .n { margin-left:auto; font-size:12px; font-weight:600; color:var(--orange-ink); font-variant-numeric:tabular-nums; }
+
+  /* lista */
+  .lista .busca { padding:10px; border-bottom:1px solid var(--line); }
+  .busca input { width:100%; border:1px solid var(--line); background:var(--sand); border-radius:10px; padding:8px 12px; font-size:14px; }
+  .itens { overflow:auto; flex:1; min-height:0; }
+  .item { display:grid; grid-template-columns:minmax(0, 1fr) auto; gap:2px 10px; width:100%; border:0; border-bottom:1px solid var(--line); background:none; text-align:left; padding:11px 14px; cursor:pointer; }
+  .item:hover { background:var(--hover); }
+  .item[aria-current="true"] { background:var(--sel); }
+  .item .de { font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .item .dt { font-size:12px; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .item .as { grid-column:1 / -1; font-size:13.5px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .item.nova .de, .item.nova .as { font-weight:600; color:var(--ink); }
+  .item.nova .de::before { content:''; display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--orange); margin-right:7px; vertical-align:1px; }
+  .rodape { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:8px 12px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); }
+  .rodape button { border:0; background:none; cursor:pointer; color:var(--ink); padding:4px 8px; border-radius:8px; }
+  .rodape button:hover { background:var(--hover); }
+  .rodape button:disabled { opacity:.35; cursor:default; }
+  .vazio { padding:28px 18px; color:var(--muted); font-size:14px; text-align:center; }
+
+  /* leitura */
+  .leitor .cab { padding:clamp(12px, 2vh, 20px) clamp(16px, 2vw, 24px); border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:6px; }
+  .leitor h2 { margin:0; font:400 clamp(19px, 2.8vh, 24px)/1.2 Fraunces, Georgia, serif; letter-spacing:-.3px; }
+  .meta { display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 16px; font-size:13.5px; color:var(--muted); }
+  .meta b { color:var(--ink); font-weight:500; }
+  .barra { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; }
+  .anexos { display:flex; gap:6px; flex-wrap:wrap; }
+  .anexos a { font-size:12.5px; padding:4px 10px; border-radius:999px; background:var(--sand); color:var(--ink); text-decoration:none; box-shadow:0 0 0 1px var(--line); }
+  .corpo { flex:1; min-height:0; overflow:auto; }
+  .corpo iframe { display:block; width:100%; height:100%; border:0; background:#fff; }
+  .corpo pre { margin:0; padding:18px 24px; white-space:pre-wrap; word-wrap:break-word; font:14.5px/1.6 'General Sans', system-ui, sans-serif; }
+  .voltar { display:none; align-self:flex-start; }
+
+  /* escrever */
+  .form { display:flex; flex-direction:column; min-height:0; flex:1; }
+  .form .campos { padding:clamp(12px, 2vh, 18px) clamp(16px, 2vw, 24px) 0; display:flex; flex-direction:column; gap:8px; }
+  .form label { display:grid; grid-template-columns:70px minmax(0, 1fr); align-items:center; gap:8px; font-size:13.5px; color:var(--muted); }
+  .form input { border:0; border-bottom:1px solid var(--line); background:none; padding:7px 2px; font-size:14.5px; color:var(--ink); }
+  .form input:focus { outline:none; border-color:var(--orange); }
+  .form textarea { flex:1; min-height:160px; margin:12px clamp(16px, 2vw, 24px); border:1px solid var(--line); border-radius:12px; padding:14px; resize:none; background:var(--sand); font-size:14.5px; line-height:1.6; }
+  .form .fim { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:0 clamp(16px, 2vw, 24px) clamp(12px, 2vh, 18px); font-size:13px; color:var(--muted); }
+  .erro { color:var(--bad); }
+  .okmsg { color:var(--ok); }
+
+  /* confirmação de envio */
+  dialog { border:0; border-radius:18px; padding:22px 24px; max-width:440px; width:calc(100% - 32px); background:var(--panel); color:var(--ink); box-shadow:0 30px 60px -20px rgba(0,0,0,.45); }
+  dialog::backdrop { background:rgba(12,16,24,.45); }
+  dialog h3 { margin:0 0 8px; font:400 22px/1.2 Fraunces, Georgia, serif; }
+  dialog p { margin:0 0 6px; font-size:14px; color:var(--muted); word-break:break-word; }
+  dialog p b { color:var(--ink); font-weight:500; }
+  dialog .acoes { justify-content:flex-end; margin-top:16px; }
+
+  /* sem ligação com a API */
+  .aviso { max-width:560px; margin:auto; padding:28px; display:flex; flex-direction:column; gap:12px; }
+  .aviso h2 { margin:0; font:400 24px/1.2 Fraunces, Georgia, serif; }
+  .aviso p { margin:0; color:var(--muted); }
+
+  @media (min-width:901px) {
+    html, body { height:100%; overflow:hidden; }
+    .pagina { height:100dvh; }
+  }
+  @media (max-width:1100px) and (min-width:901px) {
+    .app { grid-template-columns:minmax(260px, 340px) minmax(0, 1fr); }
+    .pastas { display:none !important; }
+    .seletor { display:flex !important; }
+  }
+  .seletor { display:none; gap:6px; overflow-x:auto; padding:10px; border-bottom:1px solid var(--line); }
+  .seletor button { border:0; border-radius:999px; padding:5px 12px; background:var(--sand); cursor:pointer; font-size:13px; white-space:nowrap; }
+  .seletor button[aria-current="true"] { background:var(--navy); color:var(--cream); }
+  @media (max-width:900px) {
+    .app { grid-template-columns:minmax(0, 1fr); }
+    .pastas { display:none !important; }
+    .seletor { display:flex !important; }
+    .lista { height:calc(100dvh - 190px); }
+    .app.lendo .lista { display:none; }
+    .app:not(.lendo) .leitor { display:none; }
+    .leitor { min-height:calc(100dvh - 190px); }
+    .voltar { display:inline-flex; }
+  }
+</style>
+</head>
+<body>
+<script src="/menu/menu.js"></script>
+<main class="pagina">
+  <header class="topo">
+    <div>
+      <h1>E-mail</h1>
+      <p id="endereco">joaovitor@overtus.com.br</p>
+    </div>
+    <div class="acoes">
+      <button class="bt lar" type="button" id="novo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Escrever</button>
+      <button class="bt" type="button" id="atualizar" title="Buscar e-mails novos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/></svg>Atualizar</button>
+      <a class="bt" href="https://mail.hostinger.com/" target="_blank" rel="noopener" title="Abrir o webmail da Hostinger numa aba nova"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>Webmail</a>
+    </div>
+  </header>
+
+  <section class="app" id="app">
+    <nav class="cartao pastas" id="pastas" aria-label="Pastas"></nav>
+    <section class="cartao lista" aria-label="Mensagens">
+      <div class="seletor" id="seletor"></div>
+      <form class="busca" id="buscaForm" role="search"><input type="search" id="q" placeholder="Buscar por assunto, nome ou texto" aria-label="Buscar e-mails"></form>
+      <div class="itens" id="itens"><div class="vazio">Carregando…</div></div>
+      <div class="rodape"><span id="contagem"></span><span><button type="button" id="ant" aria-label="Página anterior">‹</button><button type="button" id="prox" aria-label="Próxima página">›</button></span></div>
+    </section>
+    <section class="cartao leitor" id="leitor" aria-live="polite"><div class="vazio" style="margin:auto">Escolha uma mensagem para ler.</div></section>
+  </section>
+</main>
+
+<dialog id="confirmar">
+  <h3>Enviar este e-mail?</h3>
+  <p>Para: <b id="cPara"></b></p>
+  <p id="cCcL">Cópia: <b id="cCc"></b></p>
+  <p>Assunto: <b id="cAssunto"></b></p>
+  <p>Depois de enviado não dá para desfazer.</p>
+  <div class="acoes">
+    <button class="bt" type="button" id="cNao">Voltar e revisar</button>
+    <button class="bt pri" type="button" id="cSim">Enviar agora</button>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+  const NOMES = { INBOX:'Caixa de entrada', 'INBOX.Sent':'Enviados', 'INBOX.Drafts':'Rascunhos', 'INBOX.Junk':'Spam', 'INBOX.Trash':'Lixeira' };
+  const ICONES = {
+    INBOX:'<path d="M4 13h4l1.5 2.5h5L16 13h4M4 13l2.5-7h11L20 13v6H4z"/>',
+    'INBOX.Sent':'<path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/>',
+    'INBOX.Drafts':'<path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/>',
+    'INBOX.Junk':'<circle cx="12" cy="12" r="8"/><path d="M6.5 6.5l11 11"/>',
+    'INBOX.Trash':'<path d="M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13"/>',
+  };
+  const ORDEM = ['INBOX', 'INBOX.Sent', 'INBOX.Drafts', 'INBOX.Junk', 'INBOX.Trash'];
+  const nomePasta = p => NOMES[p.path] || p.name || p.path;
+  const st = { pasta:'INBOX', pagina:1, q:'', pastas:[], lista:[], pag:null, aberta:null };
+
+  async function chamar(caminho, init) {
+    const r = await fetch(caminho, { credentials:'same-origin', ...init });
+    if (r.status === 401) { location.href = '/entrar/?volta=' + encodeURIComponent(location.pathname); throw new Error('sessão'); }
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) { const e = new Error(d.erro || 'Erro ' + r.status); e.code = d.code; throw e; }
+    return d;
+  }
+
+  function semLigacao(e) {
+    const token = e.code === 'sem_token' || e.code === 'token_invalido';
+    $('#app').innerHTML = `<div class="cartao" style="grid-column:1/-1"><div class="aviso">
+      <h2>${token ? 'Falta ligar o e-mail ao hub' : 'O e-mail não respondeu agora'}</h2>
+      <p>${token
+        ? 'O hub ainda não tem a chave da caixa joaovitor@overtus.com.br. Depois que ela for salva no Cloudflare, esta tela passa a mostrar a caixa de entrada.'
+        : 'A ligação com a Hostinger falhou (' + esc(e.message) + '). Tente atualizar daqui a pouco.'}</p>
+      <p>Enquanto isso, o webmail abre numa aba nova.</p>
+      <div class="acoes"><a class="bt pri" href="https://mail.hostinger.com/" target="_blank" rel="noopener">Abrir webmail</a>${token ? '' : '<button class="bt" type="button" onclick="location.reload()">Tentar de novo</button>'}</div>
+    </div></div>`;
+  }
+
+  function quando(iso) {
+    const d = new Date(iso), h = new Date();
+    if (isNaN(d)) return '';
+    if (d.toDateString() === h.toDateString()) return d.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' });
+    return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'short', ...(d.getFullYear() !== h.getFullYear() ? { year:'numeric' } : {}) });
+  }
+  const pessoa = a => a ? (a.name || a.address) : '';
+  const pessoas = l => (l || []).map(a => a.name ? `${a.name} <${a.address}>` : a.address).join(', ');
+
+  // ---------- pastas ----------
+  async function carregarPastas() {
+    const d = await chamar('/api/email/pastas');
+    if (d.caixa) $('#endereco').textContent = d.caixa;
+    st.pastas = d.pastas.slice().sort((a, b) => (ORDEM.indexOf(a.path) + 1 || 99) - (ORDEM.indexOf(b.path) + 1 || 99));
+    desenharPastas();
+  }
+  function desenharPastas() {
+    $('#pastas').innerHTML = st.pastas.map(p => `<button class="pasta" type="button" data-p="${esc(p.path)}" aria-current="${p.path === st.pasta}">
+      <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONES[p.path] || '<path d="M3 7h6l2 2h10v10H3z"/>'}</svg></span>${esc(nomePasta(p))}
+      ${p.unreadCount && p.path !== 'INBOX.Sent' ? `<span class="n">${p.unreadCount}</span>` : ''}</button>`).join('');
+    $('#seletor').innerHTML = st.pastas.map(p => `<button type="button" data-p="${esc(p.path)}" aria-current="${p.path === st.pasta}">${esc(nomePasta(p))}${p.unreadCount && p.path !== 'INBOX.Sent' ? ' · ' + p.unreadCount : ''}</button>`).join('');
+  }
+  document.addEventListener('click', ev => {
+    const b = ev.target.closest('[data-p]');
+    if (!b) return;
+    st.pasta = b.dataset.p; st.pagina = 1; st.q = ''; $('#q').value = '';
+    desenharPastas(); carregarLista();
+  });
+
+  // ---------- lista ----------
+  async function carregarLista() {
+    $('#itens').innerHTML = '<div class="vazio">Carregando…</div>';
+    const qs = new URLSearchParams({ pasta:st.pasta, pagina:st.pagina });
+    if (st.q) qs.set('q', st.q);
+    const d = await chamar('/api/email/mensagens?' + qs);
+    st.lista = d.mensagens; st.pag = d.paginacao;
+    desenharLista();
+  }
+  function desenharLista() {
+    const enviados = st.pasta === 'INBOX.Sent' || st.pasta === 'INBOX.Drafts';
+    $('#itens').innerHTML = st.lista.length ? st.lista.map(m => `<button class="item${m.unseen ? ' nova' : ''}" type="button" data-uid="${m.uid}" aria-current="${st.aberta?.uid === m.uid}">
+      <span class="de">${esc(enviados ? 'Para: ' + (m.to || []).map(pessoa).join(', ') : pessoa(m.from)) || '(sem remetente)'}</span><span class="dt">${quando(m.date)}</span>
+      <span class="as">${m.attachments?.some(a => !a.inline) ? '📎 ' : ''}${esc(m.subject || '(sem assunto)')}</span></button>`).join('')
+      : `<div class="vazio">${st.q ? 'Nada encontrado para essa busca.' : 'Nenhuma mensagem nesta pasta.'}</div>`;
+    const p = st.pag;
+    $('#contagem').textContent = p ? (p.total ? `${(p.page - 1) * p.perPage + 1}–${Math.min(p.page * p.perPage, p.total)} de ${p.total}` : '0 mensagens') : '';
+    $('#ant').disabled = !p || p.page <= 1;
+    $('#prox').disabled = !p || p.page >= p.totalPages;
+  }
+  $('#ant').onclick = () => { st.pagina--; carregarLista().catch(erroLista); };
+  $('#prox').onclick = () => { st.pagina++; carregarLista().catch(erroLista); };
+  $('#buscaForm').onsubmit = ev => { ev.preventDefault(); st.q = $('#q').value.trim(); st.pagina = 1; carregarLista().catch(erroLista); };
+  $('#q').addEventListener('search', () => { if (!$('#q').value && st.q) { st.q = ''; carregarLista().catch(erroLista); } });
+  const erroLista = e => { $('#itens').innerHTML = `<div class="vazio erro">${esc(e.message)}</div>`; };
+  $('#itens').addEventListener('click', ev => { const b = ev.target.closest('[data-uid]'); if (b) abrir(+b.dataset.uid); });
+
+  // ---------- leitura ----------
+  // O HTML do e-mail roda num iframe isolado, sem scripts e sem acesso ao hub; links abrem em aba nova.
+  function emIframe(html) {
+    const csp = "default-src 'none'; img-src https: http: data:; style-src 'unsafe-inline' https:; font-src https: data:";
+    return `<!doctype html><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="${csp}"><base target="_blank">
+      <style>body{margin:0;padding:18px 24px;font:14.5px/1.6 system-ui,sans-serif;color:#0c1018;word-wrap:break-word}img{max-width:100%;height:auto}</style>${html}`;
+  }
+  async function abrir(uid) {
+    $('#app').classList.add('lendo');
+    $('#leitor').innerHTML = '<div class="vazio" style="margin:auto">Abrindo…</div>';
+    try {
+      const d = await chamar(`/api/email/mensagem?pasta=${encodeURIComponent(st.pasta)}&uid=${uid}`);
+      const m = d.mensagem;
+      st.aberta = { ...m, texto:d.texto, pasta:st.pasta };
+      const item = st.lista.find(x => x.uid === uid);
+      if (item && item.unseen) {
+        item.unseen = false;
+        const p = st.pastas.find(x => x.path === st.pasta);
+        if (p && p.unreadCount) p.unreadCount--;
+        desenharPastas();
+      }
+      desenharLista();
+      const anexos = (m.attachments || []).filter(a => !a.inline);
+      $('#leitor').innerHTML = `<div class="cab">
+          <button class="bt voltar" type="button" id="voltar">‹ Voltar</button>
+          <h2>${esc(m.subject || '(sem assunto)')}</h2>
+          <div class="meta"><span>De: <b>${esc(pessoas([m.from].filter(Boolean)))}</b></span><span>${esc(new Date(m.date).toLocaleString('pt-BR', { dateStyle:'medium', timeStyle:'short' }))}</span></div>
+          ${m.to?.length || m.cc?.length ? `<div class="meta"><span>${m.to?.length ? 'Para: ' + esc(pessoas(m.to)) : ''}${m.cc?.length ? ' · Cópia: ' + esc(pessoas(m.cc)) : ''}</span></div>` : ''}
+          ${anexos.length ? `<div class="anexos">${anexos.map(a => `<a href="/api/email/anexo?pasta=${encodeURIComponent(st.pasta)}&uid=${m.uid}&id=${encodeURIComponent(a.id)}&nome=${encodeURIComponent(a.filename || 'anexo')}">📎 ${esc(a.filename || 'anexo')} <small>${Math.max(1, Math.round(a.sizeBytes / 1024))} KB</small></a>`).join('')}</div>` : ''}
+          <div class="barra">
+            <button class="bt pri" type="button" id="responder"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8L4 13l6 5M4 13h11a5 5 0 0 1 5 5"/></svg>Responder</button>
+            ${(m.to?.length || 0) + (m.cc?.length || 0) > 1 ? '<button class="bt" type="button" id="responderTodos">Responder a todos</button>' : ''}
+            <button class="bt" type="button" id="encaminhar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8l6 5-6 5M20 13H9a5 5 0 0 0-5 5"/></svg>Encaminhar</button>
+          </div>
+        </div>
+        <div class="corpo">${d.html ? '<iframe sandbox="allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer" title="Conteúdo do e-mail"></iframe>' : `<pre>${esc(d.texto || '(mensagem sem texto)')}</pre>`}</div>`;
+      if (d.html) $('#leitor iframe').srcdoc = emIframe(d.html);
+      $('#voltar').onclick = () => $('#app').classList.remove('lendo');
+      $('#responder').onclick = () => escrever('responder');
+      if ($('#responderTodos')) $('#responderTodos').onclick = () => escrever('todos');
+      $('#encaminhar').onclick = () => escrever('encaminhar');
+    } catch (e) {
+      $('#leitor').innerHTML = `<div class="vazio erro" style="margin:auto">${esc(e.message)}</div>`;
+    }
+  }
+
+  // ---------- escrever / responder ----------
+  function citar(m) {
+    const quem = pessoas([m.from].filter(Boolean));
+    const dt = new Date(m.date).toLocaleString('pt-BR', { dateStyle:'short', timeStyle:'short' });
+    return `\n\n\nEm ${dt}, ${quem} escreveu:\n` + (m.texto || '').split('\n').map(l => '> ' + l).join('\n');
+  }
+  function escrever(modo) {
+    const m = st.aberta;
+    const eu = ($('#endereco').textContent || '').toLowerCase();
+    let para = '', cc = '', assunto = '', texto = '', respondendo = null;
+    if (m && (modo === 'responder' || modo === 'todos')) {
+      para = m.from?.address || '';
+      if (modo === 'todos') {
+        const outros = [...(m.to || []), ...(m.cc || [])].map(a => a.address).filter(a => a && a.toLowerCase() !== eu && a !== para);
+        cc = [...new Set(outros)].join(', ');
+      }
+      assunto = /^re:/i.test(m.subject || '') ? m.subject : 'Re: ' + (m.subject || '');
+      texto = citar(m);
+      respondendo = { pasta:m.pasta, uid:m.uid };
+    } else if (m && modo === 'encaminhar') {
+      assunto = /^(enc|fwd?):/i.test(m.subject || '') ? m.subject : 'Enc: ' + (m.subject || '');
+      texto = `\n\n\n---------- Mensagem encaminhada ----------\nDe: ${pessoas([m.from].filter(Boolean))}\nData: ${new Date(m.date).toLocaleString('pt-BR')}\nAssunto: ${m.subject || ''}\nPara: ${pessoas(m.to)}\n\n${m.texto || ''}`;
+    }
+    $('#app').classList.add('lendo');
+    $('#leitor').innerHTML = `<form class="form" id="form" novalidate>
+      <div class="cab" style="border-bottom:0;padding-bottom:0"><button class="bt voltar" type="button" id="voltar">‹ Voltar</button>
+        <h2>${respondendo ? 'Responder' : modo === 'encaminhar' ? 'Encaminhar' : 'Novo e-mail'}</h2></div>
+      <div class="campos">
+        <label>Para<input id="fPara" type="text" inputmode="email" autocomplete="email" value="${esc(para)}" placeholder="nome@empresa.com.br"></label>
+        <label>Cópia<input id="fCc" type="text" inputmode="email" value="${esc(cc)}" placeholder="opcional"></label>
+        <label>Assunto<input id="fAssunto" type="text" value="${esc(assunto)}"></label>
+      </div>
+      <textarea id="fTexto" aria-label="Texto do e-mail" placeholder="Escreva a mensagem"></textarea>
+      <div class="fim"><span id="fMsg">Sai como joaovitor@overtus.com.br.</span>
+        <span class="acoes"><button class="bt" type="button" id="descartar">Descartar</button><button class="bt pri" type="submit" id="enviar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/></svg>Enviar</button></span></div>
+    </form>`;
+    const ta = $('#fTexto');
+    ta.value = texto;
+    (para ? ta : $('#fPara')).focus();
+    if (para) ta.setSelectionRange(0, 0);
+    const fechar = () => { if (st.aberta) abrir(st.aberta.uid); else { $('#app').classList.remove('lendo'); $('#leitor').innerHTML = '<div class="vazio" style="margin:auto">Escolha uma mensagem para ler.</div>'; } };
+    $('#voltar').onclick = fechar;
+    $('#descartar').onclick = () => { if (ta.value.trim() === texto.trim() || confirm('Descartar este e-mail?')) fechar(); };
+    $('#form').onsubmit = ev => {
+      ev.preventDefault();
+      const dados = { para:$('#fPara').value.trim(), cc:$('#fCc').value.trim(), assunto:$('#fAssunto').value.trim(), texto:ta.value, respondendo };
+      const okEmail = s => s.split(/[,;\s]+/).filter(Boolean).every(e => /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(e));
+      if (!dados.para) return aviso('Falta o destinatário.', true);
+      if (!okEmail(dados.para) || (dados.cc && !okEmail(dados.cc))) return aviso('Confira os endereços de e-mail.', true);
+      if (!dados.assunto && !confirm('Enviar sem assunto?')) return;
+      $('#cPara').textContent = dados.para;
+      $('#cCc').textContent = dados.cc; $('#cCcL').hidden = !dados.cc;
+      $('#cAssunto').textContent = dados.assunto || '(sem assunto)';
+      $('#confirmar').showModal();
+      $('#cNao').onclick = () => $('#confirmar').close();
+      $('#cSim').onclick = async () => {
+        $('#confirmar').close();
+        $('#enviar').disabled = true; aviso('Enviando…');
+        try {
+          await chamar('/api/email/enviar', { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(dados) });
+          $('#leitor').innerHTML = `<div class="aviso"><h2>Enviado</h2><p>O e-mail para ${esc(dados.para)} saiu da caixa joaovitor@overtus.com.br.</p><div class="acoes"><button class="bt" type="button" id="okVolta">Voltar</button></div></div>`;
+          $('#okVolta').onclick = fechar;
+          if (st.pasta === 'INBOX.Sent') carregarLista().catch(erroLista);
+        } catch (e) {
+          $('#enviar').disabled = false; aviso('Não foi enviado: ' + e.message, true);
+        }
+      };
+    };
+  }
+  function aviso(t, erro) { const s = $('#fMsg'); if (s) { s.textContent = t; s.className = erro ? 'erro' : ''; } }
+  $('#novo').onclick = () => { const a = st.aberta; st.aberta = null; escrever('novo'); st.aberta = a; };
+  $('#atualizar').onclick = () => Promise.all([carregarPastas(), carregarLista()]).catch(erroLista);
+
+  carregarPastas().then(carregarLista).catch(semLigacao);
+})();
+</script>
+</body>
+</html>
