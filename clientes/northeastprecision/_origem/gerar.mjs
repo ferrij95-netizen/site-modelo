@@ -6,7 +6,7 @@ import { gerarVersao, nomesVersao } from './paginas.mjs';
 import { empresa as E } from './conteudo.mjs';
 
 const pub = path.join(path.dirname(new URL(import.meta.url).pathname), '../public');
-for (const v of ['a', 'b']) {
+for (const v of ['a', 'b', 'c']) {
   const paginas = gerarVersao(v);
   fs.rmSync(path.join(pub, v), { recursive: true, force: true });
   for (const [slug, html] of Object.entries(paginas)) {
@@ -16,6 +16,9 @@ for (const v of ['a', 'b']) {
   }
   console.log(`northeastprecision: versão ${v.toUpperCase()}, ${Object.keys(paginas).length} páginas`);
 }
+
+// Kit de apresentação compartilhado (molduras e animações): a fonte fica em componentes/apresentacao/ na raiz do repositório.
+for (const f of ['apresenta.css', 'apresenta.js']) fs.copyFileSync(path.join(pub, '../../../componentes/apresentacao', f), path.join(pub, 'assets', f));
 
 const desc = 'Two versions of the new North East Precision CNC website to choose from: Precision and Lights-out.';
 const cartao = (v, txt) => `<a class="versao" href="/${v}/"><img src="/assets/versao-${v}.jpg" alt="Version ${v.toUpperCase()} preview" loading="lazy"><span><b>Version ${v.toUpperCase()} · ${nomesVersao[v]}</b>${txt}</span></a>`;

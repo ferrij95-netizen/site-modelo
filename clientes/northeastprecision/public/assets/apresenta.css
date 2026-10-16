@@ -1,0 +1,92 @@
+/* Overtus · kit de apresentação (molduras de aparelho + animações ao rolar). Sem dependências; funciona com apresenta.js.
+   Cores pelas variáveis --ap-cor (destaque) e --ap-tinta (texto escuro). Quem prefere menos movimento vê tudo parado e visível. */
+:root{--ap-cor:#0994b0;--ap-tinta:#121212;--ap-ease:cubic-bezier(.16,1,.3,1)}
+
+/* ---------- revelar ao rolar: data-rev="" | "esq" | "dir" | "zoom" | "cortina" | "baixo" ---------- */
+.ap-js [data-rev]{opacity:0;transform:translateY(42px);transition:opacity .9s var(--ap-ease),transform 1.1s var(--ap-ease),clip-path 1.2s var(--ap-ease);transition-delay:var(--ap-d,0ms);will-change:opacity,transform}
+.ap-js [data-rev=esq]{transform:translateX(-60px)}.ap-js [data-rev=dir]{transform:translateX(60px)}.ap-js [data-rev=zoom]{transform:scale(.88)}.ap-js [data-rev=baixo]{transform:translateY(-36px)}
+.ap-js [data-rev].ap-vis{opacity:1;transform:none}
+/* cortina: o conteúdo de dentro se revela de cima para baixo (o recorte fica no filho para o observador enxergar o bloco) */
+.ap-js [data-rev=cortina]{opacity:1;transform:none}
+.ap-js [data-rev=cortina]>*{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ap-ease) var(--ap-d,0ms)}
+.ap-js [data-rev=cortina].ap-vis>*{clip-path:inset(0 0 0 0)}
+
+/* ---------- título palavra por palavra: data-palavras ---------- */
+.ap-p{color:inherit;display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.ap-p>span{color:inherit;display:inline-block;transform:translateY(105%);transition:transform 1s var(--ap-ease);transition-delay:calc(var(--ap-d,0ms) + var(--i) * 70ms)}
+.ap-vis .ap-p>span,.ap-vis.ap-p>span{transform:none}
+
+/* ---------- slides em tela cheia: data-slide="Nome" ---------- */
+[data-slide]{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;scroll-margin-top:var(--ap-topo,0px)}
+@media(min-width:900px) and (hover:hover){html.ap-snap{scroll-snap-type:y proximity}html.ap-snap [data-slide]{scroll-snap-align:start}}
+.ap-pontos{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:12px;list-style:none;margin:0;padding:0}
+.ap-pontos a{display:flex;align-items:center;justify-content:flex-end;gap:10px;text-decoration:none;color:var(--ap-pontos-cor,#fff);font:600 12px/1 var(--h,system-ui);letter-spacing:.08em;text-transform:uppercase}
+.ap-pontos a span{opacity:0;transform:translateX(6px);transition:.3s;background:rgba(12,12,12,.75);color:#fff;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.ap-pontos a i{width:10px;height:10px;border-radius:50%;border:2px solid currentColor;transition:.3s;flex:none;mix-blend-mode:difference}
+.ap-pontos a:hover span,.ap-pontos a:focus-visible span{opacity:1;transform:none}
+.ap-pontos a[aria-current] i{background:var(--ap-cor);border-color:var(--ap-cor);transform:scale(1.35);mix-blend-mode:normal}
+.ap-barra{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(var(--ap-prog,0));background:var(--ap-cor);z-index:60;pointer-events:none}
+@media(max-width:899px){.ap-pontos{display:none}}
+
+/* ---------- contador: data-conta (anima os números do texto, mantém vírgulas, +, /, –); data-conta-de="1950" muda o ponto de partida ---------- */
+[data-conta]{font-variant-numeric:tabular-nums}
+
+/* ---------- etapas com linha que enche ao rolar: data-etapas + filhos .ap-etapa ---------- */
+[data-etapas]{position:relative;--ap-linha:0}
+.ap-trilho{position:absolute;background:rgba(127,127,127,.25);overflow:hidden;border-radius:2px}
+.ap-trilho::after{content:'';position:absolute;inset:0;background:var(--ap-cor);transform-origin:0 0;transform:scaleX(var(--ap-linha))}
+.ap-trilho.vertical::after{transform:scaleY(var(--ap-linha))}
+.ap-etapa{transition:opacity .5s,transform .6s var(--ap-ease)}.ap-js [data-etapas] .ap-etapa{opacity:.35}.ap-js [data-etapas] .ap-etapa.ap-on{opacity:1}
+
+/* ---------- troca de imagem fixa enquanto o texto rola: data-troca, .ap-troca-midia > *, .ap-troca-passo ---------- */
+.ap-troca-midia{position:sticky;top:calc(var(--ap-topo,0px) + 6vh);height:min(76vh,680px)}
+.ap-troca-midia>*{position:absolute;inset:0;opacity:0;transform:scale(1.06);transition:opacity .8s,transform 1.4s var(--ap-ease)}
+.ap-troca-midia>.ap-on{opacity:1;transform:none}
+.ap-troca-passo{min-height:70vh;display:flex;flex-direction:column;justify-content:center;transition:opacity .5s}.ap-js .ap-troca-passo{opacity:.25}.ap-js .ap-troca-passo.ap-on{opacity:1}
+
+/* ---------- paralaxe e foto que se aproxima ---------- */
+[data-paralaxe]{will-change:transform}
+.ap-kenburns{animation:ap-kb 22s ease-out both}@keyframes ap-kb{from{transform:scale(1.18)}to{transform:scale(1)}}
+.ap-rolar-dica{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:26px;height:42px;border:2px solid rgba(255,255,255,.6);border-radius:14px}
+.ap-rolar-dica::after{content:'';position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:ap-dica 1.8s infinite}
+@keyframes ap-dica{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+
+/* ---------- molduras de aparelho ---------- */
+/* <div class="mk mk-notebook"><div class="mk-tela"><div class="mk-vis">conteúdo (img, vídeo, iframe ou HTML)</div></div><div class="mk-base"></div></div> */
+.mk{position:relative;margin:0}
+.mk-vis{position:relative;overflow:hidden;background:#fff}
+.mk-vis>img,.mk-vis>video,.mk-vis>iframe{width:100%;height:100%;object-fit:cover;object-position:top;border:0;display:block}
+.mk-notebook{width:100%;max-width:var(--mk-larg,880px);padding:0 6%}
+.mk-notebook .mk-tela{background:#0e0f11;border-radius:18px 18px 0 0;padding:2.4% 2.4% 2.8%;box-shadow:inset 0 0 0 1.5px #3a3d42,0 40px 80px -30px rgba(0,0,0,.55);position:relative;transform-origin:50% 100%}
+.mk-notebook .mk-tela::before{content:'';position:absolute;top:1%;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#2b2e33}
+.mk-notebook .mk-vis{aspect-ratio:16/10;border-radius:4px}
+.mk-notebook .mk-base{height:0;padding-bottom:3.4%;margin:0 -7%;background:linear-gradient(180deg,#e4e7ea,#b7bdc2 55%,#8d9398);border-radius:2px 2px 18px 18px/2px 2px 60% 60%;position:relative;box-shadow:0 30px 40px -24px rgba(0,0,0,.5)}
+.mk-notebook .mk-base::before{content:'';position:absolute;left:50%;top:0;width:15%;height:38%;margin-left:-7.5%;background:#a3a9ae;border-radius:0 0 10px 10px}
+/* <div class="mk mk-celular"><div class="mk-vis">…</div></div> */
+.mk-celular{width:var(--mk-larg,290px);max-width:100%;padding:11px;border-radius:48px;background:linear-gradient(145deg,#2a2c30,#0d0e10);box-shadow:inset 0 0 0 2px #45484d,0 40px 70px -26px rgba(0,0,0,.6)}
+.mk-celular .mk-vis{aspect-ratio:9/19.5;border-radius:38px}
+.mk-celular::before{content:'';position:absolute;top:22px;left:50%;width:30%;height:24px;margin-left:-15%;border-radius:999px;background:#000;z-index:2}
+.mk-celular::after{content:'';position:absolute;right:-3px;top:24%;width:3px;height:12%;border-radius:0 3px 3px 0;background:#2a2c30}
+/* <div class="mk mk-janela" data-url="site.com"><div class="mk-vis">…</div></div> */
+.mk-janela{border-radius:14px;overflow:hidden;background:#f1f3f4;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 40px 80px -30px rgba(0,0,0,.45)}
+.mk-janela::before{content:attr(data-url);display:block;height:38px;line-height:24px;padding:7px 14px 7px 72px;font:12px/24px system-ui;color:#5f6368;background:radial-gradient(circle at 18px 19px,#ff5f57 5px,transparent 6px),radial-gradient(circle at 36px 19px,#febc2e 5px,transparent 6px),radial-gradient(circle at 54px 19px,#28c840 5px,transparent 6px)}
+.mk-janela .mk-vis{aspect-ratio:16/10}
+/* print comprido que rola sozinho dentro da tela: .mk-vis.mk-rola > img */
+.mk-rola>img{height:auto;position:absolute;top:0;left:0;animation:mk-rola var(--mk-t,16s) ease-in-out 1s infinite alternate}
+.mk-rola:hover>img{animation-play-state:paused}
+@keyframes mk-rola{0%,8%{transform:translateY(0)}92%,100%{transform:translateY(calc(var(--mk-desl,0) * -1px))}}
+/* entrada: tela do notebook abre, celular sobe girando */
+.ap-js .mk-notebook[data-rev]{opacity:1;transform:none}
+.ap-js .mk-notebook[data-rev] .mk-tela{transform:perspective(1800px) rotateX(-82deg);transition:transform 1.6s var(--ap-ease) calc(var(--ap-d,0ms) + 150ms)}
+.ap-js .mk-notebook[data-rev] .mk-vis{filter:brightness(.15);transition:filter 1s ease calc(var(--ap-d,0ms) + 1.1s)}
+.ap-js .mk-notebook.ap-vis .mk-tela{transform:none}.ap-js .mk-notebook.ap-vis .mk-vis{filter:none}
+.ap-js .mk-celular[data-rev]{transform:translateY(90px) rotate(8deg)}.ap-js .mk-celular[data-rev].ap-vis{transform:none}
+.mk-flutua{animation:mk-flut 6s ease-in-out infinite}@keyframes mk-flut{50%{translate:0 -12px}}
+
+/* ---------- menos movimento: tudo visível e parado ---------- */
+@media(prefers-reduced-motion:reduce){
+  .ap-js [data-rev],.ap-js [data-rev=cortina]>*,.ap-p>span,.ap-js .mk-notebook[data-rev] .mk-tela,.ap-js .mk-notebook[data-rev] .mk-vis,.ap-js .mk-celular[data-rev]{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important;transition:none!important}
+  .ap-kenburns,.mk-rola>img,.mk-flutua,.ap-rolar-dica::after{animation:none!important}
+  .ap-js [data-etapas] .ap-etapa,.ap-js .ap-troca-passo{opacity:1}
+  html.ap-snap{scroll-snap-type:none}
+}
