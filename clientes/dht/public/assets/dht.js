@@ -62,10 +62,16 @@
   $$('[data-form]').forEach(f => f.addEventListener('submit', e => {
     e.preventDefault();
     const via = (e.submitter && e.submitter.dataset.via) || 'zap';
-    const d = Object.fromEntries(new FormData(f));
-    const itens = ler().map(i => `• ${i.cod} ${i.nome}${i.qtd ? ' — ' + i.qtd + ' un.' : ''}`).join('\n');
-    const txt = `Cotação pelo site\n\nNome: ${d.nome}\nEmpresa: ${d.empresa}${d.cnpj ? '\nCNPJ: ' + d.cnpj : ''}${d.cidade ? '\nCidade: ' + d.cidade : ''}\nE-mail: ${d.email}${d.telefone ? '\nTelefone: ' + d.telefone : ''}${itens ? '\n\nProdutos:\n' + itens : ''}${d.mensagem ? '\n\nObservações:\n' + d.mensagem : ''}`;
-    if (via === 'email') location.href = `mailto:${corpo.dataset.email}?subject=${encodeURIComponent('Cotação pelo site · ' + d.empresa)}&body=${encodeURIComponent(txt)}`;
+    const assunto = f.dataset.assunto || 'Cotação';
+    // Cada campo preenchido vira uma linha "Rótulo: valor", na ordem do formulário
+    const linhas = $$('input[name], textarea[name]', f).filter(c => c.value.trim() && !c.dataset.qtd).map(c => {
+      const r = c.closest('label') && $('span', c.closest('label'));
+      return c.tagName === 'TEXTAREA' ? `\n${r ? r.textContent : c.name}:\n${c.value.trim()}` : `${r ? r.textContent : c.name}: ${c.value.trim()}`;
+    });
+    const itens = $('[data-lista]', f) ? ler().map(i => `• ${i.cod} ${i.nome}${i.qtd ? ' — ' + i.qtd + ' un.' : ''}`).join('\n') : '';
+    const txt = `${assunto} pelo site\n\n${linhas.join('\n')}${itens ? '\n\nProdutos:\n' + itens : ''}`;
+    const quem = (new FormData(f).get('empresa') || new FormData(f).get('orgao') || new FormData(f).get('nome') || '').trim();
+    if (via === 'email') location.href = `mailto:${corpo.dataset.email}?subject=${encodeURIComponent(assunto + ' pelo site · ' + quem)}&body=${encodeURIComponent(txt)}`;
     else window.open(`https://wa.me/${corpo.dataset.zap}?text=${encodeURIComponent(txt)}`, '_blank', 'noopener');
   }));
 

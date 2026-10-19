@@ -16,8 +16,8 @@ export const site = {
 
 export const nav = [
   ['produtos', 'Produtos'],
+  ['solucoes', 'Para quem'],
   ['fabricacao', 'Fabricação'],
-  ['distribuicao', 'Distribuição'],
   ['qualidade', 'Qualidade'],
   ['empresa', 'Empresa'],
   ['contato', 'Contato'],
@@ -107,6 +107,146 @@ export const qualidade = [
   ['Garantia de fabricação', 'Defeito de fabricação nos instrumentais é reposto sem custo.'],
 ];
 
+// Os cinco públicos que a DHT quer atender (pedido do Joao em 2026-10-19). Cada um tem página própria,
+// com o modelo de negócio, como funciona, o que enviamos e um formulário com os campos certos.
+// Campos extras do formulário: [name, rótulo, tipo ('area' = texto longo)].
+export const publicos = [
+  { id: 'hospitais', nome: 'Hospitais e redes', quem: 'Hospital ou rede', modelo: 'Fornecimento por contrato',
+    resumo: 'Contrato de fornecimento com preço acordado, entregas programadas e um só fornecedor para centro cirúrgico, CME e almoxarifado.',
+    titulo: 'Fornecimento por contrato para hospitais privados e redes',
+    lead: 'Preço acordado para o período, entregas no ritmo do seu consumo e uma só conta para instrumental, inox hospitalar e descartáveis. Para um hospital ou para todas as unidades da rede.',
+    oferta: [
+      ['Preço fechado no contrato', 'Tabela por item válida durante o contrato. Sua equipe de compras para de cotar os mesmos produtos todo mês.'],
+      ['Entregas programadas', 'Cronograma de entregas montado a partir do seu consumo, com reposição prioritária dos itens críticos.'],
+      ['Uma nota para o pedido inteiro', 'Instrumental e inox de fabricação própria junto com os descartáveis de giro, no mesmo pedido e na mesma entrega.'],
+      ['Redes com várias unidades', 'Uma negociação para a rede e faturamento por CNPJ de cada unidade, se for assim que vocês compram.'],
+      ['Caixas e kits montados', 'Caixas cirúrgicas montadas conforme a lista do seu centro cirúrgico, com peças avulsas para reposição.'],
+    ],
+    passos: [
+      ['Levantamento', 'Você manda a lista padrão ou o consumo dos últimos meses.'],
+      ['Proposta', 'Devolvemos preço por item, frequência de entrega e condições de pagamento.'],
+      ['Homologação', 'Amostras e documentação técnica para a avaliação do hospital.'],
+      ['Fornecimento', 'Entregas no cronograma e um responsável fixo pela conta.'],
+    ],
+    extra: ['O que enviamos para a homologação', [
+      ['Fichas técnicas', 'Material, medidas e uso de cada item do contrato.'],
+      ['Amostras', 'Peças para avaliação do centro cirúrgico e da CME antes de fechar.'],
+      ['Cadastro de fornecedor', 'Dados da empresa e certidões para o cadastro do hospital.'],
+      ['Orientação de uso', 'Cuidados de limpeza, esterilização e conservação do instrumental.'],
+    ]],
+    linhas: ['instrumentais', 'inox', 'descartaveis'],
+    form: { titulo: 'Peça uma proposta de contrato', botao: 'Pedir proposta', assunto: 'Proposta de contrato · hospital',
+      campos: [['unidades', 'Número de unidades ou leitos', ''], ['itens', 'Itens e consumo mensal estimado', 'area']] } },
+
+  { id: 'distribuidores', nome: 'Distribuidores', quem: 'Distribuidor', modelo: 'Revenda com margem',
+    resumo: 'Tabela de revenda com margem para quem leva os produtos DHT a hospitais, clínicas e órgãos públicos da sua região.',
+    titulo: 'Seja um distribuidor DHT',
+    lead: 'Você tem os clientes e a presença na região. A DHT tem a fábrica. Juntos levamos instrumental e insumos a mais lugares, com tabela de revenda que deixa margem para o seu negócio.',
+    oferta: [
+      ['Tabela de revenda', 'Preço de fábrica com margem para o distribuidor, por volume e por linha de produto.'],
+      ['Reposição sem depender de importação', 'Instrumental e inox são feitos em Porto Alegre. O seu estoque não fica parado esperando navio.'],
+      ['Sua marca, se quiser', 'Gravação da marca do distribuidor nas peças para quem vende com marca própria.'],
+      ['Material de venda', 'Fichas técnicas e imagens dos produtos para o seu catálogo e as suas propostas.'],
+      ['Condições por região', 'Atuação, volume e prazo combinados na proposta de cada distribuidor.'],
+    ],
+    passos: [
+      ['Cadastro', 'Conte onde atua, para quem vende e quais linhas já trabalha.'],
+      ['Análise', 'Avaliamos a região e o perfil da sua carteira.'],
+      ['Tabela e condições', 'Enviamos a tabela de revenda e as condições comerciais.'],
+      ['Primeiro pedido', 'Faturamento para o seu CNPJ e reposição contínua.'],
+    ],
+    extra: ['O que pedimos no cadastro', [
+      ['CNPJ e razão social', 'Empresa do ramo de produtos médico-hospitalares.'],
+      ['Região de atuação', 'Estados e cidades onde você vende hoje.'],
+      ['Carteira', 'Segmentos atendidos: hospitais, clínicas, odontologia, laboratórios ou órgãos públicos.'],
+      ['Linhas atuais', 'O que você já revende, para combinar o mix sem conflito.'],
+    ]],
+    linhas: ['instrumentais', 'inox', 'odonto-lab'],
+    form: { titulo: 'Cadastro de distribuidor', botao: 'Enviar cadastro', assunto: 'Cadastro de distribuidor',
+      campos: [['regiao', 'Região de atuação (estados e cidades)', ''], ['segmentos', 'Segmentos que atende', ''], ['linhas', 'Linhas que já revende', 'area']] } },
+
+  { id: 'licitacoes', nome: 'Licitações públicas', quem: 'Órgão público', modelo: 'PNCP e Comprasnet',
+    resumo: 'Pregões, dispensas e atas de registro de preços de hospitais públicos, prefeituras, secretarias de saúde e universidades.',
+    titulo: 'Licitações públicas pelo PNCP e pelo Comprasnet',
+    lead: 'Atendemos compras públicas de hospitais, prefeituras, secretarias de saúde e universidades. Como fabricante, ofertamos preço de fábrica e entregamos com a documentação que o edital exige.',
+    oferta: [
+      ['Preço de fabricante', 'Instrumental e inox direto da fábrica, sem intermediário entre o órgão e quem produz.'],
+      ['Pesquisa de preços', 'Proposta formal para compor o preço de referência do processo, com código, descrição e validade.'],
+      ['Documentação organizada', 'Habilitação jurídica, fiscal e técnica reunida para a sessão, sem correria na véspera.'],
+      ['Entrega e empenho', 'Entrega após o empenho em qualquer estado, com nota fiscal no CNPJ do órgão.'],
+      ['Itens sob especificação', 'Peças fabricadas conforme a especificação técnica do termo de referência.'],
+    ],
+    passos: [
+      ['Edital', 'Acompanhamos os avisos no PNCP, no Compras.gov.br (Comprasnet) e nos portais estaduais e municipais.'],
+      ['Proposta', 'Proposta, fichas técnicas e amostras quando o edital pede.'],
+      ['Habilitação', 'Documentos enviados no prazo da sessão.'],
+      ['Empenho e entrega', 'Fornecimento conforme a ata ou o contrato.'],
+    ],
+    extra: ['Documentos de habilitação', [
+      ['Habilitação jurídica', 'Contrato social e cartão CNPJ.'],
+      ['Regularidade fiscal e trabalhista', 'Certidões federal, estadual, municipal, FGTS e trabalhista.'],
+      ['Qualificação econômica', 'Balanço e certidão de falência e recuperação judicial, quando exigidos.'],
+      ['Qualificação técnica', 'Fichas técnicas, catálogo e documentos sanitários pedidos no edital.'],
+    ]],
+    portais: [['PNCP', 'Portal Nacional de Contratações Públicas', 'https://pncp.gov.br'], ['Compras.gov.br', 'antigo Comprasnet, do governo federal', 'https://www.gov.br/compras']],
+    linhas: ['instrumentais', 'inox', 'descartaveis', 'odonto-lab'],
+    form: { titulo: 'Convide a DHT ou peça a documentação', botao: 'Enviar', assunto: 'Licitação',
+      campos: [['orgao', 'Órgão', ''], ['edital', 'Número do edital ou processo', ''], ['sessao', 'Data da sessão', ''], ['link', 'Link do edital (PNCP ou portal)', '']] } },
+
+  { id: 'terceiros', nome: 'Fabricação para terceiros', quem: 'Marca ou indústria', modelo: 'Fabricação sob contrato',
+    resumo: 'Instrumentais e peças em aço inox produzidos na fábrica da DHT com o seu projeto ou a sua marca.',
+    titulo: 'Fabricação sob contrato para a sua marca',
+    lead: 'Use a fábrica da DHT em Porto Alegre para produzir instrumentais e peças em aço inox a partir do seu desenho, da sua amostra ou da sua especificação, com a sua marca gravada.',
+    oferta: [
+      ['Do desenho à peça', 'Produzimos a partir de desenho técnico, amostra física ou especificação.'],
+      ['Sua marca na peça', 'Gravação da sua marca e do seu código em cada instrumental.'],
+      ['Lote piloto antes da série', 'Você aprova as primeiras peças antes da produção em quantidade.'],
+      ['Lotes rastreáveis', 'Cada lote sai gravado e com ficha de matéria-prima, data e inspeção.'],
+      ['Sigilo do projeto', 'Acordo de confidencialidade quando o projeto pede.'],
+    ],
+    passos: [
+      ['Projeto', 'Envie o desenho, a amostra ou a especificação da peça.'],
+      ['Viabilidade e orçamento', 'Analisamos material, processo, prazo e preço por lote.'],
+      ['Lote piloto', 'Primeiras peças para a sua aprovação.'],
+      ['Produção em série', 'Lotes no cronograma combinado, inspecionados peça por peça.'],
+    ],
+    extra: ['O que a fábrica faz', [
+      ['Corte e forjamento', 'Barras de aço inox conformadas no formato da peça.'],
+      ['Usinagem', 'Encaixes, serrilhas e articulações com gabarito.'],
+      ['Têmpera e polimento', 'Dureza nas pontas e acabamento acetinado ou espelhado.'],
+      ['Passivação e gravação', 'Proteção contra corrosão, marca e lote em cada peça.'],
+    ]],
+    linhas: ['instrumentais', 'inox', 'odonto-lab'],
+    form: { titulo: 'Peça um orçamento de fabricação', botao: 'Pedir orçamento', assunto: 'Fabricação sob contrato',
+      campos: [['peca', 'Tipo de peça', ''], ['material', 'Material', ''], ['quantidade', 'Quantidade por lote', ''], ['projeto', 'Descreva o projeto (tem desenho ou amostra?)', 'area']] } },
+
+  { id: 'opme', nome: 'Convênios e OPME', quem: 'Convênio ou OPME', modelo: 'Via OPME',
+    resumo: 'Materiais para procedimentos cobertos por convênios e planos de saúde, com orçamento para autorização e rastreabilidade de lote.',
+    titulo: 'Convênios e planos de saúde via OPME',
+    lead: 'Para procedimentos cobertos por convênio, a DHT entrega o orçamento formal que a operadora pede para autorizar, o material no prazo da cirurgia e os dados de lote para o prontuário e a auditoria.',
+    oferta: [
+      ['Orçamento para autorização', 'Proposta com código, descrição e valor de cada item, pronta para o pedido à operadora.'],
+      ['Prazo da agenda cirúrgica', 'Entrega combinada com a data do procedimento.'],
+      ['Rastreabilidade', 'Lote e dados do material informados para o prontuário do paciente.'],
+      ['Faturamento como o convênio pede', 'Nota fiscal para o hospital ou por procedimento, conforme o acordo com a operadora.'],
+    ],
+    passos: [
+      ['Solicitação', 'O hospital, a clínica ou o médico envia a lista de materiais do procedimento.'],
+      ['Orçamento', 'Devolvemos o orçamento formal para o pedido de autorização.'],
+      ['Autorização', 'A operadora autoriza e o pedido é confirmado.'],
+      ['Entrega e faturamento', 'Material no hospital com lote e nota fiscal.'],
+    ],
+    extra: ['Quem atendemos nesse modelo', [
+      ['Hospitais e clínicas', 'Setor de OPME e faturamento de convênios.'],
+      ['Cirurgiões', 'Lista de materiais para o procedimento agendado.'],
+      ['Operadoras e auditoria', 'Orçamentos e informações de lote para análise.'],
+      ['Distribuidores de OPME', 'Fornecimento de instrumental para quem já atua no segmento.'],
+    ]],
+    linhas: ['instrumentais', 'inox', 'descartaveis'],
+    form: { titulo: 'Solicite um orçamento OPME', botao: 'Pedir orçamento', assunto: 'OPME · convênio',
+      campos: [['convenio', 'Convênio ou operadora', ''], ['hospital', 'Hospital do procedimento', ''], ['data', 'Data prevista', ''], ['materiais', 'Materiais e quantidades', 'area']] } },
+];
+
 export const paginas = {
   index: ['DHT Indústria Médica · Instrumentais e insumos hospitalares', 'Fabricação de instrumentais cirúrgicos e inox hospitalar em Porto Alegre, e distribuição de descartáveis para hospitais, clínicas e laboratórios.'],
   produtos: ['Produtos · DHT Indústria Médica', 'Catálogo de instrumentais cirúrgicos, inox hospitalar, descartáveis, odontologia e laboratório.'],
@@ -114,6 +254,8 @@ export const paginas = {
   distribuicao: ['Distribuição · DHT Indústria Médica', 'Atendimento a hospitais, clínicas, laboratórios, distribuidores e órgãos públicos em todo o Brasil.'],
   qualidade: ['Qualidade · DHT Indústria Médica', 'Rastreabilidade por lote, inspeção em todas as peças e fornecedores registrados na ANVISA.'],
   empresa: ['Empresa · DHT Indústria Médica', 'Indústria de Porto Alegre que fabrica e distribui insumos médico-hospitalares desde 2021.'],
+  solucoes: ['Para quem · DHT Indústria Médica', 'Hospitais e redes por contrato, distribuidores, licitações públicas, fabricação para terceiros e convênios via OPME.'],
   contato: ['Cotação e contato · DHT Indústria Médica', 'Peça uma cotação. Resposta em até 24 horas úteis.'],
 };
+for (const p of publicos) paginas[`solucoes/${p.id}`] = [`${p.titulo} · DHT Indústria Médica`, p.resumo];
 for (const l of linhas) paginas[`produtos/${l.id}`] = [`${l.nome} · DHT Indústria Médica`, l.resumo];

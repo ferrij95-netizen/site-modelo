@@ -7,3 +7,4 @@
 - Sem fotos: as imagens de produto são ilustrações em SVG. Trocar por fotos reais quando a DHT mandar. Códigos, linhas, números e textos são propostas.
 - Fonte: IBM Plex Sans. A primeira proposta (estilo FigureAI) foi recusada pelo Joao em 2026-10-09.
 - `public/assets/versao-*.jpg`, `og-*.jpg` e `../capa.jpg` são prints das páginas, refeitos à mão quando o visual mudar.
+- Públicos (2026-10-19, pedido do Joao): menu "Para quem" com cinco páginas em `/a|b/solucoes/<id>/`: hospitais (contrato), distribuidores (revenda com margem), licitacoes (PNCP e Comprasnet), terceiros (fabricação sob contrato) e opme (convênios). Textos em `publicos` no `conteudo.mjs`; cada um tem formulário próprio que monta a mensagem para WhatsApp ou e-mail. Modelos comerciais, documentos e condições são propostas a confirmar com a DHT.
