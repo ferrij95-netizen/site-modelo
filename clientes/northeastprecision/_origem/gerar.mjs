@@ -30,6 +30,6 @@ fs.writeFileSync(path.join(pub, 'index.html'), paginaEscolha({
     { letra: 'a', nome: nomesVersao.a, paginas: 11, texto: 'Dark and technical, with a full-width shop photo, capability bento and certifications.', pontos: ['Full-width shop photo with your tagline', 'Five capabilities with real shop photos', 'Certifications always in view'] },
     { letra: 'b', nome: nomesVersao.b, paginas: 11, texto: 'Light and teal, focused on 24/7 robot automation, materials and the job process.', pontos: ['24/7 robot automation up front', 'Steel and aluminum side by side', 'From drawing to shipment in five steps'] },
   ],
-  antigo: { url: E.antigo, img: '/assets/site-atual.jpg' },
+  antigo: { url: E.antigo, img: '/assets/apresentacao/atual-pc.webp', rola: true },
 }));
 console.log('northeastprecision: escolha em public/index.html');

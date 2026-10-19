@@ -16,7 +16,7 @@ A página que o cliente abre antes de entrar no site: abertura com notebook e ce
 
 1. Tire prints de página inteira de cada versão: computador 1440 px (salvar com 1000 px de largura) e celular 390 px com escala 2 (salvar com 600 px), em `public/assets/apresentacao/<a|b>-pc.webp` e `<a|b>-cel.webp`.
 2. Copie `apresenta.css` e `apresenta.js` para `public/assets/`.
-3. Gere `public/index.html` com `paginaEscolha({ nome, url, lang: 'en'|'pt', cor, fundo, claro, fonteTitulo, fonteTexto, googleFonts, favicon, ogImagem, versoes: [{ letra, nome, texto, pontos, paginas }], antigo: { url, img } })`.
+3. Gere `public/index.html` com `paginaEscolha({ nome, url, lang: 'en'|'pt', cor, fundo, claro, fonteTitulo, fonteTexto, googleFonts, favicon, ogImagem, versoes: [{ letra, nome, texto, pontos, paginas }], antigo: { url, img, rola: true } })`. Com `rola: true`, `img` é um print de página inteira do site atual e ele rola sozinho dentro da janela.
 
 ## Molduras
 
@@ -31,7 +31,9 @@ A página que o cliente abre antes de entrar no site: abertura com notebook e ce
 <div class="mk mk-janela" data-url="cliente.overtus.com.br"><div class="mk-vis"><img src="print.jpg" alt=""></div></div>
 ```
 
-- Dentro de `.mk-vis` cabe imagem, vídeo, iframe ou HTML de verdade (na NEP o celular mostra um formulário de orçamento animado).
+- Dentro de `.mk-vis` cabe imagem, vídeo, iframe ou HTML de verdade.
+- O celular é todo proporcional a `--mk-larg` (bordas, recorte, barra de status). A barra de status ("9:41" e bateria) pega a cor do topo do print sozinha, pelo apresenta.js; se o print vier de outro domínio, fica branca.
+- Notebook e celular lado a lado sem um cobrir a tela do outro: alinhar pela base e sobrepor só a borda vazia do notebook (uns 8% da largura dele), como faz `escolha.mjs` (`.es-palco`).
 - Print de página inteira rolando sozinho na tela: `<div class="mk-vis mk-rola"><img src="print-longo.jpg"></div>` (pausa ao passar o mouse; `--mk-t:20s` muda a velocidade).
 - Tamanho: `--mk-larg` (notebook 880px, celular 290px). Flutuar devagar: classe `mk-flutua`.
 - Para o site da Overtus: notebook com o print longo do site novo e celular com o print do celular, lado a lado. Prints prontos ficam em `clientes/<cliente>/capa.jpg` e `public/assets/versao-*.jpg`.

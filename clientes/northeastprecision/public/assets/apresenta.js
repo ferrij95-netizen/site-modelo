@@ -69,8 +69,21 @@
   document.querySelectorAll('[data-rev],[data-palavras],[data-conta]').forEach(el => io.observe(el));
 
   // telas que rolam sozinhas dentro da moldura
-  const mede = v => { const im = v.querySelector('img'); if (im) v.style.setProperty('--mk-desl', Math.max(0, im.offsetHeight - v.clientHeight)); };
-  document.querySelectorAll('.mk-rola').forEach(v => { const im = v.querySelector('img'); im?.complete ? mede(v) : im?.addEventListener('load', () => mede(v)); });
+  const mede = v => { const im = v.querySelector('img'); if (im) v.style.setProperty('--mk-desl', Math.max(0, im.offsetHeight - (v.clientHeight - im.offsetTop))); };
+  // barra de status do celular com a cor do topo do print (se o print for de outro domínio, fica branca)
+  const corDoTopo = v => {
+    const im = v.querySelector('img'); if (!im || !im.naturalWidth) return;
+    try {
+      const c = document.createElement('canvas'); c.width = c.height = 1;
+      c.getContext('2d').drawImage(im, 2, 2, Math.max(1, im.naturalWidth - 4), 2, 0, 0, 1, 1);
+      const [r, g, b] = c.getContext('2d').getImageData(0, 0, 1, 1).data;
+      v.style.setProperty('--mk-fundo', `rgb(${r},${g},${b})`);
+      v.style.setProperty('--mk-tinta', (r * .299 + g * .587 + b * .114) > 150 ? '#111' : '#fff');
+    } catch { /* canvas contaminado: mantém o padrão */ }
+  };
+  const aoCarregar = (v, f) => { const im = v.querySelector('img'); if (!im) return; im.complete && im.naturalWidth ? f(v) : im.addEventListener('load', () => f(v)); };
+  document.querySelectorAll('.mk-rola').forEach(v => aoCarregar(v, mede));
+  document.querySelectorAll('.mk-celular .mk-vis').forEach(v => aoCarregar(v, corDoTopo));
 
   // troca de imagem fixa conforme o texto passa pelo meio da tela
   document.querySelectorAll('[data-troca]').forEach(box => {
