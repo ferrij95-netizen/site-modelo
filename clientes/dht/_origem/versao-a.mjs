@@ -1,8 +1,8 @@
 // Versão A, "Catálogo": branca e azul, cara de distribuidora organizada. Busca e linhas de produto logo na
 // abertura, cartões de produto com "adicionar à cotação", faixas claras para fábrica e atendimento.
-import { site, nav, linhas, clientes, numeros, etapasFab, passosCompra, qualidade } from './conteudo.mjs';
+import { site, linhas, clientes, numeros, etapasFab, passosCompra, qualidade, publicos } from './conteudo.mjs';
 import { ilustra } from './ilustra.mjs';
-import { documento, marca, selo, cartao, todos, formCotacao, zap, num } from './comum.mjs';
+import { documento, marca, selo, cartao, todos, formCotacao, formPublico, zap, zapPublico, num, navHtml, linha } from './comum.mjs';
 
 const V = 'a';
 const L = s => `/${V}/${s === 'index' ? '' : s + '/'}`;
@@ -14,7 +14,7 @@ const header = slug => `<div class="util"><div class="util-in">
 <header class="topo">
   <a class="topo-marca" href="${L('index')}" aria-label="DHT Indústria Médica, início">${marca()}</a>
   <nav class="topo-nav" id="menu" aria-label="Principal">
-    ${nav.map(([s, n]) => `<a href="${L(s)}"${slug.split('/')[0] === s ? ' aria-current="page"' : ''}>${n}</a>`).join('\n    ')}
+    ${navHtml(L, slug)}
   </nav>
   <a class="btn btn-prim topo-cta" href="${L('contato')}">Solicitar cotação</a>
   <button class="topo-menu" type="button" aria-expanded="false" aria-controls="menu" data-menu><span></span>Menu</button>
@@ -23,6 +23,7 @@ const header = slug => `<div class="util"><div class="util-in">
 const footer = () => `<footer class="rodape"><div class="rodape-in">
   <div class="rodape-marca">${marca('marca-clara')}<p>${site.tagline}. Fábrica e atendimento em Porto Alegre, entrega em todo o Brasil.</p></div>
   <div class="rodape-col"><h2>Produtos</h2>${linhas.map(l => `<a href="${L('produtos/' + l.id)}">${l.nome}</a>`).join('')}</div>
+  <div class="rodape-col"><h2>Para quem</h2>${publicos.map(p => `<a href="${L('solucoes/' + p.id)}">${p.nome}</a>`).join('')}</div>
   <div class="rodape-col"><h2>Empresa</h2><a href="${L('fabricacao')}">Fabricação</a><a href="${L('distribuicao')}">Distribuição</a><a href="${L('qualidade')}">Qualidade</a><a href="${L('empresa')}">Sobre a DHT</a></div>
   <div class="rodape-col"><h2>Atendimento</h2><a href="${zap()}">WhatsApp ${site.telefone}</a><a href="mailto:${site.email}">${site.email}</a><p>${site.endereco}<br>${site.cidade}</p></div>
 </div>
@@ -43,21 +44,32 @@ const cartaoLinha = l => `<a class="linha-card" href="${L('produtos/' + l.id)}">
 
 const busca = (valor = '') => `<form class="busca" action="${L('produtos')}" role="search"><label class="sr" for="q">Buscar produto</label><input id="q" name="q" type="search" placeholder="Buscar por nome ou código, ex.: pinça Kelly" value="${valor}"><button class="btn btn-prim" type="submit">Buscar</button></form>`;
 
+const rotas = (rico = false) => `<ol class="rotas${rico ? ' rotas-rico' : ''}">${publicos.map((p, i) => `<li><a href="${L('solucoes/' + p.id)}">
+  <span class="rota-n">${num(i)}</span>
+  <span class="rota-quem"><b>${p.nome}</b><small>${p.modelo}</small></span>
+  <span class="rota-txt">${p.resumo}${rico ? `<span class="rota-pontos">${p.oferta.slice(0, 3).map(([t]) => `<span>${t}</span>`).join('')}</span>` : ''}</span>
+  <span class="rota-ir" aria-hidden="true">→</span>
+</a></li>`).join('')}</ol>`;
+
 const pag = {
   index: () => `
 <section class="hero"><div class="in hero-in">
   <div class="hero-txt">
     <span class="eyebrow">Indústria e distribuição · Porto Alegre, RS</span>
     <h1>Instrumentais e insumos hospitalares, direto da fábrica para o seu estoque.</h1>
-    <p class="lead">A DHT fabrica instrumentais cirúrgicos e utensílios em aço inox e distribui os descartáveis do dia a dia. Uma cotação só para hospitais, clínicas, laboratórios e revendas.</p>
+    <p class="lead">A DHT fabrica instrumentais cirúrgicos e utensílios em aço inox e distribui os descartáveis do dia a dia. Para hospitais e redes por contrato, distribuidores, compras públicas, marcas que terceirizam a fabricação e procedimentos via convênio.</p>
     ${busca()}
-    <div class="hero-atalhos">${linhas.map(l => `<a href="${L('produtos/' + l.id)}">${l.nome}</a>`).join('')}</div>
+    <div class="hero-perfis"><span>Você é</span>${publicos.map(p => `<a href="${L('solucoes/' + p.id)}">${p.quem}</a>`).join('')}</div>
   </div>
   <div class="hero-mosaico" aria-hidden="true">
     ${['tesoura', 'cuba', 'pinca', 'caixa', 'seringa', 'portaagulha'].map((i, k) => `<div class="mos mos-${k}">${ilustra(i)}</div>`).join('')}
   </div>
 </div></section>
 <section class="numeros"><div class="in">${numeros.map(([v, r]) => `<div><b>${v}</b><span>${r}</span></div>`).join('')}</div></section>
+<section class="secao secao-tinta"><div class="in">
+  <div class="secao-cab"><span class="eyebrow">Para quem</span><h2>Cinco formas de trabalhar com a DHT</h2><a class="link" href="${L('solucoes')}">Comparar os modelos →</a></div>
+  ${rotas()}
+</div></section>
 <section class="secao"><div class="in">
   <div class="secao-cab"><span class="eyebrow">Linhas de produto</span><h2>Do centro cirúrgico ao almoxarifado</h2><a class="link" href="${L('produtos')}">Ver catálogo completo →</a></div>
   <div class="linhas-grade">${linhas.map(cartaoLinha).join('')}</div>
@@ -71,10 +83,6 @@ const pag = {
   <ol class="etapas">${etapasFab.map(([t, d], i) => `<li><span>${num(i)}</span><div><h3>${t}</h3><p>${d}</p></div></li>`).join('')}</ol>
 </div></section>
 <section class="secao secao-tinta"><div class="in">
-  <div class="secao-cab"><span class="eyebrow">Quem atendemos</span><h2>Compras de quem cuida de gente</h2></div>
-  <div class="clientes-grade">${clientes.map(([t, d]) => `<div class="cliente"><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
-</div></section>
-<section class="secao"><div class="in">
   <div class="secao-cab"><span class="eyebrow">Como comprar</span><h2>Três passos, sem cadastro</h2></div>
   <ol class="passos">${passosCompra.map(([t, d], i) => `<li><span class="passo-n">${i + 1}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
 </div></section>
@@ -106,7 +114,7 @@ ${cabeca('Fabricação própria', 'Instrumentais cirúrgicos, inox hospitalar e 
   </tbody></table>
 </div></section>
 <section class="secao"><div class="in">
-  <div class="secao-cab"><span class="eyebrow">Sob encomenda</span><h2>Também fabricamos para a sua marca</h2></div>
+  <div class="secao-cab"><span class="eyebrow">Sob encomenda</span><h2>Também fabricamos para a sua marca</h2><a class="link" href="${L('solucoes/terceiros')}">Fabricação sob contrato →</a></div>
   <div class="clientes-grade">${[['Medidas especiais', 'Instrumentais e caixas em tamanhos fora do padrão de catálogo.'], ['Marca própria', 'Gravação da marca do distribuidor ou do hospital nas peças.'], ['Kits montados', 'Caixas cirúrgicas montadas conforme a lista do seu centro cirúrgico.']].map(([t, d]) => `<div class="cliente"><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
 </div></section>
 <section class="secao secao-tinta"><div class="in"><div class="secao-cab"><span class="eyebrow">Linhas fabricadas</span><h2>O que sai da nossa fábrica</h2></div><div class="linhas-grade">${linhas.filter(l => l.origem === 'fab').map(cartaoLinha).join('')}</div></div></section>
@@ -115,7 +123,7 @@ ${cta()}`,
   distribuicao: () => `
 ${cabeca('Distribuição', 'Além do que fabricamos, distribuímos os descartáveis de maior giro. Assim seu pedido sai inteiro de um fornecedor só.', [[null, 'Distribuição']])}
 <section class="secao"><div class="in">
-  <div class="secao-cab"><span class="eyebrow">Para quem</span><h2>Segmentos atendidos</h2></div>
+  <div class="secao-cab"><span class="eyebrow">Para quem</span><h2>Segmentos atendidos</h2><a class="link" href="${L('solucoes')}">Modelos de atendimento →</a></div>
   <div class="clientes-grade">${clientes.map(([t, d]) => `<div class="cliente"><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
 </div></section>
 <section class="secao secao-tinta"><div class="in dupla">
@@ -164,10 +172,48 @@ ${cabeca('Cotação e contato', 'Revise sua lista, preencha seus dados e envie p
   ${formCotacao(L('produtos'))}
   <aside class="contato-lado">
     <div class="contato-card"><h2>Atendimento direto</h2><a class="btn btn-prim" href="${zap()}">WhatsApp ${site.telefone}</a><p><a href="mailto:${site.email}">${site.email}</a></p><p>${site.horario}</p></div>
+    <div class="contato-card"><h2>Assunto específico?</h2><p>Cada público tem um formulário com os campos certos:</p><ul class="contato-pub">${publicos.map(p => `<li><a href="${L('solucoes/' + p.id)}#form">${p.form.titulo}</a></li>`).join('')}</ul></div>
     <div class="contato-card"><h2>Fábrica</h2><p>${site.endereco}<br>${site.cidade}</p><p class="mini">${site.razao}<br>CNPJ ${site.cnpj}</p></div>
   </aside>
 </div></section>`,
 };
+
+pag.solucoes = () => `
+${cabeca('Para quem a DHT trabalha', 'Cinco modelos de atendimento, cada um com as condições, os documentos e o formulário certos. Escolha o seu.', [[null, 'Para quem']])}
+<section class="secao"><div class="in">${rotas(true)}</div></section>
+<section class="secao secao-tinta"><div class="in">
+  <div class="secao-cab"><span class="eyebrow">Lado a lado</span><h2>Qual modelo é o seu</h2></div>
+  <div class="tabela-rolagem-a"><table class="tabela tabela-comp"><thead><tr><th>Público</th><th>Modelo</th><th>Primeiro passo</th><th><span class="sr">Formulário</span></th></tr></thead><tbody>
+    ${publicos.map(p => `<tr><td>${p.nome}</td><td>${p.modelo}</td><td>${p.passos[0][1]}</td><td><a class="link" href="${L('solucoes/' + p.id)}#form">${p.form.titulo} →</a></td></tr>`).join('')}
+  </tbody></table></div>
+</div></section>
+${cta()}`;
+
+for (const p of publicos) pag[`solucoes/${p.id}`] = () => `
+${cabeca(p.titulo, p.lead, [['solucoes', 'Para quem'], [null, p.nome]], `<div class="cabeca-acoes"><a class="btn btn-prim" href="#form">${p.form.titulo}</a><a class="btn btn-sec" href="${zapPublico(p)}">Conversar no WhatsApp</a></div>`)}
+<section class="secao"><div class="in dupla">
+  <div><span class="eyebrow">${p.modelo}</span><h2>O que a DHT oferece</h2><p class="lead">${p.resumo}</p></div>
+  <ul class="vantagens">${p.oferta.map(([t, d]) => `<li><h3>${t}</h3><p>${d}</p></li>`).join('')}</ul>
+</div></section>
+<section class="secao secao-tinta"><div class="in">
+  <div class="secao-cab"><span class="eyebrow">Como funciona</span><h2>Do primeiro contato ao fornecimento</h2></div>
+  <ol class="fluxo">${p.passos.map(([t, d], i) => `<li><span class="fluxo-n">${num(i)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+</div></section>
+<section class="secao"><div class="in dupla">
+  <div><span class="eyebrow">${p.nome}</span><h2>${p.extra[0]}</h2>${p.portais ? `<div class="portais">${p.portais.map(([n, d, u]) => `<a href="${u}" target="_blank" rel="noopener"><b>${n}</b><small>${d}</small></a>`).join('')}</div>` : ''}</div>
+  <dl class="ficha">${p.extra[1].map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
+</div></section>
+<section class="secao secao-tinta"><div class="in">
+  <div class="secao-cab"><span class="eyebrow">Produtos</span><h2>Linhas mais procuradas</h2><a class="link" href="${L('produtos')}">Catálogo completo →</a></div>
+  <div class="linhas-grade">${p.linhas.map(id => cartaoLinha(linha(id))).join('')}</div>
+</div></section>
+<section class="secao" id="form"><div class="in contato">
+  <div class="form-bloco"><span class="eyebrow">${p.modelo}</span><h2>${p.form.titulo}</h2><p class="lead">Preencha e envie pelo WhatsApp ou por e-mail. A mensagem já chega com os seus dados organizados.</p>${formPublico(p)}</div>
+  <aside class="contato-lado">
+    <div class="contato-card"><h2>Prefere conversar?</h2><a class="btn btn-prim" href="${zapPublico(p)}">WhatsApp ${site.telefone}</a><p><a href="mailto:${site.email}">${site.email}</a></p><p>${site.horario}</p></div>
+    <div class="contato-card"><h2>Outros modelos</h2><ul class="contato-pub">${publicos.filter(o => o !== p).map(o => `<li><a href="${L('solucoes/' + o.id)}">${o.nome}</a></li>`).join('')}</ul></div>
+  </aside>
+</div></section>`;
 
 for (const l of linhas) pag[`produtos/${l.id}`] = () => `
 ${cabeca(l.nome, l.resumo, [['produtos', 'Produtos'], [null, l.nome]], selo(l))}

@@ -1,8 +1,8 @@
 // Versão B, "Indústria": mesma marca, cores e fonte da A, com cara de fábrica. Faixas azul-marinho,
 // números grandes, catálogo em tabela técnica (código, material, medidas) e o processo em linha do tempo.
-import { site, nav, linhas, clientes, numeros, etapasFab, passosCompra, qualidade } from './conteudo.mjs';
+import { site, linhas, clientes, numeros, etapasFab, passosCompra, qualidade, publicos } from './conteudo.mjs';
 import { ilustra } from './ilustra.mjs';
-import { documento, marca, selo, todos, formCotacao, zap, num, botaoCotacao, esc } from './comum.mjs';
+import { documento, marca, selo, todos, formCotacao, formPublico, zap, zapPublico, num, botaoCotacao, esc, navHtml, linha } from './comum.mjs';
 
 const V = 'b';
 const L = s => `/${V}/${s === 'index' ? '' : s + '/'}`;
@@ -10,7 +10,7 @@ const L = s => `/${V}/${s === 'index' ? '' : s + '/'}`;
 const header = slug => `<header class="barra"><div class="barra-in">
   <a class="barra-marca" href="${L('index')}" aria-label="DHT Indústria Médica, início">${marca('marca-clara')}</a>
   <nav class="barra-nav" id="menu" aria-label="Principal">
-    ${nav.map(([s, n]) => `<a href="${L(s)}"${slug.split('/')[0] === s ? ' aria-current="page"' : ''}>${n}</a>`).join('\n    ')}
+    ${navHtml(L, slug)}
   </nav>
   <a class="barra-tel" href="${zap()}">${site.telefone}</a>
   <a class="barra-cot" href="${L('contato')}">Cotação <b data-contador>0</b></a>
@@ -20,14 +20,21 @@ const header = slug => `<header class="barra"><div class="barra-in">
 const footer = () => `<footer class="rodape"><div class="in rodape-in">
   <div>${marca('marca-clara')}<p class="rodape-tag">${site.tagline}.</p></div>
   <div class="rodape-col"><h2>Linhas</h2>${linhas.map(l => `<a href="${L('produtos/' + l.id)}">${l.nome}</a>`).join('')}</div>
+  <div class="rodape-col"><h2>Para quem</h2>${publicos.map(p => `<a href="${L('solucoes/' + p.id)}">${p.nome}</a>`).join('')}</div>
   <div class="rodape-col"><h2>DHT</h2><a href="${L('fabricacao')}">Fabricação</a><a href="${L('distribuicao')}">Distribuição</a><a href="${L('qualidade')}">Qualidade</a><a href="${L('empresa')}">Empresa</a></div>
   <div class="rodape-col"><h2>Fábrica</h2><p>${site.endereco}<br>${site.cidade}</p><a href="${zap()}">${site.telefone}</a><a href="mailto:${site.email}">${site.email}</a></div>
 </div><div class="in rodape-base"><span>${site.razao} · CNPJ ${site.cnpj}</span><a href="/">Ver as duas versões</a></div></footer>`;
 
-const faixa = (eyebrow, titulo, lead, trilha = []) => `<section class="faixa"><div class="in">
+const faixa = (eyebrow, titulo, lead, trilha = [], extra = '') => `<section class="faixa"><div class="in">
   <nav class="trilha" aria-label="Você está em"><a href="${L('index')}">Início</a>${trilha.map(([h, n]) => h ? `<a href="${L(h)}">${n}</a>` : `<span>${n}</span>`).join('')}</nav>
-  <span class="eyebrow">${eyebrow}</span><h1>${titulo}</h1><p class="lead">${lead}</p>
+  <span class="eyebrow">${eyebrow}</span><h1>${titulo}</h1><p class="lead">${lead}</p>${extra}
 </div></section>`;
+
+// Quadro dos cinco públicos: modelo, o que recebe e por onde começar.
+const matriz = () => `<div class="matriz" role="table" aria-label="Modelos de atendimento">
+  <div class="matriz-topo" role="row"><span role="columnheader">Público</span><span role="columnheader">Modelo</span><span role="columnheader">O que você recebe</span><span role="columnheader"><span class="sr">Página</span></span></div>
+  ${publicos.map((p, i) => `<a class="matriz-linha" role="row" href="${L('solucoes/' + p.id)}"><span role="cell" class="mx-quem"><i>${num(i)}</i>${p.nome}</span><span role="cell" class="mx-modelo">${p.modelo}</span><span role="cell" class="mx-txt">${p.oferta.slice(0, 2).map(([t]) => t).join(' · ')}</span><span role="cell" class="mx-ir">Ver →</span></a>`).join('')}
+</div>`;
 
 const tabela = itens => `<div class="tabela-rolagem"><table class="tabela-prod">
   <thead><tr><th class="col-img"><span class="sr">Imagem</span></th><th>Código</th><th>Produto</th><th>Material</th><th>Medidas / embalagem</th><th><span class="sr">Cotação</span></th></tr></thead>
@@ -49,6 +56,7 @@ const pag = {
     <h1>Fabricamos o instrumental. Distribuímos o resto do pedido.</h1>
     <p class="lead">Instrumentais cirúrgicos e inox hospitalar de fabricação própria, mais os descartáveis de maior giro. Um fornecedor, uma nota, uma entrega.</p>
     <div class="acoes"><a class="btn btn-prim" href="${L('produtos')}">Ver catálogo</a><a class="btn btn-contorno-claro" href="${zap()}">WhatsApp</a></div>
+    <div class="perfis"><span>Atendimento para</span>${publicos.map(p => `<a href="${L('solucoes/' + p.id)}">${p.nome}</a>`).join('')}</div>
   </div>
   <div class="ficha-linhas" aria-label="Linhas de produto">
     <div class="ficha-topo"><span>Linhas de produto</span><span>Códigos</span></div>
@@ -66,9 +74,9 @@ const pag = {
   <div class="bloco-cab"><span class="eyebrow">Fabricação própria</span><h2>Da barra de aço à peça gravada com lote</h2><a class="link" href="${L('fabricacao')}">Conhecer a fábrica →</a></div>
   ${linhaDoTempo()}
 </div></section>
-<section class="bloco"><div class="in duas">
-  <div><span class="eyebrow">Quem atendemos</span><h2>Hospitais, clínicas, laboratórios e revendas</h2><p class="lead">Atendimento direto, sem pedido mínimo para começar, e documentação pronta para compras públicas.</p></div>
-  <ul class="lista">${clientes.map(([t, d]) => `<li><h3>${t}</h3><p>${d}</p></li>`).join('')}</ul>
+<section class="bloco"><div class="in">
+  <div class="bloco-cab"><span class="eyebrow">Para quem</span><h2>Cinco modelos de atendimento</h2><a class="link" href="${L('solucoes')}">Ver os modelos →</a></div>
+  ${matriz()}
 </div></section>
 <section class="bloco bloco-tinta"><div class="in">
   <div class="bloco-cab"><span class="eyebrow">Como comprar</span><h2>Três passos</h2></div>
@@ -95,7 +103,7 @@ ${faixa('Fabricação própria', 'Feito em Porto Alegre, conferido peça por pe�
   </tbody></table>
 </div></section>
 <section class="bloco"><div class="in duas">
-  <div><span class="eyebrow">Sob encomenda</span><h2>Para a sua marca ou o seu centro cirúrgico</h2></div>
+  <div><span class="eyebrow">Sob encomenda</span><h2>Para a sua marca ou o seu centro cirúrgico</h2><a class="link" href="${L('solucoes/terceiros')}">Fabricação sob contrato →</a></div>
   <ul class="lista">${[['Medidas especiais', 'Instrumentais e caixas fora do padrão de catálogo.'], ['Marca própria', 'Gravação da marca do distribuidor ou do hospital.'], ['Kits montados', 'Caixas cirúrgicas montadas conforme a sua lista.']].map(([t, d]) => `<li><h3>${t}</h3><p>${d}</p></li>`).join('')}</ul>
 </div></section>
 ${cta()}`,
@@ -103,7 +111,7 @@ ${cta()}`,
   distribuicao: () => `
 ${faixa('Distribuição', 'O pedido inteiro de um fornecedor só', 'Além do que fabricamos, distribuímos os descartáveis de maior giro, de fabricantes com registro na ANVISA.', [[null, 'Distribuição']])}
 <section class="bloco"><div class="in duas">
-  <div><span class="eyebrow">Segmentos</span><h2>Quem compra da DHT</h2></div>
+  <div><span class="eyebrow">Segmentos</span><h2>Quem compra da DHT</h2><a class="link" href="${L('solucoes')}">Modelos de atendimento →</a></div>
   <ul class="lista">${clientes.map(([t, d]) => `<li><h3>${t}</h3><p>${d}</p></li>`).join('')}</ul>
 </div></section>
 <section class="bloco bloco-tinta"><div class="in duas">
@@ -144,9 +152,46 @@ ${faixa('Contato', 'Cotação', 'Revise a lista, preencha seus dados e envie. Re
     <tr><th>E-mail</th><td><a href="mailto:${site.email}">${site.email}</a></td></tr>
     <tr><th>Horário</th><td>${site.horario}</td></tr>
     <tr><th>Fábrica</th><td>${site.endereco}<br>${site.cidade}</td></tr>
-  </tbody></table></aside>
+  </tbody></table>
+  <div class="aside-pub"><span class="eyebrow">Assunto específico</span>${publicos.map(p => `<a class="link" href="${L('solucoes/' + p.id)}#form">${p.form.titulo} →</a>`).join('')}</div></aside>
 </div></section>`,
 };
+
+pag.solucoes = () => `
+${faixa('Para quem', 'Cinco modelos de atendimento', 'Hospitais e redes por contrato, distribuidores, licitações públicas, fabricação para terceiros e convênios via OPME. Cada modelo tem condições, documentos e formulário próprios.', [[null, 'Para quem']])}
+<section class="bloco"><div class="in">${matriz()}</div></section>
+<section class="bloco bloco-tinta"><div class="in">
+  <div class="bloco-cab"><span class="eyebrow">Por onde começar</span><h2>O primeiro passo de cada modelo</h2></div>
+  <ol class="passos passos-5">${publicos.map(p => `<li><span class="passo-n">${p.nome}</span><h3>${p.passos[0][0]}</h3><p>${p.passos[0][1]}</p><a class="link" href="${L('solucoes/' + p.id)}#form">${p.form.titulo} →</a></li>`).join('')}</ol>
+</div></section>
+${cta()}`;
+
+for (const p of publicos) pag[`solucoes/${p.id}`] = () => `
+${faixa(p.modelo, p.titulo, p.lead, [['solucoes', 'Para quem'], [null, p.nome]], `<div class="acoes"><a class="btn btn-prim" href="#form">${p.form.titulo}</a><a class="btn btn-contorno-claro" href="${zapPublico(p)}">WhatsApp</a></div>`)}
+<section class="bloco"><div class="in duas">
+  <div><span class="eyebrow">O que a DHT oferece</span><h2>${p.nome}</h2><p class="lead">${p.resumo}</p></div>
+  <ul class="lista">${p.oferta.map(([t, d]) => `<li><h3>${t}</h3><p>${d}</p></li>`).join('')}</ul>
+</div></section>
+<section class="bloco bloco-escuro"><div class="in">
+  <div class="bloco-cab"><span class="eyebrow">Como funciona</span><h2>Quatro etapas</h2></div>
+  <ol class="tempo tempo-4">${p.passos.map(([t, d], i) => `<li><span class="tempo-n">${num(i)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+</div></section>
+<section class="bloco bloco-tinta"><div class="in duas">
+  <div><span class="eyebrow">${p.modelo}</span><h2>${p.extra[0]}</h2>${p.portais ? `<div class="portais">${p.portais.map(([n, d, u]) => `<a href="${u}" target="_blank" rel="noopener"><b>${n}</b><small>${d}</small></a>`).join('')}</div>` : ''}</div>
+  <table class="tabela-spec"><tbody>${p.extra[1].map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')}</tbody></table>
+</div></section>
+<section class="bloco" id="form"><div class="in contato">
+  <div class="form-bloco"><span class="eyebrow">Formulário</span><h2>${p.form.titulo}</h2><p class="lead">Envie pelo WhatsApp ou por e-mail; a mensagem chega com os dados organizados.</p>${formPublico(p)}</div>
+  <aside class="contato-lado">
+    <table class="tabela-spec"><tbody>
+      <tr><th>WhatsApp</th><td><a href="${zapPublico(p)}">${site.telefone}</a></td></tr>
+      <tr><th>E-mail</th><td><a href="mailto:${site.email}">${site.email}</a></td></tr>
+      <tr><th>Horário</th><td>${site.horario}</td></tr>
+    </tbody></table>
+    <div class="aside-pub"><span class="eyebrow">Linhas mais procuradas</span>${p.linhas.map(id => `<a class="link" href="${L('produtos/' + id)}">${linha(id).nome} →</a>`).join('')}</div>
+    <div class="aside-pub"><span class="eyebrow">Outros modelos</span>${publicos.filter(o => o !== p).map(o => `<a class="link" href="${L('solucoes/' + o.id)}">${o.nome} →</a>`).join('')}</div>
+  </aside>
+</div></section>`;
 
 for (const l of linhas) pag[`produtos/${l.id}`] = () => `
 ${faixa(l.origem === 'fab' ? 'Fabricação própria' : 'Distribuição', l.nome, l.resumo, [['produtos', 'Produtos'], [null, l.nome]])}

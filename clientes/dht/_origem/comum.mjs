@@ -1,5 +1,5 @@
 // Esqueleto comum: SEO completo (Open Graph, Twitter, canonical), fontes, marca e peças das duas versões.
-import { site, paginas, linhas } from './conteudo.mjs';
+import { site, nav, paginas, linhas, publicos } from './conteudo.mjs';
 import { ilustra } from './ilustra.mjs';
 
 export const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -31,6 +31,30 @@ export const formCotacao = catalogo => `<form class="form" data-form>
   <label class="cheia"><span>Produtos, quantidades e observações</span><textarea name="mensagem" rows="4"></textarea></label>
   <div class="form-acoes cheia"><button class="btn btn-prim" type="submit" data-via="zap">Enviar pelo WhatsApp</button><button class="btn btn-sec" type="submit" data-via="email">Enviar por e-mail</button></div>
 </form>`;
+
+// Formulário de cada público: dados da empresa + os campos que aquele público precisa informar.
+export const formPublico = p => `<form class="form" data-form data-assunto="${esc(p.form.assunto)}">
+  <label><span>Nome</span><input name="nome" required autocomplete="name"></label>
+  <label><span>${p.id === 'licitacoes' ? 'Cargo ou setor' : 'Empresa ou instituição'}</span><input name="empresa" ${p.id === 'licitacoes' ? '' : 'required '}autocomplete="organization"></label>
+  ${p.id === 'licitacoes' ? '' : '<label><span>CNPJ</span><input name="cnpj" inputmode="numeric"></label>\n  <label><span>Cidade / UF</span><input name="cidade" autocomplete="address-level2"></label>'}
+  <label><span>E-mail</span><input name="email" type="email" required autocomplete="email"></label>
+  <label><span>Telefone / WhatsApp</span><input name="telefone" type="tel" autocomplete="tel"></label>
+  ${p.form.campos.map(([n, r, t]) => t === 'area' ? `<label class="cheia"><span>${r}</span><textarea name="${n}" rows="4"></textarea></label>` : `<label><span>${r}</span><input name="${n}"></label>`).join('\n  ')}
+  <div class="form-acoes cheia"><button class="btn btn-prim" type="submit" data-via="zap">${p.form.botao} pelo WhatsApp</button><button class="btn btn-sec" type="submit" data-via="email">Enviar por e-mail</button></div>
+</form>`;
+
+// Link do WhatsApp já com o assunto do público.
+export const zapPublico = p => zap(`Olá! Vim pelo site da DHT, pela página ${p.nome}, e gostaria de conversar.`);
+// Menu principal; "Para quem" abre a lista dos cinco públicos.
+export const navHtml = (L, slug) => {
+  const raiz = slug.split('/')[0];
+  return nav.map(([s, n]) => {
+    const atual = raiz === s ? ' aria-current="page"' : '';
+    if (s !== 'solucoes') return `<a href="${L(s)}"${atual}>${n}</a>`;
+    return `<div class="nav-grupo"><a class="nav-pai" href="${L(s)}"${atual}>${n}</a><div class="nav-sub">${publicos.map(p => `<a href="${L('solucoes/' + p.id)}"${slug === 'solucoes/' + p.id ? ' class="nav-atual"' : ''}><b>${p.nome}</b><small>${p.modelo}</small></a>`).join('')}</div></div>`;
+  }).join('\n    ');
+};
+export const publico = id => publicos.find(p => p.id === id);
 
 export function documento({ versao, slug, css, corpo, tema }) {
   const [titulo, desc] = paginas[slug];
