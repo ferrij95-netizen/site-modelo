@@ -1,0 +1,12 @@
+# Cella Transportes: como este site é feito
+
+- Cliente: Cella & Cia Transportes, Chapecó/SC, transporte de equipamentos frigoríficos, industriais e pesados. Escolhida no nicho transportadoras (21/10/2026, /mnt/project-files/prospeccao/nichos/transportadoras/LISTA.md), sem pedido do cliente.
+- Site atual: http://www.cellatransportes.com.br/ (página única de 2016, só http, só português, então o novo é só `pt`). A abertura é um folder em imagem com o texto escrito dentro dela.
+- Marca: logo vetorizado com potrace a partir do logo grande do folder (`logo.svg`, `logo-branco.svg`). Vermelho #E3302A, dourado #C9A062 e cinza #878B8C do logo; vinho #8E1A1F/#5E1418 do gradiente do folder; creme listrado do fundo do folder. Títulos em Exo 2 itálica 800/900 (a mais parecida com "CELLA"), texto em Inter.
+- Fotos: as do carrossel do site atual (`admin/uploads/destaque/`), a frota Constellation recortada do folder com rembg (`frota-recorte`) e o mesmo trecho sem recorte (`frota-constellation`). Nenhuma foto de banco.
+- Textos e dados: `conteudo.mjs`. Missão, visão, valores, serviços, modalidades, "coletamos equipamentos para" e estados de coleta/entrega copiados do site e do folder. Escritos por nós: legendas das fotos, etapas da carga (versão B) e os pontos de cada modalidade.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Folder" (faixa vermelha de telefones e menu com ícone sobre o nome como no site atual, abertura vermelha com a frota sobre creme listrado como no folder) e `/b/` "Prancha" (cotação rápida na abertura, linhas de cota como grafismo, etapas, mapa de rotas a partir de Chapecó, tabela dedicada × compartilhada). 6 páginas em cada: Home, Empresa, Serviços, Cargas, Cobertura, Contato.
+- Mapa do Brasil: `mapa-br.json`, gerado do GeoJSON de estados do click_that_hood (codeforamerica), projeção simples.
+- Formulários montam a mensagem e abrem WhatsApp ou e-mail.
+- Gerar: `node clientes/cellatransportes/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: qual celular é o WhatsApp (o site diz "9.9136-1462 / 9.9954-0300 Whatsapp"; o folder só traz 9954-0300, usado como WhatsApp); endereço completo (o site só diz Chapecó; o mapa usa o ponto do Google que o site incorpora); nota 4,8 com 223 avaliações no Google (vista na prospecção em 21/10/2026); se os três Constellation do folder são da frota.
