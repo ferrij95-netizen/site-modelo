@@ -1,0 +1,98 @@
+/* Versão A "Fachada": fiel ao site atual. Barra grafite, cinza claro com a foto da sede em diagonal, azul #31699a, títulos em dois tons. */
+
+/* hero: painel cinza com corte diagonal sobre a foto aérea da sede, como o banner atual */
+.hero { position: relative; display: grid; grid-template-columns: 1fr; min-height: min(78vh, 640px); background: var(--cinza-banner); overflow: hidden; padding: 0; }
+.hero-foto { position: absolute; inset: 0 0 0 38%; }
+.hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; }
+.hero-txt { position: relative; z-index: 1; display: flex; align-items: center; background: linear-gradient(180deg, #ececec, #dcdfe2); clip-path: polygon(0 0, 58% 0, 46% 100%, 0 100%); }
+.hero-txt .in { padding: 72px 0; }
+.hero-txt .in > * { max-width: 520px; }
+.lema { font: 700 clamp(2.4rem, 5vw, 4.2rem)/1.04 var(--tit); color: var(--azul); text-transform: uppercase; margin: 0 0 .5em; letter-spacing: 0; }
+.lema span { display: block; }
+.lema span::before { content: "•"; color: var(--azul-esc); margin-right: .12em; }
+.hero-txt p { font-size: 1.08rem; color: #3c454c; max-width: 30em; }
+
+/* cabeçalho das internas */
+.cabeca { position: relative; padding: 0; min-height: 340px; display: flex; background: var(--cinza-banner); overflow: hidden; }
+.cb-foto { position: absolute; inset: 0 0 0 45%; }
+.cb-foto img { width: 100%; height: 100%; object-fit: cover; }
+.cb-txt { position: relative; z-index: 1; flex: 1; display: flex; align-items: center; background: linear-gradient(180deg, #ececec, #dcdfe2); clip-path: polygon(0 0, 62% 0, 52% 100%, 0 100%); }
+.cb-txt .in { padding: 64px 0; }
+.cb-txt .in > * { max-width: 520px; }
+.cb-txt h1 { font-size: clamp(2.1rem, 4vw, 3.2rem); }
+.cb-txt h1:not(:has(span)) { color: var(--azul); text-transform: uppercase; }
+.cb-txt p:not(.sobre) { color: #3c454c; font-size: 1.05rem; }
+
+/* história */
+.historia { background: var(--cinza-claro); }
+.hs-grade { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.tit-linha { color: var(--azul); text-transform: uppercase; padding-bottom: .5em; border-bottom: 1px solid var(--linha); }
+.historia p { color: #48525a; }
+.hs-foto img { width: 100%; box-shadow: 0 20px 40px rgba(20, 40, 60, .16); }
+.hs-foto figcaption { font-size: .82rem; color: var(--cinza); margin-top: 10px; }
+.hs-texto p:first-child { font-size: 1.15rem; color: var(--ink); }
+
+/* serviços: quatro colunas com número, ícone e linha, sem caixas */
+.servicos { text-align: center; }
+.sv-lista { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 40px; text-align: left; counter-reset: sv; }
+.sv-lista li { padding: 26px 26px 10px; border-left: 1px solid var(--linha); position: relative; }
+.sv-lista li:first-child { border-left: 0; }
+.sv-num { display: block; font: 700 .85rem/1 var(--tit); color: var(--azul); letter-spacing: .1em; margin-bottom: 18px; }
+.sv-ic { width: 46px; height: 46px; color: var(--azul); margin-bottom: 16px; stroke-width: 1.3; }
+.sv-lista h3 { font-size: 1.25rem; }
+.sv-lista p { color: var(--cinza); font-size: .95rem; }
+.servicos .btn-claro { margin-top: 34px; background: var(--azul); color: #fff; border-color: var(--azul); }
+.servicos .btn-claro:hover { background: var(--azul-esc); border-color: var(--azul-esc); color: #fff; }
+.tit-duplo { text-align: center; }
+.tit-duplo::after { content: ""; display: block; width: 46px; height: 3px; background: var(--azul); margin: 16px auto 0; }
+.cabeca .tit-duplo { text-align: left; }
+.cabeca .tit-duplo::after { margin-left: 0; }
+
+/* produtos */
+.produtos { background: var(--cinza-claro); }
+.produtos .filtro { margin-top: 28px; }
+
+/* página de serviços: textos completos em duas colunas */
+.cabeca + .servicos .sv-lista { grid-template-columns: 1fr 1fr; gap: 0 48px; }
+.cabeca + .servicos .sv-lista li { border-left: 0; border-top: 1px solid var(--linha); padding: 32px 0 18px; }
+.cabeca + .servicos .tit-duplo { display: none; }
+.cabeca + .servicos { padding-top: 40px; }
+
+/* missão */
+.missao { background: #fff; text-align: center; }
+.missao .in { max-width: 860px; }
+.missao blockquote { margin: 0 0 28px; font: 600 clamp(1.4rem, 2.6vw, 2rem)/1.35 var(--tit); color: var(--ink); }
+.missao .lema { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 28px; font-size: 1rem; letter-spacing: .14em; }
+.missao .lema li::before { content: "•"; margin-right: 6px; }
+.mercados { background: var(--cinza-claro); }
+.mercados ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 40px; }
+.mercados li span { font: 700 .85rem var(--tit); color: var(--azul); letter-spacing: .1em; }
+.mercados li h3 { font-size: 1.3rem; margin-top: 10px; padding-top: 14px; border-top: 2px solid var(--azul); }
+.mercados li p { color: var(--cinza); }
+
+/* produto e chamada */
+.produto { background: #fff; }
+.chamada { background: linear-gradient(180deg, var(--cinza-claro), #e7eaed); }
+.contato { background: #fff; }
+.contato .ct-info { background: #fff; padding: 30px; box-shadow: 0 10px 30px rgba(20, 40, 60, .12); }
+
+@media (max-width: 900px) {
+  .hero { min-height: 0; display: flex; flex-direction: column-reverse; }
+  .hero-foto { position: relative; inset: auto; aspect-ratio: 16 / 9; }
+  .hero-txt { clip-path: none; }
+  .hero-txt .in { padding: 40px 0 44px; }
+  .cabeca { flex-direction: column-reverse; min-height: 0; }
+  .cb-foto { position: relative; inset: auto; aspect-ratio: 16 / 7; }
+  .cb-txt { clip-path: none; }
+  .cb-txt .in { padding: 36px 0; }
+  .hs-grade { grid-template-columns: 1fr; }
+  .sv-lista { grid-template-columns: 1fr 1fr; }
+  .sv-lista li:nth-child(3) { border-left: 0; }
+  .mercados ul { grid-template-columns: 1fr; }
+  .cabeca + .servicos .sv-lista { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .sv-lista { grid-template-columns: 1fr; }
+  .sv-lista li { border-left: 0; border-top: 1px solid var(--linha); padding: 24px 0 8px; }
+  .lema { font-size: 2.3rem; }
+}
