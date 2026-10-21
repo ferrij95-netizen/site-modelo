@@ -1,0 +1,12 @@
+# Marmoraria Lonardi: como este site é feito
+
+- Cliente: Marmoraria Lonardi, Av. Professor Oscar Pereira 198A, Porto Alegre RS, desde 1928. Escolhida na prospecção de esquadrias, vidros e mármores (21/10/2026), sem pedido do cliente.
+- Site atual: marmorarialonardi.com.br (Wix, 3 páginas: Home com 4 galerias, Localização, Fale conosco). Só português, então o novo é só `pt`.
+- Fotos: as 34 fotos das galerias do Wix (5 lavatórios, 10 pias, 16 lápides, 3 túmulos), tiradas do JSON da página (`siteassets.parastorage.com/pages/pages/thunderbolt`, `props.render.compProps`) e baixadas inteiras em `static.wixstatic.com/media/<uri>`; convertidas para webp em `public/assets/img/`. Legendas escritas por nós olhando as fotos.
+- Marca: o letreiro do site atual é texto em Lulo Clean One Bold (fonte do Wix); `wordmark.svg`, `lema.svg` e `desde.svg` são esse texto convertido em contorno (fontTools), não a fonte hospedada. O monograma M|L (`mono.svg`) foi vetorizado com potracer a partir do favicon. Cores: faixa #032F60, botões do menu #152563 (ativo cinza #6B6B6B), monograma #014B96.
+- Fontes: títulos em Lexend Exa e rótulos em Lexend Zetta (as mais parecidas com a Lulo), texto em Open Sans (a do site atual).
+- Simulador de lápide: texturas de pedra em `img/tex-*.webp`. Granito cinza e mármore bege são recortes das fotos das lápides; granito preto e mármore branco são superfícies geradas (ruído) na cor dessas pedras, porque as fotos não têm área lisa grande o bastante. Frases da lista lidas nas lápides das fotos.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Tradição" (faixa azul com letreiro e lema, botões de menu, os quatro blocos de galeria do site atual), `/b/` "Monograma" (clara, monograma, casa x memória, pedras, filtro de trabalhos). 8 páginas em cada: Home, Empresa, Lavatórios (banheiros), Pias (cozinhas), Lápides (com simulador), Túmulos, Localização, Fale conosco.
+- Orçamento: formulário e simulador montam a mensagem e abrem o WhatsApp (51) 99907-6743 ou o e-mail.
+- Gerar: `node clientes/marmorarialonardi/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg`, `versao-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: os 4 passos "Como pedir" e os textos dos valores (escritos por nós); nomes comerciais das pedras; se a instalação é feita pela própria equipe; se o WhatsApp é o canal principal. As lápides das fotos mostram nomes reais (já estão públicos no site atual).
