@@ -1,0 +1,161 @@
+/* Thermotech: base comum às versões A e B. Azul-marinho do logo (#1A328C), azul do portão da fábrica, laranja da carga no forno. */
+:root {
+  --marinho: #1A328C; --marinho-esc: #0F1F5C; --azul: #2F5BD3; --azul-claro: #EEF2FB; --gelo: #F6F8FC;
+  --quente: #E2551B; --quente-esc: #C2440F; --brasa: #FFB347;
+  --tinta: #18213A; --cinza: #5A6378; --linha: #DDE3EF; --branco: #fff;
+  --titulo: Arimo, 'Liberation Sans', Arial, system-ui, sans-serif; --texto: Inter, system-ui, sans-serif;
+  --larg: 1200px; --raio: 6px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; font: 400 16px/1.65 var(--texto); color: var(--tinta); background: var(--branco); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--titulo); font-weight: 700; line-height: 1.15; margin: 0 0 .5em; letter-spacing: -.01em; }
+h1 { font-size: clamp(2rem, 4.4vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 1em; }
+.in { width: min(var(--larg), 100% - 32px); margin-inline: auto; }
+.ic { width: 1.15em; height: 1.15em; flex: none; vertical-align: -.2em; }
+.pular { position: absolute; left: -999px; top: 8px; background: var(--marinho); color: #fff; padding: 8px 14px; z-index: 99; }
+.pular:focus { left: 8px; }
+.lead { font-size: 1.15rem; color: var(--tinta); }
+.nota { font-size: .85rem; color: var(--cinza); margin-top: 12px; }
+.nowrap { white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+
+.btn { display: inline-flex; align-items: center; gap: .55em; padding: .85em 1.4em; border-radius: var(--raio); font: 600 1rem/1 var(--texto); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+.btn:hover { transform: translateY(-1px); }
+.btn-quente { background: var(--quente); color: #fff; }
+.btn-quente:hover { background: var(--quente-esc); }
+.btn-claro { background: #fff; color: var(--marinho); }
+.btn-linha { border-color: currentColor; color: inherit; background: transparent; }
+.link { display: inline-flex; align-items: center; gap: .4em; font-weight: 600; color: var(--azul); text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+
+.idiomas { display: flex; gap: 6px; }
+.idiomas a { display: inline-flex; align-items: center; gap: 4px; text-decoration: none; font: 600 .75rem/1 var(--texto); padding: 4px 6px; border-radius: 4px; opacity: .7; }
+.idiomas a[aria-current] { opacity: 1; background: rgba(127,140,180,.18); }
+.idiomas svg { width: 20px; height: 14px; }
+
+.menu-btn { display: none; background: none; border: 0; padding: 8px; color: inherit; cursor: pointer; }
+.menu-btn .ic { width: 28px; height: 28px; }
+
+/* curva de tratamento */
+.curva { width: 100%; height: auto; display: block; font-family: var(--texto); }
+.cv-marca line { stroke: var(--linha); stroke-width: 1; }
+.cv-marca text, .cv-eixo { font-size: 11px; fill: var(--cinza); }
+.cv-trat { opacity: 0; transition: opacity .35s; }
+.cv-trat.on { opacity: 1; }
+.cv-linha { fill: none; stroke: var(--quente); stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
+.cv-brilho { fill: none; stroke: var(--brasa); stroke-width: 12; opacity: .28; stroke-linejoin: round; }
+.cv-trat.on .cv-linha { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: traca 1.4s ease forwards; }
+@keyframes traca { to { stroke-dashoffset: 0; } }
+.cv-temp { font: 700 14px var(--titulo); fill: var(--quente-esc); }
+.cv-fases text { font-size: 11px; fill: var(--cinza); text-transform: uppercase; letter-spacing: .08em; }
+
+/* números da fábrica */
+.nums { display: grid; grid-template-columns: repeat(6, 1fr); margin: 0; }
+.nums div { padding: 4px 18px; border-left: 1px solid currentColor; border-color: rgba(127,140,180,.35); }
+.nums div:first-child { border-left: 0; padding-left: 0; }
+.nums dt { font: 700 clamp(1.5rem, 2.4vw, 2.1rem)/1.1 var(--titulo); white-space: nowrap; }
+.nums dt small { font-size: .55em; margin-left: .2em; }
+.nums dd { margin: 4px 0 0; font-size: .9rem; opacity: .85; }
+
+/* passos */
+.passos { list-style: none; padding: 0; margin: 0; counter-reset: p; }
+.passos h3 { margin: .2em 0 .3em; }
+.passos p { margin: 0; font-size: .95rem; color: var(--cinza); }
+.ps-n { font: 700 1rem/1 var(--titulo); }
+
+.segs { list-style: none; padding: 0; margin: 0; }
+
+/* tabela */
+.tab-wrap { overflow-x: auto; border: 1px solid var(--linha); border-radius: var(--raio); }
+.tab { width: 100%; border-collapse: collapse; font-size: .95rem; background: #fff; }
+.tab th, .tab td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--linha); vertical-align: top; }
+.tab thead th { background: var(--marinho); color: #fff; font: 600 .82rem var(--texto); text-transform: uppercase; letter-spacing: .05em; }
+.tab tbody th { font-family: var(--titulo); color: var(--marinho); white-space: nowrap; }
+.tab tbody tr:last-child > * { border-bottom: 0; }
+
+/* certificado */
+.cert { margin: 0; background: #fff; border: 1px solid var(--linha); border-radius: var(--raio); padding: 22px; box-shadow: 0 18px 40px -24px rgba(15,31,92,.35); }
+.cert-topo { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 2px solid var(--marinho); padding-bottom: 12px; margin-bottom: 14px; }
+.cert-topo img { width: 120px; }
+.cert-topo b { font: 700 .8rem var(--texto); text-transform: uppercase; letter-spacing: .08em; color: var(--marinho); }
+.cert-dados { display: flex; gap: 22px; margin: 0 0 6px; flex-wrap: wrap; }
+.cert-dados dt { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--cinza); }
+.cert-dados dd { margin: 0; font-weight: 600; }
+.cert figcaption { font-size: .8rem; color: var(--cinza); margin-top: 6px; }
+
+/* laboratório */
+.lab { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.lab img { height: 170px; width: 100%; object-fit: contain; background: #fff; mix-blend-mode: multiply; margin-bottom: 14px; }
+.lab p { color: var(--cinza); margin: 0; }
+.lab-extra { margin-top: 22px; color: var(--cinza); }
+
+.pol { list-style: none; padding: 0; margin: 0 0 1em; }
+.pol li { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--linha); }
+.pol .ic { color: var(--azul); margin-top: 3px; }
+.pol-rev { font-size: .85rem; color: var(--cinza); font-style: italic; }
+
+/* galeria */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.chip { font: 600 .9rem var(--texto); padding: 8px 16px; border-radius: 99px; border: 1.5px solid var(--linha); background: #fff; color: var(--tinta); cursor: pointer; }
+.chip small { color: var(--cinza); font-weight: 500; margin-left: 4px; }
+.chip[aria-pressed="true"] { background: var(--marinho); border-color: var(--marinho); color: #fff; }
+.chip[aria-pressed="true"] small { color: #c8d3f5; }
+.galeria { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.galeria li[hidden] { display: none; }
+.galeria a { display: block; overflow: hidden; border-radius: 4px; aspect-ratio: 4/3; background: var(--gelo); }
+.galeria img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.galeria a:hover img { transform: scale(1.05); }
+.caixa { position: fixed; inset: 0; background: rgba(8,14,36,.94); z-index: 100; display: grid; place-items: center; padding: 50px 60px; }
+.caixa[hidden] { display: none; }
+.caixa img { max-height: 86vh; width: auto; border-radius: 4px; }
+.caixa button { position: absolute; background: none; border: 0; color: #fff; font-size: 2.6rem; cursor: pointer; padding: 10px 16px; line-height: 1; }
+.cx-fechar { top: 8px; right: 8px; font-size: 1.8rem !important; }
+.cx-ant { left: 4px; top: 50%; transform: translateY(-50%); }
+.cx-prox { right: 4px; top: 50%; transform: translateY(-50%); }
+
+/* formulário */
+.form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 18px; }
+.form label { display: flex; flex-direction: column; gap: 6px; font-size: .88rem; font-weight: 600; }
+.form .larga { grid-column: 1 / -1; }
+.form input, .form select, .form textarea { font: 400 1rem var(--texto); padding: 12px 14px; border: 1.5px solid var(--linha); border-radius: var(--raio); background: #fff; color: var(--tinta); width: 100%; }
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--azul); outline: none; box-shadow: 0 0 0 3px rgba(47,91,211,.15); }
+.form-fim { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.form-fim small { color: var(--cinza); font-weight: 400; }
+.mapa iframe { display: block; width: 100%; height: 380px; border: 0; }
+
+/* rodapé */
+.rodape { background: var(--marinho-esc); color: #d5ddf3; padding: 56px 0 0; font-size: .95rem; }
+.rodape .in { display: grid; grid-template-columns: 1.4fr 1fr 1fr .8fr; gap: 36px; }
+.rodape h3 { font: 600 .78rem var(--texto); text-transform: uppercase; letter-spacing: .1em; color: #8fa2dc; margin-bottom: 12px; }
+.rodape a { text-decoration: none; }
+.rodape a:hover { color: #fff; }
+.rod-marca img { width: 220px; margin-bottom: 14px; }
+.rod-fone { font: 700 1.3rem var(--titulo); color: #fff; }
+.rodape address { font-style: normal; margin-bottom: 8px; }
+.rodape nav { display: flex; flex-direction: column; gap: 6px; }
+.rod-fim { width: min(var(--larg), 100% - 32px); margin: 44px auto 0; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.12); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: .82rem; color: #8fa2dc; }
+
+@media (max-width: 1000px) {
+  .nums { grid-template-columns: repeat(3, 1fr); row-gap: 22px; }
+  .nums div:nth-child(4) { border-left: 0; padding-left: 0; }
+  .rodape .in { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  body { font-size: 15.5px; }
+  .so-pc { display: none !important; }
+  .menu-btn { display: inline-flex; }
+  .nums { grid-template-columns: 1fr 1fr; }
+  .nums div { border-left: 0 !important; padding: 0 !important; }
+  .lab { grid-template-columns: 1fr; }
+  .form { grid-template-columns: 1fr; }
+  .rodape .in { grid-template-columns: 1fr; gap: 26px; }
+  .galeria { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .caixa { padding: 50px 8px; }
+  .tab tbody th { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .cv-trat.on .cv-linha { stroke-dashoffset: 0; } }
