@@ -1,0 +1,12 @@
+# Herpin Embalagens: como este site é feito
+
+- Cliente: Herpin Embalagens, Av. C-1, nº 1173, Jardim América (ao lado do Cepal), Goiânia GO, CEP 74265-010. Atacado e varejo de embalagens e produtos de limpeza desde 1994, entrega com transporte próprio. Escolhida na lista de distribuidoras (21/10/2026, /mnt/project-files/prospeccao/nichos/distribuidoras/LISTA.md), sem pedido do cliente.
+- Site atual: herpin.com.br (GOSites, PHP antigo, largura fixa, fundo amarelo chapado). Só português.
+- Marca: logo vetorizado do `logo.png` de 297 px com potracer (`logo.py`: máscara por cor, ampliada 10x, passar `~mask`); H vermelho com degradê, "ERPIN" azul #05056A, "EMBALAGENS" grafite. `logo-branco.svg` para fundo azul. Cores: vermelho #C40000, azul #0A0A6B (menu do site atual), amarelo #FFDD00 (fundo do site e fachada da loja). Títulos em Rubik (itálico 800 na versão A, como o "ERPIN"), texto em Inter.
+- Produtos: os 110 itens do menu "Produtos" do site atual em 6 departamentos, com as 230 fotos das galerias (`/dados/galerias/galNNN`), convertidas por `assets.py` para `public/assets/img/p/`. "Bandeja laminada" (papel) e "Bobina papelão" não têm foto no site atual. Recortes sem fundo (rembg isnet-general-use, `cut.py`) em `img/cut/` para a abertura e os departamentos.
+- Fotos da loja: só a fachada de 311 px do site atual (`fachada.webp`). Banner de limpeza do site atual em `banner-limpeza.webp` (não usado no momento).
+- Escritos por nós: frases dos departamentos, listas por tipo de negócio (kits), "mais procurados", passos da tele-entrega, textos de chamada.
+- Estrutura: `/` escolha (componentes/apresentacao), `/a/` "Fachada" e `/b/` "Balcão", 13 páginas cada, com o mesmo menu do site atual (Home, Quem Somos, Produtos + 6 departamentos, Cadastro, Orçamento, Localização, Fale Conosco).
+- Lista de pedido: botões "Adicionar" guardam itens no navegador (`herpin-pedido`); Orçamento envia a lista com quantidades pelo WhatsApp (62) 98244-0168 ou por e-mail herpin@herpin.com.br. Cadastro e Fale Conosco também montam a mensagem.
+- Gerar: `node clientes/herpin/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: se o WhatsApp (62) 98244-0168 do banner ainda vale; área atendida pela tele-entrega e pedido mínimo; fotos atuais da loja e do caminhão; itens das listas por tipo de negócio.
