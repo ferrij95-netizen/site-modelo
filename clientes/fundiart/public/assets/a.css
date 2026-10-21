@@ -1,0 +1,167 @@
+/* Versão A · Fornalha: preto e vermelho-brasa do site atual, fogo da fundição, faixa de menu laranja. */
+:root{--fundo:#0e0605;--fundo2:#170a07;--sup:#1d0f0b;--texto:#f5ece7;--suave:#bfa79b;--linha:#2d1a14;--linha-forte:#4a2d22;--campo:#140907}
+.topo{background:#000;position:sticky;top:0;z-index:50}
+.topo-in{display:flex;align-items:center;gap:24px;min-height:84px}
+.marca img{width:200px}
+.topo-cont{margin-left:auto;display:flex;gap:26px;font-size:14.5px}
+.topo-cont a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#f0dcd2}
+.topo-cont a:hover{color:var(--cor)}
+.topo-cont .ic{color:var(--cor)}
+.menu{background:linear-gradient(90deg,#7D2000,#5a1700 60%,#401000);border-top:1px solid #a02a00}
+.menu .in{display:flex;gap:4px}
+.menu a{padding:12px 16px;color:#fff;text-decoration:none;font:600 14px/1 var(--txt);letter-spacing:.04em;text-transform:uppercase;transition:background .2s}
+.menu a:hover{background:rgba(255,96,0,.35)}
+.menu a[aria-current=page]{background:var(--cor)}
+
+/* topo da home */
+.hero{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 0% 100%,#3a0d02 0%,#140604 45%,#0a0403 100%)}
+.hero-fogo,.capa-fogo{position:absolute;inset:auto auto 0 0;width:min(56vw,640px);aspect-ratio:430/265;background:url(/assets/img/fogo.webp) left bottom/cover no-repeat;opacity:.9;mask-image:linear-gradient(to right,#000 55%,transparent),linear-gradient(to top,#000 70%,transparent);mask-composite:intersect;-webkit-mask-composite:source-in;pointer-events:none}
+.hero-grade{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(56px,8vw,104px) 0 clamp(72px,9vw,120px)}
+.hero h1{font-size:clamp(40px,5.6vw,74px);letter-spacing:-.025em;margin-bottom:22px}
+.hero-sub{font-size:clamp(17px,1.5vw,19px);color:#e6d3c9;max-width:520px;margin-bottom:32px}
+.vitrine{position:relative;display:grid}
+.vitrine figure{grid-area:1/1;display:grid;grid-template-columns:230px 1fr;gap:22px;align-items:start;opacity:0;visibility:hidden;transition:opacity .9s,visibility .9s}
+.vitrine figure.on{opacity:1;visibility:visible}
+.v-foto{background:#f3efec;aspect-ratio:4/5;display:grid;place-items:center;padding:18px;box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 1px rgba(255,96,0,.18)}
+.v-foto img{max-height:100%;width:auto;object-fit:contain}
+.vitrine figcaption{order:-1;text-align:right;font-size:13.5px;color:#bfa79b;display:grid;gap:3px;padding-top:6px;border-top:1px solid var(--cor)}
+.vitrine figcaption b{font:700 17px/1.2 var(--tit);color:#fff;margin:10px 0 6px}
+.v-pontos{grid-area:2/1;display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+.v-pontos button{width:28px;height:4px;padding:0;border:0;background:#4a2d22;cursor:pointer}
+.v-pontos button[aria-current]{background:var(--cor)}
+
+.faixa-metais{background:linear-gradient(90deg,#7D2000,#401000);border-block:1px solid #a02a00}
+.faixa-metais .in{display:flex;flex-wrap:wrap;align-items:center;gap:10px 40px;padding:20px 0}
+.faixa-metais span{font:700 clamp(20px,2.4vw,28px)/1 var(--tit);color:#fff}
+.faixa-metais .fm-txt{margin-left:auto;font:500 13px/1 var(--txt);letter-spacing:.16em;text-transform:uppercase;color:#ffdbcc}
+
+.intro{background:var(--fundo2)}
+.intro-grade{display:grid;grid-template-columns:.9fr 1fr;gap:clamp(32px,6vw,88px);align-items:center}
+.intro-foto img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.intro h2{font-size:clamp(30px,3.8vw,46px)}
+.intro p{color:#e2cfc5}
+
+.linhas{background:var(--fundo)}
+.linhas-l{border-top:1px solid var(--linha-forte)}
+.linhas-l a{display:grid;grid-template-columns:64px minmax(220px,1fr) auto 40px;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--linha-forte);text-decoration:none;transition:background .25s,padding .25s}
+.linhas-l a:hover{background:linear-gradient(90deg,rgba(125,32,0,.35),transparent);padding-left:14px}
+.l-n{font:700 15px/1 var(--tit);color:var(--cor)}
+.l-txt b{display:block;font:700 clamp(24px,2.6vw,32px)/1.1 var(--tit);margin-bottom:6px}
+.l-txt span{color:var(--suave);font-size:15px;max-width:440px;display:block}
+.l-fotos{display:flex;gap:8px}
+.l-fotos img{width:86px;height:104px;object-fit:cover;filter:saturate(.9)}
+.l-seta{color:var(--cor)}.l-seta .ic{width:28px;height:28px}
+
+.processo-home{background:linear-gradient(180deg,#170a07,#2a0b03)}
+.etapas{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;padding-top:34px}
+.etapas .ap-trilho{top:0;left:0;right:0;height:3px}
+.etapa figure{margin-bottom:18px;overflow:hidden}
+.etapa img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.e-n{display:block;font:700 44px/1 var(--tit);color:var(--cor);margin-bottom:8px}
+.etapa h3{font-size:24px}
+.etapa p{color:#d9c4b9;font-size:15px}
+
+.artistas-home{background:var(--fundo)}
+.nomes{display:flex;flex-wrap:wrap;gap:6px 0;font:700 clamp(22px,2.6vw,34px)/1.3 var(--tit)}
+.nomes li::after{content:'/';color:var(--cor);margin:0 .5em;font-weight:500}
+.nomes li:last-child::after{content:none}
+
+.destaque{background:#000;padding:clamp(64px,8vw,104px) 0;border-top:1px solid var(--linha)}
+.destaque-grade{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.destaque h2{font-size:clamp(28px,3.4vw,42px)}
+.destaque p{color:var(--suave)}
+.destaque-fotos{display:grid;grid-template-columns:1.2fr .8fr;grid-template-rows:auto auto;gap:12px}
+.destaque-fotos figure:first-child{grid-row:span 2}
+.destaque-fotos img{width:100%;height:100%;object-fit:cover}
+.destaque-fotos figure:first-child img{aspect-ratio:auto}
+
+.chamada{background:linear-gradient(110deg,#FF6000 0%,#c43f00 40%,#7D2000 100%);color:#fff;padding:clamp(56px,7vw,88px) 0}
+.chamada-in{text-align:center;max-width:760px}
+.chamada h2{font-size:clamp(32px,4.4vw,54px)}
+.chamada p{font-size:18px;color:#ffe6d8}
+.chamada .acoes{justify-content:center;margin-top:28px}
+.btn-claro{background:#fff;color:#7D2000;border-color:#fff}.btn-claro:hover{background:#1a0805;border-color:#1a0805;color:#fff}
+.chamada .btn-linha{color:#fff;border-color:rgba(255,255,255,.6)}.chamada .btn-linha:hover{color:#fff;border-color:#fff}
+
+/* páginas internas */
+.capa{position:relative;overflow:hidden;background:radial-gradient(100% 120% at 100% 100%,#3a0d02,#0e0605 60%);padding:clamp(64px,9vw,120px) 0 clamp(48px,6vw,72px);border-bottom:1px solid var(--linha)}
+.capa-fogo{inset:auto 0 0 auto;transform:scaleX(-1);width:min(48vw,520px);opacity:.75}
+.capa .in{position:relative}
+.capa h1{font-size:clamp(38px,5.4vw,68px);max-width:860px}
+.capa-sub{font-size:18px;color:#e2cfc5;max-width:620px}
+.sec-escura{background:#000}
+.apres-grade{display:grid;grid-template-columns:240px 1fr;gap:clamp(32px,6vw,80px);align-items:start}
+.apres-foto img{width:100%;box-shadow:0 0 0 1px var(--linha-forte)}
+.apres-txt{max-width:720px;font-size:18px;color:#e6d6cd}
+.apres-txt .lead{font:700 clamp(22px,2.4vw,28px)/1.35 var(--tit);color:#fff;letter-spacing:-.01em}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.lista-tags{display:flex;flex-wrap:wrap;gap:10px}
+.lista-tags li{padding:10px 16px;border:1px solid var(--linha-forte);font-size:15.5px}
+.valores-a{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--cor)}
+.valor{padding:32px 32px 8px 0}
+.valor+.valor{padding-left:32px;border-left:1px solid var(--linha-forte)}
+.valor span{font:700 15px/1 var(--tit);color:var(--cor)}
+.valor h3{font-size:26px;margin:14px 0 10px}
+.valor p{color:var(--suave)}
+
+.troca{background:var(--fundo2)}
+.troca-grade{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,80px);--ap-topo:130px}
+.ap-troca-midia figure{display:flex;flex-direction:column}
+.ap-troca-midia img{flex:1;min-height:0;width:100%;object-fit:cover}
+.ap-troca-midia figcaption{padding-top:10px;font-size:13.5px;color:var(--suave)}
+.ap-troca-passo h2{font-size:clamp(32px,3.6vw,46px)}
+.ap-troca-passo p{font-size:18px;color:#e2cfc5;max-width:460px}
+.galeria-proc{columns:3 260px}
+
+.artistas{border-top:1px solid var(--linha-forte)}
+.artistas>li{display:grid;grid-template-columns:minmax(220px,1fr) 2fr;gap:32px;align-items:center;padding:28px 0;border-bottom:1px solid var(--linha-forte)}
+.artistas h2{font-size:clamp(24px,2.6vw,32px);margin:0}
+.art-obras{display:flex;gap:12px;flex-wrap:wrap}
+.art-obras a{width:150px;text-decoration:none;font-size:13px;color:var(--suave)}
+.art-obras img{width:150px;height:170px;object-fit:cover;margin-bottom:8px;background:var(--sup)}
+.art-obras a:hover span{color:var(--cor)}
+.art-nota{color:var(--suave);margin:0}
+.foco{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.foco img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.foco a{display:block;overflow:hidden}.foco a:hover img{transform:scale(1.03)}.foco img{transition:transform .5s}
+
+.contato-grade{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,80px)}
+.contato-info h2{font-size:32px}
+.contato-info p{color:#e2cfc5}
+.contato-info a{text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.contato-info a:hover{color:var(--cor)}
+.contato-info .ic{color:var(--cor)}
+.form{background:var(--fundo2);padding:clamp(22px,3vw,36px);border-top:3px solid var(--cor)}
+
+@media (max-width:1060px){
+  .topo-cont{display:none}
+  .menu-btn{display:block;margin-left:auto;color:#fff}
+  .menu{display:none}
+  .menu-aberto .menu{display:block}
+  .menu .in{flex-direction:column;padding:8px 0}
+  .menu a{padding:14px 4px;font-size:15px}
+  .hero-grade{grid-template-columns:1fr}
+  .vitrine{max-width:620px}
+  .linhas-l a{grid-template-columns:44px 1fr 32px}
+  .l-fotos{display:none}
+  .etapas{grid-template-columns:1fr 1fr;row-gap:40px}
+}
+@media (max-width:760px){
+  .topo-in{min-height:68px}.marca img{width:160px}
+  .vitrine figure{grid-template-columns:1fr}
+  .vitrine figcaption{order:0;text-align:left}
+  .v-pontos{justify-content:flex-start}
+  .faixa-metais .fm-txt{margin-left:0;width:100%}
+  .intro-grade,.destaque-grade,.apres-grade,.dupla,.contato-grade,.troca-grade{grid-template-columns:1fr}
+  .apres-foto{max-width:200px}
+  .valores-a{grid-template-columns:1fr}.valor,.valor+.valor{padding:24px 0;border-left:0;border-bottom:1px solid var(--linha-forte)}
+  .artistas>li{grid-template-columns:1fr;gap:14px}
+  .art-obras{justify-content:flex-start}.art-obras a,.art-obras img{width:100px}.art-obras img{height:120px}
+  .art-nota{text-align:left}
+  .foco{grid-template-columns:1fr 1fr;gap:8px}
+  .hero-fogo{width:100vw;opacity:.55}
+}
+@media (max-width:520px){
+  .etapas{grid-template-columns:1fr}
+  .l-txt b{font-size:22px}
+}
