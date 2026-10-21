@@ -1,0 +1,182 @@
+/* Grupo Bioplast · base comum às versões A e B.
+   Cores do logo: azul #006DA0 ("BIO") e verde #00A859 ("PLAST"); dos folders: verde-lima #7DC242, menta #E3F1E6, verde-escuro #007A3D;
+   do site atual: grafite #23282b. Biovin bordô #7A2E35, PartyParts laranja #F28C28. Títulos em Saira Semi Condensed (desenho próximo do logo), texto em Inter. */
+:root{--azul:#006DA0;--azul-d:#00507A;--azul-dd:#003553;--verde:#00A859;--verde-d:#007A3D;--lima:#7DC242;--menta:#E3F1E6;--menta2:#CFE7D5;--grafite:#23282b;
+  --vinho:#7A2E35;--laranja:#F28C28;--ink:#16222a;--txt:#3d4850;--mut:#66727a;--line:#d9e1e4;--bg:#fff;
+  --h:'Saira Semi Condensed',system-ui,sans-serif;--b:Inter,system-ui,sans-serif;--r:6px;--in:1240px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font:16px/1.6 var(--b);color:var(--txt);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--h);color:var(--ink);line-height:1.04;margin:0 0 .5em;letter-spacing:-.005em}
+h1{font-weight:800;font-size:clamp(36px,5.2vw,66px)}
+h2{font-weight:800;font-size:clamp(28px,3.4vw,44px)}
+h3{font-weight:700;font-size:21px}
+p{margin:0 0 1em}
+figure{margin:0}
+.in{max-width:var(--in);margin:0 auto;padding:0 24px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pular{position:absolute;left:-999px;top:0;background:#000;color:#fff;padding:8px 14px;z-index:99}.pular:focus{left:8px}
+.ic{width:20px;height:20px;flex:none}
+.eyebrow{font-family:var(--h);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:14px;color:var(--verde-d);margin:0 0 12px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 17px/1 var(--h);letter-spacing:.02em;text-decoration:none;background:var(--verde);color:#fff;border:0;border-radius:var(--r);padding:15px 22px;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--verde-d)}.btn .ic{width:18px;height:18px}
+.btn-linha{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px currentColor}.btn-linha:hover{background:var(--ink);color:#fff}
+.btn-claro{background:#fff;color:var(--azul-d)}.btn-claro:hover{background:#eaf3f8}
+.btn-linha-clara{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.6)}.btn-linha-clara:hover{background:#fff;color:var(--ink)}
+.btn-wa{background:#1f9d55}.btn-wa:hover{background:#178246}
+.btn-vinho{background:var(--vinho)}.btn-vinho:hover{background:#5e2228}
+.btn-laranja{background:var(--laranja)}.btn-laranja:hover{background:#d8731a}
+.acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.sec{padding:84px 0}
+@media (max-width:760px){.sec{padding:56px 0}}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:30;background:#fff}
+.topo .in{display:flex;align-items:center;gap:22px;min-height:78px}
+.marca img{width:auto;height:46px}
+.menu{display:flex;gap:2px;margin-left:auto}
+.menu a{font:700 15px var(--h);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:9px 9px;border-radius:4px;color:var(--ink);white-space:nowrap}
+.btn-orc{position:relative;display:inline-flex;align-items:center;gap:8px;font:700 15px var(--h);text-decoration:none;padding:10px 14px;border-radius:var(--r);flex:none}
+.orc-n{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;border-radius:11px;background:var(--grafite);color:#fff;font:700 12px/22px var(--b);text-align:center;padding:0 6px}
+.menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--ink)}.menu-btn .ic{width:28px;height:28px}
+.menu-tel{display:none!important}
+@media (max-width:1180px){
+  .menu{position:fixed;inset:var(--topo-h,80px) 0 auto 0;flex-direction:column;gap:0;padding:8px 16px 20px;background:#fff;box-shadow:0 20px 30px rgba(0,0,0,.15);display:none;max-height:calc(100vh - var(--topo-h,80px));overflow:auto}
+  .menu.aberto{display:flex}
+  .menu a{padding:14px 8px;border-bottom:1px solid #eee;border-radius:0;background:none!important}
+  .menu .menu-tel{display:flex!important;gap:8px;align-items:center;border:0;color:var(--azul)!important}
+  .menu-btn{display:block;margin-left:auto}
+}
+@media (max-width:560px){.btn-orc span{display:none}.marca img{height:38px}.topo .in{gap:10px;min-height:66px}}
+
+/* números */
+.numeros{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.numeros li{padding:6px 24px;border-left:1px solid var(--line)}
+.numeros li:first-child{border-left:0;padding-left:0}
+.numeros b{display:block;font:800 clamp(38px,4.4vw,58px)/1 var(--h);color:var(--azul)}
+.numeros span{display:block;margin-top:8px;font-size:15px;color:var(--mut)}
+@media (max-width:760px){.numeros{grid-template-columns:1fr 1fr;row-gap:28px}.numeros li:nth-child(3){border-left:0;padding-left:0}}
+
+/* equipamentos */
+.equip{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
+.equip div{padding:15px 0;border-top:1px solid var(--line)}
+.equip dt{font:700 19px var(--h);color:var(--ink)}
+.equip dd{margin:2px 0 0;font-size:15px;color:var(--mut)}
+@media (max-width:620px){.equip{grid-template-columns:1fr}}
+
+/* polímeros */
+.polimeros{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(122px,1fr));gap:8px}
+.polimeros li{aspect-ratio:1/1;padding:12px;display:flex;flex-direction:column;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:4px}
+.polimeros b{font:800 26px/1 var(--h);color:var(--azul)}.polimeros li:nth-child(13) b,.polimeros li:nth-child(15) b,.polimeros li:nth-child(21) b{font-size:20px}
+.polimeros span{font-size:12.5px;line-height:1.3;color:var(--mut)}
+.polimeros .destaque{background:var(--azul);border-color:var(--azul)}.polimeros .destaque b,.polimeros .destaque span{color:#fff}
+.polimeros .outros{background:var(--verde);border-color:var(--verde)}.polimeros .outros b,.polimeros .outros span{color:#fff}
+
+/* botão orçar */
+.add{display:inline-flex;align-items:center;gap:6px;font:700 14px var(--h);letter-spacing:.03em;border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:6px 13px 6px 9px;cursor:pointer;white-space:nowrap;transition:.15s;vertical-align:middle}
+.add .ic{width:15px;height:15px}.add .ic-ok{display:none}
+.add:hover{border-color:var(--verde);color:var(--verde-d)}
+.add.on{background:var(--verde);border-color:var(--verde);color:#fff}.add.on .ic-ok{display:block}.add.on .ic:not(.ic-ok){display:none}
+.add .t2,.add.on .t1{display:none}.add.on .t2{display:inline}
+
+/* busca e filtros */
+.busca-bar{position:sticky;top:var(--topo-h,78px);z-index:5;background:var(--bg);padding:14px 0;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.busca{display:flex;align-items:center;gap:10px;border:2px solid var(--line);border-radius:var(--r);padding:0 14px;background:#fff}
+.busca:focus-within{border-color:var(--azul)}
+.busca .ic{color:var(--mut)}
+.busca input{flex:1;border:0;outline:0;font:16px var(--b);padding:14px 0;background:none;min-width:0}
+.filtros{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.filtros button{font:600 14px var(--b);border:1px solid var(--line);background:#fff;color:var(--txt);border-radius:999px;padding:6px 13px;cursor:pointer}
+.filtros button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.sem-res{padding:20px;background:var(--menta);border-radius:var(--r)}
+@media (max-width:620px){.filtros{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.filtros button{flex:none}}
+
+/* produtos com foto (Biovin) */
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:34px 26px}
+.prod figure{aspect-ratio:1/1;background:#fff;border-bottom:1px solid var(--line);margin-bottom:14px;overflow:hidden}
+.prod figure img{width:100%;height:100%;object-fit:contain;transition:transform .4s}
+.prod:hover figure img{transform:scale(1.04)}
+.prod h3{font-size:20px;margin-bottom:6px}
+.prod p{font-size:14.5px;line-height:1.5;margin-bottom:10px}
+.cods-l{display:flex;flex-wrap:wrap;gap:5px}
+.cods-l code,.chips code{font:600 12.5px ui-monospace,SFMono-Regular,Menlo,monospace;background:#eef2f3;color:var(--ink);padding:3px 7px;border-radius:3px}
+
+/* PartyParts */
+.pps{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.pp{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start;padding:26px 0;border-top:1px solid var(--line)}
+.pp figure{aspect-ratio:1/1;background:#fff}.pp figure img{width:100%;height:100%;object-fit:contain}
+.pp h3{font-size:21px;margin-bottom:4px}.pp p{font-size:14.5px;line-height:1.5;margin-bottom:10px}
+.cores{list-style:none;display:flex;gap:5px;margin:0 0 10px;padding:0}
+.cores li{width:20px;height:20px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.pp .add{margin-top:10px}
+@media (max-width:900px){.pps{grid-template-columns:1fr}}
+@media (max-width:480px){.pp{grid-template-columns:104px 1fr;gap:16px}}
+
+/* formulário */
+.form .campos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form label{display:flex;flex-direction:column;gap:6px;font:600 14px var(--b);color:var(--ink)}
+.form .larga{grid-column:1/-1}
+.form input,.form select,.form textarea{font:16px var(--b);border:1.5px solid var(--line);border-radius:var(--r);padding:12px 13px;background:#fff;color:var(--ink);width:100%}
+.form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:var(--azul)}
+.form-acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+@media (max-width:560px){.form .campos{grid-template-columns:1fr}}
+
+/* lista de orçamento */
+.orc-box{margin-top:30px;padding:24px;background:var(--menta);border-radius:var(--r)}
+.orc-box h2{font-size:26px}
+.orc-box ul{list-style:none;margin:0;padding:0}
+.orc-box li{display:grid;grid-template-columns:1fr 110px 34px;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(0,0,0,.08);font-size:14px}
+.orc-box li b{font-weight:600;color:var(--ink)}
+.orc-box li input{font:14px var(--b);border:1px solid var(--line);border-radius:4px;padding:7px;width:100%}
+.orc-box li button{border:0;background:none;font-size:16px;cursor:pointer;color:var(--mut)}
+.orc-vazio{font-size:15px;margin:0}
+
+/* contato */
+.contato-sec .in{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+.ct-lista{list-style:none;margin:0;padding:0}
+.ct-lista li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.ct-lista .ic{width:24px;height:24px;color:var(--verde);margin-top:3px}
+.ct-lista div{display:flex;flex-direction:column}
+.ct-lista b{font:700 18px var(--h);color:var(--ink)}
+.ct-lista a{color:var(--azul)}
+.mapa iframe{display:block;width:100%;height:380px;border:0;filter:saturate(.85)}
+@media (max-width:900px){.contato-sec .in{grid-template-columns:1fr}}
+
+/* faixa de contato */
+.faixa-contato{padding:70px 0;color:#fff}
+.faixa-contato .in{display:flex;gap:40px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.faixa-contato h2{color:#fff;max-width:640px}
+.faixa-contato p{max-width:620px;opacity:.88}
+.faixa-contato .eyebrow{color:var(--lima)}
+.fc-acoes{display:flex;gap:12px;flex-wrap:wrap}
+
+/* rodapé */
+.rodape{position:relative;overflow:hidden;background:var(--grafite);color:#c9d1d4;padding:64px 0 0;font-size:15px}
+.rodape .in{display:grid;grid-template-columns:1.3fr 1fr 1.1fr .8fr;gap:36px;position:relative}
+.rod-marca img{height:52px;width:auto;margin-bottom:16px}
+.rod-pgqp{display:flex;gap:8px;align-items:center;color:#fff;font-weight:600}.rod-pgqp .ic{color:var(--lima)}
+.rodape h3{color:#fff;font-size:17px;text-transform:uppercase;letter-spacing:.1em}
+.rodape a{text-decoration:none}.rodape a:hover{color:#fff;text-decoration:underline}
+.rodape nav a{display:block;padding:2px 0}
+.rod-link{display:inline-flex;gap:6px;align-items:center;color:var(--lima)}.rod-link .ic{width:17px}
+.rod-fim{margin:46px 0 0;padding:18px 24px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:13px;color:#8e989c;position:relative}
+@media (max-width:900px){.rodape .in{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.rodape .in{grid-template-columns:1fr}}
+
+.wa-flut{position:fixed;right:18px;bottom:18px;z-index:40;width:58px;height:58px;border-radius:50%;background:#1f9d55;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.wa-flut .ic{width:30px;height:30px}
+
+/* zoom de imagens */
+[data-zoom]{cursor:zoom-in;border:0;padding:0;background:none;font:inherit;text-align:left;color:inherit}
+.zoom-dlg{border:0;padding:0;max-width:96vw;max-height:94vh;background:transparent;overflow:visible}
+.zoom-dlg::backdrop{background:rgba(10,18,22,.86)}
+.zoom-dlg img{max-width:96vw;max-height:90vh;width:auto;margin:auto;background:#fff}
+.zoom-dlg form{position:absolute;top:-44px;right:0}
+.zoom-dlg form button{background:#fff;border:0;border-radius:50%;width:38px;height:38px;font-size:18px;cursor:pointer}
+
+/* granulado (pontos do logo) */
+.granulado,.hero-gran,.capa-gran,.rod-gran{position:absolute;pointer-events:none}
+
+@media (max-width:620px){.polimeros{grid-template-columns:repeat(3,1fr);gap:6px}.polimeros li{aspect-ratio:auto;min-height:78px;padding:9px}.polimeros b{font-size:21px}.polimeros li:nth-child(13) b,.polimeros li:nth-child(15) b,.polimeros li:nth-child(21) b{font-size:16px}.polimeros span{font-size:11px;margin-top:6px}}

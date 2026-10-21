@@ -5,7 +5,7 @@
 
 const T = {
   en: { prep: 'Website proposal', tit: n => `Your new website, <em>${n}.</em>`, sub: 'Two versions, same content, photos and colors. Scroll through them and pick the one that feels right.', versao: 'Version', abrir: 'Open version', atual: 'Your current website', atualTxt: 'For comparison: this is what visitors see today.', atualBtn: 'Open current site', fimT: 'Which one feels like <em>you?</em>', fimS: 'Both are complete multi-page sites. Tell us your pick and we fine-tune the details with you.', rolar: 'Scroll', paginas: 'pages', telas: { intro: 'Intro', atual: 'Today', fim: 'Your pick' } },
-  pt: { prep: 'Proposta de site', tit: n => `O novo site da <em>${n}.</em>`, sub: 'Duas versões com o mesmo conteúdo, fotos e cores. Role para ver cada uma e escolha a que mais combina.', versao: 'Versão', abrir: 'Abrir versão', atual: 'Seu site atual', atualTxt: 'Para comparar: é o que os visitantes veem hoje.', atualBtn: 'Abrir site atual', fimT: 'Qual tem mais a <em>sua cara?</em>', fimS: 'As duas são sites completos com várias páginas. Diga qual prefere e ajustamos os detalhes com você.', rolar: 'Rolar', paginas: 'páginas', telas: { intro: 'Início', atual: 'Hoje', fim: 'Escolha' } },
+  pt: { prep: 'Proposta de site', tit: (n, a = 'da') => `O novo site ${a} <em>${n}.</em>`, sub: 'Duas versões com o mesmo conteúdo, fotos e cores. Role para ver cada uma e escolha a que mais combina.', versao: 'Versão', abrir: 'Abrir versão', atual: 'Seu site atual', atualTxt: 'Para comparar: é o que os visitantes veem hoje.', atualBtn: 'Abrir site atual', fimT: 'Qual tem mais a <em>sua cara?</em>', fimS: 'As duas são sites completos com várias páginas. Diga qual prefere e ajustamos os detalhes com você.', rolar: 'Rolar', paginas: 'páginas', telas: { intro: 'Início', atual: 'Hoje', fim: 'Escolha' } },
 };
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const seta = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
@@ -110,7 +110,7 @@ img{max-width:100%;display:block}a{color:inherit}h1,h2{font-family:var(--h);lett
 <section class="es-tela es-intro" data-slide="${t.telas.intro}"><div class="es-in es-split es-split-intro">
   <div class="es-txt">
     <p class="es-eyebrow" data-rev>${t.prep}</p>
-    <h1 data-palavras>${t.tit(esc(o.nome))}</h1>
+    <h1 data-palavras>${t.tit(esc(o.nome), o.artigo)}</h1>
     <p class="es-sub" data-rev style="--ap-d:600ms">${t.sub}</p>
     <nav class="es-chips" data-rev style="--ap-d:750ms">${o.versoes.map(v => `<a href="#${t.versao.toLowerCase()}-${v.letra}">${t.versao} ${v.letra.toUpperCase()} · ${esc(v.nome)}</a>`).join('')}</nav>
   </div>
