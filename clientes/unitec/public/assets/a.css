@@ -1,0 +1,96 @@
+/* Versão A "Clínica": fundo claro, mosaico com o desenho do símbolo, Barlow nos títulos (DIN, como o logo). */
+.v-a .topo { background: #fff; border-bottom: 1px solid var(--cinza-2); color: var(--tinta); }
+.v-a .nav a:hover, .v-a .nav button:hover { color: var(--azul); background: var(--cinza); }
+.v-a .nav .ativo > a, .v-a .nav .ativo > button { color: var(--azul); font-weight: 600; }
+.v-a .busca { border: 1px solid var(--linha); background: var(--cinza); }
+.v-a .busca:focus-within { border-color: var(--azul); background: #fff; }
+.v-a .btn-orc { background: var(--azul); color: #fff; }
+
+/* hero */
+.hero-a { padding: 64px 0 72px; background: linear-gradient(180deg, #fff 0%, #f6f8fa 100%); }
+.hero-a-in { max-width: var(--larg); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; }
+.hero-a h1 { font-size: clamp(2.3rem, 4.6vw, 3.7rem); color: var(--azul); font-weight: 700; letter-spacing: -.01em; }
+.hero-a .lead { font-size: 1.15rem; max-width: 560px; color: var(--texto); }
+.acoes { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0 32px; }
+.selos-linha { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 0; }
+.selos-linha li { font-family: var(--fonte-t); font-weight: 600; font-size: .95rem; color: var(--tinta); padding: 0 16px; border-left: 1px solid var(--linha); }
+.selos-linha li:first-child { padding-left: 0; border-left: 0; }
+.mosaico-hero { max-width: 540px; justify-self: end; }
+.mosaico-hero .mq { background: var(--cinza); }
+.mosaico-hero .mq-2, .mosaico-hero .mq-3 { background: var(--menta-cl); }
+
+/* linhas de produto: faixa de seis colunas com foto e nome */
+.linhas-a { padding-top: 80px; }
+.linhas-grade { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--linha); border-left: 1px solid var(--linha); }
+.linha { display: flex; flex-direction: column; text-decoration: none; color: var(--tinta); border-right: 1px solid var(--linha); border-bottom: 1px solid var(--linha); padding: 20px 18px 18px; transition: background .2s; min-height: 280px; }
+.linha:hover { background: var(--cinza); }
+.linha-foto { flex: 1; display: flex; align-items: center; justify-content: center; padding: 6px 4px 18px; }
+.linha-foto img { max-height: 150px; object-fit: contain; mix-blend-mode: multiply; transition: transform .3s; }
+.linha:hover .linha-foto img { transform: translateY(-4px); }
+.linha-nome { font-family: var(--fonte-t); font-weight: 600; font-size: 1.15rem; line-height: 1.2; }
+.linha-n { display: flex; align-items: center; justify-content: space-between; color: var(--suave); font-size: .86rem; margin-top: 6px; }
+.linha-n .ic { color: var(--azul); }
+.linha-aces { background: var(--azul); color: #fff; justify-content: flex-end; }
+.linha-aces:hover { background: var(--azul-esc); }
+.linha-aces .linha-n, .linha-aces .linha-n .ic { color: var(--menta); }
+
+/* destaques alternados */
+.destaques-a { background: #fff; }
+.dest { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; padding: 28px 0; }
+.dest + .dest { border-top: 1px solid var(--cinza-2); }
+.dest-inv .dest-midia { order: 2; }
+.dest-midia { position: relative; aspect-ratio: 16 / 11; display: flex; align-items: center; justify-content: center; }
+.dest-forma { position: absolute; inset: 6% 10%; background: var(--menta-cl); border-radius: 0 50% 0 0; }
+.dest-inv .dest-forma { border-radius: 50% 0 0 0; }
+.dest-midia img { position: relative; mix-blend-mode: multiply; object-fit: contain; }
+.dest-f1 { max-height: 88%; max-width: 62%; }
+.dest-f2 { max-height: 62%; max-width: 40%; margin-left: -6%; align-self: flex-end; }
+.dest-selos { position: absolute; left: 4%; top: 4%; display: flex; flex-direction: column; gap: 8px; }
+.dest-selos span { width: 92px; height: 92px; border-radius: 50%; background: var(--azul); color: #fff; font-family: var(--fonte-t); font-weight: 700; font-size: .82rem; line-height: 1.1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px; box-shadow: 0 0 0 4px #fff, 0 0 0 5px var(--menta); }
+.dest-n { font-family: var(--fonte-t); font-weight: 700; color: var(--menta); font-size: 3.2rem; line-height: 1; display: block; margin-bottom: 10px; }
+.dest-txt h3 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); text-transform: uppercase; letter-spacing: .01em; color: var(--azul); }
+.dest-txt p { font-size: 1.1rem; max-width: 460px; }
+
+/* cores dos gases */
+.gases-a { background: var(--azul); color: #cfdeed; padding: 72px 0; }
+.gases-in { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.gases-a h2 { color: #fff; }
+.gases-a p { margin: 0; font-size: 1.05rem; }
+.gases-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.gases-lista li { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; color: #fff; font-weight: 600; font-family: var(--fonte-t); font-size: 1.05rem; }
+.g-ponto { width: 72px; height: 72px; border-radius: 0 50% 50% 50%; background: var(--g); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #fff; box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .15); }
+.gases-lista li:nth-child(2) .g-ponto { color: #3d3200; }
+
+/* empresa */
+.empresa-a { background: var(--cinza); }
+.empresa-a-in { display: grid; grid-template-columns: 1.2fr 1fr; gap: 72px; align-items: center; }
+.empresa-a h2 { color: var(--azul); }
+.empresa-a .numeros div { border-top-color: var(--cinza-2); }
+
+/* páginas internas */
+.v-a .ph { background: var(--cinza); }
+.v-a .ph h1 { color: var(--azul); }
+.v-a .ph-sub { color: var(--texto); }
+.v-a .ph-forma { background: var(--menta-cl); border-bottom-left-radius: 70%; right: 0; top: 0; width: 280px; height: 220px; }
+.v-a .ph-forma::after { content: ''; position: absolute; right: 24px; top: 24px; width: 56px; height: 56px; background: url(/assets/simbolo.png) center / contain no-repeat; opacity: .5; }
+
+@media (max-width: 1020px) {
+  .hero-a-in { grid-template-columns: 1fr; gap: 40px; }
+  .mosaico-hero { justify-self: center; max-width: 460px; }
+  .linhas-grade { grid-template-columns: repeat(3, 1fr); }
+  .dest, .gases-in, .empresa-a-in { grid-template-columns: 1fr; gap: 28px; }
+  .dest-inv .dest-midia { order: 0; }
+}
+@media (max-width: 720px) {
+  .hero-a { padding: 40px 0 56px; }
+  .hero-a-in { padding: 0 16px; }
+  .linhas-grade { grid-template-columns: repeat(2, 1fr); }
+  .selos-linha li { padding: 0 12px 0 0; border-left: 0; }
+  .selos-linha li + li::before { content: '·'; margin-right: 12px; color: var(--suave); }
+  .linha { min-height: 220px; padding: 14px; }
+  .linha-foto img { max-height: 110px; }
+  .gases-lista { grid-template-columns: repeat(2, 1fr); }
+  .dest-selos span { width: 70px; height: 70px; font-size: .68rem; }
+  .v-a .ph-forma { width: 140px; height: 110px; }
+  .v-a .ph-forma::after { width: 34px; height: 34px; right: 14px; top: 14px; }
+}
