@@ -1,0 +1,11 @@
+# W&A Mármores e Granitos: como este site é feito
+
+- Cliente: W&A Marmoraria (W&A Mármores e Granitos), Rua Paula Bueno 171, Taquaral, Campinas SP, (19) 3254-3851, contato@wamarmoraria.com.br. Escolhida na prospecção de esquadrias, vidros e mármores (21/10/2026), sem pedido do cliente.
+- Site atual: wamarmoraria.com.br (HTML de 2001, 5 páginas: empresa, produtos, dicas, contato, orçamento). Só português, então o novo é só `pt`.
+- Marca: o site não tem logo. O topo era o Flash `weaban.swf` (aberto com JPEXS ffdec: só uma animação de carro dos Flintstones, sem texto). A marca foi escrita como o nome aparece no menu e no rodapé: Arial negrito itálico (Arimo), azul do texto (#000099, aqui #0B1A8C) e o verde da barra `barra1.jpg` (#94C602 a #2C5A04). Texto em Inter.
+- Fotos: todas as do site (3 do parque industrial, 3 de obras, 6 amostras de pedra), de 200 a 262 px, ampliadas 4× com OpenCV EDSR e recortadas 8 px na borda. De banco (crédito no rodapé): jazida de Carrara (Wittylama, CC BY-SA), cozinha em granito (Chris Feser, CC BY), banheiro (rawpixel, CC0), textura de granito (pd.w.org, CC0).
+- Textos: empresa, dicas 1 a 3 e orçamento copiados do site. Escritos por nós: tipo/origem/tons/uso de cada pedra (conhecimento geral sobre cada material), a dica de limpeza (no site estava "recomendamos......"), o comparativo mármore × granito, as etapas do bloco à obra, os títulos de seção e os ambientes cozinha e banheiro.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Taquaral" (fiel: faixa verde de menu com links azuis em itálico, coluna de fotos ao lado do texto, rodapé com a linha do endereço), `/b/` "Mostruário" (leque de amostras, mostruário interativo, linha do tempo, mármore × granito). 6 páginas em cada: Início, A empresa, Produtos, Dicas, Contato, Orçamento.
+- Formulários: abrem o e-mail do visitante com tudo preenchido para contato@ (sem servidor). `?pedra=Nome` na página de orçamento já escolhe a pedra.
+- Gerar: `node clientes/wamarmoraria/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg`, `versao-*.jpg` e `../capa.jpg` são refeitos à mão (Playwright) quando o visual mudar.
+- A confirmar com o cliente: logo (se existir um), se fazem bancadas de cozinha e banheiro, se as seis pedras continuam no estoque, WhatsApp, horário da loja, fotos novas de obras.
