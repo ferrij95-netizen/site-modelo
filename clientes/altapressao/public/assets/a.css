@@ -1,0 +1,152 @@
+/* Versão A · Fachada: mesma ordem do site atual (faixa azul, cabeçalho com funcionamento, telefone e certificações, menu azul,
+   boas-vindas com a foto da fachada, "Como podemos ajudá-lo(a)?" e rodapé com a empresa e o contato), com as linhas do logo costurando as seções. */
+
+/* topo */
+.faixa-topo{background:var(--azul);color:#fff;font-size:14px}
+.faixa-topo .in{display:flex;justify-content:space-between;align-items:center;min-height:36px;gap:16px}
+.faixa-topo span:first-child{font-style:italic}
+.ft-dir{display:inline-flex;gap:8px;align-items:center}.ft-dir .ic{width:16px;height:16px}
+.topo-a{display:flex;align-items:center;gap:30px;min-height:120px}
+.topo-a .marca img{height:66px}
+.topo-info{display:flex;gap:36px;margin-left:auto;align-items:center}
+.ti{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.5}
+.ti b{display:block;font:700 17px var(--h);color:var(--azul-m);margin-bottom:2px}
+.ti span{display:block}.ti .selos{display:flex;margin-top:4px}.ti a{text-decoration:none;font-size:16px}
+.ti-ic{width:38px;height:38px;padding:8px;border:2px solid var(--azul);border-radius:50%;color:var(--azul);stroke-width:2.2}
+.ti-cert .selos img{width:58px;height:58px}
+.nav-a{background:var(--azul)}
+.nav-a .menu{display:flex;gap:4px}
+.nav-a .menu a{display:block;color:#fff;text-decoration:none;font:600 14.5px var(--h);text-transform:uppercase;letter-spacing:.04em;padding:15px 16px;transition:background .2s}
+.nav-a .menu a:first-child{margin-left:-16px}
+.nav-a .menu a:hover{background:rgba(255,255,255,.14)}
+.nav-a .menu a[aria-current]{background:var(--azul-d)}
+@media (max-width:1100px){.ti-cert{display:none}}
+@media (max-width:860px){
+  .faixa-topo span:first-child{display:none}.faixa-topo .in{justify-content:center;font-size:13px}
+  .topo-info{display:none}.menu-btn{display:block}
+  .topo-a{min-height:84px}.topo-a .marca img{height:52px}
+  .nav-a{position:absolute;left:0;right:0;top:100%}
+  .nav-a .in{padding:0}
+  .nav-a .menu{display:none;flex-direction:column;gap:0;padding:6px 0 14px;box-shadow:0 20px 30px rgba(0,0,0,.18);max-height:calc(100vh - var(--topo-h,120px));overflow:auto;background:var(--azul)}
+  .nav-a .menu.aberto{display:flex}
+  .nav-a .menu a{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.15)}
+  .nav-a .menu a:first-child{margin-left:0}
+  .nav-a .menu .menu-tel{display:flex!important;gap:8px;align-items:center;border:0;text-transform:none;font-size:16px}
+}
+
+/* hero */
+.hero-a{background:linear-gradient(180deg,#fff 0%,var(--gelo) 100%);padding:64px 0 0;overflow:hidden}
+.hero-a-grade{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero-a-foto{border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(11,59,99,.45)}
+.hero-a-foto img{width:100%;aspect-ratio:2/1.1;object-fit:cover}
+.hero-a h1{color:var(--azul-m);font-size:clamp(32px,3.9vw,52px)}
+.onda-hero{height:110px;margin-top:20px}
+@media (max-width:900px){.hero-a{padding-top:36px}.hero-a-grade{grid-template-columns:1fr;gap:30px}.onda-hero{height:70px}}
+
+/* serviços home */
+.servicos-a{background:#fff}
+.lista-serv{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:s}
+.lista-serv a{display:flex;flex-direction:column;text-decoration:none;height:100%}
+.lista-serv figure{overflow:hidden;border-radius:6px;margin-bottom:18px}
+.lista-serv img{aspect-ratio:4/3;object-fit:cover;width:100%;transition:transform .5s}
+.lista-serv a:hover img{transform:scale(1.05)}
+.ls-n{display:block;font:800 15px var(--h);color:var(--verm);letter-spacing:.06em;margin-bottom:6px}
+.lista-serv h3{font-size:20px}
+.lista-serv p{font-size:15px;color:var(--mut);flex:1}
+.ls-mais{display:inline-flex;align-items:center;gap:6px;font:700 14px var(--h);color:var(--azul-m)}
+.ls-mais .ic{width:16px;height:16px}
+@media (max-width:1000px){.lista-serv{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.lista-serv{grid-template-columns:1fr}}
+
+/* faixa ISO */
+.faixa-iso{background:linear-gradient(120deg,var(--azul) 0%,var(--azul-d) 70%,var(--azul-dd) 100%);color:#e8f3fc;padding:80px 0}
+.faixa-iso h2{color:#fff}.faixa-iso .eyebrow{color:#bfe3fb}
+.faixa-iso-grade{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+.fi-selos{display:flex;gap:18px}
+.fi-selos img{width:150px;height:150px;border-radius:50%;background:#fff;padding:6px;object-fit:contain}
+.faixa-iso p{max-width:760px}
+@media (max-width:860px){.faixa-iso-grade{grid-template-columns:1fr;gap:30px}.fi-selos img{width:110px;height:110px}}
+
+/* empresa home */
+.empresa-a{background:var(--gelo)}
+.empresa-a-grade{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.mosaico-a{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:440px}
+.mosaico-a img{width:100%;height:100%;min-height:0;object-fit:cover;border-radius:6px}
+.mosaico-a img:first-child{grid-row:1/3}
+@media (max-width:900px){.empresa-a-grade{grid-template-columns:1fr}.mosaico-a{height:340px}}
+
+/* chamada */
+.cta-a{background:var(--azul);color:#fff;padding:70px 0;position:relative;overflow:hidden}
+.cta-a::after{content:"";position:absolute;right:-120px;top:-60px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+.cta-a-grade{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;position:relative;z-index:1}
+.cta-a h2{color:#fff;margin:0;font-size:clamp(28px,3.6vw,46px)}
+.cta-a .acoes{margin-top:0}
+
+/* cabeçalho das páginas internas */
+.cab-a{background:linear-gradient(180deg,var(--gelo),#fff);padding:56px 0 0}
+.cab-a h1{color:var(--azul-m);margin-bottom:.3em}
+.cab-a .lead{max-width:780px}
+.trilha{font-size:14px;color:var(--mut);margin-bottom:14px}.trilha a{color:var(--azul-m);text-decoration:none}
+.onda-cab{height:70px;margin-top:20px}
+
+/* quem somos */
+.foto-moldura img{border-radius:8px;width:100%}
+.foto-moldura figcaption{font-size:14px;color:var(--mut);margin-top:10px}
+.sec-azul-claro{background:var(--gelo)}
+.pilares{display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--azul)}
+.pilares>div{padding:26px 26px 6px 0;border-right:1px solid var(--line);margin-right:26px}
+.pilares>div:last-child{border-right:0;margin-right:0}
+.pl-n{font:800 40px/1 var(--h);color:var(--fachada);display:block;margin-bottom:12px}
+@media (max-width:860px){.pilares{grid-template-columns:1fr 1fr}.pilares>div:nth-child(2){border-right:0;margin-right:0}}
+@media (max-width:520px){.pilares{grid-template-columns:1fr}.pilares>div{border-right:0;margin-right:0;border-bottom:1px solid var(--line)}}
+.galeria-a{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.galeria-a figure{position:relative;overflow:hidden;border-radius:6px}
+.galeria-a img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .5s}
+.galeria-a figure:hover img{transform:scale(1.05)}
+.galeria-a figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 10px;color:#fff;font-size:14px;font-weight:500;background:linear-gradient(transparent,rgba(8,30,50,.8))}
+.galeria-toda figure:nth-child(1),.galeria-toda figure:nth-child(8){grid-column:span 2;grid-row:span 2}
+.galeria-toda figure:nth-child(1) img,.galeria-toda figure:nth-child(8) img{height:100%}
+@media (max-width:860px){.galeria-a{grid-template-columns:1fr 1fr}}
+
+/* serviços */
+.serv-a{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding:40px 0;border-bottom:1px solid var(--line)}
+.serv-a:first-child{padding-top:0}.serv-a:last-child{border-bottom:0}
+.serv-a figure{border-radius:8px;overflow:hidden}
+.serv-a img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.serv-a.inv figure{order:2}
+.serv-a .checks{margin:18px 0 22px}
+@media (max-width:860px){.serv-a{grid-template-columns:1fr;gap:24px}.serv-a.inv figure{order:0}}
+
+/* etapas em seta, como os blocos do site atual pedem: visual e em sequência */
+.etapas-a{background:linear-gradient(180deg,var(--gelo),#fff)}
+.setas{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.setas li{position:relative;background:var(--azul);color:#e9f5fd;padding:26px 30px 26px 34px;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,0 100%,18px 50%)}
+.setas li:first-child{clip-path:polygon(0 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,0 100%);padding-left:22px}
+.setas li:nth-child(2){background:#0a88cf}.setas li:nth-child(3){background:#0b7cc0}.setas li:nth-child(4){background:#0c70b0}.setas li:nth-child(5){background:#0c64a2}.setas li:nth-child(6){background:var(--verm)}
+.st-n{font:800 34px/1 var(--h);color:rgba(255,255,255,.45);display:block;margin-bottom:10px}
+.setas h3{color:#fff;font-size:16px;margin-bottom:8px}
+.setas p{font-size:13.5px;line-height:1.5;margin:0}
+.js .setas li{opacity:0;transform:translateX(-14px);transition:opacity .5s,transform .5s}
+.js .setas.visto li{opacity:1;transform:none}
+.setas li:nth-child(2){transition-delay:.1s}.setas li:nth-child(3){transition-delay:.2s}.setas li:nth-child(4){transition-delay:.3s}.setas li:nth-child(5){transition-delay:.4s}.setas li:nth-child(6){transition-delay:.5s}
+.nota-foco{margin-top:30px;max-width:760px;color:var(--mut)}
+@media (max-width:1100px){.setas{grid-template-columns:repeat(3,1fr);row-gap:10px}}
+@media (max-width:620px){.setas{grid-template-columns:1fr}.setas li,.setas li:first-child{clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),50% 100%,0 calc(100% - 14px));padding:22px 22px 34px}}
+
+/* qualidade */
+.politica{margin:0;font:700 clamp(22px,2.4vw,30px)/1.4 var(--h);color:var(--azul-dd);padding-left:28px;position:relative}
+.politica::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:6px;background:linear-gradient(var(--verm) 0 33%,var(--logo-azul) 33% 66%,var(--verm) 66%)}
+.cert-box{background:var(--gelo);padding:34px;border-radius:8px}
+.cert-box .selos img{width:90px;height:90px}
+.cert-box h3{margin-top:20px}
+
+/* rodapé */
+.onda-rodape{height:80px;background:#fff}
+.v-a .rodape{background:var(--azul)}
+.v-a .rodape,.v-a .rod-base{color:#e0f1fc}
+.v-a .rodape .rod-l .ic{color:#fff}
+.v-a .rod-base{background:#3fb0ef;border:0;max-width:none;padding-left:max(24px,calc((100% - var(--in))/2 + 24px));padding-right:max(24px,calc((100% - var(--in))/2 + 24px))}
+
+.v-a .rod-marca .marca{display:inline-block;background:#fff;padding:10px 14px;border-radius:6px;margin-bottom:18px}
+.v-a .rod-marca .marca img{margin:0;height:50px}
+.onda-rodape{background:var(--gelo)}
