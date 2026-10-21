@@ -1,0 +1,150 @@
+/* Versão A "Sol": fiel ao site atual. Títulos em Exo 2 itálico pesado (como o "TECHSOL" do logo), texto em Poppins. */
+.v-a h1, .v-a h2 { font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: .01em; }
+.v-a h3 { font-style: italic; font-weight: 800; }
+.v-a h2 { font-size: clamp(28px, 4vw, 40px); color: var(--azul); }
+
+.v-a .topo { background: var(--cinza); box-shadow: 0 2px 14px rgba(0, 0, 0, .06); }
+.topo-wa { display: none; }
+@media (min-width: 640px) { .topo-wa { display: inline-flex; } .v-a .menu-btn { margin-left: 0; } .topo-wa { margin-left: auto; } }
+@media (min-width: 1100px) { .topo-wa { margin-left: 8px; } .v-a .menu { margin-left: auto; } }
+.topo-wa { font-size: 14px; padding-right: 18px; }
+.topo-wa .btn-wa-ic { width: 34px; height: 34px; }
+.btn-wa-claro { box-shadow: 0 0 0 2px #fff inset, 0 6px 18px rgba(0, 0, 0, .18); }
+
+/* banner: foto do telhado com cantos de baixo arredondados, caixa âmbar com o título e caixa azul por baixo */
+.v-a .hero { position: relative; padding: 0; min-height: min(86vh, 760px); display: flex; align-items: center; overflow: hidden; border-radius: 0 0 28px 28px; }
+.v-a .hero-foto img { object-position: 60% 50%; }
+.v-a .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 53, 80, .35), rgba(10, 53, 80, 0) 60%); }
+.v-a .hero .in { position: relative; z-index: 1; padding: 64px 0; }
+.hero-caixas { max-width: 600px; }
+.hero-ambar { background: linear-gradient(135deg, var(--amarelo), var(--ambar) 60%); color: #fff; font-size: clamp(26px, 4vw, 42px); line-height: 1.12; padding: 28px 30px 34px; border-radius: 16px; margin: 0; text-shadow: 0 1px 2px rgba(150, 80, 0, .25); box-shadow: 0 18px 40px rgba(0, 0, 0, .18); }
+.hero-azul { background: linear-gradient(160deg, var(--azul), var(--azul-esc)); color: #fff; margin: -12px 0 0 clamp(12px, 6vw, 44px); padding: 26px 28px 28px; border-radius: 14px; box-shadow: 0 18px 40px rgba(0, 0, 0, .2); position: relative; }
+.hero-azul p { font-size: 16px; margin-bottom: 20px; }
+
+/* por que escolher */
+.porque { background: var(--cinza); }
+.porque .in { display: grid; gap: 48px; align-items: center; }
+@media (min-width: 900px) { .porque .in { grid-template-columns: 1fr 1fr; gap: 72px; } }
+.porque-arte { position: relative; max-width: 480px; margin-inline: auto; }
+.porque-img { position: relative; z-index: 1; filter: drop-shadow(0 30px 40px rgba(0, 60, 100, .18)); }
+.porque .folha { position: absolute; z-index: 2; pointer-events: none; }
+.porque .f1 { width: 22%; top: -2%; right: 4%; transform: rotate(18deg); }
+.porque .f2 { width: 12%; top: 46%; right: -6%; }
+.porque .f3 { width: 34%; bottom: -8%; left: -4%; }
+.motivos li { display: flex; gap: 16px; align-items: flex-start; }
+.v-a .motivos .sol { width: 40px; height: 40px; flex: none; }
+.v-a .motivos b { color: var(--azul); font-style: italic; }
+.v-a .motivos p { margin: 6px 0 0; }
+
+/* serviços sobre o campo solar azul */
+.servicos-home { background: var(--azul-esc) url(/assets/img/campo-solar.webp) center / cover; color: #fff; position: relative; }
+.servicos-home .in { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 960px) { .servicos-home .in { grid-template-columns: .9fr 1.3fr; gap: 56px; } }
+.servicos-home h2 { color: #fff; }
+.sh-grade { display: grid; gap: 14px; }
+@media (min-width: 620px) { .sh-grade { grid-template-columns: 1fr 1fr; } .sh-item:nth-child(2) { transform: translateY(24px); } .sh-item:nth-child(4) { transform: translateY(24px); } }
+.sh-item { background: #fff; border-radius: 16px; padding: 22px 22px 18px; text-decoration: none; color: var(--texto); display: grid; grid-template-columns: 40px 1fr; gap: 4px 14px; align-content: start; transition: box-shadow .2s; }
+.sh-item:hover { box-shadow: 0 0 0 3px var(--amarelo); }
+.sh-item .sol { width: 40px; height: 40px; grid-row: span 2; }
+.sh-item h3 { color: var(--azul); font-size: 18px; margin: 0; }
+.sh-item p { font-style: italic; font-weight: 500; margin: 0; font-size: 15px; }
+
+/* atendemos: fila de fotos altas */
+.atende-fila { display: grid; gap: 14px; }
+@media (min-width: 700px) { .atende-fila { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .atende-fila { grid-template-columns: repeat(4, 1fr); } }
+.atende-item { position: relative; border-radius: 18px; overflow: hidden; text-decoration: none; color: #fff; min-height: 340px; display: flex; align-items: flex-end; }
+.atende-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.atende-item:hover img { transform: scale(1.06); }
+.atende-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 50, 85, .88)); }
+.atende-rot { position: relative; z-index: 1; padding: 22px; display: grid; gap: 4px; }
+.atende-rot .ic { width: 30px; height: 30px; color: var(--amarelo); }
+.atende-rot b { font-family: var(--f-tit); font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 22px; }
+.atende-rot small { font-size: 14px; line-height: 1.45; }
+
+/* etapas num arco do sol */
+.como { background: linear-gradient(180deg, #fff, var(--azul-claro)); }
+.arco-etapas { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; position: relative; counter-reset: e; }
+.arco-etapas li { position: relative; padding-left: 64px; }
+.ae-n { position: absolute; left: 0; top: 0; width: 48px; height: 48px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--amarelo), var(--ambar)); color: #fff; font-family: var(--f-tit); font-style: italic; font-weight: 900; font-size: 22px; display: grid; place-items: center; box-shadow: 0 0 0 6px rgba(255, 171, 0, .18); }
+.arco-etapas h3 { color: var(--azul); font-size: 20px; margin: 8px 0 4px; }
+.arco-etapas p { margin: 0; font-size: 15px; }
+@media (max-width: 899px) { .arco-etapas::before { content: ''; position: absolute; left: 23px; top: 24px; bottom: 24px; border-left: 2px dashed var(--ambar); } }
+@media (min-width: 900px) {
+  .arco-etapas { grid-template-columns: repeat(5, 1fr); gap: 18px; padding-top: 40px; }
+  .arco-etapas::before { content: ''; position: absolute; left: 10%; right: 10%; top: 0; height: 140px; border: 2px dashed var(--ambar); border-bottom: 0; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+  .arco-etapas li { padding: 0; text-align: center; margin-top: calc(var(--y, 0) * 1px); }
+  .arco-etapas li:nth-child(1), .arco-etapas li:nth-child(5) { --y: 96; }
+  .arco-etapas li:nth-child(2), .arco-etapas li:nth-child(4) { --y: 18; }
+  .arco-etapas li:nth-child(3) { --y: -24; }
+  .ae-n { position: static; margin: 0 auto 10px; width: 58px; height: 58px; font-size: 26px; }
+}
+
+/* projetos */
+.projetos-home .in { display: grid; gap: 40px; }
+@media (min-width: 960px) { .projetos-home .in { grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: start; } }
+.projetos-home figure { margin: 0; }
+.ph-grande img { border-radius: 20px; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.projetos-home figcaption { font-size: 14px; margin-top: 10px; }
+.projetos-home figcaption b { display: block; font-family: var(--f-tit); font-style: italic; color: var(--azul); font-size: 18px; }
+.ph-lado blockquote { margin: 0 0 28px; padding: 22px 24px; background: var(--cinza); border-radius: 16px; }
+.ph-lado blockquote p { font-size: 18px; font-weight: 500; color: var(--tit); margin-bottom: 8px; }
+.ph-peq img { border-radius: 14px; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+.ph-peq { margin-bottom: 18px !important; }
+
+/* bloco âmbar curvo do WhatsApp */
+.conversa { padding-top: 24px; }
+.conversa .in { position: relative; }
+.conversa-arco { background: var(--ambar); color: #fff; text-align: center; padding: 48px 24px 72px; border-radius: 22px 22px 50% 50% / 22px 22px 70px 70px; box-shadow: 0 14px 0 var(--amarelo); }
+@media (min-width: 900px) { .conversa-arco { padding: 64px 18% 96px; border-radius: 26px 26px 50% 50% / 26px 26px 120px 120px; } }
+.conversa-arco h2 { color: #fff; font-size: clamp(28px, 4.2vw, 44px); max-width: 640px; margin-inline: auto; }
+.conversa-arco p { max-width: 520px; margin: 0 auto 26px; font-weight: 500; }
+.conversa-arco .btn-wa { background: transparent; box-shadow: 0 0 0 2px #fff inset; }
+.conversa-arco .btn-wa:hover { background: rgba(255, 255, 255, .15); }
+.conversa-tel { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 40px; }
+.conversa-tel a { display: flex; align-items: center; gap: 12px; padding: 12px 22px 12px 14px; border-radius: 14px; background: #fff; border: 1.5px solid var(--linha); text-decoration: none; color: var(--tit); font-family: var(--f-tit); font-weight: 700; font-size: 20px; }
+.conversa-tel .ic { width: 34px; height: 34px; color: #25D366; }
+.conversa-tel small { display: block; font-family: var(--f-txt); font-weight: 500; font-size: 12px; color: #6b7680; }
+.conversa .folha { position: absolute; z-index: 2; pointer-events: none; }
+.conversa .f1 { width: clamp(90px, 16vw, 200px); left: -2%; bottom: 10%; }
+.conversa .f2 { width: clamp(50px, 8vw, 100px); right: 4%; top: -6%; transform: rotate(-24deg); }
+
+/* dúvidas em faixas azuis */
+.duvidas-home { border-top: 6px solid var(--azul); }
+.duvidas-home .in, .duvidas-pag .in { display: grid; justify-items: center; }
+.duvidas-home h2 { text-align: center; }
+.v-a .faq { width: 100%; }
+.v-a .faq summary { background: var(--azul); color: #fff; font-family: var(--f-tit); font-style: italic; font-weight: 700; text-transform: uppercase; font-size: 15px; letter-spacing: .02em; }
+.v-a .faq details { border: 1.5px solid var(--azul); }
+
+/* contato */
+.contato-home { background: var(--cinza); }
+.contato-home .in { display: grid; gap: 32px; }
+@media (min-width: 900px) { .contato-home .in { grid-template-columns: 1fr 1.3fr; align-items: stretch; } }
+.ch-mapa { border-radius: 18px; overflow: hidden; box-shadow: 8px 8px 0 var(--ambar); min-height: 360px; }
+.ch-mapa .mapa, .ch-mapa iframe { height: 100%; }
+
+/* capas das páginas internas */
+.v-a .capa { position: relative; color: #fff; background: var(--azul-esc); overflow: hidden; border-radius: 0 0 28px 28px; padding: 56px 0 64px; }
+.capa-fundo { position: absolute; inset: 0; background: url(/assets/img/campo-solar.webp) center / cover; opacity: .85; }
+.v-a .capa .in { position: relative; }
+.v-a .capa h1 { color: #fff; font-size: clamp(32px, 5vw, 54px); max-width: 900px; }
+.v-a .capa .olho { color: var(--amarelo); }
+.v-a .capa-sub { max-width: 720px; font-size: 17px; margin: 0; }
+.v-a .migalhas { color: #D5E7F3; }
+.motivos-sec { background: var(--cinza); }
+.motivos-sec .motivos { margin-top: 32px; }
+@media (min-width: 800px) { .motivos-sec .motivos { grid-template-columns: 1fr 1fr; gap: 28px 48px; } }
+.motivos-sec .motivos b { display: block; }
+.v-a .citacao { background: linear-gradient(135deg, var(--amarelo), var(--ambar)); }
+.v-a .citacao blockquote p { color: #fff; font-style: italic; }
+.v-a .citacao cite { color: #fff; }
+.v-a .seg-cartao h2 { color: var(--azul); }
+.v-a .sd .sol { width: 46px; height: 46px; margin-bottom: 12px; }
+.v-a .sd h2 { color: var(--azul); }
+.v-a .outros h2 { color: var(--azul); }
+.v-a .proj-item h2 { color: var(--azul); }
+.v-a .tf-txt h2 { color: var(--azul); }
+.v-a .rodape { background: linear-gradient(180deg, #00639A, #004A73); }
+.v-a .simulador { border: 2px solid var(--azul-claro); }
+.porque, .conversa { overflow-x: clip; }
