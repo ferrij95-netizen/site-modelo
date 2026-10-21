@@ -1,0 +1,10 @@
+# Produvale: como este site é feito
+
+- Cliente: Produvale Produtos Hospitalares Ltda, distribuidora médico-hospitalar em Blumenau (SC), desde 1996. Escolhida no lote 3 de sites ruins (21/10/2026, `/mnt/project-files/piloto-10c/LISTA.md`): site de 2009 em tabelas, sem HTTPS, minúsculo no celular.
+- Site atual: http://produvale.com.br/ (Home, Produtos, Parceiros, Contato). Só em português, então o novo é só `pt`.
+- Marca: o logo é uma faixa JPG com foto de Blumenau atrás; vetorizamos as letras e o "P" com a cruz (azul #04228f, vermelho #f00, salmão #ebaf9a) a partir dessa imagem (`logo.svg`, `logo-branco.svg`, favicon). Títulos em Archivo larga (a mais parecida com as letras do logo), texto em Inter.
+- Textos: "sobre" da home, as 7 linhas da página Produtos, os 12 parceiros com os mesmos links, endereço, telefone, e-mail e a AFE da ANVISA (P0334M12L4XW, D.O.U. 21/05/2007) do site atual. Escritos por nós: frase de cada linha, exemplos de itens, área de cada marca (só as conferidas no site delas), "quem atendemos" e as 4 etapas do fornecimento.
+- Fotos: reais do site atual só a do rio em Blumenau (400 px) e o selo da ANVISA. As demais são de banco com licença livre (Wikimedia Commons e Flickr: ponte e centro de Blumenau, instrumental, cama hospitalar, consultório odontológico, pipetas, luvas, seringas, prateleira). Trocar por fotos do estoque da Produvale quando o cliente mandar.
+- A confirmar com o cliente: se os 12 parceiros de 2009 continuam; exemplos de itens por linha; endereço e telefone atuais; WhatsApp; se faz entregas fora de SC.
+- Estrutura: `/` escolha (apresentação), `/a/` versão A "Clara" (branca, índice de linhas com foto que troca), `/b/` versão B "Marinho" (azul-marinho e faixa vermelha do site atual, foto recortada na cruz do logo, mosaico de linhas). Em cada: Início, A Empresa, Produtos, Parceiros, Contato (formulário que abre o e-mail e mapa).
+- Gerar: `node clientes/produvale/_origem/gerar.mjs`. Estilos em `public/assets/base.css`, `a.css`, `b.css`; script `site.js`. Prints de `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
