@@ -1,0 +1,57 @@
+/* RD Engenharia Elétrica · base comum às versões A e B */
+:root{--vermelho:#ED1C24;--vermelho-esc:#B5121A;--grafite:#231F20;--texto:#3A3536;--suave:#6B6566;--linha:#E3DEDC;--claro:#F6F4F2;--h:'Exo 2',system-ui,sans-serif;--b:Inter,system-ui,sans-serif;--larg:1220px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font:16px/1.65 var(--b);color:var(--texto);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--h);color:var(--grafite);line-height:1.12;margin:0 0 .5em;text-wrap:balance}
+h1{font-size:clamp(32px,4.4vw,54px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(25px,2.7vw,36px);font-weight:700;letter-spacing:-.015em}
+h3{font-size:19px;font-weight:700}
+p{margin:0 0 1em}
+.in{max-width:var(--larg);margin:0 auto;padding:0 28px}
+.ic{width:20px;height:20px;flex:none}
+.pular{position:absolute;left:-999px;top:0;background:#fff;padding:8px 14px;z-index:99}.pular:focus{left:10px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--h);letter-spacing:.02em;text-decoration:none;background:var(--vermelho);color:#fff;padding:14px 22px;border:1.5px solid var(--vermelho);border-radius:4px;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.btn:hover{background:var(--vermelho-esc);border-color:var(--vermelho-esc)}
+.btn .ic{width:18px;height:18px}
+.btn-linha{background:transparent;color:var(--vermelho)}.btn-linha:hover{background:var(--vermelho);color:#fff}
+.btn-branco{background:#fff;color:var(--vermelho);border-color:#fff}.btn-branco:hover{background:var(--grafite);border-color:var(--grafite);color:#fff}
+.lista{list-style:none;padding:0;margin:0 0 1.3em}
+.lista li{position:relative;padding-left:22px;margin:0 0 .45em}
+.lista li::before{content:'';position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--vermelho)}
+.texto h2{font-size:clamp(21px,2vw,26px);margin-top:1.6em}
+.texto p,.texto li{max-width:72ch}
+.nota{font-family:var(--h);font-weight:600;font-size:18px;line-height:1.45;color:var(--grafite);border-left:3px solid var(--vermelho);padding:4px 0 4px 18px;margin:1.6em 0}
+.lead{font-size:clamp(17px,1.5vw,19px);line-height:1.6;color:var(--grafite)}
+.centro{text-align:center}
+.links-seta{list-style:none;padding:0;margin:0}
+.links-seta a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--linha);text-decoration:none;font-weight:500}
+.links-seta a:hover{color:var(--vermelho)}.links-seta .ic{width:17px;height:17px;color:var(--vermelho)}
+.logos{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:20px 48px;align-items:center}
+.logos img{height:64px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75;transition:.25s}
+.logos li:hover img{filter:none;opacity:1}
+/* formulário */
+.form .campos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form label{display:flex;flex-direction:column;gap:6px;font:600 13px/1.2 var(--h);letter-spacing:.04em;text-transform:uppercase;color:var(--grafite)}
+.form .largo{grid-column:1/-1}
+.form input,.form select,.form textarea{font:16px/1.4 var(--b);color:var(--texto);padding:12px 14px;border:1px solid #CFC8C6;border-radius:4px;background:#fff;text-transform:none;letter-spacing:0;width:100%}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--vermelho);outline-offset:1px;border-color:transparent}
+.form .btn{margin-top:20px}
+.form-obs{font-size:13px;color:var(--suave);margin-top:10px}
+.contato-lista{list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.contato-lista li{display:flex;gap:14px}
+.contato-lista .ic{width:24px;height:24px;color:var(--vermelho);margin-top:2px}
+.contato-lista b{display:block;font-family:var(--h);color:var(--grafite);font-size:17px}
+.contato-lista span{display:block}
+.contato-lista a{color:var(--vermelho);font-weight:500;text-decoration:none}.contato-lista a:hover{text-decoration:underline}
+/* menu do celular */
+.abre-menu{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--grafite)}
+.abre-menu .ic{width:28px;height:28px}
+@media (max-width:980px){
+  .abre-menu{display:block}
+  .form .campos{grid-template-columns:1fr}
+}
+@media (max-width:640px){.in{padding:0 18px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
