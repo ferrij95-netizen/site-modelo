@@ -1,0 +1,90 @@
+/* Versão A "Catálogo": clara, no cinza do catálogo 2024, com a curva da capa, teal e verde do logo. */
+.v-a .topo{background:rgba(255,255,255,.96);backdrop-filter:blur(8px)}
+
+/* abertura: texto sobre o cinza com a curva da capa do catálogo, foto à direita */
+.a-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);min-height:min(78vh,720px);background:var(--cinza);position:relative;overflow:hidden}
+.a-hero::before{content:"";position:absolute;left:-18%;top:-30%;width:70%;height:160%;border-radius:0 50% 50% 0;background:linear-gradient(180deg,#f3f4f2,#e1e3e0);opacity:.9}
+.a-hero-txt{position:relative;align-self:center;padding:64px 56px 64px max(24px,calc((100vw - var(--larg)) / 2 + 24px))}
+.a-hero-txt h1{color:var(--teal-esc);max-width:15ch}
+.a-hero-foto{position:relative;margin:0}
+.a-hero-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.a-hero-foto figcaption{position:absolute;right:20px;bottom:18px;background:rgba(255,255,255,.92);font-size:.78rem;padding:8px 12px;letter-spacing:.04em}
+
+/* linhas de produto: colunas altas alternando teal e verde, como as colunas coloridas do site atual */
+.a-cats{background:#fff}
+.a-cats-grade{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.a-cat{display:flex;flex-direction:column;text-decoration:none;color:#fff;min-height:440px;position:relative;overflow:hidden}
+.a-cat-foto{height:300px;overflow:hidden;background:#fff}
+.a-cat-foto img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.a-cat:hover .a-cat-foto img{transform:scale(1.06)}
+.a-cat-contem .a-cat-foto img{object-fit:contain;padding:28px 18px}
+.a-cat-txt{flex:1;display:flex;flex-direction:column;gap:4px;padding:22px 20px 24px}
+.a-cat-teal .a-cat-txt{background:var(--teal)}
+.a-cat-verde .a-cat-txt{background:var(--verde)}
+.a-cat-txt strong{font:400 1.3rem/1.2 var(--tit)}
+.a-cat-txt small{opacity:.85;font-size:.82rem}
+.a-cat .mais{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:12px}
+.a-cat .mais .ic{width:15px;height:15px;transition:transform .3s}.a-cat:hover .mais .ic{transform:translateX(4px)}
+
+/* lançamentos em faixa que rola na horizontal */
+.a-lanc{background:var(--cinza-2)}
+.a-lanc-faixa{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,30%);gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-color:var(--teal) transparent}
+.a-lanc-faixa .prod{scroll-snap-align:start}
+
+/* tamanhos de tampo */
+.a-medidas-grade{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:center}
+.a-medidas-foto{margin:0;position:relative}
+.a-medidas-foto::after{content:"";position:absolute;right:-18px;bottom:-18px;width:42%;height:42%;background:var(--verde);z-index:-1}
+.a-medidas h2{color:var(--teal-esc)}
+.a-medidas p{color:var(--suave)}
+.a-medidas .btn{margin-top:22px}
+
+/* empresa em números */
+.a-empresa{background:var(--cinza)}
+.a-empresa-grade{display:grid;grid-template-columns:1.3fr 1fr;gap:72px;align-items:center}
+.a-empresa h2{color:var(--teal-esc);max-width:18ch}
+.a-empresa p{color:var(--suave);max-width:58ch}
+.a-numeros{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:0}
+.a-numeros li{display:flex;align-items:baseline;gap:20px;padding:20px 0;border-bottom:1px solid var(--linha)}
+.a-numeros li:first-child{border-top:1px solid var(--linha)}
+.a-numeros strong{font:400 3.4rem/1 var(--tit);color:var(--teal);min-width:100px}
+.a-numeros span{color:var(--suave)}
+
+.a-como{background:#fff}
+
+/* chamada final em gradiente teal */
+.a-cta{background:linear-gradient(115deg,var(--teal-noite) 0%,var(--teal) 55%,#5b9466 100%);color:#fff;padding:64px 0}
+.a-cta .in{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.a-cta h2{margin-bottom:6px}.a-cta p{margin:0;color:#d4e7e4}
+.a-cta .acoes{margin:0}
+
+/* páginas internas */
+.v-a .cabeca{position:relative;overflow:hidden}
+.v-a .cabeca::after{content:"";position:absolute;right:-10%;top:-40%;width:45%;height:180%;border-radius:50% 0 0 50%;background:linear-gradient(180deg,#f3f4f2,#dfe1de)}
+.v-a .cabeca .in{position:relative;z-index:1}
+.v-a .cabeca h1{color:var(--teal-esc)}
+.v-a .emp-valores{background:var(--cinza-2)}
+.v-a .emp-valores h2{color:var(--teal-esc)}
+.v-a .emp-fab{background:#fff}
+
+@media (max-width:1080px){
+  .a-hero{grid-template-columns:1fr}
+  .a-hero-foto{min-height:340px}
+  .a-hero-txt{padding:48px 24px}
+  .a-cats-grade{grid-template-columns:repeat(3,1fr)}
+  .a-cat{min-height:0}
+  .a-medidas-grade,.a-empresa-grade{grid-template-columns:1fr;gap:48px}
+  .a-lanc-faixa{grid-auto-columns:minmax(260px,44%)}
+}
+@media (max-width:700px){
+  .a-hero-txt{padding:40px 18px}
+  .a-hero-foto{min-height:260px}
+  .a-cats-grade{grid-template-columns:1fr 1fr}
+  .a-cats-grade .a-cat:last-child{grid-column:1/-1}
+  .a-cat{min-height:0}
+  .a-cat-foto{height:170px}
+  .a-cat-txt{padding:16px 14px 18px}
+  .a-cat-txt strong{font-size:1.1rem}
+  .a-lanc-faixa{grid-auto-columns:78%}
+  .a-medidas-foto::after{right:-8px;bottom:-8px}
+}
