@@ -6,9 +6,8 @@
 - É uma página só: quem procura "energia solar para o agro" ou "financiamento" no Google não acha uma página da Techsol sobre isso.
 - O título fica numa caixa laranja com letra de máquina de escrever, que não combina com o logo.
 - No celular a página fica mais larga que a tela e precisa arrastar para o lado.
-- A parte de contato no fim da página aparece em branco: endereço e mapa não carregam.
-- As fotos reais (a loja da Av. Ceará, a garagem solar, o Frama) não estão no site, só imagens de banco.
+- As fotos reais (a loja da Av. Ceará, a garagem solar, o Frama) não estão no site, só imagens genéricas.
 
-**O apelo:** o mesmo conteúdo e as mesmas cores, agora com página para cada tipo de cliente, simulador de economia na conta de luz, as obras de verdade e o contato funcionando, tudo certo no celular.
+**O apelo:** o mesmo conteúdo e as mesmas cores, agora com página para cada tipo de cliente, simulador de economia na conta de luz, as obras de verdade e o contato com mapa e os dois WhatsApps, tudo certo no celular.
 
-> "Bom dia, aqui é o João da Overtus. Vi o site da Techsol e ele quebra no celular, e a parte de contato no fim está aparecendo em branco. Montei duas versões novas com o logo, as cores e as fotos de vocês, inclusive a do Frama Atacadista, com um simulador de economia na conta de luz. Já está no ar num link de prévia. Posso mandar pelo WhatsApp para o Victor?"
+> "Bom dia, aqui é o João da Overtus. Vi o site da Techsol e ele quebra no celular, além de ser uma página só. Montei duas versões novas com o logo, as cores e as fotos de vocês, inclusive a do Frama Atacadista, com um simulador de economia na conta de luz. Já está no ar num link de prévia. Posso mandar pelo WhatsApp para o Victor?"
