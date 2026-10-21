@@ -16,7 +16,7 @@ A página que o cliente abre antes de entrar no site: abertura com notebook e ce
 
 1. Tire prints de página inteira de cada versão: computador 1440 px (salvar com 1000 px de largura) e celular 390 px com escala 2 (salvar com 600 px), em `public/assets/apresentacao/<a|b>-pc.webp` e `<a|b>-cel.webp`.
 2. Copie `apresenta.css` e `apresenta.js` para `public/assets/`.
-3. Gere `public/index.html` com `paginaEscolha({ nome, url, lang: 'en'|'pt', cor, fundo, claro, fonteTitulo, fonteTexto, googleFonts, favicon, ogImagem, versoes: [{ letra, nome, texto, pontos, paginas }], antigo: { url, img, rola: true } })`. Com `rola: true`, `img` é um print de página inteira do site atual e ele rola sozinho dentro da janela.
+3. Gere `public/index.html` com `paginaEscolha({ nome, url, lang: 'en'|'pt', cor, fundo, claro, fonteTitulo, fonteTexto, googleFonts, favicon, ogImagem, versoes: [{ letra, nome, texto, pontos, paginas }], corTextoBotao (opcional, ex.: '#222' quando a cor é amarela), antigo: { url, img, rola: true } })`. Com `rola: true`, `img` é um print de página inteira do site atual e ele rola sozinho dentro da janela.
 
 ## Molduras
 
