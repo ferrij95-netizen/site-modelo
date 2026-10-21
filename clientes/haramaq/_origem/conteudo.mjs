@@ -1,0 +1,237 @@
+// Textos do site atual (www.haramaq.com.br), em pt como estão lá e em es traduzidos. Dados das máquinas, vídeos e blog em dados.json
+// (gerado por extrair.py) e a tradução deles em es.json (chave = texto em pt).
+import fs from 'node:fs';
+import path from 'node:path';
+
+const aqui = path.dirname(new URL(import.meta.url).pathname);
+export const dados = JSON.parse(fs.readFileSync(path.join(aqui, 'dados.json'), 'utf8'));
+const ES = JSON.parse(fs.readFileSync(path.join(aqui, 'es.json'), 'utf8'));
+/** Traduz um texto de dados.json; em pt devolve o próprio texto. */
+export const tr = (s, lang) => (lang === 'es' ? ES[s] ?? s : s);
+
+export const E = {
+  nome: 'HaramaQ',
+  legal: 'HaramaQ Indústria de Máquinas Agrícolas',
+  url: 'https://haramaq.overtus.com.br/',
+  antigo: 'https://www.haramaq.com.br/',
+  email: 'haramaq@haramaq.com.br',
+  emailContato: 'contato@haramaq.com.br',
+  tel: '(54) 99158-7881', telHref: '+5554991587881', telOp: 'Claro',
+  posvenda: '(54) 99663-5063', posvendaHref: '+5554996635063', posvendaOp: 'Vivo',
+  wa: '5554991587881', waPos: '5554996635063',
+  endereco: 'RS 135, Km 34, Sertão, RS, Brasil',
+  mapa: 'https://www.google.com/maps?q=Haramaq+RS-135+Km+34+Sert%C3%A3o+RS&output=embed',
+  mapaLink: 'https://www.google.com/maps/search/?api=1&query=Haramaq+RS-135+Km+34+Sert%C3%A3o+RS',
+  catalogo: 'https://www.haramaq.com.br/pdf/catalogo.pdf',
+  redes: [
+    { nome: 'Instagram', url: 'https://www.instagram.com/haramaqoficial/' },
+    { nome: 'Facebook', url: 'https://www.facebook.com/haramaqoficial/' },
+    { nome: 'LinkedIn', url: 'https://br.linkedin.com/company/haramaq1' },
+    { nome: 'YouTube', url: 'https://www.youtube.com/channel/UCm4M1ejaYFeODfPPprcSQVw' },
+  ],
+  anos: 24, revendas: 500,
+};
+
+// Linhas do catálogo (a ordem e os nomes de linha são os do site atual; o agrupamento por uso é nosso).
+export const grupos = [
+  { id: 'vertical', slugs: ['prohmix-1-6', 'prohmix-1-9', 'prohmix-3-5-6-0-9-0', 'prohmix-13-0-18-0-27-0', 'prohmix-rodoviario'],
+    pt: { nome: 'Misturadores verticais', curto: 'Rotor vertical', uso: 'Leite e corte com muita fibra longa: feno e pré-secado sem quebrar a fibra.' },
+    es: { nome: 'Mezcladores verticales', curto: 'Rotor vertical', uso: 'Leche y carne con mucha fibra larga: heno y presecado sin romper la fibra.' } },
+  { id: 'horizontal', slugs: ['supermix-2-0-4-2-7-0', 'tipper-10-14-0'],
+    pt: { nome: 'Horizontais e tombadores', curto: 'Rotor horizontal e TRM', uso: 'Confinamento de corte: fibra curta, suplementos e alto grão.' },
+    es: { nome: 'Horizontales y volcadores', curto: 'Rotor horizontal y TRM', uso: 'Feedlot de carne: fibra corta, suplementos y alto grano.' } },
+  { id: 'compost', slugs: ['stir-2000-3000'],
+    pt: { nome: 'Compost Barn', curto: 'Revolvedor de cama', uso: 'Cama aerada, seca e nivelada para o conforto das vacas.' },
+    es: { nome: 'Compost Barn', curto: 'Removedor de cama', uso: 'Cama aireada, seca y nivelada para el confort de las vacas.' } },
+  { id: 'esterco', slugs: ['hme-560'],
+    pt: { nome: 'Esterco orgânico', curto: 'Homogeneizador', uso: 'Mistura rápida e homogênea do esterco, com braço hidráulico.' },
+    es: { nome: 'Estiércol orgánico', curto: 'Homogeneizador', uso: 'Mezcla rápida y homogénea del estiércol, con brazo hidráulico.' } },
+  { id: 'forragem', slugs: ['daily-1200'],
+    pt: { nome: 'Colhedora de forragens', curto: 'Fibra longa', uso: 'Trato diário ou pré-secado com a fibra no tamanho certo.' },
+    es: { nome: 'Cosechadora de forraje', curto: 'Fibra larga', uso: 'Alimentación diaria o presecado con la fibra del tamaño justo.' } },
+];
+
+// Resumo de uma linha por máquina (tirado do texto da própria página da máquina).
+export const resumo = {
+  'prohmix-1-6': { pt: 'Autocarregável compacto para pequenos e médios produtores de leite e corte.', es: 'Autocargable compacto para pequeños y medianos productores de leche y carne.' },
+  'prohmix-1-9': { pt: 'Autocarregável com pneus, para pequenos e médios produtores.', es: 'Autocargable con neumáticos, para pequeños y medianos productores.' },
+  'prohmix-3-5-6-0-9-0': { pt: 'Fresa com avanço, carga independente e três opções de descarga.', es: 'Fresa con avance, carga independiente y tres opciones de descarga.' },
+  'prohmix-13-0-18-0-27-0': { pt: 'Chassis duplo, rodado tandem e bica com abertura hidráulica.', es: 'Chasis doble, rodado tándem y pico con apertura hidráulica.' },
+  'prohmix-rodoviario': { pt: 'Prohmix montado no caminhão, com oito rotações e 18, 27 ou 36 m³.', es: 'Prohmix sobre camión, con ocho velocidades y 18, 27 o 36 m³.' },
+  'supermix-2-0-4-2-7-0': { pt: 'Duas roscas helicoidais para suplementos e alto grão.', es: 'Dos roscas helicoidales para suplementos y alto grano.' },
+  'tipper-10-14-0': { pt: 'Rotor tombador com sistema de alívio por molas e transmissão banhada a óleo.', es: 'Rotor volcador con alivio por resortes y transmisión bañada en aceite.' },
+  'stir-2000-3000': { pt: 'Engate rápido e rotativa sem facas que destorroa sem levantar poeira.', es: 'Enganche rápido y rotativa sin cuchillas que desterrona sin levantar polvo.' },
+  'hme-560': { pt: 'Articulação com cilindro hidráulico e hélice reversível, sem cardã.', es: 'Articulación con cilindro hidráulico y hélice reversible, sin cardán.' },
+  'daily-1200': { pt: 'Rotor com 32 facas e contra-faca dupla de série.', es: 'Rotor con 32 cuchillas y contracuchilla doble de serie.' },
+};
+export const linhaRodoviario = { pt: 'Vagões misturadores PROHMIX - Versão rodoviária', es: 'Carros mezcladores PROHMIX - Versión sobre camión' };
+
+export const avaliacoes = [
+  { nome: 'Cassiano Fernandes', txt: 'Excelente empresa, funcionários comprometidos.' },
+  { nome: 'Caina Galvão', txt: 'Comprometida em entregar um produto de qualidade ao seu cliente!' },
+  { nome: 'Everton Muratt', txt: 'Excelente empresa, profissionais comprometidos.' },
+  { nome: 'Cadu Gubiani', txt: 'Excelência na produção de máquinas agrícolas.' },
+  { nome: 'Adavilson Webber', txt: 'Ótimas soluções para alimentação bovina.' },
+  { nome: 'Evelise de Souza Auler', txt: 'Ótimo atendimento e valorização ao cliente.' },
+];
+// Os três vídeos de depoimento da home atual.
+export const depoimentosHome = [
+  { id: 'Zg0AZVb8nEA', pt: 'Depoimento cliente exterior', es: 'Testimonio de cliente del exterior' },
+  { id: 'p_v0VP0GU4A', pt: 'Depoimento do cliente na feira Agroleite', es: 'Testimonio de cliente en la feria Agroleite' },
+  { id: 'iONPHwtYoTU', pt: 'Depoimento cliente HaramaQ (Lucas Badalotti)', es: 'Testimonio de cliente HaramaQ (Lucas Badalotti)' },
+];
+
+export const T = {
+  pt: {
+    lang: 'pt-BR', og: 'pt_BR', local: 'Sertão, RS, Brasil',
+    nav: { inicio: 'Início', empresa: 'Empresa', produtos: 'Produtos', posvenda: 'Pós-venda', videos: 'Vídeos', blog: 'Blog', contato: 'Contato', catalogo: 'Catálogo de produtos', trabalhe: 'Trabalhe conosco', todos: 'Ver todas as máquinas' },
+    slogan: 'Evolução sem limites',
+    lema: 'Onde tem pecuária, tem HaramaQ!',
+    heroTit: 'Máquinas para trato e conforto animal',
+    heroTxt: 'Vagões misturadores, revolvedor de cama, homogeneizador e colhedora de forragens, fabricados em Sertão (RS) e vendidos por mais de 500 revendas no Brasil e no exterior.',
+    orcamento: 'Solicitar orçamento', verMaquinas: 'Conhecer as máquinas', saibaMais: 'Saiba mais', falar: 'Falar com a HaramaQ', whats: 'Chamar no WhatsApp',
+    intro: ['Há 24 anos no mercado, a HaramaQ possui um amplo catálogo de equipamentos para trato e conforto animal que se destacam pela sua eficiência, tecnologia, qualidade, durabilidade e fácil manuseio.', 'Além disso, a empresa conta com mais de 500 revendas autorizadas, distribuídas por todo o Brasil e exterior.'],
+    anos: 'Anos de experiência', revendas: 'Revendas autorizadas', modelos: 'Linhas de máquinas', pesagem: 'Opções de balança',
+    avaliacoes: 'Avaliações', excelente: 'Excelente', noGoogle: 'Avaliações reais no Google',
+    ctaTit: 'Quer saber mais sobre nossos equipamentos?', ctaTxt: 'Temos uma equipe especializada e treinada para atender você e indicar o melhor equipamento para a sua propriedade.', entreContato: 'Entre em contato',
+    maquinario: 'Maquinário', destaque: 'Produtos em destaque', linhaCompleta: 'Linha completa',
+    depoimentos: 'Depoimentos de clientes', faqTit: 'Perguntas frequentes', faqSub: 'HaramaQ',
+    especificacoes: 'Especificações técnicas', opcionais: 'Equipamentos opcionais', folder: 'Baixar folder', folderEs: 'Folder em espanhol', relacionadas: 'Outras máquinas da linha', voltarProdutos: 'Todas as máquinas',
+    pedirMaquina: n => `Olá, HaramaQ! Quero um orçamento da ${n}.`,
+    empresaTit: 'Onde tem pecuária, tem HaramaQ!',
+    historia: [
+      'No início dos anos 2000, a pecuária passava por grandes dificuldades. Foi quando Leandro percebeu que a alimentação era um dos grandes gargalos da atividade, e que a inclusão de capim à dieta animal poderia melhorar a lucratividade do setor.',
+      'Com espírito empreendedor, ele começou a desenvolver a plataforma Sahara 120, que com o passar do tempo se tornou um grande sucesso. Nascia então a HaramaQ.',
+      'Uma empresa que nasceu modesta e com poucos recursos, mas com muita persistência, foi conquistando mercado, crescendo e abrindo portas de trabalho, preenchidas por colaboradores dedicados e motivados, que tornaram a HaramaQ referência em seu ramo de atuação.',
+      'Atualmente contamos com um amplo e moderno parque fabril, com colaboradores capacitados que recebem treinamentos de forma contínua, com inúmeros revendedores comprometidos e posicionados em pontos estratégicos, em todo o território nacional e internacional, e com clientes cada vez mais satisfeitos.',
+      'Já se passaram duas décadas, e com elas inúmeros lançamentos, mas o foco continua o mesmo: diminuir a mão de obra e melhorar a lucratividade dos clientes HaramaQ, através de uma dieta equilibrada.',
+    ],
+    fecho: 'HaramaQ 24 anos, evolução sem limites.',
+    mvv: [
+      { t: 'Missão', txt: 'Através da tecnologia aplicada à mecanização agrícola, levar soluções para os pecuaristas, ajudando-os a alimentar o mundo.' },
+      { t: 'Visão', txt: 'Ser referência na produção de equipamentos agrícolas para pecuária, sendo reconhecida pela qualidade dos seus produtos e eficiência no atendimento.' },
+      { t: 'Valores', lista: ['Comprometimento', 'Honestidade', 'Eficiência', 'Qualidade', 'Sustentabilidade'] },
+    ],
+    emCampo: 'HaramaQ em campo', eficiencia: 'Eficiência e produtividade', inovacao: 'Inovações tecnológicas',
+    eficienciaTxt: 'Máquinas que diminuem a mão de obra do trato e entregam uma dieta homogênea, todos os dias.',
+    inovacaoTxt: 'Balança com USB e Wi-Fi, tablet repetidor, acionamento elétrico por app e programa de gestão do trato.',
+    rodape: 'A HaramaQ é referência na produção de máquinas para pecuária e busca, por meio de novas tecnologias, entregar soluções para tornar o trabalho no campo mais eficiente, ágil e prático.',
+    industria: 'Indústria de Máquinas Agrícolas', links: 'Navegação', contato: 'Contato', direitos: 'Todos os direitos reservados.', preview: 'Proposta de site novo feita pela Overtus. Site atual:',
+    videosTit: 'Vídeos', videosSub: 'Máquinas trabalhando, depoimentos de clientes e a história da HaramaQ.', assistir: 'Assistir',
+    posTit: 'Atendimento de pós-venda', posTxt: 'Ao adquirir um produto da HaramaQ, você terá à sua disposição uma equipe de profissionais altamente capacitada para auxiliar em todas as suas dúvidas ou necessidades técnicas. Preencha o formulário ou entre em contato com a nossa central de atendimento.',
+    posEtapas: ['Dados do proprietário', 'Dados da revenda', 'Dados do equipamento', 'Reclamação'],
+    posCampos: {
+      nome: 'Nome completo', fone: 'Telefone / WhatsApp', email: 'E-mail', cidade: 'Cidade', uf: 'UF',
+      revenda: 'Nome da revenda', cidadeRev: 'Cidade da revenda', ufRev: 'UF da revenda',
+      equip: 'Equipamento', serie: 'Número de série', compra: 'Data da compra', nota: 'Nota fiscal e relatório de entrega',
+      notaTxt: 'Envie a nota, o relatório de entrega e até 4 fotos pelo WhatsApp, junto com esta mensagem.',
+      reclamacao: 'Descreva o problema', proximo: 'Próximo', voltar: 'Voltar', enviar: 'Enviar pelo WhatsApp',
+    },
+    posVideo: 'Eficiência no pós-venda',
+    contatoTit: 'Converse com a nossa equipe', contatoTxt: 'A HaramaQ está disponível para solucionar as suas dúvidas, atender sugestões e pedidos de orçamento. Sempre que precisar, entre em contato com a nossa equipe ou com o setor que deseja falar e atenderemos o mais rápido possível a sua solicitação!',
+    form: { nome: 'Nome', fone: 'Telefone', email: 'E-mail', cidade: 'Cidade', uf: 'UF', motivo: 'Motivo do contato', motivos: ['Maiores informações ou aquisição de equipamentos', 'Departamento de peças ou pós-vendas', 'Se tornar fornecedor HaramaQ'], msg: 'Mensagem', enviar: 'Enviar pelo WhatsApp', aviso: 'O formulário abre o WhatsApp da HaramaQ já preenchido.' },
+    setores: 'Fale com o setor', comercial: 'Comercial', posvenda: 'Pós-venda', localizacao: 'Localização', comoChegar: 'Como chegar',
+    trabalheTit: 'Trabalhe conosco', trabalheTxt: 'Quer fazer parte do time que constrói as máquinas HaramaQ? Envie seu currículo para o nosso e-mail, informando a área de interesse.',
+    blogTit: 'Blog', blogSub: 'Conteúdo da HaramaQ sobre alimentação, manejo e máquinas para pecuária.', lerArtigo: 'Ler artigo', por: 'Por HaramaQ', outrosArtigos: 'Últimas postagens',
+    passosTit: 'Do silo ao cocho', passosSub: 'Cada etapa do trato tem uma máquina HaramaQ.',
+    passos: [
+      { t: 'Colher', txt: 'A Daily colhe o capim para o trato diário ou o pré-secado, com 32 facas e contra-faca dupla.', slug: 'daily-1200', foto: 'f-daily-1200-0' },
+      { t: 'Carregar', txt: 'A fresa com avanço tira a silagem do silo sem mexer o trator e leva também farelados, grãos e concentrados.', slug: 'prohmix-3-5-6-0-9-0', foto: 'f-prohmix-3-5-6-0-9-0-1' },
+      { t: 'Pesar', txt: 'A balança programável avisa a troca de ingrediente e guarda data, hora e quantidade de cada trato.', slug: 'prohmix-3-5-6-0-9-0', foto: 'f-prohmix-3-5-6-0-9-0-6' },
+      { t: 'Misturar', txt: 'Rotor vertical para fibra longa, rosca horizontal ou tombador para fibra curta e alto grão.', slug: 'prohmix-13-0-18-0-27-0', foto: 'f-prohmix-13-0-18-0-27-0-0' },
+      { t: 'Distribuir', txt: 'Esteira em PVC, chupim ou gravidade, para um lado ou para os dois, em cochos de qualquer altura.', slug: 'prohmix-1-6', foto: 'f-prohmix-rodoviario-2' },
+      { t: 'Cuidar da cama', txt: 'O STIR areja e nivela a cama do Compost Barn, e o HME 560 homogeneiza o esterco.', slug: 'stir-2000-3000', foto: 'f-stir-2000-3000-2' },
+    ],
+    faq: [
+      ['Qual é o ramo de atuação da HaramaQ?', 'A HaramaQ é especializada na produção de equipamentos para pecuária, proporcionando aos seus clientes redução de mão de obra e melhora de produção através de uma dieta homogênea.'],
+      ['Qual modelo de vagão misturador é ideal para o gado de leite e de corte?', 'Leite: recomenda-se o sistema de mistura vertical, ideal para o processamento de dietas com grandes quantidades de fibras longas. Corte: recomenda-se o sistema de mistura horizontal ou tombador (TRM), ideal para o processamento de dietas com fibras curtas ou suplementação.'],
+      ['Os vagões misturadores possuem descarga para os dois lados?', 'Este é um item opcional das linhas PROHMIX (vertical) e SUPERMIX (horizontal).'],
+      ['Os vagões misturadores são construídos em inox?', 'Sim, o compartimento de carga é construído em aço inox em toda a linha de vagões misturadores da HaramaQ.'],
+      ['Como funciona o sistema de pesagem HaramaQ?', 'Para atender as mais distintas necessidades do pecuarista, o sistema de pesagem é opcional, com 3 opções que vão desde o monitoramento do peso pelo celular até o gestor de dados, que ficam armazenados no monitor ou em computadores.'],
+      ['Existe a opção do vagão misturador ser autocarregável ou sem autocarregamento?', 'Sim, vai depender da necessidade do pecuarista e do sistema de confinamento.'],
+      ['Como calcular o tamanho ideal do vagão misturador para a propriedade?', 'O ideal é analisar o tamanho do maior lote a ser tratado, a logística de trabalho e a disponibilidade de trator para o trato.'],
+      ['Como faço para solicitar a visita de um consultor comercial da HaramaQ?', 'A solicitação pode ser feita diretamente com a fábrica por telefone, redes sociais ou por um dos nossos revendedores mais próximos da sua região.'],
+      ['Peças de reposição, onde encontro?', 'Grande parte das peças de reposição são comuns do mercado agrícola, e as nossas peças exclusivas são encontradas nos pontos de distribuição em todo o nosso território de abrangência.'],
+      ['Posso customizar um equipamento especial para a minha propriedade?', 'Não fabricamos equipamento sob medida, mas a nossa linha tem uma vasta opção de modelos e opcionais, o que permite adaptar o equipamento à realidade de cada propriedade. Nossos consultores comerciais e técnicos indicam a opção com o melhor custo-benefício para você. Consulte-nos!'],
+    ],
+    googleNota: 'Comentários deixados no perfil da HaramaQ no Google.',
+    artigoEs: '',
+  },
+  es: {
+    lang: 'es', og: 'es_ES', local: 'Sertão, RS, Brasil',
+    nav: { inicio: 'Inicio', empresa: 'Empresa', produtos: 'Productos', posvenda: 'Posventa', videos: 'Videos', blog: 'Blog', contato: 'Contacto', catalogo: 'Catálogo de productos', trabalhe: 'Trabaje con nosotros', todos: 'Ver todas las máquinas' },
+    slogan: 'Evolución sin límites',
+    lema: '¡Donde hay ganadería, hay HaramaQ!',
+    heroTit: 'Máquinas para la alimentación y el confort animal',
+    heroTxt: 'Carros mezcladores, removedor de cama, homogeneizador y cosechadora de forraje, fabricados en Sertão (RS, Brasil) y vendidos por más de 500 distribuidores en Brasil y en el exterior.',
+    orcamento: 'Solicitar presupuesto', verMaquinas: 'Conocer las máquinas', saibaMais: 'Saber más', falar: 'Hablar con HaramaQ', whats: 'Escribir por WhatsApp',
+    intro: ['Con 24 años en el mercado, HaramaQ tiene un amplio catálogo de equipos para la alimentación y el confort animal que se destacan por su eficiencia, tecnología, calidad, durabilidad y fácil manejo.', 'Además, la empresa cuenta con más de 500 distribuidores autorizados en todo Brasil y en el exterior.'],
+    anos: 'Años de experiencia', revendas: 'Distribuidores autorizados', modelos: 'Líneas de máquinas', pesagem: 'Opciones de balanza',
+    avaliacoes: 'Opiniones', excelente: 'Excelente', noGoogle: 'Opiniones reales en Google',
+    ctaTit: '¿Quiere saber más sobre nuestros equipos?', ctaTxt: 'Tenemos un equipo especializado y capacitado para atenderle e indicarle el mejor equipo para su establecimiento.', entreContato: 'Contáctenos',
+    maquinario: 'Maquinaria', destaque: 'Productos destacados', linhaCompleta: 'Línea completa',
+    depoimentos: 'Testimonios de clientes', faqTit: 'Preguntas frecuentes', faqSub: 'HaramaQ',
+    especificacoes: 'Especificaciones técnicas', opcionais: 'Equipos opcionales', folder: 'Descargar folleto', folderEs: 'Folleto en portugués', relacionadas: 'Otras máquinas de la línea', voltarProdutos: 'Todas las máquinas',
+    pedirMaquina: n => `¡Hola, HaramaQ! Quiero un presupuesto de la ${n}.`,
+    empresaTit: '¡Donde hay ganadería, hay HaramaQ!',
+    historia: [
+      'A comienzos de los años 2000, la ganadería atravesaba grandes dificultades. Fue entonces cuando Leandro percibió que la alimentación era uno de los grandes cuellos de botella de la actividad, y que incluir pasto en la dieta animal podía mejorar la rentabilidad del sector.',
+      'Con espíritu emprendedor, comenzó a desarrollar la plataforma Sahara 120, que con el tiempo se convirtió en un gran éxito. Así nació HaramaQ.',
+      'Una empresa que nació modesta y con pocos recursos, pero que con mucha perseverancia fue ganando mercado, creciendo y abriendo puestos de trabajo, ocupados por colaboradores dedicados y motivados, que hicieron de HaramaQ una referencia en su rubro.',
+      'Hoy contamos con una planta industrial amplia y moderna, con colaboradores capacitados que reciben entrenamiento continuo, con numerosos distribuidores comprometidos y ubicados en puntos estratégicos de Brasil y del exterior, y con clientes cada vez más satisfechos.',
+      'Ya pasaron dos décadas, y con ellas numerosos lanzamientos, pero el foco sigue siendo el mismo: reducir la mano de obra y mejorar la rentabilidad de los clientes HaramaQ a través de una dieta equilibrada.',
+    ],
+    fecho: 'HaramaQ 24 años, evolución sin límites.',
+    mvv: [
+      { t: 'Misión', txt: 'A través de la tecnología aplicada a la mecanización agrícola, llevar soluciones a los ganaderos, ayudándolos a alimentar al mundo.' },
+      { t: 'Visión', txt: 'Ser referencia en la producción de equipos agrícolas para la ganadería, reconocida por la calidad de sus productos y la eficiencia en la atención.' },
+      { t: 'Valores', lista: ['Compromiso', 'Honestidad', 'Eficiencia', 'Calidad', 'Sostenibilidad'] },
+    ],
+    emCampo: 'HaramaQ en el campo', eficiencia: 'Eficiencia y productividad', inovacao: 'Innovación tecnológica',
+    eficienciaTxt: 'Máquinas que reducen la mano de obra de la alimentación y entregan una dieta homogénea, todos los días.',
+    inovacaoTxt: 'Balanza con USB y Wi-Fi, tablet repetidora, accionamiento eléctrico por aplicación y programa de gestión de la alimentación.',
+    rodape: 'HaramaQ es referencia en la producción de máquinas para la ganadería y busca, a través de nuevas tecnologías, ofrecer soluciones que hagan el trabajo en el campo más eficiente, ágil y práctico.',
+    industria: 'Industria de Máquinas Agrícolas', links: 'Navegación', contato: 'Contacto', direitos: 'Todos los derechos reservados.', preview: 'Propuesta de sitio nuevo hecha por Overtus. Sitio actual:',
+    videosTit: 'Videos', videosSub: 'Máquinas trabajando, testimonios de clientes y la historia de HaramaQ.', assistir: 'Ver',
+    posTit: 'Atención posventa', posTxt: 'Al adquirir un producto HaramaQ, usted tendrá a su disposición un equipo de profesionales altamente capacitado para ayudarle con todas sus dudas o necesidades técnicas. Complete el formulario o comuníquese con nuestra central de atención.',
+    posEtapas: ['Datos del propietario', 'Datos del distribuidor', 'Datos del equipo', 'Reclamo'],
+    posCampos: {
+      nome: 'Nombre completo', fone: 'Teléfono / WhatsApp', email: 'Correo electrónico', cidade: 'Ciudad', uf: 'Estado / provincia',
+      revenda: 'Nombre del distribuidor', cidadeRev: 'Ciudad del distribuidor', ufRev: 'Estado / provincia del distribuidor',
+      equip: 'Equipo', serie: 'Número de serie', compra: 'Fecha de compra', nota: 'Factura e informe de entrega',
+      notaTxt: 'Envíe la factura, el informe de entrega y hasta 4 fotos por WhatsApp, junto con este mensaje.',
+      reclamacao: 'Describa el problema', proximo: 'Siguiente', voltar: 'Volver', enviar: 'Enviar por WhatsApp',
+    },
+    posVideo: 'Eficiencia en la posventa',
+    contatoTit: 'Hable con nuestro equipo', contatoTxt: 'HaramaQ está disponible para resolver sus dudas, recibir sugerencias y pedidos de presupuesto. Siempre que lo necesite, comuníquese con nuestro equipo o con el sector con el que desea hablar y responderemos su solicitud lo antes posible.',
+    form: { nome: 'Nombre', fone: 'Teléfono', email: 'Correo electrónico', cidade: 'Ciudad', uf: 'Estado / provincia', motivo: 'Motivo del contacto', motivos: ['Más información o compra de equipos', 'Repuestos o posventa', 'Ser proveedor de HaramaQ'], msg: 'Mensaje', enviar: 'Enviar por WhatsApp', aviso: 'El formulario abre el WhatsApp de HaramaQ con el mensaje listo.' },
+    setores: 'Hable con el sector', comercial: 'Comercial', posvenda: 'Posventa', localizacao: 'Ubicación', comoChegar: 'Cómo llegar',
+    trabalheTit: 'Trabaje con nosotros', trabalheTxt: '¿Quiere formar parte del equipo que fabrica las máquinas HaramaQ? Envíe su currículum a nuestro correo indicando el área de interés.',
+    blogTit: 'Blog', blogSub: 'Contenido de HaramaQ sobre alimentación, manejo y máquinas para la ganadería.', lerArtigo: 'Leer artículo', por: 'Por HaramaQ', outrosArtigos: 'Últimas publicaciones',
+    passosTit: 'Del silo al comedero', passosSub: 'Cada etapa de la alimentación tiene una máquina HaramaQ.',
+    passos: [
+      { t: 'Cosechar', txt: 'La Daily cosecha el pasto para la alimentación diaria o el presecado, con 32 cuchillas y contracuchilla doble.' },
+      { t: 'Cargar', txt: 'La fresa con avance saca el silaje del silo sin mover el tractor y también carga harinas, granos y concentrados.' },
+      { t: 'Pesar', txt: 'La balanza programable avisa el cambio de ingrediente y guarda la fecha, la hora y la cantidad de cada carga.' },
+      { t: 'Mezclar', txt: 'Rotor vertical para fibra larga, rosca horizontal o volcador para fibra corta y alto grano.' },
+      { t: 'Distribuir', txt: 'Cinta de PVC, chimango o gravedad, hacia uno o ambos lados, en comederos de cualquier altura.' },
+      { t: 'Cuidar la cama', txt: 'El STIR airea y nivela la cama del Compost Barn, y el HME 560 homogeneiza el estiércol.' },
+    ],
+    faq: [
+      ['¿A qué se dedica HaramaQ?', 'HaramaQ se especializa en la producción de equipos para la ganadería, que brindan a sus clientes menor necesidad de mano de obra y mejor producción a través de una dieta homogénea.'],
+      ['¿Qué modelo de carro mezclador es ideal para ganado de leche y de carne?', 'Leche: se recomienda el sistema de mezcla vertical, ideal para dietas con grandes cantidades de fibra larga. Carne: se recomienda el sistema de mezcla horizontal o volcador (TRM), ideal para dietas con fibra corta o suplementación.'],
+      ['¿Los carros mezcladores tienen descarga hacia los dos lados?', 'Es un ítem opcional de las líneas PROHMIX (vertical) y SUPERMIX (horizontal).'],
+      ['¿Los carros mezcladores son de acero inoxidable?', 'Sí, el compartimiento de carga es de acero inoxidable en toda la línea de carros mezcladores HaramaQ.'],
+      ['¿Cómo funciona el sistema de pesaje HaramaQ?', 'Para atender las distintas necesidades del ganadero, el sistema de pesaje es opcional, con 3 opciones que van desde el monitoreo del peso por celular hasta el gestor de datos, que quedan guardados en el monitor o en computadoras.'],
+      ['¿El carro mezclador puede ser autocargable o sin autocarga?', 'Sí, depende de la necesidad del ganadero y del sistema de confinamiento.'],
+      ['¿Cómo calcular el tamaño ideal del carro mezclador para el establecimiento?', 'Lo ideal es analizar el tamaño del lote más grande a alimentar, la logística de trabajo y la disponibilidad de tractor para la alimentación.'],
+      ['¿Cómo solicito la visita de un asesor comercial de HaramaQ?', 'Puede solicitarla directamente a la fábrica por teléfono, redes sociales o a través del distribuidor más cercano a su región.'],
+      ['¿Dónde encuentro repuestos?', 'Gran parte de los repuestos son comunes en el mercado agrícola, y nuestras piezas exclusivas se encuentran en los puntos de distribución de toda nuestra área de cobertura.'],
+      ['¿Puedo personalizar un equipo especial para mi establecimiento?', 'No fabricamos equipos a medida, pero nuestra línea tiene una amplia variedad de modelos y opcionales que permiten adaptar el equipo a la realidad de cada establecimiento. Nuestros asesores comerciales y técnicos le indicarán la opción con la mejor relación costo-beneficio. ¡Consúltenos!'],
+    ],
+    googleNota: 'Comentarios dejados en el perfil de HaramaQ en Google (en portugués).',
+    artigoEs: 'El artículo completo está disponible en portugués.',
+  },
+};
+// As fotos e máquinas das etapas valem para os dois idiomas.
+T.es.passos.forEach((p, i) => Object.assign(p, { slug: T.pt.passos[i].slug, foto: T.pt.passos[i].foto }));
