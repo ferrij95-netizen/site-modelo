@@ -58,7 +58,7 @@ export function paginaEscolha(o) {
 ${o.favicon ? `<link rel="icon" href="${o.favicon}" type="image/png">\n` : ''}<link rel="stylesheet" href="${o.googleFonts}">
 <link rel="stylesheet" href="/assets/apresenta.css">
 <style>
-:root{--es-cor:${o.cor};--es-fundo:${o.fundo};--es-claro:${o.claro};--ap-cor:${o.cor};--h:${o.fonteTitulo};--b:${o.fonteTexto};--es-cel:170px}
+:root{--es-cor:${o.cor};--es-fundo:${o.fundo};--es-claro:${o.claro};--ap-cor:${o.cor};--h:${o.fonteTitulo};--b:${o.fonteTexto};--es-btn-txt:${o.corTextoBotao || '#fff'};--es-cel:170px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:var(--b);color:#fff;background:var(--es-fundo);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}a{color:inherit}h1,h2{font-family:var(--h);letter-spacing:-.035em;line-height:1.02;margin:0 0 .4em;text-wrap:balance}h1 em,h2 em{font-style:normal;color:var(--es-cor)}
 .es-in{max-width:1240px;margin:0 auto;padding:0 32px;width:100%}
@@ -82,7 +82,7 @@ img{max-width:100%;display:block}a{color:inherit}h1,h2{font-family:var(--h);lett
 .es-inv .es-letra{color:color-mix(in srgb,var(--es-cor) 28%,transparent)}
 .es-desc{font-size:clamp(16px,1.3vw,19px);max-width:480px}
 .es-pontos{list-style:none;padding:0;margin:22px 0 30px;display:grid;gap:10px}.es-pontos li{padding-left:28px;position:relative}.es-pontos li::before{content:'';position:absolute;left:0;top:.45em;width:14px;height:14px;border-radius:4px;background:var(--es-cor)}
-.es-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--h);font-weight:700;font-size:16px;text-decoration:none;background:var(--es-cor);color:#fff;padding:15px 28px;border-radius:999px;transition:transform .2s,box-shadow .2s;box-shadow:0 14px 30px -12px var(--es-cor)}.es-btn:hover{transform:translateY(-2px)}
+.es-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--h);font-weight:700;font-size:16px;text-decoration:none;background:var(--es-cor);color:var(--es-btn-txt);padding:15px 28px;border-radius:999px;transition:transform .2s,box-shadow .2s;box-shadow:0 14px 30px -12px var(--es-cor)}.es-btn:hover{transform:translateY(-2px)}
 /* site atual */
 .es-atual{background:#eef1f2;color:#2b3235;text-align:center}.es-atual h2{color:#121212;font-size:clamp(30px,3.6vw,48px)}.es-atual .mk-janela{max-width:820px;margin:36px auto 28px}.es-atual .mk-vis img{object-position:top}
 .es-link{font-family:var(--h);font-weight:700;color:#121212;display:inline-flex;gap:8px;align-items:center}

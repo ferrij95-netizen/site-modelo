@@ -1,0 +1,92 @@
+/* Versão A "Campo": fiel ao site atual (topo verde-lima, faixa verde, creme, faixa oliva e oliva-escuro). */
+.v-a .barra { background: var(--verde-2); color: #fff; }
+.v-a .topo { background: linear-gradient(100deg, #b7f39c 0%, var(--lima) 55%, #8fe172 100%); color: var(--verde-esc); box-shadow: 0 1px 0 rgba(0, 0, 0, .06); }
+.v-a .marca { background: #fff; padding: 8px 14px; border-radius: var(--raio); box-shadow: 0 4px 14px -8px rgba(11, 74, 42, .5); }
+.v-a .marca img { height: 54px; }
+.v-a .coop-topo { background: #fff; padding: 4px 10px; height: 40px; border-radius: 30px; }
+.v-a #menu a { color: var(--verde-esc); }
+.v-a #menu a:hover { background: rgba(255, 255, 255, .45); }
+.v-a #menu a.ativo { box-shadow: inset 0 -3px 0 var(--verde-2); border-radius: 0; }
+.v-a .nav-cta { background: var(--verde-2); color: #fff !important; }
+.v-a .nav-cta:hover { background: var(--verde-esc) !important; }
+.v-a .nav-cta.ativo { box-shadow: none !important; border-radius: var(--raio) !important; }
+.v-a .btn-prim { background: var(--oliva); color: var(--oliva-esc); border-color: var(--oliva); }
+.v-a .btn-prim:hover { background: #aed400; }
+.v-a .btn-linha { border-color: rgba(255, 255, 255, .7); color: #fff; }
+.v-a .btn-linha:hover { background: rgba(255, 255, 255, .12); }
+.v-a .btn-sec { background: var(--verde-2); color: #fff; }
+.v-a .capa::after { background: linear-gradient(90deg, rgba(11, 58, 34, .86) 0%, rgba(11, 58, 34, .45) 60%, rgba(11, 58, 34, .15) 100%); }
+
+/* hero: foto do campo como no site atual, texto da fundação e moldura com foto real */
+.hero-a { position: relative; color: #fff; overflow: hidden; }
+.hero-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-a::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8, 48, 26, .9) 0%, rgba(8, 48, 26, .7) 48%, rgba(8, 48, 26, .2) 100%); }
+.hero-a-grade { position: relative; z-index: 1; display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: center; padding: clamp(64px, 9vw, 120px) 0; }
+.hero-a .eyebrow { color: var(--amarelo); }
+.hero-a h1 { max-width: 13em; }
+.hero-a-moldura { margin: 0; justify-self: end; max-width: 330px; position: relative; }
+.hero-a-moldura img { border: 8px solid #fff; border-radius: 4px; aspect-ratio: 3 / 4; object-fit: cover; position: relative; z-index: 1; }
+.hero-a-moldura::before { content: ""; position: absolute; left: -16px; bottom: 14px; width: 70%; height: 70%; background: var(--oliva); border-radius: 4px; }
+.hero-a-moldura figcaption { color: rgba(255, 255, 255, .85); }
+
+/* faixa verde: Qualidade | Assistência | Insumo */
+.faixa-verde { background: linear-gradient(180deg, var(--verde-2), #0f8f33); color: #fff; padding: 52px 0; }
+.faixa-verde .pilares li { border-left-color: var(--oliva); }
+.faixa-verde .ic-pilar { color: var(--amarelo); }
+
+/* soluções: creme com a foto da mão e o detalhe verde-oliva do site atual */
+.solucoes { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center; }
+.sol-txt h2 { color: var(--verde-2); max-width: 14em; }
+.sol-lista { list-style: none; margin: 28px 0 0; padding: 0; }
+.sol-lista a { display: grid; grid-template-columns: 180px 1fr 22px; gap: 18px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(43, 58, 6, .18); text-decoration: none; }
+.sol-lista strong { font: 700 1.05rem/1.2 var(--tit); color: var(--oliva-esc); }
+.sol-lista span { color: var(--cinza); font-size: .93rem; }
+.ic-seta { width: 20px; height: 20px; color: var(--verde-2); transition: transform .15s; }
+.sol-lista a:hover .ic-seta { transform: translateX(4px); }
+.sol-foto { margin: 0; justify-self: center; position: relative; width: min(300px, 100%); }
+.sol-foto img { position: relative; z-index: 1; width: 100%; aspect-ratio: 210 / 430; object-fit: cover; border-radius: 3px; }
+.sol-foto::before { content: ""; position: absolute; left: -14px; bottom: -14px; width: 85%; height: 90%; background: var(--oliva); border-radius: 3px; }
+
+/* faixa oliva com os números */
+.faixa-oliva { background: linear-gradient(90deg, var(--oliva), #b3d21a); color: var(--oliva-esc); padding: 44px 0; }
+
+/* você sabia? */
+.sabia { display: grid; grid-template-columns: 1fr 1.5fr; gap: 56px; align-items: center; }
+.selo-tit { display: inline-block; background: var(--oliva); color: #fff; padding: 6px 14px 8px; font-size: 1.5rem; text-transform: uppercase; position: relative; margin-bottom: 26px; }
+.selo-tit::after { content: ""; position: absolute; left: 50px; top: 100%; width: 6px; height: 18px; background: var(--oliva); }
+.sabia-grande { font: 700 1.35rem/1.35 var(--tit); color: var(--verde-esc); }
+.mosaico { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 150px; gap: 10px; }
+.mosaico .foto:first-child { grid-row: span 2; }
+.mosaico .foto:nth-child(4) { grid-column: span 2; }
+
+/* oliva-escuro: melhores marcas */
+.faixa-marcas { position: relative; background: var(--oliva-esc); color: #fff; text-align: center; padding: clamp(70px, 9vw, 120px) 0; overflow: hidden; }
+.fm-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .22; mix-blend-mode: luminosity; }
+.fm-txt { position: relative; }
+.fm-txt h2 { text-transform: uppercase; max-width: 22em; margin-inline: auto; }
+.fm-txt p { font-size: 1.1rem; }
+
+.edital-home .edital { grid-template-columns: 260px 1fr; align-items: center; }
+
+/* identidade e outras seções verdes */
+.v-a .sec-verde { background: linear-gradient(160deg, var(--verde-2) 0%, #0d7a35 100%); color: #fff; }
+.v-a .sec-verde .eyebrow { color: var(--amarelo); }
+.faixa-contato { background: var(--oliva-esc); color: #fff; }
+.v-a .faixa-contato .btn-sec { background: transparent; border-color: rgba(255, 255, 255, .6); }
+
+/* rodapé branco com logo e SomosCoop, como no site atual */
+.v-a .rodape { background: #fff; color: var(--ink); border-top: 6px solid var(--lima); }
+.v-a .rodape h3 { color: var(--verde-2); }
+
+@media (max-width: 900px) {
+  .hero-a-grade, .solucoes, .sabia { grid-template-columns: 1fr; }
+  .hero-a-moldura { justify-self: start; max-width: 240px; margin-left: 16px; }
+  .sol-lista a { grid-template-columns: 1fr 22px; }
+  .sol-lista span { grid-column: 1; }
+  .sol-lista .ic-seta { grid-row: 1 / span 2; grid-column: 2; }
+  .sol-foto { width: 220px; margin-left: 14px; }
+  .mosaico { grid-auto-rows: 110px; }
+  .v-a #menu { background: #c4f5a9; }
+  .edital-home .edital { grid-template-columns: 1fr; }
+  .v-a .marca img { height: 44px; }
+}

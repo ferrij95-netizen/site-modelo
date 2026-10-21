@@ -1,0 +1,11 @@
+# Força P Volare: como este site é feito
+
+- Cliente: Força P Volare (Força P Caminhões e Ônibus, Grupo Pelegrini), Uberlândia/MG. Escolhido no lote 4 de sites ruins (21/10/2026, /mnt/project-files/piloto-10d/LISTA.md), sem pedido do cliente.
+- Site atual: http://www.forcap.com.br/volare/ (Joomla, só http, só português, então o novo é só `pt`).
+- Marca: logo do site atual (147 px) vetorizado com potrace em `logo.svg` e `logo-branco.svg`; `asa.svg` é o recorte da asa do próprio logo, usado como grafismo. Azul-marinho #061143 da faixa, azul #1B3982 da barra de menu, azul #22529B e laranja #F26F2C do logo. Títulos em Barlow Semi Condensed itálica 800 (mais parecida com "FORÇA P"), texto em Inter.
+- Fotos: recortes dos veículos e das poltronas do site atual (`img/modelo`, `img/menu`, `img/poltrona`, fundo branco tirado por flood fill), fotos de cena tiradas dos catálogos Volare em PDF que o site publica (`img/linha`), fotos da loja e da Casa da Transmissão da página Empresa (`img/foto`).
+- Textos e dados: `conteudo.mjs`. Empresa, missão, valores, objetivo e Peças e Serviços copiados do site; modelos e capacidades das 8 páginas de linha; ficha resumida (motor, câmbio, comprimento, PBT) dos PDFs e das páginas de detalhe. Escritos por nós: lemas das linhas Fretamento, Urbano, Rural e Access, passos de pós-venda (a partir do texto de Peças e Serviços).
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Concessionária" (fiel ao site: faixa, cabeçalho com telefone e horário, barra azul, vitrine "Nossos veículos", "Como podemos ajudá-lo(a)?") e `/b/` "Lotação" (escolha pelo número de passageiros, régua de capacidade, fichas comparadas). 14 páginas em cada: Home, Veículos, 8 linhas, Financiamento, Peças e serviços, Empresa, Contato. Seminovos aponta para volareseminovos.com.br, como no site atual.
+- Formulários montam a mensagem e abrem WhatsApp (vendas ou peças) ou e-mail.
+- Gerar: `node clientes/forcap/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: linha e fichas são de 2017 (a Volare mudou modelos desde então); lugares do V8L Rural (o site atual mistura com o Escolarbus W6); textos da Ambulância; se o e-mail forcap@pelegrini.com.br ainda vale (pelegrini.com.br não resolve hoje).
