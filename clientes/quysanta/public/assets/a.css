@@ -1,0 +1,92 @@
+/* Versão A "Faixa": fiel ao site atual. Topo vermelho com brilho, logo oval, faixa amarela em arco com o menu,
+   fotos dos "doces momentos", as três chamadas da home (Empresa, A Cocada Bahiana, Receitas) e rodapé com o endereço. */
+.topo-a{position:relative;background:#fff;color:#fff;padding-top:22px;text-align:center;--verm-h:calc(22px + .444 * clamp(220px,26vw,340px) - 46px + .081 * min(1200px,100vw))}
+.topo-a::before{content:'';position:absolute;left:0;right:0;top:0;height:var(--verm-h);background:radial-gradient(60% 120% at 50% 0,#ff2a0a,#e01a00 38%,#b80f00 72%,#8f0a00);border-bottom:2px solid #f0d8d2}
+.topo-brilho{position:absolute;left:0;right:0;top:0;height:var(--verm-h);background:radial-gradient(28% 60% at 50% 20%,rgba(255,255,255,.18),transparent 70%);pointer-events:none}
+.topo-a .marca{position:relative;z-index:2;display:inline-block;width:clamp(220px,26vw,340px)}
+.topo-a .marca img{width:100%;filter:drop-shadow(0 10px 18px rgba(60,0,0,.35))}
+.arco{position:relative;width:min(1200px,100%);margin:-46px auto 0;aspect-ratio:1200/176;z-index:1;container-type:inline-size}
+.arco-faixa{position:absolute;inset:0;width:100%;height:100%;z-index:1;filter:drop-shadow(0 6px 6px rgba(70,20,0,.25))}
+.arco nav{position:absolute;inset:0;z-index:2}
+.arco ul{list-style:none;margin:0;padding:0}
+.arco li{position:absolute;transform:translate(-50%,-50%) rotate(var(--r));left:var(--x);top:var(--y)}
+.arco li:nth-child(1){--x:19.4%;--y:43%;--r:-13deg}
+.arco li:nth-child(2){--x:29.2%;--y:31%;--r:-8deg}
+.arco li:nth-child(3){--x:44.4%;--y:23.5%;--r:-2.5deg}
+.arco li:nth-child(4){--x:58.6%;--y:23.5%;--r:3deg}
+.arco li:nth-child(5){--x:69.6%;--y:28.5%;--r:7.5deg}
+.arco li:nth-child(6){--x:80.2%;--y:40.5%;--r:12.5deg}
+.arco a{display:block;font-family:var(--h);font-weight:400;font-size:2.55cqw;line-height:1;color:#b51200;text-decoration:none;padding:.32em .5em .26em;border-radius:.4em;white-space:nowrap;transition:background .2s,color .2s}
+.arco a:hover{background:rgba(255,255,255,.45)}
+.arco a.ativo{background:var(--verm);color:var(--amar)}
+.topo-a .menu-btn{position:absolute;right:12px;top:14px;color:#fff;z-index:3}
+
+/* doces momentos */
+.momentos{max-width:1100px;margin:calc(-.075 * min(1200px,100vw)) auto 0;padding:0 32px 8px;position:relative}
+.momentos-fotos{display:flex;gap:0;margin-top:-6px}
+.momentos-fotos img{flex:1 1 0;min-width:0;aspect-ratio:118/142;object-fit:cover;object-position:top}
+.momentos-frase{width:min(520px,62%);margin:-28px 0 0 auto;position:relative}
+
+/* as três chamadas da home */
+.tres{padding-top:56px}
+.tres-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.porta{display:flex;flex-direction:column}
+.porta-foto{display:grid;place-items:center;height:300px;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#fff,#f4f1ec);border:1px solid var(--linha);margin-bottom:24px}
+.porta-foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.porta-foto:hover img{transform:scale(1.04)}
+.porta-lata .porta-foto{background:radial-gradient(circle at 50% 60%,var(--amar),var(--lata) 75%);border:0}
+.porta-lata .porta-foto img{width:auto;height:262px;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(80,40,0,.28))}
+.porta h2{font-size:clamp(32px,3vw,42px);text-align:center;margin-bottom:.2em}
+.porta h2 a{color:var(--verm);text-decoration:none}
+.porta-chamada{text-align:center;font-weight:700;color:var(--tinta);font-size:16px}
+.porta p:not(.porta-chamada){font-size:16px}
+.porta .link-seta{margin-top:auto;align-self:center}
+.porta-lista{list-style:none;margin:0 0 18px;padding:0}
+.porta-lista li{border-bottom:1px dashed var(--linha)}
+.porta-lista a{display:block;padding:9px 0;text-decoration:none;color:var(--tinta);font-weight:600}
+.porta-lista a:hover{color:var(--verm)}
+
+/* faixa amarela */
+.faixa-amarela{background:linear-gradient(180deg,#f3f466,var(--amar-faixa) 60%,#d6d22a);color:var(--tinta);position:relative}
+.faixa-amarela::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--verm-forte),var(--verm))}
+.fa-grade{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
+.faixa-amarela .eyebrow{color:var(--verm-forte)}
+.faixa-amarela .numeros>div{border-color:rgba(110,90,20,.3)}
+.faixa-amarela .numeros dd{color:var(--tinta)}
+.faixa-amarela .numeros{grid-template-columns:1fr 1fr;row-gap:28px}
+.faixa-amarela .numeros>div:nth-child(3){border-left:0;padding-left:0}
+.receitas-home{background:#fff}
+.clientes-home{background:var(--suave)}
+.redes{padding:48px 0;background:#fff;border-bottom:1px solid var(--linha)}
+.redes-grade{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.redes h2{color:var(--verm);font-size:clamp(30px,3vw,40px);margin:0}.redes p{margin:0}
+.redes-botoes{display:flex;gap:12px;flex-wrap:wrap}
+
+/* capa das internas: branca, título vermelho */
+.capa{background:#fff;text-align:center;padding-top:28px}
+.capa h1{color:var(--verm);margin-left:auto;margin-right:auto}
+.capa .lead{margin:0 auto}
+.capa::after{content:'';display:block;width:84px;height:8px;border-radius:8px;background:var(--amar-faixa);margin:32px auto 0;box-shadow:0 3px 0 var(--contorno)}
+.sec-cor{background:#fffbe0}
+.rodape{background:linear-gradient(180deg,#8f0a00,#5a0700)}
+
+@media (max-width:860px){
+  .topo-a{padding:14px 0 0;--verm-h:calc(14px + 75px - 24px + .081 * 100vw)}
+  .topo-a .marca{width:170px}
+  .topo-a .menu-btn{display:block}
+  .arco{margin-top:-24px;container-type:normal}
+  .arco nav{position:fixed;inset:0 0 auto;top:0;background:var(--verm-forte);padding:76px 20px 24px;transform:translateY(-110%);transition:transform .3s;z-index:20;box-shadow:0 20px 40px rgba(0,0,0,.3)}
+  .arco nav.aberto{transform:none}
+  .arco li{position:static;transform:none}
+  .arco a{font-size:30px;color:#fff;padding:10px 4px;text-align:left;border-bottom:1px solid rgba(255,255,255,.18);border-radius:0}
+  .arco a.ativo{background:none;color:var(--amar)}
+  .topo-a .menu-btn{z-index:30}
+  .momentos{padding:0;margin-top:-4px}
+  .momentos-fotos{overflow-x:auto;scroll-snap-type:x mandatory;margin-top:0}
+  .momentos-fotos img{flex:0 0 112px;scroll-snap-align:start}
+  .momentos-frase{width:86%;margin:-14px 12px 0 auto}
+  .tres-grade{grid-template-columns:1fr;gap:56px}
+  .porta-foto{height:240px}
+  .porta-lata .porta-foto img{height:210px}
+  .fa-grade{grid-template-columns:1fr;gap:36px}
+}

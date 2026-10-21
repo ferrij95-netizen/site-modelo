@@ -1,0 +1,109 @@
+/* Versão B "Lata": puxada pelo amarelo da lata de Cocada Bahiana e pelo vermelho do logo. Topo branco com o logo sem o oval,
+   lata grande na abertura, linha do tempo desde 1907, o caminho da fábrica até a mesa e receitas em mosaico. */
+.barra{background:var(--verm-forte);color:rgba(255,255,255,.85);font-size:13px}
+.barra .in{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px}
+.barra-dir{display:flex;gap:22px}
+.barra a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:6px}.barra .ic{width:15px;height:15px}
+.topo-b{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.topo-b .in{display:flex;align-items:center;gap:32px;min-height:82px}
+.topo-b .marca{width:190px;flex:none}
+.topo-b nav{margin-left:auto}
+.topo-b ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
+.topo-b nav a{display:block;padding:9px 14px;border-radius:999px;font-weight:600;font-size:15px;color:var(--tinta);text-decoration:none;transition:background .2s}
+.topo-b nav a:hover{background:var(--lata-claro)}
+.topo-b nav a.ativo{background:var(--lata);color:var(--tinta)}
+.topo-b nav li:last-child a{background:var(--verm);color:#fff;margin-left:8px}
+
+/* abertura */
+.heroi{background:radial-gradient(70% 90% at 78% 40%,#ffe27a,transparent 60%),linear-gradient(160deg,var(--lata),#f3b51e);overflow:hidden;padding:clamp(48px,6vw,88px) 0 0}
+.heroi-grade{display:grid;grid-template-columns:6fr 6fr;gap:40px;align-items:end}
+.heroi-txt{padding-bottom:clamp(56px,7vw,104px)}
+.heroi h1{font-size:clamp(50px,6.6vw,92px);color:var(--tinta)}
+.heroi .eyebrow{color:var(--verm-forte)}
+.heroi .lead{color:#3d2a12;margin-bottom:30px}
+.heroi .btn-linha{border-color:var(--tinta)}
+.heroi-palco{position:relative;height:clamp(420px,44vw,600px)}
+.heroi-disco{position:absolute;left:12%;right:0;bottom:-18%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 38% 30%,#ff3a12,var(--verm) 45%,var(--verm-forte) 75%)}
+.heroi-coco{position:absolute;left:-2%;bottom:-2%;width:46%;border-radius:50%;aspect-ratio:1;object-fit:cover;object-position:30% 50%;border:8px solid #fff;box-shadow:0 20px 40px -18px rgba(60,20,0,.5);z-index:2}
+.heroi-lata{position:absolute;left:30%;bottom:9%;height:74%;width:auto;z-index:3;filter:drop-shadow(0 34px 30px rgba(60,20,0,.35))}
+.heroi-selo{position:absolute;left:16%;top:8%;z-index:4;width:118px;height:118px;border-radius:50%;background:#fff;display:grid;place-content:center;text-align:center;font-size:12px;font-weight:600;color:var(--texto);line-height:1.2;box-shadow:0 14px 30px -14px rgba(60,20,0,.5);transform:rotate(8deg)}
+.heroi-selo b{display:block;font-family:var(--h);font-size:38px;line-height:1;color:var(--verm)}
+
+/* números em faixa vermelha */
+.numeros-faixa{background:linear-gradient(120deg,var(--verm),var(--verm-forte));padding:56px 0}
+.numeros-faixa .numeros>div{border-color:rgba(255,255,255,.25)}
+.numeros-faixa dt{color:var(--lata)}
+.numeros-faixa dd{color:rgba(255,255,255,.88)}
+
+/* o caminho da lata: quatro etapas ligadas por uma linha */
+.caminho{background:var(--suave)}
+.etapas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative}
+.etapa{position:relative}
+.etapa>img,.etapa-logos-grade{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 70%;border-radius:var(--raio)}
+.etapa-logos-grade{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:28px 14px 14px;background:#fff;align-content:center}
+.etapa-logos-grade img{mix-blend-mode:multiply}
+.etapa-n{position:relative;display:grid;place-items:center;width:52px;height:52px;margin:-26px auto 14px;border-radius:50%;background:var(--lata);font-family:var(--h);font-weight:700;font-size:24px;color:var(--tinta);border:4px solid var(--suave);z-index:1}
+.etapa h3{font-size:24px;text-align:center}
+.etapa p{text-align:center;font-size:15px;line-height:1.5}
+
+/* receitas em mosaico */
+.receitas-mosaico{display:grid;grid-template-columns:5fr 6fr;gap:40px}
+.receita-grande .receita-foto{aspect-ratio:4/3}
+.receita-grande .receita-txt strong{font-size:40px}
+.receita-grande .receita-txt span{font-size:17px}
+.receitas-lista{display:grid;gap:20px;align-content:start}
+.receita-linha{display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--linha)}
+.receita-linha:last-child{border-bottom:0}
+.receita-linha .receita-txt{padding:0}
+
+/* quem somos */
+.missao-b{background:var(--lata-claro)}
+.mb-grade{display:grid;grid-template-columns:5fr 6fr;gap:64px;align-items:center}
+.mb-fotos{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mb-fotos img{width:100%;aspect-ratio:1;object-fit:cover;object-position:top;border-radius:var(--raio)}.mb-fotos img:nth-child(1){border-radius:120px var(--raio) var(--raio) var(--raio)}.mb-fotos img:nth-child(4){border-radius:var(--raio) var(--raio) 120px var(--raio)}
+.clientes-b{background:#fff}
+.clientes-b h2{margin-bottom:36px}
+.logos-faixa li{border:0;background:transparent}
+
+/* capa das internas: amarelo da lata */
+.capa{background:radial-gradient(60% 120% at 90% 0,#ffe27a,transparent 60%),linear-gradient(160deg,var(--lata),#f3b51e)}
+.capa .eyebrow{color:var(--verm-forte)}
+.capa::after{content:'';position:absolute;right:-80px;bottom:-140px;width:340px;height:340px;border-radius:50%;background:var(--verm);opacity:.95}
+.capa .in{position:relative;z-index:1}
+.capa .lead{color:#3d2a12}
+.historia{background:#fff}
+.sec-cor.historia{background:var(--lata-claro)}
+.rodape{background:#2a0a04}
+
+@media (max-width:1100px){
+  .topo-b nav a{padding:8px 10px;font-size:14px}
+  .topo-b .marca{width:160px}
+}
+@media (max-width:960px){
+  .barra span:first-child{display:none}.barra .in{justify-content:center}.barra a{white-space:nowrap}
+  .topo-b .in{min-height:68px}
+  .topo-b .marca{width:150px}
+  .menu-btn{display:block;margin-left:auto}
+  .topo-b nav{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--linha);padding:12px 20px 20px;display:none;box-shadow:0 20px 30px -20px rgba(0,0,0,.25)}
+  .topo-b nav.aberto{display:block}
+  .topo-b ul{flex-direction:column;gap:2px}
+  .topo-b nav a{font-size:17px;padding:12px 14px}
+  .topo-b nav li:last-child a{margin:8px 0 0;text-align:center}
+}
+@media (max-width:860px){
+  .heroi-grade{grid-template-columns:1fr;gap:0}
+  .heroi-txt{padding-bottom:16px}
+  .heroi-palco{height:420px;max-width:520px;width:100%;margin:0 auto}
+  .etapas{grid-template-columns:1fr 1fr;row-gap:40px}
+  .receitas-mosaico{grid-template-columns:1fr}
+  .mb-grade{grid-template-columns:1fr;gap:32px}
+  .capa::after{width:200px;height:200px;right:-70px;bottom:-110px}
+}
+@media (max-width:560px){
+  .heroi-palco{height:360px}
+  .heroi-selo{width:96px;height:96px;font-size:11px}.heroi-selo b{font-size:30px}
+  .etapas{grid-template-columns:1fr}
+  .receita-linha{grid-template-columns:120px 1fr;gap:14px}
+  .receita-linha .receita-txt strong{font-size:22px}
+  .receita-linha .receita-txt span{display:none}
+}
+@media (max-width:560px){.barra a[href^="mailto"]{display:none}}
