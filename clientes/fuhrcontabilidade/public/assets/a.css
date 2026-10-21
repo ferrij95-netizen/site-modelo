@@ -1,0 +1,145 @@
+/* Versão A "Escritório": fiel ao site atual. Faixa azul com o logo numa aba branca, atalhos em ícones de traço sobre azul,
+   agenda tributária na abertura. Títulos em Montserrat (o "CONTABILIDADE" do logo), texto em Inter. */
+
+/* topo */
+.faixa { background: var(--noite); color: rgba(255, 255, 255, .85); font-size: 14px; }
+.faixa .in { display: flex; gap: 26px; align-items: center; min-height: 38px; }
+.faixa a { color: inherit; text-decoration: none; display: inline-flex; gap: 7px; align-items: center; }
+.faixa a:hover { color: #fff; }
+.faixa .ic { width: 15px; height: 15px; }
+.faixa-area { margin-left: auto; color: var(--ouro-claro) !important; font-weight: 600; }
+.topo { background: var(--azul); position: sticky; top: 0; z-index: 30; }
+.topo .in { display: flex; align-items: center; gap: 24px; min-height: 76px; position: relative; }
+.marca { align-self: flex-start; background: #fff; padding: 14px 26px 10px; border-radius: 0 0 22px 22px; box-shadow: 0 10px 24px rgba(0, 20, 60, .18); margin-bottom: -34px; display: flex; flex-direction: column; align-items: flex-end; text-decoration: none; transition: padding .25s, margin .25s; }
+.marca img { width: 156px; height: auto; transition: width .25s; }
+.marca small { font-size: 9px; color: var(--marinho); letter-spacing: .04em; margin-top: 2px; }
+.rolou .marca { padding: 8px 18px 6px; margin-bottom: 0; }
+.rolou .marca img { width: 104px; }
+.rolou .marca small { display: none; }
+.menu { margin-left: auto; display: flex; gap: 2px; }
+.menu a { color: #fff; font: 500 15px/1 var(--fonte); padding: 10px 11px; border-radius: 3px; position: relative; }
+.menu a::after { content: ''; position: absolute; left: 11px; right: 11px; bottom: 2px; height: 2px; background: var(--ouro-claro); transform: scaleX(0); transition: transform .2s; }
+.menu a:hover::after, .menu a[aria-current]::after { transform: scaleX(1); }
+.menu-btn { color: #fff; margin-left: auto; }
+
+/* abertura */
+.hero { background: linear-gradient(180deg, var(--gelo) 0%, #fff 100%); padding: 84px 0 64px; }
+.hero .in { display: grid; grid-template-columns: 1.25fr .85fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(32px, 4.3vw, 52px); font-weight: 800; letter-spacing: -.01em; }
+.hero-sub { font-size: 18px; color: var(--cinza); max-width: 56ch; margin-bottom: 28px; }
+.hero-num { display: flex; gap: 0; margin-top: 40px; border-top: 1px solid var(--linha); }
+.hero-num li { flex: 1; padding: 18px 18px 0 0; }
+.hero-num li + li { padding-left: 18px; border-left: 1px solid var(--linha); }
+.hero-num b { display: block; font: 800 34px/1 var(--fonte-tit); color: var(--azul); }
+.hero-num span { font-size: 14px; color: var(--cinza); }
+.ag-hero { box-shadow: 0 24px 48px rgba(9, 81, 161, .16); border: 0; }
+
+/* atalhos (faixa azul de ícones, como no site atual) */
+.atalhos { background: var(--azul); }
+.atalhos .in { display: grid; grid-template-columns: repeat(5, 1fr); }
+.atalhos a { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 34px 14px 30px; color: #fff; text-decoration: none; transition: background .2s; }
+.atalhos a + a { border-left: 1px solid rgba(255, 255, 255, .16); }
+.atalhos a:hover { background: var(--marinho); }
+.ic-at { width: 46px; height: 46px; margin-bottom: 8px; }
+.atalhos .ic-at { stroke-width: 1.2; }
+.atalhos b { font: 600 17px/1.25 var(--fonte-tit); }
+.atalhos span { font-size: 13px; color: rgba(255, 255, 255, .72); line-height: 1.4; }
+
+/* bem-vindo */
+.bemvindo .in { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; padding: 88px 0; align-items: center; }
+.tit h2 { font-size: clamp(28px, 3.2vw, 40px); font-weight: 800; }
+.citacao { margin: 0; position: relative; padding: 44px 40px 36px; background: var(--marinho); color: #fff; border-radius: 6px; overflow: hidden; }
+.citacao .chama { position: absolute; right: -24px; top: -20px; width: 200px; height: 180px; color: rgba(217, 188, 133, .28); }
+.citacao blockquote { margin: 0 0 18px; font: 600 22px/1.45 var(--fonte-tit); position: relative; }
+.citacao figcaption { color: var(--ouro-claro); font-weight: 600; }
+
+/* serviços em abas */
+.servicos-home { background: var(--gelo); }
+.servicos-home .in { padding: 88px 0; }
+.abas { display: grid; grid-template-columns: .9fr 1.1fr; gap: 0; margin-top: 18px; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 0 var(--gelo-2); }
+.abas-lista { display: flex; flex-direction: column; border-right: 1px solid var(--linha); }
+.abas-lista button { display: flex; gap: 16px; align-items: center; text-align: left; padding: 24px 28px; border: 0; background: #fff; cursor: pointer; font: 600 17px/1.3 var(--fonte-tit); color: var(--cinza); border-bottom: 1px solid var(--linha); transition: background .2s, color .2s; }
+.abas-lista button:last-child { border-bottom: 0; }
+.abas-lista i { font-style: normal; font-size: 14px; color: var(--ouro); min-width: 22px; }
+.abas-lista button[aria-selected="true"] { background: var(--azul); color: #fff; }
+.abas-lista button[aria-selected="true"] i { color: var(--ouro-claro); }
+.abas-lista button:hover:not([aria-selected="true"]) { background: var(--gelo); color: var(--marinho); }
+.abas-painel { padding: 40px 44px; }
+.ab-num { font: 800 64px/1 var(--fonte-tit); color: var(--gelo-2); margin-bottom: 8px; }
+.abas-painel h3 { font-size: 26px; }
+.abas-painel > p { color: var(--cinza); }
+.abas-painel ul { margin: 18px 0 10px; }
+.abas-painel li { display: flex; gap: 12px; padding: 9px 0; }
+.abas-painel li .ic { color: var(--azul); width: 18px; height: 18px; margin-top: 4px; }
+
+/* segmentos */
+.segmentos { background: var(--marinho); color: #fff; }
+.segmentos .in { padding: 52px 0; }
+.segmentos .eyebrow { color: var(--ouro-claro); }
+.segmentos .seg-lista { margin: 0; gap: 0; }
+.segmentos .seg-lista span { border: 0; border-radius: 0; padding: 4px 0; color: #fff; font: 700 clamp(20px, 2.4vw, 30px)/1.4 var(--fonte-tit); }
+.segmentos .seg-lista span:not(:last-child)::after { content: '•'; color: var(--ouro); margin: 0 .55em; }
+
+/* depoimentos */
+.depo-home .in { padding: 88px 0 64px; }
+.depo-slider { max-width: 880px; position: relative; }
+.depo { margin: 0; }
+.depo blockquote { margin: 10px 0 26px; font: 600 clamp(20px, 2.3vw, 28px)/1.45 var(--fonte-tit); color: var(--marinho); }
+.depo blockquote::before { content: '“'; display: block; font: 800 90px/.6 var(--fonte-tit); color: var(--ouro); margin-bottom: 12px; }
+.depo figcaption { display: flex; align-items: center; gap: 18px; font-weight: 600; color: var(--cinza); }
+.depo figcaption img { max-height: 48px; width: auto; max-width: 140px; }
+.slider-nav { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
+.slider-nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linha); background: #fff; color: var(--azul); display: grid; place-items: center; cursor: pointer; }
+.slider-nav button:hover { background: var(--azul); color: #fff; border-color: var(--azul); }
+.slider-nav [data-ant] .ic { transform: rotate(180deg); }
+.slider-nav span { font-size: 14px; color: var(--cinza); font-variant-numeric: tabular-nums; }
+.logos-faixa { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 28px 36px; margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--linha); }
+.logos-faixa img { max-height: 42px; width: auto; max-width: 120px; filter: grayscale(1); opacity: .7; }
+
+/* notícias e artigos */
+.noticias-home { background: var(--gelo); }
+.noticias-home .in { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding: 80px 0; }
+.noticias-home .tit h2 { font-size: 28px; }
+.artigos-mini li + li { border-top: 1px solid var(--gelo-2); }
+.artigos-mini a { display: block; padding: 16px 0; text-decoration: none; color: var(--tinta); }
+.artigos-mini .tema { margin-bottom: 4px; }
+.artigos-mini b { display: block; font: 700 18px/1.35 var(--fonte-tit); color: var(--marinho); }
+.artigos-mini time { font-size: 13px; color: var(--cinza); }
+.artigos-mini a:hover b { color: var(--azul); }
+
+/* páginas internas */
+.capa { background: linear-gradient(180deg, var(--gelo), #fff); padding: 84px 0 40px; border-bottom: 1px solid var(--linha); }
+.capa h1 { font-size: clamp(32px, 4.4vw, 52px); font-weight: 800; max-width: 22ch; }
+.capa p:last-child { font-size: 18px; color: var(--cinza); max-width: 60ch; }
+
+@media (max-width: 1080px) {
+  .faixa .so-pc { display: none; }
+  .marca { margin-bottom: -26px; padding: 10px 18px 8px; }
+  .marca img { width: 120px; }
+}
+@media (max-width: 920px) {
+  .hero .in, .bemvindo .in, .noticias-home .in { grid-template-columns: 1fr; gap: 40px; }
+  .hero { padding-top: 72px; }
+  .atalhos .in { grid-template-columns: repeat(5, minmax(140px, 1fr)); overflow-x: auto; width: 100%; scroll-snap-type: x mandatory; }
+  .atalhos a { scroll-snap-align: start; }
+  .abas { grid-template-columns: 1fr; }
+  .abas-lista { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--linha); }
+  .abas-lista button { flex: none; max-width: 240px; border-bottom: 0; border-right: 1px solid var(--linha); padding: 18px; font-size: 15px; }
+  .abas-painel { padding: 28px 22px; }
+}
+@media (max-width: 560px) {
+  .faixa .in { gap: 16px; font-size: 13px; }
+  .faixa a:nth-child(2) { display: none; }
+  .topo .in { min-height: 64px; }
+  .marca img { width: 96px; }
+  .marca small { display: none; }
+  .hero { padding: 60px 0 48px; }
+  .hero-num b { font-size: 26px; }
+  .hero-num li { padding-right: 10px; }
+  .hero-num li + li { padding-left: 10px; }
+  .bemvindo .in, .servicos-home .in, .depo-home .in { padding: 60px 0; }
+  .citacao { padding: 32px 24px 28px; }
+  .citacao blockquote { font-size: 19px; }
+  .capa { padding: 64px 0 32px; }
+  .logos-faixa { justify-content: center; }
+}

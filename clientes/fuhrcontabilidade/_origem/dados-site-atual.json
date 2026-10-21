@@ -1,0 +1,724 @@
+{
+ "utilitarios": [
+  {
+   "nome": "Receita Federal",
+   "links": [
+    {
+     "t": "Receita Federal",
+     "u": "http://receita.fazenda.gov.br/"
+    },
+    {
+     "t": "Cadastro de Pessoas Físicas CPF",
+     "u": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/cadastros/cpf"
+    },
+    {
+     "t": "Cadastro Nacional da Pessoa Jurídica CNPJ",
+     "u": "https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp"
+    },
+    {
+     "t": "Cadastro de Imóveis Rurais - Cafir",
+     "u": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/cadastros/cafir"
+    },
+    {
+     "t": "Concessão de matrícula - CEI",
+     "u": "http://ceiweb.receita.fazenda.gov.br/ceiweb/index.view"
+    },
+    {
+     "t": "Certidão Negativa Imóvel Rural",
+     "u": "https://solucoes.receita.fazenda.gov.br/Servicos/certidaointernet/ITR/Emitir"
+    },
+    {
+     "t": "Certidão Negativa Pessoa Física",
+     "u": "http://idealsoftwares.com.br/consultas_tributarias/receita_federal/certidoes_pfisica.php"
+    },
+    {
+     "t": "Certidão Negativa Pessoa Jurídica",
+     "u": "http://idealsoftwares.com.br/consultas_tributarias/receita_federal/certidoes_pjuridica.php"
+    },
+    {
+     "t": "CND",
+     "u": "http://cnd.dataprev.gov.br/cws/contexto/cnd/cnd.html"
+    },
+    {
+     "t": "e-CAC",
+     "u": "http://idealsoftwares.com.br/consultas_tributarias/receita_federal/ecac.php"
+    },
+    {
+     "t": "Formulários",
+     "u": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/formularios"
+    },
+    {
+     "t": "Receitanet - Entrega da Declaração",
+     "u": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanet"
+    },
+    {
+     "t": "Fornecimento de Programas PF",
+     "u": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf"
+    },
+    {
+     "t": "Fornecimento de Programas PJ",
+     "u": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd"
+    },
+    {
+     "t": "PER/DCOMP",
+     "u": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/restituicao-ressarcimento-reembolso-e-compensacao/perdcomp"
+    }
+   ]
+  },
+  {
+   "nome": "CRC",
+   "links": [
+    {
+     "t": "Acre",
+     "u": "http://www.crcac.org.br/"
+    },
+    {
+     "t": "Amapá",
+     "u": "http://www.crcap.org.br/"
+    },
+    {
+     "t": "Amazonas",
+     "u": "http://www.crcam.org.br/"
+    },
+    {
+     "t": "Bahia",
+     "u": "http://www.crcba.org.br/"
+    },
+    {
+     "t": "Ceará",
+     "u": "http://www.crc-ce.org.br/"
+    },
+    {
+     "t": "Distrito Federal",
+     "u": "http://www.crcdf.org.br/"
+    },
+    {
+     "t": "Espírito Santo",
+     "u": "http://www.crc-es.org.br/"
+    },
+    {
+     "t": "Goiás",
+     "u": "http://www.crcgo.org.br/"
+    },
+    {
+     "t": "Maranhão",
+     "u": "http://www.crcma.org.br/"
+    },
+    {
+     "t": "Mato Grosso",
+     "u": "http://www.crcmt.org.br/"
+    },
+    {
+     "t": "Mato Grosso so Sul",
+     "u": "http://www.crcms.org.br/"
+    },
+    {
+     "t": "Minas Gerais",
+     "u": "http://www.crcmg.org.br/"
+    },
+    {
+     "t": "Paraíba",
+     "u": "http://www.crcpb.org.br/"
+    },
+    {
+     "t": "Paraná",
+     "u": "https://www3.crcpr.org.br/crcpr/portal/"
+    },
+    {
+     "t": "Pernambuco",
+     "u": "http://www.crcpe.org.br/"
+    },
+    {
+     "t": "Piauí",
+     "u": "http://www.crcpi.com.br/"
+    },
+    {
+     "t": "Rio de Janeiro",
+     "u": "http://www.crc.org.br/"
+    },
+    {
+     "t": "Rio Grande do Norte",
+     "u": "http://www.crcrn.org.br/"
+    },
+    {
+     "t": "Rio Grande do Sul",
+     "u": "http://www.crcrs.org.br/"
+    },
+    {
+     "t": "Rondônia",
+     "u": "http://www.crcro.org.br/"
+    },
+    {
+     "t": "Roraima",
+     "u": "https://crcrr.org.br/"
+    },
+    {
+     "t": "Santa Catarina",
+     "u": "http://www.crcsc.org.br/"
+    },
+    {
+     "t": "São Paulo",
+     "u": "http://www.crcsp.org.br/"
+    },
+    {
+     "t": "Sergipe",
+     "u": "http://www.crcse.org.br/"
+    },
+    {
+     "t": "Tocantins",
+     "u": "http://www.crcto.org.br/"
+    }
+   ]
+  },
+  {
+   "nome": "Previdência Social",
+   "links": [
+    {
+     "t": "Extrato para Imposto de Renda/IR",
+     "u": "https://meu.inss.gov.br/central/index.html#/extrato-ir"
+    },
+    {
+     "t": "Inscrição na Previdência Social",
+     "u": "https://www.gov.br/pt-br/servicos/solicitar-inscricao-junto-ao-inss"
+    },
+    {
+     "t": "Certidão Negativa de Débito",
+     "u": "http://cnd.dataprev.gov.br/cws/contexto/cnd/cnd.html"
+    }
+   ]
+  },
+  {
+   "nome": "Prefeituras Brasileiras",
+   "u": "http://idealsoftwares.com.br/prefeituras/"
+  },
+  {
+   "nome": "Cursos, Tutoriais - RF",
+   "links": [
+    {
+     "t": "PER/DCOMP",
+     "u": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/restituicao-ressarcimento-reembolso-e-compensacao/perdcomp"
+    },
+    {
+     "t": "e-CAC",
+     "u": "https://cav.receita.fazenda.gov.br/autenticacao/login"
+    }
+   ]
+  },
+  {
+   "nome": "Secretarias da Fazenda",
+   "links": [
+    {
+     "t": "Acre",
+     "u": "http://www.sefaz.ac.gov.br/"
+    },
+    {
+     "t": "Alagoas",
+     "u": "http://www.sefaz.al.gov.br/"
+    },
+    {
+     "t": "Amazonas",
+     "u": "http://www.sefaz.am.gov.br/"
+    },
+    {
+     "t": "Bahia",
+     "u": "http://www.sefaz.ba.gov.br/"
+    },
+    {
+     "t": "Ceará",
+     "u": "http://www.sefaz.ce.gov.br/"
+    },
+    {
+     "t": "Distrito Federal",
+     "u": "https://receita.fazenda.df.gov.br/"
+    },
+    {
+     "t": "Espírito Santo",
+     "u": "http://www.sefaz.es.gov.br/"
+    },
+    {
+     "t": "Goiás",
+     "u": "http://www.sefaz.go.gov.br/"
+    },
+    {
+     "t": "Maranhão",
+     "u": "http://www.sefaz.ma.gov.br/"
+    },
+    {
+     "t": "Mato Grosso",
+     "u": "http://www.sefaz.mt.gov.br/"
+    },
+    {
+     "t": "Mato Grosso so Sul",
+     "u": "http://www.sefaz.ms.gov.br/"
+    },
+    {
+     "t": "Minas Gerais",
+     "u": "http://www.fazenda.mg.gov.br/"
+    },
+    {
+     "t": "Pará",
+     "u": "http://www.sefa.pa.gov.br/"
+    },
+    {
+     "t": "Paraíba",
+     "u": "https://www.sefaz.pb.gov.br/"
+    },
+    {
+     "t": "Paraná",
+     "u": "http://www.sefaz.pr.gov.br/"
+    },
+    {
+     "t": "Pernambuco",
+     "u": "http://www.sefaz.pe.gov.br/"
+    },
+    {
+     "t": "Piauí",
+     "u": "http://www.sefaz.pi.gov.br/"
+    },
+    {
+     "t": "Rio de Janeiro",
+     "u": "http://www.fazenda.rj.gov.br/"
+    },
+    {
+     "t": "Rio Grande do Norte",
+     "u": "http://www.set.rn.gov.br/"
+    },
+    {
+     "t": "Rio Grande do Sul",
+     "u": "http://www.sefaz.rs.gov.br/"
+    },
+    {
+     "t": "Rondônia",
+     "u": "https://www.sefin.ro.gov.br/"
+    },
+    {
+     "t": "Roraima",
+     "u": "http://www.sefaz.rr.gov.br/"
+    },
+    {
+     "t": "Santa Catarina",
+     "u": "http://www.sefaz.sc.gov.br/"
+    },
+    {
+     "t": "São Paulo",
+     "u": "http://www.fazenda.sp.gov.br/"
+    },
+    {
+     "t": "Sergipe",
+     "u": "http://www.sefaz.se.gov.br/"
+    },
+    {
+     "t": "Tocantins",
+     "u": "http://www.sefaz.to.gov.br/"
+    }
+   ]
+  },
+  {
+   "nome": "Caixa Econômica Federal",
+   "links": [
+    {
+     "t": "Caixa Federal",
+     "u": "http://idealsoftwares.com.br/consultas_tributarias/caixa.php"
+    },
+    {
+     "t": "Conectividade Social",
+     "u": "http://www.caixa.gov.br/empresa/conectividade-social/Paginas/default.aspx"
+    },
+    {
+     "t": "Consulta Regularidade do Empregador",
+     "u": "https://consulta-crf.caixa.gov.br/consultacrf/pages/consultaEmpregador.jsf"
+    }
+   ]
+  },
+  {
+   "nome": "Ministério do Trabalho",
+   "links": [
+    {
+     "t": "Ministério do Trabalho",
+     "u": "http://idealsoftwares.com.br/consultas_tributarias/mte.php"
+    },
+    {
+     "t": "CAGED",
+     "u": "http://idealsoftwares.com.br/consultas_tributarias/mte/caged.php"
+    },
+    {
+     "t": "Seguro-Desemprego",
+     "u": "https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego"
+    },
+    {
+     "t": "Rais",
+     "u": "http://idealsoftwares.com.br/consultas_tributarias/mte/rais.php"
+    }
+   ]
+  },
+  {
+   "nome": "Simples Nacional",
+   "links": [
+    {
+     "t": "Simples Nacional",
+     "u": "http://idealsoftwares.com.br/consultas_tributarias/simples_nacional.php"
+    },
+    {
+     "t": "Consultas Optantes",
+     "u": "http://www8.receita.fazenda.gov.br/SimplesNacional/aplicacoes.aspx?id=21"
+    },
+    {
+     "t": "Outros Serviços",
+     "u": "http://idealsoftwares.com.br/consultas_tributarias/simples_nacional/outros_servicos.php"
+    }
+   ]
+  },
+  {
+   "nome": "Modelos de Documentos",
+   "u": "http://idealsitecontabil.com.br/modelos_de_contratos/index.php"
+  },
+  {
+   "nome": "Emissão e Cálculos de Impostos em Atraso",
+   "links": [
+    {
+     "t": "Cálculo de Contribuições para Empresa e Órgão Público",
+     "u": "https://sal.rfb.gov.br/PortalSalInternet/faces/pages/index.xhtml"
+    },
+    {
+     "t": "Acréscimos Legais",
+     "u": "https://sal.rfb.gov.br/PortalSalInternet/faces/pages/index.xhtml"
+    },
+    {
+     "t": "Pessoa Física – com Previdência – Afiliados antes de 29/11/1999",
+     "u": "https://sal.rfb.gov.br/PortalSalInternet/faces/pages/calcContribuicoesCI/filiadosAntes/selecionarOpcoesCalculoAntes.xhtml"
+    },
+    {
+     "t": "Pessoa Física – com previdência – Afiliados a partir de 29/11/1999",
+     "u": "https://sal.rfb.gov.br/PortalSalInternet/faces/pages/calcContribuicoesCI/filiadosApos/selecionarOpcoesCalculoApos.xhtml"
+    }
+   ]
+  },
+  {
+   "nome": "Índices Econômicos",
+   "links": [
+    {
+     "t": "Dólar Comercial",
+     "u": "https://idealsoftwares.com.br/indices/dolar2025.html"
+    },
+    {
+     "t": "Euro",
+     "u": "https://idealsoftwares.com.br/indices/euro2025.html"
+    },
+    {
+     "t": "FCA-PR",
+     "u": "http://idealsoftwares.com.br/indices/fca_parana.html"
+    },
+    {
+     "t": "IGP-DI",
+     "u": "http://idealsoftwares.com.br/indices/igp_di.html"
+    },
+    {
+     "t": "IGP-M",
+     "u": "http://idealsoftwares.com.br/indices/igp_m.html"
+    },
+    {
+     "t": "INCC - DI",
+     "u": "http://idealsoftwares.com.br/indices/incc.html"
+    },
+    {
+     "t": "INCC - M",
+     "u": "http://idealsoftwares.com.br/indices/inccm.html"
+    },
+    {
+     "t": "INPC Ibge",
+     "u": "http://www.idealsoftwares.com.br/indices/inpc_ibge.html"
+    },
+    {
+     "t": "IPC Fipe",
+     "u": "http://www.idealsoftwares.com.br/indices/ipc_fipe.html"
+    },
+    {
+     "t": "IPCA Ibge",
+     "u": "http://www.idealsoftwares.com.br/indices/ipca_ibge.html"
+    },
+    {
+     "t": "IRSM",
+     "u": "http://www.idealsoftwares.com.br/indices/irsm.html"
+    },
+    {
+     "t": "Poupança 2025",
+     "u": "https://www.idealsoftwares.com.br/indices/poupanca2025.html"
+    },
+    {
+     "t": "Taxa Selic",
+     "u": "http://www.idealsoftwares.com.br/indices/taxa_selic.html"
+    },
+    {
+     "t": "Taxa de Juros de Longo Prazo - TJLP",
+     "u": "http://www.idealsoftwares.com.br/indices/tjlp.html"
+    },
+    {
+     "t": "TR Mensal",
+     "u": "http://www.idealsoftwares.com.br/indices/tr_mensal.html"
+    },
+    {
+     "t": "UFEMG",
+     "u": "http://www.idealsoftwares.com.br/indices/ufemg.html"
+    },
+    {
+     "t": "UFESP",
+     "u": "http://www.idealsoftwares.com.br/indices/ufesp.html"
+    },
+    {
+     "t": "UFIR",
+     "u": "http://www.idealsoftwares.com.br/indices/ufir.html"
+    },
+    {
+     "t": "UFIR RJ",
+     "u": "http://www.idealsoftwares.com.br/indices/ufir_rj.html"
+    },
+    {
+     "t": "UFM - São Paulo",
+     "u": "http://www.idealsoftwares.com.br/indices/ufm_sp.html"
+    },
+    {
+     "t": "UPC",
+     "u": "http://www.idealsoftwares.com.br/indices/upc.html"
+    },
+    {
+     "t": "UPF - PR",
+     "u": "http://www.idealsoftwares.com.br/indices/upf_pr.html"
+    },
+    {
+     "t": "URV",
+     "u": "http://www.idealsoftwares.com.br/indices/urv.html"
+    }
+   ]
+  }
+ ],
+ "artigos": [
+  {
+   "id": 70,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/70/produtividade+nao+exige+esgotamento",
+   "titulo": "18/09/2026 08:20:26 Produtividade não exige esgotamento",
+   "data": ""
+  },
+  {
+   "id": 69,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/69/split+payment+e+adiado+para+2028",
+   "titulo": "18/09/2026 08:17:51 Split Payment é adiado para 2028",
+   "data": ""
+  },
+  {
+   "id": 68,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/68/simples+puro+ou+simples+hibrido+",
+   "titulo": "18/09/2026 08:15:57 Simples Puro ou Simples Híbrido?",
+   "data": ""
+  },
+  {
+   "id": 67,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/67/voce+ja+sabe+como+funciona+a+apuracao+assistida+da+cbs+",
+   "titulo": "18/09/2026 08:07:06 Você já sabe como funciona a Apuração Assistida da CBS?",
+   "data": ""
+  },
+  {
+   "id": 66,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/66/o+que+e+o+imposto+seletivo+",
+   "titulo": "18/09/2026 07:50:07 O que é o Imposto Seletivo?",
+   "data": ""
+  },
+  {
+   "id": 65,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/65/dirbi+++a+nova+obrigacao+tributaria+para+as+empresas",
+   "titulo": "29/07/2024 11:43:20 DIRBI – a nova obrigação tributária para as empresas",
+   "data": ""
+  },
+  {
+   "id": 64,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/64/cipa++o+que+e+e+quem+precisa+",
+   "titulo": "29/07/2024 11:34:17 CIPA, o que é e quem precisa?",
+   "data": ""
+  },
+  {
+   "id": 63,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/63/reforma+tributaria++mudancas+impactam+transferencia+de+bens+e+herancas",
+   "titulo": "29/07/2024 11:33:36 REFORMA TRIBUTÁRIA: MUDANÇAS IMPACTAM TRANSFERÊNCIA DE BENS E HERANÇAS",
+   "data": ""
+  },
+  {
+   "id": 62,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/62/projeto+de+lei+propoe+adesao+ao+simples+em+julho+de+cada+ano++alem+de+janeiro",
+   "titulo": "29/07/2024 11:33:10 Projeto de Lei propõe adesão ao Simples em julho de cada ano, além de janeiro",
+   "data": ""
+  },
+  {
+   "id": 61,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/61/ministerio+do+trabalho+proibe+empresas+a+incentivar+ou+orientar+a+oposicao+ao+sindicato",
+   "titulo": "29/07/2024 11:31:34 Ministério do Trabalho proíbe empresas a incentivar ou orientar a oposição ao sindicato",
+   "data": ""
+  },
+  {
+   "id": 60,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/60/defis++o+que+e+e+quem+deve+enviar+",
+   "titulo": "29/07/2024 11:31:19 DEFIS, o que é e quem deve enviar?",
+   "data": ""
+  },
+  {
+   "id": 59,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/59/voce+conhece+o+papel+estrategico+da+contabilidade+empresarial+",
+   "titulo": "29/07/2024 11:24:32 Você conhece o papel estratégico da Contabilidade Empresarial?",
+   "data": ""
+  },
+  {
+   "id": 58,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/58/fgts+digital",
+   "titulo": "29/07/2024 11:15:30 FGTS Digital",
+   "data": ""
+  },
+  {
+   "id": 57,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/57/sua+empresa+e+do+simples+nacional+",
+   "titulo": "06/10/2021 14:46:59 Sua empresa é do Simples Nacional?",
+   "data": ""
+  },
+  {
+   "id": 56,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/56/3ª+fase+do+esocial",
+   "titulo": "25/06/2021 09:38:51 3ª fase do eSocial",
+   "data": ""
+  },
+  {
+   "id": 55,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/55/e+obrigatorio+ter+uma+conta+corrente+pj+da+empresa+",
+   "titulo": "25/06/2021 09:37:54 É obrigatório ter uma conta-corrente PJ da empresa?",
+   "data": ""
+  },
+  {
+   "id": 54,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/54/a+importancia+do+capital+social",
+   "titulo": "26/04/2021 11:50:09 A importância do Capital Social",
+   "data": ""
+  },
+  {
+   "id": 53,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/53/o+que+acontece+se+cair+na+malha+fina+",
+   "titulo": "26/04/2021 11:48:56 O que acontece se cair na malha fina?",
+   "data": ""
+  },
+  {
+   "id": 52,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/52/novo+diferimento+de+icms+a+partir+de+01/04/2021",
+   "titulo": "29/03/2021 08:06:30 Novo Diferimento de ICMS a partir de 01/04/2021",
+   "data": ""
+  },
+  {
+   "id": 51,
+   "url": "https://www.fuhrcontabilidade.com.br/artigos/detalhes-do-artigo/51/portaria+autoriza+trabalho+de+mais+32+atividades+aos+domingos+e+feriados",
+   "titulo": "20/02/2021 09:01:03 PORTARIA AUTORIZA TRABALHO DE MAIS 32 ATIVIDADES AOS DOMINGOS E FERIADOS",
+   "data": ""
+  }
+ ],
+ "textos": {
+  "70": [
+   "Produtividade não exige esgotamento",
+   "A campanha Setembro Amarelo reforça o debate sobre saúde mental e prevenção ao suicídio, chamando a atenção para os cuidados necessários no ambiente de trabalho.",
+   "Não é apenas sobre conscientização pontual; é sobre como a rotina corporativa impacta a saúde mental da equipe todos os dias.",
+   "As novas diretrizes da NR-1 reforçam que mapear e mitigar riscos psicossociais é um compromisso direto das empresas. Cobrar resultados faz parte do mercado, mas a linha entre gestão eficiente e pressão desmedida não pode ser cruzada. Sobrecarga diária, expectativas inalcançáveis e lideranças sem preparo criam o cenário perfeito para o burnout.",
+   "Prevenir o adoecimento mental exige ações práticas e contínuas:",
+   "· Ajustar metas para realidades possíveis",
+   "· Capacitar gestores para cobranças humanas e respeitosas",
+   "· Garantir canais seguros de acolhimento e escuta",
+   "· Acompanhar de perto o clima e o volume de trabalho",
+   "A saúde do seu negócio depende diretamente da saúde do seu time.",
+   "Como a sua empresa tem cuidado da rotina de trabalho no dia a dia?"
+  ],
+  "69": [
+   "Split Payment é adiado para 2028",
+   "A Receita Federal confirmou que a obrigatoriedade do Split Payment nas operações entre empresas foi adiada para 2028. Esse mecanismo faz parte da Reforma Tributária do consumo e prevê a separação e o recolhimento automático do IBS e da CBS no momento exato em que a liquidação financeira da operação é realizada.",
+   "A mudança ocorreu devido à alta complexidade tecnológica para implementar a ferramenta, exigindo a integração e a conexão de mais de 200 instituições financeiras com a estrutura da Plataforma Pública do Split Payment.",
+   "O que isso significa no dia a dia da sua empresa?",
+   "☑️ A arrecadação continua a tradicional: até a entrada em vigor do novo sistema em 2028, a emissão de notas fiscais segue o fluxo normal e o recolhimento dos tributos continuará sendo realizado via DARF.",
+   "☑️ A preparação não pode parar: a mudança no cronograma do Split Payment não elimina a necessidade de adequação antecipada. A transição da Reforma Tributária já está em andamento, exigindo adaptações nos documentos fiscais eletrônicos e na rotina de apuração das empresas.",
+   "☑️ Impacto no fluxo de caixa: Quando o Split Payment entrar em operação, a parcela correspondente aos impostos será retida automaticamente no ato do pagamento. Planejar a gestão de caixa com antecedência é fundamental para evitar gargalos operacionais no futuro.",
+   "A adequação de sistemas, a revisão de processos fiscais e o acompanhamento das normas técnicas são passos essenciais para manter o seu negócio seguro e em conformidade.",
+   "Como está o processo de adaptação do seu negócio à Reforma Tributária?",
+   "Deixe sua dúvida nos comentários ou entre em contato conosco!✨"
+  ],
+  "68": [
+   "Simples Puro ou Simples Híbrido?",
+   "A escolha do seu regime tributário pode definir o quanto sua empresa cresce — ou perde dinheiro.",
+   "Com a aproximação do prazo até setembro de 2026, é hora de analisar com atenção.",
+   "Antes de decidir, compare cenários, simule cargas tributárias e entendao impacto real no seu caixa.",
+   "A melhor escolha não é a mais simples.",
+   "É a mais inteligente.",
+   "Faça o comparativo:",
+   "Simples Tradicional (Modelo Atual)",
+   "✅ Como funciona: paga todos os tributos unificados na guia única do DAS.",
+   "✅ Transferência de Créditos: ao vender para uma empresa (B2B), você só transfere como crédito tributário para o cliente o valor correspondente ao IBS/CBS que foi efetivamente pago dentro da sua alíquota reduzida do DAS.",
+   "✅ Para quem vale a pena: para negócios focados no consumidor final (B2C), prestadores de serviço com poucos custos tributáveis ou empresas cujos clientes não aproveitam crédito de imposto.",
+   "Simples Híbrido (IBS e CBS \"Por Fora\")",
+   "✅ Como funciona: continua no Simples para os impostos federais (IRPJ, CSLL, CPP, etc.) recolhendo um DAS menor, mas apura e paga o IBS e a CBS de forma separada (pelo regime regular do IVA).",
+   "✅ Mecanismo Não Cumulativo (Débito e Crédito):",
+   "• Você cobra a alíquota cheia regular de IBS/CBS sobre suas vendas/serviços.",
+   "• Abate (desconta) os créditos das suas compras e insumos operacionais.",
+   "✅ O Grande Ganho (Transferência de Crédito Cheio):Seus clientes empresariais (PJs do Lucro Presumido, Real ou até do Híbrido) tomam crédito integral do IBS/CBS destacado na sua nota.",
+   "✅ Para quem vale a pena: Estratégico para empresas do Simples que vendem para outras empresas (B2B)."
+  ],
+  "67": [
+   "Você já sabe como funciona a Apuração Assistida da CBS?",
+   "Na prática, é um processo automatizado que integra suas notas fiscais de saída e de entrada, apurando os débitos e créditos de CBS, e gerando a apuração do imposto líquido a pagar.",
+   "Temos 3 tipos de situações na apuração:",
+   "✅ Em andamento: refere-se ao próprio mês em questão, onde em cada nota emitida já vai apurando o imposto",
+   "✅ Período de ajuste: refere-se ao mês anterior quando ainda está em fase de ajustes, permitindo receber novos créditos, e ajustar débitos",
+   "✅ Concluída: quando o período é encerrado e não permite mais ajustes.",
+   "Enquanto a apuração assistida não estiver na fase de concluída, o contribuinte poderá intervir com ajustes de débito ou crédito.",
+   "Alguns exemplos de ajuste são:",
+   "✅ Divergências em Documentos Fiscais: correção de valores, alíquotas ou bases de cálculo omitidas ou informadas incorretamente nas notas fiscais eletrônicas;",
+   "✅ Eventos de Operações Específicas: lançamento de notas ou eventos de devolução, cancelamento, notas de crédito e notas de débito que alterem o valor das operações originais;",
+   "✅ Anulação de Créditos: ajustes de estorno ou anulação de créditos obrigatórios (como em saídas imunes ou isentas) mediante finalidades específicas e códigos de ajuste por competência;",
+   "✅ Vínculos de Pagamento e Crédito: correções relativas a controle de pagamento pelo contribuinte e recolhimento pelo adquirente, que impactam o saldo devedor ou credor.",
+   "A Receita Federal apresentará a apuração assistida do saldo da CBS do período de apuração:",
+   "✅ até o dia 20 do mês seguinte ao do período de apuração, para os sujeitos passivos obrigados à entrega da Declaração de Regimes Específicos – DeRE,; e",
+   "✅ até o dia 15 do mês seguinte ao do período de apuração, para os demais contribuintes.",
+   "Já os ajustes na apuração poderão ser feitos até o último dia útil do mês seguinte ao do período de apuração.",
+   "O saldo a recolher apurado deverá ser pago até o último dia útil do mês seguinte ao do período de apuração.☑️"
+  ],
+  "66": [
+   "O que é o Imposto Seletivo?",
+   "O que é o Imposto Seletivo?",
+   "Ele é um imposto extra, criado para desestimular o consumo de produtos e serviços que sejam considerados prejudiciais à saúde ou ao meio ambiente.",
+   "Quem vai pagar?",
+   "A ideia não é arrecadar mais dinheiro para o governo de forma generalizada, mas sim induzir uma mudança de comportamento no consumo.",
+   "O imposto incide sobre itens como:",
+   "Cigarros e derivados de tabaco;",
+   "Bebidas adoçadas com açúcar;",
+   "Bebidas alcoólicas;",
+   "Veículos poluentes (de combustão);",
+   "Extração de recursos naturais (como minérios e petróleo).",
+   "Por que ele é chamado de \"Imposto do Pecado\"?",
+   "O apelido vem de uma lógica global de tributação. O objetivo é que, ao encarecer produtos que causam danos à saúde pública ou ao ecossistema, o cidadão reduza seu consumo, diminuindo também os gastos futuros do Estado com o tratamento de doenças ou recuperação ambiental.",
+   "O que está acontecendo neste momento?",
+   "O governo federal planeja enviar uma medida provisória ao Congresso para definir as alíquotas do Imposto Seletivo para o ano de 2027. Isso faz parte das etapas de implementação da Reforma Tributária do Consumo.",
+   "Por que isso é relevante?",
+   "A medida provisória permitirá que as alíquotas entrem em vigor a partir de 1º de janeiro de 2027, sincronizando o novo imposto com a eliminação de alíquotas do IPI para alguns produtos.",
+   "O que isso significa para as empresas?",
+   "As empresas devem começar a se preparar para mudanças na carga tributária, formação de preços e planejamento financeiro. O anúncio permitirá um cálculo mais preciso dos impactos no seu negócio.",
+   "Para contadores e empresas de setores afetados, setembro promete ser decisivo para o planejamento tributário de 2027.",
+   "Fique atento às atualizações!"
+  ],
+  "59": [
+   "Você conhece o papel estratégico da Contabilidade Empresarial?",
+   "A contabilidade não é apenas sobre números, é a bússola que guia o crescimento sustentável das empresas.",
+   "1 - Tomada de Decisões Embasada em Dados:",
+   "- A contabilidade fornece insights valiosos sobre a saúde financeira da empresa.",
+   "- Decisões informadas baseadas em relatórios contábeis contribuem para estratégias mais eficazes.",
+   "2 - Identificação de Oportunidades e Desafios:",
+   "- Análises contábeis detalhadas revelam áreas de crescimento e possíveis obstáculos.",
+   "- Antecipar desafios permite ajustes proativos para manter o curso em direção ao sucesso.",
+   "3 - Otimização da Gestão Financeira:",
+   "- Controle eficiente de despesas e alocação de recursos para maximizar a eficiência.",
+   "- Gestão financeira sólida é a base para investimentos assertivos e expansão.",
+   "4 - Conformidade Fiscal e Redução de Riscos:",
+   "- Manter-se em conformidade com a legislação fiscal reduz riscos legais e multas.",
+   "- Uma contabilidade responsável protege a empresa de surpresas desagradáveis.",
+   "5 - Atraindo Investidores e Parceiros:",
+   "- Relatórios contábeis transparentes aumentam a confiança de investidores e parceiros.",
+   "- Uma imagem financeira sólida é um diferencial ao buscar apoio externo."
+  ]
+ }
+}
