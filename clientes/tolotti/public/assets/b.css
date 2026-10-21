@@ -1,0 +1,137 @@
+/* Versão B · Percurso: azul da marca na abertura, serviços numerados em linhas,
+   o caminho do carro do guincho à entrega numa trilha vertical, plantão 24h em vermelho. */
+.topo { background: var(--azul-esc); color: #fff; border-bottom: 1px solid rgba(255,255,255,.1); }
+body.rolou .topo { box-shadow: 0 6px 18px rgba(0,0,0,.2); }
+.menu a { color: #dfe6fb; }
+.menu a:hover { color: #fff; background: rgba(255,255,255,.08); }
+.menu a[aria-current] { color: #fff; box-shadow: inset 0 -3px 0 var(--verm); border-radius: 0; }
+
+.hero { background: radial-gradient(120% 90% at 85% 10%, #2b51c2 0%, transparent 55%), linear-gradient(160deg, var(--azul-esc) 0%, var(--azul) 55%, #1a3486 100%); color: #fff; padding: 72px 0 96px; overflow: hidden; }
+.hero .in { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.hero .eyebrow { color: #ffb3b6; }
+.hero h1 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); letter-spacing: -.025em; }
+.hero p { color: #d7e0fa; font-size: 1.12rem; max-width: 50ch; }
+.hero-fotos { position: relative; aspect-ratio: 1 / .92; }
+.hero-fotos figure { margin: 0; position: absolute; overflow: hidden; border-radius: 3px; box-shadow: 0 24px 50px rgba(0,0,0,.35); }
+.hero-fotos img { width: 100%; height: 100%; object-fit: cover; }
+.hero-fotos .f1 { inset: 0 0 18% 12%; }
+.hero-fotos .f2 { left: 0; bottom: 0; width: 52%; aspect-ratio: 16/10; border: 6px solid #fff; }
+.hero-fotos .selo { position: absolute; right: -10px; bottom: 6%; width: 86px; height: 86px; background: #fff; padding: 11px; border-radius: 4px; box-shadow: 0 14px 30px rgba(0,0,0,.3); }
+.hero-fotos .selo img { width: 100%; height: 100%; }
+
+/* serviços em linhas numeradas */
+.indice-serv { padding: 96px 0; }
+.sec-tit { max-width: 720px; margin-bottom: 40px; }
+.sec-tit h2 { color: var(--azul-esc); }
+.sec-tit p:last-child { color: var(--suave); font-size: 1.05rem; }
+.linhas { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--azul-esc); }
+.linhas li { border-bottom: 1px solid var(--linha); }
+.linhas a { display: grid; grid-template-columns: 64px minmax(200px, 1.1fr) 1.4fr 120px 28px; gap: 24px; align-items: center; padding: 18px 0; text-decoration: none; transition: background .2s, padding .2s; }
+.linhas .n { font: 900 1.05rem var(--tit); color: var(--verm); }
+.linhas .t { font: 800 1.25rem/1.2 var(--tit); color: var(--azul-esc); }
+.linhas .d { color: var(--suave); font-size: .95rem; }
+.linhas .mini { width: 120px; height: 72px; overflow: hidden; border-radius: 2px; }
+.linhas .mini img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.linhas .ic { color: var(--azul); transition: transform .2s; }
+.linhas a:hover { background: var(--fundo-2); padding-left: 12px; padding-right: 12px; }
+.linhas a:hover .ic { transform: translateX(4px); color: var(--verm); }
+.linhas a:hover .mini img { transform: scale(1.08); }
+
+/* percurso */
+.percurso { padding: 96px 0; background: var(--fundo-2); }
+.trilha { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 34px; counter-reset: e; }
+.trilha::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; transform: translateX(-50%); background: linear-gradient(var(--azul), var(--verm)); }
+.trilha li { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; position: relative; }
+.trilha li::before { content: ""; position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 4px solid var(--verm); transform: translate(-50%, -50%); z-index: 1; }
+.trilha li:nth-child(even) figure { order: 2; }
+.trilha li:nth-child(odd) > div { text-align: left; }
+.trilha li:nth-child(even) > div { text-align: right; }
+.trilha figure { margin: 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 3px; box-shadow: 0 12px 30px rgba(14,29,77,.12); }
+.trilha img { width: 100%; height: 100%; object-fit: cover; }
+.trilha .n { font: 800 .78rem var(--tit); letter-spacing: .14em; text-transform: uppercase; color: var(--verm); }
+.trilha h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); color: var(--azul-esc); margin: .3em 0 .35em; }
+.trilha p { color: var(--suave); margin: 0; }
+.trilha li:nth-child(even) p { margin-left: auto; } .trilha p { max-width: 38ch; }
+
+/* plantão 24h */
+.faixa-24h { background: linear-gradient(100deg, var(--verm-esc), var(--verm)); color: #fff; padding: 56px 0; }
+.faixa-24h .in { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.faixa-24h .eyebrow { color: #ffe1e2; }
+.faixa-24h h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); margin: 0; }
+.faixa-24h .tels { display: flex; flex-wrap: wrap; gap: 12px; }
+.faixa-24h .tels a { color: #fff; text-decoration: none; font: 800 clamp(1.15rem, 2.4vw, 1.6rem) var(--tit); padding: .55em 1em; border: 2px solid rgba(255,255,255,.6); border-radius: var(--raio); }
+.faixa-24h .tels a:hover { background: #fff; color: var(--verm); }
+
+/* fotos rolando de lado */
+.rolo { padding: 96px 0 72px; }
+.sec-tit.lado { max-width: none; display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+.sec-tit.lado h2 { margin: 0; }
+.rolo-trilho { --rolo-ini: max(var(--gut), calc((100vw - var(--larg)) / 2 + var(--gut))); display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-left: var(--rolo-ini); padding: 0 var(--gut) 16px var(--rolo-ini); scrollbar-width: thin; }
+.rolo-trilho figure { flex: none; width: min(420px, 78vw); margin: 0; scroll-snap-align: start; }
+.rolo-trilho img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 3px; }
+.rolo-trilho figcaption { font-size: .88rem; color: var(--suave); padding-top: 8px; }
+
+.onde { padding: 88px 0; border-top: 1px solid var(--linha); }
+.onde .in { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; }
+.onde h2 { color: var(--azul-esc); }
+
+/* internas */
+.capa { background: linear-gradient(160deg, var(--azul-esc), var(--azul)); color: #fff; padding: 64px 0 60px; }
+.capa .eyebrow { color: #ffb3b6; } .capa h1 { max-width: 18ch; font-size: clamp(2rem, 4.6vw, 3.4rem); } .capa p { color: #d7e0fa; font-size: 1.08rem; max-width: 56ch; margin: 0; }
+.serv-b { padding: 64px 0 88px; }
+.serv-b .in { display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: start; }
+.serv-indice { position: sticky; top: calc(var(--topo-h, 76px) + 24px); display: grid; border-left: 2px solid var(--linha); }
+.serv-indice a { padding: 10px 16px; text-decoration: none; font: 700 .95rem var(--tit); color: var(--azul-esc); margin-left: -2px; border-left: 2px solid transparent; display: flex; gap: 10px; }
+.serv-indice a span { color: var(--verm); }
+.serv-indice a:hover { border-left-color: var(--verm); background: var(--fundo-2); }
+.serv-blocos { display: grid; gap: 64px; }
+.serv-blocos article { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; align-content: start; }
+.serv-blocos figure { grid-column: 1 / -1; margin: 0 0 22px; }
+.serv-blocos img { width: 100%; aspect-ratio: 21/9; object-fit: cover; border-radius: 3px; }
+.serv-blocos .n { grid-column: 1; font: 900 4rem/1 var(--tit); color: var(--fundo-2); -webkit-text-stroke: 1.5px var(--azul); }
+.serv-blocos h2 { grid-column: 1; color: var(--azul-esc); margin-top: 8px; }
+.serv-blocos p { grid-column: 2; grid-row: 2 / span 2; color: var(--suave); font-size: 1.06rem; align-self: center; }
+.serv-blocos .btn { grid-column: 2; justify-self: start; }
+.estrutura { padding: 72px 0; }
+.estrutura .in { display: grid; gap: 56px; }
+.estrutura article { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
+.estrutura article.inv figure { order: 2; }
+.estrutura figure { margin: 0; }
+.estrutura img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 3px; }
+.estrutura .n { font: 800 .8rem var(--tit); letter-spacing: .14em; color: var(--verm); }
+.estrutura h2 { color: var(--azul-esc); margin-top: .3em; }
+.estrutura p { color: var(--suave); font-size: 1.05rem; }
+.equipe-b { background: var(--fundo-2); padding: 72px 0; }
+.equipe-b .in { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+.equipe-b figure { margin: 0; } .equipe-b img { width: 100%; border-radius: 3px; }
+.equipe-b h2 { color: var(--azul-esc); } .equipe-b p { color: var(--suave); }
+.contato { padding: 64px 0 88px; }
+.contato .in { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; }
+.contato aside { display: grid; gap: 28px; align-content: start; }
+.contato aside .contato-lista { margin: 0; }
+
+@media (max-width: 980px) {
+  .menu { background: var(--azul-esc); } .menu a { color: #fff !important; border-bottom-color: rgba(255,255,255,.12); }
+  .menu-tel { display: flex; gap: .5em; align-items: center; }
+  .hero .in { grid-template-columns: 1fr; }
+  .hero-fotos { max-width: 560px; }
+  .linhas a { grid-template-columns: 44px 1fr 96px 24px; }
+  .linhas .d { grid-column: 2; grid-row: 2; }
+  .linhas .mini { grid-column: 3; grid-row: 1 / span 2; width: 96px; height: 64px; }
+  .linhas .ic { grid-column: 4; grid-row: 1 / span 2; }
+  .onde .in, .contato .in, .equipe-b .in { grid-template-columns: 1fr; }
+  .serv-b .in { grid-template-columns: 1fr; } .serv-indice { display: none; }
+  .estrutura article { grid-template-columns: 1fr; gap: 20px; } .estrutura article.inv figure { order: 0; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 48px 0 64px; }
+  .linhas a { grid-template-columns: 36px 1fr 24px; gap: 4px 12px; }
+  .linhas .mini { display: none; } .linhas .ic { grid-column: 3; }
+  .linhas .d { font-size: .9rem; }
+  .trilha::before { left: 9px; } .trilha li::before { left: 9px; top: 16px; transform: translate(-50%, 0); }
+  .trilha li { grid-template-columns: 1fr; gap: 14px; padding-left: 34px; }
+  .trilha li:nth-child(even) figure { order: 0; } .trilha li:nth-child(even) > div { text-align: left; } .trilha li:nth-child(even) p { margin-left: 0; }
+  .sec-tit.lado { flex-direction: column; align-items: start; }
+  .serv-blocos article { grid-template-columns: 1fr; } .serv-blocos p, .serv-blocos .btn { grid-column: 1; grid-row: auto; }
+  .serv-blocos img { aspect-ratio: 16/10; }
+}
