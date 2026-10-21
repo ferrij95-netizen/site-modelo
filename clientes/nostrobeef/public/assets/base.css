@@ -1,0 +1,93 @@
+/* Nostro Beef: base comum às versões A e B. Cores do site atual: azul-marinho do menu, vermelho dos botões,
+   bordô e dourado do selo (logo), verde da faixa de grama. */
+:root {
+  --azul: #16223F; --azul-esc: #0D1530; --azul-claro: #24345E;
+  --verm: #D00019; --verm-esc: #A50014;
+  --bordo: #6B1410; --bordo-esc: #3D0D06; --bordo-claro: #8C2219;
+  --ouro: #E2B654; --ouro-claro: #F3D88C; --ouro-esc: #9A6B1C;
+  --verde: #2F6A14;
+  --texto: #2E3138; --suave: #626773; --linha: #E2DFDA; --cinza: #F4F2EE; --preto: #16181D;
+  --fonte: Inter, system-ui, sans-serif;
+  --raio: 6px; --in: 1200px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; font: 400 1rem/1.65 var(--fonte); color: var(--texto); background: #fff; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--fonte-t); color: var(--preto); line-height: 1.12; margin: 0 0 .5em; text-wrap: balance; }
+p { margin: 0 0 1em; }
+figure { margin: 0; }
+.in { width: min(100% - 32px, var(--in)); margin-inline: auto; }
+.pular { position: absolute; left: -999px; top: 8px; background: #fff; padding: 8px 14px; z-index: 99; }
+.pular:focus { left: 8px; }
+.ic { width: 1.15em; height: 1.15em; flex: none; }
+.eyebrow { font: 600 .78rem/1.2 var(--fonte); letter-spacing: .14em; text-transform: uppercase; color: var(--verm); margin: 0 0 .8rem; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.6rem; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55em; padding: .85em 1.4em; border-radius: var(--raio); font: 600 .98rem/1 var(--fonte); text-decoration: none; border: 2px solid transparent; transition: background .2s, color .2s, transform .2s, border-color .2s; cursor: pointer; }
+.btn:hover { transform: translateY(-1px); }
+.btn-p { background: var(--verm); color: #fff; border-color: var(--verm); }
+.btn-p:hover { background: var(--verm-esc); border-color: var(--verm-esc); }
+.btn-branco { background: #fff; color: var(--verm); border-color: #fff; }
+.btn-contorno { background: transparent; color: var(--azul); border-color: var(--azul); }
+.btn-contorno:hover { background: var(--azul); color: #fff; }
+.link { display: inline-flex; align-items: center; gap: .4em; font-weight: 600; color: var(--verm); text-decoration: none; }
+.link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.trilha { font-size: .85rem; margin-bottom: 1rem; opacity: .8; }
+
+/* galeria de fotos das caixas */
+.gal { display: grid; gap: 10px; }
+.gal-grande { aspect-ratio: 1; background: #fff; border-radius: var(--raio); overflow: hidden; display: grid; place-items: center; }
+.gal-grande img { width: 100%; height: 100%; object-fit: contain; }
+.gal-mini { display: flex; gap: 8px; flex-wrap: wrap; }
+.gal-mini button { padding: 0; border: 2px solid transparent; border-radius: 4px; overflow: hidden; width: 64px; height: 64px; cursor: pointer; background: #fff; opacity: .7; transition: opacity .2s, border-color .2s; }
+.gal-mini button img { width: 100%; height: 100%; object-fit: cover; }
+.gal-mini button[aria-pressed="true"], .gal-mini button:hover { opacity: 1; border-color: var(--verm); }
+
+/* formulário */
+.form .campos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; margin-bottom: 1.2rem; }
+.form label { display: grid; gap: 6px; font-size: .88rem; font-weight: 600; color: var(--preto); }
+.form .largo { grid-column: 1 / -1; }
+.form input, .form select, .form textarea { font: 400 1rem/1.4 var(--fonte); padding: .75em .9em; border: 1.5px solid #d3d0ca; border-radius: var(--raio); background: #fff; color: var(--texto); width: 100%; }
+.form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid var(--verm); outline-offset: 1px; border-color: var(--verm); }
+.form-ok { margin-top: 1rem; padding: 1em 1.2em; background: #eef5ea; border-radius: var(--raio); color: #24521c; }
+
+.contato-dados { display: grid; gap: 4px; align-content: start; }
+.cd-item { display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--linha); text-decoration: none; }
+.cd-item .ic { width: 1.6em; height: 1.6em; color: var(--verm); }
+.cd-item small { display: block; font-size: .78rem; color: var(--suave); text-transform: uppercase; letter-spacing: .08em; }
+.cd-item b { font-size: 1.2rem; color: var(--preto); }
+a.cd-item:hover b { color: var(--verm); }
+.cd-razao { margin-top: 18px; font-size: .85rem; color: var(--suave); }
+
+/* rodapé */
+.rodape { background: var(--azul-esc); color: #c9cdd8; padding: 56px 0 24px; font-size: .92rem; border-top: 4px solid var(--ouro); }
+.rodape .in { display: grid; grid-template-columns: 1.5fr 1fr 1fr .8fr; gap: 36px; }
+.rodape h3 { color: #fff; font-size: 1rem; margin-bottom: .8em; font-family: var(--fonte); font-weight: 600; letter-spacing: .04em; }
+.rodape a { text-decoration: none; }
+.rodape a:hover { color: #fff; text-decoration: underline; }
+.rodape nav a { display: block; padding: .15em 0; }
+.rod-marca { display: flex; gap: 18px; align-items: center; }
+.rod-marca img { width: 96px; }
+.rod-marca p { margin: 0; font-size: .8rem; letter-spacing: .04em; line-height: 1.6; }
+.rod-marca b { color: #fff; font-weight: 600; }
+.rod-tel { font-size: 1.35rem; color: #fff; font-weight: 600; }
+.rod-uni { display: flex; gap: .5em; align-items: center; }
+.rod-uni .ic { color: var(--ouro); }
+.rod-fim, .rod-cred { width: min(100% - 32px, var(--in)); margin: 32px auto 0; padding-top: 18px; border-top: 1px solid #2a3558; font-size: .8rem; color: #98a0b4; }
+.rod-cred { margin-top: 6px; padding-top: 0; border: 0; font-size: .74rem; color: #7d859b; }
+
+.zap-flutua { position: fixed; right: 18px; bottom: 18px; z-index: 40; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; display: grid; place-items: center; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+.zap-flutua .ic { width: 28px; height: 28px; }
+
+@media (max-width: 900px) {
+  .rodape .in { grid-template-columns: 1fr 1fr; }
+  .rod-marca { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .rodape .in { grid-template-columns: 1fr; }
+  .form .campos { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
