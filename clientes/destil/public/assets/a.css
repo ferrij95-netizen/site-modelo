@@ -1,0 +1,117 @@
+/* Versão A "Faixa": fiel ao site atual. Tarja laranja, cabeçalho branco com e-mail e telefones, barra grafite de menu,
+   palco preto com a colagem de setores sobre a faixa laranja e a faixa diagonal dos slides entre as seções. */
+.tarja{height:12px;background:linear-gradient(90deg,var(--laranja-esc),var(--laranja) 40%,#ff8a3c)}
+.cab{background:#fff}
+.cab .in{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:16px;padding-bottom:16px}
+.cab .marca img{width:clamp(150px,16vw,196px)}
+.cab-info{display:flex;gap:clamp(20px,4vw,56px)}
+.info{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:.9rem;color:#77736e}
+.info b{display:block;color:var(--txt);font-family:var(--h);font-stretch:112%;font-size:.95rem}
+.info a{text-decoration:none}
+.info a:hover,a.info:hover{color:var(--laranja-esc)}
+.bola{width:52px;height:52px;border-radius:50%;background:#f3f2f0;display:grid;place-items:center;color:var(--laranja);flex:none}
+.barra{background:var(--grafite);position:sticky;top:0;z-index:20;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.barra .in{display:flex;justify-content:space-between;align-items:stretch}
+.barra a,.sub>button{display:flex;align-items:center;gap:6px;padding:16px clamp(8px,2vw,22px);color:#fff;text-decoration:none;font:700 .86rem var(--h);font-stretch:112%;letter-spacing:.06em;text-transform:uppercase;background:none;border:0;cursor:pointer;border-bottom:3px solid transparent}
+.barra a:hover,.sub>button:hover{color:var(--laranja)}
+.barra a[aria-current],.sub.ativo>button{color:var(--laranja);border-bottom-color:var(--laranja)}
+.sub{position:relative;display:flex}
+.sub>button .ic{width:16px;height:16px;color:var(--laranja)}
+.sub-lista{position:absolute;top:100%;left:0;min-width:220px;background:var(--grafite-2);display:none;flex-direction:column;border-top:3px solid var(--laranja)}
+.sub-lista a{border-bottom:1px solid #3a3a3a}
+.sub:hover .sub-lista,.sub:focus-within .sub-lista,.sub.aberto .sub-lista{display:flex}
+
+/* palco (home) */
+.palco{background:#000;color:#fff;padding:clamp(40px,6vw,72px) 0 0;position:relative;overflow:hidden}
+.palco .in{display:grid;grid-template-columns:.9fr 1.3fr;gap:clamp(24px,4vw,56px);align-items:center;padding-bottom:clamp(32px,5vw,64px)}
+.palco h1{font-stretch:125%;font-weight:900;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.04}
+.palco .eyebrow{color:var(--laranja)}
+.palco p{color:#cfcdc9;font-size:1.06rem}
+.mosaico{position:relative}
+.mos-faixa{position:absolute;left:-14%;right:-50vw;top:18%;bottom:18%;background:var(--laranja-esc);background:linear-gradient(90deg,var(--laranja-esc),var(--laranja))}
+.mosaico ul{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:#000;border:3px solid #000}
+.mosaico li{position:relative;aspect-ratio:3/2;overflow:hidden}
+.mosaico img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.mosaico li:hover img{transform:scale(1.06)}
+.mosaico li span{position:absolute;left:0;bottom:0;padding:5px 9px;background:rgba(0,0,0,.72);font:700 .74rem var(--h);font-stretch:112%;letter-spacing:.04em;text-transform:uppercase}
+.palco .faixa{background:#000}
+
+/* intro */
+.intro .in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.intro-foto img{width:100%;aspect-ratio:4/3;object-fit:cover;box-shadow:18px 18px 0 var(--laranja)}
+.intro-txt p:not(.eyebrow){color:var(--txt-2)}
+.atalhos{list-style:none;margin:1.4em 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--linha)}
+.atalhos a{display:flex;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid var(--linha);text-decoration:none;font-weight:600}
+.atalhos .ic{width:18px;height:18px;color:var(--laranja)}
+.atalhos a:hover{color:var(--laranja-esc)}
+
+/* serviços em blocos alternados sobre fundo grafite */
+.servicos{background:var(--grafite);color:#fff}
+.servicos .eyebrow{color:var(--laranja)}
+.serv{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:0;margin-bottom:clamp(28px,4vw,48px)}
+.serv:last-child{margin-bottom:0}
+.serv figure{aspect-ratio:16/10;overflow:hidden}
+.serv img{width:100%;height:100%;object-fit:cover}
+.serv>div{background:#fff;color:var(--txt);padding:clamp(24px,4vw,48px);margin-left:-64px;position:relative;border-top:6px solid var(--laranja)}
+.serv.inv{grid-template-columns:1fr 1.15fr}
+.serv.inv figure{order:2}
+.serv.inv>div{margin-left:0;margin-right:-64px;z-index:1}
+.serv-n{font:900 2.6rem/1 var(--h);font-stretch:125%;color:var(--laranja);display:block;margin-bottom:10px}
+.serv h3{font-size:clamp(1.4rem,2.4vw,1.9rem)}
+.serv p{color:var(--txt-2)}
+
+/* estrutura */
+.estrutura .in{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.est-fotos{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:200px 200px;gap:6px}
+.est-fotos figure{overflow:hidden}
+.est-fotos img{width:100%;height:100%;object-fit:cover}
+.est-fotos .e1{grid-column:1/-1}
+.btn-linha-escura{background:transparent;color:var(--grafite);border-color:var(--grafite)}
+.btn-linha-escura:hover{background:var(--grafite);border-color:var(--grafite);color:#fff}
+
+/* capa das páginas internas */
+.capa{position:relative;color:#fff;padding:clamp(64px,10vw,130px) 0 0;background:#000;overflow:hidden}
+.capa-foto{position:absolute;inset:0}
+.capa-foto img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.capa .in{position:relative;padding-bottom:clamp(36px,6vw,72px)}
+.capa .eyebrow{color:var(--laranja)}
+.capa h1{font-stretch:125%;font-weight:900;max-width:16ch}
+.capa p:not(.eyebrow){max-width:620px;color:#e6e4e0;font-size:1.08rem}
+.capa .faixa{position:relative}
+
+/* outras seções em A */
+.processo{background:var(--claro)}
+.metal{background:#fff}
+.faixa-pecas{background:#fff}
+.galeria{padding-top:0}
+.processo+.faixa-pecas{padding-bottom:clamp(56px,8vw,104px)}
+main:has(>.mesmo-dia:last-child)+.rodape .faixa-rod{background:var(--laranja)}
+.faixa-rod{background:#fff}
+
+@media (max-width:1000px){
+  .palco .in{grid-template-columns:1fr}
+  .mos-faixa{left:calc(-1 * var(--gut));right:calc(-1 * var(--gut))}
+  .serv,.serv.inv{grid-template-columns:1fr}
+  .serv.inv figure{order:0}
+  .serv>div,.serv.inv>div{margin:-48px 20px 0}
+  .estrutura .in{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .cab-info{display:none}
+  .menu-btn{display:block}
+  .barra{position:static}
+  .barra .in{display:none;flex-direction:column;padding:0}
+  .barra .in.aberto{display:flex}
+  .barra a,.sub>button{padding:14px var(--gut);border-bottom:1px solid #333;width:100%}
+  .sub{flex-direction:column}
+  .sub-lista{position:static;display:flex;border-top:0;background:#262626}
+  .sub-lista a{padding-left:calc(var(--gut) + 18px)}
+  .intro .in{grid-template-columns:1fr}
+  .intro-foto img{box-shadow:10px 10px 0 var(--laranja)}
+}
+@media (max-width:520px){
+  .mosaico ul{grid-template-columns:1fr 1fr}
+  .atalhos{grid-template-columns:1fr}
+  .est-fotos{grid-template-rows:160px 140px}
+  .serv>div,.serv.inv>div{margin:-32px 10px 0}
+}

@@ -1,0 +1,84 @@
+/* Versão B "Rotação": clara e técnica. Cabeçalho branco fixo, rotor laranja na abertura, selos grafite, processo em etapas
+   com a linha laranja ligando os números, metalização em fundo grafite. */
+.cab{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.cab .in{display:flex;align-items:center;gap:24px;min-height:76px}
+.cab .marca img{width:clamp(124px,12vw,150px)}
+.menu{display:flex;gap:clamp(12px,2vw,28px);margin-left:auto}
+.menu a{text-decoration:none;font-weight:600;font-size:.94rem;padding:6px 0;border-bottom:2px solid transparent}
+.menu a:hover{color:var(--laranja-esc)}
+.menu a[aria-current]{border-color:var(--laranja)}
+.menu-tel{display:none!important}
+.btn-cab{padding:.8em 1.1em;font-size:.9rem}
+
+/* abertura */
+.hero{background:var(--claro);padding:clamp(36px,5vw,64px) 0 0}
+.hero>.in{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(28px,5vw,64px);align-items:center;padding-bottom:clamp(40px,6vw,72px)}
+.hero h1{font-stretch:125%;font-weight:900;font-size:clamp(2.4rem,5.4vw,4.4rem);line-height:.98;letter-spacing:-.02em}
+.hero-txt>p:not(.eyebrow){font-size:1.12rem;color:var(--txt-2);max-width:34em}
+.hero-foto{position:relative}
+.hero-foto img{width:100%;aspect-ratio:5/4;object-fit:cover;clip-path:polygon(8% 0,100% 0,100% 100%,0 100%,0 10%)}
+.hero-foto figcaption{position:absolute;right:0;bottom:0;background:var(--grafite);color:#fff;font-size:.8rem;padding:8px 14px}
+.selos-faixa{background:var(--grafite);color:#fff}
+.selos{list-style:none;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.selos li{display:flex;gap:14px;align-items:center;padding:24px clamp(14px,2vw,28px)}
+.selos li:first-child{padding-left:0}
+.selos li+li{border-left:1px solid #383838}
+.selos .ic{width:30px;height:30px;color:var(--laranja)}
+.selos b{display:block;font:800 1.05rem var(--h);font-stretch:112%}
+.selos span{font-size:.88rem;color:#c9c6c1}
+
+/* processo: número no topo com a linha laranja ligando as etapas */
+.etapas li{display:flex;flex-direction:column}
+.et-n{order:-1}
+.etapas li::before{content:"";position:absolute;left:44px;right:calc(-1 * clamp(12px,1.6vw,22px));top:21px;height:2px;background:var(--laranja)}
+.etapas li:last-child::before{display:none}
+
+.faixa-pecas{background:var(--claro)}
+.metal{background:var(--grafite);color:#fff}
+.metal .eyebrow{color:var(--laranja)}
+.metal p:not(.eyebrow){color:#d0cdc8}
+.metal .btn-linha{color:#fff}
+
+/* setores em lista, sem cartões */
+.set-lista{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);column-gap:clamp(20px,3vw,40px);border-top:2px solid var(--grafite)}
+.set-lista li{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--linha);font:800 1.1rem var(--h);font-stretch:112%}
+.set-lista img{width:96px;height:64px;object-fit:cover;flex:none}
+
+.quem{background:var(--claro)}
+.quem .in{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.quem img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:20% 50%}
+.quem p:not(.eyebrow){color:var(--txt-2)}
+
+/* capa das páginas internas */
+.capa{background:var(--claro);padding:clamp(36px,5vw,64px) 0}
+.capa .in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.capa h1{font-stretch:125%;font-weight:900}
+.capa-txt p:not(.eyebrow){color:var(--txt-2);font-size:1.08rem}
+.capa-foto img{width:100%;aspect-ratio:16/10;object-fit:cover;clip-path:polygon(8% 0,100% 0,100% 100%,0 100%,0 12%)}
+.processo{background:#fff}
+.estrutura-lista{background:#fff;padding-top:0}
+.estrutura-lista .est-lista{border-top:2px solid var(--grafite);padding-top:28px}
+.galeria{padding-top:0}
+.faixa-pecas+.galeria{padding-top:clamp(56px,8vw,104px)}
+.metal+.beneficios{padding-top:clamp(56px,8vw,104px)}
+
+@media (max-width:1000px){
+  .menu{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;gap:0;padding:8px var(--gut) 20px;border-bottom:1px solid var(--linha);box-shadow:0 12px 24px rgba(0,0,0,.08)}
+  .menu.aberto{display:flex}
+  .menu a{padding:12px 0;border-bottom:1px solid var(--linha)}
+  .menu-tel{display:flex!important;align-items:center;gap:8px;color:var(--laranja-esc)}
+  .menu-btn{display:block;margin-left:auto}
+  .btn-cab{display:none}
+  .hero>.in,.quem .in,.capa .in{grid-template-columns:1fr}
+  .selos{grid-template-columns:1fr 1fr}
+  .selos li:nth-child(3){border-left:0;padding-left:0}
+  .selos li:nth-child(n+3){border-top:1px solid #383838}
+  .set-lista{grid-template-columns:1fr 1fr}
+  .etapas li:nth-child(2n)::before{display:none}
+}
+@media (max-width:520px){
+  .selos{grid-template-columns:1fr}
+  .selos li+li{border-left:0;border-top:1px solid #383838}
+  .set-lista{grid-template-columns:1fr}
+  .etapas li::before{display:none}
+}
