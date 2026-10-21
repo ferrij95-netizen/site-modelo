@@ -1,0 +1,144 @@
+/* Versão B "Do campo à mesa": menu no topo, abertura bordô com as embalagens Boitatá, caminho em etapas com foto que troca. */
+.faixa { background: var(--carvao); color: #d8d2ce; font-size: .82rem; }
+.faixa .in { display: flex; justify-content: space-between; gap: 1rem; padding-top: .5rem; padding-bottom: .5rem; }
+.faixa span, .faixa a { display: inline-flex; gap: .4rem; align-items: center; text-decoration: none; }
+.faixa-dir { gap: 1.4rem !important; }
+.faixa a:hover { color: var(--laranja); }
+.topo { position: sticky; top: 0; z-index: 30; background: #fff; border-bottom: 1px solid var(--linha); box-shadow: 0 2px 14px rgba(0,0,0,.04); }
+.topo .in { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 84px; }
+.topo-logo img { width: 104px; }
+.topo-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .2rem; }
+.topo-nav li { position: relative; }
+.topo-nav > ul > li > a { display: block; padding: .6rem .7rem; font: 600 .86rem var(--ft); text-decoration: none; color: var(--tinta); border-bottom: 2px solid transparent; }
+.topo-nav a:hover { color: var(--bordo); }
+.topo-nav a[aria-current] { color: var(--bordo); border-bottom-color: var(--laranja); }
+.topo-nav .sub { display: none !important; position: absolute; top: 100%; left: 0; min-width: 240px; background: #fff; border-top: 3px solid var(--bordo); box-shadow: 0 12px 28px rgba(0,0,0,.12); padding: .5rem 0; flex-direction: column; }
+.topo-nav .tem-sub:hover .sub, .topo-nav .tem-sub:focus-within .sub { display: flex !important; }
+.topo-nav .sub a { display: block; padding: .55rem 1.1rem; font-size: .92rem; text-decoration: none; }
+.topo-nav .sub a:hover { background: var(--cinza); }
+.menu-btn { display: none; }
+
+/* hero */
+.hero { background: linear-gradient(115deg, var(--bordo-esc) 0%, var(--bordo) 45%, var(--bordo-2) 100%); color: #fff; overflow: hidden; position: relative; }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: linear-gradient(90deg, var(--ouro), var(--ouro-cl), var(--laranja)); }
+.hero-in { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 2rem; min-height: 600px; padding-top: 3rem; padding-bottom: 3rem; }
+.hero .sobre { color: var(--ouro-cl); }
+.hero h1 { font-size: clamp(2.3rem, 4.6vw, 3.8rem); max-width: 13ch; }
+.hero-sub { font-size: 1.15rem; color: #f6e8eb; max-width: 40ch; }
+.hero .btn-linha { background: transparent; border: 2px solid rgba(255,255,255,.7); color: #fff; }
+.hero .btn-linha:hover { background: #fff; color: var(--bordo); }
+.hero-prod img { width: 100%; max-width: 640px; margin-left: auto; filter: drop-shadow(0 28px 40px rgba(0,0,0,.4)); }
+
+.numeros { border-bottom: 1px solid var(--linha); }
+.numeros .in { display: grid; grid-template-columns: repeat(4, 1fr); }
+.numeros div { padding: 2rem 1.4rem; border-left: 1px solid var(--linha); }
+.numeros div:first-child { border-left: 0; padding-left: 0; }
+.numeros b { display: block; font: 700 1.6rem var(--ft); color: var(--bordo); margin-bottom: .2rem; }
+.numeros span { font-size: .9rem; color: var(--suave); }
+
+section { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
+.numeros { padding: 0; }
+.intro-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.intro-foto img { width: 100%; }
+.intro-b h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--bordo); }
+
+/* caminho do campo à mesa */
+.caminho { background: var(--cinza); }
+.caminho-cab { max-width: 640px; margin-bottom: 2.5rem; }
+.caminho-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); margin-bottom: 2rem; }
+.caminho-fotos { position: sticky; top: 110px; height: min(70vh, 560px); overflow: hidden; }
+.caminho-fotos figure { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .6s; }
+.caminho-fotos figure.on { opacity: 1; }
+.caminho-fotos img { width: 100%; height: 100%; object-fit: cover; }
+.caminho-passos { list-style: none; margin: 0; padding: 8vh 0; position: relative; }
+.caminho-passos::before { content: ""; position: absolute; left: 1.35rem; top: 8vh; bottom: 8vh; width: 2px; background: #d9cfca; }
+.caminho-passos li { position: relative; padding: 0 0 0 4rem; min-height: 34vh; opacity: .45; transition: opacity .4s; }
+.caminho-passos li.on, .caminho-passos li:first-child:not(.on):only-child { opacity: 1; }
+.caminho-passos .passo-n { position: absolute; left: 0; top: 0; width: 2.7rem; height: 2.7rem; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 2px solid var(--bordo); font: 700 .9rem var(--ft); color: var(--bordo); }
+.caminho-passos li.on .passo-n { background: var(--bordo); color: #fff; }
+.caminho-passos h3 { font-size: 1.5rem; padding-top: .3rem; }
+.caminho-passos p { color: var(--suave); max-width: 44ch; }
+
+/* linhas */
+.bloco-cab { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+.bloco-cab h2 { margin: 0; max-width: 28ch; }
+.linhas-lista { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.linha-b { display: flex; flex-direction: column; text-decoration: none; border-top: 4px solid var(--bordo); background: var(--cinza); transition: transform .3s; }
+.linha-b:hover { transform: translateY(-4px); }
+.linha-selo { display: grid; place-items: center; height: 230px; background: radial-gradient(circle at 50% 40%, #fff, #efe9e4 80%); }
+.linha-selo img { max-height: 190px; width: auto; filter: drop-shadow(0 10px 14px rgba(0,0,0,.18)); }
+.linha-boitata { border-top-color: #121111; }
+.linha-boitata .linha-selo { background: radial-gradient(circle at 50% 40%, #3a3127, #141313 80%); }
+.linha-boitata .linha-selo img { max-width: 70%; max-height: 150px; }
+.linha-t { display: grid; gap: .4rem; padding: 1.4rem 1.4rem 1.6rem; }
+.linha-t b { font: 700 1.25rem var(--ft); }
+.linha-t span { color: var(--suave); font-size: .95rem; }
+.linha-t em { font-style: normal; font: 600 .92rem var(--ft); color: var(--bordo); display: inline-flex; gap: .4rem; align-items: center; margin-top: .4rem; }
+
+.boitata-b { background: #121111; color: #e9e3da; }
+.boitata-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.boitata-grid img { width: 100%; }
+.boitata-logo { width: 220px !important; margin-bottom: 1.6rem; }
+.boitata-b h2 { color: var(--ouro-cl); }
+
+.video-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+.video-b { background: var(--cinza); }
+.video-b h2 { color: var(--bordo); }
+
+.contato-b { background: linear-gradient(110deg, var(--bordo-esc), var(--bordo) 60%, var(--bordo-2)); color: #fff; padding: 3rem 0; }
+.contato-b .in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
+.contato-b h2 { margin-bottom: .3rem; }
+.contato-b p { margin: 0; opacity: .9; }
+.contato-b .botoes { margin: 0; }
+.contato-b .btn-linha { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+
+/* páginas internas */
+.cab { background: var(--cinza); border-bottom: 1px solid var(--linha); padding: 0; }
+.cab-in { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; align-items: center; padding-top: 3rem; padding-bottom: 3rem; }
+.cab h1 { color: var(--bordo); }
+.cab-sub { font-size: 1.12rem; color: var(--suave); max-width: 50ch; margin: 0; }
+.cab-foto { height: 300px; overflow: hidden; clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%); }
+.cab-foto img { width: 100%; height: 100%; object-fit: cover; }
+.pagina { padding-top: clamp(2.5rem, 6vw, 4rem); padding-bottom: 2rem; }
+.pagina section:not(.pedido):not(.lenda) { padding: 0; }
+.linha-topo { display: flex; align-items: center; gap: 2rem; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--linha); }
+.linha-topo .cab-selo img { width: 150px; }
+.linha-boitata .linha-topo .cab-selo { background: #141313; padding: 1.2rem 1.4rem; }
+.linha-topo p { font: 500 1.15rem var(--ft); margin: 0; max-width: 46ch; }
+.v-b .cortes { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0; border-top: 1px solid var(--linha); border-left: 1px solid var(--linha); }
+.v-b .corte { border-right: 1px solid var(--linha); border-bottom: 1px solid var(--linha); padding: 1rem 1rem 1.1rem; }
+.v-b .corte-foto, .v-b .so-rot .corte-fundo { aspect-ratio: 1; }
+.v-b .so-rot .corte-fundo { background: transparent; }
+.v-b .corte figcaption { font-size: .95rem; }
+
+@media (max-width: 1100px) {
+  .menu-btn { display: grid; place-items: center; width: 46px; height: 46px; border: 0; background: transparent; color: var(--bordo); cursor: pointer; }
+  .menu-btn .ic { width: 28px; height: 28px; }
+  .topo-nav { display: none; position: fixed; inset: 84px 0 0 0; background: #fff; overflow-y: auto; padding: 1rem clamp(1rem, 4vw, 2rem) 2rem; }
+  .topo-nav.aberto { display: block; }
+  .topo-nav ul { flex-direction: column; }
+  .topo-nav > ul > li > a { font-size: 1.05rem; padding: .8rem 0; border-bottom: 1px solid var(--linha); }
+  .topo-nav .sub { display: flex !important; position: static; box-shadow: none; border: 0; padding: 0 0 .4rem 1rem; }
+  .faixa span:first-child { display: none; }
+  .faixa .in { justify-content: center; }
+  .hero-in, .intro-grid, .caminho-grid, .boitata-grid, .video-grid, .cab-in { grid-template-columns: 1fr; }
+  .hero-in { min-height: 0; }
+  .numeros .in { grid-template-columns: 1fr 1fr; }
+  .numeros div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .linhas-lista { grid-template-columns: 1fr; }
+  .caminho-fotos { position: relative; top: 0; height: 300px; }
+  .caminho-passos { padding: 0; }
+  .caminho-passos::before { top: 0; bottom: 0; }
+  .caminho-passos li { min-height: 0; padding-bottom: 1.8rem; opacity: 1; }
+  .cab-foto { height: 200px; clip-path: none; }
+}
+@media (max-width: 640px) {
+  .faixa-dir a:first-child { display: none !important; }
+  .topo .in { min-height: 70px; }
+  .topo-logo img { width: 84px; }
+  .topo-nav { inset: 70px 0 0 0; }
+  .numeros div { padding: 1.3rem .8rem; }
+  .numeros b { font-size: 1.25rem; }
+  .linha-topo { flex-direction: column; align-items: flex-start; }
+  .v-b .cortes { grid-template-columns: 1fr 1fr; }
+}

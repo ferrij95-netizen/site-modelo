@@ -1,0 +1,127 @@
+/* Vidraçaria Paraná · base comum às versões A e B. Cores e detalhes de cada versão em a.css e b.css. */
+:root{
+  --verde:#3f7d1c;--verde-esc:#24500e;--verde-mata:#16300a;--verde-claro:#6aa53b;--lima:#9fd14f;
+  --grafite:#1d211b;--texto:#3a4036;--cinza:#6b7067;--linha:#dfe4da;--papel:#f4f6f1;--branco:#fff;
+  --h:Arimo,Arial,sans-serif;--b:Inter,system-ui,sans-serif;--raio:4px;--topo-h:80px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topo-h) + 16px)}
+body{margin:0;font-family:var(--b);font-size:17px;line-height:1.6;color:var(--texto);background:var(--branco);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--h);color:var(--grafite);line-height:1.08;margin:0 0 .45em;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(36px,5.2vw,64px);font-weight:700}
+h2{font-size:clamp(28px,3.4vw,42px);font-weight:700}
+h3{font-size:20px;font-weight:700}
+p{margin:0 0 1em}
+figure{margin:0}
+.in{max-width:1220px;margin:0 auto;padding:0 28px}
+.pular{position:absolute;left:-999px;top:0;background:#000;color:#fff;padding:10px 14px;z-index:99}.pular:focus{left:10px}
+.ic{width:18px;height:18px;flex:none;vertical-align:-3px}
+.eyebrow{font-family:var(--h);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--verde);margin:0 0 14px}
+.so-pc{display:inline-flex}
+
+/* marca: selo cinza da araucária + nome */
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+.marca img{width:34px;height:auto;flex:none}
+.marca-txt{display:flex;flex-direction:column;font-family:var(--h);line-height:1.02}
+.marca-txt b{font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;color:var(--grafite)}
+.marca-txt small{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--verde);margin-top:5px}
+.marca.claro b{color:#fff}.marca.claro small{color:var(--lima)}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--h);font-weight:700;font-size:16px;text-decoration:none;border:2px solid var(--verde);background:var(--verde);color:#fff;padding:13px 22px;border-radius:var(--raio);cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn:hover{background:var(--verde-esc);border-color:var(--verde-esc)}
+.btn .ic{transition:transform .2s}.btn:hover .ic{transform:translateX(3px)}
+.btn-branco{background:#fff;border-color:#fff;color:var(--verde-esc)}.btn-branco:hover{background:var(--papel);border-color:var(--papel);color:var(--verde-mata)}
+.btn-vazado{background:transparent;border-color:rgba(255,255,255,.6);color:#fff}.btn-vazado:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.btn-linha{background:transparent;color:var(--verde-esc)}.btn-linha:hover{color:#fff}
+.botoes{display:flex;flex-wrap:wrap;gap:12px}
+.link{display:inline-flex;align-items:center;gap:8px;font-family:var(--h);font-weight:700;color:var(--verde);text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
+.link:hover{color:var(--verde-esc)}
+.nota{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:15px;margin-top:22px}
+.estrelas{display:inline-flex;color:#f2b632}.estrelas .ic{width:16px;height:16px;fill:currentColor;stroke:none}.estrelas .meia{opacity:.55}
+
+/* topo e menu */
+.topo{position:sticky;top:0;z-index:40}
+.topo .in{display:flex;align-items:center;gap:28px;min-height:76px}
+.logo{text-decoration:none;margin-right:auto}
+.menu{display:flex;gap:4px}
+.menu a{font-family:var(--h);font-weight:600;font-size:15.5px;text-decoration:none;padding:8px 12px;border-radius:var(--raio)}
+.menu-btn{display:none;background:none;border:0;color:inherit;padding:8px;cursor:pointer}.menu-btn .ic{width:28px;height:28px}
+
+/* seções comuns */
+section{padding:96px 0}
+.sec-tit{max-width:720px;margin-bottom:48px}
+.sec-tit.lado{max-width:none;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.sec-tit.lado h2{margin:0;max-width:680px}
+.etapas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:e}
+
+/* galeria */
+.galeria{padding:72px 0}
+.galeria h2{font-size:28px;margin-bottom:24px}
+.grade{display:grid;gap:14px}
+.grade.n4{grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:260px 260px}.grade.n4 figure:first-child{grid-row:span 2}.grade.n4 figure:last-child{grid-column:span 2}
+.grade.n3{grid-template-columns:2fr 1fr;grid-template-rows:240px 240px}.grade.n3 figure:first-child{grid-row:span 2}
+.grade figure{position:relative;overflow:hidden;border-radius:var(--raio);background:var(--papel)}
+.grade img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.grade figure:hover img{transform:scale(1.04)}
+.grade figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 16px 12px;font-size:14px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+
+/* contato */
+.contato .in{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:start}
+.form .campos{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:var(--grafite)}
+.form .largo{grid-column:1/-1}
+.form input,.form select,.form textarea{font:inherit;font-weight:400;font-size:16px;padding:12px 14px;border:1.5px solid var(--linha);border-radius:var(--raio);background:#fff;color:var(--grafite);width:100%}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px rgba(63,125,28,.15)}
+.form-acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.contato-lista{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.contato-lista li{display:flex;gap:14px;align-items:flex-start}
+.contato-lista .ic{width:22px;height:22px;color:var(--verde);margin-top:3px}
+.contato-lista b{display:block;font-family:var(--h);color:var(--grafite)}
+.contato-lista span{overflow-wrap:anywhere}
+.pagamento{display:flex;gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid var(--linha)}
+.pagamento .ic{width:22px;height:22px;color:var(--verde);margin-top:3px}
+.pagamento h3{font-size:17px;margin:0 0 4px}.pagamento p{margin:0;font-size:15px}
+.mapa{border-radius:var(--raio);overflow:hidden;min-height:360px;background:var(--papel)}
+.mapa iframe{border:0;width:100%;height:100%;min-height:360px;display:block}
+.so-mapa{padding:0 0 96px}
+
+/* rodapé */
+.rodape{background:var(--verde-mata);color:rgba(255,255,255,.75);padding:72px 0 0;font-size:15px}
+.rodape .in{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1fr;gap:40px}
+.rodape h3{color:#fff;font-size:15px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+.rodape a{text-decoration:none}.rodape a:hover{color:#fff;text-decoration:underline}
+.rod-marca p{margin-top:18px;max-width:300px}
+.rod-link{display:inline-flex;gap:8px;align-items:center;color:var(--lima)}
+.rod-nav{display:flex;flex-direction:column;gap:6px}
+.rod-fim{max-width:1220px;margin:56px auto 0;padding:22px 28px;border-top:1px solid rgba(255,255,255,.12);font-size:13px}
+
+@media (max-width:1000px){
+  .menu{display:none;position:fixed;left:0;right:0;top:var(--topo-h);bottom:0;flex-direction:column;gap:0;padding:12px 20px;overflow:auto;z-index:39}
+  .menu.aberto{display:flex}
+  .menu a{font-size:20px;padding:16px 8px;border-bottom:1px solid var(--linha)}
+  .menu-btn{display:block}
+  .etapas{grid-template-columns:1fr 1fr;row-gap:40px}
+  .contato .in{grid-template-columns:1fr}
+  .rodape .in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .in{padding:0 20px}
+  section{padding:64px 0}
+  .so-pc{display:none}
+  .sec-tit.lado{flex-direction:column;align-items:flex-start}
+  .etapas{grid-template-columns:1fr}
+  .grade.n4,.grade.n3{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .grade.n4 figure,.grade.n3 figure{grid-row:auto!important;grid-column:auto!important;aspect-ratio:1}
+  .grade.n4 figure:first-child,.grade.n3 figure:first-child{grid-column:1/-1!important;aspect-ratio:4/3}
+  .form .campos{grid-template-columns:1fr}
+  .form-acoes .btn{width:100%;justify-content:center}
+  .rodape .in{grid-template-columns:1fr}
+  .marca-txt b{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.creditos{padding:28px 0 40px;border-top:1px solid var(--linha)}
+.creditos p{font-size:12.5px;line-height:1.6;color:var(--cinza);margin:0;max-width:1000px}

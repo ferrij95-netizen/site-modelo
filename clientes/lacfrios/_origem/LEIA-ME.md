@@ -1,0 +1,11 @@
+# LacFrios Distribuidora: como este site é feito
+
+- Cliente: LacFrios Distribuidora, Curitiba PR, frios, laticínios e conservas. Escolhida na prospecção de distribuidoras (/mnt/project-files/prospeccao/nichos/distribuidoras/LISTA.md), sem pedido do cliente.
+- Site atual: www.lacfrios.com.br. A capa é só o LOGO.jpg e texto; o site antigo (Artisteer, 2012) continua em /home.html, /fabrica.html, /produtos.html, /mapa.html e /s/popup/*.html (receitas). O servidor tem Mod_Security: o curl precisa de User-Agent de navegador e `Accept: text/html`, senão volta 406.
+- Marca: logo vetorizado com potracer a partir do LOGO.jpg de 362 px (`public/assets/logo.svg`; `logo-branco.svg` para fundo azul). Vermelho #DA251C do nome, azul #245E9E do losango (também a cor dos links do site atual). Títulos em Barlow (itálico na A, como o pincel inclinado do logo; Barlow Condensed na B), texto em Inter.
+- Conteúdo só do site atual (`conteudo.mjs`): história (1999, Portão), segmentos atendidos, os doze queijos + manteiga e requeijão, categorias (embutidos, congelados, enlatados, molhos, doces, secos, sem itens nomeados: viram campo livre na lista), marcas (logos recortados de produtos1-2.png), fotos da Fábrica, Kombi, duas receitas (a do estufadinho foi lida da imagem receitadois.jpg). As listas sugeridas por segmento são sugestões editáveis, não dados do cliente.
+- Fotos de banco (Wikimedia e Rawpixel, CC): créditos em `../creditos-fotos.json`; aviso no rodapé.
+- Lista de pedido (`public/assets/lista.js`): localStorage, unidade padrão kg (queijos) ou caixa (categorias e itens escritos), mensagem pronta para WhatsApp/e-mail. Na prévia não abre o WhatsApp: mostra a mensagem num diálogo. Para publicar de verdade, trocar o diálogo por `location.href = link`.
+- Estrutura: `/` escolha (componentes/apresentacao), `/a/` "Balcão" e `/b/` "Pedido", 8 páginas cada: Início, Produtos, Para seu negócio, Fábrica, Receitas, Cadastro, Contato, Lista de pedido.
+- Gerar: `node clientes/lacfrios/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão (Playwright) quando o visual mudar.
+- A confirmar com o cliente: se o celular (41) 99115-5429 é WhatsApp; se a "Fábrica" é deles ou do fornecedor (as fotos são de mussarela Rohden); marcas atuais; itens de embutidos, congelados, molhos etc.; horário da loja.

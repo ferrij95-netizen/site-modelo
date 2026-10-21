@@ -1,0 +1,193 @@
+/* Versão A "Amarela": fiel ao site atual. Logo no centro com o menu embaixo, amarelo #fbd107 do botão do WhatsApp,
+   grafite do rodapé com curva, linha do tempo amarela. Títulos em Archivo larga (como o logo), texto em Signika (a do site atual). */
+:root{
+  --titulo:'Archivo',system-ui,sans-serif;--texto:'Signika',system-ui,sans-serif;
+  --azul:#0068a0;--azul-esc:#004f7a;--ama:#fbd107;--laranja:#f8b828;--grafite:#353230;--grafite2:#454140;
+  --tinta:#2b2a29;--suave:#6a6764;--fundo:#fff;--painel:#f6f4ee;--linha:#dcd8cf;--foto-f:#f7f6f2;
+  --foco:#0068a0;--foco-s:#0068a033;--chip-on:#353230;--chip-on-t:#fbd107;--ped:#0068a0;--ped-t:#0068a0;
+  --barra:#353230;--barra-t:#fff;--raio-btn:4px;--raio-campo:4px;--raio-card:6px;--gap-grade:18px;
+}
+.tit{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:900;letter-spacing:-.01em;color:var(--grafite)}
+.btn-ama{background:var(--ama);color:#2b2a29}
+.btn-ama:hover{background:#ffdc2e}
+.btn-azul{background:var(--azul);color:#fff}
+.btn-azul:hover{background:var(--azul-esc)}
+.btn-claro{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.btn-escuro{background:var(--grafite);color:#fff}
+.btn-wa{background:var(--ama);color:#2b2a29}
+
+/* topo: logo no centro e menu embaixo, como hoje */
+.topo{background:#fff;position:sticky;top:0;z-index:50;box-shadow:0 1px 0 var(--linha)}
+.topo-in{position:relative;display:flex;justify-content:center;align-items:center;padding:18px 16px 6px;min-height:70px}
+.logo img{width:clamp(170px,22vw,250px);height:auto}
+.ajuda{position:absolute;right:max(16px,calc(50% - 600px));top:20px;display:flex;align-items:center;gap:.45em;background:var(--ama);color:#2b2a29;text-decoration:none;padding:.5em .95em;border-radius:4px;font-size:1.02rem}
+.ped-btn{position:absolute;left:max(16px,calc(50% - 600px));top:20px;display:flex;align-items:center;gap:.45em;text-decoration:none;font-weight:600;color:var(--azul);padding:.5em .2em}
+.ped-btn b,.nav-ped b{background:var(--azul);color:#fff;border-radius:99px;min-width:1.5em;padding:0 .4em;font-size:.8rem;text-align:center}
+.menu-btn{display:none}
+.nav{display:flex;justify-content:center;gap:clamp(14px,2.4vw,34px);padding:8px 16px 12px;font-size:.98rem}
+.nav a{text-decoration:none;color:#5b5856;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--azul)}
+.nav a[aria-current]{color:var(--tinta);border-color:var(--grafite)}
+
+/* hero com a foto da sede */
+.a-hero{position:relative;min-height:min(78vh,720px);display:flex;align-items:flex-end;overflow:hidden;background:var(--grafite)}
+.a-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;animation:aprox 18s ease-out both}
+@keyframes aprox{from{transform:scale(1.08)}to{transform:scale(1)}}
+.a-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#1d1b1aee 0%,#1d1b1ab0 42%,#1d1b1a10 75%),linear-gradient(0deg,#1d1b1a99,transparent 50%)}
+.a-hero-in{position:relative;z-index:1;padding:120px 0 64px;color:#fff}
+.kicker{font-family:var(--titulo);font-stretch:112%;font-weight:700;color:var(--ama);max-width:38ch;font-size:1.02rem;line-height:1.35;margin-bottom:18px}
+.a-hero h1{font-size:clamp(2.4rem,6.4vw,5rem);font-weight:900;max-width:13ch;letter-spacing:-.02em;line-height:1}
+.a-hero h1 span{color:var(--ama)}
+.a-hero-sub{font-size:1.2rem;max-width:44ch;opacity:.92}
+.a-hero-acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+
+/* números: grafite com o fio amarelo embaixo, como os blocos da página Sobre */
+.a-num{background:var(--ama)}
+.a-num-in{display:grid;grid-template-columns:repeat(4,1fr)}
+.a-num p{margin:0;padding:26px 20px;display:flex;flex-direction:column;border-left:1px solid #0000001f}
+.a-num p:first-child{border-left:0}
+.a-num strong{font-family:var(--titulo);font-stretch:112%;font-weight:900;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1;color:var(--grafite)}
+.a-num span{font-size:.95rem;color:#3f3b2a}
+.a-num-esc{background:var(--grafite)}
+.a-num-esc p{border-left-color:#ffffff1a;border-bottom:3px solid var(--ama)}
+.a-num-esc strong{color:var(--ama)}
+.a-num-esc span{color:#e8e4dc}
+
+/* marcas: linhas alternadas, logo + texto + amostra de produtos */
+.a-marcas .lead{margin-bottom:40px}
+.am{display:grid;grid-template-columns:200px 1fr 1.15fr;gap:32px;align-items:center;padding:34px 0;border-top:1px solid var(--linha)}
+.am:last-child{border-bottom:1px solid var(--linha)}
+.am-logo{display:grid;place-items:center;height:120px}
+.am-logo img{max-height:110px;max-width:180px;width:auto;object-fit:contain}
+.am h3{font-size:1.7rem;font-weight:800;color:var(--grafite)}
+.am p{color:#4d4a47}
+.am-acoes{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin:0}
+.am-prods{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:end}
+.am-prods li{background:#fff;border:1px solid var(--linha);border-bottom:3px solid var(--ama);aspect-ratio:3/4;padding:8px;border-radius:4px;overflow:hidden}
+.am-prods img{width:100%;height:100%;object-fit:contain}
+.am-inv{grid-template-columns:1.15fr 200px 1fr}
+.am-inv .am-prods{order:-1}
+.am-inv .am-logo{order:0}
+
+/* passos como rota de entrega */
+.a-passos{background:var(--painel)}
+.rota{list-style:none;padding:0;margin:40px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative}
+.rota::before{content:"";position:absolute;left:4%;right:4%;top:31px;border-top:4px dashed #cfc9b8}
+.rota .ap-trilho{position:absolute;left:4%;top:31px;height:4px;width:0;background:var(--ama);transition:width 1.6s ease .2s}
+[data-etapas].visto .ap-trilho,[data-etapas]:not(.rev) .ap-trilho{width:92%}
+.rota li{position:relative;z-index:1}
+.rota-n{display:grid;place-items:center;width:66px;height:66px;border-radius:50%;background:var(--grafite);color:var(--ama);font-family:var(--titulo);font-stretch:112%;font-weight:900;font-size:1.7rem;border:5px solid var(--painel);margin-bottom:14px}
+.rota h3{font-size:1.3rem;font-weight:800}
+.rota p{color:#5a5754;max-width:32ch}
+.rev.ap-etapa,.rota .ap-etapa{opacity:1}
+
+/* regiões */
+.sup{background:var(--painel);border-radius:6px;border-left:0}
+.sup-oeste .sup-reg{color:#27531c}
+.sup-meio-oeste .sup-reg{color:#8a3a26}
+
+/* faixa amarela "Inscrever-se" */
+.a-news{background:var(--ama);padding:56px 0 96px}
+.a-news-in{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:center}
+.a-news h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:900;color:var(--grafite);margin:0}
+.news p{margin-bottom:10px;color:#3f3b2a}
+.news-l{display:flex;gap:8px}
+.news input{flex:1;min-width:0;padding:.8em 1em;border:0;border-radius:4px;background:#ffffffcc}
+
+/* rodapé grafite com a curva */
+.rodape{position:relative;background:var(--grafite);color:#d9d5ce;padding:70px 0 0;margin-top:0}
+.onda{position:absolute;left:0;top:-89px;width:100%;height:90px;fill:var(--grafite)}
+main:has(> .a-news:last-child)+.rodape .onda{fill:var(--grafite)}
+.rod-grid{display:grid;grid-template-columns:1.4fr 1.2fr 1fr 1fr;gap:32px;padding-bottom:40px}
+.rodape h2{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:14px}
+.rod-marca img{width:180px;margin-bottom:14px}
+.rod-marca p{font-size:.92rem;max-width:34ch}
+.rodape p{display:flex;gap:10px;font-size:.95rem}
+.rodape p .ic{margin-top:3px;color:var(--ama)}
+.rod-links{display:grid;gap:4px}
+.rod-links a,.rodape a{color:#d9d5ce;text-decoration:none}
+.rodape a:hover{color:var(--ama)}
+.redes{display:flex;gap:10px}
+.redes a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#ffffff14}
+.rod-fim{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid #ffffff1a;padding:18px 0 24px;font-size:.85rem}
+
+/* sobre: linha do tempo amarela */
+.a-hist{background:var(--ama);padding:clamp(56px,7vw,90px) 0 110px}
+.a-hist .tit{text-align:center}
+.a-hist .lead{text-align:center;margin:0 auto 40px;color:#3f3b2a}
+.tempo{list-style:none;padding:0;margin:0 auto;max-width:900px;position:relative}
+.tempo::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:#8b7a1f55;translate:-50% 0}
+.t-item{display:grid;grid-template-columns:1fr 120px 1fr;gap:24px;align-items:center;padding:14px 0}
+.t-foto{grid-column:2;width:120px;height:120px;border-radius:50%;overflow:hidden;background:#fff;border:5px solid #fff;box-shadow:0 6px 18px #0002;display:grid;place-items:center;position:relative;z-index:1}
+.t-foto img{width:100%;height:100%;object-fit:cover}
+.t-foto .t-logo{object-fit:contain;padding:12px}
+.t-txt{grid-column:3}
+.t-esq .t-txt{grid-column:1;grid-row:1;text-align:right}
+.t-ano{font-family:var(--titulo);font-stretch:112%;font-weight:700;color:#6d5e10}
+.t-txt h2{font-size:1.55rem;font-weight:900;color:var(--grafite);margin:.1em 0 .3em}
+.t-txt p{color:#3f3b2a;margin:0}
+.a-sede{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.a-sede figure{margin:0}
+.a-sede img{border-radius:6px}
+.a-sede figcaption{font-size:.88rem;color:var(--suave);margin-top:8px}
+
+/* catálogo */
+.cat-topo{background:var(--grafite);color:#fff;padding:44px 0 36px}
+.cat-topo .tit{color:var(--ama);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:8px}
+.cat-topo .lead{color:#e8e4dc}
+.cat-topo .lnk{color:var(--ama)}
+.marcas-tira{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.marcas-tira a{display:grid;gap:6px;place-items:center;background:#fff;border-radius:4px;padding:14px 10px 10px;text-decoration:none;color:var(--suave);font-size:.85rem;box-shadow:0 10px 0 -4px #2a2726;transition:transform .15s}
+.marcas-tira a:hover{transform:translateY(-3px)}
+.marcas-tira img{height:56px;width:auto;object-fit:contain}
+.cat-marca{display:grid;grid-template-columns:auto 1fr;gap:6px 28px;align-items:center}
+.cat-marca img{grid-row:span 2;height:90px;width:auto;background:#fff;padding:10px;border-radius:4px}
+.cat-marca p{margin:0;color:#e8e4dc;max-width:70ch}
+.cat-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+.prod{border:1px solid var(--linha);border-radius:6px;overflow:hidden}
+.prod-foto{border-bottom:3px solid var(--ama)}
+
+@media (max-width:1000px){
+  .am,.am-inv{grid-template-columns:140px 1fr}
+  .am-prods,.am-inv .am-prods{grid-column:1/-1;order:2}
+  .am-inv .am-logo{order:-1}
+  .marcas-tira{grid-template-columns:repeat(3,1fr)}
+  .rod-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .topo-in{justify-content:space-between;padding:12px 16px}
+  .ajuda{display:none}
+  .ped-btn{position:static;order:2;margin-left:auto}
+  .ped-btn span{display:none}
+  .menu-btn{display:grid;place-items:center;order:3;width:44px;height:44px;border:0;background:var(--ama);border-radius:4px}
+  .nav{display:none;flex-direction:column;gap:0;padding:0 16px 12px}
+  .nav.aberto{display:flex}
+  .nav a{padding:10px 0;border-bottom:1px solid var(--linha)}
+  .a-num-in{grid-template-columns:1fr 1fr}
+  .a-num p:nth-child(3){border-left:0}
+  .rota{grid-template-columns:1fr}
+  .rota::before,.rota .ap-trilho{display:none}
+  .a-news-in,.a-sede{grid-template-columns:1fr}
+  .tempo::before{left:60px}
+  .t-item,.t-esq{grid-template-columns:120px 1fr}
+  .t-foto{grid-column:1}
+  .t-txt,.t-esq .t-txt{grid-column:2;grid-row:1;text-align:left}
+}
+@media (max-width:560px){
+  .am,.am-inv{grid-template-columns:1fr;gap:16px}
+  .am-logo{height:80px;justify-items:start}
+  .am-prods{grid-template-columns:repeat(4,1fr)}
+  .rod-grid{grid-template-columns:1fr}
+  .news-l{flex-direction:column}
+  .t-item,.t-esq{grid-template-columns:84px 1fr;gap:14px}
+  .t-foto{width:84px;height:84px}
+  .tempo::before{left:42px}
+  .cat-marca{grid-template-columns:1fr}
+  .cat-marca img{grid-row:auto;height:70px}
+}
+@media (max-width:820px){.a-hero-img{object-position:68% 40%}}
+@media (max-width:560px){
+  .am-logo img{max-height:70px;max-width:160px}
+  .a-num strong{font-size:1.7rem}
+  .a-hero h1{font-size:2.4rem}
+}

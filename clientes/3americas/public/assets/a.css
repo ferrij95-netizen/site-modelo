@@ -1,0 +1,63 @@
+/* Versão A "Rodovia": fiel ao site atual. Topo prateado com acesso restrito, faixa de menu azul-marinho,
+   foto da carreta, conteúdo sobre o mapa-múndi cinza e rodapé azul com linha vermelha. */
+.topo { background: linear-gradient(#fff 0%, #f3f4f6 60%, #e2e4e8 100%); color: var(--marinho); position: relative; z-index: 40; }
+.topo-sup { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 0; }
+.marca img { width: clamp(190px, 22vw, 290px); height: auto; }
+.topo-dir { display: flex; align-items: center; gap: 22px; }
+.topo-tel { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 800 italic 1.3rem/1 var(--tit); color: var(--marinho); }
+.topo-tel .ic { width: 22px; height: 22px; color: var(--vermelho); }
+.topo-tel small { display: block; font: 600 .7rem/1.4 var(--txt); letter-spacing: .06em; text-transform: uppercase; color: var(--texto); font-style: normal; }
+.acesso summary { background: #fff; border: 1px solid #c9ced6; color: var(--marinho); box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .04); }
+.acesso summary:hover, .acesso[open] summary { border-color: var(--marinho); }
+.nav-faixa { background: linear-gradient(var(--marinho), var(--marinho-2)); }
+.nav-faixa ul { list-style: none; margin: 0 auto; padding: 0; display: flex; justify-content: center; }
+.nav-faixa a { display: block; padding: 17px 16px; color: #fff; text-decoration: none; font: 600 .98rem/1 var(--txt); position: relative; }
+.nav-faixa a::after { content: ''; position: absolute; left: 16px; right: 16px; bottom: 0; height: 3px; background: var(--vermelho); transform: scaleX(0); transition: transform .2s; }
+.nav-faixa a:hover::after, .nav-faixa a.ativo::after { transform: scaleX(1); }
+
+.hero { position: relative; min-height: clamp(460px, 42vw, 600px); display: flex; align-items: center; color: #fff; overflow: hidden; background: var(--marinho); }
+.hero-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% center; }
+.hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0, 36, 79, .92) 0%, rgba(0, 36, 79, .78) 40%, rgba(0, 36, 79, .1) 72%); }
+.hero-txt { position: relative; z-index: 1; padding: 60px 0; }
+.hero h1 { color: #fff; max-width: 13em; }
+.hero .lead { color: rgba(255, 255, 255, .88); max-width: 31em; }
+.hero .eyebrow { color: #ff9a9e; }
+
+.fundo-mapa { background: var(--cinza) url(/assets/img/mapa-mundi.webp) center 40px / min(1600px, 140%) no-repeat; }
+.fundo-mapa .sec { padding: 72px 0 24px; }
+.fundo-mapa .sec:last-child { padding-bottom: 88px; }
+.serv { background: #fff; padding: 12px 12px 26px; border-radius: var(--raio); box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 10px 30px -18px rgba(0, 30, 70, .35); }
+.serv h3, .serv p, .serv .link-seta { margin-left: 14px; margin-right: 14px; }
+.serv .serv-foto { margin-bottom: 20px; }
+.sec-numeros { margin-top: 56px; background: linear-gradient(100deg, var(--marinho-2), var(--marinho) 60%, #003f7f); padding: 44px 0; }
+.sec-numeros .num { border-color: rgba(255, 255, 255, .18); }
+.sec-numeros .num strong { color: #fff; }
+.sec-numeros .num span { color: rgba(255, 255, 255, .75); }
+.caixa-logos, .caixa-dep { background: #fff; border-radius: var(--raio); padding: 22px; box-shadow: 0 10px 30px -18px rgba(0, 30, 70, .35); height: calc(100% - 48px); }
+.caixa-logos .logos { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 8px; }
+.caixa-logos .logos li { border-color: #eceef2; padding: 12px; }
+.caixa-logos .logos img { max-height: 52px; }
+.caixa-dep { display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid var(--vermelho); }
+.sec-seg .seg { background: #fff; padding: clamp(28px, 4vw, 52px); border-radius: var(--raio); box-shadow: 0 10px 30px -18px rgba(0, 30, 70, .35); }
+.mapa-br .uf { fill: #d6dbe3; }
+
+@media (max-width: 1100px) {
+  .menu-btn { display: block; color: var(--marinho); }
+  .topo-sup { flex-wrap: wrap; }
+  .topo-dir { order: 3; width: 100%; justify-content: space-between; }
+  .nav-faixa { display: none; }
+  .nav-faixa.aberto { display: block; }
+  .nav-faixa ul { flex-direction: column; padding: 8px 0; }
+  .nav-faixa a { padding: 13px 0; }
+  .nav-faixa a::after { left: 0; right: auto; width: 40px; }
+}
+@media (max-width: 860px) {
+  .hero::after { background: linear-gradient(0deg, rgba(0, 36, 79, .95) 0%, rgba(0, 36, 79, .7) 55%, rgba(0, 36, 79, .25) 100%); }
+  .hero { align-items: flex-end; min-height: 560px; }
+  .caixa-logos .logos { grid-template-columns: repeat(3, 1fr); }
+  .caixa-logos, .caixa-dep { height: auto; }
+}
+@media (max-width: 560px) {
+  .topo-tel { font-size: 1.05rem; }
+  .caixa-logos .logos { grid-template-columns: repeat(2, 1fr); }
+}
