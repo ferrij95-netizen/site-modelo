@@ -1,0 +1,11 @@
+# Andrade Lopes: como este site é feito
+
+- Cliente: Andrade Lopes Engenharia e Consultoria Ltda-ME, Rua Jerônimo Coelho, 85, cj. 903, Centro, Porto Alegre RS. Escolhido na prospecção de advocacia e engenharia (21/10/2026, /mnt/project-files/prospeccao/nichos/advocacia-engenharia/LISTA.md), sem pedido do cliente.
+- Site atual: andradelopes.com.br, HTML de 2008 em tabelas com banners em Flash (extra/banner_*.swf). Só português.
+- Fotos: tiradas de dentro dos SWF (tags DefineBits/DefineBitsLossless, 752×375) em `public/assets/img/fotos/`. São as fotos que o site atual mostra (parte é de banco, como já era); as do portfólio são ilustrativas, não fotos dos trabalhos.
+- Logo: o original só existe em JPG de 203×150 sobre fundo escuro. O símbolo do "A" 3D foi recortado do JPG (luminância virou transparência, ampliado 4×) e o letreiro foi redesenhado em vetor na fonte Jost (desenho Futura, a do logo), "ANDRADE" em 400 e "LOPES" em 500 cinza, nas mesmas proporções. `logo-claro`/`logo-escuro` (vertical), `logo-h-*` (horizontal) e `marca-*` (só o símbolo).
+- Cores: grafite #3C3835 da moldura do site, dourado #C8A031 da engrenagem dos títulos, cinza prata do "LOPES". Títulos em Jost, texto em Inter.
+- Textos: todos do site atual em `conteudo.mjs` (empresa, serviços, 12 trabalhos do portfólio, clientes, profissionais associados, indicadores, contato). Nossos: títulos de seção, resumos de cada área de serviço, a ficha da abertura da B (resume a frase de apresentação e os métodos citados no portfólio) e as etapas do laudo (tiradas das descrições do portfólio).
+- Estrutura: `/` escolha (componentes/apresentacao), `/a/` "Engrenagem" e `/b/` "Laudo", 19 páginas cada: Início, Empresa, Serviços, Portfólio (+12 trabalhos), Indicadores, Clientes, Contato. Formulário de contato abre o e-mail preenchido; "Login" do menu leva ao webmail atual.
+- Gerar: `node clientes/andradelopes/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: se o endereço e os telefones ainda valem (o site parece parado desde ~2010); se existe o logo em vetor; nomes completos de IGEL e SERGS; se querem WhatsApp; fotos reais dos trabalhos e da equipe.
