@@ -1,0 +1,89 @@
+/* Versão B "Do grão à carne": verde e amarelo do logo, fundo claro, cadeia completa e ciclo do biogás. */
+.v-b { --fundo: #fff; --papel: #f1f5ec; --lima-esc: #3f8a1e; --raio: 10px; }
+.v-b .barra { background: var(--verde); color: #e3efe5; }
+.v-b .topo { background: #fff; color: var(--verde); border-bottom: 1px solid rgba(15, 82, 43, .1); }
+.v-b .topo nav a:hover { background: var(--papel); }
+.v-b .topo nav a.ativo { color: var(--lima-esc); }
+.v-b .topo nav a.nav-cta { background: var(--verde); color: #fff; }
+.v-b .topo nav a.nav-cta:hover { background: var(--verde-2); }
+@media (max-width: 1080px) { .v-b .topo nav { background: #fff; } }
+
+/* hero */
+.hero-b { background: radial-gradient(120% 80% at 100% 0%, #e7f3d6 0%, rgba(231, 243, 214, 0) 60%), linear-gradient(180deg, #f6f9f1, #fff); padding: clamp(36px, 6vw, 72px) 0 clamp(48px, 7vw, 88px); }
+.hero-b-grade { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(32px, 5vw, 72px); align-items: center; min-height: calc(100svh - 260px); }
+.hero-b h1 { color: var(--verde); font-size: clamp(2.3rem, 4.4vw, 3.9rem); }
+.hero-b .lead { color: #3d4a40; }
+.hero-b-midia { position: relative; }
+.hero-b-foto { aspect-ratio: 4 / 4.3; border-radius: 22px; }
+.hero-b .ilus { top: 12px; right: 12px; bottom: auto; }
+.selo { position: absolute; left: -28px; bottom: 32px; background: var(--amarelo); color: var(--verde); padding: 20px 24px; border-radius: 16px; max-width: 220px; box-shadow: 0 18px 40px rgba(15, 82, 43, .22); }
+.selo strong { display: block; font: 900 2.4rem/1 var(--tit); }
+.selo span { font-size: .9rem; font-weight: 500; line-height: 1.3; display: block; margin-top: 6px; }
+
+/* faixa aérea com números */
+.faixa-aerea { position: relative; color: #fff; isolation: isolate; }
+.aerea-foto { position: absolute; inset: 0; border-radius: 0; z-index: -1; }
+.aerea-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 58, 30, .94), rgba(15, 82, 43, .82) 60%, rgba(23, 112, 59, .7)); }
+.faixa-aerea .ilus { top: 10px; bottom: auto; }
+.faixa-aerea .numeros { padding: 36px 0; }
+.faixa-aerea .num + .num { border-left: 1px solid rgba(255, 255, 255, .18); }
+.faixa-aerea .num strong { color: var(--amarelo); }
+
+/* cadeia */
+.v-b .cadeia-n { background: var(--verde); color: var(--amarelo); }
+.v-b .cadeia p { color: var(--cinza); }
+.v-b .sec-verde { background: linear-gradient(150deg, var(--verde) 0%, #0b3f20 100%); color: #fff; }
+.v-b .sec-verde .eyebrow { color: var(--amarelo); }
+.v-b .sec-verde .cadeia-n { background: var(--amarelo); color: var(--verde); }
+.v-b .sec-verde .cadeia p { color: #d4e5d8; }
+
+/* unidades em linhas alternadas */
+.unid-linhas { display: grid; gap: clamp(40px, 6vw, 72px); margin-top: 40px; }
+.unid-linha { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.unid-linha .foto { aspect-ratio: 16 / 10; border-radius: 18px; }
+.unid-linha.inv .foto { order: 2; }
+.unid-num { font: 900 4.5rem/1 var(--tit); color: transparent; -webkit-text-stroke: 2px var(--lima); display: block; margin-bottom: 8px; }
+.unid-linha h3 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-bottom: 4px; color: var(--verde); }
+.unid-linha-txt .link-seta { display: flex; width: fit-content; }
+.unid-sub { font-weight: 600; color: var(--lima-esc); }
+
+/* energia */
+.v-b .sec-energia { background: linear-gradient(180deg, #fff, var(--papel)); }
+
+/* citação */
+.v-b .citacao { background: var(--papel); }
+.v-b .citacao .ic-aspas { color: var(--lima-esc); }
+.citacao-grande { background: var(--verde) !important; color: #fff; padding: clamp(32px, 5vw, 56px); margin-top: 24px; display: grid; grid-template-columns: 70px 1fr; gap: 0 24px; }
+.citacao-grande .ic-aspas { color: var(--amarelo) !important; width: 56px; height: 56px; grid-row: 1 / 3; }
+.citacao-grande p { font-size: clamp(1.2rem, 2.1vw, 1.6rem); }
+.v-b .unid-ic { background: var(--verde); color: var(--amarelo); }
+
+/* cooperado */
+.sec-cooperado { background: linear-gradient(110deg, #0b3f20 0%, var(--verde) 45%, var(--verde-2) 100%); color: #fff; padding: clamp(48px, 6vw, 72px) 0; }
+.sec-cooperado .eyebrow { color: var(--amarelo); }
+.cooperado-faixa { display: grid; grid-template-columns: 1.3fr auto; gap: 32px; align-items: center; }
+.cooperado-faixa h2 { margin-bottom: .3em; }
+.cooperado-faixa p { margin: 0; color: #d4e5d8; }
+.cooperado-faixa .botoes { margin: 0; }
+
+/* contato */
+.v-b .sec-contato { background: #0a3a1e; color: #fff; }
+.v-b .sec-contato .eyebrow { color: var(--amarelo); }
+.v-b .end-ic { color: var(--amarelo); }
+.v-b .capa-foto::after { background: linear-gradient(90deg, rgba(10, 58, 30, .92), rgba(15, 82, 43, .55) 65%, rgba(15, 82, 43, .15)); }
+.v-b .capa .eyebrow { color: var(--amarelo); }
+.v-b .rodape { background: #082c17; color: #d9e7dc; }
+.v-b .rodape h3 { color: var(--amarelo); }
+.v-b .racao h3 { border-top-color: var(--amarelo); }
+.v-b .sitios li { border-color: var(--verde); }
+@media (max-width: 900px) {
+  .hero-b-grade, .unid-linha, .cooperado-faixa { grid-template-columns: 1fr; }
+  .unid-linha.inv .foto { order: 0; }
+  .hero-b-grade { min-height: 0; }
+  .hero-b-foto { aspect-ratio: 4 / 3; }
+  .selo { left: 12px; bottom: -24px; padding: 14px 18px; }
+  .selo strong { font-size: 1.9rem; }
+  .faixa-aerea .num:nth-child(3) { border-left: 0; }
+  .citacao-grande { grid-template-columns: 1fr; }
+  .citacao-grande .ic-aspas { grid-row: auto; }
+}
