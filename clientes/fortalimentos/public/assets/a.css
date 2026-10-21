@@ -1,0 +1,144 @@
+/* Versão A "Balcão": a estrutura do site atual (faixa vermelha no alto, topo branco com logo e telefones, menu na faixa amarela),
+   com o vermelho forte no início, a vitrine dos produtos e a prateleira de destaques. */
+.v-a .pre { background: linear-gradient(90deg, var(--verm-esc), var(--verm)); color: #fff; font-size: .86rem; }
+.v-a .pre .in { display: flex; justify-content: space-between; align-items: center; min-height: 36px; gap: 12px; }
+.v-a .pre-disk b { font-family: var(--tit); font-size: 1rem; letter-spacing: .02em; }
+.v-a .pre a { color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: .4em; opacity: .9; }
+.v-a .pre a:hover { opacity: 1; }
+.v-a .topo { background: #fff; }
+.v-a .topo .in { display: flex; align-items: center; gap: 24px; min-height: 108px; }
+.v-a .marca img { width: 280px; }
+.v-a .topo-fones { margin-left: auto; display: flex; gap: 22px; }
+.v-a .topo-fones a { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--tinta); font-weight: 700; font-size: 1.15rem; }
+.v-a .topo-fones .ic { width: 36px; height: 36px; padding: 8px; border-radius: 50%; background: var(--amar); color: var(--verm-esc); }
+.v-a .topo-fones small { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); font-weight: 600; line-height: 1.2; }
+.v-a .menu { background: linear-gradient(180deg, #FDD34E 0%, var(--amar) 45%, var(--amar-esc) 100%); position: sticky; top: 0; z-index: 30; box-shadow: 0 2px 0 rgba(124,30,34,.15); }
+.v-a .menu .in { display: flex; justify-content: center; gap: 4px; }
+.v-a .menu a { font: 800 1.08rem/1 var(--tit); letter-spacing: .02em; color: var(--verm-esc); text-decoration: none; padding: 18px 16px; position: relative; }
+.v-a .menu a::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: 10px; height: 3px; background: var(--verm); transform: scaleX(0); transition: transform .25s; }
+.v-a .menu a:hover::after, .v-a .menu a[aria-current="page"]::after { transform: scaleX(1); }
+.v-a .tit-sec { color: var(--verm); }
+
+/* início */
+.v-a .hero { background: radial-gradient(120% 140% at 85% 30%, #C4403F 0%, var(--verm) 38%, var(--verm-esc) 100%); color: #fff; overflow: hidden; position: relative; }
+/* o xadrez da toalha do site atual, só como trama discreta à direita */
+.v-a .hero::before { content: ""; position: absolute; inset: 0 0 0 46%; background-image: linear-gradient(45deg, rgba(255,255,255,.06) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.06) 75%), linear-gradient(45deg, rgba(255,255,255,.06) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.06) 75%); background-size: 44px 44px; background-position: 0 0, 22px 22px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 40%); mask-image: linear-gradient(90deg, transparent, #000 40%); }
+.v-a .hero .in { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 40px; align-items: center; padding-top: 64px; padding-bottom: 72px; position: relative; }
+.v-a .hero .sobre { color: var(--amar); }
+.v-a .hero h1 { font-size: clamp(2.6rem, 5.6vw, 4.6rem); color: #fff; }
+.v-a .hero .lead { color: #FBE3DA; }
+.v-a .busca-hero { max-width: 520px; border-color: transparent; margin: 26px 0 18px; box-shadow: 0 10px 30px rgba(60,0,0,.25); }
+.v-a .busca-hero input { padding: 1em 1.1em; }
+.v-a .busca-hero button { background: var(--amar); color: var(--verm-esc); width: 60px; }
+.v-a .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 0; }
+.v-a .hero-vitrine { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.v-a .hv a { display: grid; background: #fff; border-radius: 50%; aspect-ratio: 1; place-items: center; padding: 14%; position: relative; box-shadow: 0 18px 40px rgba(60,0,0,.35); text-decoration: none; transition: transform .3s; }
+.v-a .hv a:hover { transform: translateY(-4px) rotate(-1deg); }
+.v-a .hv img { width: 100%; height: 100%; object-fit: contain; }
+.v-a .hv span { position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); background: var(--amar); color: var(--verm-esc); font: 800 .82rem/1.15 var(--txt); padding: .45em .8em; border-radius: 99px; white-space: nowrap; max-width: 92%; overflow: hidden; text-overflow: ellipsis; }
+.v-a .hv-2 { margin-top: 40px; }
+.v-a .hv-3 { margin-top: -40px; }
+
+.v-a .cats { padding-top: 60px; padding-bottom: 30px; }
+.v-a .cats-grade { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.v-a .cat a { display: block; position: relative; border-radius: 12px; overflow: hidden; text-decoration: none; color: #fff; aspect-ratio: 253/220; background: var(--verm); }
+.v-a .cat img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.v-a .cat a::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(90,12,16,.85)); }
+.v-a .cat a:hover img { transform: scale(1.06); }
+.v-a .cat-nome { position: absolute; left: 16px; bottom: 30px; z-index: 1; font: 800 1.4rem/1.05 var(--tit); }
+.v-a .cat-n { position: absolute; left: 16px; bottom: 10px; z-index: 1; font-size: .8rem; color: var(--amar); font-weight: 600; }
+.v-a .cat-1 { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.v-a .cat-1 a { aspect-ratio: auto; height: 100%; }
+.v-a .cat-1 .cat-nome { font-size: 2.2rem; bottom: 36px; }
+
+/* prateleira de destaques: moldura amarela como os quadros dos produtos de hoje */
+.v-a .destaques { background: linear-gradient(180deg, #FFF3D2, #FFE6A6); padding: 54px 0 60px; }
+.v-a .prat-setas { display: flex; gap: 8px; }
+.v-a .prat-seta { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--verm); background: #fff; color: var(--verm); display: grid; place-items: center; cursor: pointer; }
+.v-a .prat-seta:hover { background: var(--verm); color: #fff; }
+.v-a .prat { list-style: none; margin: 0; padding: 4px 2px 10px; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(230px, calc((100% - 48px) / 4)); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.v-a .prat-item { scroll-snap-align: start; }
+.v-a .prod { border: 3px solid var(--amar); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; }
+.v-a .prod-txt { flex: 1; padding-top: 6px; }
+.v-a .prod-acao { margin-top: 12px; }
+.v-a .prod-acao .btn { width: 100%; justify-content: center; font-size: .9rem; padding: .7em .8em; }
+.v-a .grade-prod .prod { border-color: #F6E2B0; }
+.v-a .grade-prod .prod:hover { border-color: var(--amar-esc); }
+
+.v-a .disk { background: var(--verm-fundo); color: #fff; overflow: hidden; }
+.v-a .disk .in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; align-items: stretch; padding: 0; }
+.v-a .disk-txt { padding: 64px 48px 64px 24px; }
+.v-a .disk .sobre { color: var(--amar); }
+.v-a .disk h2 { font-size: clamp(2.8rem, 6vw, 4.8rem); line-height: .95; margin-bottom: .35em; }
+.v-a .disk h2 span { display: block; font-size: .5em; color: var(--amar); margin-top: .2em; }
+.v-a .disk-fones { display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px; }
+.v-a .disk-fones a { color: #fff; text-decoration: none; font-size: 1.6rem; font-weight: 700; display: inline-flex; gap: .45em; align-items: center; }
+.v-a .disk-foto { margin: 0; position: relative; min-height: 340px; }
+.v-a .disk-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.v-a .clientes { background: #fff; padding: 54px 0; border-bottom: 1px solid var(--linha); }
+.v-a .clientes h2 { text-align: center; color: var(--verm); margin-bottom: 28px; }
+.v-a .clientes .ic { color: var(--verm); padding: 0; }
+.v-a .marcas-home { padding-top: 54px; padding-bottom: 20px; text-align: center; }
+.v-a .marcas-home ul { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+.v-a .marcas-home img { width: 130px; filter: grayscale(.15); transition: transform .25s, filter .25s; }
+.v-a .marcas-home a:hover img { transform: scale(1.06); filter: none; }
+
+/* páginas internas */
+.v-a .cab h1 { color: var(--verm); }
+.v-a .cab-foto { background: linear-gradient(90deg, rgba(124,30,34,.94), rgba(174,51,54,.75)), url(/assets/img/parmesao-rodas.webp) center/cover; color: #fff; padding: 70px 0 60px; }
+.v-a .cab-foto h1 { color: #fff; }
+.v-a .cab-foto .sobre { color: var(--amar); }
+.v-a .cab-foto .lead { color: #FBE3DA; }
+.v-a .emp { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; padding-top: 54px; padding-bottom: 54px; align-items: start; }
+.v-a .emp-foto { margin: 0; }
+.v-a .emp-foto img { border-radius: 14px; }
+.v-a .emp-foto figcaption { font-size: .85rem; color: var(--tinta-2); margin-top: 10px; }
+.v-a .mvv { background: linear-gradient(180deg, var(--amar), var(--amar-esc)); padding: 54px 0; }
+.v-a .mvv .in { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+.v-a .mvv article { padding: 0 30px; border-left: 2px solid rgba(124,30,34,.25); }
+.v-a .mvv article:first-child { border-left: 0; padding-left: 0; }
+.v-a .mvv h2 { color: var(--verm-esc); }
+.v-a .mvv p, .v-a .mvv li { color: #4A1A14; }
+
+.v-a .catalogo { padding-bottom: 56px; }
+.v-a .busca-cat { max-width: 560px; }
+
+@media (max-width: 980px) {
+  .v-a .topo-fones { display: none; }
+  .v-a .topo .in { min-height: 84px; justify-content: space-between; }
+  .v-a .marca img { width: 210px; }
+  .v-a .menu-btn { display: block; color: var(--verm); }
+  .v-a .lista-btn { margin-left: auto; }
+  .v-a .menu { position: static; display: none; }
+  .v-a .menu.aberto { display: block; }
+  .v-a .menu .in { flex-direction: column; padding: 6px 16px 10px; }
+  .v-a .menu a { padding: 13px 4px; border-bottom: 1px solid rgba(124,30,34,.15); }
+  .v-a .menu a::after { display: none; }
+  .v-a .hero .in { grid-template-columns: 1fr; padding-top: 44px; padding-bottom: 50px; }
+  .v-a .hero-vitrine { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .v-a .hv-2, .v-a .hv-3 { margin-top: 0; }
+  .v-a .hv span { display: none; }
+  .v-a .cats-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .v-a .cat-1 { grid-column: span 2; grid-row: auto; aspect-ratio: 16/9; }
+  .v-a .disk .in { grid-template-columns: 1fr; }
+  .v-a .disk-txt { padding: 48px 24px; }
+  .v-a .prat { grid-auto-columns: minmax(200px, 42%); }
+  .v-a .emp { grid-template-columns: 1fr; }
+  .v-a .mvv .in { grid-template-columns: 1fr; gap: 26px; }
+  .v-a .mvv article { border-left: 0; padding: 0; }
+}
+@media (max-width: 640px) {
+  .v-a .pre-dir { display: none; }
+  .v-a .lista-txt { display: none; }
+  .v-a .marca img { width: 170px; }
+  .v-a .topo .in { gap: 8px; min-height: 72px; }
+  .v-a .prat { grid-auto-columns: 72%; }
+  .v-a .cat-nome { font-size: 1.15rem; }
+  .v-a .cat-1 .cat-nome { font-size: 1.7rem; }
+  .v-a .disk-fones a { font-size: 1.3rem; }
+  .v-a .disk-txt { padding: 44px 16px; }
+  .v-a .marcas-home img { width: 96px; }
+  .v-a .prod { padding: 10px; }
+  .v-a .prod-acao .btn span { font-size: .82rem; }
+}
