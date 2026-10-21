@@ -1,0 +1,12 @@
+# Casa dos Plásticos: como este site é feito
+
+- Cliente: Casa dos Plásticos Embalagens, Av. Sete de Setembro, 2131, Centro, Curitiba PR. Escolhida na prospecção de distribuidoras (21/10/2026, /mnt/project-files/prospeccao/nichos/distribuidoras/LISTA.md), sem pedido do cliente.
+- Site atual: casadosplasticos.com.br (WordPress + WooCommerce antigo, tema Storefront, sem preços). Só português.
+- Catálogo: os 326 produtos vêm da Store API antiga do WooCommerce (`/wp-json/wc/store/products?per_page=100&page=1..4`, sem a "v1"). Essa API não traz categorias: elas saem das páginas `/categoria-produto/<dep>/<sub>/` (atributo `data-product_id` de cada produto). `extrair.py` junta tudo em `dados.json` e gera as fotos em `public/assets/img/{p,t}` (900 e 420 px). Nomes de departamentos com acento corrigido; nomes de produtos só com caixa e acentos arrumados.
+- Marca: logo do site atual (`logo.png/.webp`, 290 px, não existe versão maior). Vermelho #E31B23 e cinza #696969 do logo; a curva vermelha e cinza do cabeçalho atual vira o divisor do topo (A) e as faixas do hero (A e B). Muitas fotos de produto são no pano vermelho da loja: o fundo de cada foto (média dos cantos) pinta o quadro em volta. Títulos em Archivo (grotesca pesada, parecida com o Arial Bold do logo), texto em Inter.
+- Banners reaproveitados: Bipack e Potes do slider atual (`img/banner-*.webp`, só a parte da foto).
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Balcão" (loja de rua: busca no meio, mosaico de departamentos com foto, destaques em trilho, como pedir, banners) e `/b/` "Atacado" (faixa cinza do logo, atalhos por tipo de negócio, índice numerado de departamentos, lateral de departamentos como no site atual, catálogo em linhas ou grade). Em cada uma: Início, Produtos, 14 departamentos, 326 páginas de produto, Loja (horários e mapa) e Contato.
+- Lista de pedido: "Adicionar" guarda no navegador (`cdp-lista`), com quantidade; a gaveta "Minha lista" manda pelo WhatsApp (41 99876-0158) e o Contato manda por WhatsApp ou e-mail.
+- Escrito por nós: chamadas da home, "Como pedir", os 4 tipos de negócio (só agrupam departamentos reais).
+- Gerar: `node clientes/casadosplasticos/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: se fazem entrega (o site só fala da loja), se vendem no atacado com preço diferente, se o domingo é fechado (o site não diz), e se o WhatsApp 99876-0158 continua ativo (só aparece em Contato e Localização).
