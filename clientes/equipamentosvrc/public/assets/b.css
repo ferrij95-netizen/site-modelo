@@ -1,0 +1,159 @@
+/* Versão B "Bancada": clara e técnica. Branco e cinza de bancada, azul VRC nos detalhes, fotos de estúdio dos produtos,
+   etapas do laboratório numeradas e uma única seção escura (o Lótus Ceram, fotografado no preto). */
+.pre{background:var(--azul-n);color:#cfe1ec;font-size:13px}
+.pre .in{display:flex;gap:22px;align-items:center;min-height:36px}
+.pre a,.pre span{display:inline-flex;gap:6px;align-items:center;text-decoration:none}.pre .ic{width:15px;height:15px}
+.pre a:hover{color:#fff}
+.pre-sup{margin-left:auto;color:#ffc26b!important;font-weight:600}
+.topo{border-bottom:1px solid var(--line)}
+.menu a{font-weight:500}
+.menu a[aria-current=page]{color:var(--azul-d);box-shadow:inset 0 -2px 0 var(--azul);border-radius:0}
+.menu a:not([aria-current]):hover{color:var(--azul-d)}
+.btn-topo{padding:12px 18px;font-size:15px}
+@media (max-width:1020px){.btn-topo{display:none}}
+@media (max-width:700px){.pre span,.pre a:nth-child(2){display:none}}
+
+/* hero */
+.hero{background:var(--cinza)}
+.hero .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;align-items:stretch;padding-right:0;max-width:none;padding-left:max(24px,calc((100vw - var(--in))/2 + 24px))}
+.hero-txt{padding:80px 56px 64px 0;align-self:center}
+.hero h1{font-weight:800;letter-spacing:-.02em;max-width:620px}
+.hero-txt>p:not(.eyebrow){font-size:18px;max-width:560px}
+.hero .botoes{margin:28px 0 40px}
+.hero .numeros{display:flex;gap:40px;margin:0;padding-top:24px;border-top:1px solid var(--line);flex-wrap:wrap}
+.hero .numeros div{display:flex;flex-direction:column-reverse}
+.hero .numeros dt{font-size:13px;color:var(--mut)}.hero .numeros dd{margin:0;font:800 30px/1.1 var(--h);color:var(--ink)}
+.hero-foto{position:relative;margin:0;background:#000;min-height:560px;overflow:hidden}
+.hero-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;transform:scale(1.08)}
+.hero-foto figcaption{position:absolute;left:24px;bottom:24px}
+.hero-foto figcaption a{display:inline-flex;align-items:center;gap:12px;background:#fff;color:var(--ink);text-decoration:none;padding:12px 18px;border-radius:var(--r);font:600 16px var(--h)}
+.hero-foto small{display:block;font:600 11px var(--b);text-transform:uppercase;letter-spacing:.12em;color:var(--laranja)}
+.hero-foto figcaption .ic{color:var(--azul)}
+
+/* etapas */
+.etapas{padding:90px 0}
+.etapas-trilho{display:grid;grid-template-columns:repeat(6,1fr);position:relative;margin-bottom:40px;border-top:2px solid var(--line)}
+.etapas-trilho button{background:none;border:0;cursor:pointer;text-align:left;padding:18px 10px 6px 0;position:relative;color:var(--mut);font:inherit}
+.etapas-trilho button::before{content:"";position:absolute;left:0;right:0;top:-2px;height:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.etapas-trilho button::after{content:"";position:absolute;left:0;top:-7px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--line)}
+.etapas-trilho button[aria-selected=true]::before{transform:scaleX(1)}
+.etapas-trilho button[aria-selected=true]::after{background:var(--azul);border-color:var(--azul)}
+.etapas-trilho .n{display:block;font:300 15px var(--h);color:var(--azul)}
+.etapas-trilho b{font:700 clamp(15px,1.6vw,20px) var(--h)}
+.etapas-trilho button[aria-selected=true] b,.etapas-trilho button:hover b{color:var(--ink)}
+.etapa-painel{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,2fr);gap:44px;align-items:start}
+.ep-txt h3{font-size:28px}
+.ep-prods{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:22px}
+.ep-prods a{display:block;text-decoration:none;color:inherit}
+.ep-foto{display:grid;place-items:center;aspect-ratio:1;background:var(--cinza);border-radius:10px;overflow:hidden;margin-bottom:12px}
+.ep-foto img{width:84%;height:84%;object-fit:contain;mix-blend-mode:multiply;transition:transform .35s}
+.ep-prods a:hover img{transform:scale(1.05)}
+.ep-prods b{display:block;font:600 17px/1.25 var(--h);color:var(--ink)}
+.ep-prods small{display:block;font-size:14px;color:var(--mut);line-height:1.5;margin-top:4px}
+
+/* destaque Lótus Ceram */
+.destaque{background:#0b0d0f;color:#b9c2c9;padding:90px 0;overflow:hidden}
+.destaque .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center}
+.destaque h2{color:#fff;font-size:clamp(32px,4vw,52px);font-weight:800}
+.destaque .eyebrow{color:#6fc3ec}
+.dest-num{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:28px 0 32px;border-top:1px solid #2a3036}
+.dest-num div{display:flex;flex-direction:column-reverse;padding:16px 0;border-bottom:1px solid #2a3036}
+.dest-num div:nth-child(odd){padding-right:16px;border-right:1px solid #2a3036}.dest-num div:nth-child(even){padding-left:22px}
+.dest-num dt{font-size:13px}.dest-num dd{margin:0;font:700 28px/1.1 var(--h);color:#fff}
+.dest-fotos{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:560px}
+.dest-fotos figure{margin:0;overflow:hidden;border-radius:10px;background:#000}
+.dest-fotos figure:first-child{grid-row:1/3}
+.dest-fotos img{width:100%;height:100%;object-fit:cover}
+.dest-fotos figure:first-child img{object-fit:contain;background:#000}
+
+/* depoimentos */
+.depo{padding:90px 0;background:var(--cinza)}
+.depo-grade{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:48px;align-items:start}
+.depo-nomes{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.depo-nomes button{display:flex;gap:14px;align-items:center;width:100%;text-align:left;background:none;border:0;border-radius:10px;padding:10px 12px;cursor:pointer;font:inherit;color:var(--txt)}
+.depo-nomes img{width:52px;height:52px;border-radius:50%;object-fit:cover;filter:grayscale(1);flex:none}
+.depo-nomes b{display:block;font:600 16px var(--h);color:var(--ink)}
+.depo-nomes small{display:block;font-size:13px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:330px}
+.depo-nomes button[aria-selected=true]{background:#fff;box-shadow:0 6px 20px rgba(15,61,87,.08)}
+.depo-nomes button[aria-selected=true] img{filter:none}
+.depo-painel{margin:0;position:sticky;top:calc(var(--topo-h,84px) + 20px)}
+.depo-painel blockquote{margin:0 0 24px;padding-left:28px;border-left:3px solid var(--azul)}
+.depo-painel blockquote p{font:400 clamp(19px,1.9vw,24px)/1.5 var(--h);color:var(--ink);margin:0}
+.depo-painel figcaption{padding-left:31px}
+.depo-painel figcaption b{font:700 18px var(--h);color:var(--ink)}
+.depo-painel ul{margin:10px 0 0;padding-left:18px;font-size:14px;color:var(--mut);display:grid;gap:3px}
+
+/* serviço */
+.servico{padding:90px 0}
+.serv-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.serv-cols>div{padding:30px 30px 30px 0}
+.serv-cols>div+div{padding-left:30px;border-left:1px solid var(--line)}
+.ic-g{width:34px;height:34px;color:var(--azul);margin-bottom:14px}
+.serv-sup{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:20px;padding:22px 26px;border-radius:10px;background:#fff4e3;text-decoration:none;color:var(--txt)}
+.serv-sup b{display:block;font:700 19px var(--h);color:var(--ink)}
+.serv-sup>.ic{width:26px;height:26px;color:var(--laranja);transition:transform .2s}.serv-sup:hover>.ic{transform:translateX(4px)}
+
+/* onde comprar (home) */
+.onde-home{padding:80px 0;background:linear-gradient(120deg,#0F3D57,#1A6E9B);color:#d4e6f0}
+.onde-home .in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center}
+.onde-home h2{color:#fff}.onde-home .eyebrow{color:#8fd0f0}
+.onde-home .btn{background:#fff;color:var(--azul-d)}
+.ufs-home{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:10px}
+.ufs-home a{display:flex;justify-content:space-between;align-items:baseline;padding:14px;border:1px solid rgba(255,255,255,.22);border-radius:8px;text-decoration:none;transition:background .2s}
+.ufs-home a:hover{background:rgba(255,255,255,.1)}
+.ufs-home b{font:700 20px var(--h);color:#fff}.ufs-home small{color:#9fc7dd}
+
+/* páginas internas */
+.capa{background:var(--cinza);border-bottom:1px solid var(--line)}
+.capa .trilha{margin-bottom:16px}
+.empresa{padding:72px 0}
+.empresa .in{display:grid;grid-template-columns:1.3fr .7fr;gap:56px;align-items:center}
+.emp-grupo{margin:0;padding:28px;border:1px solid var(--line);border-radius:10px;font-size:14px;color:var(--mut)}.emp-grupo img{margin-bottom:12px}
+.mvv-sec{padding:72px 0;background:var(--cinza)}
+.mvv-cols{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:40px}
+.mvv-cols h3{color:var(--azul-d);font-size:22px}
+.valores{margin:0;padding-left:22px;display:grid;gap:4px}
+.garantia{padding:72px 0}
+.garantia .in{display:grid;grid-template-columns:160px 1fr;gap:20px 40px;align-items:center}
+.selo-g{width:160px}
+.gar-txt h2{font-size:clamp(24px,2.6vw,34px)}
+.gar-frase{font:700 16px var(--h);color:var(--azul-d)}
+.gar-lista{grid-column:1/-1;list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.gar-lista li{display:flex;gap:14px;padding:22px 20px 0 0}.gar-lista .ic{width:28px;height:28px;color:var(--azul)}
+.gar-lista b{display:block;font:700 17px var(--h);color:var(--ink)}
+.assist{padding:64px 0;background:#fff4e3}.assist .in{max-width:900px}
+.assist .btn{background:var(--laranja)}.assist .btn:hover{background:#d47b00}
+.catalogo{padding:48px 0 30px}
+.v-b .linha header{border-bottom:1px solid var(--line);padding-bottom:16px}
+.v-b .prods{grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:0 28px}
+.v-b .prods a{flex-direction:row;align-items:center;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.v-b .pf{width:96px;flex:none;background:var(--cinza);border-radius:8px}
+.v-b .pf img{width:86%;height:86%;mix-blend-mode:multiply}
+.v-b .pt{padding:0;flex:1}
+.v-b .prods a>.ic{color:var(--azul);transition:transform .2s}.v-b .prods a:hover>.ic{transform:translateX(4px)}
+.v-b .relacionados .prods{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+
+@media (max-width:1000px){
+  .hero .in{grid-template-columns:1fr;padding:0}
+  .hero-txt{padding:48px 24px 40px}
+  .hero-foto{min-height:380px}
+  .etapas-trilho{grid-template-columns:repeat(3,1fr);row-gap:18px}
+  .etapa-painel,.destaque .in,.depo-grade,.onde-home .in,.empresa .in{grid-template-columns:1fr}
+  .dest-fotos{height:420px}
+  .depo-painel{position:static;order:-1}
+  .serv-cols,.mvv-cols{grid-template-columns:1fr}
+  .serv-cols>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .gar-lista{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .hero-txt{padding:40px 18px 34px}
+  .hero .numeros{gap:24px}.hero .numeros dd{font-size:24px}
+  .etapas{padding:64px 0}
+  .etapas-trilho{grid-template-columns:repeat(2,1fr)}
+  .ep-prods{grid-template-columns:1fr 1fr;gap:14px}.ep-prods small{display:none}
+  .dest-fotos{height:320px}
+  .v-b .prods{grid-template-columns:1fr}
+  .v-b .pt small{display:block}
+  .garantia .in{grid-template-columns:1fr}.selo-g{width:120px}
+  .depo-nomes small{max-width:220px}
+}
