@@ -1,0 +1,11 @@
+# Alumac: como este site é feito
+
+- Cliente: Alumac Montagem de Alumínio, Rua Cuiabá, 230, Jóquei Clube, Fortaleza CE. Escolhida na prospecção de esquadrias/vidros/madeira (21/10/2026), sem pedido do cliente.
+- Site atual: alumac.com.br (FrontPage, fundo azul #336699, títulos em Times, sem celular, sem HTTPS). Páginas: index.html (frases que levam a vídeos do Instagram, aviso de golpe), diversos.html (426 fotos de obras), maerlio.html (página pessoal, não usada). Só português.
+- Marca: não há arquivo de logo. A versão A usa o letreiro ALUMAC pintado no muro da fábrica (foto `fabrica-2`), em Archivo 900; a B usa o selo azul-marinho que a empresa põe nas fotos ("ALUMAC / O melhor resultado, sempre!"), em Tinos, que é a Times do selo e do site atual. Azul #336699 vem do site atual; marinho #0F1C4D do selo; azul do muro #2B4C8C.
+- Fotos: todas reais, de diversos.html (800 px), 57 escolhidas e renomeadas por linha (`portoes-1`...). Nomes originais em `fotos.json`. Capas dos vídeos vêm do canal do YouTube da empresa (@ALUMAC.FORTALEZA). Nenhuma foto de banco.
+- Textos: frases, telefones, endereço, "cartões em até 10x sem entrada", trava anti-rebote inox 304, guias chavetas/bandeirola, portão conversível e o aviso de golpe vêm do site atual; nota 4,8 do Google Maps; bairro pelo CEP. Escritos por nós: descrição de cada linha, as 4 etapas da venda e títulos.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Muro" (azul do site atual, letreiro do muro, frases da Alumac), `/b/` "Selo" (marinho, etapas, catálogo em abas, vídeos). 6 páginas em cada: Início, Produtos, Portão seguro, Obras (galeria com filtro), A Alumac, Contato.
+- Formulário: monta a mensagem e abre o WhatsApp da Raquel Machado (única autorizada a vender, segundo o aviso). Sem servidor.
+- Gerar: `node clientes/alumac/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg`, `versao-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: qual celular é o WhatsApp principal (os três têm o ícone no site); papel do Maérlio Machado (aparece nos vídeos e na linha "Machado"); se "família Machado" está certo; arquivo de logo, se existir; detalhes do portão conversível.
