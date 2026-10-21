@@ -1,0 +1,10 @@
+# Conexão Delta G: como este site é feito
+
+- Cliente: Conexão Delta G (associação de agroempresas, melhoramento genético Hereford e Braford), Av. Vinte e Quatro de Maio, 1249, Santana do Livramento RS. Escolhido no piloto 2 de sites ruins (21/10/2026), sem pedido do cliente.
+- Site atual: conexaodeltag.com.br (PHP antigo, sem HTTPS, sem celular). Só português, sem troca de idioma, então o novo é só `pt`.
+- Marca: logo vetorizado (potrace) a partir de `img/logo.png` do site atual (branco): `public/assets/logo.svg` (vermelho #AF0000), `logo-branco.svg`, `simbolo.svg` (só as três setas). Cores do CSS do site atual: vermelho #AF0000, bordô #5B0000, marrom #531607, creme #FFECCE. Logo em letra tipo Optima; títulos em Marcellus (desenho mais próximo) e texto em Inter.
+- Fotos: todas do site atual (banner, 20 touros em centrais, fotos da página Genômica e do Programa, capa do sumário, modelo de CEIP, logos de centrais, parceiros, apoiadores e dos 16 membros). Nenhuma foto de banco.
+- Dados: `dados.json` (touros), `conectados.json` (membros), `noticias.json` (110 notícias; as 12 mais novas com texto completo viram páginas, as outras levam para o site atual). Textos institucionais em `conteudo.mjs`, com erros de digitação corrigidos. Os PDFs (sumário, manual, portaria, touros jovens) continuam apontando para o site atual.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Tradição" (faixa vermelha com logo e telefones, menu bordô, fundo creme, etapas em seta), `/b/` "Genômica" (touro em tela cheia, ciclo do programa com as setas do logo, índice em barras, membros). 7 páginas + 12 notícias em cada.
+- Gerar: `node clientes/conexaodeltag/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg`, `versao-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: "26 touros em centrais" no site atual, mas a página lista 20; presidente (diretoria no site: Patricia Wolf; notícias 2024: Clarissa Peixoto); se (55) 99978 3450 é WhatsApp; PDF do sumário 2024/2025 para trocar o de 2023.
