@@ -1,0 +1,220 @@
+/* Versão A "Folder": fiel ao material impresso da Bioplast. Faixa grafite do site atual, logo em fundo branco,
+   linha dupla verde com seta (cabeçalho do folder), títulos em faixa verde com número em círculo, mosaico de fotos e quadros verdes. */
+.v-a{--bg:#fff}
+.faixa{background:var(--grafite);color:#d6dde0;font-size:14px}
+.faixa .in{display:flex;gap:26px;justify-content:flex-end;padding-top:8px;padding-bottom:8px}
+.faixa a{display:inline-flex;align-items:center;gap:7px;text-decoration:none}.faixa a:hover{color:#fff}
+.faixa .ic{width:16px;height:16px;color:var(--lima)}
+@media (max-width:760px){.faixa .so-pc{display:none}.faixa .in{justify-content:space-between;gap:12px;font-size:13px}}
+.v-a .topo{box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.v-a .menu a{font-size:15px}
+.v-a .menu a:hover{color:var(--verde-d)}
+.v-a .menu a[aria-current=page]{background:var(--verde);color:#fff}
+.v-a .btn-orc{background:var(--azul);color:#fff}.v-a .btn-orc:hover{background:var(--azul-d)}
+
+/* linha dupla com seta, como no topo do folder */
+.seta-linha{position:relative;height:13px;background:linear-gradient(var(--verde-d),var(--verde-d)) 0 0/100% 3px no-repeat,linear-gradient(var(--verde),var(--verde)) 0 8px/100% 3px no-repeat}
+.topo .seta-linha{background:linear-gradient(var(--verde-d),var(--verde-d)) 0 0/100% 3px no-repeat,linear-gradient(var(--verde),var(--verde)) 0 8px/100% 3px no-repeat;height:11px}
+
+/* faixa verde numerada do folder */
+.tarja{display:inline-flex;align-items:center;gap:14px;background:var(--verde);color:#fff;font:700 clamp(22px,2.6vw,32px)/1.05 var(--h);text-transform:uppercase;letter-spacing:.02em;padding:14px 26px 14px 18px;margin:0 0 30px;box-shadow:12px 10px 0 var(--menta2)}
+.tarja-n{flex:none;display:grid;place-items:center;width:1.5em;height:1.5em;border-radius:50%;background:#fff;color:var(--verde-d);font-size:.72em;font-weight:800}
+.tarja-s{font-size:18px;padding:11px 18px 11px 12px;margin-bottom:18px;box-shadow:9px 7px 0 var(--menta2)}
+.tarja-s .tarja-n{font-size:15px;width:30px;height:30px}
+.tarja:not(:has(.tarja-n)){padding-left:22px}
+
+/* mosaico de abertura (painel "tradição em injeção de peças" do folder) */
+.mosaico-capa{background:var(--menta);padding:22px 0 28px}
+.mosaico{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(150px,13vw);gap:10px}
+.mz{position:relative;overflow:hidden;background:#fff}
+.mz img{width:100%;height:100%;object-fit:cover}
+.mz-larga{grid-column:span 2}
+.mz-marca{display:grid;place-items:center;padding:20px;grid-column:span 2}
+.mz-marca img{max-width:340px;width:90%;height:auto;object-fit:contain}
+.mz-verde{background:var(--lima)}
+.mz-lima{background:var(--verde)}
+.mz-txt{grid-column:span 2;grid-row:span 2;background:#fff;padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;justify-content:center;box-shadow:inset 0 -6px 0 var(--verde)}
+.mz-txt h1{font-size:clamp(32px,3.5vw,52px);color:var(--verde-d);text-transform:uppercase}
+.mz-frase{grid-column:span 2;background:#DDF2C9;display:flex;align-items:center;justify-content:flex-end;padding:20px 30px}
+.mz-frase p{margin:0;font:700 clamp(28px,3vw,46px)/1.02 var(--h);color:var(--verde);text-align:right}
+.mosaico .mz:nth-child(1){grid-column:span 1}
+@media (max-width:900px){.mosaico{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}.mz-txt{grid-row:auto;order:-1;grid-column:1/-1}.mz-verde,.mz-lima{display:none}.mosaico .mz-larga{grid-column:span 1}.mz-marca{grid-column:1/-1}}
+@media (max-width:900px){.mosaico{grid-auto-rows:auto}.mosaico .mz:not(.mz-txt):not(.mz-frase):not(.mz-marca){aspect-ratio:4/3}.mz-marca{padding:14px}.mz-frase{padding:16px 20px}}
+@media (max-width:480px){.mosaico{gap:8px}.mz-frase{justify-content:center}.mz-frase p{text-align:center;font-size:28px}}
+
+/* especialidades */
+.esp{background:#fff}
+.esp-rot{text-align:center;font:700 20px var(--h);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:44px}
+.esp-grade{display:grid;grid-template-columns:repeat(4,1fr)}
+.esp-it{display:flex;flex-direction:column;text-decoration:none;padding:0 24px;border-left:1px solid var(--line)}
+.esp-it:first-child{border-left:0;padding-left:0}.esp-it:last-child{padding-right:0}
+.esp-it figure{aspect-ratio:4/3;overflow:hidden;margin-bottom:18px;background:var(--menta)}
+.esp-it figure img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.esp-it:hover figure img{transform:scale(1.05)}
+.esp-logo{height:44px;width:auto;object-fit:contain;object-position:left;margin-bottom:14px}
+.esp-it h2{font-size:26px;margin-bottom:6px;color:var(--cor)}
+.esp-it p{font-size:15px;flex:1}
+.mais{display:inline-flex;align-items:center;gap:8px;font:700 16px var(--h);color:var(--cor);text-transform:uppercase;letter-spacing:.06em}
+.mais .ic{width:18px;transition:transform .2s}.esp-it:hover .mais .ic{transform:translateX(4px)}
+@media (max-width:1000px){.esp-grade{grid-template-columns:1fr 1fr;row-gap:44px}.esp-it:nth-child(3){border-left:0;padding-left:0}.esp-it:nth-child(2){padding-right:0}}
+@media (max-width:560px){.esp-grade{grid-template-columns:1fr}.esp-it{border-left:0;padding:0}}
+
+/* bloco "empresa" (painel do folder) */
+.empresa-a{background:var(--menta)}
+.empresa-a .in{display:grid;grid-template-columns:1fr 1.25fr;grid-template-rows:auto auto;gap:10px}
+.emp-txt{grid-row:span 2;background:#DDF2C9;padding:clamp(26px,3.6vw,48px)}
+.emp-txt .tarja{background:none;box-shadow:none;color:var(--verde);padding:0;font-size:clamp(40px,4.6vw,62px);text-transform:none;margin-bottom:20px}
+.emp-txt p{color:#24312a}
+.emp-foto{overflow:hidden;background:var(--azul)}.emp-foto img{width:100%;height:100%;object-fit:cover}
+.emp-qual,.emp-gar{padding:30px 32px}
+.emp-qual{background:var(--lima);color:#fff}
+.emp-qual h3{color:#fff;font-size:30px;line-height:.95;text-transform:lowercase}.emp-qual h3 b{font-size:44px;font-weight:800}
+.emp-qual p{font-weight:600;margin:0}
+.emp-gar{background:#fff}
+.emp-gar h3{color:var(--verde-d);font-size:26px}
+.emp-gar p{margin:0}
+.empresa-a .in{grid-template-areas:"t f" "t q" "t g"}
+.emp-txt{grid-area:t}.emp-foto{grid-area:f}.emp-qual{grid-area:q}.emp-gar{grid-area:g}
+@media (max-width:900px){.empresa-a .in{grid-template-columns:1fr;grid-template-areas:"f" "t" "q" "g"}}
+
+/* equipamentos */
+.equip-a .in{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.equip-a figure img{width:100%}
+.equip-a figcaption{font-size:13px;color:var(--mut);margin-top:8px}
+@media (max-width:900px){.equip-a .in{grid-template-columns:1fr}}
+
+/* polímeros sobre o verde-lima */
+.produtos-a{background:var(--lima)}
+.produtos-a .in{display:grid;grid-template-columns:.7fr 1.6fr;gap:40px;align-items:start}
+.produtos-a .tarja{background:#fff;color:var(--verde-d);box-shadow:12px 10px 0 rgba(255,255,255,.35)}
+.produtos-a .pa-txt p{color:#fff;font:700 22px/1.3 var(--h)}
+.produtos-a .polimeros li{border:0}
+.produtos-a .polimeros .destaque{background:var(--verde-d)}
+.produtos-a .polimeros .outros{background:var(--azul)}
+@media (max-width:900px){.produtos-a .in{grid-template-columns:1fr}}
+
+.faixa-contato{background:linear-gradient(110deg,var(--verde-d) 0%,#00684a 45%,var(--azul) 100%)}
+.v-a .faixa-contato .btn{background:#fff;color:var(--verde-d)}.v-a .faixa-contato .btn:hover{background:var(--menta)}
+.v-a .faixa-contato .btn-wa{background:#1f9d55;color:#fff}
+
+/* capa das páginas internas: aba menta com ponta em seta, como o cabeçalho do folder */
+.capa{background:var(--menta);padding:52px 0 0;position:relative}
+.capa .in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-bottom:46px}
+.capa .in:not(:has(.capa-foto)){grid-template-columns:1fr}
+.capa-txt{position:relative;background:var(--menta2);padding:34px 70px 34px 34px;clip-path:polygon(0 0,calc(100% - 46px) 0,100% 50%,calc(100% - 46px) 100%,0 100%)}
+.capa h1{color:var(--verde-d);text-transform:uppercase;font-size:clamp(32px,4.4vw,56px);margin-bottom:12px}
+.capa-txt p:last-child{margin:0;font-size:17px;color:#2f3d36;max-width:560px}
+.capa-foto{overflow:hidden;border:6px solid #fff;box-shadow:0 10px 30px rgba(0,60,40,.12)}
+.capa-foto img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.seta-inv{height:11px}
+@media (max-width:860px){.capa .in{grid-template-columns:1fr}.capa-txt{padding-right:56px}}
+
+/* sobre */
+.sobre-intro{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center}
+.lema{margin:0;padding:34px;background:var(--lima);color:#fff}
+.lema p{font:700 26px/1.25 var(--h);margin:0}
+.linha-tempo-s{background:var(--menta);padding-top:60px}
+.linha-tempo{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);counter-reset:lt}
+.linha-tempo li{padding:26px 22px 0 0;border-top:4px solid var(--verde);position:relative}
+.linha-tempo li::before{content:"";position:absolute;top:-12px;left:0;width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--verde)}
+.linha-tempo b{font:800 28px var(--h);color:var(--azul)}
+.linha-tempo h3{margin:6px 0 8px}
+.linha-tempo p{font-size:15px}
+.qualidade-s .in{display:grid;grid-template-columns:1.2fr 1fr;gap:10px}
+.qs{padding:36px}
+.qs-1{background:#DDF2C9;grid-row:span 2}
+.qs-2{background:var(--lima);color:#fff}.qs-2 h3{color:#fff;font-size:28px}
+.qs-foto img{width:100%;height:100%;object-fit:cover}
+.equip-s .in{display:grid;grid-template-columns:.7fr 1.3fr;gap:46px}
+@media (max-width:900px){.sobre-intro,.qualidade-s .in,.equip-s .in{grid-template-columns:1fr}.linha-tempo{grid-template-columns:1fr 1fr;row-gap:40px}}
+@media (max-width:520px){.linha-tempo{grid-template-columns:1fr}}
+
+/* marcas */
+.marcas-lista{display:flex;flex-direction:column;gap:70px}
+.marca-it{display:grid;grid-template-columns:1.1fr 1fr;gap:54px;align-items:center}
+.marca-it.inv figure{order:2}
+.marca-it figure{overflow:hidden;box-shadow:16px 14px 0 var(--menta2)}
+.marca-it figure img{width:100%;aspect-ratio:10/7;object-fit:cover}
+.mi-logo{height:56px;width:auto;margin-bottom:18px}
+.marca-it h2{color:var(--cor)}
+@media (max-width:860px){.marca-it{grid-template-columns:1fr;gap:28px}.marca-it.inv figure{order:0}}
+
+/* laboratórios: tabelas do folder */
+.lab-sec{background:var(--menta)}
+.lab-sec .busca-bar{background:var(--menta);border-color:var(--menta2)}
+.lab-lista{display:grid;grid-template-columns:1fr 1fr;gap:56px 48px}
+.lab-g{display:grid;grid-template-columns:1fr;align-content:start}
+.lab-g header{margin-bottom:6px}
+.lab-desc{background:var(--menta2);margin:-6px 0 14px 18px;padding:10px 16px;font-size:14.5px;text-align:center;color:#24312a}
+.lab-foto{background:#fff;margin:0 0 12px;max-height:240px;overflow:hidden}
+.lab-foto img{width:100%;height:240px;object-fit:contain}
+.cods{width:100%;border-collapse:separate;border-spacing:0 4px;font-size:15px}
+.cods th{width:70px;background:#a9d8b6;color:#173a26;font:800 17px var(--h);text-align:center;padding:6px 8px}
+.cods td{background:#fff;padding:6px 12px}
+.cods .col-add{width:1%;padding:3px 6px;text-align:right}
+.cods .add{padding:4px 10px 4px 7px;font-size:13px}
+.folder-orig{margin-top:70px;display:grid;grid-template-columns:.8fr 1.4fr 1fr;gap:20px;align-items:center;padding:26px;background:#fff}
+.folder-mini{position:relative;display:block}
+.folder-mini img{width:100%;border:1px solid var(--line)}
+.folder-mini .ic{position:absolute;right:10px;bottom:10px;width:34px;height:34px;padding:7px;border-radius:50%;background:var(--verde);color:#fff}
+@media (max-width:900px){.lab-lista{grid-template-columns:1fr}.folder-orig{grid-template-columns:1fr}}
+@media (max-width:520px){.cods .add .t1,.cods .add .t2{display:none}.cods .add{padding:6px}}
+
+/* Biovin */
+.bv-capa{background:#fff;padding:56px 0;border-bottom:6px solid var(--vinho)}
+.bv-capa .in{display:grid;grid-template-columns:1fr 1.05fr;gap:50px;align-items:center}
+.bv-logo{width:260px;height:auto;margin-bottom:6px}
+.bv-slogan{font:600 18px var(--h);color:var(--mut);margin-bottom:24px}
+.bv-capa h1{color:var(--vinho);font-size:clamp(32px,4vw,52px)}
+.bv-capa .btn-linha-clara{color:var(--vinho);box-shadow:inset 0 0 0 2px var(--vinho)}
+.bv-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bv-fotos figure{aspect-ratio:1/1;overflow:hidden;background:#000}
+.bv-fotos img{width:100%;height:100%;object-fit:cover}
+.grupos{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:46px}
+.grupos a{font:700 16px var(--h);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;padding:8px 16px;border:2px solid var(--vinho);color:var(--vinho)}
+.grupos a:hover{background:var(--vinho);color:#fff}
+.bv-grupo{margin-bottom:64px;scroll-margin-top:110px}
+.bv-prod .tarja{background:var(--vinho);box-shadow:12px 10px 0 #ead8da}
+.bv-prod .add.on{background:var(--vinho);border-color:var(--vinho)}
+.bv-person{background:#f6eff0}
+.bv-person .in{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.bv-person .tarja{background:var(--vinho);box-shadow:12px 10px 0 #ead8da}
+.bv-person .btn{background:var(--vinho)}
+@media (max-width:900px){.bv-capa .in,.bv-person .in{grid-template-columns:1fr}}
+
+/* PartyParts */
+.pp-capa{background:#fff url(/assets/img/party/respingo.webp) right center/auto 120% no-repeat;padding:70px 0}
+.pp-capa .in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.pp-txt{background:rgba(255,255,255,.92);padding:10px 0}
+.pp-logo{width:300px;height:auto}
+.pp-slogan{font:600 18px var(--h);color:var(--mut);margin:8px 0 22px}
+.pp-capa h1{color:var(--laranja);font-size:clamp(32px,4vw,52px)}
+.pp-hero{border:8px solid #fff;box-shadow:0 18px 40px rgba(0,0,0,.18);transform:rotate(2deg)}
+.pp-faixa{background:#fff7ef;padding:40px 0}
+.pp-galeria{display:grid;grid-template-columns:repeat(9,1fr);gap:8px}
+.pp-galeria button{aspect-ratio:1/1;overflow:hidden;background:#fff}
+.pp-galeria img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.pp-galeria button:hover img{transform:scale(1.06)}
+.pp-prod .tarja{background:var(--laranja);box-shadow:12px 10px 0 #fde2c8}
+.pp-prod .add.on{background:var(--laranja);border-color:var(--laranja)}
+@media (max-width:900px){.pp-capa{background-size:auto 70%;background-position:right bottom}.pp-capa .in{grid-template-columns:1fr}.pp-galeria{grid-template-columns:repeat(3,1fr)}}
+
+/* peças técnicas */
+.pecas-intro .in{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.pontos{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pontos li{background:var(--menta);padding:12px 14px;font-weight:600;color:var(--ink);font-size:15px}
+.pecas-galeria{background:var(--menta)}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:10px}
+.pg button{position:relative;overflow:hidden;background:#fff}
+.pg button img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.pg button:hover img{transform:scale(1.05)}
+.pg button span{position:absolute;left:0;bottom:0;background:var(--verde);color:#fff;font:600 13px var(--b);padding:5px 10px}
+.pg .pg-0{grid-column:span 2;grid-row:span 2}
+.pg .pg-2{grid-row:span 2}
+.pecas-pol{background:var(--lima)}
+.pecas-pol .tarja{background:#fff;color:var(--verde-d)}
+.pp-int{color:#fff;font:700 20px var(--h)}
+.pecas-pol .polimeros li{border:0}.pecas-pol .polimeros .destaque{background:var(--verde-d)}.pecas-pol .polimeros .outros{background:var(--azul)}
+.pecas-eq .in,.pecas-form .in{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px}
+.pecas-form{background:var(--menta)}
+@media (max-width:900px){.pecas-intro .in,.pecas-eq .in,.pecas-form .in{grid-template-columns:1fr}.pg{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.pg .pg-0{grid-column:span 2}}
+
+.contato-sec .tarja{margin-bottom:24px}

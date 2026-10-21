@@ -1,0 +1,204 @@
+/* Versão B "Injeção": o azul das fotos de estúdio da Bioplast como cor principal, granulado do logo como textura,
+   processo de injeção em etapas e a grade de polímeros. Verde do logo nos destaques. */
+.v-b{--bg:#fff}
+.v-b .topo{border-bottom:1px solid var(--line)}
+.v-b .menu a:hover{color:var(--azul)}
+.v-b .menu a[aria-current=page]{color:var(--azul);box-shadow:inset 0 -3px 0 var(--verde);border-radius:0}
+.v-b .btn-orc{background:var(--verde);color:#fff}.v-b .btn-orc:hover{background:var(--verde-d)}
+.v-b .eyebrow{color:var(--verde)}
+.tit{margin-bottom:34px;max-width:780px}
+.tit h2{margin:0}
+
+/* abertura */
+.hero{position:relative;overflow:hidden;color:#fff;background:var(--azul-dd);padding:96px 0 0}
+.hero-fundo{position:absolute;inset:0}
+.hero-fundo img{width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.hero-fundo::after{content:"";position:absolute;inset:0;background:linear-gradient(95deg,rgba(0,40,64,.94) 0%,rgba(0,58,92,.82) 42%,rgba(0,90,140,.25) 100%)}
+.hero-gran{left:-30px;top:40px;width:260px;height:300px;fill:var(--verde);opacity:.55}
+.hero .in{position:relative}
+.hero h1{color:#fff;max-width:760px;font-style:italic;font-size:clamp(38px,5.6vw,74px);text-transform:uppercase;line-height:.98}
+.hero-sub{max-width:600px;font-size:18px;color:#d9e8f0}
+.hero .eyebrow{color:var(--lima)}
+.hero-num{margin-top:70px;padding-top:28px;padding-bottom:34px;border-top:1px solid rgba(255,255,255,.18)}
+.hero-num .numeros li{border-color:rgba(255,255,255,.18)}
+.hero-num .numeros b{color:#fff}.hero-num .numeros span{color:#b8cfdb}
+
+/* frentes (lista + foto que troca) */
+.frentes-box{display:grid;grid-template-columns:1fr 1.15fr;gap:0;border:1px solid var(--line)}
+.frentes-lista{list-style:none;margin:0;padding:0}
+.frentes-lista a{display:grid;grid-template-columns:52px 1fr 24px;gap:14px;align-items:center;padding:26px 26px;text-decoration:none;border-bottom:1px solid var(--line);transition:background .2s}
+.frentes-lista li:last-child a{border-bottom:0}
+.fn{font:800 24px var(--h);color:var(--line)}
+.ft b{display:block;font:800 28px/1.05 var(--h);color:var(--ink)}
+.ft small{display:block;font-size:15px;color:var(--mut);margin-top:4px}
+.frentes-lista .ic{color:var(--mut);transition:transform .2s}
+.frentes-lista a.on,.frentes-lista a:hover{background:#f3f7f9}
+.frentes-lista a.on .fn{color:var(--cor)}.frentes-lista a.on b{color:var(--cor)}.frentes-lista a.on .ic{color:var(--cor);transform:translateX(4px)}
+.frentes-fotos{position:relative;min-height:440px;background:var(--azul-dd);overflow:hidden}
+.frentes-fotos figure{position:absolute;inset:0;opacity:0;transition:opacity .45s}
+.frentes-fotos figure.on{opacity:1}
+.frentes-fotos figure>img{width:100%;height:100%;object-fit:cover}
+.frentes-fotos figcaption{position:absolute;left:20px;bottom:20px;background:#fff;padding:10px 14px}
+.frentes-fotos figcaption img{height:38px;width:auto}
+@media (max-width:860px){.frentes-box{grid-template-columns:1fr}.frentes-fotos{min-height:260px;order:-1}.frentes-lista a{padding:18px 16px;grid-template-columns:40px 1fr 20px}.ft b{font-size:23px}}
+
+/* processo */
+.processo{background:#f2f6f8}
+.etapas{list-style:none;margin:0 0 40px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.etapas::before{content:"";position:absolute;left:0;right:0;top:27px;height:4px;background:linear-gradient(90deg,var(--azul),var(--verde))}
+.etapas li{position:relative;padding:0 20px 0 0}
+.et-n{position:relative;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#fff;border:4px solid var(--azul);font:800 20px var(--h);color:var(--azul);margin-bottom:18px}
+.etapas li:nth-child(n+3) .et-n{border-color:var(--verde);color:var(--verde-d)}
+.etapas li:nth-child(3) .et-n{background:var(--azul);color:#fff;border-color:var(--azul)}
+.etapas h3{font-size:22px;margin-bottom:6px}
+.etapas p{font-size:15px}
+.proc-foto img{width:100%;max-height:420px;object-fit:cover}
+@media (max-width:900px){.etapas{grid-template-columns:1fr;gap:22px}.etapas::before{left:27px;right:auto;top:0;bottom:0;width:4px;height:auto;background:linear-gradient(var(--azul),var(--verde))}.etapas li{display:grid;grid-template-columns:58px 1fr;column-gap:18px;padding:0}.et-n{grid-row:span 2;margin:0}.etapas h3{align-self:end;margin:0}}
+
+/* polímeros */
+.polim .in{display:grid;grid-template-columns:.8fr 1.5fr;gap:50px;align-items:start}
+@media (max-width:900px){.polim .in{grid-template-columns:1fr}}
+
+/* chamada do laboratório */
+.lab-chamada{background:var(--azul-d);color:#d9e8f0}
+.lab-chamada .in{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.lab-chamada h2{color:#fff}.lab-chamada .eyebrow{color:var(--lima)}
+.lab-chamada figure img{width:100%;max-height:520px;object-fit:cover}
+.lc-tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0 0 28px;padding:0}
+.lc-tags a{display:block;font-size:14px;text-decoration:none;padding:5px 11px;border:1px solid rgba(255,255,255,.3);border-radius:999px}
+.lc-tags a:hover{background:#fff;color:var(--azul-d)}
+@media (max-width:900px){.lab-chamada .in{grid-template-columns:1fr}}
+
+/* qualidade */
+.qual-b .in{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.qb{padding:10px 30px;border-left:1px solid var(--line)}
+.qb:first-child{border-left:0;padding-left:0}
+.qb-ic{width:44px;height:44px;color:var(--verde);margin-bottom:12px}
+.qb-n{display:block;font:800 34px/44px var(--h);color:var(--verde);margin-bottom:12px}
+@media (max-width:860px){.qual-b .in{grid-template-columns:1fr;gap:30px}.qb{border:0;padding:0}}
+
+.faixa-contato{background:linear-gradient(105deg,var(--azul-dd),var(--azul) 60%,#00866a)}
+.v-b .faixa-contato .btn{background:var(--verde)}
+
+/* capa interna */
+.capa{position:relative;overflow:hidden;background:var(--azul-dd);color:#d9e8f0;padding:84px 0 70px}
+.capa-fundo{position:absolute;inset:0}
+.capa-fundo img{width:100%;height:100%;object-fit:cover}
+.capa-fundo::after{content:"";position:absolute;inset:0;background:linear-gradient(95deg,rgba(0,40,64,.95),rgba(0,60,95,.75) 55%,rgba(0,80,122,.35))}
+.capa-gran{right:3%;top:20px;width:200px;height:240px;fill:var(--verde);opacity:.45;transform:scaleX(-1)}
+.capa .in{position:relative}
+.capa h1{color:#fff;font-style:italic;text-transform:uppercase;max-width:820px}
+.capa p:last-child{max-width:640px;font-size:18px;margin:0}
+.capa .eyebrow{color:var(--lima)}
+
+/* sobre */
+.sobre-intro{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center}
+.lema{margin:0;padding:0 0 0 28px;border-left:5px solid var(--verde)}
+.lema p{font:600 italic 27px/1.25 var(--h);color:var(--azul-d);margin:0}
+.linha-tempo-s{background:#f2f6f8}
+.linha-tempo{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.linha-tempo li{padding-top:18px;border-top:4px solid var(--azul)}
+.linha-tempo li:nth-child(even){border-color:var(--verde)}
+.linha-tempo b{font:800 30px var(--h);color:var(--azul)}
+.linha-tempo h3{margin:6px 0}
+.linha-tempo p{font-size:15px}
+.qualidade-s .in{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.qs-1{grid-row:span 2}
+.qs-2{background:var(--azul);color:#fff;padding:30px;margin-bottom:20px}.qs-2 h3{color:#fff;font-size:26px}
+.qs-foto img{width:100%}
+.equip-s{background:#f2f6f8}
+.equip-s .in{display:grid;grid-template-columns:.7fr 1.3fr;gap:46px}
+@media (max-width:900px){.sobre-intro,.qualidade-s .in,.equip-s .in{grid-template-columns:1fr}.linha-tempo{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.linha-tempo{grid-template-columns:1fr}}
+
+/* marcas */
+.marcas-lista{display:flex;flex-direction:column;gap:0}
+.marca-it{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;border-top:1px solid var(--line)}
+.marca-it figure img{width:100%;height:100%;min-height:340px;object-fit:cover}
+.marca-it>div{padding:48px;border-left:6px solid var(--cor)}
+.marca-it.inv figure{order:2}.marca-it.inv>div{border-left:0;border-right:6px solid var(--cor)}
+.mi-logo{height:52px;width:auto;margin-bottom:18px}
+@media (max-width:860px){.marca-it{grid-template-columns:1fr}.marca-it.inv figure{order:0}.marca-it>div,.marca-it.inv>div{padding:28px 0;border:0}.marca-it figure img{min-height:220px}}
+
+/* laboratórios: lista com busca */
+.lab-lista{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+details.lab-g{border-bottom:1px solid var(--line);scroll-margin-top:170px}
+.lab-g summary{display:grid;grid-template-columns:110px 1fr 30px;gap:20px;align-items:center;padding:14px 0;cursor:pointer;list-style:none}
+.lab-g summary::-webkit-details-marker{display:none}
+.lab-g summary img,.sem-foto{width:110px;height:82px;object-fit:contain;background:#f2f6f8}
+.sem-foto{display:grid;place-items:center;font:800 26px var(--h);color:var(--azul);background:#e6eff4}
+.lg-nome b{display:block;font:700 23px/1.1 var(--h);color:var(--ink)}
+.lg-nome small{color:var(--mut);font-size:14px}
+.lg-mais{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);position:relative}
+.lg-mais::before,.lg-mais::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:var(--azul);transform:translate(-50%,-50%)}
+.lg-mais::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .2s}
+details[open] .lg-mais::after{transform:translate(-50%,-50%) rotate(0)}
+.lg-corpo{padding:0 0 24px 130px}
+.lg-corpo>p{color:var(--mut);margin-bottom:12px}
+.chips{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.chips li{display:grid;grid-template-columns:62px 1fr auto;gap:12px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.chips code{text-align:center;background:var(--azul);color:#fff;font-size:13px}
+.folder-orig{margin-top:60px;display:grid;grid-template-columns:.8fr 1.4fr 1fr;gap:20px;align-items:center;padding:26px;background:#f2f6f8}
+.folder-mini{position:relative;display:block}
+.folder-mini img{width:100%;border:1px solid var(--line)}
+.folder-mini .ic{position:absolute;right:10px;bottom:10px;width:34px;height:34px;padding:7px;border-radius:50%;background:var(--azul);color:#fff}
+@media (max-width:860px){.lg-corpo{padding-left:0}.chips{grid-template-columns:1fr}.lab-g summary{grid-template-columns:76px 1fr 30px;gap:14px}.lab-g summary img,.sem-foto{width:76px;height:60px}.lg-nome b{font-size:19px}.folder-orig{grid-template-columns:1fr}}
+@media (max-width:520px){.chips li{grid-template-columns:56px 1fr}.chips .add{grid-column:2;justify-self:start}}
+
+/* Biovin: abertura em preto e bordô, como as fotos do catálogo */
+.bv-capa{background:#120c0d;color:#e9dcdd;padding:64px 0;position:relative;overflow:hidden}
+.bv-capa::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 30%,rgba(122,46,53,.55),transparent 55%)}
+.bv-capa .in{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center}
+.bv-logo{width:250px;height:auto;background:#fff;padding:10px 14px;border-radius:999px;margin-bottom:10px}
+.bv-slogan{font:600 italic 20px var(--h);color:#c9a7ab;margin-bottom:20px}
+.bv-capa h1{color:#fff;font-style:italic;text-transform:uppercase;font-size:clamp(32px,4vw,54px)}
+.bv-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.bv-fotos figure{aspect-ratio:3/4;overflow:hidden}
+.bv-fotos figure:nth-child(2),.bv-fotos figure:nth-child(5){transform:translateY(24px)}
+.bv-fotos img{width:100%;height:100%;object-fit:cover}
+.grupos{position:sticky;top:var(--topo-h,78px);z-index:4;background:#fff;display:flex;gap:4px;overflow-x:auto;margin-bottom:40px;border-bottom:1px solid var(--line)}
+.grupos a{flex:none;font:700 17px var(--h);text-decoration:none;padding:14px 16px;color:var(--mut)}
+.grupos a:hover{color:var(--vinho);box-shadow:inset 0 -3px 0 var(--vinho)}
+.bv-grupo{margin-bottom:60px;scroll-margin-top:150px}
+.bv-prod .eyebrow{color:var(--vinho)}
+.bv-prod .add.on{background:var(--vinho);border-color:var(--vinho)}
+.bv-person{background:#f6eff0}
+.bv-person .in{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.bv-person .eyebrow{color:var(--vinho)}
+.bv-person .btn{background:var(--vinho)}
+@media (max-width:900px){.bv-capa .in,.bv-person .in{grid-template-columns:1fr}}
+
+/* PartyParts: o respingo colorido da capa do catálogo */
+.pp-capa{position:relative;overflow:hidden;background:#fff;padding:60px 0}
+.pp-capa::before{content:"";position:absolute;inset:-5% 0 -5% 55%;background:url(/assets/img/party/respingo.webp) center/cover no-repeat;opacity:.9}
+.pp-capa .in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.pp-txt{background:#fff;padding:30px 30px 30px 0}
+.pp-logo{width:300px;height:auto}
+.pp-slogan{font:600 italic 20px var(--h);color:var(--mut);margin:8px 0 20px}
+.pp-capa h1{font-style:italic;text-transform:uppercase;color:var(--ink);font-size:clamp(30px,3.8vw,50px)}
+.pp-hero{border-radius:50%;overflow:hidden;aspect-ratio:1/1;border:10px solid #fff;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.pp-hero img{width:100%;height:100%;object-fit:cover}
+.pp-faixa{padding:0;background:#111}
+.pp-galeria{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}
+.pp-galeria button{flex:0 0 clamp(200px,24vw,320px);aspect-ratio:1/1;scroll-snap-align:start;overflow:hidden;background:#fff}
+.pp-galeria img{width:100%;height:100%;object-fit:cover}
+.pp-prod .eyebrow{color:var(--laranja)}
+.pp-prod .add.on{background:var(--laranja);border-color:var(--laranja)}
+@media (max-width:900px){.pp-capa .in{grid-template-columns:1fr}.pp-capa::before{inset:50% -20% -10% -10%}.pp-hero{max-width:300px}}
+
+/* peças técnicas */
+.pecas-intro .in{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.pontos{list-style:none;margin:20px 0 0;padding:0}
+.pontos li{padding:10px 0 10px 26px;border-bottom:1px solid var(--line);position:relative;font-weight:600;color:var(--ink)}
+.pontos li::before{content:"";position:absolute;left:0;top:17px;width:10px;height:10px;border-radius:50%;background:var(--verde)}
+.pecas-galeria{background:#f2f6f8}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pg button{position:relative;aspect-ratio:4/3;overflow:hidden;background:#fff}
+.pg button img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.pg button:hover img{transform:scale(1.05)}
+.pg button span{position:absolute;inset:auto 0 0 0;background:linear-gradient(transparent,rgba(0,30,50,.85));color:#fff;font:600 13px var(--b);padding:22px 12px 9px}
+.pecas-pol .pp-int{color:var(--mut)}
+.pecas-eq .in,.pecas-form .in{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px}
+.pecas-form{background:#f2f6f8}
+@media (max-width:900px){.pecas-intro .in,.pecas-eq .in,.pecas-form .in{grid-template-columns:1fr}.pg{grid-template-columns:1fr 1fr}}
+
+.rod-gran{right:-40px;top:-20px;width:260px;height:200px;fill:var(--verde);opacity:.18}
