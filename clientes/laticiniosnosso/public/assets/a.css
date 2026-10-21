@@ -17,7 +17,7 @@
 .barra{background:var(--azul);color:#fff;font-size:14.5px;border-top:5px solid var(--ceu);border-bottom:5px solid var(--ceu)}
 .barra .in{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px}
 .barra a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
-.barra-tel{display:flex;gap:22px;font-weight:600}
+.barra-tel{display:flex;gap:22px;font-weight:600;white-space:nowrap}
 .barra-dir{display:flex;align-items:center;gap:14px}
 .barra-rep{font-family:var(--h);font-weight:700;border-bottom:1px solid rgba(255,255,255,.5)}
 .barra .ic{width:16px;height:16px}
@@ -52,7 +52,7 @@
 .produtos-a .sec-tit{text-align:center;margin-left:auto;margin-right:auto}
 
 /* receitas sobre a madeira */
-.receitas-a{background:linear-gradient(rgba(43,22,10,.86),rgba(43,22,10,.86)),url(/assets/img/madeira.webp) center/1400px auto repeat;color:#f3e9df}
+.receitas-a{background:linear-gradient(rgba(43,22,10,.86),rgba(43,22,10,.86)),url(/assets/img/madeira.webp) center/cover;color:#f3e9df}
 .receitas-a h2,.receitas-a .rec-nome{color:#fff}
 .receitas-a .eyebrow{color:var(--amarelo)}
 .receitas-a .btn-vinho{background:var(--amarelo);color:var(--vinho)}
@@ -96,7 +96,7 @@
   .rec-destaque{grid-template-columns:1fr 1fr}.rec-destaque li:first-child{grid-row:auto;grid-column:1/-1}
 }
 @media (max-width:560px){
-  .barra-rep{display:none}
+  .barra .barra-rep{display:none}
   .quem-grade{grid-template-columns:1fr;gap:20px}
   .vertical{writing-mode:horizontal-tb;transform:none;font-size:40px;align-self:start}
   .rec-destaque{grid-template-columns:1fr}
