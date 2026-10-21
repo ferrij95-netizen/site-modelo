@@ -1,0 +1,11 @@
+# Mazzer: como este site é feito
+
+- Cliente: Mazzer Equipamentos Industriais, Rua Antônio Gatto Júnior, 111, Distrito Industrial, Sertãozinho SP. Escolhido no lote 3 de sites ruins (21/10/2026), sem pedido do cliente.
+- Site atual: mazzer.com.br (tema antigo da RGB Comunicação). Só português, então o novo é só `pt`.
+- Marca: logo vetorizado (potrace) de `mazzer-logo-1.png` do site atual: `public/assets/logo.svg` (preto) e `logo-branco.svg`. Cores do site e do logo: preto, branco e cinza; o corte diagonal preto vem dos banners atuais. Títulos em Archivo larga (o mais parecido com o logo largo e pesado), texto em Inter.
+- Fotos: todas do site atual. Banners recortados sem o texto embutido, fotos dos 4 setores, fachada, fotos e desenhos técnicos de cada equipamento (originais em tamanho cheio, `img/eq/<slug>-n.webp`, desenhos detectados pelo fundo branco) e o "Antes e Depois" da prensa de sucção e da rebobinadeira.
+- Textos: home, A Empresa e setores do site atual em `conteudo.mjs`; 54 equipamentos em `equipamentos.json` (nome, texto e tabela de cada página de produto; tabelas reorganizadas do texto corrido). Escritos por nós: texto padrão dos itens que só têm nome no site atual, textos de cada linha, etapas "Da fibra à bobina", títulos de seção, texto de Mineração.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Usinagem" (fiel: mesmo menu, faixa de contato, 4 setores com moldura, bloco preto, rodapé cinza; 7 páginas), `/b/` "Prancheta" (clara, folha de desenho com carimbo, catálogo único com filtro e busca; 5 páginas). Cada versão tem uma página por equipamento em `equipamentos/<slug>/`.
+- Lista de orçamento: botões "Orçar" guardam os itens no navegador e o formulário abre o e-mail para mazzer@. Não há WhatsApp no site atual.
+- Gerar: `node clientes/mazzer/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg`, `versao-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: texto da página Mineração (vazia no site atual); "Tratamento de Efluentes" ficou de fora (vazio no site atual); coluna "Consistência" da tabela do depurador vertical (o site lista o valor sem título); Bateria de Cleaners e Extrator de Tranças sem foto; se tem WhatsApp comercial.
