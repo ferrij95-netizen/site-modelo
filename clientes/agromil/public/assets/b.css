@@ -1,0 +1,64 @@
+/* Versão B "Da semente à colheita": foto de abertura em tela cheia, ciclo com fotos e faixa marrom de vendas. */
+.topo-foto { position: absolute; left: 0; right: 0; top: 34px; background: transparent; border-bottom: 1px solid rgba(255, 255, 255, .18); }
+.topo-foto .logo-cor { display: none; }
+.topo-foto .marca .logo-branco { display: block; }
+.topo-foto nav a { color: #fff; }
+.topo-foto nav a:hover { color: var(--lima-claro); }
+.topo-foto nav a.nav-cta { background: var(--lima); color: #1d3311; }
+.topo-foto .menu-btn { color: #fff; }
+
+.hero-b { position: relative; min-height: min(100svh, 860px); display: flex; flex-direction: column; justify-content: flex-end; color: #fff; overflow: hidden; }
+.hero-b-foto { position: absolute; inset: 0; border-radius: 0; }
+.hero-b-foto img { animation: aproxima 22s ease-out both; }
+@keyframes aproxima { from { transform: scale(1.1); } to { transform: scale(1); } }
+.hero-b::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 40, 22, .55) 0%, rgba(5, 40, 22, .15) 35%, rgba(5, 50, 28, .75) 72%, rgba(5, 45, 25, .95) 100%), linear-gradient(90deg, rgba(0, 90, 48, .55), transparent 70%); }
+.hero-b-txt { position: relative; z-index: 2; padding-top: 200px; }
+.hero-b h1 { font-size: clamp(2.3rem, 6vw, 5rem); max-width: 11em; }
+.hero-b .lead { color: #e2eee0; }
+.hero-b-dados { position: relative; z-index: 2; margin-top: 56px; border-top: 1px solid rgba(255, 255, 255, .2); }
+.hero-b-dados .in { display: grid; grid-template-columns: repeat(3, 1fr); }
+.hero-b-dados .in > div { padding: 24px 0 30px; display: grid; gap: 4px; }
+.hero-b-dados .in > div + div { padding-left: 32px; border-left: 1px solid rgba(255, 255, 255, .2); }
+.hero-b-dados strong { font: 800 clamp(1.4rem, 2.6vw, 2.1rem)/1 var(--tit); color: var(--lima-claro); }
+.hero-b-dados span { font-size: .9rem; color: #cfe0d2; }
+
+.v-b .ciclo-fotos .etapa-n { background: var(--verde); color: #fff; }
+
+.linhas-b { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 28px; }
+.lb { position: relative; text-decoration: none; display: block; }
+.lb-foto { aspect-ratio: 5 / 4; margin-bottom: 18px; }
+.lb-foto img { transition: transform .5s; }
+.lb:hover .lb-foto img { transform: scale(1.05); }
+.lb-n { position: absolute; top: 14px; left: 14px; font: 800 .85rem/1 var(--tit); background: #fff; color: var(--marrom); padding: 8px 10px; border-radius: 4px; }
+.lb h3 { font-size: 1.3rem; color: var(--verde-fundo); }
+.lb p { color: var(--cinza); margin: 0; font-size: .95rem; }
+
+.vendas-b { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 90px); align-items: center; }
+.vendas-b .lead { color: #ecdcd3; }
+.vendas-b-lista .vend:last-child { border-bottom: 1px solid rgba(255, 255, 255, .18); }
+.vendas-b-lista .vend { padding: 22px 0; }
+.vendas-b-lista .vend-txt strong { font-size: 1.3rem; }
+
+.sobre-b { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+.sobre-b-foto { aspect-ratio: 4 / 5; border-radius: 8px 120px 8px 8px; position: sticky; top: 110px; }
+.sobre-b .publico { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+.v-b .capa::after { background: linear-gradient(90deg, rgba(74, 40, 30, .9) 0%, rgba(90, 50, 38, .6) 50%, rgba(90, 50, 38, .05) 100%); }
+.v-b .capa .eyebrow { color: var(--lima); }
+.v-b .sec-verde { background: linear-gradient(135deg, #0b4d2c 0%, #0a6a3a 55%, #3d8a2a 130%); }
+
+@media (max-width: 1080px) {
+  .topo-foto nav { background: #fff; }
+  .linhas-b { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .topo-foto { top: 0; }
+  .barra { display: none; }
+  .v-b:not(.p-index) .barra { display: block; }
+  .hero-b-txt { padding-top: 140px; }
+  .hero-b-dados .in { grid-template-columns: 1fr 1fr; }
+  .hero-b-dados .in > div:last-child { display: none; }
+  .hero-b-dados .in > div + div { padding-left: 18px; }
+  .linhas-b, .vendas-b, .sobre-b, .sobre-b .publico { grid-template-columns: 1fr; }
+  .sobre-b-foto { position: static; aspect-ratio: 4 / 3; }
+}

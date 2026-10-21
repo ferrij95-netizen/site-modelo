@@ -1,0 +1,40 @@
+/* Versão A "Tradição": fiel ao site atual, fundo branco com o logo em destaque e os vendedores logo abaixo. */
+.hero-a { padding: clamp(40px, 6vw, 80px) 0 clamp(56px, 7vw, 96px); background: linear-gradient(180deg, #fff 0%, #fff 60%, var(--tinta) 100%); }
+.hero-a-grade { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero-a h1 { color: var(--verde-fundo); }
+.hero-a .lead { color: var(--cinza); }
+.hero-a-fotos { position: relative; height: clamp(380px, 40vw, 520px); }
+.hf-1 { position: absolute; inset: 0 18% 14% 0; border-radius: 120px 8px 8px 8px; }
+.hf-2 { position: absolute; right: 0; bottom: 0; width: 46%; aspect-ratio: 4 / 5; border: 8px solid #fff; border-radius: 8px 8px 80px 8px; box-shadow: 0 20px 40px rgba(10, 60, 30, .18); }
+.hf-semente { position: absolute; left: -18px; bottom: 10%; width: 44px; height: auto; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .15)); }
+
+.faixa-vendas { background: var(--tinta); padding: 0 0 clamp(48px, 6vw, 80px); }
+.faixa-vendas .in { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: center; background: #fff; border-radius: 14px; padding: 36px 40px; box-shadow: 0 18px 50px rgba(10, 60, 30, .08); }
+.fv-tit h2 { font-size: clamp(1.4rem, 2.2vw, 1.9rem); color: var(--verde-fundo); }
+.fv-tit p:last-child { margin: 0; color: var(--cinza); font-size: .95rem; }
+.fv-tit a { color: var(--verde-esc); }
+.fv-lista { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 24px; }
+.fv-lista .vend { grid-template-columns: auto 1fr; border-top: 0; border-left: 1px solid var(--linha); padding: 4px 0 4px 22px; }
+.fv-lista .vend-wa { grid-column: 1 / -1; justify-content: center; }
+
+.sobre-a { display: grid; grid-template-columns: auto 1fr; gap: clamp(32px, 6vw, 90px); align-items: center; }
+.sobre-ano { display: grid; justify-items: start; color: var(--marrom); font: 600 1rem/1.2 var(--tit); }
+.sobre-ano strong { font: 800 clamp(4.5rem, 10vw, 8rem)/1 var(--tit); color: var(--verde); letter-spacing: -.04em; }
+.sobre-ano span:first-child { text-transform: uppercase; letter-spacing: .2em; font-size: .8rem; }
+.sec-verde .etapa-n { background: #fff; color: var(--verde-esc); }
+
+.v-a .capa::after { background: linear-gradient(90deg, rgba(0, 90, 48, .92) 0%, rgba(0, 110, 60, .65) 50%, rgba(0, 110, 60, .05) 100%); }
+
+@media (max-width: 1080px) {
+  .faixa-vendas .in { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 760px) {
+  .hero-a-grade { grid-template-columns: 1fr; }
+  .hero-a-fotos { height: 340px; }
+  .hf-semente { left: -4px; width: 34px; }
+  .faixa-vendas .in { padding: 26px 20px; }
+  .fv-lista { grid-template-columns: 1fr; }
+  .fv-lista .vend { grid-template-columns: auto 1fr auto; border-left: 0; border-top: 1px solid var(--linha); padding: 14px 0; }
+  .fv-lista .vend-wa { grid-column: auto; }
+  .sobre-a { grid-template-columns: 1fr; }
+}
