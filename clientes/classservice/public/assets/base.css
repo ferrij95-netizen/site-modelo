@@ -1,0 +1,97 @@
+/* Class-Service · base comum às versões A e B. Marca do site atual: logo em Times (aqui Tinos) branco sobre grafite
+   de metal escovado, com filete vermelho. Texto em Inter. */
+:root{--red:#d4001f;--red-d:#a80018;--g9:#141517;--g8:#1d1e20;--g7:#2a2b2e;--g6:#3a3c40;--g4:#8a8e94;--prata:#c9ccd1;--ink:#1d1e20;--txt:#45484d;--mut:#6b6f75;--line:#dfe1e4;--h:Tinos,'Times New Roman',serif;--b:Inter,system-ui,sans-serif;--r:4px;--in:1200px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font:16px/1.65 var(--b);color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--h);font-weight:400;color:var(--ink);line-height:1.1;margin:0 0 .5em;letter-spacing:-.005em}
+h1{font-size:clamp(36px,5vw,62px)}
+h2{font-size:clamp(28px,3.3vw,42px)}
+h3{font-size:21px;font-weight:700}
+p{margin:0 0 1em}
+.in{max-width:var(--in);margin:0 auto;padding:0 24px}
+.pular{position:absolute;left:-999px;top:0;background:#000;color:#fff;padding:8px 14px;z-index:99}.pular:focus{left:8px}
+.ic{width:20px;height:20px;flex:none}
+.eyebrow{font:600 12px/1.4 var(--b);text-transform:uppercase;letter-spacing:.18em;color:var(--red);margin:0 0 14px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--b);text-decoration:none;background:var(--red);color:#fff;border:0;border-radius:var(--r);padding:15px 22px;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--red-d)}.btn .ic{width:18px;height:18px}
+.btn-claro{background:#fff;color:var(--ink)}.btn-claro:hover{background:var(--prata)}
+.btn-sec{background:var(--g7)}.btn-sec:hover{background:var(--g9)}
+.btn-wa{background:#1f9d55}.btn-wa:hover{background:#178246}
+.link{display:inline-flex;gap:8px;align-items:center;font:600 15px var(--b);color:var(--red);text-decoration:none}.link .ic{width:18px;transition:transform .2s}.link:hover .ic{transform:translateX(4px)}
+.botoes{display:flex;gap:12px;flex-wrap:wrap}
+.sec-tit{max-width:760px;margin-bottom:40px}
+.num{font:400 15px var(--h);color:var(--red);letter-spacing:.05em}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:30}
+.menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:inherit}.menu-btn .ic{width:28px;height:28px}
+.menu-tel{display:none!important}
+
+/* nota do Google */
+.nota{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;text-decoration:none}
+.nota .estrelas{display:inline-flex;gap:2px;color:#f2b200}.nota .estrelas .ic{width:17px;height:17px;fill:currentColor;stroke:none}
+.nota b{font:400 30px/1 var(--h)}
+.nota span:last-child{font-size:14px;opacity:.8}
+
+/* chips */
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font:400 18px var(--h);padding:8px 16px;border:1px solid currentColor;border-radius:2px}
+
+/* checks */
+.checks{list-style:none;padding:0;margin:20px 0}.checks li{display:flex;gap:10px;align-items:flex-start;margin:0 0 10px}.checks .ic{color:var(--red);margin-top:3px}
+
+/* canais */
+.canais{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:8px}
+.canais a{display:flex;gap:14px;align-items:center;text-decoration:none;padding:12px 14px;border-radius:var(--r);transition:background .2s}
+.canais .ic{width:22px;height:22px;color:var(--red)}
+.canais span{display:flex;flex-direction:column;line-height:1.35}.canais b{font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+
+/* mapa */
+.mapa{min-height:380px;border-radius:var(--r);overflow:hidden;background:#ddd}
+.mapa iframe{display:block;width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.6) contrast(1.05)}
+
+/* formulário */
+.form{max-width:860px}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.campos label{display:flex;flex-direction:column;gap:6px;font:600 13px var(--b);letter-spacing:.04em}
+.campos .largo{grid-column:1/-1}
+.campos input,.campos select,.campos textarea{font:16px var(--b);padding:13px 14px;border-radius:var(--r);border:1px solid var(--line);background:#fff;color:var(--ink);width:100%}
+.campos input:focus,.campos select:focus,.campos textarea:focus{outline:2px solid var(--red);outline-offset:1px}
+.campos label:has([required])::after{content:none}
+.form-acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+
+/* certificados (folhas) */
+.folhas{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start}
+.folhas a{display:block;background:#fff;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.18);transition:transform .25s}
+.folhas a:hover{transform:translateY(-4px) rotate(-.5deg)}
+
+/* rodapé */
+.rodape{background:var(--g9);color:#b9bcc1;padding:64px 0 0;font-size:15px}
+.rodape .in{display:grid;grid-template-columns:1.4fr 1fr 1fr .8fr;gap:40px}
+.rodape h3{font:600 12px var(--b);letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:14px}
+.rodape a{text-decoration:none}.rodape a:hover{color:#fff}
+.rod-marca img{width:240px;margin-bottom:18px}
+.rodape nav{display:flex;flex-direction:column;gap:4px}
+.rod-link{display:inline-flex;gap:8px;align-items:center;color:#fff}.rod-link .ic{width:16px;color:var(--red)}
+.rod-fim{margin:48px 0 0;padding:20px 24px;border-top:1px solid #2a2b2e;text-align:center;font-size:13px;color:#81858b}
+.rod-fim span{display:block;font-size:12px;margin-top:4px}.rod-fim a{text-decoration:underline}
+.wa-flut{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#1f9d55;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.3);z-index:40}
+.wa-flut .ic{width:30px;height:30px}
+
+@media (max-width:980px){
+  .menu-btn{display:block}
+  .rodape .in{grid-template-columns:1fr 1fr}
+  .folhas{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .in{padding:0 18px}
+  .campos{grid-template-columns:1fr}
+  .rodape .in{grid-template-columns:1fr}
+  .form-acoes .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+.nw{white-space:nowrap}
+.pac-dir{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
