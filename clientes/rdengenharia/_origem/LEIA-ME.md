@@ -1,0 +1,11 @@
+# RD Engenharia Elétrica: como este site é feito
+
+- Cliente: RD Engenharia Elétrica Ltda, Rua Tronca, 2660, sala 1505, Caxias do Sul RS. Escolhido na prospecção de advocacia/engenharia (21/10/2026, /mnt/project-files/prospeccao/nichos/advocacia-engenharia/LISTA.md), sem pedido do cliente.
+- Site atual: rdeng.com.br, em Wix. Só português, então o novo é só `pt`. O Wix passou a mostrar uma tela de verificação ao navegador automatizado; as páginas foram lidas pelo HTML do servidor (curl) e as fotos baixadas em tamanho original de static.wixstatic.com.
+- Marca: `logo.svg` vetorizado do PNG de 1726 px do site (potracer, camadas vermelha #ED1C24 e grafite #231F20); `logo-branco.svg` troca o grafite por branco; `desde.svg` é o "desde 1980" do logo; `rd.svg` só as letras RD (favicon). Títulos em Exo 2 (o "engenharia elétrica" do logo é um sans itálico do tipo Neo Sans), texto em Inter (o site atual usa Jura).
+- Fotos: todas do site atual (projetos 3D, inspeções com drone, termografia, usina solar), sem banco de imagens. Muitas são pequenas (até 1024 px), por isso aparecem em molduras e não em tela cheia. Logos de clientes: Grendene, Pettenati e Isabela (os três que estão na página Clientes).
+- Textos: todos do site atual em `conteudo.mjs`, com digitação corrigida. Escritos por nós: títulos de seção, o resumo curto de cada serviço quando o site não tinha um, os textos curtos da linha do tempo e o bloco "Energia" da página inicial.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Moldura" e `/b/` "Unifilar". 23 páginas em cada: Início, Projetos, Projetos 3D, Serviços (+12), Energia (+3), Treinamentos, Clientes, História, Contato. O menu é o mesmo do site atual.
+- Formulário de contato: monta um e-mail para contato@rdeng.com.br no programa de e-mail do visitante (não há servidor).
+- Gerar: `node clientes/rdengenharia/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: se há WhatsApp comercial; se a área de clientes e os downloads do Wix ainda são usados (ficaram de fora); se o logo existe em vetor; lista maior de clientes; datas das turmas de NR-10.
