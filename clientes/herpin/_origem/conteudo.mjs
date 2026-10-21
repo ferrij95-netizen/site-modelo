@@ -39,7 +39,7 @@ export const departamentos = [
   { id: 'papel', nome: 'Embalagens de papel', curto: 'Papel', capa: 'sacos-kraft', frase: 'Sacos kraft, caixas de papelão, formas de pizza, guardanapos e bobinas de papel.' },
   { id: 'plasticas', nome: 'Embalagens plásticas', curto: 'Plásticas', capa: 'filme-pvc', frase: 'Bobinas, sacolas, filme PVC, copos, potes, talheres e sacos de lixo.' },
   { id: 'utensilios', nome: 'Equipamentos, acessórios e utensílios em geral', curto: 'Utensílios', capa: 'bandeja-plastica', frase: 'Dispensers, galheteiros, seladora de marmitex, lixeiras e tudo para o balcão.' },
-  { id: 'limpeza', nome: 'Produtos de limpeza e higiene', curto: 'Limpeza', capa: 'desinfetante', frase: 'Detergentes, desinfetantes, papel higiênico, vassouras, rodos, luvas e toucas.' },
+  { id: 'limpeza', nome: 'Produtos de limpeza e higiene', curto: 'Limpeza', capa: 'detergente', frase: 'Detergentes, desinfetantes, papel higiênico, vassouras, rodos, luvas e toucas.' },
 ];
 
 export const produtos = JSON.parse(fs.readFileSync(path.join(aqui, 'produtos.json'), 'utf8'))

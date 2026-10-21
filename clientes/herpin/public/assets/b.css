@@ -28,6 +28,7 @@ body.v-b { background: #fff; }
 
 /* balcão (abertura) */
 .balcao { background: linear-gradient(180deg, var(--cinza) 0%, #fff 100%); border-bottom: 1px solid var(--linha); }
+.balcao-g > *, .rapido-g > *, .cat-g > *, .tele-g > *, .ondeb-g > * { min-width: 0; }
 .balcao-g { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 56px 0; }
 .balcao h1 { color: var(--azul); font-size: clamp(2rem, 4vw, 3rem); max-width: 16ch; }
 .balcao .lead { font-size: 1.1rem; max-width: 50ch; }

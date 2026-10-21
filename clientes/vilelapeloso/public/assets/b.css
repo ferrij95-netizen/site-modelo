@@ -1,0 +1,120 @@
+/* Versão B · Andamento: mais clara, títulos condensados como as faixas do site atual, áreas numeradas e o caminho do caso em linha do tempo */
+.v-b{--fh:'Barlow Condensed',system-ui,sans-serif;--fb:Barlow,system-ui,sans-serif;--raio:2px}
+.v-b h1,.v-b h2,.v-b h3{font-weight:600;letter-spacing:0}
+.v-b .tit{font-size:clamp(34px,4vw,54px);line-height:1.02;text-transform:uppercase}
+.v-b .olho{font-family:Archivo,var(--fb);font-size:12px;letter-spacing:.24em}
+.v-b .btn,.v-b .link{font-family:Archivo,var(--fb);font-size:15px}
+
+.v-b .topo{background:#fff;color:var(--escuro);border-bottom:1px solid var(--linha)}
+.v-b .topo::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--escuro),var(--bronze) 45%,var(--ouro))}
+.v-b .topo .marca-txt b{color:var(--escuro)}.v-b .topo .marca-txt small{color:var(--ouro-esc);opacity:1}
+.v-b .topo .balanca{color:var(--bronze)}
+.v-b .rodape h2{font-family:Archivo,var(--fb)}
+.v-b .menu a{font-family:Archivo,var(--fb);font-weight:500;font-size:14.5px}
+.v-b .menu a:hover{background:var(--areia)}
+.v-b .menu a[aria-current]{color:var(--ouro-esc);background:var(--areia)}
+
+/* abertura */
+.b-hero{background:linear-gradient(180deg,var(--areia),#fff);padding:64px 0 0}
+.b-hero-grade{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center}
+.b-hero h1{font-size:clamp(46px,6.3vw,94px);line-height:.95;text-transform:uppercase;color:var(--escuro);margin-bottom:24px}
+.b-hero-sub{font-size:19px;max-width:560px;color:var(--suave)}
+.b-hero-foto{position:relative;align-self:stretch}
+.b-hero-foto img{width:100%;height:100%;min-height:480px;max-height:620px;object-fit:cover;border-radius:var(--raio)}
+.b-selo{position:absolute;left:-44px;bottom:36px;background:linear-gradient(135deg,var(--escuro),var(--marrom) 55%,var(--bronze));color:var(--ouro-claro);padding:22px 28px;display:flex;flex-direction:column;box-shadow:var(--sombra)}
+.b-selo-n{font-family:var(--fh);font-weight:700;font-size:64px;line-height:.9;color:#fff}
+.b-selo span:last-child{font-family:Archivo,var(--fb);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;margin-top:8px}
+.b-fatos{display:grid;grid-template-columns:repeat(4,1fr);margin-top:64px}
+.b-fatos>div{padding:28px 24px 34px;border-left:1px solid var(--linha);border-top:1px solid var(--linha);display:flex;flex-direction:column}
+.b-fatos>div:first-child{border-left:0;padding-left:0}
+.b-fatos b{font-family:var(--fh);font-weight:600;font-size:40px;line-height:1;color:var(--escuro);display:flex;align-items:center;gap:8px}
+.b-fatos b .ic{width:28px;height:28px;color:var(--ouro);fill:var(--ouro)}
+.b-fatos span{font-size:15px;color:var(--suave);margin-top:6px}
+
+/* áreas numeradas sobre marrom */
+.b-areas{background:radial-gradient(800px 420px at 90% 0,rgba(183,154,96,.22),transparent 70%),linear-gradient(160deg,var(--escuro),var(--marrom));color:rgba(255,255,255,.78);padding:96px 0}
+.b-sec-cab{margin-bottom:40px}
+.b-areas .olho{color:var(--ouro)}.b-areas .tit{color:#fff;margin:0}
+.b-area{display:grid;grid-template-columns:120px 1fr 1.15fr 48px;gap:32px;align-items:start;padding:40px 0;border-top:1px solid rgba(220,201,160,.28);text-decoration:none;color:inherit}
+.b-area:last-child{border-bottom:1px solid rgba(220,201,160,.28)}
+.b-area-n{font-family:var(--fh);font-weight:700;font-size:96px;line-height:.8;color:transparent;-webkit-text-stroke:1.2px var(--ouro);transition:color .3s}
+.b-area:hover .b-area-n{color:var(--ouro)}
+.b-area h3{color:#fff;font-size:clamp(30px,3vw,42px);text-transform:uppercase}
+.b-area ul{list-style:none;padding:0;margin:6px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;font-size:15.5px}
+.b-area li{padding-top:10px;border-top:1px solid rgba(255,255,255,.12)}
+.b-area-ir{width:48px;height:48px;border:1px solid rgba(220,201,160,.5);border-radius:50%;display:grid;place-items:center;color:var(--ouro);transition:background .3s,color .3s}
+.b-area:hover .b-area-ir{background:var(--ouro);color:var(--escuro)}
+
+/* o caminho do caso */
+.b-caminho{background:var(--areia);padding:96px 0}
+.b-caminho-grade{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
+.b-caminho-cab{position:sticky;top:120px}
+.b-caminho-cab p:not(.olho){color:var(--suave);font-size:17.5px}
+.b-caminho-cab .btn-claro{background:var(--escuro);color:#fff;margin-top:8px}
+.b-etapas{list-style:none;padding:0;margin:0;position:relative;counter-reset:e}
+.b-etapas::before{content:'';position:absolute;left:31px;top:10px;bottom:10px;width:2px;background:var(--linha)}
+.b-etapas::after{content:'';position:absolute;left:31px;top:10px;width:2px;height:var(--enche,0%);max-height:calc(100% - 20px);background:linear-gradient(180deg,var(--bronze),var(--ouro));transition:height .2s linear}
+.b-etapas li{position:relative;display:grid;grid-template-columns:64px 1fr;column-gap:28px;padding:0 0 42px}
+.b-etapas li:last-child{padding-bottom:0}
+.b-etapas .et-n{grid-row:span 2;position:relative;z-index:1;width:64px;height:64px;display:grid;place-items:center;background:#fff;border:2px solid var(--linha);font-family:var(--fh);font-weight:700;font-size:26px;color:var(--suave);transition:all .4s}
+.b-etapas li.aceso .et-n{background:var(--escuro);border-color:var(--escuro);color:var(--ouro-claro)}
+.b-etapas h3{font-size:28px;text-transform:uppercase;margin:6px 0 6px}
+.b-etapas p{color:var(--suave);margin:0;max-width:520px}
+.b-etapas li:last-child .et-n{border-color:var(--ouro)}
+
+/* escritório */
+.b-escritorio{padding:96px 0;background:#fff}
+.b-esc-grade{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center}
+.b-esc-foto{margin:0;position:relative}
+.b-esc-foto img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--raio)}
+.b-esc-foto::after{content:'';position:absolute;right:-18px;bottom:-18px;width:55%;height:55%;border:2px solid var(--ouro);z-index:-1}
+.b-equipe{list-style:none;padding:0;margin:8px 0 28px}
+.b-equipe li{display:grid;grid-template-columns:1fr auto;gap:2px 20px;padding:14px 0;border-bottom:1px solid var(--linha)}
+.b-equipe b{font-family:var(--fh);font-size:23px;font-weight:600;color:var(--escuro)}
+.b-equipe span{font-family:Archivo,var(--fb);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro-esc);align-self:center;text-align:right}
+.b-equipe small{grid-column:1/-1;color:var(--suave);font-size:15px}
+.b-missao{margin:0 0 26px;padding:26px 28px;background:var(--areia);font-size:17px;line-height:1.6;color:var(--texto)}
+.b-missao span{display:block;font-family:Archivo,var(--fb);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro-esc);font-weight:600;margin-bottom:8px}
+
+.b-contato{background:var(--bege);padding:96px 0}
+.b-contato-grade{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:center}
+
+/* cabeçalho das páginas internas */
+.b-cabeca{background:url(/assets/img/papel-parede.png),linear-gradient(120deg,var(--escuro),var(--marrom) 60%,var(--bronze));background-blend-mode:soft-light,normal;color:rgba(255,255,255,.82);padding:84px 0 72px}
+.b-cabeca .olho{color:var(--ouro-claro)}
+.b-cabeca h1{color:#fff;font-size:clamp(48px,6.6vw,96px);line-height:.92;text-transform:uppercase;margin:0}
+.b-cabeca-txt{font-size:19px;max-width:700px;margin:22px 0 0}
+.v-b .sec-escura{background:linear-gradient(160deg,var(--escuro),var(--marrom))}
+.v-b .esc-missao blockquote{font-family:var(--fb);font-weight:500}
+.v-b .temas dt{font-size:22px;text-transform:uppercase}
+.v-b .docs{background:linear-gradient(160deg,var(--escuro),var(--marrom))}
+.v-b .outra-area b{text-transform:uppercase}
+.v-b .contato-linhas b{font-size:21px}
+.b-etapas-claras .et-n{background:var(--areia)}
+
+@media (max-width:1080px){.v-b .menu{background:#fff}}
+@media (max-width:900px){
+  .b-hero-grade,.b-caminho-grade,.b-esc-grade,.b-contato-grade{grid-template-columns:1fr;gap:44px}
+  .b-hero-foto img{min-height:0;aspect-ratio:4/3}
+  .b-selo{left:16px;bottom:16px}
+  .b-fatos{grid-template-columns:1fr 1fr}
+  .b-fatos>div:nth-child(3){border-left:0;padding-left:0}
+  .b-area{grid-template-columns:72px 1fr;gap:20px}
+  .b-area-n{font-size:64px}
+  .b-area ul{grid-column:1/-1}
+  .b-area-ir{display:none}
+  .b-caminho-cab{position:static}
+  .b-esc-foto::after{display:none}
+}
+@media (max-width:600px){
+  .b-hero{padding-top:44px}
+  .b-fatos b{font-size:32px}
+  .b-fatos>div{padding:20px 14px 22px}
+  .b-area ul{grid-template-columns:1fr}
+  .b-etapas li{grid-template-columns:52px 1fr;column-gap:18px}
+  .b-etapas .et-n{width:52px;height:52px;font-size:22px}
+  .b-etapas::before,.b-etapas::after{left:25px}
+  .b-etapas h3{font-size:23px}
+  .b-selo-n{font-size:48px}
+  .b-equipe li{grid-template-columns:1fr}.b-equipe span{text-align:left}
+}

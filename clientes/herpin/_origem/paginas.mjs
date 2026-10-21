@@ -154,10 +154,10 @@ function formPedido(v) {
     <h2>Seus dados</h2>
     <p class="nota">${esc(T.orcamento)} Você também pode escrever o nome e a quantidade dos produtos no campo abaixo.</p>
     <label>Nome<input name="Nome" required autocomplete="name"></label>
-    <label>Empresa ou CNPJ <small>(opcional)</small><input name="Empresa"></label>
+    <label><span>Empresa ou CNPJ <small>(opcional)</small></span><input name="Empresa"></label>
     <div class="dupla"><label>Telefone<input name="Telefone" type="tel" required autocomplete="tel"></label><label>E-mail<input name="E-mail" type="email" autocomplete="email"></label></div>
-    <label>Endereço de entrega <small>(bairro e cidade)</small><input name="Entrega" autocomplete="street-address"></label>
-    <label>Nome e quantidade dos produtos <small>(ou observações)</small><textarea name="Observações" rows="4"></textarea></label>
+    <label><span>Endereço de entrega <small>(bairro e cidade)</small></span><input name="Entrega" autocomplete="street-address"></label>
+    <label><span>Nome e quantidade dos produtos <small>(ou observações)</small></span><textarea name="Observações" rows="4"></textarea></label>
     <div class="acoes"><button class="btn btn-wa" type="submit" data-via="wa">${ic('wa')} Enviar pelo WhatsApp</button><button class="btn btn-sec" type="submit" data-via="email">${ic('mail')} Enviar por e-mail</button></div>
     <p class="nota">O pedido abre pronto no WhatsApp ${E.waTxt} ou no seu e-mail, para ${E.email}.</p>
   </form></div>`;
@@ -235,7 +235,7 @@ function homeA(v) {
 </div></section>
 
 <section class="quem"><div class="wrap quem-g">
-  <figure class="quem-foto"><img src="/assets/img/fachada.webp" alt="Fachada amarela da loja Herpin Embalagens e Materiais de Limpeza" width="311" height="105" loading="lazy"><figcaption>Nossa loja na Av. C-1, nº 1173</figcaption></figure>
+  <figure class="quem-foto"><img src="/assets/img/fachada.webp" alt="Fachada amarela da loja Herpin Embalagens e Materiais de Limpeza" width="311" height="105"><figcaption>Nossa loja na Av. C-1, nº 1173</figcaption></figure>
   <div><p class="eyebrow">Quem somos</p><h2>Desde ${E.desde} no Jardim América</h2><p>${esc(T.quemSomos)}</p><a class="link-seta" href="/${v}/quem-somos/">Conheça a Herpin ${ic('seta')}</a></div>
 </div></section>
 
@@ -376,7 +376,7 @@ export function gerarVersao(v) {
   p.orcamento = pagina(v, 'orcamento', `Orçamento · ${nomeSite}`, 'Monte sua lista de produtos e envie o pedido de orçamento para a Herpin Embalagens.',
     `${tituloPag(v, 'Orçamento', 'Orçamento', 'Confira a lista, ajuste as quantidades e envie. A Herpin responde com preços e prazo de entrega.')}<section class="sec-form"><div class="wrap">${formPedido(v)}</div></section>`);
   p.localizacao = pagina(v, 'localizacao', `Localização · ${nomeSite}`, `${E.rua}, ${E.bairro}, ${E.cidade}.`,
-    `${tituloPag(v, 'Localização', 'Localização', `${E.rua}, ${E.bairro}, ${E.cidade}, CEP ${E.cep}.`)}<section class="sec-local"><div class="wrap local-g">${mapa}<div>${blocoContato()}<a class="btn btn-azul" href="${E.rota}" target="_blank" rel="noopener">${ic('pin')} Como chegar</a><figure class="quem-foto pequena"><img src="/assets/img/fachada.webp" alt="Fachada amarela da loja" width="311" height="105" loading="lazy"><figcaption>Procure a fachada amarela.</figcaption></figure></div></div></section>`);
+    `${tituloPag(v, 'Localização', 'Localização', `${E.rua}, ${E.bairro}, ${E.cidade}, CEP ${E.cep}.`)}<section class="sec-local"><div class="wrap local-g">${mapa}<div>${blocoContato()}<a class="btn btn-azul" href="${E.rota}" target="_blank" rel="noopener">${ic('pin')} Como chegar</a><figure class="quem-foto pequena"><img src="/assets/img/fachada.webp" alt="Fachada amarela da loja" width="311" height="105"><figcaption>Procure a fachada amarela.</figcaption></figure></div></div></section>`);
   p['fale-conosco'] = pagina(v, 'fale-conosco', `Fale Conosco · ${nomeSite}`, 'Fale com a Herpin Embalagens por telefone, WhatsApp ou e-mail.',
     `${tituloPag(v, 'Fale Conosco', 'Fale Conosco', esc(T.fale))}<section class="sec-form"><div class="wrap form-g">${formSimples('Mensagem', camposFale, 'Contato pelo site')}<div class="form-lado"><h2>Atendimento</h2>${blocoContato()}</div></div></section>`);
   return p;
