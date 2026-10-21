@@ -1,0 +1,11 @@
+# Alexandre Augusto Imóveis: como este site é feito
+
+- Cliente do piloto de 10 sites ruins (21/10/2026). Imobiliária no Ipiranga, São Paulo, CRECI 112961. Site atual: http://www.alexandreaugustoimoveis.com.br/ (PHP de 2013, sem HTTPS, não se adapta ao celular). Só em português, sem troca de idioma.
+- Marca: monograma "AA" (vermelho e cinza) do rodapé do site atual, vetorizado em `public/assets/aa.svg`; o nome "Alexandre Augusto" do topo do site atual é Arial Bold em vermelho com degradê, refeito em vetor com Liberation Sans Bold (métrica do Arial) em `logo.svg` e `logo-branco.svg`. Cores do CSS atual: azul #003b75 e #002142, vermelho do logo #f9283a.
+- Fontes: versão A com Arimo (igual ao Arial do logo) nos títulos e Inter no texto; versão B com Open Sans condensada (o site atual usa Open Sans Condensed e Ubuntu Condensed nos títulos) e Source Sans 3 (fonte do texto atual).
+- Imóveis: os 60 da home atual, lidos de `detalhes-imovel.php?cod_imovel=N`, em `imoveis-site-atual.json` (ficha, textos, até 8 fotos cada em `public/assets/img/imoveis/<id>-<n>.webp`). `dados.mjs` corrige erros do site atual: "Hayloft" (tradução automática de sobrado), "Hangar" (galpão), "Hall comercial" (salão), títulos em caixa alta. Tipo vem do prefixo do código (APTO, SOBR, CTA, GPO, SL/COM).
+- Foto do museu: o banner "Especializado no Ipiranga!" do site atual, sem a faixa de texto (canto preenchido com o lado oposto espelhado).
+- Textos de empresa, bancos (Caixa, Santander, Itaú, BB, Bradesco) e Porto Seguro: páginas "Empresa" e "Simulador Financeiro" do site atual. A página "Consórcio Imobiliário" atual é só um texto de teste, então a nossa tem um parágrafo curto pedindo contato.
+- Escritos por nós: frases dos pontos do bairro (a partir das distâncias citadas nas descrições dos imóveis), etapas do "Anuncie" (seguem os blocos do formulário atual), textos de apoio e o simulador SAC/Price (estimativa).
+- Formulários montam a mensagem e abrem o WhatsApp (11) 95203-0378 (o celular do "Fale conosco"; confirmar se é WhatsApp).
+- Gerar: `node clientes/alexandreaugusto/_origem/gerar.mjs`. `/` escolha (apresentação), `/a/` "Tradição no Ipiranga", `/b/` "Portal do bairro", 66 páginas cada (6 + 60 fichas). Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` refeitos à mão quando o visual mudar.
