@@ -14,7 +14,7 @@ export const empresa = {
   rua: 'Rua Joaquim Murtinho, 2001',
   esquina: 'esquina com a Rua Prof. Feliciano Galdinho',
   bairro: 'Porto', cidade: 'Cuiabá', uf: 'MT',
-  mapa: 'https://www.google.com/maps?q=-15.60414,-56.116465&z=16&output=embed',
+  mapa: 'https://maps.google.com/maps?q=-15.60414,-56.116465&z=16&output=embed',
   mapaLink: 'https://www.google.com/maps/search/?api=1&query=Vidra%C3%A7aria+Vidrex+Cuiab%C3%A1&query_place_id=',
   rota: 'https://www.google.com/maps/dir/?api=1&destination=-15.60414,-56.116465',
 };

@@ -242,6 +242,7 @@
   .b-blx{grid-template-columns:1fr;gap:24px}.b-blx img{width:130px}
 }
 @media (max-width:640px){
+  .b-sec-cab-l{flex-direction:column;align-items:flex-start}
   .b-hero{padding-top:30px}
   .b-hero-f{aspect-ratio:4/3.3}
   .b-fatos li{padding:16px}
