@@ -1,0 +1,10 @@
+# Sartori Alimentos: como este site é feito
+
+- Cliente: Sartori Alimentos, frigorífico em Augusto Pestana/RS (região de Ijuí), desde 1995 (logo). Escolhido na lista de nichos de alimentos (21/10/2026, /mnt/project-files/prospeccao/nichos/alimentos/LISTA.md), sem pedido do cliente.
+- Site atual: sartorialimentos.com.br (WordPress de 2018, tema Uncode, invadido: páginas "Hacked by", posts de cassino, shells .php em uploads/2026/08). A listagem de wp-content/uploads/<ano>/<mês>/ está aberta: todas as fotos e rótulos vieram de lá (nunca baixar os .php*). Textos das páginas e posts pela API wp-json (posts das categorias 3 e 7 em `posts.json`).
+- Marca: logo oficial com texto branco (`logo-branco`) e uma cópia com o texto pintado de grafite para fundo claro (`logo-escuro`). Bordô #86123A e dourado #B39249 dos rótulos, laranja #E9781F do logo, carvão do menu lateral atual. Títulos em Montserrat (mais próxima do "SARTORI" do logo), texto em Inter.
+- Produtos: Boitatá (Premium 8, Churrasco 10, separados pelo texto "Linha Churrasco" no alto de cada rótulo), Tradicional 20 e Miúdos 9, conforme as galerias das páginas atuais. Foto do corte só quando o site tem uma do mesmo corte; os outros aparecem só com o rótulo.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Rótulo" (menu lateral como hoje) e `/b/` "Do campo à mesa" (menu no topo, caminho em etapas). 23 páginas em cada: Início, Quem Somos, Responsabilidade Socioambiental, Produtos + 3 linhas, Controle de Qualidade, Universo da Carne + 5 dicas, Espaço Gourmet + 7 receitas, Contato.
+- Formulário: na prévia não envia (mostra aviso). Vídeo: YouTube T2MkwQhLIxk, carrega só no clique.
+- Gerar: `python3 -I _origem/assets.py <pasta dos originais> public/assets` (imagens) e `node clientes/sartori/_origem/gerar.mjs` (páginas). Prints da apresentação, og-*.jpg e ../capa.jpg refeitos à mão com Playwright quando o visual mudar.
+- A confirmar com o cliente: endereço completo; se ainda vendem todos os cortes; fotos novas da fábrica (as do site são de 2018); número de WhatsApp de vendas (usamos (55) 99932-2498, o do Google).
