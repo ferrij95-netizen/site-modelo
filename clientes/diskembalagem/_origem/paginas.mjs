@@ -43,7 +43,7 @@ function tile(p, v, extra = '') {
   return `<article class="pd" data-id="${p.id}" data-cat="${p.cat}" data-sub="${p.sub}"${extra}>
 <button class="pd-foto" type="button" data-abre aria-label="Ver ${esc(p.nome)}">${foto(p)}</button>
 <div class="pd-corpo"><p class="pd-sub">${esc(subDe(p).nome)}</p><h3 class="pd-nome"><button type="button" data-abre>${esc(p.nome)}</button></h3></div>
-<div class="pd-acao">${v === 'b' ? `<div class="qtd" data-qtd><button type="button" data-menos aria-label="Menos">${ic('menos')}</button><input type="number" min="1" value="1" inputmode="numeric" aria-label="Quantidade"><button type="button" data-mais aria-label="Mais">${ic('mais')}</button></div>` : ''}<button class="pd-add" type="button" data-add>${ic('mais')}<span>Adicionar à lista</span></button></div>
+<div class="pd-acao">${v === 'b' ? `<div class="qtd" data-qtd><button type="button" data-menos aria-label="Menos">${ic('menos')}</button><input type="number" min="1" value="1" inputmode="numeric" aria-label="Quantidade"><button type="button" data-mais aria-label="Mais">${ic('mais')}</button></div>` : ''}<button class="pd-add" type="button" data-add>${ic('mais')}<span>${v === 'b' ? 'Adicionar' : 'Adicionar à lista'}</span></button></div>
 </article>`;
 }
 
@@ -107,7 +107,7 @@ ${item('inst', r.inst, 'Institucional')}${item('dest', r.dest, 'Destaques')}${it
 function cabecalhoB(atual) {
   const r = R('b');
   return `<header class="b-cab">
-<div class="b-faixa"><div class="ct b-faixa-in"><p>${ic('caminhao')} Ligue e receba em sua empresa: ${fonesTxt()}</p><p class="b-faixa-dir">Caxias do Sul - RS · desde ${E.anoDesde}</p></div></div>
+<div class="b-faixa"><div class="ct b-faixa-in"><p>${ic('caminhao')} <span class="b-faixa-txt">Ligue e receba em sua empresa:</span> ${fonesTxt()}</p><ul class="b-faixa-dir"><li><a href="${r.inst}"${atual === 'inst' ? ' aria-current="page"' : ''}>Institucional</a></li><li><a href="${r.dest}"${atual === 'dest' ? ' aria-current="page"' : ''}>Destaques</a></li><li><a href="${r.contato}"${atual === 'contato' ? ' aria-current="page"' : ''}>Contato</a></li></ul></div></div>
 <div class="b-topo"><div class="ct b-topo-in">
 <a class="b-logo" href="${r.home}" aria-label="Disk Embalagens, início"><img src="/assets/logo.svg" alt="Disk Embalagens" width="242" height="147"></a>
 <form class="busca" action="${r.produtos}" role="search"><span class="busca-ic">${ic('busca')}</span><input type="search" name="q" placeholder="O que sua empresa precisa? Ex.: papel toalha, copo 200ml, lixeira" aria-label="Buscar produto" autocomplete="off" data-sugere><button type="submit">Buscar</button><div class="sugestoes" hidden></div></form>
@@ -116,7 +116,7 @@ function cabecalhoB(atual) {
 </div></div>
 <nav class="b-nav" aria-label="Principal"><div class="ct b-nav-in">
 <ul class="b-cats">${categorias.map(c => `<li><a href="${r.cat(c.slug)}"${atual === c.slug ? ' aria-current="page"' : ''}>${esc(c.nome)}</a></li>`).join('')}</ul>
-<ul class="b-inst"><li><a href="${r.inst}"${atual === 'inst' ? ' aria-current="page"' : ''}>Institucional</a></li><li><a href="${r.dest}"${atual === 'dest' ? ' aria-current="page"' : ''}>Destaques</a></li><li><a href="${r.contato}"${atual === 'contato' ? ' aria-current="page"' : ''}>Contato</a></li></ul>
+<ul class="b-nav-inst"><li><a href="${r.inst}">Institucional</a></li><li><a href="${r.dest}">Destaques</a></li><li><a href="${r.contato}">Contato</a></li></ul>
 </div></nav>
 </header>`;
 }
@@ -277,7 +277,7 @@ function institucionalA() {
   return `<section class="a-inst-topo"><div class="ct a-inst-topo-in">
 <div><nav class="migalha" aria-label="Você está em"><a href="${r.home}">Início</a> / <span>Institucional</span></nav>
 <h1 class="tt">Disk Embalagens</h1>
-<p class="a-inst-lead">${institucional[0].p}</p></div>
+<p class="a-inst-lead">Embalagens, descartáveis, produtos químicos, equipamentos e sistemas de higiene e limpeza para empresas de Caxias do Sul e região.</p></div>
 <div class="a-inst-ano" data-rev="zoom"><small>desde</small><b data-conta data-conta-de="2026">${E.anoDesde}</b><span>Caxias do Sul - RS</span></div>
 </div></section>
 <section class="a-inst"><div class="ct">
@@ -319,7 +319,7 @@ function homeB() {
 </div></section>
 <section class="b-numeros"><div class="ct b-numeros-in">
 <div><b data-conta data-conta-de="2026">${E.anoDesde}</b><span>atendendo Caxias e região</span></div>
-<div><b data-conta>${totalProdutos}</b><span>produtos com foto no site</span></div>
+<div><b data-conta>${totalProdutos}</b><span>produtos no catálogo do site</span></div>
 <div><b data-conta>8</b><span>linhas, de copa a escritório</span></div>
 <div><b>${ic('escudo')}</b><span>produtos com registro na ANVISA</span></div>
 </div></section>

@@ -47,10 +47,10 @@ export const banners = [
 const CATS = [
   ['copa-e-cozinha', 'copa-e-cozinha', 'Copa e Cozinha', 'Garrafa Térmica Pressione Inox 1,9 Litros'],
   ['descarta-veis', 'descartaveis', 'Descartáveis', 'Copo Plást. Cristal Supremo 300ml'],
-  ['embalagens', 'embalagens', 'Embalagens', 'Bobina Plástico Bolha Light'],
+  ['embalagens', 'embalagens', 'Embalagens', 'Bobina Kraft'],
   ['embalagens-p-alimentaa-a-o', 'embalagens-para-alimentacao', 'Embalagens p/ Alimentação', 'Marmitex de Alumínio Nº 8 e Nº 9'],
   ['equipamentos', 'equipamentos', 'Equipamentos', 'Balde Espremedor 30 litros 2 Águas Bralimpia'],
-  ['materiais-de-higiene', 'higiene', 'Materiais de Higiene', 'Sabonete Liquido 800ml Premisse'],
+  ['materiais-de-higiene', 'higiene', 'Materiais de Higiene', 'Papel Higiênico BR 60M FD c/ 12 rolos Paloma'],
   ['material-de-limpeza', 'limpeza', 'Material de Limpeza', 'Rodo Sekito'],
   ['material-para-escrita-rio', 'escritorio', 'Material para Escritório', 'Caneta Bic'],
 ];
@@ -97,7 +97,7 @@ export const atalhos = ['Papel higiênico', 'Papel toalha', 'Sacos de lixo', 'Co
 // Compra por ambiente (versão B, nosso): cada ambiente aponta para categorias e subcategorias reais
 export const ambientes = [
   { nome: 'Copa e cafezinho', texto: 'Café, açúcar, chás, copos, mexedores e garrafas térmicas.', fotos: ['Café Melitta Tradicional Vacúo', 'Garrafa Térmica Magic Pump', 'Copos Plásticos de 150ml c/100 un.'], link: 'copa-e-cozinha' },
-  { nome: 'Banheiros', texto: 'Papel higiênico, papel toalha, sabonetes, dispensers e lixeiras.', fotos: ['Sabonete Liquido 800ml Premisse', 'Lixeira Inox Redonda', 'Disp. p/ Protetor de Assento Sanitário'], link: 'higiene' },
+  { nome: 'Banheiros', texto: 'Papel higiênico, papel toalha, sabonetes, dispensers e lixeiras.', fotos: ['Papel Higiênico BR 60M FD c/ 12 rolos Paloma', 'Lixeira Inox Redonda', 'Disp. p/ Protetor de Assento Sanitário'], link: 'higiene' },
   { nome: 'Limpeza pesada', texto: 'Químicos, mops, baldes espremedores, rodos e vassouras.', fotos: ['Balde Espremedor 30 litros 2 Águas Bralimpia', 'Rodo Sekito', 'Alvejante 5 Litros'], link: 'limpeza' },
   { nome: 'Restaurantes e delivery', texto: 'Marmitex, potes, pratos, caixas de pizza, filme PVC e luvas.', fotos: ['Marmitex de Alumínio Nº 8 e Nº 9', 'Pote Retangular 500ml Prafesta c/24un.', 'Emb.Pap. Pizza (Caixa Pizza)'], link: 'embalagens-para-alimentacao' },
   { nome: 'Expedição', texto: 'Fitas, bobinas de plástico bolha, kraft, filme stretch e sacolas.', fotos: ['Fita Adesiva 48x50 Metros', 'Bobina Plástico Bolha Light', 'Filme Strech'], link: 'embalagens' },

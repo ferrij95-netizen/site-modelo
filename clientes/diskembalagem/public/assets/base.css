@@ -18,6 +18,7 @@
   --ap-cor: var(--laranja);
 }
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: 90px; }
 body { margin: 0; font: 400 16px/1.6 var(--fonte); color: var(--texto); background: var(--branco); overflow-x: hidden; }
 body.travado { overflow: hidden; }
@@ -56,7 +57,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .sp-mini { width: 44px; border-radius: 8px; flex: none; }
 
 /* busca do cabeçalho com sugestões */
-.busca { position: relative; display: flex; align-items: stretch; }
+.busca { position: relative; display: flex; align-items: stretch; min-width: 0; }
 .busca input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; }
 .busca input::-webkit-search-cancel-button { cursor: pointer; }
 .sugestoes { position: absolute; z-index: 40; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border-radius: 12px; box-shadow: 0 14px 40px -10px rgba(0, 40, 50, .35); border: 1px solid var(--linha); overflow: hidden; }

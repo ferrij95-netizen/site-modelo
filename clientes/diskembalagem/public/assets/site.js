@@ -34,10 +34,10 @@
     const n = totalItens();
     $$('[data-lista-n]').forEach(b => { b.textContent = n; b.classList.toggle('tem', n > 0); });
     const barra = $('.b-barra'); if (barra) barra.hidden = n === 0 || !!$('[data-lista-tabela]');
-    $$('.pd').forEach(el => {
+    $$('.pd, .mp').forEach(el => {
       const na = !!lista[el.dataset.id];
       el.classList.toggle('na-lista', na);
-      const t = $('.pd-add span', el); if (t) t.textContent = na ? `Na lista (${lista[el.dataset.id]})` : 'Adicionar à lista';
+      const t = $('.pd-add span', el); if (t) t.textContent = na ? `Na lista (${lista[el.dataset.id]})` : (V === 'b' && !el.classList.contains('mp') ? 'Adicionar' : 'Adicionar à lista');
     });
     desenharMini(); desenharTabela();
   }
