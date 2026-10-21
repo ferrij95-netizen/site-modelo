@@ -1,0 +1,10 @@
+# Fax Imobiliária: como este site é feito
+
+- Cliente do piloto 2 de sites ruins (21/10/2026). Imobiliária em Fortaleza/CE desde 1992, CRECI/CE 651-J. Site atual: http://www.faximobiliaria.com.br/ (HTML/PHP de 2012, largura fixa 770 px, sem HTTPS). Só em português.
+- Marca: logo GIF de 102 px do site atual (`imagens/logo.gif`), vetorizado com potracer (pip) em 10x, separando preto e vermelho; "IMOBILIÁRIA" refeito com Inter Light em curvas (fontTools). `logo.svg`, `logo-branco.svg` e `faixas.svg` (só o emblema, usado como grafismo). Vermelho do logo #ff0004; botões em #e30010.
+- Fontes: Saira nos títulos (traço reto e cantos arredondados do "FAX"); versão A com Inter no texto, versão B com IBM Plex Sans e a Saira larga (eixo wdth 125) nos títulos grandes.
+- Textos: páginas A empresa, Venda (documentos do comprador), Aluguel (documentos PF e PJ), Serviços (vantagens, separadas em etapas da locação e listas), Onde estamos e Fale conosco do site atual, em `dados.mjs`. O endereço usado é o de "Onde estamos" (Rua José Vilar, 1202); a página Empresa cita a Av. Santos Dumont, 2075 como sede de 2002 (confirmar).
+- Imóveis: os 34 da busca atual (busca.php por cidade, contrato a/v), lidos de `detalhes.php?imovel=N` e `galeria.php?imovel=N` em `imoveis-site-atual.json`, até 8 fotos cada em `public/assets/img/imoveis/` (fotos de 220 px descartadas quando há maiores). Endereço exato (número e apartamento) não é mostrado, só bairro e cidade. `dados.mjs` corrige títulos em caixa alta, emoji e o 1417 (venda com título "para locação").
+- Fotos de Fortaleza: Wikimedia Commons CC BY-SA (créditos no rodapé), baixadas pelo proxy i0.wp.com porque upload.wikimedia.org dá 429 na nuvem.
+- Formulários abrem o e-mail (faleconosco@) com a mensagem pronta; não há WhatsApp conhecido.
+- Gerar: `node clientes/faximobiliaria/_origem/gerar.mjs`. `/` escolha (apresentação), `/a/` "Segurança e satisfação", `/b/` "Endereço certo em Fortaleza", 42 páginas cada (8 + 34 fichas). Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` refeitos à mão quando o visual mudar.
