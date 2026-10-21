@@ -1,0 +1,131 @@
+/* SBS Engenharia: base comum às versões A e B. Cores do site atual: azul #00519B, cinza #333/#F1F1F1. */
+:root{--azul:#00519B;--azul-esc:#003A70;--azul-claro:#EEF3F8;--cinza:#F1F1F1;--grafite:#2E3236;--texto:#3A4046;--suave:#6A7279;--linha:#DCE1E6;--branco:#fff;
+  --b:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;--in:1240px;--gut:32px}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--b);font-size:16.5px;line-height:1.65;color:var(--texto);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--h);color:var(--grafite);line-height:1.08;margin:0 0 .5em;text-wrap:balance}
+p{margin:0 0 1em}
+.in{max-width:var(--in);margin:0 auto;padding:0 var(--gut);width:100%}
+.ic{width:20px;height:20px;flex:none}
+.pular{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;z-index:99}.pular:focus{left:8px}
+:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+.eyebrow{font-family:var(--h);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--azul);margin:0 0 12px}
+.so-cel{display:none!important}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--h);font-weight:700;font-size:16px;text-decoration:none;background:var(--azul);color:#fff;padding:14px 24px;border:0;cursor:pointer;transition:background .2s,transform .2s;line-height:1.2}
+.btn:hover{background:var(--azul-esc)}
+.btn .ic{transition:transform .2s}.btn:hover .ic{transform:translateX(3px)}
+.btn-sec{background:transparent;color:var(--azul);box-shadow:inset 0 0 0 1.5px var(--azul)}.btn-sec:hover{background:var(--azul);color:#fff}
+.btn-claro{background:#fff;color:var(--azul)}.btn-claro:hover{background:var(--azul-claro);color:var(--azul-esc)}
+.link-seta{display:inline-flex;align-items:center;gap:8px;font-family:var(--h);font-weight:700;color:var(--azul);text-decoration:none}
+.link-seta:hover{text-decoration:underline;text-underline-offset:4px}
+.link-seta .ic{width:18px;height:18px}
+
+/* topo e menu (celular) */
+.topo{position:sticky;top:0;z-index:40;background:#fff}
+.topo .in{display:flex;align-items:center;gap:28px}
+.marca img{width:auto}
+.menu{display:flex;margin-left:auto}
+.menu a{text-decoration:none}
+.menu-btn{display:none;margin-left:auto;background:none;border:0;padding:8px;cursor:pointer;color:var(--grafite)}
+.menu-btn .ic{width:28px;height:28px}
+
+/* migalha */
+.migalha{display:flex;flex-wrap:wrap;gap:6px 0;font-size:13.5px;margin-bottom:14px}
+.migalha a,.migalha span{text-decoration:none}
+.migalha>*+*::before{content:"/";margin:0 10px;opacity:.5}
+.migalha a:hover{text-decoration:underline}
+
+/* faixa institucional */
+.instit{padding:72px 0}
+.instit .in{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.instit .in>div{padding:8px 40px}
+.instit .in>div:first-child{padding-left:0}.instit .in>div:last-child{padding-right:0}
+.instit .in>div+div{border-left:1px solid var(--linha)}
+.instit h3{font-size:24px}
+.instit p{font-size:15.5px}
+.instit-ic{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--azul);color:#fff;margin-bottom:18px}
+.instit-ic .ic{width:22px;height:22px}
+
+/* rodapé */
+.rodape{background:#25292D;color:rgba(255,255,255,.72);font-size:14.5px;padding:64px 0 0}
+.rodape .in{display:grid;grid-template-columns:1.3fr 1fr 1fr .8fr 1fr;gap:36px}
+.rodape h3{color:#fff;font-size:15px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.rodape a{text-decoration:none;display:block;padding:2px 0}.rodape a:hover{color:#fff;text-decoration:underline}
+.rodape p a{display:inline}
+.rod-marca img{width:78px;margin-bottom:16px}
+.rod-soc{display:flex;gap:10px}.rod-soc a{display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(255,255,255,.25)}.rod-soc a:hover{background:var(--azul);border-color:var(--azul)}
+.rod-fim{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;max-width:var(--in);margin:48px auto 0;padding:20px var(--gut);border-top:1px solid rgba(255,255,255,.12);font-size:13px}
+
+/* galeria da obra */
+.galeria{min-width:0}
+.gal-principal{margin:0;position:relative;background:#e8ecef}
+.gal-principal img{width:100%;aspect-ratio:765/430;object-fit:cover}
+.gal-principal figcaption{font-size:13.5px;color:var(--suave);padding:10px 0 0;background:#fff}
+.gal-miniaturas{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+.gal-miniaturas button{padding:0;border:0;background:none;cursor:pointer;opacity:.6;transition:opacity .2s;outline-offset:2px}
+.gal-miniaturas button[aria-current]{opacity:1;box-shadow:0 0 0 2px var(--azul)}
+.gal-miniaturas button:hover{opacity:1}
+.gal-miniaturas img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.caixa-luz{position:fixed;inset:0;background:rgba(10,14,18,.92);z-index:100;display:grid;place-items:center;padding:24px}
+.caixa-luz img{max-height:88vh;width:auto;max-width:100%}
+.caixa-luz button{position:absolute;top:16px;right:16px;background:none;border:0;color:#fff;cursor:pointer;padding:8px}.caixa-luz button .ic{width:30px;height:30px}
+
+/* formulários */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.form .largo{grid-column:1/-1}
+.form label span,.form legend{display:block;font-size:13.5px;font-weight:600;color:var(--grafite);margin-bottom:6px}
+.form input:not([type=radio]),.form select,.form textarea{width:100%;font:inherit;font-size:15.5px;padding:12px 14px;border:1px solid #C9D0D6;background:#fff;color:var(--texto);border-radius:0}
+.form input[type=file]{padding:9px 10px}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--azul);outline-offset:-1px;border-color:var(--azul)}
+.form fieldset{border:0;padding:0;margin:0}
+.opcoes{display:flex;gap:24px}.opcoes label{display:flex;align-items:center;gap:8px;font-size:15.5px}
+.form-fim{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.form-aviso{margin:0;font-size:14px;background:var(--azul-claro);color:var(--azul-esc);padding:10px 14px;flex:1 1 280px}
+
+/* contato */
+.unidade h3{font-size:24px;margin-bottom:2px}
+.u-cidade{font-weight:600;color:var(--azul);margin-bottom:12px}
+.u-fones{display:flex;flex-wrap:wrap;gap:10px 18px}
+.u-fones a{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;color:var(--grafite)}
+.u-fones .btn{color:#fff}.u-fones .btn-sec{color:var(--azul)}.u-fones .btn-sec:hover{color:#fff}
+.u-fones a .ic{width:18px;height:18px}
+
+/* chips */
+.chips{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font-size:14px;font-weight:500;padding:6px 12px;background:var(--azul-claro);color:var(--azul-esc)}
+.rot{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);margin:0 0 10px}
+
+/* mapa */
+.mapa svg{width:100%;height:auto;display:block;overflow:visible}
+.pino circle{fill:var(--azul);stroke:#fff;stroke-width:2}
+.pino .pino-onda{fill:var(--azul);stroke:none;opacity:.25;transform-box:fill-box;transform-origin:center;animation:onda 2.4s ease-out infinite}
+.pino.ativo circle{fill:#FF8623}.pino.ativo .pino-onda{fill:#FF8623;opacity:.4}
+@keyframes onda{0%{transform:scale(.6);opacity:.45}100%{transform:scale(2.4);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+@media (max-width:1100px){
+  .rodape .in{grid-template-columns:1fr 1fr 1fr}
+  .rod-marca{grid-column:1/-1}
+}
+@media (max-width:980px){
+  :root{--gut:20px}
+  .menu-btn{display:block}
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#fff;padding:8px var(--gut) 20px;box-shadow:0 18px 30px -18px rgba(0,0,0,.35);margin:0}
+  .menu.aberto{display:flex}
+  .menu a{padding:12px 0!important;border-bottom:1px solid var(--linha)}
+  .so-cel{display:block!important}
+  .instit .in{grid-template-columns:1fr;gap:36px}
+  .instit .in>div{padding:0!important;border:0!important}
+  .form{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .rodape .in{grid-template-columns:1fr}
+  .gal-miniaturas{grid-template-columns:repeat(4,1fr);gap:6px}
+}
