@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nostro Beef · Proposta de site</title>
+<meta name="description" content="Duas versões com o mesmo conteúdo, fotos e cores. Role para ver cada uma e escolha a que mais combina.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://nostrobeef.overtus.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nostro Beef">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Nostro Beef · Proposta de site">
+<meta property="og:description" content="Duas versões com o mesmo conteúdo, fotos e cores. Role para ver cada uma e escolha a que mais combina.">
+<meta property="og:url" content="https://nostrobeef.overtus.com.br/">
+<meta property="og:image" content="https://nostrobeef.overtus.com.br/assets/og-a.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/apresenta.css">
+<style>
+:root{--es-cor:#C8102E;--es-fundo:#16223F;--es-claro:#F7F4EF;--ap-cor:#C8102E;--h:'Oswald',system-ui,sans-serif;--b:Inter,system-ui,sans-serif;--es-btn-txt:#fff;--es-cel:170px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:var(--b);color:#fff;background:var(--es-fundo);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit}h1,h2{font-family:var(--h);letter-spacing:-.035em;line-height:1.02;margin:0 0 .4em;text-wrap:balance}h1 em,h2 em{font-style:normal;color:var(--es-cor)}
+.es-in{max-width:1240px;margin:0 auto;padding:0 32px;width:100%}
+.es-tela{padding:104px 0;position:relative;overflow:hidden}
+.es-eyebrow{font-family:var(--h);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--es-cor);margin:0 0 14px}
+.es-marca{position:absolute;top:28px;left:0;right:0;z-index:5}.es-marca .es-in{display:flex;justify-content:space-between;align-items:center;font-family:var(--h);font-size:15px}.es-marca b{font-weight:700}.es-marca span{opacity:.6;font-size:13px}
+.es-split{display:grid;grid-template-columns:4.4fr 7.6fr;gap:56px;align-items:center}.es-inv .es-split{grid-template-columns:7.6fr 4.4fr}.es-inv .es-txt{order:2}
+/* palco: notebook e celular lado a lado, alinhados pela base; o celular só cobre a borda vazia do notebook (--es-sobrepoe) */
+.es-palco{--es-sobrepoe:calc((100% - var(--es-cel)) * .087);position:relative;width:100%;display:flex;align-items:flex-end;justify-content:flex-end}
+.es-palco .mk-notebook{flex:0 0 calc(100% - var(--es-cel) + var(--es-sobrepoe));min-width:0;--mk-larg:none;max-width:none;order:2}
+.es-palco .mk-celular{--mk-larg:var(--es-cel);flex:0 0 var(--es-cel);min-width:0;order:1;margin-right:calc(-1 * var(--es-sobrepoe));z-index:2}
+.es-inv .es-palco{justify-content:flex-start}.es-inv .es-palco .mk-notebook{order:1}.es-inv .es-palco .mk-celular{order:2;margin:0 0 0 calc(-1 * var(--es-sobrepoe))}
+/* abertura */
+.es-intro{background:radial-gradient(900px 600px at 80% 20%,color-mix(in srgb,var(--es-cor) 45%,transparent),transparent 65%),radial-gradient(700px 500px at 0 100%,color-mix(in srgb,var(--es-cor) 20%,transparent),transparent 70%),var(--es-fundo)}
+.es-intro h1{font-size:clamp(36px,4.2vw,60px)}.es-intro .es-sub{font-size:clamp(16px,1.35vw,19px);color:rgba(255,255,255,.75);max-width:460px;margin:0 0 28px}
+.es-chips{display:flex;gap:10px;flex-wrap:wrap;margin:0}.es-chips a{font-family:var(--h);font-weight:700;font-size:14px;text-decoration:none;border:1.5px solid rgba(255,255,255,.25);border-radius:999px;padding:10px 18px;transition:.2s}.es-chips a:hover{background:#fff;color:var(--es-fundo)}
+/* versões */
+.es-versao{background:var(--es-claro);color:#2b3235}.es-versao h2{color:#121212;font-size:clamp(34px,4.6vw,64px)}
+.es-versao.es-inv{background:linear-gradient(160deg,color-mix(in srgb,var(--es-fundo) 85%,var(--es-cor)),var(--es-fundo));color:rgba(255,255,255,.78)}.es-inv h2{color:#fff}
+.es-letra{font-family:var(--h);font-weight:800;font-size:clamp(110px,15vw,200px);line-height:.8;letter-spacing:-.06em;margin:0 0 6px;color:color-mix(in srgb,var(--es-cor) 16%,transparent)}
+.es-inv .es-letra{color:color-mix(in srgb,var(--es-cor) 28%,transparent)}
+.es-desc{font-size:clamp(16px,1.3vw,19px);max-width:480px}
+.es-pontos{list-style:none;padding:0;margin:22px 0 30px;display:grid;gap:10px}.es-pontos li{padding-left:28px;position:relative}.es-pontos li::before{content:'';position:absolute;left:0;top:.45em;width:14px;height:14px;border-radius:4px;background:var(--es-cor)}
+.es-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--h);font-weight:700;font-size:16px;text-decoration:none;background:var(--es-cor);color:var(--es-btn-txt);padding:15px 28px;border-radius:999px;transition:transform .2s,box-shadow .2s;box-shadow:0 14px 30px -12px var(--es-cor)}.es-btn:hover{transform:translateY(-2px)}
+/* site atual */
+.es-atual{background:#eef1f2;color:#2b3235;text-align:center}.es-atual h2{color:#121212;font-size:clamp(30px,3.6vw,48px)}.es-atual .mk-janela{max-width:820px;margin:36px auto 28px}.es-atual .mk-vis img{object-position:top}
+.es-link{font-family:var(--h);font-weight:700;color:#121212;display:inline-flex;gap:8px;align-items:center}
+/* fim */
+.es-fim{text-align:center;background:radial-gradient(800px 500px at 50% 0,color-mix(in srgb,var(--es-cor) 40%,transparent),transparent 70%),var(--es-fundo)}
+.es-fim h2{font-size:clamp(40px,6.4vw,88px)}.es-fim p{color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 40px;font-size:18px}
+.es-escolha{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:880px;margin:0 auto}
+.es-escolha a{display:block;text-decoration:none;border-radius:24px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);transition:transform .3s,border-color .3s}.es-escolha a:hover{transform:translateY(-4px);border-color:var(--es-cor)}
+.es-escolha img{aspect-ratio:16/10;object-fit:cover;object-position:top;width:100%}.es-escolha span{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;font-family:var(--h);font-weight:700;font-size:18px}
+.es-rodape{text-align:center;padding:26px 16px;font-size:13px;color:rgba(255,255,255,.45);background:var(--es-fundo)}
+@media(max-width:1000px){
+  :root{--es-cel:140px}
+  .es-split,.es-inv .es-split{grid-template-columns:1fr;gap:44px}.es-inv .es-txt{order:0}.es-palco{max-width:620px;margin:0 auto}
+  .es-split-intro .es-txt{text-align:center}.es-intro .es-sub{margin:0 auto 28px}.es-chips{justify-content:center}.es-letra{font-size:110px}
+}
+@media(max-width:640px){
+  :root{--es-cel:112px}
+  .es-in{padding:0 16px}.es-tela{padding:84px 0}.es-intro{padding-top:92px}.es-escolha{grid-template-columns:1fr}.es-marca span{display:none}.es-letra{font-size:92px}
+}
+</style>
+</head>
+<body>
+<header class="es-marca"><div class="es-in"><b>Nostro Beef</b><span>Proposta de site</span></div></header>
+<main>
+<section class="es-tela es-intro" data-slide="Início"><div class="es-in es-split es-split-intro">
+  <div class="es-txt">
+    <p class="es-eyebrow" data-rev>Proposta de site</p>
+    <h1 data-palavras>O novo site da <em>Nostro Beef.</em></h1>
+    <p class="es-sub" data-rev style="--ap-d:600ms">Duas versões com o mesmo conteúdo, fotos e cores. Role para ver cada uma e escolha a que mais combina.</p>
+    <nav class="es-chips" data-rev style="--ap-d:750ms"><a href="#versão-a">Versão A · Selo</a><a href="#versão-b">Versão B · Corte</a></nav>
+  </div>
+  <div class="es-palco"><div class="mk mk-notebook" data-rev style="--ap-d:300ms"><div class="mk-tela"><div class="mk-vis mk-rola" style="--mk-t:26s"><img src="/assets/apresentacao/a-pc.webp" alt="Versão A" loading="lazy" decoding="async"></div></div><div class="mk-base"></div></div><div class="mk mk-celular" data-rev style="--ap-d:900ms"><div class="mk-vis mk-rola" style="--mk-t:48s"><img src="/assets/apresentacao/b-cel.webp" alt="Versão B" loading="lazy" decoding="async"></div></div></div>
+</div></section>
+<section id="versão-a" class="es-tela es-versao" data-slide="Versão A"><div class="es-in es-split">
+  <div class="es-txt">
+    <p class="es-letra" data-rev="zoom">A</p>
+    <p class="es-eyebrow" data-rev>Versão A · 17 páginas</p>
+    <h2 data-palavras>Selo</h2>
+    <p class="es-desc" data-rev>Feita a partir do site de hoje: a faixa de grama com o selo Nostro Beef no meio, o menu azul-marinho e os painéis de canto arredondado sobre o rebanho, com os botões vermelhos de Bovinos e Subprodutos.</p>
+    <ul class="es-pontos" data-rev-filhos="" data-rev-passo="110"><li>As três linhas: Tradicionais, Porcionados e Premium Do Cheff</li><li>Fotos reais das caixas e dos cortes embalados</li><li>As 9 receitas do site, uma página para cada</li></ul>
+    <a class="es-btn" data-rev href="/a/">Abrir versão A <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="es-palco"><div class="mk mk-notebook" data-rev><div class="mk-tela"><div class="mk-vis mk-rola" style="--mk-t:26s"><img src="/assets/apresentacao/a-pc.webp" alt="Versão A on a laptop" loading="lazy" decoding="async"></div></div><div class="mk-base"></div></div><div class="mk mk-celular" data-rev style="--ap-d:450ms"><div class="mk-vis mk-rola" style="--mk-t:48s"><img src="/assets/apresentacao/a-cel.webp" alt="Versão A on a phone" loading="lazy" decoding="async"></div></div></div>
+</div></section>
+<section id="versão-b" class="es-tela es-versao es-inv" data-slide="Versão B"><div class="es-in es-split">
+  <div class="es-txt">
+    <p class="es-letra" data-rev="zoom">B</p>
+    <p class="es-eyebrow" data-rev>Versão B · 17 páginas</p>
+    <h2 data-palavras>Corte</h2>
+    <p class="es-desc" data-rev>Mais clara e comercial, no bordô e dourado do selo: conta o caminho do pasto ao pedido e traz uma lista de cotação em que o comprador marca os cortes e manda tudo pelo WhatsApp.</p>
+    <ul class="es-pontos" data-rev-filhos="" data-rev-passo="110"><li>Do rebanho ao balcão em quatro etapas</li><li>Lista de cotação com os 38 cortes e formatos</li><li>Linha Premium Do Cheff com Brangus e Braford em destaque</li></ul>
+    <a class="es-btn" data-rev href="/b/">Abrir versão B <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="es-palco"><div class="mk mk-notebook" data-rev><div class="mk-tela"><div class="mk-vis mk-rola" style="--mk-t:26s"><img src="/assets/apresentacao/b-pc.webp" alt="Versão B on a laptop" loading="lazy" decoding="async"></div></div><div class="mk-base"></div></div><div class="mk mk-celular" data-rev style="--ap-d:450ms"><div class="mk-vis mk-rola" style="--mk-t:48s"><img src="/assets/apresentacao/b-cel.webp" alt="Versão B on a phone" loading="lazy" decoding="async"></div></div></div>
+</div></section>
+<section class="es-tela es-atual" data-slide="Hoje"><div class="es-in">
+  <p class="es-eyebrow" data-rev>Seu site atual</p><h2 data-palavras>Para comparar: é o que os visitantes veem hoje.</h2>
+  <div class="mk mk-janela" data-rev="zoom" data-url="www.nostrobeef.com.br"><div class="mk-vis mk-rola" style="--mk-t:22s"><img src="/assets/apresentacao/atual-pc.webp" alt="Seu site atual" loading="lazy" decoding="async"></div></div>
+  <a class="es-link" href="http://www.nostrobeef.com.br/" target="_blank" rel="noopener">Abrir site atual <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div></section>
+<section class="es-tela es-fim" data-slide="Escolha"><div class="es-in">
+  <h2 data-palavras>Qual tem mais a <em>sua cara?</em></h2><p data-rev>As duas são sites completos com várias páginas. Diga qual prefere e ajustamos os detalhes com você.</p>
+  <div class="es-escolha" data-rev-filhos="" data-rev-passo="150"><a href="/a/"><img src="/assets/apresentacao/a-pc.webp" alt="" loading="lazy"><span>Versão A · Selo <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a href="/b/"><img src="/assets/apresentacao/b-pc.webp" alt="" loading="lazy"><span>Versão B · Corte <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+</div></section>
+</main>
+<footer class="es-rodape">Overtus</footer>
+<script src="/assets/apresenta.js" defer></script>
+</body>
+</html>
