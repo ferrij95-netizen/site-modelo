@@ -1,0 +1,127 @@
+/* Versão B "Canteiro": guiada pelas fotos das obras. Topo transparente sobre a capa em tela cheia, trilho de obras, abas por tipo. */
+
+/* topo sobre a foto da capa */
+.topo-foto { position: fixed; left: 0; right: 0; background: linear-gradient(180deg, rgba(10,22,10,.6), rgba(10,22,10,0)); box-shadow: none; transition: background .3s; }
+.topo-foto.rolou { background: linear-gradient(100deg, var(--verde) 0%, var(--verde-2) 60%, var(--verde-3) 100%); box-shadow: 0 1px 0 rgba(0,0,0,.12); }
+.menu-aberto .topo-foto { background: var(--verde-4); }
+
+/* capa com obras trocando */
+.capa-b { position: relative; height: 100vh; height: 100svh; min-height: 600px; color: #fff; overflow: hidden; background: var(--verde-4); }
+.slides, .slide { position: absolute; inset: 0; }
+.slide { opacity: 0; transition: opacity 1.4s ease; }
+.slide.ativo { opacity: 1; }
+.slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 7s linear; }
+.slide.ativo img { transform: scale(1); }
+.slides::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,28,12,.82) 0%, rgba(12,28,12,.45) 50%, rgba(12,28,12,.1) 100%), linear-gradient(0deg, rgba(12,28,12,.7), transparent 40%); }
+.slide figcaption { position: absolute; right: max(var(--gut), calc((100vw - var(--larg)) / 2 + var(--gut))); bottom: 44px; z-index: 2; text-align: right; display: grid; gap: 4px; opacity: 0; transform: translateY(10px); transition: .6s .5s; }
+.slide.ativo figcaption { opacity: 1; transform: none; }
+.slide figcaption b { font: 800 1.15rem/1.1 var(--ft); }
+.slide figcaption span { font-size: .85rem; opacity: .8; }
+.capa-b-in { position: relative; z-index: 2; max-width: var(--larg); margin: 0 auto; padding: 0 var(--gut); height: 100%; display: flex; flex-direction: column; justify-content: center; padding-top: var(--topo-h); }
+.capa-b .sobre { color: #b9e0ae; }
+.capa-b h1 { color: #fff; max-width: 1000px; font-size: clamp(2.3rem, 4.6vw, 4rem); font-stretch: 108%; line-height: 1.02; }
+.botao-vidro { background: rgba(255,255,255,.12); backdrop-filter: blur(6px); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.45); }
+.botao-vidro:hover { background: rgba(255,255,255,.22); }
+.slides-ctrl { position: absolute; z-index: 2; left: max(var(--gut), calc((100vw - var(--larg)) / 2 + var(--gut))); bottom: 50px; display: flex; align-items: center; gap: 16px; font: 600 .85rem/1 var(--ft); }
+.slides-n b { font-size: 1.1rem; }
+.slides-barra { width: 140px; height: 2px; background: rgba(255,255,255,.25); position: relative; overflow: hidden; }
+.slides-barra i { position: absolute; inset: 0; background: #fff; transform-origin: left; transform: scaleX(0); }
+.slides-barra i.corre { animation: barra 6s linear forwards; }
+@keyframes barra { to { transform: scaleX(1); } }
+@media (max-width: 700px) { .slide figcaption { display: none; } .slides-ctrl { bottom: 28px; } .capa-b h1 { font-size: 2.3rem; } }
+
+/* intro */
+.intro-grade { display: grid; grid-template-columns: .8fr 1.4fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.intro-ano b { display: block; font: 900 clamp(6rem, 14vw, 11rem)/.85 var(--ft); color: var(--verde); font-stretch: 112%; letter-spacing: -.04em; }
+.intro-ano span { display: block; font: 700 1.1rem/1.3 var(--ft); color: var(--tinta); margin-top: 14px; }
+.intro-lead { font: 500 clamp(1.15rem, 1.7vw, 1.45rem)/1.5 var(--fx); color: var(--tinta); }
+.intro-fatos { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.intro-fatos li { border-top: 3px solid var(--verde); padding-top: 14px; display: grid; gap: 4px; }
+.intro-fatos b { font: 800 1.05rem/1.2 var(--ft); color: var(--tinta); }
+.intro-fatos span { font-size: .9rem; }
+@media (max-width: 860px) { .intro-grade { grid-template-columns: 1fr; } .intro-fatos { grid-template-columns: 1fr; } }
+
+/* trilho de obras */
+.filme { background: var(--papel); padding-bottom: clamp(48px, 7vw, 96px); }
+.filme-setas { display: flex; gap: 8px; }
+.filme-setas button { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--aco-claro); background: #fff; display: grid; place-items: center; color: var(--tinta); }
+.filme-setas button:hover { background: var(--verde); border-color: var(--verde); color: #fff; }
+.filme-trilho { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(var(--gut), calc((100vw - var(--larg)) / 2 + var(--gut))); padding: 0 max(var(--gut), calc((100vw - var(--larg)) / 2 + var(--gut))) 16px; scrollbar-width: none; }
+.filme-trilho::-webkit-scrollbar { display: none; }
+.filme-item { flex: 0 0 clamp(270px, 34vw, 460px); scroll-snap-align: start; text-decoration: none; }
+.filme-item:nth-child(even) { flex-basis: clamp(240px, 26vw, 340px); padding-top: 48px; }
+.filme-item figure { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; margin-bottom: 14px; }
+.filme-item:nth-child(even) figure { aspect-ratio: 1; }
+.filme-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.filme-item:hover img { transform: scale(1.05); }
+.filme-item small { font: 700 .72rem/1 var(--ft); letter-spacing: .14em; text-transform: uppercase; color: var(--verde); }
+.filme-item h3 { font-size: 1.35rem; margin-top: 8px; }
+
+/* abas por tipo de obra */
+.abas { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 1px solid var(--linha); margin-bottom: 32px; }
+.abas button { background: none; border: 0; padding: 16px 20px 14px; font: 700 1rem/1 var(--ft); color: var(--aco-2); border-bottom: 3px solid transparent; margin-bottom: -1px; display: inline-flex; gap: 8px; align-items: baseline; }
+.abas button small { font-size: .75rem; color: var(--aco-claro); }
+.abas button[aria-selected="true"] { color: var(--tinta); border-color: var(--verde); }
+.abas button[aria-selected="true"] small { color: var(--verde); }
+.aba-cab { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+.aba-cab p { max-width: 620px; margin: 0; font-size: 1.05rem; }
+.aba-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.aba-grade a { position: relative; display: block; overflow: hidden; aspect-ratio: 4 / 3; border-radius: 3px; text-decoration: none; color: #fff; }
+.aba-grade a:first-child { grid-row: span 2; aspect-ratio: auto; }
+.aba-grade img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.aba-grade a::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 50%, rgba(10,25,10,.8)); }
+.aba-grade a:hover img { transform: scale(1.05); }
+.aba-grade span { position: absolute; z-index: 1; left: 16px; bottom: 14px; font: 800 1.15rem/1.1 var(--ft); }
+@media (max-width: 700px) { .abas { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; } .abas button { white-space: nowrap; } .aba-grade a:first-child { grid-row: auto; aspect-ratio: 4 / 3; } }
+
+/* do projeto à entrega: foto fixa trocando */
+.troca { background: var(--verde-4); color: rgba(255,255,255,.8); }
+.troca h2, .troca h3 { color: #fff; }
+.troca .sobre { color: #9fd193; }
+.troca-grade { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); }
+.troca-fotos { position: sticky; top: calc(var(--topo-h) + 32px); height: calc(100vh - var(--topo-h) - 64px); max-height: 680px; }
+.troca-fotos figure { position: absolute; inset: 0; opacity: 0; transition: opacity .6s; }
+.troca-fotos figure.ativo { opacity: 1; }
+.troca-fotos img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
+.passo { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.14); min-height: 44vh; opacity: .45; transition: opacity .4s; }
+.passo.ativo { opacity: 1; }
+.passo > span { font: 900 3rem/1 var(--ft); color: var(--verde-claro); display: block; margin-bottom: 16px; }
+.passo h3 { font-size: 1.8rem; }
+.passo p { font-size: 1.05rem; max-width: 460px; }
+.passo-foto { display: none; }
+@media (max-width: 860px) {
+  .troca-grade { grid-template-columns: 1fr; }
+  .troca-fotos { display: none; }
+  .passo { min-height: 0; opacity: 1; }
+  .passo-foto { display: block; margin-top: 16px; }
+  .passo-foto img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 3px; }
+}
+
+/* vantagens em faixa verde */
+.vantagens-b { background: linear-gradient(120deg, var(--verde-2), var(--verde) 55%, var(--verde-claro)); color: rgba(255,255,255,.88); }
+.vantagens-b h2 { color: #fff; }
+.vantagens-b .sobre { color: #dff0d9; }
+.vant-b { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; margin-bottom: 40px; }
+.vant-b b { display: block; font: 900 clamp(2.2rem, 3.6vw, 3.2rem)/1 var(--ft); color: #fff; font-stretch: 112%; }
+.vant-b span { display: block; font: 700 .9rem/1.3 var(--ft); margin: 8px 0 12px; color: #fff; border-bottom: 1px solid rgba(255,255,255,.3); padding-bottom: 12px; }
+.vant-b p { font-size: .88rem; margin: 0; }
+.botao-claro { background: #fff; color: var(--verde-3); }
+.botao-claro:hover { background: var(--verde-luz); }
+@media (max-width: 960px) { .vant-b { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .vant-b { grid-template-columns: 1fr; } }
+
+.clientes-b .nomes li { font-size: 1.25rem; padding: 34px 18px; transition: background .2s, color .2s; }
+.clientes-b .nomes li:hover { background: var(--verde); color: #fff; }
+
+/* capa das internas com foto */
+.v-b .capa-int { position: relative; min-height: 440px; display: flex; align-items: flex-end; color: #fff; background: var(--verde-4); padding-top: var(--topo-h); }
+.v-b .capa-int-foto { position: absolute; inset: 0; }
+.v-b .capa-int-foto img { width: 100%; height: 100%; object-fit: cover; }
+.v-b .capa-int-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,28,12,.85), rgba(12,28,12,.35)), linear-gradient(0deg, rgba(12,28,12,.6), transparent 50%); }
+.v-b .capa-int-in { position: relative; z-index: 1; width: 100%; max-width: var(--larg); margin: 0 auto; padding: 56px var(--gut) 56px; }
+.v-b .capa-int h1 { color: #fff; font-size: clamp(2.3rem, 5vw, 4.2rem); font-stretch: 108%; }
+.v-b .capa-int p { max-width: 640px; font-size: 1.12rem; margin: 0; color: rgba(255,255,255,.88); }
+.v-b .capa-int .trilha { color: rgba(255,255,255,.75); }
+.v-b .capa-int:not(:has(.capa-int-foto)) { min-height: 320px; background: linear-gradient(120deg, var(--verde-4), var(--verde-2)); }
+/* nas internas o topo é o verde normal (fixo só na home) */
+.v-b .capa-int { padding-top: 0; }
