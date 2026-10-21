@@ -1,0 +1,12 @@
+# Vilela Peloso Advogados: como este site é feito
+
+- Cliente: Vilela Peloso Sociedade de Advogados (no site atual, "Advocacia Ribeirão Preto"), Rua Visconde do Rio Branco, 1043, Centro, Ribeirão Preto SP, (16) 3610-3655, daniela@advribeirao.com.br. Escolhido na lista de advocacia e engenharia (21/10/2026, /mnt/project-files/prospeccao/nichos/advocacia-engenharia/LISTA.md), sem pedido do cliente.
+- Site atual: advribeirao.com.br, uma página só em tabelas de 770 px (Kurole), sem versão de celular nem https. Só português.
+- Marca: não existe logo. O nome aparece em caixa alta espaçada (imagem "ADVOCACIA RIBEIRÃO PRETO" no rodapé) e o ícone do site é uma balança dourada; o novo usa a balança redesenhada em traço (`balanca()` em paginas.mjs, também `favicon.svg`) e "VILELA PELOSO / SOCIEDADE DE ADVOGADOS" em Archivo espaçada. Cores do site atual: marrom do papel de parede #4F3B25 (`img/papel-parede.png` é o próprio bg.gif), rodapé #32291E, faixa dourada #866C4B → #B79A60, caixas bege #F1F0EE.
+- Fontes: A com títulos em Archivo (grotesca como o nome do rodapé) e faixas em Archivo Narrow (parecidas com as faixas condensadas atuais), texto em Source Sans 3. B com títulos em Barlow Condensed e texto em Barlow.
+- Fotos: o site atual só tem a estante do topo (`img/estante-livros.webp`, recortada de fundo_top.jpg) e uma foto pequena de livro. As demais são do Wikimedia Commons (créditos no rodapé e em `creditos` de conteudo.mjs).
+- Textos: Quem somos, Missão, equipe e Andamento processual são do site atual. Escritos por nós: os temas de cada área, "o que levar na primeira conversa" e as cinco etapas do atendimento.
+- Andamento processual: o login antigo estava escondido no site atual; o novo explica o serviço e tem formulário que abre o e-mail do escritório para pedir usuário e senha. Formulários não passam pela Overtus (mailto).
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Biblioteca" e `/b/` "Andamento". 6 páginas em cada: Início, O escritório, Direito do Trabalho, Direito Previdenciário, Andamento processual, Contato.
+- Gerar: `node clientes/vilelapeloso/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: nome a usar (Vilela Peloso ou Advocacia Ribeirão Preto); temas das áreas e etapas; se há celular/WhatsApp; endereço do sistema de andamento processual atual; fotos reais do escritório e da equipe.
