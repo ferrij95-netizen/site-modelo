@@ -1,0 +1,130 @@
+/* Versão A "Estrutura": clara e técnica. Papel com grade de projeto, cotas, perfis I, o verde da marca no topo e nas faixas. */
+.v-a { --grade: linear-gradient(rgba(70,132,62,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(70,132,62,.07) 1px, transparent 1px); }
+
+/* capa */
+.capa-a { position: relative; background: var(--papel); background-image: var(--grade); background-size: 32px 32px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); grid-template-rows: 1fr auto; max-width: none; }
+.capa-a-texto { padding: clamp(48px, 7vw, 96px) clamp(24px, 4vw, 56px) 48px max(var(--gut), calc((100vw - var(--larg)) / 2 + var(--gut))); align-self: center; }
+.capa-a h1 { font-size: clamp(2.3rem, 4.4vw, 3.7rem); font-stretch: 106%; }
+.capa-a-lead { font-size: 1.15rem; max-width: 540px; }
+.capa-a-foto { position: relative; min-height: 520px; margin: 40px 0 0; }
+.capa-a-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: polygon(0 0, 100% 0, 100% 100%, 9% 100%, 0 88%); }
+.cota { position: absolute; display: flex; align-items: center; gap: 10px; font: 700 .78rem/1 var(--ft); letter-spacing: .12em; color: var(--verde-3); text-transform: uppercase; }
+.cota i { flex: 1; height: 1px; background: var(--verde-3); position: relative; }
+.cota i::before { content: ""; position: absolute; top: -5px; width: 1px; height: 11px; background: var(--verde-3); }
+.cota i:first-child::before { left: 0; } .cota i:last-child::before { right: 0; }
+.cota-h { left: 9%; right: 0; top: -26px; }
+.cota-v { left: -64px; top: 0; bottom: 12%; width: 40px; flex-direction: column; }
+.cota-v i { width: 1px; height: auto; flex: 1; }
+.cota-v i::before { top: auto; left: -5px !important; width: 11px; height: 1px; }
+.cota-v i:first-child::before { top: 0; } .cota-v i:last-child::before { bottom: 0; right: auto; }
+.cota-v b { writing-mode: vertical-rl; transform: rotate(180deg); }
+.ficha { grid-column: 1 / -1; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--verde-4); color: #fff; padding: 0 max(var(--gut), calc((100vw - var(--larg)) / 2 + var(--gut))); }
+.ficha div { padding: 22px 20px 22px 0; border-right: 1px solid rgba(255,255,255,.14); padding-left: 20px; }
+.ficha div:first-child { padding-left: 0; }
+.ficha div:last-child { border: 0; }
+.ficha dt { font: 700 .7rem/1 var(--ft); letter-spacing: .16em; text-transform: uppercase; color: #9fd193; margin-bottom: 8px; }
+.ficha dd { margin: 0; font: 700 1rem/1.3 var(--ft); }
+@media (max-width: 960px) {
+  .capa-a { grid-template-columns: minmax(0, 1fr); }
+  .capa-a-texto { padding: 48px var(--gut) 32px; }
+  .capa-a-foto { min-height: 0; aspect-ratio: 16 / 10; margin: 30px var(--gut) 0; }
+  .capa-a-foto img { clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%, 0 90%); }
+  .cota-v { display: none; }
+  .ficha { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ficha div { padding-left: 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+}
+
+/* o que fabricamos: lista numerada com a foto do item ativo ao lado */
+.fab-grade { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); gap: 56px; align-items: stretch; }
+.lista-fab { list-style: none; margin: 0; padding: 0; }
+.lista-fab li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 26px 0; border-top: 1px solid var(--linha); }
+.lista-fab li:last-child { border-bottom: 1px solid var(--linha); }
+.lista-fab .num { font: 900 1.7rem/1 var(--ft); color: var(--aco-claro); transition: color .2s; }
+.lista-fab h3 { font-size: clamp(1.3rem, 2vw, 1.7rem); margin-bottom: 6px; transition: color .2s; }
+.lista-fab p { margin: 0; max-width: 460px; }
+.lista-fab li.ativo .num { color: var(--verde); }
+.lista-fab li.ativo h3 { color: var(--verde-2); }
+.fab-foto-cel { display: none; }
+.fab-fotos { position: relative; min-height: 420px; }
+.fab-fotos figure { position: absolute; inset: 0; opacity: 0; transition: opacity .4s; }
+.fab-fotos figure.ativo { opacity: 1; }
+.fab-fotos img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
+.fab-fotos figcaption { position: absolute; left: 0; bottom: 0; background: var(--verde); color: #fff; font: 700 .85rem/1 var(--ft); padding: 12px 16px; }
+@media (max-width: 860px) {
+  .fab-grade { grid-template-columns: 1fr; }
+  .fab-fotos { display: none; }
+  .lista-fab li { grid-template-columns: 48px 1fr; }
+  .fab-foto-cel { display: block; margin-top: 14px; }
+  .fab-foto-cel img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 3px; }
+}
+
+/* processo: faixa verde com etapas ligadas por uma viga */
+.processo { background: linear-gradient(160deg, var(--verde-3) 0%, var(--verde-2) 55%, var(--verde) 100%); color: rgba(255,255,255,.86); }
+.processo h2, .processo h3 { color: #fff; }
+.processo .sobre { color: #cfe6c9; }
+.etapas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; position: relative; }
+.etapas li { position: relative; }
+.etapas figure { aspect-ratio: 4 / 3; overflow: hidden; border-radius: 3px; margin-bottom: 20px; }
+.etapas figure img { width: 100%; height: 100%; object-fit: cover; }
+.etapa-num { position: relative; display: flex; align-items: center; gap: 12px; font: 900 1rem/1 var(--ft); color: var(--verde-4); margin-bottom: 20px; }
+.etapa-num { width: 40px; height: 40px; justify-content: center; background: #fff; border-radius: 2px; }
+.etapas li:not(:last-child)::after { content: ""; position: absolute; left: 52px; right: -16px; top: 16px; height: 8px; background: linear-gradient(#fff 0 2px, transparent 2px 6px, #fff 6px 8px); opacity: .5; }
+.etapas p { font-size: .95rem; margin: 0; }
+@media (max-width: 900px) { .etapas { grid-template-columns: 1fr 1fr; } .etapas li::after { display: none; } }
+@media (max-width: 560px) { .etapas { grid-template-columns: 1fr; } }
+
+/* segmentos: mosaico assimétrico */
+.segmentos-a { background: var(--papel); background-image: var(--grade); background-size: 32px 32px; }
+.mosaico { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 210px; gap: 12px; }
+.tile { position: relative; overflow: hidden; text-decoration: none; color: #fff; border-radius: 3px; grid-column: span 2; }
+.tile:nth-child(1) { grid-column: span 4; grid-row: span 2; }
+
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,25,10,0) 35%, rgba(10,25,10,.82)); }
+.tile:hover img { transform: scale(1.05); }
+.tile-txt { position: absolute; left: 20px; right: 64px; bottom: 18px; z-index: 1; display: grid; gap: 6px; }
+.tile-txt b { font: 800 clamp(1.15rem, 1.8vw, 1.6rem)/1.1 var(--ft); }
+.tile-txt small { font-size: .82rem; opacity: .85; line-height: 1.35; }
+.tile-n { position: absolute; z-index: 1; top: 14px; right: 14px; font: 800 .8rem/1 var(--ft); background: var(--verde); padding: 8px 9px; border-radius: 2px; }
+@media (max-width: 900px) { .mosaico { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; } .tile, .tile:nth-child(n) { grid-column: span 1; grid-row: span 1; } .tile:nth-child(1) { grid-column: span 2; } }
+@media (max-width: 520px) { .mosaico { grid-template-columns: 1fr; } .tile:nth-child(1) { grid-column: span 1; } }
+
+/* faixa de clientes rolando */
+.faixa-clientes { background: #fff; border-bottom: 1px solid var(--linha); overflow: hidden; padding: 30px 0; }
+.rolo > div { display: flex; align-items: center; gap: 36px; width: max-content; animation: rolo 50s linear infinite; }
+.rolo span { font: 800 clamp(1.4rem, 2.4vw, 2.1rem)/1 var(--ft); color: var(--aco); white-space: nowrap; font-stretch: 110%; }
+.viga-sep { width: 22px; height: 22px; color: var(--verde-claro); flex: none; }
+@keyframes rolo { to { transform: translateX(-50%); } }
+
+/* destaques */
+.destaques-grade { display: grid; grid-template-columns: repeat(12, 1fr); gap: 48px 28px; }
+.destaque { text-decoration: none; grid-column: span 4; display: block; }
+.destaque.d1 { grid-column: span 7; } .destaque.d2 { grid-column: span 5; padding-top: 80px; }
+.destaque.d3 { grid-column: span 4; } .destaque.d4 { grid-column: span 4; padding-top: 50px; } .destaque.d5 { grid-column: span 4; }
+.destaque figure { overflow: hidden; aspect-ratio: 4 / 3; margin-bottom: 18px; border-radius: 3px; }
+.destaque.d1 figure { aspect-ratio: 16 / 10; }
+.destaque figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.destaque:hover figure img { transform: scale(1.04); }
+.destaque small { font: 700 .72rem/1 var(--ft); letter-spacing: .14em; text-transform: uppercase; color: var(--verde); }
+.destaque h3 { font-size: 1.5rem; margin: 8px 0; }
+.destaque p { margin: 0; font-size: .95rem; max-width: 520px; }
+@media (max-width: 860px) { .destaques-grade { grid-template-columns: 1fr 1fr; } .destaque, .destaque.d1, .destaque.d2, .destaque.d3, .destaque.d4, .destaque.d5 { grid-column: span 1; padding-top: 0; } .destaque.d1 { grid-column: span 2; } }
+@media (max-width: 560px) { .destaques-grade { grid-template-columns: 1fr; } .destaque.d1 { grid-column: span 1; } }
+
+/* empresa */
+.empresa-grade { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.empresa-foto { position: relative; }
+.empresa-foto img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; }
+.empresa-foto figcaption { position: absolute; left: 0; bottom: 0; background: var(--verde); color: #fff; font: 700 .82rem/1 var(--ft); padding: 12px 16px; letter-spacing: .04em; }
+@media (max-width: 860px) { .empresa-grade { grid-template-columns: 1fr; } .empresa-foto img { aspect-ratio: 16 / 10; } }
+
+/* capa das internas */
+.capa-int { background: var(--papel); background-image: var(--grade); background-size: 32px 32px; display: grid; grid-template-columns: 1.1fr 1fr; align-items: stretch; border-bottom: 4px solid var(--verde); }
+.capa-int-in { padding: clamp(40px, 6vw, 80px) 40px clamp(40px, 6vw, 72px) max(var(--gut), calc((100vw - var(--larg)) / 2 + var(--gut))); align-self: center; }
+.capa-int h1 { font-size: clamp(2.2rem, 4.2vw, 3.6rem); font-stretch: 106%; }
+.capa-int p { font-size: 1.12rem; max-width: 560px; margin: 0; }
+.capa-int .trilha { color: var(--aco-2); }
+.capa-int-foto { position: relative; min-height: 300px; }
+.capa-int-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%); }
+.capa-int:not(:has(.capa-int-foto)) { grid-template-columns: 1fr; }
+@media (max-width: 800px) { .capa-int { grid-template-columns: 1fr; } .capa-int-in { padding: 40px var(--gut); } .capa-int-foto { min-height: 220px; } .capa-int-foto img { clip-path: none; } }
