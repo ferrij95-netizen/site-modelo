@@ -1,0 +1,12 @@
+# TOP Engenharia: como este site é feito
+
+- Cliente: TOP Engenharia Ltda., Rua do Zaire, s/n, Granjas Rurais Presidente Vargas, Salvador BA. Construção pesada desde 1977 (terraplenagem, pavimentação, saneamento, barragens, aeroportos, obras de arte especiais). Escolhida na prospecção de engenharia (21/10/2026, /mnt/project-files/prospeccao/nichos/advocacia-engenharia/LISTA.md), sem pedido do cliente.
+- Site atual: topengenharia.com.br, PHP de ~2010 (jQuery 1.5, sem versão de celular). Só português, então o novo é só `pt`.
+- Marca: o logo só existe em PNG de 150 px; `logo.svg` foi vetorizado dele (potracer, camadas vermelha e preta) e `logo-branco.svg` troca o preto por branco. Vermelho #ED1C24 do logo, grafite #2B2A2A e cinzas do site atual. Versão A com títulos em Archivo (próxima do "TOP"), versão B em Barlow Condensed (próxima do "ENGENHARIA"); texto em Inter.
+- Fotos: todas do site atual (carrossel da home e galerias das 21 obras, em `public/assets/img/`). As três fotos de banco da home atual (engenheiros, prancheta) foram trocadas por fotos das obras. Logos dos clientes da página Clientes (pequenos, 150 px).
+- Textos: todos do site atual em `conteudo.mjs` (empresa, qualidade, segurança, responsabilidade ambiental, canal de denúncias, obras com trecho, período e cliente). Nosso: títulos de seção, os títulos curtos das obras, o agrupamento dos pontos de segurança em 5 etapas e as somas (773 km = soma das extensões informadas nas obras rodoviárias).
+- Obras "em execução" no site atual aparecem como "Início em …", porque o site parou por volta de 2010.
+- Formulários: contato abre o e-mail (top@topengenharia.com.br) com os campos preenchidos; o canal de denúncias leva ao formulário anônimo que já existe no site atual (envia-denuncia.php) ou ao e-mail denuncia@. Links de Webmail e Intranet do menu atual ficam em "Colaborador".
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Canteiro" e `/b/` "Trecho". 35 páginas em cada: Início, A empresa, Qualidade e segurança, Responsabilidade ambiental, Obras, 6 segmentos, 21 obras, Clientes, Contato, Canal de denúncias.
+- Gerar: `node clientes/topengenharia/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar. O mapa (`mapa.json`) veio do GeoJSON de estados do click_that_hood, simplificado.
+- A confirmar com o cliente: obras mais recentes (o portfólio atual vai até 2010); se as certificações ISO 9001:2000 e Qualiop Nível A continuam válidas; fotos atuais e o logo em vetor.

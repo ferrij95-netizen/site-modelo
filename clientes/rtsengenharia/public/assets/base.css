@@ -1,0 +1,85 @@
+/* Grupo RTS · base comum às versões A e B. Cores do logo: marinho #2E3355, azul #1EAEEB. Títulos em Exo 2 (o "RTS"
+   do logo é uma sans geométrica arredondada no estilo Neo Sans), texto em Inter. */
+:root{
+  --marinho:#2E3355;--marinho-f:#1D2140;--marinho-ff:#14182F;--azul:#1EAEEB;--azul-f:#0B85BC;--azul-cl:#E3F4FC;
+  --cinza:#EEF1F6;--cinza-2:#DDE2EA;--texto:#2B2F3D;--suave:#5C6275;--branco:#fff;
+  --h:'Exo 2',system-ui,sans-serif;--b:Inter,system-ui,sans-serif;--r:6px;--in:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--b);font-size:17px;line-height:1.65;color:var(--texto);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--h);color:var(--marinho-f);line-height:1.1;margin:0 0 .5em;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(34px,4.6vw,58px);font-weight:700}
+h2{font-size:clamp(27px,3vw,40px);font-weight:700}
+h3{font-size:20px;font-weight:700}
+p{margin:0 0 1em}
+.in{max-width:var(--in);margin:0 auto;padding:0 32px;width:100%}
+.ic{width:22px;height:22px;flex:none}
+.pular{position:absolute;left:-999px;top:0;background:#fff;padding:10px 16px;z-index:100}.pular:focus{left:10px}
+.sobre{font-family:var(--h);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--azul-f);margin:0 0 12px}
+.lead{font-size:clamp(19px,1.6vw,22px);line-height:1.5;color:var(--marinho-f)}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.cab{max-width:760px;margin:0 0 44px}.cab p:last-child{color:var(--suave)}
+section{padding:96px 0}
+
+/* botões */
+.acoes{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--h);font-weight:700;font-size:16px;text-decoration:none;background:var(--marinho);color:#fff;padding:14px 24px;border-radius:var(--r);border:2px solid var(--marinho);cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.btn:hover{background:var(--marinho-f);border-color:var(--marinho-f);transform:translateY(-1px)}
+.btn .ic{width:20px;height:20px}
+.btn-linha{background:transparent;color:var(--marinho)}.btn-linha:hover{background:var(--marinho);color:#fff}
+.btn-claro{background:var(--azul);border-color:var(--azul);color:var(--marinho-ff)}.btn-claro:hover{background:#fff;border-color:#fff;color:var(--marinho-ff)}
+.btn-linha-br{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}.btn-linha-br:hover{background:#fff;color:var(--marinho-f);border-color:#fff}
+
+/* menu celular */
+.menu-btn{display:none;background:none;border:0;padding:8px;color:inherit;cursor:pointer}.menu-btn .ic{width:28px;height:28px}
+
+/* contato */
+.contato-grade{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.contatos{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:22px}
+.contatos li{display:flex;gap:16px;align-items:flex-start}.contatos .ic{width:26px;height:26px;color:var(--azul-f);margin-top:3px}
+.contatos b{display:block;font-family:var(--h);color:var(--marinho-f);font-size:15px;letter-spacing:.04em;text-transform:uppercase}
+.contatos a{text-decoration:none;font-size:18px}.contatos a:hover{color:var(--azul-f)}
+.mapa{width:100%;aspect-ratio:4/3;border:0;border-radius:var(--r);background:var(--cinza)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form label{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--marinho-f)}.form .larga{grid-column:1/-1}
+.form input,.form select,.form textarea{font:inherit;font-weight:400;font-size:16px;padding:12px 14px;border:1.5px solid var(--cinza-2);border-radius:var(--r);background:#fff;color:var(--texto);width:100%}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--azul);outline-offset:1px;border-color:var(--azul)}
+.form .btn{grid-column:1/-1;justify-content:center}
+.form-nota{grid-column:1/-1;font-size:13px;color:var(--suave);margin:0}
+
+/* navegação entre disciplinas */
+.disc-nav{display:flex;justify-content:space-between;gap:16px;padding-top:28px;padding-bottom:28px;border-top:1px solid var(--cinza-2)}
+.disc-nav a{text-decoration:none;font-family:var(--h);font-weight:700;color:var(--marinho)}.disc-nav a:hover{color:var(--azul-f)}
+
+/* rodapé */
+.rodape{background:var(--marinho-ff);color:rgba(255,255,255,.72);padding:72px 0 0;font-size:15px}
+.rod-grade{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px;padding-bottom:48px}
+.rod-marca img{width:190px;margin-bottom:18px}
+.rodape h2{color:#fff;font-size:15px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.rodape a{text-decoration:none}.rodape a:hover{color:var(--azul)}
+.rod-links{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}
+.rod-base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;padding-bottom:26px;font-size:13px}
+.rod-base span:last-child{display:flex;gap:18px}
+.wa-flut{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);z-index:40}.wa-flut .ic{width:28px;height:28px}
+
+/* carimbo de prancha (B, e reaproveitável) */
+.carimbo{margin:0;display:grid;grid-template-columns:1fr 1fr;border:1.5px solid currentColor;font-size:14px}
+.carimbo div{padding:10px 14px;border-right:1px solid currentColor;border-bottom:1px solid currentColor}
+.carimbo div:nth-child(2n){border-right:0}.carimbo div:nth-last-child(-n+2){border-bottom:0}
+.carimbo dt{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.65;margin-bottom:2px}
+.carimbo dd{margin:0;font-family:var(--h);font-weight:600;font-size:16px}
+
+@media(max-width:900px){
+  body{font-size:16px}
+  section{padding:68px 0}
+  .in{padding:0 20px}
+  .grade-2,.contato-grade{grid-template-columns:1fr;gap:28px}
+  .rod-grade{grid-template-columns:1fr;gap:32px}
+  .form{grid-template-columns:1fr}
+  .menu-btn{display:block}
+  .sobre{font-size:12px;letter-spacing:.1em}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}

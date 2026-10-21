@@ -1,0 +1,121 @@
+/* Vidrex Vidros · base comum às versões A e B */
+:root{
+  --vermelho:#DF1F19;--vermelho-h:#C4140F;--vinho:#AE0A09;--grafite:#373735;--grafite-2:#262624;
+  --cinza:#6D6D69;--cinza-m:#B4B4B1;--cinza-c:#E9E9E6;--cinza-cc:#F4F4F2;--txt:#2B2B29;--txt-2:#5B5B58;
+  --h:'Barlow Condensed',system-ui,sans-serif;--b:Inter,system-ui,sans-serif;
+  --w:1240px;--gut:32px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font:16px/1.6 var(--b);color:var(--txt);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--h);line-height:1.05;margin:0 0 .4em;text-wrap:balance}
+p{margin:0 0 1em}
+ul,ol{margin:0;padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.w{max-width:var(--w);margin:0 auto;padding:0 var(--gut);width:100%}
+.ic{width:1.15em;height:1.15em;flex:none}
+.pular{position:absolute;left:-999px;top:0;background:#fff;padding:10px 16px;z-index:100}
+.pular:focus{left:12px;top:12px}
+:focus-visible{outline:3px solid var(--vermelho);outline-offset:2px}
+sup{font-size:.5em;vertical-align:super;line-height:0}
+
+/* botões e links */
+.bt{display:inline-flex;align-items:center;gap:.55em;padding:.85em 1.4em;border-radius:3px;font-weight:600;font-size:15px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s;line-height:1.2}
+.bt .ic{width:1.1em;height:1.1em}
+.bt-v{background:var(--vermelho);color:#fff}.bt-v:hover{background:var(--vermelho-h)}
+.bt-l{border-color:currentColor;color:var(--grafite);background:transparent}.bt-l:hover{background:var(--grafite);color:#fff;border-color:var(--grafite)}
+.bt-b{background:#fff;color:var(--vermelho-h)}.bt-b:hover{background:var(--grafite);color:#fff}
+.bt-lb{border-color:#fff;color:#fff}.bt-lb:hover{background:#fff;color:var(--vermelho-h)}
+.lk{display:inline-flex;align-items:center;gap:.4em;font-weight:600;color:var(--vermelho-h);text-decoration:none;font-size:15px}
+.lk .ic{transition:transform .2s}.lk:hover .ic{transform:translateX(4px)}
+
+/* menu do celular */
+.menu-bt{display:none;background:none;border:0;padding:8px;cursor:pointer;color:inherit}
+.menu-bt .ic{width:28px;height:28px}
+
+/* mapa */
+.mapa{position:relative;background:var(--cinza-c);overflow:hidden;aspect-ratio:4/3}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35)}
+.mapa-l{aspect-ratio:21/8;min-height:320px}
+
+/* formulário */
+.form-g{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:var(--txt-2)}
+.form-l2{grid-column:1/-1}
+.form input,.form select,.form textarea{border:1.5px solid #CFCFCB;border-radius:3px;padding:12px 14px;background:#fff;font-weight:400;color:var(--txt);width:100%}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--vermelho);outline:none;box-shadow:0 0 0 3px rgba(223,31,25,.15)}
+.form [aria-invalid=true]{border-color:var(--vermelho)}
+.form-erro{color:var(--vermelho-h);font-weight:600;margin:14px 0 0}
+.form-bts{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.form-nota{font-size:13px;color:var(--cinza);margin:12px 0 0}
+
+/* antes e depois */
+.ad{position:relative;overflow:hidden;user-select:none;background:#000;aspect-ratio:1000/524}
+.ad img{width:100%;height:100%;object-fit:cover}
+.ad-antes{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ad input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ad-linha{position:absolute;top:0;bottom:0;left:var(--p);width:3px;margin-left:-1.5px;background:#fff;pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.4)}
+.ad-linha i{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#fff;color:var(--grafite);display:flex;align-items:center;justify-content:center}
+.ad-linha .ic{width:16px;height:16px;margin:0 -2px}
+.ad input:focus-visible~.ad-linha i{outline:3px solid var(--vermelho)}
+.ad-r{position:absolute;bottom:14px;font:600 14px/1 var(--h);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;color:#fff;pointer-events:none}
+.ad-r1{left:14px;background:var(--grafite)}.ad-r2{right:14px;background:var(--vermelho)}
+
+/* como é feito o vidro */
+.cf-graf{width:100%;height:auto;max-height:190px;overflow:visible;margin-bottom:8px}
+.cf-pt{fill:#fff;stroke:var(--grafite);stroke-width:2.5}
+.cf-pt-t{fill:var(--vermelho);stroke:#fff}
+.cf-temp{font:700 17px var(--h);text-anchor:middle;fill:var(--vermelho-h)}
+.cf-passos{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.cf-passos b{font:700 15px var(--h);color:var(--vermelho);letter-spacing:.06em}
+.cf-passos h3{font-size:22px;margin:.2em 0 .35em}
+.cf-passos p{font-size:14px;line-height:1.55;color:var(--txt-2);margin:0}
+.cf .cf-linha{stroke-dasharray:1200;stroke-dashoffset:0}
+.js .cf:not(.vis) .cf-linha{stroke-dashoffset:1200}
+.js .cf .cf-linha{transition:stroke-dashoffset 2.2s ease}
+
+/* lightbox */
+.lb-a{display:block;cursor:zoom-in}
+.lb{position:fixed;inset:0;background:rgba(20,20,19,.94);z-index:200;display:flex;align-items:center;justify-content:center;padding:56px 70px}
+.lb[hidden]{display:none}
+.lb figure{margin:0;max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center}
+.lb img{max-height:calc(100vh - 150px);width:auto;max-width:100%}
+.lb figcaption{color:#eee;font-size:14px;margin-top:12px;text-align:center}
+.lb button{position:absolute;background:rgba(255,255,255,.1);border:0;color:#fff;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb button:hover{background:var(--vermelho)}
+.lb-x{top:14px;right:14px}.lb-ant{left:12px;top:50%;margin-top:-24px}.lb-prox{right:12px;top:50%;margin-top:-24px}
+
+/* whatsapp flutuante */
+.wa-flut{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:90}
+.wa-flut .ic{width:28px;height:28px}
+
+/* rodapé (base) */
+.rod-g{display:grid;grid-template-columns:1.3fr 1.3fr 1fr 1.3fr;gap:40px;padding-top:56px;padding-bottom:44px}
+.rod h3{font-size:19px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.rod ul li{margin-bottom:6px;font-size:14px}
+.rod a{text-decoration:none}.rod a:hover{text-decoration:underline}
+.rod-2col{columns:2;column-gap:16px}
+.rod-marca img{width:170px;margin-bottom:16px}
+.rod-marca p{font-size:14px;opacity:.85}
+.rod-cont li{display:flex;gap:10px;align-items:flex-start}
+.rod-cont .ic{margin-top:3px}
+.rod-base{font-size:13px;padding:16px 0}
+.rod-base .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:1000px){
+  .rod-g{grid-template-columns:1fr 1fr}
+  .cf-passos{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:640px){
+  :root{--gut:18px}
+  .form-g{grid-template-columns:1fr}
+  .rod-g{grid-template-columns:1fr;gap:28px}
+  .cf-passos{grid-template-columns:1fr 1fr;gap:16px}
+  .cf-graf{display:none}
+  .lb{padding:56px 8px}
+  .lb-ant,.lb-prox{top:auto;bottom:14px}
+  .wa-flut{width:50px;height:50px;right:14px;bottom:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
