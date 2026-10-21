@@ -1,0 +1,108 @@
+/* Versão A "Rótulo": menu lateral carvão com o logo laranja (como o site atual), seções em bordô e dourado dos rótulos. */
+.v-a { --lado: 260px; }
+.lado { position: fixed; inset: 0 auto 0 0; width: var(--lado); background: var(--carvao); color: #fff; z-index: 30; display: flex; flex-direction: column; border-right: 3px solid var(--laranja); }
+.lado-logo { display: block; padding: 2.2rem 2.2rem 1.4rem; }
+.lado-logo img { width: 170px; margin-inline: auto; }
+.lado-nav { flex: 1; display: flex; flex-direction: column; justify-content: space-between; overflow-y: auto; padding: 1rem 0 1.6rem; }
+.lado-nav ul { list-style: none; margin: 0; padding: 0; }
+.lado-nav > ul > li > a { display: block; padding: .62rem 2.2rem; font: 600 .76rem/1.35 var(--ft); text-transform: uppercase; letter-spacing: .13em; text-decoration: none; color: #f1ece8; border-left: 3px solid transparent; transition: color .2s, background .2s; }
+.lado-nav a:hover { color: var(--laranja); }
+.lado-nav a[aria-current] { color: var(--laranja); border-left-color: var(--laranja); background: rgba(255,255,255,.03); }
+.lado-nav .sub { padding: .1rem 0 .4rem; }
+.lado-nav .sub a { display: block; padding: .3rem 2.2rem .3rem 3rem; font-size: .84rem; text-decoration: none; color: #b9b2ad; }
+.lado-nav .sub a[aria-current] { color: var(--ouro-cl); }
+.lado-pe { padding: 1.4rem 2.2rem 0; display: grid; gap: .8rem; font-size: .8rem; color: #9a938e; }
+.lado-pe .btn-zap { justify-content: center; font-size: .85rem; padding: .7rem 1rem; }
+.lado-pe p { margin: 0; text-align: center; letter-spacing: .08em; text-transform: uppercase; }
+.menu-btn { display: none; }
+.principal { margin-left: var(--lado); }
+.v-a .zap-flut { display: none; }
+
+/* hero */
+.hero { position: relative; min-height: min(92vh, 760px); display: flex; align-items: flex-end; color: #fff; overflow: hidden; }
+.hero-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28,29,31,.88) 0%, rgba(28,29,31,.55) 45%, rgba(28,29,31,.05) 75%), linear-gradient(0deg, rgba(90,11,38,.55), transparent 45%); z-index: 1; }
+.hero-in { position: relative; z-index: 2; padding: 4rem clamp(1.5rem, 5vw, 4.5rem) clamp(3rem, 7vw, 5.5rem); max-width: 760px; }
+.hero .sobre { color: var(--laranja); }
+.hero h1 { font-size: clamp(2.3rem, 5vw, 4.2rem); margin-bottom: .4em; }
+.hero h1 span { display: block; color: var(--laranja); }
+.hero-sub { font: 500 clamp(1.1rem, 1.8vw, 1.45rem)/1.4 var(--ft); margin: 0; }
+
+/* seções */
+section { scroll-margin-top: 1rem; }
+.paixao { display: grid; grid-template-columns: 1.25fr .9fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4.5rem); }
+.paixao h2 { color: var(--bordo); font-size: clamp(1.6rem, 2.8vw, 2.3rem); }
+.paixao-foto { position: relative; }
+.paixao-foto img { width: 100%; max-height: 560px; object-fit: cover; }
+.paixao-foto::before { content: ""; position: absolute; inset: 22px -22px -22px 22px; border: 2px solid var(--ouro); z-index: -1; }
+.paixao-foto { z-index: 0; }
+
+.linhas-a { background: radial-gradient(ellipse at 50% 0%, var(--bordo-2), var(--bordo) 45%, var(--bordo-esc)); color: #fff; padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 5vw, 4.5rem); text-align: center; border-top: 4px solid var(--ouro); border-bottom: 4px solid var(--ouro); }
+.linhas-cab .script { width: min(560px, 90%); margin: 0 auto 1rem; }
+.linhas-cab p { font: 500 clamp(1.05rem, 1.7vw, 1.3rem) var(--ft); max-width: 38ch; margin: 0 auto 3rem; color: #f5e9ea; }
+.selos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1050px; margin: 0 auto; }
+.selo { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #fff; }
+.selo img { height: 250px; width: auto; filter: drop-shadow(0 14px 20px rgba(0,0,0,.35)); transition: transform .35s; margin-bottom: 1.2rem; }
+.selo:hover img { transform: translateY(-6px) rotate(-2deg); }
+.selo b { font: 700 1.2rem var(--ft); }
+.selo span { font-size: .9rem; color: var(--ouro-cl); margin-bottom: .9rem; }
+.selo em { font: 600 .9rem var(--ft); font-style: normal; display: inline-flex; gap: .4rem; align-items: center; border: 2px solid var(--ouro); padding: .55rem 1.1rem; border-radius: 3px; transition: background .2s, color .2s; }
+.selo:hover em { background: var(--ouro); color: #1b1608; }
+
+.video-a { display: grid; grid-template-columns: .8fr 1.5fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 5vw, 4.5rem); background: var(--cinza); }
+.video-a h2 { color: var(--bordo); }
+
+.boitata-a { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; padding: clamp(3.5rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4.5rem); background: #121111; color: #ece6dc; overflow: hidden; }
+.boitata-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .16; filter: grayscale(1); }
+.boitata-in { position: relative; max-width: 520px; }
+.boitata-logo { width: 230px; margin-bottom: 1.5rem; }
+.boitata-a h2 { color: var(--ouro-cl); }
+.boitata-pecas { position: relative; width: 100%; mix-blend-mode: normal; border: 1px solid #2b2620; }
+
+.bloco { padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 5vw, 4.5rem); }
+.bloco-cinza { background: var(--cinza); }
+.bloco-cab { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+.bloco-cab h2 { margin: 0; max-width: 28ch; }
+
+.contato-a { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: center; padding: clamp(3.5rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4.5rem); border-top: 4px solid var(--laranja); }
+.contato-a h2 { color: var(--bordo); }
+.contato-a .horario { background: var(--cinza); padding: 1.2rem 1.6rem; }
+
+/* páginas internas */
+.cab { position: relative; min-height: 360px; display: flex; align-items: flex-end; color: #fff; background: var(--bordo); overflow: hidden; }
+.cab-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cab::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(90,11,38,.94) 0%, rgba(134,18,58,.78) 45%, rgba(134,18,58,.15) 100%); z-index: 1; }
+.cab-in { position: relative; z-index: 2; padding: 3.5rem clamp(1.5rem, 5vw, 4.5rem) 2.8rem; max-width: 820px; }
+.cab .sobre { color: var(--ouro-cl); }
+.cab h1 { margin-bottom: .3em; }
+.cab-sub { font-size: 1.1rem; margin: 0; max-width: 56ch; color: #f6e8eb; }
+.cab-selo { position: absolute; right: clamp(1.5rem, 5vw, 4.5rem); bottom: -1px; }
+.cab:has(.cab-selo) .cab-in { max-width: none; padding-right: 300px; }
+.cab-selo img { width: 210px; filter: drop-shadow(0 10px 18px rgba(0,0,0,.4)); }
+.pg-produtos-boitata .cab-selo img { margin-bottom: 2.2rem; width: 240px; }
+.pagina { padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4.5rem) 2rem; max-width: 1380px; }
+
+@media (max-width: 1100px) {
+  .v-a { --lado: 0px; }
+  .lado { position: sticky; top: 0; inset: auto; width: 100%; height: auto; flex-direction: row; align-items: center; justify-content: space-between; border-right: 0; border-bottom: 3px solid var(--laranja); padding: .5rem 1rem; }
+  .lado-logo { padding: 0; }
+  .lado-logo img { width: 92px; }
+  .menu-btn { display: grid; place-items: center; width: 46px; height: 46px; border: 0; background: transparent; color: #fff; cursor: pointer; }
+  .menu-btn .ic { width: 28px; height: 28px; }
+  .lado-nav { display: none; position: fixed; inset: 82px 0 0 0; background: var(--carvao); padding: 1rem 0 2rem; }
+  .lado-nav.aberto { display: flex; }
+  .v-a .zap-flut { display: grid; }
+  .principal { margin-left: 0; }
+  .paixao, .video-a, .boitata-a, .contato-a { grid-template-columns: 1fr; }
+  .cab:has(.cab-selo) .cab-in { padding-right: clamp(1.5rem, 5vw, 4.5rem); padding-bottom: 9rem; }
+  .cab-selo img { width: 130px; }
+}
+@media (max-width: 640px) {
+  .hero { min-height: 82vh; }
+  .hero::before { background: linear-gradient(0deg, rgba(28,29,31,.95) 15%, rgba(28,29,31,.7) 60%, rgba(28,29,31,.45)); }
+  .hero-foto { object-position: 30% 50%; }
+  .selos { grid-template-columns: 1fr; gap: 3rem; }
+  .selo img { height: 200px; }
+  .paixao-foto::before { inset: 14px -10px -14px 10px; }
+  .cab { min-height: 300px; }
+}

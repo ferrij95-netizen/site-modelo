@@ -1,0 +1,12 @@
+# Gastaldi & Schultz: como este site é feito
+
+- Cliente: Gastaldi & Schultz Advogados Associados (OAB/SC 4496), Rua Sete de Setembro, 144, Centro, Joinville SC. Escolhido na prospecção de advocacia e engenharia (21/10/2026, /mnt/project-files/prospeccao/nichos/advocacia-engenharia/LISTA.md), sem pedido do cliente.
+- Site atual: advogadojoinville.com (feito pela VEG em Bootstrap 2, layout de caixa estreita, sem versão real de celular). Só português, então o novo é só `pt`.
+- Marca: o logo só existe em PNG de 350 px (caixa preta, foto da balança e o nome em branco). `logo.svg` é a mesma caixa com o texto vetorizado (potracer) e a foto da balança recortada do próprio PNG; `marca-escura.svg` e `marca-branca.svg` são a foto e o texto sem a caixa. O texto do logo é Calibri, então os títulos usam Carlito (métrica igual à Calibri, do Google Fonts); texto em Inter. Cores: preto da caixa do logo, grafite do topo atual e dourado da balança (#B08A3E).
+- Fotos: só as do site atual (três banners de 1600 × 364, que são fotos de banco escolhidas pelo escritório, e as duas miniaturas da home). Não há foto dos advogados nem do escritório; na A os advogados aparecem em placas de latão, na B em texto.
+- Textos: todos do site atual e do blog (gastaldiadv.blogspot.com, de onde veio "Univille") em `conteudo.mjs`. Escritos por nós: títulos de seção, legendas dos banners, os resumos de uma linha das áreas (campo `curto`, não usado nas páginas por enquanto), o agrupamento das áreas em quatro frentes e a linha do legado da versão B.
+- Formulário: o site atual envia para o servidor deles; o novo monta a mensagem e abre o WhatsApp (47) 99148-0078 ou o e-mail gastaldi.adv@gmail.com. Nada passa pela Overtus.
+- Mapa das comarcas (B): posição aproximada das sedes por latitude e longitude (`comarcas` em `conteudo.mjs`), só esquemático.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Escritório" e `/b/` "Sumário". 20 páginas em cada: Home, O Escritório, Áreas de Atuação (+13 áreas), Serviços, Consultas, Fale Conosco, Onde Estamos (mesmo menu do site atual).
+- Gerar: `node clientes/gastaldischultz/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: se o celular (47) 99148-0078 é WhatsApp; anos de experiência ("mais de 15/16 anos" e "mais de 8 anos" estão desatualizados no site atual); se a Dra. Cynthia ainda faz parte do escritório; fotos reais da equipe e do escritório; um e-mail no domínio próprio em vez do gmail.
