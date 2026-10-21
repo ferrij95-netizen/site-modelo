@@ -1,0 +1,12 @@
+# SBS Engenharia: como este site é feito
+
+- Cliente: SBS Engenharia e Construções S.A., Porto Alegre RS. Escolhido na prospecção de advocacia e engenharia (/mnt/project-files/prospeccao/nichos/advocacia-engenharia/LISTA.md, 21/10/2026), sem pedido do cliente.
+- Site atual: sbsengenharia.com.br (PHP de 2012, largura fixa 940 px, só português, então o novo é só `pt`). Páginas: Home, Empresa, Segmentos, Principais obras, Locação, Conduta, Notícias (vazia, ficou de fora), Contato e a janela Trabalhe conosco.
+- Marca: o logo só existe em PNG de 90 px; `vetorizar-logo.py` gera `logo.svg` (azul #00519B) e `logo-branco.svg`. Os 6 ícones dos segmentos foram vetorizados do site atual (`vetorizar-icones.py` → `icones.json`). Versão A com títulos em Archivo Narrow (fonte do site atual), versão B em Archivo largo (o mais perto do "sbs" do logo); texto em Inter.
+- Fotos: todas reais, das 11 obras do site atual (765 px). `tira-marca.py` remove a marca d'água "sbs engenharia" do canto (sobra uma mancha leve) e gera a versão ampliada `-g` (1224 px) para capas e galeria. As fotos são pequenas: em tela cheia ficam um pouco moles. Frota (`frota.webp`) e certificado ISO também vêm do site atual. Fotos de banco do banner atual não foram usadas.
+- Mapa (versão B): `mapa.py` gera `mapa.json` a partir do brazil-states.geojson (click_that_hood, Code for America); os pinos são as cidades citadas nos textos das obras.
+- Textos: todos do site atual em `conteudo.mjs`. Nossos: títulos de seção, as legendas curtas das 4 etapas de uma rodovia (os nomes vêm do texto de Obras rodoviárias), os "dados" de destaque de cada obra (tirados do próprio texto) e a ordem da linha do tempo. O banner "pronta para os próximos 30 anos" virou o slogan da própria SBS "Grandes obras. Grandes realizações." porque a empresa já tem 44 anos.
+- Formulários (contato e trabalhe conosco): na prévia não enviam nada, só mostram um aviso. O site atual não mostra e-mail.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Canteiro" e `/b/` "Traçado". 19 páginas em cada: Início, Empresa, Segmentos, Principais obras (+11 obras), Locação, Conduta, Trabalhe conosco, Contato.
+- Gerar: `node clientes/sbsengenharia/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: logo em vetor; fotos maiores e mais recentes das obras (as do site são de até 2014); e-mail de contato e do RH; se o celular da locação (53) 9582-6002 ainda vale; obras novas depois de 2014.

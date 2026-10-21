@@ -1,0 +1,88 @@
+/* Cella Transportes: base comum às versões A e B. Cores do logo: vermelho #E3302A, dourado #C9A062, cinza #878B8C. */
+:root{
+  --verm:#E3302A;--verm-esc:#B5201C;--vinho:#8E1A1F;--vinho-esc:#5E1418;
+  --ouro:#C9A062;--cinza:#878B8C;--grafite:#25282B;--tinta:#1E2124;--texto:#43474B;
+  --creme:#F7F1E6;--papel:#F4F2EE;--linha:#E2DED7;--branco:#fff;
+  --h:'Exo 2',system-ui,sans-serif;--b:Inter,system-ui,sans-serif;
+  --raio:6px;--in:1240px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--b);font-size:16px;line-height:1.6;color:var(--texto);background:var(--branco);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--h);color:var(--tinta);line-height:1.08;margin:0 0 .5em;text-wrap:balance}
+h1{font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:800;font-style:italic;letter-spacing:-.01em}
+h2{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:800;font-style:italic;letter-spacing:-.005em}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0 0 1em}
+ul,ol{margin:0;padding:0;list-style:none}
+figure{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+.in{max-width:var(--in);margin:0 auto;padding:0 24px;width:100%}
+.pular{position:absolute;left:-999px;top:0;background:var(--tinta);color:#fff;padding:10px 14px;z-index:99}.pular:focus{left:8px;top:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.ic{width:20px;height:20px;flex:none}
+.sobre{font-family:var(--h);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--verm);margin:0 0 12px}
+.link{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--verm);text-decoration:none}
+.link .ic{width:18px;height:18px;transition:transform .2s}.link:hover .ic{transform:translateX(4px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:var(--raio);border:2px solid transparent;font-family:var(--h);font-weight:700;font-size:1rem;letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-verm{background:var(--verm);color:#fff}.btn-verm:hover{background:var(--verm-esc)}
+.btn-branco{background:#fff;color:var(--vinho)}.btn-branco:hover{background:var(--creme)}
+.btn-contorno{border-color:rgba(255,255,255,.7);color:#fff}.btn-contorno:hover{background:rgba(255,255,255,.12)}
+.btn-linha{border-color:var(--tinta);color:var(--tinta);background:transparent}.btn-linha:hover{background:var(--tinta);color:#fff}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:2px}
+
+/* formulário */
+.form .campos{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:.88rem;font-weight:600;color:var(--tinta)}
+.form .largo{grid-column:1/-1}
+.form input,.form select,.form textarea{width:100%;padding:12px 14px;border:1px solid #CFCAC2;border-radius:var(--raio);background:#fff;font-weight:400;font-size:1rem}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--verm);outline:none;box-shadow:0 0 0 3px rgba(227,48,42,.15)}
+.form .enviar{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+
+/* mapa do Brasil */
+.mapa-br{width:100%;height:auto;display:block}
+.mapa-br .uf{fill:#E4E0D9;stroke:#fff;stroke-width:1;transition:fill .2s;cursor:pointer}
+.mapa-br .uf.col{fill:var(--verm)}
+.mapa-br .uf:hover,.mapa-br .uf.ativo{fill:var(--ouro)}
+.mapa-br .uf-t{font:700 11px var(--h);fill:#8A857D;text-anchor:middle;pointer-events:none}
+.mapa-br .uf-t.col{fill:#fff}
+.mapa-br .base circle{fill:var(--tinta)}
+.mapa-br .base .pulso{fill:rgba(30,33,36,.25);transform-origin:center;transform-box:fill-box;animation:pulso 2.2s infinite}
+.mapa-br .base text{font:800 italic 15px var(--h);fill:var(--tinta);paint-order:stroke;stroke:#fff;stroke-width:4px}
+.mapa-br .rota{fill:none;stroke:var(--tinta);stroke-width:1.4;stroke-dasharray:3 4;opacity:.7;pointer-events:none}
+@keyframes pulso{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.2);opacity:0}}
+.mapa-info{font-size:.95rem;color:var(--texto);min-height:1.6em}
+
+/* rodapé */
+.rodape{background:var(--grafite);color:#C9CCCF;padding:64px 0 0;font-size:.95rem}
+.rodape .in{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.2fr;gap:40px}
+.rodape h2{font-size:1rem;font-style:normal;color:#fff;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.rodape li{margin-bottom:8px}.rodape a{text-decoration:none}.rodape a:hover{color:#fff;text-decoration:underline}
+.rodape small{color:#8E9296}
+.rod-marca .logo{width:150px;margin-bottom:18px}
+.rodape .ic{width:16px;height:16px;vertical-align:-3px}
+.rodape .rod-fim{display:flex;justify-content:space-between;gap:16px;border-top:1px solid #3A3E42;margin-top:48px;padding-top:18px;padding-bottom:18px;font-size:.85rem;color:#8E9296;grid-template-columns:none}
+.rod-fim p{margin:0}
+.wa-flutua{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:40}
+.wa-flutua .ic{width:28px;height:28px}
+
+/* galeria com filtro (comum) */
+.filtros{display:flex;flex-wrap:wrap;gap:8px}
+.filtros button{border:1px solid var(--linha);background:#fff;border-radius:40px;padding:8px 16px;font-size:.9rem;font-weight:600;cursor:pointer}
+.filtros button[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:#fff}
+[data-grade] li[hidden]{display:none}
+
+@media (max-width:900px){
+  .rodape .in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .in{padding:0 16px}
+  .form .campos{grid-template-columns:1fr}
+  .rodape .in{grid-template-columns:1fr;gap:28px}
+  .rodape .rod-fim{flex-direction:column}
+  .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

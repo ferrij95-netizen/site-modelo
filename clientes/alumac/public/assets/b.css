@@ -1,0 +1,103 @@
+/* Versão B, "Selo": o selo azul-marinho que a Alumac põe nas fotos ("ALUMAC / O melhor resultado, sempre!"),
+   títulos na serifa do selo (Tinos, a mesma Times do site atual) e texto em Inter. */
+:root{
+  --h:'Tinos','Times New Roman',serif;--b:'Inter',system-ui,sans-serif;
+  --marinho:#0F1C4D;--marinho-2:#16296b;--cor:#2858a6;--cor-clara:#9db8e8;--azul:#336699;
+  --txt:#3b4252;--tit:#0F1C4D;--suave:#5d6679;--fundo:#fff;--fundo-alt:#f2f4f9;
+  --linha:#dde2ec;--linha-forte:#c5ccda;--topo:#fff;--menu:#0F1C4D;
+  --faixa:#0F1C4D;--faixa-txt:#d5dcf0;--rod:#0b1538;--rod-txt:#bcc6e2;
+  --form-fundo:#f2f4f9;--cp-fundo:#fff;--aviso-fundo:#f6a313;--aviso-txt:#2a1600;--aviso-ic:#b5470b;
+  --raio:10px;--raio-p:8px;--raio-btn:999px;
+}
+h1,h2,h3{font-weight:700;letter-spacing:-.01em}
+h1{line-height:1.04}
+
+/* marca: o selo */
+.logo-selo{display:inline-flex;flex-direction:column;align-items:center;background:var(--marinho);color:#fff;padding:8px 16px 7px;line-height:1;border-radius:2px}
+.logo-selo b{font-family:var(--h);font-weight:400;font-size:27px;letter-spacing:.16em;margin-right:-.16em}
+.logo-selo small{font:600 10px var(--b);letter-spacing:.01em;margin-top:4px;white-space:nowrap}
+.rodape .logo-selo{background:#fff;color:var(--marinho)}
+
+.btn-contorno{border-color:currentColor;color:inherit}
+.hero-b .btn-contorno{color:#fff;border-color:rgba(255,255,255,.5)}.hero-b .btn-contorno:hover{background:#fff;color:var(--marinho)}
+.portao-b .btn-contorno{color:#fff;border-color:rgba(255,255,255,.5)}
+
+/* abertura marinho com três fotos de obra e o selo */
+.hero-b{background:radial-gradient(900px 520px at 85% 10%,rgba(51,102,153,.55),transparent 70%),linear-gradient(160deg,var(--marinho-2),var(--marinho) 60%);color:#d5dcf0;overflow:hidden}
+.hero-b-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-top:80px;padding-bottom:96px}
+.hero-b h1{color:#fff;font-size:clamp(40px,5.2vw,72px)}
+.hero-b .lead{color:#cbd4ec}
+.hero-b-nota{display:block;margin-top:26px;font-size:15px;color:#aebbe0}
+.hero-b-nota b{color:#fff}.hero-b-nota .ic{vertical-align:-3px;color:#f6c14b;fill:#f6c14b;width:18px;height:18px}
+.hero-b-fotos{position:relative;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,72px);gap:14px}
+.hero-b-fotos figure{overflow:hidden;border-radius:var(--raio);box-shadow:0 30px 50px -28px rgba(0,0,0,.7)}
+.hero-b-fotos img{width:100%;height:100%;object-fit:cover}
+.hb-1{grid-column:1/5;grid-row:1/5}.hb-2{grid-column:5/7;grid-row:2/5}.hb-3{grid-column:2/6;grid-row:5/7}
+.hb-selo{position:absolute;right:-4px;bottom:22px;transform:rotate(-8deg);box-shadow:0 16px 30px -12px rgba(0,0,0,.6);border:2px solid #fff}
+.hb-selo .logo-selo{padding:12px 22px 11px}.hb-selo .logo-selo b{font-size:36px}.hb-selo .logo-selo small{font-size:12.5px}
+
+/* etapas: linha que liga os números */
+.etapas-b{background:var(--fundo-alt)}
+.etapas{position:relative}
+.etapas-b .etapas::before{content:'';position:absolute;left:28px;right:12%;top:28px;height:2px;background:linear-gradient(90deg,var(--cor),rgba(40,88,166,.15))}
+.etapas li{position:relative}
+.etapas .et-n{width:56px;height:56px;border-radius:50%;background:var(--marinho);color:#fff;display:grid;place-items:center;font-size:22px;margin-bottom:20px;position:relative;box-shadow:0 0 0 8px var(--fundo-alt)}
+.sec:not(.alt):not(.etapas-b) .etapas .et-n{box-shadow:0 0 0 8px #fff}
+.solucoes .et-n{font-size:46px;color:var(--cor)}
+.solucoes li{padding-top:18px;border-top:1px solid var(--linha)}
+
+/* catálogo em abas */
+.abas{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--linha);margin-bottom:40px}
+.abas button{font:600 15px var(--b);background:none;border:0;padding:14px 16px;color:var(--suave);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+.abas button[aria-selected=true]{color:var(--marinho);border-bottom-color:var(--marinho)}
+.painel{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:start}
+.painel[hidden]{display:none}
+.painel h3{font-size:34px}
+.painel-fotos{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:210px 210px;gap:12px}
+.painel-fotos figure{overflow:hidden;border-radius:var(--raio-p);position:relative}
+.painel-fotos figure:first-child{grid-row:span 2}
+.painel-fotos img{width:100%;height:100%;object-fit:cover}
+.painel-fotos figcaption,.tira figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(5,12,40,.75))}
+
+/* portão: marinho */
+.portao-b{background:var(--marinho);color:#cbd4ec}
+.portao-b h2{color:#fff}
+.portao-b-in{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.portao-lista{margin:24px 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:20px 28px}
+.portao-lista dt{color:#fff;font-weight:600;margin-bottom:4px}
+.portao-lista dd{margin:0;font-size:15px}
+.portao-b .compara figure{border-color:transparent}
+
+/* citação: o azul do site atual */
+.citacao-b{background:var(--azul);color:#dce8f6;text-align:center;padding:88px 0}
+.citacao-b blockquote{margin:0 auto 18px;max-width:900px;font-family:var(--h);font-size:clamp(26px,3.2vw,42px);line-height:1.2;color:#fff}
+.citacao-b p{font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:0}
+
+/* páginas internas */
+.cab-pag{background:radial-gradient(700px 400px at 90% 0,rgba(51,102,153,.5),transparent 70%),var(--marinho);color:#cbd4ec}
+.cab-pag h1{color:#fff;font-size:clamp(36px,4.6vw,60px)}
+.cab-pag .lead{color:#cbd4ec}
+.ancoras a{border-radius:999px}
+.linha h2{font-size:clamp(30px,3.4vw,44px)}
+.sobre{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.sobre-fotos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sobre-fotos figure{position:relative;overflow:hidden;border-radius:var(--raio-p)}
+.sobre-fotos img{width:100%;aspect-ratio:1;object-fit:cover}
+.sobre-fotos figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(5,12,40,.75))}
+.sobre-frase{margin:28px 0 0;padding:24px 28px;background:var(--marinho);color:#fff;font-family:var(--h);font-size:26px;line-height:1.25;border-radius:2px}
+
+@media(max-width:920px){
+  .hero-b-in,.portao-b-in,.painel,.sobre{grid-template-columns:1fr;gap:40px}
+  .hero-b-in{padding-top:52px;padding-bottom:64px}
+  .hero-b-fotos{grid-template-rows:repeat(6,56px);gap:10px}
+  .etapas-b .etapas::before{display:none}
+  .painel h3{font-size:28px}
+}
+@media(max-width:600px){
+  .logo-selo b{font-size:22px}.logo-selo small{font-size:8.5px}.logo-selo{padding:7px 12px 6px}
+  .hb-selo .logo-selo b{font-size:26px}.hb-selo .logo-selo small{font-size:10px}
+  .hero-b-fotos{grid-template-rows:repeat(6,54px);gap:8px}
+  .abas{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.abas button{flex:none;padding:12px 12px}
+  .portao-lista{grid-template-columns:1fr}
+  .painel-fotos{grid-template-rows:150px 150px;gap:8px}
+}
