@@ -63,7 +63,7 @@ const ic = (n, cls = 'ic') => `<svg class="${cls}" viewBox="0 0 24 24" fill="non
 const iconeCliente = ['carrinho', 'loja', 'conv', 'pao', 'copo', 'lanche', 'prato', 'panela', 'festa'];
 
 // A "pá" do logo (uma das quatro lâminas do cata-vento), recortada do símbolo vetorizado (assets/pa.svg).
-const pa = (cor, extra = '') => `<svg class="pa" viewBox="150 8 142 134" aria-hidden="true" style="color:${cor}"${extra}><use href="/assets/pa.svg#pa" fill="currentColor"/></svg>`;
+const pa = (cor, extra = '') => `<span class="pa" aria-hidden="true" style="color:${cor}"${extra}></span>`;
 const simbolo = (cls = 'simbolo') => `<img class="${cls}" src="/assets/simbolo.svg" alt="" width="341" height="341" aria-hidden="true">`;
 
 // ---------- produtos ----------
@@ -98,7 +98,7 @@ const vitrine = [
 const [, LAT0, LON0] = cidades.find(c => c[0] === 'Ribeirão Preto');
 const KX = 111.32 * Math.cos(LAT0 * Math.PI / 180), KY = 110.57;
 const px = (lat, lon) => [((lon - LON0) * KX).toFixed(1), ((LAT0 - lat) * KY).toFixed(1)];
-const rotulos = ['Ribeirão Preto', 'Franca', 'Araraquara', 'São Carlos', 'Barretos', 'Bebedouro', 'Sertãozinho', 'Jaboticabal', 'Batatais', 'Pirassununga', 'São José do Rio Pardo', 'Ituverava', 'Matão', 'Orlândia', 'Ibitinga'];
+const rotulos = ['Ribeirão Preto', 'Franca', 'Araraquara', 'São Carlos', 'Barretos', 'Bebedouro', 'Batatais', 'Pirassununga', 'São José do Rio Pardo', 'Ituverava', 'Matão', 'Orlândia', 'Ibitinga'];
 function mapa(cls = 'mapa') {
   const sp = 'M' + contornoSP.map(([lon, lat]) => px(lat, lon).join(',')).join('L') + 'Z';
   const pts = cidades.map(([n, lat, lon]) => {
@@ -236,7 +236,7 @@ const formContato = `<form class="form-contato" data-previa>
 <p class="form-ok" tabindex="-1" hidden>Prévia: no site publicado esta mensagem vai direto para ${E.email}. Por enquanto, fale pelo WhatsApp ${E.whats}.</p>
 </form>`;
 
-const passos = cls => `<ol class="${cls}">${T.passos.map((p, i) => `<li><span class="passo-n">${pa(i % 2 ? '#F48120' : '#023F87')}<b>${i + 1}</b></span><h3>${p.t}</h3><p>${p.x}</p></li>`).join('')}</ol>`;
+const passos = cls => `<ol class="${cls}">${T.passos.map((p, i) => `<li><span class="passo-n">${pa(i % 2 ? '#023F87' : '#F48120')}<b>${i + 1}</b></span><h3>${p.t}</h3><p>${p.x}</p></li>`).join('')}</ol>`;
 
 const tituloPagina = (v, h1, sub = '', migalha = '') => v === 'a'
   ? `<div class="titulo-a"><div class="in">${migalha ? `<p class="migalha">${migalha}</p>` : ''}<h1>${h1}</h1>${sub ? `<p>${sub}</p>` : ''}</div>${pa('#F48120', ' data-p="1"')}${pa('#ffffff', ' data-p="2"')}</div>`

@@ -218,3 +218,9 @@ input:focus, textarea:focus, select:focus { outline: 0; border-color: var(--azul
   .aviso { font-size: 13.5px; bottom: 80px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* ajustes */
+[hidden] { display: none !important; }
+.qtd > input[inputmode] { width: 34px; border: 0; padding: 0; box-shadow: none; background: none; }
+.pa { display: block; aspect-ratio: 142 / 134; background: currentColor; -webkit-mask: url(/assets/pa.svg) center / contain no-repeat; mask: url(/assets/pa.svg) center / contain no-repeat; }
+.rodape p.rod-fim, .rodape p.rod-cred { display: block; }
