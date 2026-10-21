@@ -241,3 +241,4 @@
 @media (max-width:760px){.a-grade{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:420px){.a-grade{grid-template-columns:repeat(2,1fr)}}
 .a-emp-foto img{aspect-ratio:1}
+@media (max-width:760px){.a-abas{flex-wrap:nowrap;overflow-x:auto}.a-abas button{flex:none}}

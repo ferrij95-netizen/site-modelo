@@ -249,3 +249,4 @@
 .b-hero-foto figcaption{z-index:2}
 .b-rotas li{padding:22px 12px 10px 16px}
 .b-rotas li::before{left:16px}
+@media (max-width:760px){.b-chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;margin-inline:-20px;padding-inline:20px}.b-chips button{flex:none}.a-abas{flex-wrap:nowrap;overflow-x:auto}.a-abas button{flex:none}}
