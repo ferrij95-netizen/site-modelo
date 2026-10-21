@@ -1,0 +1,138 @@
+/* Versão B "Ficha técnica": branca, grade técnica, escolha da serra pelo material e o laser em números. */
+:root { --ft-cond: 'Barlow Semi Condensed', 'Barlow', system-ui, sans-serif; }
+.v-b .sobre, .v-b .sl-tipo, .v-b .spec dt { font-family: var(--ft-cond); font-size: .88rem; letter-spacing: .12em; }
+.v-b h1, .v-b h2 { font-weight: 700; letter-spacing: -.015em; }
+.v-b .topo { border-bottom: 2px solid var(--marinho); }
+.v-b .btn { border-radius: 2px; }
+
+/* papel milimetrado de fundo, discreto */
+.grade-fundo, .b-hero { background-color: #fff; background-image:
+  linear-gradient(rgba(10,26,79,.045) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(10,26,79,.045) 1px, transparent 1px);
+  background-size: 32px 32px; }
+
+/* abertura */
+.b-hero { border-bottom: 1px solid var(--linha); overflow: hidden; }
+.b-hero-in { max-width: var(--larg); margin: 0 auto; padding: 72px 24px 40px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.b-hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); max-width: 14ch; }
+.b-hero .sub { margin-bottom: 32px; }
+.b-hero-acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+.b-hero-disco { position: relative; aspect-ratio: 1; max-width: 520px; width: 100%; justify-self: end; }
+.b-hero-disco::before { content: ''; position: absolute; inset: -6%; border: 1px dashed rgba(10,26,79,.25); border-radius: 50%; }
+.b-hero-disco::after { content: ''; position: absolute; left: 50%; top: -10%; bottom: -10%; border-left: 1px dashed rgba(0,102,178,.45); }
+.b-hero-disco img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; will-change: transform; }
+.b-hero-rotulo { position: absolute; right: 0; bottom: -4px; max-width: 260px; font: 600 .78rem/1.35 var(--ft-cond); letter-spacing: .08em; text-transform: uppercase; color: var(--cinza); background: #fff; padding: 6px 10px; border: 1px solid var(--linha); }
+.b-numeros { list-style: none; margin: 0 auto; padding: 0 24px; max-width: var(--larg); display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--marinho); }
+.b-numeros li { padding: 20px 16px 36px 0; }
+.b-numeros strong { display: block; font: 700 clamp(1.7rem, 3vw, 2.5rem)/1 var(--ft-cond); color: var(--marinho); }
+.b-numeros span { display: block; color: var(--cinza); font-size: .88rem; margin-top: 6px; }
+@media (max-width: 860px) {
+  .b-hero-in { grid-template-columns: 1fr; padding-top: 48px; }
+  .b-hero-disco { max-width: 320px; justify-self: center; order: -1; }
+  .b-hero-rotulo { display: none; }
+  .b-numeros { grid-template-columns: 1fr 1fr; }
+}
+
+/* o que você corta? */
+.b-material { padding: 96px 0 80px; }
+.abas { max-width: var(--larg); margin: 0 auto 0; padding: 0 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.abas button { position: relative; text-align: left; background: #fff; border: 1px solid var(--linha); border-bottom: 0; margin-left: -1px; padding: 0 0 16px; cursor: pointer; font: inherit; color: var(--tinta); overflow: hidden; }
+.abas button img { width: 100%; aspect-ratio: 16/8; object-fit: cover; filter: grayscale(1) contrast(.95); opacity: .75; transition: filter .3s, opacity .3s; }
+.abas button span { display: block; font: 700 1.25rem/1.1 var(--ft-cond); text-transform: uppercase; letter-spacing: .02em; color: var(--marinho); padding: 14px 16px 2px; }
+.abas button small { display: block; padding: 0 16px; color: var(--cinza); }
+.abas button[aria-selected="true"] { background: var(--marinho); border-color: var(--marinho); }
+.abas button[aria-selected="true"] img { filter: none; opacity: 1; }
+.abas button[aria-selected="true"] span, .abas button[aria-selected="true"] small { color: #fff; }
+.abas button:hover img { filter: none; opacity: 1; }
+.painel { max-width: var(--larg); margin: 0 auto; padding: 0 24px; }
+.painel-cab { display: flex; justify-content: space-between; gap: 24px; align-items: center; flex-wrap: wrap; background: var(--marinho); color: rgba(255,255,255,.85); padding: 18px 20px; }
+.painel-cab p { margin: 0; max-width: 72ch; }
+.painel-cab span { color: rgba(255,255,255,.6); }
+.painel-cab .link-seta { color: #fff; }
+.painel .serras-lista { border-top: 0; }
+.b-todas { max-width: var(--larg); margin: 36px auto 0; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 760px) {
+  .abas { grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px; }
+  .abas button { border: 1px solid var(--linha); margin: 0; }
+  .abas button img { aspect-ratio: 16/9; }
+  .abas button span { font-size: 1.05rem; padding: 10px 12px 2px; }
+  .abas button small { padding: 0 12px; font-size: .8rem; }
+}
+
+/* fábrica (vídeo da afiação) */
+.b-fabrica { display: grid; grid-template-columns: 1.2fr 1fr; background: var(--metal); }
+.b-fab-video video { width: 100%; height: 100%; object-fit: cover; min-height: 420px; }
+.b-fab-txt { padding: 72px clamp(24px, 5vw, 72px); align-self: center; max-width: 620px; }
+.b-fab-txt p { color: var(--cinza); }
+@media (max-width: 860px) { .b-fabrica { grid-template-columns: 1fr; } .b-fab-video video { min-height: 0; aspect-ratio: 16/9; } .b-fab-txt { padding: 48px 24px; } }
+
+/* laser em números */
+.b-laser { padding: 96px 0; }
+.b-laser-grade { max-width: var(--larg); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; }
+.b-laser-col h3 { font: 700 1.4rem/1 var(--ft-cond); text-transform: uppercase; letter-spacing: .03em; padding-bottom: 14px; border-bottom: 2px solid var(--marinho); }
+.b-dados { margin: 0; display: grid; grid-template-columns: 1fr 1fr; }
+.b-dados div { padding: 18px 12px 18px 0; border-bottom: 1px solid var(--linha); }
+.b-dados dt { font: 700 clamp(1.4rem, 2.4vw, 1.9rem)/1.05 var(--ft-cond); color: var(--azul); }
+.b-dados dd { margin: 6px 0 0; color: var(--cinza); font-size: .9rem; }
+.bb-leg { font-size: .85rem; color: var(--cinza); margin: 0 0 6px; }
+.bb { list-style: none; margin: 0; padding: 0; }
+.bb li { display: grid; grid-template-columns: 120px 1fr 130px 90px; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--linha); }
+.bb-mat { font-weight: 600; color: var(--marinho); }
+.bb-trilho { position: relative; height: 12px; background: repeating-linear-gradient(90deg, var(--metal-2) 0 1px, var(--metal) 1px 10%); }
+.bb-barra { position: absolute; top: 0; bottom: 0; left: var(--i); width: calc(var(--f) - var(--i)); background: linear-gradient(90deg, var(--azul), var(--marinho)); min-width: 4px; }
+.bb-val { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+.bb-comp { color: var(--cinza); font-size: .88rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 860px) {
+  .b-laser-grade { grid-template-columns: 1fr; }
+  .bb li { grid-template-columns: 1fr auto; gap: 6px 12px; }
+  .bb-trilho { grid-column: 1 / -1; grid-row: 2; }
+  .bb-comp { grid-column: 2; }
+  .bb-val { grid-row: 1; grid-column: 2; }
+  .bb-comp { grid-row: 3; text-align: right; }
+}
+/* etapas da chapa à peça pronta */
+.b-passos { position: relative; max-width: var(--larg); margin: 72px auto 0; padding: 0 24px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.b-passos .ap-trilho { position: absolute; left: 24px; right: 24px; top: 22px; height: 2px; }
+.ap-etapa { position: relative; }
+.b-passo-n { position: relative; z-index: 1; display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #fff; border: 2px solid var(--marinho); font: 700 1rem/1 var(--ft-cond); color: var(--marinho); margin-bottom: 16px; transition: background .3s, color .3s; }
+.ap-etapa.ativa .b-passo-n, .ap-etapa.ap-on .b-passo-n { background: var(--azul); border-color: var(--azul); color: #fff; }
+.ap-etapa img { width: 100%; aspect-ratio: 4/3; object-fit: cover; margin-bottom: 14px; }
+.ap-etapa h3 { font: 700 1.1rem/1.15 var(--ft-cond); text-transform: uppercase; letter-spacing: .02em; }
+.ap-etapa p { font-size: .88rem; color: var(--cinza); margin: 0; }
+@media (max-width: 960px) {
+  .b-passos { grid-template-columns: 1fr; gap: 28px; padding-left: 80px; }
+  .b-passos .ap-trilho { left: 46px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
+  .b-passos .ap-trilho::after { transform: scaleY(var(--ap-linha)); }
+  .b-passo-n { position: absolute; left: -57px; top: 0; }
+  .ap-etapa img { max-width: 320px; }
+}
+
+/* páginas internas: cabeçalho claro, foto à direita */
+.v-b .pg-cab { background: #fff; color: var(--tinta); min-height: 0; align-items: stretch; border-bottom: 1px solid var(--linha);
+  background-image: linear-gradient(rgba(10,26,79,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(10,26,79,.045) 1px, transparent 1px); background-size: 32px 32px; }
+.v-b .pg-cab-foto { left: auto; width: 44%; clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%); }
+.v-b .pg-cab-foto::after { display: none; }
+.v-b .pg-cab-in { padding: 56px 24px 64px; }
+.v-b .pg-cab-in > * { max-width: 52%; }
+.v-b .pg-cab h1 { color: var(--marinho); }
+.v-b .pg-cab .sobre { color: var(--azul); }
+.v-b .pg-cab .sub { color: var(--cinza); }
+.v-b .pg-cab .migalhas { color: var(--cinza); }
+@media (max-width: 860px) {
+  .v-b .pg-cab { flex-direction: column; }
+  .v-b .pg-cab-foto { position: relative; width: 100%; height: 200px; clip-path: none; order: 2; }
+  .v-b .pg-cab-in > * { max-width: none; }
+  .v-b .pg-cab-in { padding: 36px 24px; }
+}
+.v-b .segs-mini { margin-top: 32px; }
+.v-b .seg-mini img { filter: grayscale(.3); }
+.v-b .mvv { background: #fff; border-top: 2px solid var(--marinho); border-bottom: 1px solid var(--linha); }
+.v-b .mvv-lista li { color: var(--cinza); border-color: var(--linha); }
+.v-b .mvv-lista h3 { color: var(--marinho); }
+.v-b .mvv-n { color: var(--azul); }
+.v-b .chamada { background: var(--marinho); }
+.v-b .ficha-foto { border-radius: 0; background: #fff; border: 1px solid var(--linha);
+  background-image: linear-gradient(rgba(10,26,79,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(10,26,79,.05) 1px, transparent 1px); background-size: 24px 24px; }
+.gira-hover { transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+.ficha-foto:hover .gira-hover { transform: rotate(120deg); }
+.v-b .specs { border-top-width: 3px; }

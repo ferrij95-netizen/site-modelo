@@ -1,0 +1,95 @@
+/* Versão A "Grupo Reval": entrada dividida Serras | Laser (como a abertura do site atual), metal escovado e marinho. */
+
+/* topo transparente sobre a abertura */
+.pg-home .topo-sobre { position: fixed; left: 0; right: 0; background: transparent; border-color: transparent; transition: background .3s, border-color .3s; }
+.pg-home .topo-sobre:not(.rolou) .marca .logo-cor { opacity: 0; }
+.pg-home .topo-sobre:not(.rolou) .marca .logo-br { opacity: 1; }
+.pg-home .topo-sobre:not(.rolou) .nav li a, .pg-home .topo-sobre:not(.rolou) .redes a, .pg-home .topo-sobre:not(.rolou) .idiomas a, .pg-home .topo-sobre:not(.rolou) .burger { color: #fff; }
+.pg-home .topo-sobre:not(.rolou) .nav li.ativo a { box-shadow: inset 0 -2px 0 #fff; }
+.pg-home .topo-sobre:not(.rolou) .btn-orc { background: #fff; color: var(--marinho); border-color: #fff; }
+.pg-home .topo-sobre.rolou { background: #fff; border-color: var(--linha); }
+.pg-home .topo-sobre::before { content: ''; position: absolute; inset: 0 0 -40px; background: linear-gradient(rgba(6,15,51,.55), transparent); z-index: -1; transition: opacity .3s; pointer-events: none; }
+.pg-home .topo-sobre.rolou::before { opacity: 0; }
+.marca img { transition: opacity .3s; }
+
+/* abertura dividida */
+.divisao { position: relative; display: grid; grid-template-columns: 1fr 1fr; height: 100svh; min-height: 600px; max-height: 980px; background: var(--marinho-3); overflow: hidden; }
+.lado { position: relative; display: flex; align-items: flex-end; color: #fff; text-decoration: none; overflow: hidden; transition: flex .5s; isolation: isolate; }
+.lado-midia { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s cubic-bezier(.2,.7,.2,1), filter .6s; }
+.lado::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(6,15,51,.25) 0%, rgba(6,15,51,.35) 40%, rgba(6,15,51,.92) 100%); transition: background .5s; }
+.lado-serras::after { background: linear-gradient(180deg, rgba(6,15,51,.2) 0%, rgba(0,60,120,.35) 45%, rgba(6,15,51,.92) 100%); }
+.lado-in { display: grid; gap: 18px; justify-items: start; padding: 0 clamp(24px, 5vw, 72px) clamp(40px, 9vh, 96px); max-width: 560px; }
+.lado-in > img { width: clamp(220px, 26vw, 340px); height: auto; filter: drop-shadow(0 2px 14px rgba(0,0,0,.45)); }
+.lado-linha { font-size: 1.05rem; line-height: 1.5; color: rgba(255,255,255,.9); max-width: 40ch; }
+.lado .btn .ic { transition: transform .2s; }
+.lado:hover .btn .ic { transform: translateX(4px); }
+/* o lado em foco fica nítido e o outro desfoca, como no site atual */
+@media (hover: hover) {
+  .divisao:hover .lado .lado-midia { filter: blur(3px) saturate(.6); }
+  .divisao .lado:hover .lado-midia { filter: none; transform: scale(1.04); }
+}
+.lado + .lado { border-left: 1px solid rgba(255,255,255,.25); }
+.divisao-bv { position: absolute; top: calc(var(--topo-h) + 6vh); left: 50%; transform: translateX(-50%); margin: 0; z-index: 2; text-align: center; color: #fff; font: 600 clamp(1.1rem, 2vw, 1.6rem)/1.2 var(--ft-tit); pointer-events: none; text-shadow: 0 2px 16px rgba(0,0,0,.5); white-space: nowrap; }
+.divisao-bv span { display: block; font: 600 .74rem/1 var(--ft-txt); letter-spacing: .24em; text-transform: uppercase; color: #8cc4f2; margin-bottom: 8px; }
+@media (max-width: 760px) {
+  .divisao { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; height: auto; min-height: 0; max-height: none; }
+  .lado { min-height: 64svh; padding-top: 120px; }
+  .lado + .lado { border-left: 0; border-top: 1px solid rgba(255,255,255,.25); min-height: 56svh; padding-top: 40px; }
+  .divisao-bv { display: none; }
+  .lado-in { padding-bottom: 36px; }
+}
+
+/* faixa de metal escovado (fundo da entrada do site atual) */
+.metal { background:
+  repeating-linear-gradient(0deg, rgba(255,255,255,.35) 0 1px, rgba(0,0,0,.025) 1px 2px, transparent 2px 3px),
+  linear-gradient(180deg, #f5f6f8 0%, #dcdfe3 52%, #eceef1 100%); border-bottom: 1px solid var(--linha); }
+.metal-in { max-width: var(--larg); margin: 0 auto; padding: 56px 24px; display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: center; }
+.metal-linha { font: 600 1.25rem/1.4 var(--ft-tit); color: var(--marinho); margin: 0; }
+.numeros { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+.numeros li { padding: 0 20px; border-left: 1px solid rgba(10,26,79,.16); }
+.numeros strong { display: block; font: 600 clamp(1.8rem, 3.4vw, 2.6rem)/1 var(--ft-tit); color: var(--azul); }
+.numeros span { display: block; font-size: .88rem; color: var(--cinza); margin-top: 8px; line-height: 1.35; }
+@media (max-width: 960px) { .metal-in { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 560px) { .numeros { grid-template-columns: 1fr 1fr; gap: 24px 0; } .numeros li:nth-child(3) { border-left: 0; padding-left: 0; } .numeros li:first-child { padding-left: 0; border-left: 0; } }
+
+/* quem somos */
+.quem { padding: 96px 24px 40px; }
+.quem-in { max-width: var(--larg); margin: 0 auto 80px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
+.quem-2 { grid-template-columns: 1fr 1.05fr; }
+.quem-foto { margin: 0; position: relative; }
+.quem-foto img { width: 100%; aspect-ratio: 16/11; object-fit: cover; }
+.quem-foto::before { content: ''; position: absolute; left: -16px; top: -16px; width: 42%; height: 60%; background: var(--azul); z-index: -1; }
+.quem-foto-b::before { left: auto; right: -16px; top: auto; bottom: -16px; background: var(--prata); }
+.quem-txt p { color: var(--cinza); }
+@media (max-width: 860px) { .quem-in, .quem-2 { grid-template-columns: 1fr; gap: 36px; margin-bottom: 56px; } .quem-2 .quem-foto { order: -1; } }
+
+/* linhas de serra: foto com etiqueta inclinada + texto, alternando lado como no site atual */
+.segs { padding: 80px 0 96px; background: linear-gradient(180deg, #fff 0%, var(--metal) 100%); }
+.seg-a { max-width: var(--larg); margin: 0 auto 48px; padding: 0 24px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+.seg-a.inv { grid-template-columns: 1fr 1.2fr; }
+.seg-a.inv .seg-a-foto { order: 2; }
+.seg-a-foto { position: relative; display: block; overflow: hidden; aspect-ratio: 16/10; background: var(--marinho); }
+.seg-a-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.seg-a-foto:hover img { transform: scale(1.05); }
+.seg-a-foto .etiqueta { top: 24px; font-size: clamp(1.2rem, 2vw, 1.6rem); padding: 12px 56px 12px 22px; }
+.seg-a-txt h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+.seg-a-txt p { color: var(--cinza); }
+.seg-mat { font-size: .92rem; border-left: 2px solid var(--azul); padding-left: 12px; }
+@media (max-width: 860px) { .seg-a, .seg-a.inv { grid-template-columns: 1fr; gap: 22px; } .seg-a.inv .seg-a-foto { order: 0; } }
+
+/* faixa da Reval Laser */
+.laser-faixa { background: radial-gradient(ellipse at 85% 20%, rgba(31,127,208,.35), transparent 55%), linear-gradient(135deg, var(--marinho-3), var(--marinho) 60%, #0d2569); color: #fff; padding: 96px 24px; overflow: hidden; }
+.laser-faixa-in { max-width: var(--larg); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: center; }
+.lf-txt img { width: 230px; height: auto; margin-bottom: 28px; }
+.lf-txt h2 { color: #fff; }
+.lf-txt p { color: rgba(255,255,255,.82); margin-bottom: 28px; }
+.lf-fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.lf-fotos figure { margin: 0; position: relative; }
+.lf-fotos figure:nth-child(2) { margin-top: 56px; }
+.lf-fotos img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+.lf-fotos figcaption { margin-top: 12px; font: 600 1.15rem/1.2 var(--ft-tit); }
+.lf-fotos figcaption span { display: block; font: 400 .85rem/1.4 var(--ft-txt); color: rgba(255,255,255,.7); margin-top: 4px; }
+@media (max-width: 860px) { .laser-faixa-in { grid-template-columns: 1fr; gap: 40px; } .laser-faixa { padding: 72px 24px; } }
+
+/* páginas internas: cabeçalho com a fita de metal embaixo */
+.pg-cab { border-bottom: 6px solid; border-image: linear-gradient(90deg, #f5f6f8, #b9bcc1, #eceef1, #a2a4a7) 1; }
