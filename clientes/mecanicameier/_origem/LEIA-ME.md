@@ -1,0 +1,11 @@
+# Mecânica Meier: como este site é feito
+
+- Cliente: Auto Mecânica e Comércio de Peças Adelino Meier Ltda (Meier Mecânica Automotiva), Rua Frederico Schlemm, 58, Bom Retiro, Joinville SC. Escolhido no lote 3 de sites ruins (21/10/2026), sem pedido do cliente.
+- Site atual: mecanicameier.com.br (PHP de 2010, 907 px fixos, jQuery 1.3, sem HTTPS). Só português, então o novo é só `pt`.
+- Marca: logo vetorizado (potracer) a partir de `images/logo.png` do site atual, que tem só 212x61 px (`_origem/vetorizar-logo.py`): `logo.svg` (placa vermelha com "Meier", "Adelino" e bandeiras), `logo-escuro.svg` e `logo-claro.svg` (sem placa, como o `logo_rodape.png`). Vermelho #B3241C do CSS do site atual; amarelo do lema e do banner "Câmbio Automático". O site usa Century Gothic: títulos em Urbanist, texto em Inter. Fundo xadrez de carbono (`xadrez.gif`) é o `bg.gif` original.
+- Fotos: as 58 fotos da página Fotos (2048 px, `img/<nome>.webp` e miniaturas `p-<nome>.webp`), a fachada (`fachada.webp`, 400x300) e os 23 logos de marca do carrossel (`img/marcas/`, 60 px). Legendas pelos nomes dos arquivos e pelo que aparece na foto.
+- Textos: Home, Empresa e Serviços do site atual em `conteudo.mjs` (serviços agrupados por nós). Nota 4,6 e 169 avaliações e a frase "Mecânicos excelentes e atendimento excepcional." vêm do Google Maps em 21/10/2026. Escritos por nós: títulos de seção, as 4 etapas do atendimento, legendas.
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Oficina" (escura, fiel: banner com listas de serviço dos dois lados da foto, faixa de marcas, Missão e Visão, lema em amarelo), `/b/` "Precisão" (clara, foto grande, história dos mícrons, abas de especialidade, etapas). 5 páginas em cada: Home, Empresa, Serviços, Fotos, Contato.
+- Formulário de agendamento monta a mensagem e abre o WhatsApp de (47) 3425-1193.
+- Gerar: `node clientes/mecanicameier/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg`, `versao-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: se (47) 3425-1193 tem WhatsApp (senão trocar `wa` em conteudo.mjs); e-mail de contato (o domínio tem e-mail, endereço não aparece no site); horário de funcionamento; Instagram atual; logo original em alta resolução; legendas dos modelos nas fotos.
