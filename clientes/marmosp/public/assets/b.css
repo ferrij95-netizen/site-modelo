@@ -1,0 +1,186 @@
+/* Versão B · Ateliê: a identidade MSP do Instagram (preto, dourado e o selo de pedra), em páginas claras com fotos grandes */
+.v-b{--preto:#141210;--preto2:#1F1C19;--ouro:#B8995A;--ouro-esc:#80652F;--creme:#F6F3EE;--pedra:#ECE7DF;--tx:#1F1C19;--tx2:#5F5850;--bg:#fff;--linha:#E3DDD3;--menu-bg:#fff;--campo-bg:#fff;--campo-borda:#D3CBBE;--foco:#B8995A;--rod-linha:rgba(255,255,255,.14)}
+.v-b h1,.v-b h2,.v-b h3{font-family:Marcellus,Georgia,serif;font-weight:400;letter-spacing:.01em}
+.b-tit{font-size:clamp(28px,3.6vw,46px);line-height:1.12}
+.b-sobre{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro-esc);margin-bottom:16px}
+.b-link{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;text-decoration:none;color:var(--tx)}
+.b-link .ic{width:18px;height:18px;color:var(--ouro-esc);transition:transform .2s}
+.b-link:hover .ic{transform:translateX(4px)}
+.b-cab{margin-bottom:44px;max-width:640px}
+.b-cab-lado{display:flex;justify-content:space-between;align-items:end;gap:20px;max-width:none;flex-wrap:wrap}
+
+.btn-ouro{background:var(--ouro);color:var(--preto)}
+.btn-ouro:hover{background:#CDB074}
+.btn-linha{border-color:var(--tx);background:transparent;color:var(--tx)}
+.btn-linha:hover{background:var(--tx);color:#fff}
+.btn-linha-clara{border-color:rgba(255,255,255,.55);color:#fff;background:transparent}
+.btn-linha-clara:hover{background:#fff;color:var(--preto)}
+
+/* lockup MSP: selo de pedra, filete e as letras (redesenhado da foto de perfil do Instagram) */
+.msp{display:inline-flex;align-items:center;gap:12px;color:var(--preto)}
+.msp-selo{width:42px;height:42px;object-fit:cover;outline:1px solid rgba(184,153,90,.7);outline-offset:2px}
+.msp-barra{width:1px;height:42px;background:var(--ouro)}
+.msp-txt{display:grid;line-height:1}
+.msp-txt b{font-family:Marcellus,serif;font-weight:400;font-size:28px;letter-spacing:.08em}
+.msp-txt small{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;margin-top:6px;font-weight:500}
+.msp-claro{color:#F3EEE5}
+
+/* topo */
+.v-b .topo{background:#fff;border-bottom:1px solid var(--linha)}
+.v-b .topo-sobre{background:var(--preto);border-bottom-color:rgba(255,255,255,.08)}
+.v-b .topo-sobre .menu a,.v-b .topo-sobre .menu-btn{color:#EDE7DC}
+.v-b .menu a{color:var(--tx);font-size:15px}
+.v-b .menu a:hover{color:var(--ouro-esc)}
+.v-b .menu a[aria-current]{color:var(--ouro-esc);box-shadow:inset 0 -1px 0 var(--ouro)}
+.v-b .topo-sobre .menu a[aria-current],.v-b .topo-sobre .menu a:hover{color:var(--ouro)}
+@media (max-width:1040px){.v-b .topo-sobre .menu{background:var(--preto)}.v-b .topo-sobre .menu a{border-color:rgba(255,255,255,.1)}.v-b .menu a[aria-current]{box-shadow:none}}
+@media (max-width:560px){.v-b .topo-acoes .btn{display:none}.msp-txt small{display:none}}
+
+/* hero preto com a ilha em ônix */
+.b-hero{display:grid;grid-template-columns:1fr 1fr;background:var(--preto);color:#EDE7DC;min-height:min(84vh,780px)}
+.b-hero-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,96px) clamp(20px,5vw,80px)}
+.b-hero .b-sobre{color:var(--ouro)}
+.b-hero h1{font-size:clamp(40px,5.4vw,78px);line-height:1.04;color:#fff;margin-bottom:24px}
+.b-hero-txt>p:not(.b-sobre){font-size:18px;max-width:44ch;color:#CFC6B8}
+.b-hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.b-hero-foto{position:relative}
+.b-hero-foto img{width:100%;height:100%;object-fit:cover}
+.b-hero-foto figcaption{position:absolute;left:20px;bottom:18px;font-size:13px;letter-spacing:.06em;color:#fff;background:rgba(20,18,16,.6);padding:6px 12px}
+@media (max-width:900px){.b-hero{grid-template-columns:1fr}.b-hero-foto img{aspect-ratio:4/3.4;height:auto}}
+
+/* faixa de amostras de pedra */
+.b-faixa{background:var(--preto2);padding:0}
+.b-faixa-in{display:grid;grid-template-columns:repeat(6,1fr)}
+.b-faixa a{position:relative;display:block;text-decoration:none;overflow:hidden}
+.b-faixa img{width:100%;aspect-ratio:1.5;object-fit:cover;transition:transform .5s,filter .5s;filter:saturate(.9)}
+.b-faixa a:hover img{transform:scale(1.06);filter:none}
+.b-faixa span{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 10px;font-size:13px;font-weight:500;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+@media (max-width:760px){.b-faixa-in{grid-template-columns:repeat(3,1fr)}}
+
+/* introdução com o ano */
+.b-intro{background:var(--creme)}
+.b-intro-in{display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,6vw,100px);align-items:center}
+.b-ano{font-family:Marcellus,serif;font-size:clamp(80px,13vw,190px);line-height:.85;margin:0;color:transparent;-webkit-text-stroke:1.5px var(--ouro);letter-spacing:.02em}
+.b-lead{font-size:clamp(18px,1.6vw,21px);color:var(--tx2);margin:20px 0 26px;max-width:58ch}
+@media (max-width:760px){.b-intro-in{grid-template-columns:1fr}}
+
+/* ambientes em linhas (lista, não cards) */
+.b-amb-lista{border-top:1px solid var(--linha)}
+.b-amb-it{display:grid;grid-template-columns:60px 1.1fr 1.6fr 150px 30px;align-items:center;gap:28px;padding:26px 0;border-bottom:1px solid var(--linha);text-decoration:none;transition:background .25s,padding .25s}
+.b-amb-it:hover{background:var(--creme);padding-inline:16px}
+.b-amb-n{font-family:Inter,sans-serif;font-weight:500;color:var(--ouro-esc);font-size:14px;letter-spacing:.14em}
+.b-amb-nome{font-family:Marcellus,serif;font-size:clamp(22px,2.2vw,30px)}
+.b-amb-txt{color:var(--tx2);font-size:15px}
+.b-amb-foto img{width:150px;height:96px;object-fit:cover}
+.b-amb-it>.ic{color:var(--ouro-esc)}
+@media (max-width:900px){.b-amb-it{grid-template-columns:44px 1fr 96px;gap:14px 18px}.b-amb-txt{grid-column:2/4;grid-row:2}.b-amb-foto{grid-column:3;grid-row:1}.b-amb-foto img{width:96px;height:64px}.b-amb-it>.ic{display:none}}
+
+/* destaque meio a meio */
+.b-destaque{display:grid;grid-template-columns:1.1fr 1fr;background:var(--preto);color:#EDE7DC}
+.b-destaque-foto img{width:100%;height:100%;max-height:640px;object-fit:cover}
+.b-destaque-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,96px)}
+.b-destaque .b-sobre{color:var(--ouro)}
+.b-destaque .b-tit{color:#fff;margin-bottom:18px}
+.b-destaque p{color:#CFC6B8;font-size:18px;max-width:44ch}
+.b-destaque .b-link{color:#fff}
+.b-destaque .b-link .ic{color:var(--ouro)}
+.b-inv .b-destaque-foto{order:2}
+@media (max-width:860px){.b-destaque{grid-template-columns:1fr}.b-inv .b-destaque-foto{order:0}.b-destaque-foto img{aspect-ratio:4/3;height:auto}}
+
+/* etapas: linha do tempo com filete dourado */
+.b-linha{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;padding-top:34px}
+.b-linha::before{content:"";position:absolute;left:0;right:0;top:10px;height:1px;background:linear-gradient(90deg,var(--ouro),rgba(184,153,90,.15))}
+.b-linha li{position:relative}
+.b-linha li::before{content:"";position:absolute;top:-30px;left:0;width:13px;height:13px;transform:rotate(45deg);background:var(--ouro)}
+.b-linha-n{font-family:Inter,sans-serif;font-weight:500;font-size:13px;color:var(--ouro-esc);letter-spacing:.1em}
+.b-linha h3{font-size:24px;margin:8px 0 10px}
+.b-linha p{color:var(--tx2);margin:0}
+@media (max-width:860px){.b-linha{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.b-linha{grid-template-columns:1fr;padding:0 0 0 30px}.b-linha::before{left:6px;right:auto;top:0;bottom:0;width:1px;height:auto;background:linear-gradient(var(--ouro),rgba(184,153,90,.15))}.b-linha li::before{left:-30px;top:6px}}
+
+/* mosaico de projetos */
+.b-proj-home{background:var(--creme)}
+.b-mosaico{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:300px 300px;gap:16px}
+.b-mosaico figure{position:relative;overflow:hidden}
+.b-mosaico img{width:100%;height:100%;object-fit:cover}
+.b-mosaico figcaption{position:absolute;left:0;bottom:0;padding:8px 14px;background:rgba(20,18,16,.72);color:#fff;font-size:13px}
+.b-m0{grid-row:1/3}
+.b-m3{grid-column:2/4}
+.b-m3 img{object-position:50% 25%}
+@media (max-width:860px){.b-mosaico{grid-template-columns:1fr 1fr;grid-template-rows:auto}.b-mosaico figure{aspect-ratio:1}.b-m0,.b-m3{grid-row:auto;grid-column:auto}}
+
+/* chamada final */
+.b-chamada{background:linear-gradient(115deg,#141210 0%,#2A241C 70%,#3A3020 100%);color:#EDE7DC;padding:clamp(56px,7vw,96px) 0}
+.b-chamada-in{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.b-chamada .b-tit{color:#fff;margin-bottom:12px}
+.b-chamada p{color:#CFC6B8;margin:0;max-width:52ch}
+.b-chamada-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* capas internas */
+.b-capa{background:var(--creme);padding:clamp(64px,9vw,128px) 0 clamp(48px,6vw,80px);border-bottom:1px solid var(--linha)}
+.b-capa h1{font-size:clamp(38px,5.4vw,72px);line-height:1.05;max-width:18ch;margin-bottom:18px}
+.b-capa p:not(.b-sobre){font-size:19px;color:var(--tx2);max-width:56ch;margin:0}
+.b-claro{background:var(--creme)}
+
+/* a marmoraria */
+.b-hist{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(32px,6vw,90px);align-items:start}
+.b-hist figure img{width:100%}
+.b-hist figcaption{font-size:14px;color:var(--tx2);margin-top:10px}
+.b-hist p{font-size:18px}
+@media (max-width:860px){.b-hist{grid-template-columns:1fr}}
+.b-numeros{display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+.b-numeros div{padding:12px 20px}
+.b-numeros div+div{border-left:1px solid var(--linha)}
+.b-numeros b{display:block;font-family:Marcellus,serif;font-weight:400;font-size:clamp(40px,5vw,64px);color:var(--ouro-esc);line-height:1.1}
+.b-numeros span{color:var(--tx2)}
+@media (max-width:640px){.b-numeros{grid-template-columns:1fr}.b-numeros div+div{border-left:0;border-top:1px solid var(--linha)}}
+
+/* ambientes */
+.b-amb-sec-in{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.b-inv-grid figure{order:2}
+.b-amb-sec figure img{width:100%;aspect-ratio:4/5;max-height:640px;object-fit:cover}
+.b-amb-sec figcaption{font-size:14px;color:var(--tx2);margin-top:10px}
+.b-amb-sec .b-tit{margin:10px 0 16px}
+.b-amb-sec p{font-size:18px;color:var(--tx2)}
+.b-itens{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin:8px 0 28px;border-top:1px solid var(--linha)}
+.b-itens li{padding:12px 0;border-bottom:1px solid var(--linha);font-size:15px}
+@media (max-width:860px){.b-amb-sec-in{grid-template-columns:1fr}.b-inv-grid figure{order:0}.b-amb-sec figure img{aspect-ratio:4/3}}
+@media (max-width:480px){.b-itens{grid-template-columns:1fr}}
+
+/* biblioteca de pedras: chapas penduradas, alturas alternadas */
+.b-biblio{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 36px}
+.b-chapa:nth-child(3n+2){margin-top:64px}
+.b-chapa-img{padding:10px;background:#fff;box-shadow:0 1px 0 var(--linha),0 18px 40px -24px rgba(20,18,16,.35);margin-bottom:22px}
+.b-chapa-img img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.b-chapa h2{font-size:26px;margin:6px 0 8px}
+.b-chapa p{color:var(--tx2);margin:0}
+@media (max-width:860px){.b-biblio{grid-template-columns:1fr 1fr}.b-chapa:nth-child(3n+2){margin-top:0}.b-chapa:nth-child(even){margin-top:48px}}
+@media (max-width:520px){.b-biblio{grid-template-columns:1fr}.b-chapa:nth-child(even){margin-top:0}.b-chapa-img img{aspect-ratio:4/3}}
+
+/* projetos */
+.b-galeria{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.b-galeria figure{grid-column:span 2}
+.b-g0,.b-g1{grid-column:span 3!important}
+.b-g5{grid-column:span 6!important}
+.b-galeria img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.b-g0 img,.b-g1 img{aspect-ratio:1}
+.b-g5 img{aspect-ratio:21/9}
+.b-galeria figcaption{margin-top:10px;font-family:Marcellus,serif;font-size:19px}
+.b-galeria figcaption span{display:block;font-family:Inter,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro-esc)}
+@media (max-width:760px){.b-galeria{grid-template-columns:1fr 1fr}.b-galeria figure,.b-g0,.b-g1{grid-column:span 1!important}.b-g5{grid-column:span 2!important}.b-g0 img,.b-g1 img{aspect-ratio:4/5}.b-g5 img{aspect-ratio:16/10}}
+
+/* contato */
+.b-contato{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(32px,6vw,90px)}
+.b-contato-info dl{margin:0;border-top:1px solid var(--linha)}
+.b-contato-info dl div{padding:18px 0;border-bottom:1px solid var(--linha)}
+.b-contato-info dt{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro-esc);font-weight:600;margin-bottom:4px}
+.b-contato-info dd{margin:0;font-family:Marcellus,serif;font-size:22px}
+.b-contato-info a{text-decoration:none}
+.v-b .form{background:var(--creme);padding:clamp(22px,3vw,40px)}
+.b-mapa .mapa{height:420px}
+@media (max-width:860px){.b-contato{grid-template-columns:1fr}}
+
+/* rodapé preto */
+.v-b .rodape{background:var(--preto);color:#CFC6B8}
+.v-b .rodape h2{color:var(--ouro);font-family:Inter,sans-serif;font-weight:600}
+.v-b .rod-base{color:#8D8579}
