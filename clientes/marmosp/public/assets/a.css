@@ -1,0 +1,168 @@
+/* Versão A · Fachada: a placa vermelha, o muro de granitos e a ordem do site atual (foto, Quem somos, Entre em contato, mapa) */
+.v-a{--verm:#C8201A;--verm-esc:#A0150F;--graf:#2A2726;--pedra:#F2F0EC;--pedra2:#E6E2DB;--tx:#2A2726;--tx2:#5E5853;--bg:#fff;--linha:#E2DED8;--menu-bg:#fff;--campo-bg:#fff;--campo-borda:#CFC9C1;--foco:#C8201A;--rod-linha:rgba(255,255,255,.18)}
+.v-a h1,.v-a h2,.v-a h3,.v-a .btn,.v-a .menu a{font-family:Montserrat,system-ui,sans-serif}
+.a-tit{font-size:clamp(26px,3.4vw,40px);font-weight:700;text-transform:uppercase;letter-spacing:.06em;line-height:1.15}
+.a-tit-claro{color:#fff}
+.a-selo{display:inline-block;font-family:Montserrat,sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--verm);margin-bottom:18px}
+.a-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--verm-esc);text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
+.a-link .ic{width:18px;height:18px}
+.a-cab{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+
+.btn-verm{background:var(--verm);color:#fff}
+.btn-verm:hover{background:var(--verm-esc)}
+.btn-linha{border-color:currentColor;background:transparent;color:var(--graf)}
+.btn-linha:hover{background:var(--graf);color:#fff}
+.btn-branco{background:#fff;color:var(--verm-esc)}
+.btn-wa{background:var(--verm);color:#fff;min-height:44px;padding:10px 18px}
+.btn-wa:hover{background:var(--verm-esc)}
+
+/* topo: a placa como logo */
+.v-a .topo{background:#fff;border-bottom:1px solid var(--linha)}
+.v-a .logo{width:clamp(190px,20vw,270px);height:auto}
+.v-a .menu a{font-weight:600;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--graf)}
+.v-a .menu a:hover,.v-a .menu a[aria-current]{color:var(--verm)}
+.v-a .menu a[aria-current]{box-shadow:inset 0 -3px 0 var(--verm)}
+.topo-fone{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;font-size:15px}
+.topo-fone .ic{color:var(--verm)}
+@media (max-width:1240px){.topo-fone span{display:none}}
+@media (max-width:1040px){.v-a .menu a[aria-current]{box-shadow:none}}
+@media (max-width:560px){.topo-fone,.btn-wa span{display:none}.btn-wa{width:44px;padding:0}}
+
+/* hero: a foto da fachada como no site atual, agora grande e com a chamada */
+.a-hero{display:grid;grid-template-columns:1.3fr 1fr;align-items:stretch;background:var(--pedra)}
+.a-hero-foto img{width:100%;height:100%;min-height:100%;aspect-ratio:1600/1015;object-fit:cover;object-position:80% 50%}
+.a-hero-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(32px,5vw,72px)}
+.a-hero h1{font-size:clamp(30px,3.4vw,48px);font-weight:700;letter-spacing:-.01em;margin-bottom:20px}
+.a-hero-txt>p:not(.a-selo){font-size:19px;color:var(--tx2);max-width:40ch}
+.a-hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+@media (max-width:900px){.a-hero{grid-template-columns:1fr}.a-hero-foto img{aspect-ratio:16/10;height:auto}}
+
+/* Quem somos nós: o texto do site atual, com os números ao lado */
+.a-quem{padding:clamp(56px,8vw,104px) 0;background:#fff}
+.a-quem-in{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.a-quem-lead{font-size:clamp(19px,1.8vw,23px);line-height:1.55;margin:22px 0 26px}
+.a-numeros{display:grid;gap:0;margin:0;border-top:3px solid var(--verm)}
+.a-numeros div{display:grid;grid-template-columns:150px 1fr;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid var(--linha)}
+.a-numeros dt{font-family:Montserrat,sans-serif;font-weight:800;font-size:34px;color:var(--verm)}
+.a-numeros dd{margin:0;color:var(--tx2)}
+@media (max-width:900px){.a-quem-in{grid-template-columns:1fr}}
+@media (max-width:420px){.a-numeros div{grid-template-columns:1fr;gap:2px}}
+
+/* o muro de granitos da fachada */
+.a-muro{position:relative;padding:clamp(72px,10vw,140px) 0;color:#fff;background:linear-gradient(90deg,rgba(24,20,18,.88) 0%,rgba(24,20,18,.62) 55%,rgba(24,20,18,.25) 100%),url(/assets/img/muro-pedras.webp) center/cover no-repeat}
+.a-muro p{max-width:46ch;font-size:19px;opacity:.92;margin:18px 0 28px}
+.a-muro .a-tit{max-width:20ch}
+
+/* ambientes: mosaico assimétrico */
+.a-amb-grade{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:280px 280px;gap:14px}
+.a-amb-item{position:relative;overflow:hidden;display:block;text-decoration:none;color:#fff;background:var(--graf)}
+.a-amb-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.a-amb-item:hover img{transform:scale(1.04)}
+.a-amb-item::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.72))}
+.a-amb-nome{position:absolute;left:20px;right:20px;bottom:18px;z-index:1;font-family:Montserrat,sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:.05em}
+.a-amb-0{grid-row:1/3}
+.a-amb-3{grid-column:2/4}
+@media (max-width:900px){.a-amb-grade{grid-template-columns:1fr 1fr;grid-template-rows:auto}.a-amb-item{aspect-ratio:4/3}.a-amb-0,.a-amb-3{grid-row:auto;grid-column:auto}}
+@media (max-width:520px){.a-amb-grade{grid-template-columns:1fr}}
+
+/* etapas: faixa vermelha com degradê */
+.a-etapas{padding:clamp(64px,8vw,110px) 0;color:#fff;background:linear-gradient(120deg,#A0150F 0%,#C8201A 55%,#D9372A 100%)}
+.a-etapas-lista{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;counter-reset:e}
+.a-etapas-lista li{position:relative;padding:0 28px 0 0}
+.a-etapas-lista li+li{padding-left:28px;border-left:1px solid rgba(255,255,255,.3)}
+.a-etapa-n{display:block;font-family:Montserrat,sans-serif;font-weight:800;font-size:56px;line-height:1;color:rgba(255,255,255,.35);margin-bottom:18px}
+.a-etapas h3{font-size:20px;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+.a-etapas p{opacity:.9;margin:0}
+@media (max-width:900px){.a-etapas-lista{grid-template-columns:1fr 1fr;gap:36px 0}.a-etapas-lista li:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:520px){.a-etapas-lista{grid-template-columns:1fr}.a-etapas-lista li,.a-etapas-lista li+li{padding:0 0 24px;border-left:0;border-bottom:1px solid rgba(255,255,255,.3)}}
+
+/* obras na home: tira horizontal */
+.a-obras-home{background:var(--pedra)}
+.a-tira{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.a-tira figure{position:relative}
+.a-tira img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.a-tira figcaption{font-size:14px;font-weight:500;margin-top:10px;color:var(--tx2)}
+@media (max-width:900px){.a-tira{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:62%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}.a-tira figure{scroll-snap-align:start}}
+
+/* entre em contato */
+.a-contato{background:#fff;padding-top:clamp(56px,8vw,104px)}
+.a-contato-in{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(32px,6vw,80px);padding-bottom:clamp(48px,7vw,88px)}
+.a-contato-txt>p{color:var(--tx2);margin:18px 0 28px;font-size:18px}
+.a-canais{display:grid;gap:12px}
+.a-canais a{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--linha);text-decoration:none;font-weight:600;font-size:18px}
+.a-canais .ic{width:26px;height:26px;color:var(--verm)}
+.a-canais small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx2);font-weight:600}
+.v-a .form{background:var(--pedra);padding:clamp(22px,3vw,36px)}
+@media (max-width:900px){.a-contato-in{grid-template-columns:1fr}}
+
+/* capas das páginas internas */
+.a-capa{display:grid;grid-template-columns:1fr 1fr;background:var(--pedra);min-height:380px}
+.a-capa-txt{padding:clamp(40px,6vw,80px) clamp(20px,5vw,72px);display:flex;flex-direction:column;justify-content:center}
+.a-capa h1{font-size:clamp(32px,4.4vw,56px);font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:16px}
+.a-capa-txt>p:not(.a-selo){font-size:19px;color:var(--tx2);max-width:44ch;margin:0}
+.a-capa-foto img{width:100%;height:100%;max-height:460px;object-fit:cover}
+.a-capa-muro{grid-template-columns:1fr;color:#fff;background:linear-gradient(90deg,rgba(24,20,18,.9),rgba(24,20,18,.55)),url(/assets/img/muro-pedras.webp) center/cover no-repeat}
+.a-capa-muro .a-capa-txt>p:not(.a-selo){color:rgba(255,255,255,.9)}
+.a-capa-muro .a-selo{color:#fff;opacity:.8}
+@media (max-width:820px){.a-capa{grid-template-columns:1fr}.a-capa-foto img{aspect-ratio:16/9;height:auto}}
+
+/* sobre */
+.a-hist{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,6vw,96px);align-items:start}
+.a-hist-ano{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(72px,12vw,170px);line-height:.9;color:var(--verm);letter-spacing:-.02em}
+.a-hist-txt{font-size:19px;max-width:62ch}
+.a-citacao{margin-top:28px;padding-top:24px;border-top:3px solid var(--verm);font-size:18px;color:var(--tx2);font-style:italic}
+@media (max-width:760px){.a-hist{grid-template-columns:1fr}}
+.a-portao{background:var(--pedra);padding:clamp(56px,8vw,104px) 0}
+.a-portao-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.a-portao figure img{width:100%;aspect-ratio:5/3;object-fit:cover}
+.a-portao figcaption{font-size:14px;color:var(--tx2);margin-top:10px}
+.a-checks{display:grid;gap:10px;margin:22px 0 28px}
+.a-checks li{position:relative;padding-left:30px}
+.a-checks li::before{content:"";position:absolute;left:0;top:.5em;width:14px;height:14px;background:var(--verm);clip-path:polygon(0 0,100% 50%,0 100%)}
+@media (max-width:820px){.a-portao-in{grid-template-columns:1fr}}
+.a-feira-in{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.a-feira-in p:not(.a-selo){color:var(--tx2);font-size:18px;margin-top:18px}
+.a-feira-in img{width:100%;aspect-ratio:1;object-fit:cover}
+@media (max-width:820px){.a-feira-in{grid-template-columns:1fr}}
+
+/* ambientes */
+.a-ancoras{display:flex;flex-wrap:wrap;gap:10px;padding:28px 0 0}
+.a-ancoras a{padding:10px 16px;border:1.5px solid var(--linha);text-decoration:none;font-weight:600;font-size:15px}
+.a-ancoras a:hover{border-color:var(--verm);color:var(--verm)}
+.a-amb-lin-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.a-inv .a-amb-lin-in figure{order:2}
+.a-amb-lin figure img{width:100%;aspect-ratio:4/5;object-fit:cover;max-height:620px}
+.a-amb-lin figcaption{font-size:14px;color:var(--tx2);margin-top:10px}
+.a-amb-lin p{font-size:18px;color:var(--tx2);margin-top:16px}
+.a-num{font-family:Montserrat,sans-serif;font-weight:800;font-size:15px;color:var(--verm);letter-spacing:.14em;display:block;margin-bottom:10px}
+.a-inv{background:var(--pedra)}
+@media (max-width:820px){.a-amb-lin-in{grid-template-columns:1fr}.a-inv .a-amb-lin-in figure{order:0}.a-amb-lin figure img{aspect-ratio:4/3}}
+
+/* pedras */
+.a-pedras{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 32px}
+.a-pedra-amostra{position:relative;padding:12px;background:var(--pedra2);margin-bottom:18px}
+.a-pedra-amostra img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.a-pedras h2{font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.a-pedras p{color:var(--tx2);margin:0}
+@media (max-width:900px){.a-pedras{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.a-pedras{grid-template-columns:1fr}}
+.a-aviso{margin-top:56px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:28px 32px;background:var(--graf);color:#fff}
+.a-aviso p{margin:0;max-width:60ch;font-size:18px}
+
+/* obras */
+.a-galeria{columns:3 300px;column-gap:18px}
+.a-galeria figure{break-inside:avoid;margin-bottom:26px}
+.a-galeria figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:15px}
+.a-galeria figcaption span{color:var(--tx2)}
+
+/* contato */
+.a-info{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.a-info .ic{width:30px;height:30px;color:var(--verm);margin-bottom:14px}
+.a-info h2{font-size:16px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.a-info p{color:var(--tx2)}
+@media (max-width:760px){.a-info{grid-template-columns:1fr}}
+
+/* rodapé grafite com a placa em branco */
+.v-a .rodape{background:var(--graf);color:#E9E5E0}
+.v-a .rodape h2{color:#fff}
+.v-a .rod-base{color:#B9B2AA}
