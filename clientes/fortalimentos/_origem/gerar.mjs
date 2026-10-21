@@ -23,7 +23,7 @@ const kit = path.join(pub, '../../../componentes/apresentacao');
 for (const f of ['apresenta.css', 'apresenta.js']) fs.copyFileSync(path.join(kit, f), path.join(pub, 'assets', f));
 const { paginaEscolha } = await import(path.join(kit, 'escolha.mjs'));
 fs.writeFileSync(path.join(pub, 'index.html'), paginaEscolha({
-  nome: E.nome, artigo: 'da', url: E.url, lang: 'pt', cor: '#AE3336', fundo: '#7C1E22', claro: '#FFF8EC',
+  nome: E.nome, artigo: 'da', url: E.url, lang: 'pt', cor: '#FBC531', corTextoBotao: '#7C1E22', fundo: '#7C1E22', claro: '#FFF8EC',
   fonteTitulo: "'Alegreya Sans SC',system-ui,sans-serif", fonteTexto: 'Inter,system-ui,sans-serif',
   googleFonts: 'https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@800;900&family=Inter:wght@400;500&display=swap',
   favicon: '/assets/favicon.png', ogImagem: `${E.url}assets/og-a.jpg`,

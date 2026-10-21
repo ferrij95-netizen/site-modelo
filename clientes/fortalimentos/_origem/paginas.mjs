@@ -4,6 +4,7 @@
 import { empresa as E, textos as T, clientes, categorias, marcas, produtos, destaquesHome, receitas, creditos, catDe, marcaDe } from './conteudo.mjs';
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const nb = s => esc(s).replace(/(\d) (kg|g)\b/g, '$1&nbsp;$2');
 const foto = (src, alt, w = 1800, h = 1200, extra = '') => `<img src="/assets/img/${src}.webp" alt="${esc(alt)}" width="${w}" height="${h}" loading="lazy" decoding="async"${extra}>`;
 const emb = (p, extra = '') => `<img src="/assets/prod/${p.id}.webp" alt="${esc(p.nome)}, embalagem" width="600" height="600" loading="lazy" decoding="async"${extra}>`;
 const logoMarca = (m, extra = '') => `<img src="/assets/marcas/${m.slug}.webp" alt="${esc(m.nome)}" width="290" height="172" loading="lazy" decoding="async"${extra}>`;
@@ -90,7 +91,7 @@ const link = (v, n, atual, cls = '') => `<a href="/${v}/${n.caminho}"${cls ? ` c
 const logo = (w = 300) => `<img src="/assets/logo.webp" alt="Fort Alimentos, Distribuidora e Atacado de Alimentos" width="${w}" height="${Math.round(w * 327 / 963)}">`;
 const menuBtn = `<button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">${ic('menu')}</button>`;
 const botaoLista = v => `<a class="lista-btn" href="/${v}/pedido/" aria-label="Lista de pedido">${ic('lista')}<span class="lista-txt">Lista de pedido</span><span class="lista-n" data-lista-n>0</span></a>`;
-const busca = (v, cls = 'busca') => `<form class="${cls}" action="/${v}/produtos/" role="search"><label class="sr" for="q-${cls}">Buscar produto</label><input id="q-${cls}" name="q" type="search" placeholder="Busque mortadela, provolone, calabresa..." autocomplete="off"><button type="submit" aria-label="Buscar">${ic('lupa')}</button></form>`;
+const busca = (v, cls = 'busca') => `<form class="${cls}" action="/${v}/produtos/" role="search"><label class="sr" for="q-${cls}">Buscar produto</label><input id="q-${cls}" name="q" type="search" placeholder="${cls === 'busca-cat' ? 'Buscar produto' : 'Busque mortadela, provolone, calabresa...'}" autocomplete="off"><button type="submit" aria-label="Buscar">${ic('lupa')}</button></form>`;
 
 function topo(v, atual) {
   if (v === 'a') return `<div class="pre"><div class="in"><span class="pre-disk">${ic('caminhao')} <b>${T.disk}</b> ${T.regiao}</span><span class="pre-dir"><a href="${E.facebook}" target="_blank" rel="noopener">${ic('facebook')} Siga a Fort Alimentos</a></span></div></div>
@@ -187,7 +188,7 @@ const listaPedido = v => `<div class="lista" data-lista>
 // Cartão de produto do catálogo (data-* usados pelo filtro do site.js).
 const itemProduto = (v, p, cls = 'prod') => `<li class="${cls}" data-item data-cat="${p.cat}" data-marca="${p.marca}" data-busca="${esc((p.nome + ' ' + marcaDe(p.marca).nome + ' ' + catDe(p.cat).nome).toLowerCase())}">
   <a class="prod-img" href="/${v}/produtos/${p.slug}/" tabindex="-1">${emb(p)}</a>
-  <div class="prod-txt"><span class="prod-marca">${marcaDe(p.marca).nome}</span><h3><a href="/${v}/produtos/${p.slug}/">${esc(p.nome)}</a></h3>${Object.keys(p.ficha).length ? `<p class="prod-ficha">${Object.entries(p.ficha).slice(0, 2).map(([k, x]) => `${k}: ${x}`).join(' · ')}</p>` : ''}</div>
+  <div class="prod-txt"><span class="prod-marca">${marcaDe(p.marca).nome}</span><h3><a href="/${v}/produtos/${p.slug}/">${nb(p.nome)}</a></h3>${Object.keys(p.ficha).length ? `<p class="prod-ficha">${Object.entries(p.ficha).slice(0, 2).map(([k, x]) => `${k}: ${x}`).join(' · ')}</p>` : ''}</div>
   <div class="prod-acao">${v === 'b' ? qtd(p) : ''}${addBtn(p, v === 'b' ? 'Adicionar' : 'Adicionar à lista')}</div>
 </li>`;
 
@@ -376,7 +377,7 @@ function inicioB() {
     <p class="hero-cta"><a class="btn" href="/b/produtos/">Montar meu pedido ${ic('seta')}</a><a class="btn btn-linha" href="tel:${E.foneHref}">${ic('tel')} ${E.fone}</a></p>
     <ul class="hero-num"><li><b>${produtos.length}</b> produtos no catálogo</li><li><b>${marcas.length}</b> marcas</li><li><b>${categorias.length}</b> categorias</li></ul>
   </div>
-  <figure class="hero-foto">${foto('camara-fria', 'Armazém de distribuição de alimentos', 1800, 1200, ' loading="eager"')}<figcaption><img src="/assets/prod/662.webp" alt="" width="600" height="600"><span><b>Mortadela Aurora 5 kg</b>Em estoque para o seu balcão</span></figcaption></figure>
+  <figure class="hero-foto">${foto('camara-fria', 'Armazém de distribuição de alimentos', 1800, 1200, ' loading="eager"')}<figcaption><img src="/assets/prod/662.webp" alt="" width="600" height="600"><span><b>Mortadela Aurora 5 kg</b>Uma das 13 marcas do catálogo</span></figcaption></figure>
 </div></section>
 
 <nav class="atalhos" aria-label="Categorias"><div class="in">${categorias.map(c => `<a href="/b/produtos/?cat=${c.slug}"><img src="/assets/cat/${c.slug}.webp" alt="" width="253" height="220" loading="lazy"><span>${c.curto}</span></a>`).join('')}</div></nav>
@@ -389,7 +390,7 @@ function inicioB() {
 
 <section class="segmentos"><div class="in">
   <figure>${foto('mortadela-sanduiche', 'Sanduíche de mortadela no Mercado Municipal de São Paulo', 1350, 1800)}</figure>
-  <div class="seg-txt"><h2>Para quem a Fort vende</h2><p>${T.intro.split('. ')[1]}.</p>
+  <div class="seg-txt"><h2>Para quem a Fort vende</h2><p>${T.intro.split('. ')[1]}</p>
   <ul>${clientes.map(c => `<li>${ic(icCliente[c.id])}<b>${c.nome}</b></li>`).join('')}</ul>
   <a class="btn" href="/b/empresa/">Conheça a Fort ${ic('seta')}</a></div>
 </div></section>

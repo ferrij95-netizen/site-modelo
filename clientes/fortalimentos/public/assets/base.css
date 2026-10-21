@@ -233,3 +233,5 @@ p { margin: 0 0 1em; }
   .pp { gap: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+[data-item][hidden] { display: none !important; }
+.v-b .filtros .busca-cat input { font-size: .9rem; padding: .7em .8em; }
