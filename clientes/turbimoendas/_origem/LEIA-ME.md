@@ -1,0 +1,11 @@
+# Turbimoendas: como este site é feito
+
+- Cliente: Turbimoendas Usinagem de Peças Ltda., Rua Abelardo Benedicto Libório, 380, Distrito Industrial Uninorte, Piracicaba SP. Escolhido no lote 4 de sites ruins (21/10/2026, /mnt/project-files/piloto-10d/LISTA.md), sem pedido do cliente.
+- Site atual: turbimoendas.com.br (template "templatemo" de 2013, só português, então o novo é só `pt`). As páginas têm blocos escondidos com links de spam de farmácia (site invadido); a página "Eventos" dá erro 503.
+- Marca: logo do site atual (`logo.png`, 90×100, único tamanho disponível) e versão com letras brancas para fundo escuro (`logo-branco.png`, gerada recolorindo só o preto de fora do losango). Amarelo #E3BA04 do logo, barra #333 e filete #FFCC29 do menu atual, títulos vinho do site atual. Títulos em Roboto Condensed (condensada e negrito como "TURBIMOENDAS" no logo), texto em Inter.
+- Fotos: todas do site atual (galeria "Nossas Instalações", páginas de produtos e serviços, faixas do slider). Os originais têm 550 px no máximo; foram ampliados 2× com nitidez leve e as que tinham data da câmera em vermelho foram cortadas embaixo. Legendas da galeria são nossas.
+- Textos: do site atual em `conteudo.mjs`. Escritos por nós: títulos de seção, passos do processo, legendas, frases de capa. Parque de máquinas copiado da página Equipamentos e do PDF (`turbimoendas-equipamentos.pdf`, o mesmo do site atual).
+- Estrutura: `/` escolha (apresentação de componentes/apresentacao), `/a/` "Losango" (fiel: cinza claro, menu numa barra grafite com aba amarela, títulos vinho, losango do logo como marcador) e `/b/` "Capacidade" (ficha técnica: números grandes, régua milimetrada, serviços em tabela com a capacidade). 7 páginas em cada: Home, Empresa, Produtos, Serviços, Equipamentos, Instalações, Contato.
+- Formulário de orçamento abre o e-mail com a mensagem pronta para turbimoendas@turbimoendas.com.br; botões "Orçar" preenchem o assunto.
+- Gerar: `node clientes/turbimoendas/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` são refeitos à mão quando o visual mudar.
+- A confirmar com o cliente: tempo de mercado (o site de 2013 dizia "30 anos", usamos "mais de três décadas"); se ainda têm todas as máquinas da lista; se há WhatsApp; logo em alta resolução; legenda da foto de fundição (o site não diz se a fundição é própria).
