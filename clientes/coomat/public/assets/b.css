@@ -1,0 +1,81 @@
+/* Versão B "Cooperação": verde e amarelo do logo, 60 anos de história. */
+.v-b .barra { background: var(--verde-noite); color: #e6efe0; }
+.v-b .topo { background: rgba(255, 255, 255, .97); backdrop-filter: blur(6px); border-bottom: 1px solid var(--linha); }
+.v-b #menu a { color: var(--ink); }
+.v-b #menu a:hover { color: var(--verde-2); }
+.v-b #menu a.ativo { color: var(--verde-2); box-shadow: inset 0 -3px 0 var(--amarelo); border-radius: 0; }
+.v-b .nav-cta { background: var(--verde-esc); color: #fff !important; }
+.v-b .nav-cta:hover { background: var(--verde-2); }
+.v-b .nav-cta.ativo { box-shadow: none !important; border-radius: var(--raio) !important; }
+.v-b .btn-prim { background: var(--verde-esc); color: #fff; }
+.v-b .btn-prim:hover { background: #0e5c34; }
+.v-b .btn-sec { background: transparent; color: var(--verde-esc); border-color: rgba(11, 74, 42, .35); }
+.v-b .btn-sec:hover { border-color: var(--verde-esc); }
+.v-b .eyebrow { color: var(--verde-2); }
+.v-b .capa::after { background: linear-gradient(0deg, rgba(8, 40, 23, .9) 0%, rgba(8, 40, 23, .35) 70%, rgba(8, 40, 23, .15) 100%); }
+
+/* hero */
+.hero-b { background: radial-gradient(120% 90% at 100% 0%, #fbf7c9 0%, transparent 55%), linear-gradient(180deg, #fff 0%, var(--papel) 100%); padding: clamp(48px, 7vw, 96px) 0; }
+.hero-b-grade { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
+.hero-b h1 { color: var(--verde-esc); }
+.hero-b .lead { color: #3a4434; }
+.hero-b-midia { position: relative; }
+.hero-b-foto { aspect-ratio: 16 / 11; border-radius: 10px; box-shadow: 0 30px 60px -30px rgba(11, 58, 34, .55); }
+.selo-60 { position: absolute; left: -28px; bottom: -28px; width: 150px; height: 150px; border-radius: 50%; background: var(--amarelo); color: var(--verde-esc); display: grid; place-content: center; text-align: center; box-shadow: 0 0 0 8px #fff; }
+.selo-60 strong { font: 800 3.4rem/.9 var(--tit); }
+.selo-60 span { font: 700 .78rem/1.25 var(--tit); text-transform: uppercase; letter-spacing: .06em; }
+
+/* números */
+.faixa-num { background: linear-gradient(100deg, var(--verde-noite) 0%, var(--verde-esc) 60%, #0f6b39 100%); color: #fff; padding: 48px 0; }
+.faixa-num .num strong { color: var(--amarelo); }
+
+/* serviços sobre foto aérea */
+.sec-campo { color: #fff; overflow: hidden; background: var(--verde-noite); }
+.campo-fundo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .35; }
+.sec-campo .in { position: relative; }
+.sec-campo .eyebrow { color: var(--amarelo); }
+.sec-campo .cab-linha > p { color: rgba(255, 255, 255, .85); }
+.sec-campo .pilares li { border-left-color: rgba(242, 229, 59, .6); }
+.sec-campo .ic-pilar { color: var(--amarelo); }
+.v-b .serv-n { -webkit-text-stroke-color: var(--verde-esc); }
+
+/* identidade */
+.v-b .sec-verde { background: linear-gradient(150deg, var(--verde-esc) 0%, var(--verde-noite) 100%); color: #fff; }
+.v-b .sec-verde .eyebrow { color: var(--amarelo); }
+.v-b .sec-verde h2 { max-width: 18em; }
+
+/* cidades */
+.cidades { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; }
+.cidade { background: var(--papel); border-radius: 10px; padding: 32px; border-top: 5px solid var(--verde); }
+.cidade:last-child { border-top-color: var(--amarelo); }
+.cidade h3 { display: flex; align-items: center; gap: 8px; font-size: 1.5rem; color: var(--verde-esc); margin-bottom: .1em; }
+.cidade h3 .ic { width: 24px; height: 24px; color: var(--verde); }
+.cid-end { color: var(--cinza); margin-left: 32px; }
+.cidade ul { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cidade:last-child ul { grid-template-columns: 1fr; }
+.cidade ul a { display: flex; gap: 12px; align-items: center; padding: 14px; background: #fff; border-radius: 8px; text-decoration: none; border: 1px solid transparent; transition: border-color .15s; }
+.cidade ul a:hover { border-color: var(--verde); }
+.cidade ul .ic { width: 26px; height: 26px; color: var(--verde-2); }
+.cidade ul strong { display: block; font: 700 .98rem/1.2 var(--tit); }
+.cidade ul small { color: var(--cinza); font-size: .8rem; }
+.cid-foto { margin-top: 18px; aspect-ratio: 16 / 9; }
+
+/* faixa de contato */
+.v-b .faixa-contato { background: var(--amarelo); color: var(--verde-esc); }
+
+/* rodapé */
+.v-b .rodape { background: var(--verde-noite); color: #dfe9da; }
+.v-b .rodape h3 { color: var(--amarelo); }
+.v-b .rod-marcas, .v-b .rod-base { border-color: rgba(255, 255, 255, .15); }
+
+@media (max-width: 900px) {
+  .hero-b-grade, .cidades { grid-template-columns: 1fr; }
+  .selo-60 { width: 112px; height: 112px; left: 12px; bottom: -36px; }
+  .selo-60 strong { font-size: 2.5rem; }
+  .hero-b { padding-bottom: 72px; }
+  .v-b #menu { background: #fff; }
+  .cidade { padding: 22px; }
+}
+@media (max-width: 560px) {
+  .cidade ul { grid-template-columns: 1fr; }
+}
