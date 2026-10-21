@@ -25,8 +25,8 @@
 .heroi-palco{position:relative;height:clamp(420px,44vw,600px)}
 .heroi-disco{position:absolute;left:12%;right:0;bottom:-18%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 38% 30%,#ff3a12,var(--verm) 45%,var(--verm-forte) 75%)}
 .heroi-coco{position:absolute;left:-2%;bottom:-2%;width:46%;border-radius:50%;aspect-ratio:1;object-fit:cover;object-position:30% 50%;border:8px solid #fff;box-shadow:0 20px 40px -18px rgba(60,20,0,.5);z-index:2}
-.heroi-lata{position:absolute;left:30%;bottom:4%;height:92%;width:auto;z-index:3;filter:drop-shadow(0 34px 30px rgba(60,20,0,.35))}
-.heroi-selo{position:absolute;right:4%;top:10%;z-index:4;width:118px;height:118px;border-radius:50%;background:#fff;display:grid;place-content:center;text-align:center;font-size:12px;font-weight:600;color:var(--texto);line-height:1.2;box-shadow:0 14px 30px -14px rgba(60,20,0,.5);transform:rotate(8deg)}
+.heroi-lata{position:absolute;left:30%;bottom:9%;height:74%;width:auto;z-index:3;filter:drop-shadow(0 34px 30px rgba(60,20,0,.35))}
+.heroi-selo{position:absolute;left:16%;top:8%;z-index:4;width:118px;height:118px;border-radius:50%;background:#fff;display:grid;place-content:center;text-align:center;font-size:12px;font-weight:600;color:var(--texto);line-height:1.2;box-shadow:0 14px 30px -14px rgba(60,20,0,.5);transform:rotate(8deg)}
 .heroi-selo b{display:block;font-family:var(--h);font-size:38px;line-height:1;color:var(--verm)}
 
 /* números em faixa vermelha */
@@ -39,16 +39,15 @@
 .caminho{background:var(--suave)}
 .etapas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative}
 .etapa{position:relative}
-.etapa>img,.etapa-logos-grade{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:50% 50% var(--raio) var(--raio)}
+.etapa>img,.etapa-logos-grade{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 70%;border-radius:var(--raio)}
 .etapa-logos-grade{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:28px 14px 14px;background:#fff;align-content:center}
 .etapa-logos-grade img{mix-blend-mode:multiply}
 .etapa-n{position:relative;display:grid;place-items:center;width:52px;height:52px;margin:-26px auto 14px;border-radius:50%;background:var(--lata);font-family:var(--h);font-weight:700;font-size:24px;color:var(--tinta);border:4px solid var(--suave);z-index:1}
-.etapa h3{display:flex;align-items:center;justify-content:center;gap:8px;font-size:24px;text-align:center}
-.etapa h3 .ic{color:var(--verm);width:22px;height:22px}
+.etapa h3{font-size:24px;text-align:center}
 .etapa p{text-align:center;font-size:15px;line-height:1.5}
 
 /* receitas em mosaico */
-.receitas-mosaico{display:grid;grid-template-columns:6fr 5fr;gap:32px}
+.receitas-mosaico{display:grid;grid-template-columns:5fr 6fr;gap:40px}
 .receita-grande .receita-foto{aspect-ratio:4/3}
 .receita-grande .receita-txt strong{font-size:40px}
 .receita-grande .receita-txt span{font-size:17px}
@@ -60,7 +59,7 @@
 /* quem somos */
 .missao-b{background:var(--lata-claro)}
 .mb-grade{display:grid;grid-template-columns:5fr 6fr;gap:64px;align-items:center}
-.mb-foto{border-radius:var(--raio);width:100%;aspect-ratio:4/3;object-fit:cover}
+.mb-fotos{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mb-fotos img{width:100%;aspect-ratio:1;object-fit:cover;object-position:top;border-radius:var(--raio)}.mb-fotos img:nth-child(1){border-radius:120px var(--raio) var(--raio) var(--raio)}.mb-fotos img:nth-child(4){border-radius:var(--raio) var(--raio) 120px var(--raio)}
 .clientes-b{background:#fff}
 .clientes-b h2{margin-bottom:36px}
 .logos-faixa li{border:0;background:transparent}
@@ -80,7 +79,7 @@
   .topo-b .marca{width:160px}
 }
 @media (max-width:960px){
-  .barra span:first-child{display:none}.barra .in{justify-content:center}
+  .barra span:first-child{display:none}.barra .in{justify-content:center}.barra a{white-space:nowrap}
   .topo-b .in{min-height:68px}
   .topo-b .marca{width:150px}
   .menu-btn{display:block;margin-left:auto}
@@ -107,3 +106,4 @@
   .receita-linha .receita-txt strong{font-size:22px}
   .receita-linha .receita-txt span{display:none}
 }
+@media (max-width:560px){.barra a[href^="mailto"]{display:none}}

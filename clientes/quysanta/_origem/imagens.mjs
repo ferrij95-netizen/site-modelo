@@ -16,6 +16,7 @@ const amplia = (f, saida, { fator = 2, crop, q = 82 } = {}) => {
 };
 
 await amplia('latacocadagrande.png', 'img/lata.webp', { q: 88 });
+await amplia('latacocadagrande.png', 'img/lata-recorte.webp', { crop: { left: 0, top: 0, width: 348, height: 352 }, q: 88 });
 await amplia('minilatacocada.png', 'img/lata-mini.webp', { q: 88 });
 await amplia('fotoempresa1.jpg', 'img/fabrica-fachada.webp');
 await amplia('fotoempresa2.jpg', 'img/fabrica-caminhao.webp');
@@ -26,8 +27,8 @@ await amplia('torta-romeu-julieta.jpg', 'img/receita-pao-doce-romeu-e-julieta.we
 await amplia('receita_barrinhas-de-cereai.jpg', 'img/receita-barrinhas-crocantes.webp');
 await amplia('como-fazer-rapadura-de-coco.jpg', 'img/receita-rapadura-de-coco.webp');
 // Faixa "Aproveite os doces momentos da vida!" do topo do site atual: as sete fotos e a frase, recortadas uma a uma.
-const tiras = [[54, 104], [160, 126], [290, 126], [420, 126], [550, 120], [674, 126], [804, 108]];
-for (const [i, [x, w]] of tiras.entries()) await amplia('bgtopo.jpg', `img/momento-${i + 1}.webp`, { crop: { left: x, top: 246, width: w, height: 142 } });
+const tiras = [[68, 90, 276], [160, 126, 246], [290, 126, 246], [420, 126, 246], [550, 120, 246], [674, 126, 246], [804, 94, 276]];
+for (const [i, [x, w, y]] of tiras.entries()) await amplia('bgtopo.jpg', `img/momento-${i + 1}.webp`, { crop: { left: x, top: y, width: w, height: 388 - y } });
 await amplia('bgtopo.jpg', 'img/frase-momentos.webp', { crop: { left: 432, top: 394, width: 520, height: 52 }, q: 90 });
 for (let i = 1; i <= 8; i++) await sharp(path.join(orig, `clientes/cliente0${i}.jpg`)).webp({ quality: 90 }).toFile(path.join(pub, `clientes/cliente0${i}.webp`));
 // Fotos de apoio (Wikimedia Commons, créditos no LEIA-ME): só onde o site atual não tem foto.

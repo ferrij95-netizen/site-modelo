@@ -91,6 +91,7 @@ function topo(v, slug) {
     </svg>
     <nav id="menu" aria-label="Principal"><ul>${itensMenu(v, slug)}</ul></nav>
   </div>
+  ${slug === 'index' ? blocoMomentos() : ''}
 </header>
 <main id="conteudo">
 `;
@@ -118,7 +119,7 @@ function rodape(v) {
     </div>
     <div>
       <h3>Fábrica</h3>
-      <p><a href="${mapa}" target="_blank" rel="noopener">${E.endereco}<br>${E.bairro} · CEP ${E.cep}<br>${E.cidade}</a></p>
+      <p><a href="${mapa}" target="_blank" rel="noopener">${E.endereco}<br>${E.bairro} · <span class="nw">CEP ${E.cep}</span><br>${E.cidade}</a></p>
     </div>
     <div>
       <h3>Fale com a gente</h3>
@@ -179,8 +180,7 @@ const blocoContatoFaixa = v => `<section class="faixa-contato"><div class="in fc
 
 // ---------- home A ----------
 function homeA() {
-  return `${blocoMomentos()}
-<section class="sec tres"><div class="in tres-grade">
+  return `<section class="sec tres"><div class="in tres-grade">
   <article class="porta">
     <a class="porta-foto" href="${link('a', 'empresa')}">${img('fabrica-fachada', 'Fachada da fábrica da Quysanta no Distrito Industrial de Montes Claros', '', ' width="872" height="570"')}</a>
     <h2><a href="${link('a', 'empresa')}">Empresa</a></h2>
@@ -189,7 +189,7 @@ function homeA() {
     <a class="link-seta" href="${link('a', 'empresa')}">Ler mais ${ic('seta')}</a>
   </article>
   <article class="porta porta-lata">
-    <a class="porta-foto" href="${link('a', 'cocada-bahiana')}">${img('lata', 'Lata de Cocada Bahiana, doce de coco cremoso, 800 g', '', ' width="696" height="860"')}</a>
+    <a class="porta-foto" href="${link('a', 'cocada-bahiana')}">${img('lata-recorte', 'Lata de Cocada Bahiana, doce de coco cremoso, 800 g', '', ' width="696" height="704"')}</a>
     <h2><a href="${link('a', 'cocada-bahiana')}">A Cocada Bahiana</a></h2>
     <p class="porta-chamada">Saiba mais sobre este incrível doce tão tradicional em nosso país.</p>
     <p>Um dos doces mais saborosos e tradicionais do Brasil, com uma história que começa em 1907 em Belo Horizonte.</p>
@@ -240,7 +240,7 @@ function homeB() {
   <div class="heroi-palco">
     <span class="heroi-disco" aria-hidden="true"></span>
     ${img('coco', 'Coco aberto ao meio', 'heroi-coco', ' width="1400" height="1050"')}
-    <img class="heroi-lata" src="/assets/img/lata.webp" alt="Lata de Cocada Bahiana, doce de coco cremoso, peso líquido 800 g" width="696" height="860" fetchpriority="high">
+    <img class="heroi-lata" src="/assets/img/lata-recorte.webp" alt="Lata de Cocada Bahiana, doce de coco cremoso, peso líquido 800 g" width="696" height="704" fetchpriority="high">
     <span class="heroi-selo"><b>${produto.peso}</b>peso líquido</span>
   </div>
 </div></section>
@@ -248,14 +248,13 @@ function homeB() {
   <div class="sec-cab"><div><p class="eyebrow">Tradição centenária</p><h2>Uma receita que atravessou o século</h2></div><a class="link-seta" href="${link('b', 'cocada-bahiana')}">A história completa ${ic('seta')}</a></div>
   ${blocoLinhaTempo()}
 </div></section>
-<section class="sec numeros-faixa"><div class="in">${blocoNumeros()}</div></section>
 <section class="sec caminho"><div class="in">
   <div class="sec-cab"><div><p class="eyebrow">Da fábrica à sua mesa</p><h2>O caminho da lata</h2></div></div>
   <ol class="etapas">
-    <li class="etapa">${img('fabrica-fachada', 'Fábrica da Quysanta em Montes Claros', '', ' width="872" height="570"')}<span class="etapa-n">01</span><h3>${ic('fabrica')}Fábrica em Montes Claros</h3><p>Galpão de 4.800 m² no Distrito Industrial, Norte de Minas.</p></li>
-    <li class="etapa">${img('fabrica-producao', 'Linha de produção e envase da Cocada Bahiana', '', ' width="872" height="570"')}<span class="etapa-n">02</span><h3>${ic('colher')}Linha automatizada</h3><p>Mais de 20 colaboradores diretos numa linha de alta automatização.</p></li>
-    <li class="etapa">${img('fabrica-caminhao', 'Caminhão na área de carga da fábrica', '', ' width="872" height="570"')}<span class="etapa-n">03</span><h3>${ic('caminhao')}Parceiros no Brasil todo</h3><p>Fornecedores e parceiros em todo o território nacional.</p></li>
-    <li class="etapa etapa-logos"><div class="etapa-logos-grade">${clientes.slice(0, 4).map(c => `<img src="/assets/clientes/${c.img}.webp" alt="${esc(c.nome)}" width="180" height="114" loading="lazy">`).join('')}</div><span class="etapa-n">04</span><h3>${ic('loja')}Distribuidores e mercados</h3><p>Atacadistas e supermercados levam a lata até a sua cozinha.</p></li>
+    <li class="etapa">${img('fabrica-fachada', 'Fábrica da Quysanta em Montes Claros', '', ' width="872" height="570"')}<span class="etapa-n">01</span><h3>Fábrica em Montes Claros</h3><p>Galpão de 4.800 m² no Distrito Industrial, Norte de Minas.</p></li>
+    <li class="etapa">${img('fabrica-producao', 'Linha de produção e envase da Cocada Bahiana', '', ' width="872" height="570"')}<span class="etapa-n">02</span><h3>Linha automatizada</h3><p>Mais de 20 colaboradores diretos numa linha de alta automatização.</p></li>
+    <li class="etapa">${img('fabrica-caminhao', 'Caminhão na área de carga da fábrica', '', ' width="872" height="570"')}<span class="etapa-n">03</span><h3>Parceiros no Brasil todo</h3><p>Fornecedores e parceiros em todo o território nacional.</p></li>
+    <li class="etapa etapa-logos"><div class="etapa-logos-grade">${clientes.slice(0, 4).map(c => `<img src="/assets/clientes/${c.img}.webp" alt="${esc(c.nome)}" width="180" height="114" loading="lazy">`).join('')}</div><span class="etapa-n">04</span><h3>Distribuidores e mercados</h3><p>Atacadistas e supermercados levam a lata até a sua cozinha.</p></li>
   </ol>
 </div></section>
 <section class="sec receitas-b"><div class="in">
@@ -263,7 +262,7 @@ function homeB() {
   <div class="receitas-mosaico">${cartaoReceita('b', r1, 'receita-grande')}<div class="receitas-lista">${rs.map(r => cartaoReceita('b', r, 'receita-linha')).join('')}</div></div>
 </div></section>
 <section class="sec missao-b"><div class="in mb-grade">
-  ${img('fabrica-caminhao', 'Área de carga da fábrica da Quysanta', 'mb-foto', ' width="872" height="570"')}
+  <div class="mb-fotos">${[3, 5, 1, 7].map(i => img(`momento-${i}`, momentos[i - 1], '', ' width="240" height="284"')).join('')}</div>
   <div><p class="eyebrow">Quem somos</p><h2>Família, honestidade e fé no trabalho</h2><p>${ET.valores}</p><p>${ET.missao}</p><a class="link-seta" href="${link('b', 'empresa')}">Conheça a empresa ${ic('seta')}</a></div>
 </div></section>
 <section class="sec clientes-b"><div class="in"><h2 class="centro">Presente nas prateleiras de grandes redes</h2>${blocoClientes('logos-faixa')}</div></section>
@@ -295,7 +294,7 @@ function cocadaPag(v) {
   return pagina(v, 'cocada-bahiana', 'cocada-bahiana/', 'A Cocada Bahiana · Quysanta Alimentos', 'Cocada Bahiana, doce de coco cremoso em lata de 800 g, com tradição centenária: nasceu em 1907 em Belo Horizonte e é produzida pela Quysanta desde 2000.', `
 ${capa(v, 'A tradicional Cocada Bahiana', 'Um doce com tradição centenária', 'Doce de coco cremoso, na lata de 800 g que as famílias brasileiras conhecem.')}
 <section class="sec"><div class="in prod-grade">
-  <div class="prod-palco">${img('lata', 'Lata de Cocada Bahiana, doce de coco cremoso, peso líquido 800 g', 'prod-lata', ' width="696" height="860"')}</div>
+  <div class="prod-palco">${img('lata-recorte', 'Lata de Cocada Bahiana, doce de coco cremoso, peso líquido 800 g', 'prod-lata', ' width="696" height="704"')}</div>
   <div class="prod-txt">
     <p>${CT.abertura}</p>
     <dl class="ficha">
@@ -393,7 +392,7 @@ ${capa(v, 'Contato', 'Fale com a Quysanta', 'Preencha o formulário que logo nos
   <div class="contato-lado">
     <div class="cl-item">${ic('tel')}<div><h3>Telefones</h3><p>${E.telefones.map(t => `<a href="tel:${telHref(t)}">${t}</a>`).join('<br>')}</p></div></div>
     <div class="cl-item">${ic('mail')}<div><h3>E-mail</h3><p><a href="mailto:${E.email}">${E.email}</a></p></div></div>
-    <div class="cl-item">${ic('pin')}<div><h3>Fábrica</h3><p>${E.endereco}<br>${E.bairro} · CEP ${E.cep}<br>${E.cidade}</p><a class="link-seta" href="${mapa}" target="_blank" rel="noopener">Ver no mapa ${ic('seta')}</a></div></div>
+    <div class="cl-item">${ic('pin')}<div><h3>Fábrica</h3><p>${E.endereco}<br>${E.bairro} · <span class="nw">CEP ${E.cep}</span><br>${E.cidade}</p><a class="link-seta" href="${mapa}" target="_blank" rel="noopener">Ver no mapa ${ic('seta')}</a></div></div>
     <div class="cl-redes"><a href="${E.facebook}" target="_blank" rel="noopener">${ic('fb')}Facebook</a><a href="${E.twitter}" target="_blank" rel="noopener">${ic('tw')}Twitter</a></div>
   </div>
 </div></section>`);
