@@ -188,7 +188,7 @@ function cadeiaBloco(v) {
 </section>`;
   return `<section class="trilha">
   <div class="in">
-    <div class="trilha-cab">${titulo('Do grão à gôndola', 'Quatro empresas, um caminho só')}<p>O Feijão Tozzo é beneficiado, distribuído, vendido e entregue por empresas do próprio grupo: controle total da qualidade e preço competitivo.</p></div>
+    <div class="trilha-cab"><div>${titulo('Do grão à gôndola', 'Quatro empresas, um caminho só')}</div><p>O Feijão Tozzo é beneficiado, distribuído, vendido e entregue por empresas do próprio grupo: controle total da qualidade e preço competitivo.</p></div>
     <ol class="trilha-lista" data-rev-filhos data-rev-passo="120">
       ${cadeia.map((c, i) => `<li>
         <figure>${foto(c.foto, '')}<figcaption>${pad(i + 1)}</figcaption></figure>
@@ -228,7 +228,7 @@ function inicio(v) {
       <div class="hero-btns"><a class="btn btn-lima" href="/a/catalogo/">Catálogo de marcas ${ic('seta')}</a><a class="btn btn-linha" href="/a/contato/#cotacao">Pedir cotação</a></div>
     </div>
     <div class="hero-a-slides">
-      ${slides.map((e, i) => `<figure class="slide${i ? '' : ' on'}" data-slide>
+      ${slides.map((e, i) => `<figure class="slide${i ? '' : ' on'}" data-foto-slide>
         ${foto(e.foto, '', 960, 637, i ? '' : ' fetchpriority="high" loading="eager"')}
         <figcaption><b>${e.nome}:</b> ${e.frase.charAt(0).toLowerCase() + e.frase.slice(1)}</figcaption>
       </figure>`).join('')}
@@ -252,8 +252,8 @@ function inicio(v) {
 ${cadeiaBloco(v)}
 <section class="parceiros-a">
   <div class="in">
-    <div class="sec-cab">${titulo('Parceiros Tozzo', 'Algumas das marcas que distribuímos')}<a class="link-seta" href="/a/catalogo/">Ver todos os parceiros ${ic('seta')}</a></div>
-    <ul class="muro" role="list">${['b-heineken', 'gomes-da-costa', 'unilever-u', 'p-g', 'chocolates-m-m', 'tozzo-feijao', 'b-amstel', 'melitta-2', 'bombril-b', 'grupo-bic', 'calcados-havaianas', 'chivas-s', 'goias-verde', 'reckitt-r', 'b-baden-baden', 'halls-h', 'vinho-aurora', 'refrigerante-itubaina'].map(m => `<li>${marcaImg(m)}</li>`).join('')}</ul>
+    <div class="sec-cab"><div>${titulo('Parceiros Tozzo', 'Algumas das marcas que distribuímos')}</div><a class="link-seta" href="/a/catalogo/">Ver todos os parceiros ${ic('seta')}</a></div>
+    <ul class="muro" role="list">${['b-heineken', 'gomes-da-costa', 'unilever-u', 'p-g', 'chocolates-m-m', 'tozzo-feijao', 'b-amstel', 'melitta-2', 'bombril-b', 'grupo-bic', 'calcados-havaianas', 'chivas-s', 'goias-verde', 'reckitt-r', 'baden-baden', 'halls-h', 'vinho-aurora', 'refrigerante-itubaina'].map(m => `<li>${marcaImg(m)}</li>`).join('')}</ul>
   </div>
 </section>
 ${contatoFaixa(v)}`;
@@ -279,7 +279,7 @@ ${contatoFaixa(v)}`;
 </section>
 <section class="cats">
   <div class="in">
-    <div class="sec-cab">${titulo('Catálogo', 'Compre por categoria')}<a class="link-seta" href="/b/catalogo/">Ver todas as marcas ${ic('seta')}</a></div>
+    <div class="sec-cab"><div>${titulo('Catálogo', 'Compre por categoria')}</div><a class="link-seta" href="/b/catalogo/">Ver todas as marcas ${ic('seta')}</a></div>
     <ul class="cat-grade" role="list">${categorias.map((c, i) => `<li><a class="cat" href="/b/catalogo/#${c.slug}">
       <span class="cat-n">${pad(i + 1)}</span>
       <b>${c.nome}</b>
@@ -290,7 +290,7 @@ ${contatoFaixa(v)}`;
 </section>
 <section class="proprias">
   <div class="in">
-    <div class="sec-cab">${titulo('Marcas próprias', 'Feijão Tozzo, da Cerealista para a sua prateleira')}<a class="link-seta" href="/b/empresas/cerealista/">Conheça a Cerealista ${ic('seta')}</a></div>
+    <div class="sec-cab"><div>${titulo('Marcas próprias', 'Feijão Tozzo, da Cerealista para a sua prateleira')}</div><a class="link-seta" href="/b/empresas/cerealista/">Conheça a Cerealista ${ic('seta')}</a></div>
     ${prateleira(v)}
   </div>
 </section>
@@ -420,7 +420,7 @@ function catalogo(v) {
 </section>
 <section class="proprias" id="feijao">
   <div class="in">
-    <div class="sec-cab">${titulo('Marcas próprias', 'Linha Feijão Tozzo')}<a class="link-seta" href="/${v}/empresas/cerealista/">Tozzo Cerealista ${ic('seta')}</a></div>
+    <div class="sec-cab"><div>${titulo('Marcas próprias', 'Linha Feijão Tozzo')}</div><a class="link-seta" href="/${v}/empresas/cerealista/">Tozzo Cerealista ${ic('seta')}</a></div>
     ${prateleira(v)}
   </div>
 </section>

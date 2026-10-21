@@ -5,7 +5,7 @@ btn?.addEventListener('click', () => { const a = btn.getAttribute('aria-expanded
 
 // banner com uma foto por empresa (versão A)
 document.querySelectorAll('[data-slider]').forEach(box => {
-  const slides = [...box.querySelectorAll('[data-slide]')], pontos = [...box.querySelectorAll('.slide-pontos button')];
+  const slides = [...box.querySelectorAll('[data-foto-slide]')], pontos = [...box.querySelectorAll('.slide-pontos button')];
   let i = 0, t;
   const vai = n => { i = (n + slides.length) % slides.length; slides.forEach((s, k) => s.classList.toggle('on', k === i)); pontos.forEach((p, k) => p.toggleAttribute('aria-current', k === i)); };
   const roda = () => { clearInterval(t); if (!matchMedia('(prefers-reduced-motion: reduce)').matches) t = setInterval(() => vai(i + 1), 5500); };

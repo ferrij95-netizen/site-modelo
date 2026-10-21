@@ -78,7 +78,7 @@ export const empresas = [
     fatos: ['Desde 2004', 'Sedes em Chapecó, Cascavel, Ponta Grossa e Francisco Beltrão', 'CDs em Joaçaba, São Miguel do Oeste, Foz do Iguaçu e Guarapuava', 'Venda só para maiores de 18 anos'],
     fone: '(49) 3321-1022', site: 'https://www.tozzobebidas.com.br/', insta: 'https://www.instagram.com/tozzo.bebidas/',
     enderecos: [['Chapecó - SC', 'Acesso Plínio Arlindo de Nês, 3521-D, Belvedere'], ['Cascavel - PR', 'Av. Doutor Ezuel Portes, nº 19369'], ['Ponta Grossa - PR', 'Av. Continental, nº 2299']],
-    marcas: ['b-heineken', 'b-heineken0-0', 'b-amstel', 'b-amstel-ultra', 'b-schin', 'b-glacial', 'b-baden-baden', 'b-devassa', 'b-lagunitas', 'b-bluemoon', 'b-itubaina', 'b-fys', 'b-skinka'],
+    marcas: ['b-heineken', 'b-heineken0-0', 'b-amstel', 'b-amstel-ultra', 'b-schin', 'b-glacial', 'baden-baden', 'b-devassa', 'b-lagunitas', 'b-bluemoon', 'b-itubaina', 'b-fys', 'b-skinka'],
   },
   {
     slug: 'transportes', nome: 'Tozzo Transportes', sub: 'Transtozzo', logo: 'logo-transportes',
@@ -112,10 +112,10 @@ export const empresas = [
 
 // Marcas parceiras da página "Parceiros" do site atual, separadas por categoria (separação nossa).
 export const categorias = [
-  { slug: 'cervejas', nome: 'Cervejas', marcas: ['b-heineken', 'b-heineken0-0', 'b-amstel', 'b-amstel-ultra', 'nova-schin', 'b-glacial', 'b-baden-baden', 'cerveja-devassa', 'cerveja-eisenbahn', 'b-lagunitas', 'b-bluemoon'] },
+  { slug: 'cervejas', nome: 'Cervejas', marcas: ['b-heineken', 'b-heineken0-0', 'b-amstel', 'b-amstel-ultra', 'nova-schin', 'b-glacial', 'baden-baden', 'cerveja-devassa', 'cerveja-eisenbahn', 'b-lagunitas', 'b-bluemoon'] },
   { slug: 'nao-alcoolicos', nome: 'Refrigerantes e sucos', marcas: ['schin-refrigerantes', 'refrigerante-itubaina', 'suco-skinka', 'b-fys'] },
   { slug: 'destilados', nome: 'Destilados e vinhos', marcas: ['chivas-s', 'j-w', 'passport-p', 'vodka-ciroc', 'yce-s', 'ron-bacardi', 'grupo-campari', 'cinzano-bebidas', 'contreau-c', 'fante-raiska', 'velho-barreiro', 'underberg-u', 'vinho-aurora', 'vinho-c', 'global-bev'] },
-  { slug: 'mercearia', nome: 'Mercearia', marcas: ['tozzo-feijao', 'tozzo-arroz', 'feijao-da-feira', 'gomes-da-costa', 'goias-verde', 'ducoco-c', 'melitta-2', 'vale-fertil'] },
+  { slug: 'mercearia', nome: 'Mercearia', marcas: ['tozzo-feijao', 'feijao-da-feira', 'gomes-da-costa', 'goias-verde', 'ducoco-c', 'melitta-2', 'vale-fertil'] },
   { slug: 'doces', nome: 'Chocolates e balas', marcas: ['bis-b', 'chocolates-m-m', 'snickers-chocolates', 's-t', 'halls-h', 'trident-t'] },
   { slug: 'limpeza', nome: 'Higiene e limpeza', marcas: ['unilever-u', 'gessy-lever', 'p-g', 'reckitt-r', 'bombril-b', 'materiais-de-limpeza-ito', 'astoria-papeis', 'l-m', 'l-m2'] },
   { slug: 'bazar', nome: 'Bazar e utilidades', marcas: ['grupo-bic', 'calcados-havaianas', 'lampadas-philips', 'fosforo-gaboardi', 'pregos-gerdau', 'extra-power'] },
@@ -125,7 +125,7 @@ export const categorias = [
 // Nome de cada logo (o arquivo vem do nome que o site atual dá à imagem).
 export const nomesMarca = {
   'b-heineken': 'Heineken', 'b-heineken0-0': 'Heineken 0.0', 'b-amstel': 'Amstel', 'b-amstel-ultra': 'Amstel Ultra', 'nova-schin': 'Nova Schin',
-  'b-glacial': 'Glacial', 'b-baden-baden': 'Baden Baden', 'cerveja-devassa': 'Devassa', 'cerveja-eisenbahn': 'Eisenbahn', 'b-lagunitas': 'Lagunitas',
+  'b-glacial': 'Glacial', 'b-baden-baden': 'Baden Baden', 'baden-baden': 'Baden Baden', 'cerveja-devassa': 'Devassa', 'cerveja-eisenbahn': 'Eisenbahn', 'b-lagunitas': 'Lagunitas',
   'b-bluemoon': 'Blue Moon', 'b-devassa': 'Devassa', 'b-schin': 'Schin', 'b-itubaina': 'Itubaína', 'b-fys': 'Fys', 'b-skinka': 'Skinka',
   'schin-refrigerantes': 'Schin Refrigerantes', 'refrigerante-itubaina': 'Itubaína', 'suco-skinka': 'Skinka',
   'chivas-s': 'Chivas Regal', 'j-w': 'Johnnie Walker', 'passport-p': 'Passport', 'vodka-ciroc': 'Cîroc', 'yce-s': 'Smirnoff Ice', 'ron-bacardi': 'Bacardi',

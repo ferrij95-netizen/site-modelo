@@ -67,7 +67,7 @@ section{padding:clamp(56px,8vw,100px) 0}
 /* capas internas */
 .capa-int,.capa-emp{position:relative;padding:0;min-height:clamp(320px,44vw,460px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;isolation:isolate}
 .capa-foto{position:absolute;inset:0;z-index:-1}
-.capa-foto img{width:100%;height:100%;object-fit:cover}
+.capa-foto img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
 .capa-foto::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,61,36,.15) 0%,rgba(11,61,36,.55) 45%,rgba(11,61,36,.93) 100%)}
 .capa-txt{padding:clamp(40px,7vw,72px) 0 clamp(32px,5vw,56px)}
 .capa-txt h1{color:#fff;max-width:20ch}
@@ -110,8 +110,8 @@ section{padding:clamp(56px,8vw,100px) 0}
 
 /* muro de logos */
 .muro{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--linha);border-left:1px solid var(--linha);background:#fff}
-.muro li{display:grid;place-items:center;aspect-ratio:3/2;padding:16%;border-right:1px solid var(--linha);border-bottom:1px solid var(--linha)}
-.muro img{max-height:100%;width:auto;object-fit:contain}
+.muro li{position:relative;aspect-ratio:3/2;min-width:0;border-right:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.muro img{position:absolute;inset:16% 18%;width:64%;height:68%;object-fit:contain}
 @media (max-width:900px){.muro{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:520px){.muro{grid-template-columns:repeat(3,1fr)}}
 .aviso18{font-size:.85rem;color:var(--texto-suave);margin-top:14px}
@@ -158,8 +158,8 @@ section{padding:clamp(56px,8vw,100px) 0}
 .cat-bloco h2 small{font:600 .85rem/1 Inter,sans-serif;color:var(--verde)}
 .tm-grade{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
 .tm{display:flex;flex-direction:column;border:1px solid var(--linha);border-radius:6px;background:#fff;overflow:hidden}
-.tm-logo{display:grid;place-items:center;aspect-ratio:16/10;padding:14% 16%}
-.tm-logo img{max-height:100%;width:auto;object-fit:contain}
+.tm-logo{position:relative;aspect-ratio:16/10}
+.tm-logo img{position:absolute;inset:14% 16%;width:68%;height:72%;object-fit:contain}
 .tm-pe{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 10px 10px 14px;border-top:1px solid var(--linha);background:#FAFCF7}
 .tm-pe b{font-size:.88rem;line-height:1.2}
 .vazio{padding:24px;background:var(--claro);border-radius:6px}
@@ -263,7 +263,7 @@ section{padding:clamp(56px,8vw,100px) 0}
 .rodape{background:var(--verde-esc);color:rgba(255,255,255,.82);padding:56px 0 0;font-size:.92rem}
 .rod-grade{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px}
 .rod-marca img{width:170px;margin-bottom:18px}
-.rodape h2{font:700 .8rem/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--lima);margin-bottom:14px}
+footer.rodape h2{font-style:normal;font:700 .8rem/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--lima);margin-bottom:14px}
 .rodape nav a{display:block;text-decoration:none;padding:4px 0}
 .rodape a:hover{color:#fff}
 .rod-marca a{display:inline-flex;align-items:center;gap:8px;text-decoration:none}

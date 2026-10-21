@@ -39,7 +39,7 @@
 .slide-pontos{position:absolute;right:16px;bottom:16px;display:flex;gap:8px;z-index:2}
 .slide-pontos button{width:34px;height:6px;border:0;border-radius:3px;background:rgba(255,255,255,.45);cursor:pointer;padding:0}
 .slide-pontos button[aria-current]{background:var(--lima)}
-@media (max-width:900px){.hero-a-in{grid-template-columns:1fr}}
+@media (max-width:900px){.hero-a-in{grid-template-columns:minmax(0,1fr)}}
 
 /* faixa de logos das empresas, como a do site atual */
 .logos-emp{position:relative;z-index:2;margin-top:-56px}
