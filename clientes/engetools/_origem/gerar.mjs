@@ -35,6 +35,10 @@ const I = {
   seta: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
   check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  lupa: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5l5 5"/>',
+  docgear: '<path d="M14 21H6V3h8l4 4v5"/><path d="M14 3v4h4M9 9h4M9 13h3"/><circle cx="17.5" cy="17.5" r="2.2"/><path d="M17.5 13.8v1.5M17.5 19.7v1.5M13.8 17.5h1.5M19.7 17.5h1.5"/>',
+  caixa: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>',
+  fone: '<path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19c0 1.5-2 2.5-5 2.5"/>',
   doc: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/>',
 };
 const ic = (n, cls = 'ic') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
@@ -137,7 +141,12 @@ const contatoInfo = () => `<ul class="info-lista">
   <li>${ic('pin')}<span><small>Endereço</small>${E.endereco}, ${E.bairro}, ${E.cidade}/${E.uf}, CEP ${E.cep}</span></li>
 </ul>`;
 
-const etapasArco = () => `<ol class="etapas-arco">${T.etapas.map((e, i) => `<li style="--i:${i}"><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${e.t}</h3><p>${e.d}</p></li>`).join('')}</ol>`;
+// Dobra de etapas (layout mandado pelo Joao): arco laranja fino em cima e 5 cartões com número e ícone. Igual nas versões A e B.
+const etapas = () => `<section class="etapas"><div class="in">
+  <div class="tit"><p class="eyebrow">Como funciona</p><h2>Do orçamento à<br>ferramenta na máquina</h2></div>
+  <svg class="etapas-arco" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-arco" x1="0" x2="1"><stop offset="0" stop-color="#E5600F" stop-opacity=".2"/><stop offset=".35" stop-color="#E5600F"/><stop offset=".85" stop-color="#F59A3C"/><stop offset="1" stop-color="#F59A3C" stop-opacity=".2"/></linearGradient></defs><path d="M10 58C260 6 740 -2 990 50C740 10 260 16 10 58z" fill="url(#g-arco)"/></svg>
+  <ol class="etapas-cards">${T.etapas.map((e, i) => `<li><div class="etapa-topo"><span class="n">${String(i + 1).padStart(2, '0')}</span>${ic(e.ic, 'ic etapa-ic')}</div><h3>${e.t}</h3><p>${e.d}</p></li>`).join('')}</ol>
+</div></section>`;
 
 // ---------- vitrine de produtos ----------
 const catNome = slug => CAT.find(c => c.slug === slug).nome;
@@ -187,10 +196,7 @@ ${linhaCompleta('a')}
   <div class="serv-tres">${T.servicos.slice(0, 3).map(s => `<a class="serv" href="/a/servicos/#${s.slug}"><figure>${foto(s.foto, s.titulo)}</figure><h3>${s.titulo}</h3><p>${s.texto}</p></a>`).join('')}</div>
   <p class="centro"><a class="link link-claro" href="/a/servicos/">Todos os serviços ${ic('seta')}</a></p>
 </div></section>
-<section class="processo-a"><div class="in">
-  <div class="tit"><p class="eyebrow">Como funciona</p><h2>Da consulta à ferramenta na máquina</h2></div>
-  ${arco('arco arco-linha')}${etapasArco()}
-</div></section>
+${etapas()}
 ${ctaA()}`;
 
 const empresaA = () => `${capaA('A Empresa', `Ferramentas de usinagem desde ${E.fundacao}`, `${E.razao}, em ${E.cidade}, ${E.regiao}.`)}
@@ -216,10 +222,7 @@ ${ctaA()}`;
 
 const servicosA = () => `${capaA('Serviços', 'Assistência técnica de quem entende de usinagem', 'Indicação da ferramenta certa, melhoria de processo, importação e representação.')}
 <section class="serv-lista"><div class="in">${T.servicos.map((s, i) => `<article id="${s.slug}" class="serv-item${i % 2 ? ' inv' : ''}"><figure>${foto(s.foto, s.titulo)}</figure><div><span class="n">${String(i + 1).padStart(2, '0')}</span><h2>${s.titulo}</h2><p>${s.texto}</p></div></article>`).join('')}</div></section>
-<section class="processo-a"><div class="in">
-  <div class="tit"><p class="eyebrow">Como funciona</p><h2>Da consulta à ferramenta na máquina</h2></div>
-  ${arco('arco arco-linha')}${etapasArco()}
-</div></section>
+${etapas()}
 ${ctaA()}`;
 
 const contatoA = () => `${capaA('Contato', 'Faça sua consulta', 'Conte o que você usina e qual o problema. Respondemos com a solução e o custo-benefício.')}
@@ -274,7 +277,7 @@ const homeB = () => `<section class="hero"><div class="in">
   ${abasB()}
 </div></section>
 ${linhaCompleta('b')}
-${trilhaB()}
+${etapas()}
 <section class="serv-grade"><div class="in">
   <div class="tit"><p class="eyebrow">Serviços</p><h2>Assistência técnica, indicação e importação</h2></div>
   <ul>${T.servicos.map((s, i) => `<li><a href="/b/servicos/#${s.slug}"><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${s.titulo}</h3><p>${s.texto}</p>${ic('seta', 'ic seta')}</a></li>`).join('')}</ul>
@@ -306,7 +309,7 @@ ${ctaB()}`;
 
 const servicosB = () => `${capaB('Serviços', 'Assistência técnica de quem entende de usinagem', 'Da indicação da ferramenta ao acompanhamento na sua máquina.')}
 <section class="serv-b"><div class="in">${T.servicos.map((s, i) => `<article id="${s.slug}"><span class="n">${String(i + 1).padStart(2, '0')}</span><figure>${foto(s.foto, s.titulo)}</figure><div><h2>${s.titulo}</h2><p>${s.texto}</p></div></article>`).join('')}</div></section>
-${trilhaB()}
+${etapas()}
 ${ctaB()}`;
 
 const contatoB = () => `${capaB('Contato', 'Faça sua consulta', 'Telefone, e-mail ou formulário. Atendimento técnico em São Leopoldo e região.')}

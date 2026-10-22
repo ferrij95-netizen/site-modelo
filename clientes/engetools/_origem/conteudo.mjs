@@ -56,12 +56,13 @@ export const textos = {
     { slug: 'importacao', titulo: 'Importação e representação', texto: 'Comércio, importação e representação de uma linha completa em ferramentas de usinagem.', foto: 'rebolos-diamantados' },
   ],
   // escrito por nós (a confirmar): como funciona uma consulta
+  // texto do Joao (22/10), exatamente como ele mandou
   etapas: [
-    { t: 'Consulta', d: 'Você conta o que usina: material, operação e máquina.' },
-    { t: 'Indicação técnica', d: 'Indicamos a ferramenta com o melhor custo-benefício.' },
-    { t: 'Orçamento', d: 'Enviamos preço e prazo da ferramenta indicada.' },
-    { t: 'Entrega', d: 'A ferramenta chega na sua empresa.' },
-    { t: 'Assistência técnica', d: 'Acompanhamos o uso e ajudamos a resolver problemas.' },
+    { t: 'Consulta', d: 'Você envia a peça, o desenho ou o problema que está tendo na usinagem.', ic: 'doc' },
+    { t: 'Análise técnica', d: 'Avaliamos material, máquina, operação e custo por peça.', ic: 'lupa' },
+    { t: 'Indicação ou projeto', d: 'Indicamos uma ferramenta standard ou projetamos uma especial.', ic: 'docgear' },
+    { t: 'Fornecimento', d: 'Ferramenta entregue, de estoque, importada ou fabricada.', ic: 'caixa' },
+    { t: 'Acompanhamento', d: 'Assistência técnica na máquina e recuperação quando gastar.', ic: 'fone' },
   ],
 };
 
