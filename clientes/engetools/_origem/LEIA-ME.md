@@ -1,0 +1,11 @@
+# Engetools Ferramentas: como este site é feito
+
+- Cliente: Engetools Comércio e Representações Ltda., Rua Independência, 129, sala 202, Centro, São Leopoldo/RS, fundada em 1999. Pedido do Joao em 22/10/2026 ("site bonito novo, a cor laranja").
+- Site atual: engetoolsferramentas.com.br, feito no Criador de Sites da Locaweb, 4 páginas (Home, Missão, Produtos e Serviços, Contato), só português. O certificado usa a raiz nova "ISRG Root YR" da Let's Encrypt, que o container não conhece: para baixar, juntar `https://letsencrypt.org/certs/gen-y/root-yr.pem` ao CA do proxy e usar `curl --cacert`. Fotos ficam em yata.s3-object.locaweb.com.br.
+- Marca: `public/assets/logo.webp` é o JPEG original do logo (`logo-original.jpg`) com o branco transformado em transparência; `logo-branco.webp` é só a parte laranja (arco e letras) em branco, para o rodapé. O arco do logo é o elemento que se repete na versão A. Laranja #E5600F é a cor que o site atual já usa. Títulos em Ubuntu (fonte do site atual), texto em Inter.
+- Fotos: as 11 fotos de produto do site atual (fresas, rebolos, rolo diamantado, grafite). As pequenas foram ampliadas 2x. Nenhuma foto de banco. A foto de "executivo" do site atual não foi usada.
+- Textos do site atual: apresentação da empresa, missão, "destaca-se pela eficiência...", os dois grandes grupos (A corte metal duro/HSS, B abrasivos), os 6 serviços, telefones e e-mails. Em `conteudo.mjs`.
+- Escritos por nós (a confirmar com o cliente): as 5 etapas de atendimento, as frases curtas de cada diferencial, "Fresas de topo, de raio e de desbaste", a separação de grafite e carvão como grupo C, as chamadas dos títulos.
+- Estrutura: `/` escolha (componentes/apresentacao), `/a/` "Arco" e `/b/` "Bancada", 5 páginas em cada: Início, A Empresa, Produtos, Serviços, Contato. Mapa é o Google Maps embutido pelo endereço. Formulário não envia na prévia.
+- Gerar: `node clientes/engetools/_origem/gerar.mjs`. Prints em `public/assets/apresentacao/`, `og-*.jpg` e `../capa.jpg` refeitos com Playwright quando o visual mudar (forçar `loading=eager` antes do print de página inteira).
+- A confirmar: se há WhatsApp; marcas que representam; fotos da loja/equipe; se fazem grafite e carvão sob medida.

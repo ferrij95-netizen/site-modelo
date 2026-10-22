@@ -1,0 +1,117 @@
+/* Versão B "Bancada": topo laranja em gradiente, ficha técnica, catálogo em abas, etapas sobre um percurso de ferramenta. */
+.faixa{background:var(--graf);color:rgba(255,255,255,.75);font-size:14px}
+.faixa .in{display:flex;justify-content:space-between;gap:20px;min-height:38px;align-items:center}
+.faixa span,.faixa a{display:inline-flex;gap:8px;align-items:center;text-decoration:none}.faixa a:hover{color:#fff}.faixa .ic{width:16px;height:16px;color:#FF9B5C}
+.topo .menu{margin:0 auto}
+.topo-fone{text-decoration:none;font-family:var(--h);font-weight:700;font-size:20px;color:var(--graf);line-height:1.1;text-align:right}
+.topo-fone small{display:block;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--lar-txt)}
+.btn-escuro{background:var(--graf)}.btn-escuro:hover{background:#000}
+.btn-contorno-claro{background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#fff}.btn-contorno-claro:hover{background:#fff;color:var(--lar-txt)}
+/* hero laranja */
+.hero{background:linear-gradient(115deg,#EE6A17 0%,#E5600F 40%,#BF4A09 100%);color:rgba(255,255,255,.92);padding:80px 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 80px),repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 80px);pointer-events:none}
+.hero .in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative}
+.hero .eyebrow{color:#fff;opacity:.85}
+.hero h1{color:#fff;font-size:clamp(38px,4.8vw,64px)}
+.hero-txt>p:not(.eyebrow){font-size:19px;max-width:520px;margin:0 0 32px}
+.acoes{display:flex;gap:14px;flex-wrap:wrap}
+.hero-foto{margin:0;border-radius:18px;overflow:hidden;box-shadow:0 40px 60px -30px rgba(60,20,0,.6);transform:rotate(1.5deg)}
+.hero-foto img{width:100%}
+/* ficha */
+.ficha-sec{background:var(--graf);color:#fff}
+.ficha{display:grid;grid-template-columns:.7fr .9fr 1fr 1.2fr 1.6fr;margin:0}
+.ficha div{padding:26px 22px;border-left:1px solid rgba(255,255,255,.12)}.ficha div:first-child{border-left:0;padding-left:0}
+.ficha dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#FF9B5C;margin:0 0 6px}
+.ficha dd{margin:0;font-family:var(--h);font-weight:500;font-size:18px;line-height:1.3}
+/* catálogo em abas */
+.catalogo{padding:100px 0;background:#fff}
+.abas-lista{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:2px solid var(--linha);margin:0 0 40px}
+.abas-lista button{font:inherit;font-family:var(--h);font-weight:500;font-size:17px;text-align:left;background:none;border:0;border-bottom:4px solid transparent;margin-bottom:-2px;padding:16px 18px 18px 0;color:var(--cinza);cursor:pointer;display:flex;gap:14px;align-items:center}
+.abas-lista button b{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:8px;background:var(--fundo);color:var(--graf)}
+.abas-lista button[aria-selected=true]{color:var(--graf);border-color:var(--lar)}.abas-lista button[aria-selected=true] b{background:var(--lar);color:#fff}
+.aba[hidden]{display:none}
+.aba{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.aba figure{margin:0;background:var(--fundo);border-radius:var(--r);aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}
+.aba figure img{max-height:86%;width:auto;mix-blend-mode:multiply}
+/* trilha de etapas */
+.trilha{background:var(--fundo);padding:100px 0}
+.trilha-caixa{position:relative}
+.trilha-linha{position:absolute;left:0;right:0;top:17px;width:100%;height:12px}
+.trilha-linha path{fill:none;stroke:var(--lar);stroke-width:3;stroke-dasharray:10 8;vector-effect:non-scaling-stroke}
+.trilha ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,1fr);gap:24px;position:relative}
+.trilha .n{display:grid;place-items:center;width:46px;height:46px;border-radius:10px;background:var(--graf);color:#fff;font-family:var(--h);font-weight:700;font-size:20px;margin:0 0 18px;box-shadow:0 0 0 6px var(--fundo)}
+.trilha li:nth-child(3) .n{background:var(--lar)}
+.trilha p{font-size:15px;color:var(--cinza)}
+/* serviços em grade de linhas */
+.serv-grade{padding:100px 0;background:#fff}
+.serv-grade ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--linha);border-left:1px solid var(--linha)}
+.serv-grade li{border-right:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.serv-grade a{display:block;padding:30px 28px 56px;text-decoration:none;position:relative;height:100%;transition:background .2s}
+.serv-grade a:hover{background:var(--lar-claro)}
+.serv-grade .n{font-family:var(--h);font-weight:700;color:var(--lar-txt);font-size:15px;display:block;margin:0 0 14px}
+.serv-grade p{font-size:15px;color:var(--cinza);margin:0}
+.serv-grade .seta{position:absolute;right:26px;bottom:24px;color:var(--lar)}
+/* sobre */
+.sobre-b{padding:100px 0;background:var(--fundo)}
+.sobre-b .in{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.sobre-b figure{margin:0;background:#fff;border-radius:var(--r);aspect-ratio:1;display:grid;place-items:center;overflow:hidden;border-bottom:6px solid var(--lar)}
+.sobre-b figure img{max-height:84%;width:auto;mix-blend-mode:multiply}
+.p-empresa .sobre-b{background:#fff}.p-empresa .sobre-b p{font-size:18px}
+/* cta escura com borda laranja */
+.cta{background:var(--lar);background:linear-gradient(115deg,#EE6A17,#BF4A09);color:#fff;padding:90px 0;text-align:center}
+.cta .in{max-width:820px}.cta h2{color:#fff}.cta p{font-size:18px;margin:0 0 30px;color:rgba(255,255,255,.9)}
+.cta-acoes{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+/* capa interna */
+.capa{background:linear-gradient(115deg,#EE6A17 0%,#E5600F 45%,#BF4A09 100%);color:rgba(255,255,255,.9);padding:72px 0 76px;position:relative;overflow:hidden}
+.capa::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 80px),repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 80px)}
+.capa .in{position:relative}.capa .eyebrow{color:#fff;opacity:.85}.capa h1{color:#fff;max-width:900px}.capa p:not(.eyebrow){font-size:19px;max-width:640px;margin:0}
+/* missão */
+.missao-b{padding:100px 0;background:var(--fundo)}
+.missao-b .in{display:grid;grid-template-columns:1.1fr 1fr;gap:60px}
+.missao-b .grande{font-family:var(--h);font-weight:500;font-size:clamp(22px,2.2vw,28px);line-height:1.4;color:var(--graf)}
+.missao-b ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.missao-b li{border-top:3px solid var(--lar);padding-top:16px}.missao-b li p{font-size:15px;color:var(--cinza)}
+/* produtos */
+.ancoras{background:var(--graf);position:sticky;top:84px;z-index:10}
+.ancoras .in{display:flex;gap:6px;overflow-x:auto}
+.ancoras a{color:#fff;text-decoration:none;font-family:var(--h);font-weight:500;padding:16px 18px;white-space:nowrap;font-size:15px}.ancoras a:hover{background:rgba(255,255,255,.08)}
+.ancoras b{color:#FF9B5C;margin-right:6px}
+.prod-b{padding:90px 0;scroll-margin-top:150px}.prod-b+.prod-b{border-top:1px solid var(--linha)}
+.prod-b header{display:flex;gap:28px;align-items:flex-start;margin:0 0 40px;max-width:820px}
+.prod-b .letra{font-family:var(--h);font-weight:700;font-size:96px;line-height:.8;color:var(--lar)}
+.prod-b header p{font-size:18px;color:var(--cinza);margin:0}
+.prod-b-grade{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-auto-rows:minmax(200px,auto);gap:16px}
+.prod-b-grade figure{margin:0;background:var(--fundo);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;overflow:hidden}
+.prod-b-grade figure img{max-height:200px;width:auto;mix-blend-mode:multiply}
+.prod-b-grade .principal{grid-row:span 2}.prod-b-grade .principal img{max-height:380px}
+.prod-b-grade figcaption{font-size:13px;color:var(--cinza);margin-top:8px;text-align:center}
+.prod-b-spec{grid-column:span 2;padding:10px 6px}.prod-b-spec h3{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--lar-txt);font-weight:500}
+.prod-b-grade:has(figure:nth-of-type(3)) .prod-b-spec{grid-column:2/-1}
+/* serviços */
+.serv-b{padding:90px 0}
+.serv-b .in{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px}
+.serv-b article{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;padding:24px 0;border-bottom:1px solid var(--linha);position:relative;scroll-margin-top:110px}
+.serv-b .n{position:absolute;top:24px;left:0;background:var(--lar);color:#fff;font-family:var(--h);font-weight:700;font-size:13px;padding:3px 8px;border-radius:4px;z-index:1}
+.serv-b figure{margin:0;background:var(--fundo);border-radius:10px;aspect-ratio:1;display:grid;place-items:center;overflow:hidden}
+.serv-b figure img{max-height:80%;width:auto;mix-blend-mode:multiply}
+.serv-b h2{font-size:24px}.serv-b p{margin:0;color:var(--cinza)}
+.p-contato .contato{background:#fff}
+@media(max-width:1100px){.topo-fone{display:none}}
+@media(max-width:960px){
+  .faixa span{display:none}
+  .hero .in,.aba,.sobre-b .in,.missao-b .in,.serv-b .in{grid-template-columns:1fr;gap:32px}
+  .hero-foto{transform:none}
+  .ficha{grid-template-columns:1fr 1fr}.ficha div{border-left:0;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12)}.ficha div:last-child{grid-column:1/-1}
+  .abas-lista{grid-template-columns:1fr;border-bottom:0}.abas-lista button{border-bottom:1px solid var(--linha)}.abas-lista button[aria-selected=true]{border-bottom:3px solid var(--lar)}
+  .trilha ol{grid-template-columns:1fr 1fr}.trilha li{padding-top:0!important}.trilha-linha{display:none}
+  .serv-grade ul{grid-template-columns:1fr 1fr}
+  .prod-b-grade{grid-template-columns:1fr 1fr}.prod-b-grade .principal{grid-column:1/-1;grid-row:auto}.prod-b-spec,.prod-b-grade:has(figure:nth-of-type(3)) .prod-b-spec{grid-column:1/-1}
+  .ancoras{top:70px}
+}
+@media(max-width:600px){
+  .faixa .in{justify-content:center}
+  .hero{padding:48px 0}.catalogo,.trilha,.serv-grade,.sobre-b,.missao-b,.prod-b,.serv-b,.cta{padding:64px 0}
+  .trilha ol,.serv-grade ul,.missao-b ul{grid-template-columns:1fr}
+  .prod-b .letra{font-size:64px}.prod-b header{gap:16px}
+  .serv-b article{grid-template-columns:96px 1fr;gap:16px}.serv-b h2{font-size:20px}
+}
