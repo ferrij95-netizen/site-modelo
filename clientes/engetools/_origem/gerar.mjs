@@ -98,7 +98,7 @@ function topo(v, atual) {
 
 function rodape(v) {
   return `<footer class="rodape"><div class="in">
-  <div class="rod-marca">${logo(190, '-branco')}<p>Comércio, importação, representação e assistência técnica em ferramentas de usinagem desde ${E.fundacao}.</p></div>
+  <div class="rod-marca"><span class="rod-oval">${logo(190)}</span><p>Comércio, importação, representação e assistência técnica em ferramentas de usinagem desde ${E.fundacao}.</p></div>
   <div><h3>Contato</h3><p><a href="tel:${E.foneHref}">${E.fone}</a><br><a href="tel:${E.fone2Href}">${E.fone2}</a><br><a href="mailto:${E.email}">${E.email}</a></p></div>
   <div><h3>Endereço</h3><p>${E.endereco}<br>${E.bairro}, ${E.cidade}/${E.uf}<br>CEP ${E.cep}</p><p><a class="link" href="${E.mapa}" target="_blank" rel="noopener">Ver no mapa ${ic('seta')}</a></p></div>
   <nav aria-label="Rodapé"><h3>Site</h3>${nav.map(n => link(v, n, '')).join('')}</nav>
