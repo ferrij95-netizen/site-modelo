@@ -14,6 +14,7 @@ const DIM = {
   'grafite-cadinho': [740, 560], 'grafite-tarugos': [740, 561], 'grafite-placas': [740, 558],
   'fresa-4cortes-azul': [900, 345], 'fresa-2cortes-azul': [900, 345], 'fresa-esferica-azul': [900, 345], 'fresa-micro-esferica-azul': [900, 345],
   'fresa-conica-azul': [900, 346], 'fresa-desbaste-cobre': [900, 345],
+  'cat-fresas': [800, 800], 'cat-especiais': [800, 800], 'cat-abrasivos': [800, 800], 'cat-grafite': [800, 800],
 };
 const foto = (src, alt, extra = '') => `<img src="/assets/img/${src}.webp" alt="${esc(alt)}" width="${DIM[src][0]}" height="${DIM[src][1]}" loading="lazy" decoding="async"${extra}>`;
 const ja = ' fetchpriority="high" loading="eager"';
@@ -62,7 +63,7 @@ function head(v, caminho, titulo, descricao) {
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="${v === 'a' ? '#FFFFFF' : '#E5600F'}">
-<link rel="icon" href="/assets/favicon.png" type="image/png">
+<link rel="icon" href="/assets/favicon.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="/assets/base.css">
@@ -174,7 +175,7 @@ const homeA = () => `<section class="hero"><div class="in">
 <section class="faixa-atuacao"><div class="in"><span class="ano"><b>${E.fundacao}</b>fundação</span><ul>${T.atuacao.map(a => `<li>${a}</li>`).join('')}</ul></div></section>
 <section class="cats"><div class="in">
   <div class="tit"><p class="eyebrow">Produtos</p><h2>Escolha pela linha</h2></div>
-  <div class="cats-grade">${CAT.map(c => `<a class="cat" href="/a/produtos/?cat=${c.slug}#vitrine"><figure>${foto(c.foto, c.nome)}</figure><div><h3>${c.nome}</h3><p>${c.texto}</p><span class="cat-n">${PROD.filter(p => p.cat === c.slug).length} itens ${ic('seta')}</span></div></a>`).join('')}</div>
+  <div class="cats-grade">${CAT.map(c => `<a class="cat" href="/a/produtos/?cat=${c.slug}#vitrine"><figure>${foto(c.img, c.nome)}</figure><div><h3>${c.nome}</h3><p>${c.texto}</p><span class="cat-n">${PROD.filter(p => p.cat === c.slug).length} itens ${ic('seta')}</span></div></a>`).join('')}</div>
 </div></section>
 <section class="destaques"><div class="in">
   <div class="tit-linha"><div><p class="eyebrow">Mais procuradas</p><h2>Fresas de metal duro</h2></div><a class="link" href="/a/produtos/?cat=fresas#vitrine">Ver todas as fresas ${ic('seta')}</a></div>
@@ -297,7 +298,7 @@ ${ctaB()}`;
 const produtosB = () => `${capaB('Catálogo', 'Fresas, abrasivos e grafite', 'Escolha o item e peça o orçamento. Confirmamos medida, revestimento e prazo com você.')}
 <nav class="ancoras" aria-label="Linhas"><div class="in">${CAT.map(c => `<a href="#${c.slug}">${c.nome} <b>${PROD.filter(p => p.cat === c.slug).length}</b></a>`).join('')}</div></nav>
 ${CAT.map(c => `<section class="prod-b" id="${c.slug}"><div class="in">
-  <header><h2>${c.nome}</h2><p>${c.texto}</p></header>
+  <header><figure>${foto(c.img, c.nome)}</figure><div><h2>${c.nome}</h2><p>${c.texto}</p></div></header>
   <ul class="lista-prod">${PROD.filter(p => p.cat === c.slug).map(p => linhaB('b', p)).join('')}</ul>
 </div></section>`).join('')}
 ${sobDesenho('b')}
@@ -341,15 +342,17 @@ if (!fs.existsSync(path.join(pub, 'assets/apresentacao/b-cel.webp'))) process.ex
 const kit = path.join(pub, '../../../componentes/apresentacao');
 for (const f of ['apresenta.css', 'apresenta.js']) fs.copyFileSync(path.join(kit, f), path.join(pub, 'assets', f));
 const { paginaEscolha } = await import(path.join(kit, 'escolha.mjs'));
-fs.writeFileSync(path.join(pub, 'index.html'), paginaEscolha({
+// todas as imagens em webp (regra do Joao): o kit marca o favicon como png
+const escolhaWebp = html => html.replace('href="/assets/favicon.webp" type="image/png"', 'href="/assets/favicon.webp" type="image/webp"');
+fs.writeFileSync(path.join(pub, 'index.html'), escolhaWebp(paginaEscolha({
   nome: E.nome, artigo: 'da', url: E.url, lang: 'pt', cor: '#E5600F', fundo: '#24272B', claro: '#F6F4F1',
   fonteTitulo: 'Ubuntu,system-ui,sans-serif', fonteTexto: 'Inter,system-ui,sans-serif',
   googleFonts: 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700&family=Inter:wght@400;500&display=swap',
-  favicon: '/assets/favicon.png', ogImagem: `${E.url}assets/og-a.jpg`,
+  favicon: '/assets/favicon.webp', ogImagem: `${E.url}assets/og-a.jpg`,
   versoes: [
     { letra: 'a', nome: nomesVersao.a, paginas: 5, texto: 'Clara e comercial: a home abre com as fresas, cada uma com foto e botão "Pedir orçamento". O arco laranja do logo atravessa as páginas. Empresa e serviços em estilo industrial.', pontos: ['Vitrine das fresas de metal duro, uma a uma', 'Catálogo com filtro: fresas, especiais, abrasivos e grafite', 'Pedido de orçamento já vem preenchido com o produto'] },
     { letra: 'b', nome: nomesVersao.b, paginas: 5, texto: 'Topo laranja e catálogo técnico em lista, para o comprador que já sabe o que quer: nome, uso, características e botões de orçamento e ligação em cada item.', pontos: ['Catálogo em abas por linha logo na home', 'Ficha da empresa: fundação, sede, materiais e atuação', 'Telefone de vendas sempre no topo'] },
   ],
   antigo: { url: E.antigo, img: '/assets/apresentacao/atual-pc.webp', rola: true },
-}));
+})));
 console.log('engetools: escolha em public/index.html');

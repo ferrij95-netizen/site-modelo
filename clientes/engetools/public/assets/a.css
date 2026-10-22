@@ -134,3 +134,4 @@
 .chips button[aria-pressed=true]{background:var(--lar);border-color:var(--lar);color:#fff}.chips button[aria-pressed=true] small{color:rgba(255,255,255,.8)}
 @media(max-width:1100px){.cats-grade{grid-template-columns:1fr 1fr}.vitrine{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.cats-grade,.vitrine{grid-template-columns:1fr}.cats,.destaques{padding:64px 0}.catalogo-a{padding:36px 0 64px}}
+.cat figure{padding:0}.cat figure img{width:100%;height:100%;object-fit:contain}

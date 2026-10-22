@@ -70,10 +70,10 @@ export const textos = {
 // Vitrine de produtos (pedido do Joao em 22/10: site mais comercial, foco nas fresas). Cada item é uma foto real do site atual;
 // as fresas azuis foram recortadas uma a uma da foto do conjunto. Nomes e usos identificados pela foto: a confirmar com o cliente.
 export const categorias = [
-  { slug: 'fresas', nome: 'Fresas de metal duro', curto: 'Fresas', foto: 'fresa-4cortes-azul', texto: 'Topo reto, ponta esférica, cônicas e de desbaste, com revestimento.' },
-  { slug: 'especiais', nome: 'Ferramentas especiais', curto: 'Especiais', foto: 'fresas-grupo', texto: 'Feitas sob desenho em metal duro ou HSS, e recuperação das suas.' },
-  { slug: 'abrasivos', nome: 'Abrasivos e diamantados', curto: 'Abrasivos', foto: 'rebolos-diamantados', texto: 'Rebolos convencionais e diamantados, rolos de dressagem.' },
-  { slug: 'grafite', nome: 'Grafite e carvão', curto: 'Grafite', foto: 'grafite-tarugos', texto: 'Tarugos, blocos, placas e peças usinadas.' },
+  { slug: 'fresas', img: 'cat-fresas', nome: 'Fresas de metal duro', curto: 'Fresas', foto: 'fresa-4cortes-azul', texto: 'Topo reto, ponta esférica, cônicas e de desbaste, com revestimento.' },
+  { slug: 'especiais', img: 'cat-especiais', nome: 'Ferramentas especiais', curto: 'Especiais', foto: 'fresas-grupo', texto: 'Feitas sob desenho em metal duro ou HSS, e recuperação das suas.' },
+  { slug: 'abrasivos', img: 'cat-abrasivos', nome: 'Abrasivos e diamantados', curto: 'Abrasivos', foto: 'rebolos-diamantados', texto: 'Rebolos convencionais e diamantados, rolos de dressagem.' },
+  { slug: 'grafite', img: 'cat-grafite', nome: 'Grafite e carvão', curto: 'Grafite', foto: 'grafite-tarugos', texto: 'Tarugos, blocos, placas e peças usinadas.' },
 ];
 export const produtos = [
   { cat: 'fresas', foto: 'fresa-4cortes-azul', nome: 'Fresa de topo reto 4 cortes', uso: 'Desbaste e acabamento de paredes e fundos planos.', tags: ['Metal duro', 'Revestida', '4 cortes'], destaque: true },
