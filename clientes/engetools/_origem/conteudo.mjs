@@ -66,3 +66,30 @@ export const textos = {
     { t: 'Acompanhamento', d: 'Assistência técnica na máquina e recuperação quando gastar.' },
   ],
 };
+
+// Vitrine de produtos (pedido do Joao em 22/10: site mais comercial, foco nas fresas). Cada item é uma foto real do site atual;
+// as fresas azuis foram recortadas uma a uma da foto do conjunto. Nomes e usos identificados pela foto: a confirmar com o cliente.
+export const categorias = [
+  { slug: 'fresas', nome: 'Fresas de metal duro', curto: 'Fresas', foto: 'fresa-4cortes-azul', texto: 'Topo reto, ponta esférica, cônicas e de desbaste, com revestimento.' },
+  { slug: 'especiais', nome: 'Ferramentas especiais', curto: 'Especiais', foto: 'fresas-grupo', texto: 'Feitas sob desenho em metal duro ou HSS, e recuperação das suas.' },
+  { slug: 'abrasivos', nome: 'Abrasivos e diamantados', curto: 'Abrasivos', foto: 'rebolos-diamantados', texto: 'Rebolos convencionais e diamantados, rolos de dressagem.' },
+  { slug: 'grafite', nome: 'Grafite e carvão', curto: 'Grafite', foto: 'grafite-tarugos', texto: 'Tarugos, blocos, placas e peças usinadas.' },
+];
+export const produtos = [
+  { cat: 'fresas', foto: 'fresa-4cortes-azul', nome: 'Fresa de topo reto 4 cortes', uso: 'Desbaste e acabamento de paredes e fundos planos.', tags: ['Metal duro', 'Revestida', '4 cortes'], destaque: true },
+  { cat: 'fresas', foto: 'fresa-2cortes-azul', nome: 'Fresa de topo reto 2 cortes', uso: 'Rasgos, canais e entrada em cheio, com boa saída de cavaco.', tags: ['Metal duro', 'Revestida', '2 cortes'], destaque: true },
+  { cat: 'fresas', foto: 'fresa-esferica-azul', nome: 'Fresa de ponta esférica', uso: 'Acabamento de superfícies 3D em moldes e matrizes.', tags: ['Metal duro', 'Revestida', 'Esférica'], destaque: true },
+  { cat: 'fresas', foto: 'fresa-micro-esferica-azul', nome: 'Fresa esférica de pescoço longo', uso: 'Detalhes no fundo de cavidades, com haste rebaixada.', tags: ['Metal duro', 'Revestida', 'Pescoço longo'], destaque: true },
+  { cat: 'fresas', foto: 'fresa-conica-azul', nome: 'Fresa cônica de ponta esférica', uso: 'Ângulos de saída e detalhes finos em moldes.', tags: ['Metal duro', 'Revestida', 'Cônica'], destaque: true },
+  { cat: 'fresas', foto: 'fresa-desbaste-cobre', nome: 'Fresa de desbaste com quebra-cavaco', uso: 'Remoção rápida de material, com cavaco curto.', tags: ['Metal duro', 'Revestida', 'Desbaste'], destaque: true },
+  { cat: 'fresas', foto: 'fresas-cobre', nome: 'Fresas revestidas linha cobre', uso: 'Topo reto e ponta esférica com revestimento cobre.', tags: ['Metal duro', 'Topo reto', 'Esférica'] },
+  { cat: 'especiais', foto: 'fresas-grupo', nome: 'Ferramentas especiais sob desenho', uso: 'Geometria feita para a sua peça e a sua máquina.', tags: ['Metal duro', 'HSS', 'Sob desenho'] },
+  { cat: 'especiais', foto: 'fresa-topo', nome: 'Recuperação e reafiação', uso: 'Recuperamos e restauramos ferramentas e dispositivos de usinagem.', tags: ['Serviço', 'Reafiação'] },
+  { cat: 'abrasivos', foto: 'rebolos-diamantados', nome: 'Rebolos diamantados', uso: 'Ligas vitrificada, resinoide, metálica e eletrolítica.', tags: ['Diamante', 'Sob medida'] },
+  { cat: 'abrasivos', foto: 'anel-abrasivo', nome: 'Rebolo anel', uso: 'Retificação de faces e superfícies planas.', tags: ['Abrasivo', 'Anel'] },
+  { cat: 'abrasivos', foto: 'rebolo-interno', nome: 'Rebolo para retificação interna', uso: 'Furos e diâmetros internos de precisão.', tags: ['Abrasivo', 'Interno'] },
+  { cat: 'abrasivos', foto: 'rolo-diamantado', nome: 'Rolo diamantado', uso: 'Dressagem de rebolos com perfil.', tags: ['Diamante', 'Dressagem'] },
+  { cat: 'grafite', foto: 'grafite-tarugos', nome: 'Tarugos de grafite', uso: 'Barras redondas para usinar eletrodos e peças.', tags: ['Grafite', 'Tarugo'] },
+  { cat: 'grafite', foto: 'grafite-placas', nome: 'Blocos e placas de grafite', uso: 'Material em bloco e placa, em grafite e carvão.', tags: ['Grafite', 'Carvão', 'Placa'] },
+  { cat: 'grafite', foto: 'grafite-cadinho', nome: 'Peças usinadas em grafite', uso: 'Peças técnicas e projetos especiais em grafite.', tags: ['Grafite', 'Sob desenho'] },
+];

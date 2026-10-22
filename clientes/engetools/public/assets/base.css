@@ -68,3 +68,14 @@ p{margin:0 0 1em}
   .rodape .in{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+/* vitrine: etiquetas e bloco "sob desenho" (A e B) */
+.tags{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.tags li{font-size:12px;font-weight:600;letter-spacing:.02em;padding:4px 9px;border-radius:999px;background:var(--fundo);color:var(--graf2)}
+.sob{padding:90px 0}
+.sob .in{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.sob figure{margin:0;border-radius:var(--r);overflow:hidden}
+.sob h2{font-size:clamp(30px,3.6vw,46px)}.sob p:not(.eyebrow){font-size:18px;max-width:520px}
+@media(max-width:960px){.sob .in{grid-template-columns:1fr;gap:28px}.sob{padding:64px 0}}
+/* fotos de vitrine: cabem inteiras na moldura, sem esticar a altura */
+.item figure img,.cat figure img,.linha-prod figure img{position:absolute;inset:0;margin:auto;width:calc(100% - 28px);height:calc(100% - 24px);max-height:none;object-fit:contain}
+.item figure,.cat figure,.linha-prod figure{position:relative}
