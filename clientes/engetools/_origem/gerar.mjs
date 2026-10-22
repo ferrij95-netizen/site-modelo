@@ -121,7 +121,7 @@ const formContato = () => `<form class="form" id="form" data-form>
     <label>Empresa<input name="Empresa" autocomplete="organization"></label>
     <label>Telefone<input name="Telefone" type="tel" autocomplete="tel" required></label>
     <label>E-mail<input name="E-mail" type="email" autocomplete="email" required></label>
-    <label class="largo">Assunto<select name="Assunto"><option>Ferramentas de corte (metal duro / HSS)</option><option>Abrasivos e ferramentas diamantadas</option><option>Grafite e carvão</option><option>Ferramenta especial ou recuperação</option><option>Usinagem, automação ou melhoria de processo</option><option>Outros assuntos</option></select></label>
+    <label class="largo">Assunto<select name="Assunto"><option>Ferramentas de corte (metal duro / HSS)</option><option>Abrasivos e ferramentas diamantadas</option><option>Grafite e carvão</option><option>Assistência técnica ou indicação de ferramenta</option><option>Outros assuntos</option></select></label>
     <label class="largo">Mensagem<textarea name="Mensagem" rows="5" placeholder="Material da peça, operação, máquina, quantidade..." required></textarea></label>
   </div>
   <button class="btn" type="submit">Enviar consulta ${ic('seta')}</button>
@@ -149,17 +149,17 @@ const itemA = (v, p) => `<article class="item" data-cat="${p.cat}"><figure>${fot
 const linhaB = (v, p) => `<li class="linha-prod"><figure>${foto(p.foto, p.nome)}</figure>
   <div><h3>${p.nome}</h3><p>${p.uso}</p>${tags(p)}</div>
   <div class="linha-acoes"><a class="btn btn-peq" href="${orc(v, p)}">Pedir orçamento</a><a class="link" href="tel:${E.foneHref}">${ic('tel')} Ligar</a></div></li>`;
-const sobDesenho = v => `<section class="sob"><div class="in">
+const linhaCompleta = v => `<section class="sob"><div class="in">
   <figure>${foto('fresas-grupo', 'Conjunto de fresas de metal duro')}</figure>
-  <div><p class="eyebrow">Não achou a sua ferramenta?</p><h2>Fazemos sob desenho</h2><p>Ferramentas especiais em metal duro ou HSS, diamantadas e recuperação das que você já tem. Mande o desenho da peça ou da ferramenta.</p>
-  <a class="btn" href="/${v}/contato/?cat=especiais#form">Enviar desenho ${ic('seta')}</a></div>
+  <div><p class="eyebrow">Não encontrou o item?</p><h2>Linha completa em ferramentas de usinagem</h2><p>A vitrine mostra só uma parte. A Engetools trabalha com comércio, importação e representação de uma linha completa. Diga o que você precisa e cotamos para você.</p>
+  <a class="btn" href="/${v}/contato/#form">Consultar um item ${ic('seta')}</a></div>
 </div></section>`;
 
 // ================= versão A: Arco =================
 const capaA = (sobre, titulo, sub) => `<section class="capa"><div class="in"><p class="eyebrow">${sobre}</p><h1>${titulo}</h1>${sub ? `<p>${sub}</p>` : ''}</div>${arco()}</section>`;
 
 const ctaA = () => `<section class="cta"><div class="in">
-  <div><h2>Faça sua consulta</h2><p>Mande a peça, o desenho ou o problema do processo. Respondemos com a ferramenta indicada e o prazo.</p></div>
+  <div><h2>Faça sua consulta</h2><p>Diga o que você usina e qual ferramenta procura. Respondemos com a indicação, o preço e o prazo.</p></div>
   <div class="cta-acoes"><a class="btn btn-branco" href="/a/contato/">Enviar consulta ${ic('seta')}</a><a class="cta-fone" href="tel:${E.foneHref}">${ic('tel')} ${E.fone}</a></div>
 </div></section>`;
 
@@ -181,14 +181,14 @@ const homeA = () => `<section class="hero"><div class="in">
   <div class="tit-linha"><div><p class="eyebrow">Mais procuradas</p><h2>Fresas de metal duro</h2></div><a class="link" href="/a/produtos/?cat=fresas#vitrine">Ver todas as fresas ${ic('seta')}</a></div>
   <div class="vitrine">${PROD.filter(p => p.destaque).map(p => itemA('a', p)).join('')}</div>
 </div></section>
-${sobDesenho('a')}
+${linhaCompleta('a')}
 <section class="servicos-a"><div class="in">
-  <div class="tit tit-claro"><p class="eyebrow">Serviços</p><h2>Além de vender, a gente desenvolve</h2></div>
+  <div class="tit tit-claro"><p class="eyebrow">Serviços</p><h2>Além da venda, assistência técnica</h2></div>
   <div class="serv-tres">${T.servicos.slice(0, 3).map(s => `<a class="serv" href="/a/servicos/#${s.slug}"><figure>${foto(s.foto, s.titulo)}</figure><h3>${s.titulo}</h3><p>${s.texto}</p></a>`).join('')}</div>
   <p class="centro"><a class="link link-claro" href="/a/servicos/">Todos os serviços ${ic('seta')}</a></p>
 </div></section>
 <section class="processo-a"><div class="in">
-  <div class="tit"><p class="eyebrow">Como funciona</p><h2>Do orçamento à ferramenta na máquina</h2></div>
+  <div class="tit"><p class="eyebrow">Como funciona</p><h2>Da consulta à ferramenta na máquina</h2></div>
   ${arco('arco arco-linha')}${etapasArco()}
 </div></section>
 ${ctaA()}`;
@@ -211,10 +211,10 @@ const produtosA = () => `${capaA('Produtos', 'Fresas, abrasivos e grafite', 'Esc
   <div class="chips" role="group" aria-label="Filtrar por linha" data-filtro><button type="button" aria-pressed="true" data-cat="">Todos <small>${PROD.length}</small></button>${CAT.map(c => `<button type="button" aria-pressed="false" data-cat="${c.slug}">${c.curto} <small>${PROD.filter(p => p.cat === c.slug).length}</small></button>`).join('')}</div>
   <div class="vitrine" data-vitrine>${PROD.map(p => itemA('a', p)).join('')}</div>
 </div></section>
-${sobDesenho('a')}
+${linhaCompleta('a')}
 ${ctaA()}`;
 
-const servicosA = () => `${capaA('Serviços', 'Engenharia de ferramentas e de processo', 'Desenvolvimento, fabricação, recuperação e melhoria do seu processo de usinagem.')}
+const servicosA = () => `${capaA('Serviços', 'Assistência técnica de quem entende de usinagem', 'Indicação da ferramenta certa, melhoria de processo, importação e representação.')}
 <section class="serv-lista"><div class="in">${T.servicos.map((s, i) => `<article id="${s.slug}" class="serv-item${i % 2 ? ' inv' : ''}"><figure>${foto(s.foto, s.titulo)}</figure><div><span class="n">${String(i + 1).padStart(2, '0')}</span><h2>${s.titulo}</h2><p>${s.texto}</p></div></article>`).join('')}</div></section>
 <section class="processo-a"><div class="in">
   <div class="tit"><p class="eyebrow">Como funciona</p><h2>Da consulta à ferramenta na máquina</h2></div>
@@ -254,8 +254,8 @@ const trilhaB = () => `<section class="trilha"><div class="in">
 </div></section>`;
 
 const ctaB = () => `<section class="cta"><div class="in">
-  <h2>Tem uma peça difícil de usinar?</h2>
-  <p>Mande o desenho ou descreva a operação. A equipe técnica indica a ferramenta e o custo-benefício.</p>
+  <h2>Precisa de ferramenta para usinar?</h2>
+  <p>Diga o material, a operação e a máquina. A equipe técnica indica a ferramenta com o melhor custo-benefício.</p>
   <div class="cta-acoes"><a class="btn btn-escuro" href="/b/contato/">Faça sua consulta ${ic('seta')}</a><a class="btn btn-contorno-claro" href="tel:${E.foneHref}">${ic('tel')} ${E.fone}</a></div>
 </div></section>`;
 
@@ -263,7 +263,7 @@ const homeB = () => `<section class="hero"><div class="in">
   <div class="hero-txt">
     <p class="eyebrow">Engetools · ${E.cidade}/${E.uf}</p>
     <h1>Fresas e ferramentas de usinagem com orçamento rápido</h1>
-    <p>Fresas de metal duro de topo reto, esféricas, cônicas e de desbaste. Rebolos diamantados, grafite e ferramentas especiais. Desde ${E.fundacao}.</p>
+    <p>Fresas de metal duro de topo reto, esféricas, cônicas e de desbaste. Rebolos diamantados, grafite e linha completa de corte. Desde ${E.fundacao}.</p>
     <div class="acoes"><a class="btn btn-escuro" href="/b/produtos/">Ver catálogo ${ic('seta')}</a><a class="btn btn-contorno-claro" href="/b/contato/#form">Pedir orçamento</a></div>
   </div>
   <figure class="hero-foto">${foto('fresas-grupo', 'Conjunto de fresas de metal duro', ja)}</figure>
@@ -273,10 +273,10 @@ const homeB = () => `<section class="hero"><div class="in">
   <div class="tit"><p class="eyebrow">Catálogo</p><h2>Escolha a linha e peça o orçamento</h2></div>
   ${abasB()}
 </div></section>
-${sobDesenho('b')}
+${linhaCompleta('b')}
 ${trilhaB()}
 <section class="serv-grade"><div class="in">
-  <div class="tit"><p class="eyebrow">Serviços</p><h2>Desenvolvimento, fabricação e recuperação</h2></div>
+  <div class="tit"><p class="eyebrow">Serviços</p><h2>Assistência técnica, indicação e importação</h2></div>
   <ul>${T.servicos.map((s, i) => `<li><a href="/b/servicos/#${s.slug}"><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${s.titulo}</h3><p>${s.texto}</p>${ic('seta', 'ic seta')}</a></li>`).join('')}</ul>
 </div></section>
 <section class="sobre-b"><div class="in">
@@ -301,10 +301,10 @@ ${CAT.map(c => `<section class="prod-b" id="${c.slug}"><div class="in">
   <header><figure>${foto(c.img, c.nome)}</figure><div><h2>${c.nome}</h2><p>${c.texto}</p></div></header>
   <ul class="lista-prod">${PROD.filter(p => p.cat === c.slug).map(p => linhaB('b', p)).join('')}</ul>
 </div></section>`).join('')}
-${sobDesenho('b')}
+${linhaCompleta('b')}
 ${ctaB()}`;
 
-const servicosB = () => `${capaB('Serviços', 'Engenharia de ferramentas e de processo', 'Da ferramenta especial à automação da sua linha.')}
+const servicosB = () => `${capaB('Serviços', 'Assistência técnica de quem entende de usinagem', 'Da indicação da ferramenta ao acompanhamento na sua máquina.')}
 <section class="serv-b"><div class="in">${T.servicos.map((s, i) => `<article id="${s.slug}"><span class="n">${String(i + 1).padStart(2, '0')}</span><figure>${foto(s.foto, s.titulo)}</figure><div><h2>${s.titulo}</h2><p>${s.texto}</p></div></article>`).join('')}</div></section>
 ${trilhaB()}
 ${ctaB()}`;
@@ -320,10 +320,10 @@ const P = {
   b: { index: homeB, empresa: empresaB, produtos: produtosB, servicos: servicosB, contato: contatoB },
 };
 const meta = {
-  index: ['Engetools Ferramentas · Ferramentas de usinagem em São Leopoldo/RS', 'Ferramentas de corte em metal duro e HSS, abrasivos convencionais e diamantados, ferramentas especiais e recuperação. Desde 1999.'],
+  index: ['Engetools Ferramentas · Ferramentas de usinagem em São Leopoldo/RS', 'Comércio, importação, representação e assistência técnica em ferramentas de usinagem: fresas de metal duro, HSS, abrasivos diamantados e grafite. Desde 1999.'],
   empresa: ['A Empresa · Engetools Ferramentas', 'Engetools Comércio e Representações: comércio, importação, representação e assistência técnica em ferramentas de usinagem desde 1999.'],
-  produtos: ['Produtos · Engetools Ferramentas', 'Fresas de metal duro de topo reto, esféricas, cônicas e de desbaste, rebolos diamantados, grafite e ferramentas especiais. Peça o orçamento.'],
-  servicos: ['Serviços · Engetools Ferramentas', 'Ferramentas especiais e diamantadas, recuperação de ferramentas, usinagem para terceiros, automação e melhoria de processos.'],
+  produtos: ['Produtos · Engetools Ferramentas', 'Fresas de metal duro de topo reto, esféricas, cônicas e de desbaste, rebolos diamantados, grafite e linha completa de corte. Peça o orçamento.'],
+  servicos: ['Serviços · Engetools Ferramentas', 'Assistência técnica, indicação de ferramentas, melhoria de processo, importação e representação.'],
   contato: ['Contato · Engetools Ferramentas', `Rua Independência, 129, sala 202, São Leopoldo/RS. ${E.fone} · ${E.email}`],
 };
 
@@ -350,7 +350,7 @@ fs.writeFileSync(path.join(pub, 'index.html'), escolhaWebp(paginaEscolha({
   googleFonts: 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700&family=Inter:wght@400;500&display=swap',
   favicon: '/assets/favicon.webp', ogImagem: `${E.url}assets/og-a.jpg`,
   versoes: [
-    { letra: 'a', nome: nomesVersao.a, paginas: 5, texto: 'Clara e comercial: a home abre com as fresas, cada uma com foto e botão "Pedir orçamento". O arco laranja do logo atravessa as páginas. Empresa e serviços em estilo industrial.', pontos: ['Vitrine das fresas de metal duro, uma a uma', 'Catálogo com filtro: fresas, especiais, abrasivos e grafite', 'Pedido de orçamento já vem preenchido com o produto'] },
+    { letra: 'a', nome: nomesVersao.a, paginas: 5, texto: 'Clara e comercial: a home abre com as fresas, cada uma com foto e botão "Pedir orçamento". O arco laranja do logo atravessa as páginas. Empresa e serviços em estilo industrial.', pontos: ['Vitrine das fresas de metal duro, uma a uma', 'Catálogo com filtro: fresas, linha completa, abrasivos e grafite', 'Pedido de orçamento já vem preenchido com o produto'] },
     { letra: 'b', nome: nomesVersao.b, paginas: 5, texto: 'Topo laranja e catálogo técnico em lista, para o comprador que já sabe o que quer: nome, uso, características e botões de orçamento e ligação em cada item.', pontos: ['Catálogo em abas por linha logo na home', 'Ficha da empresa: fundação, sede, materiais e atuação', 'Telefone de vendas sempre no topo'] },
   ],
   antigo: { url: E.antigo, img: '/assets/apresentacao/atual-pc.webp', rola: true },

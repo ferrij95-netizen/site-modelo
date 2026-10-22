@@ -40,7 +40,7 @@ if (filtro && vit) {
 const fc = document.getElementById('form');
 if (fc) {
   const q = new URLSearchParams(location.search), prod = q.get('produto'), cat = q.get('cat');
-  const assunto = { fresas: 0, abrasivos: 1, grafite: 2, especiais: 3 }[cat];
+  const assunto = { fresas: 0, linha: 0, abrasivos: 1, grafite: 2 }[cat];
   if (assunto !== undefined) fc.querySelector('select').selectedIndex = assunto;
   if (prod) fc.querySelector('textarea').value = `Gostaria de um orçamento de: ${prod}\nQuantidade: \nMaterial da peça / máquina: `;
 }
