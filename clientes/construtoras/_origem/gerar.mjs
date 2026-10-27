@@ -6,6 +6,7 @@
 // Indústrias tem também a versão em inglês (conteudo-industrias-en.mjs), em /en/, /en/a/ e /en/b/, com troca de idioma no topo.
 // Textos fixos (botões, rodapé, escolha de versão) por idioma em ui.mjs.
 // Rodar depois de mudar qualquer texto: node clientes/construtoras/_origem/gerar.mjs
+import { site } from '../../agencia/_origem/conteudo.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import construtoras from './conteudo-construtoras.mjs';
@@ -23,7 +24,7 @@ industrias.idiomas = industriasEn.idiomas = { pt: industrias, en: industriasEn }
 industrias.lang = 'pt';
 industriasEn.lang = 'en';
 const prefixo = lang => (lang === 'pt' ? '' : '/' + lang);
-const AGENCIA = 'https://agencia.overtus.com.br';
+const AGENCIA = site.dominio; // site principal da Overtus (clientes/agencia)
 const AGENDA = 'https://cal.com/overtus';
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -214,7 +215,10 @@ function gerarVersao(seg, v) {
   const idiomas = Object.keys(seg.idiomas);
   const trocaIdioma = slug => (idiomas.length > 1 ? `<div class="idioma" role="group" aria-label="${t.idiomaAria}">${idiomas.map(l => `<a href="${prefixo(l)}/${v}/${slug === 'index' ? '' : slug + '/'}" hreflang="${UI[l].html}" lang="${UI[l].html}"${l === lang ? ' aria-current="true"' : ''} title="${UI[l].nome}">${UI[l].curto}</a>`).join('')}</div>` : '');
 
+  // Faixa fina acima do topo: liga o site do segmento ao site principal da Overtus.
+  const faixaOvertus = `<div class="faixa-overtus"><div class="in"><a href="${AGENCIA}/${v}/">${t.inicioOvertus}</a><a href="${AGENCIA}/${v}/setores/">${t.todosSetores} →</a></div></div>`;
   const topo = slug => `<header class="topo">
+  ${faixaOvertus}
   <div class="in">
     <a class="marca" href="${L('index')}" aria-label="${t.inicioAria(seg)}">${marcaHTML(seg)}</a>
     <button class="menu-btn" data-menu aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span><em>${t.menu}</em></button>
@@ -228,7 +232,7 @@ function gerarVersao(seg, v) {
     <div class="r-marca"><a class="marca" href="${L('index')}">${marcaHTML(seg)}</a><p>${t.slogan}</p><p class="r-2">${seg.hero.lead}</p></div>
     <div><h3>${t.solucoes}</h3><ul>${grupos.map(g => `<li><a href="${L('solucoes/' + g.slug)}">${g.nome}</a></li>`).join('')}</ul></div>
     <div><h3>${seg.segmento}</h3><ul>${seg.menu.filter(([s]) => s !== 'solucoes').map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
-    <div><h3>${t.overtus}</h3><ul><li><a href="${AGENCIA}/${v}/">${t.inicioOvertus}</a></li>${lang === 'pt' ? `<li><a href="${outro.dominio}/${v}/">${t.paraSeg(outro)}</a></li>` : ''}<li><a href="${AGENDA}" data-agendar>${t.agendar}</a></li></ul></div>
+    <div><h3>${t.overtus}</h3><ul><li><a href="${AGENCIA}/${v}/">${t.inicioOvertus}</a></li><li><a href="${AGENCIA}/${v}/setores/">${t.todosSetores}</a></li>${lang === 'pt' ? `<li><a href="${outro.dominio}/${v}/">${t.paraSeg(outro)}</a></li>` : ''}<li><a href="${AGENDA}" data-agendar>${t.agendar}</a></li></ul></div>
   </div>
   <div class="in r-base"><span>© ${new Date().getFullYear()} Overtus</span><span>${t.especialistas(seg)}</span></div>
 </footer>`;

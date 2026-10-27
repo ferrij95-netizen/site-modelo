@@ -10,6 +10,26 @@
   addEventListener('scroll', rolou, { passive: true });
   rolou();
 
+  // Filtro de projetos por setor.
+  const filtro = document.querySelector('[data-filtro]');
+  if (filtro) {
+    filtro.hidden = false;
+    const marcar = setor => {
+      filtro.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.setor === setor));
+      document.querySelectorAll('.proj[data-setor]').forEach(p => { p.hidden = !!setor && p.dataset.setor !== setor; });
+    };
+    filtro.addEventListener('click', e => { const b = e.target.closest('button'); if (b) marcar(b.dataset.setor); });
+  }
+
+  // Lista de setores: o print à direita mostra um projeto do setor apontado.
+  document.querySelectorAll('.setlista').forEach(sl => {
+    const img = sl.querySelector('.setlista-tela img');
+    const links = sl.querySelectorAll('a[data-tela]');
+    const ativar = a => { links.forEach(l => l.classList.toggle('ativo', l === a)); if (img && img.getAttribute('src') !== a.dataset.tela) img.src = a.dataset.tela; };
+    links.forEach(a => { a.addEventListener('mouseenter', () => ativar(a)); a.addEventListener('focus', () => ativar(a)); });
+    if (links[0]) links[0].classList.add('ativo');
+  });
+
   const CAL = document.body.dataset.cal;
   if (!CAL) return;
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === 'string') { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, 'https://app.cal.com/embed/embed.js', 'init');
