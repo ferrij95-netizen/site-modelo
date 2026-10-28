@@ -35,8 +35,9 @@ export function publicar(slug) {
   const wr = path.join(REPO, 'wrangler.jsonc');
   let txt = fs.readFileSync(wr, 'utf8');
   const padrao = `${emp.sub}.${DOMINIO}`;
-  if (!txt.includes(`"${padrao}"`)) {
-    txt = txt.replace(/(\{ "pattern": "[^"]+", "custom_domain": true \})(\s*\n\s*\],)/, `$1,\n    { "pattern": "${padrao}", "custom_domain": true }$2`);
+  // Rota de zona, não custom domain: a zona overtus.com.br já está no limite de custom domains (scripts/check-rotas.mjs).
+  if (!txt.includes(`"${padrao}"`) && !txt.includes(`"${padrao}/*"`)) {
+    txt = txt.replace(/(\{ "pattern": "[^"]+", (?:"custom_domain": true|"zone_name": "[^"]+") \})(\s*\n\s*\],)/, `$1,\n    { "pattern": "${padrao}/*", "zone_name": "${DOMINIO}" }$2`);
     fs.writeFileSync(wr, txt);
   }
 

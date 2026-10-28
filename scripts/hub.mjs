@@ -6,7 +6,7 @@
 // Script de ligação: clientes/<cliente>/script.md, se existir, aparece num painel na moldura.
 import fs from 'node:fs';
 import path from 'node:path';
-import { repo } from './paths.mjs';
+import { repo, clientesPublicados } from './paths.mjs';
 import { paginaLigar } from './hub-ligar.mjs';
 
 const out = path.join(repo, 'dist/_hub');
@@ -34,9 +34,7 @@ const NOME_VERSAO = { a: 'Versão A', b: 'Versão B', c: 'Versão C', classica: 
 const nomeVersao = v => NOME_VERSAO[v] || v[0].toUpperCase() + v.slice(1);
 
 const dir = path.join(repo, 'clientes');
-const slugs = fs.existsSync(dir)
-  ? fs.readdirSync(dir).filter(c => fs.existsSync(path.join(dir, c, 'site.config.json'))).sort()
-  : [];
+const slugs = clientesPublicados().sort();
 
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(path.join(out, 'capas'), { recursive: true });

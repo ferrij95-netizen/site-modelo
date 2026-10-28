@@ -344,3 +344,9 @@ html:has(.escolha), .escolha { height: 100%; }
 @media (min-width: 1081px) { .quem:has(> li:nth-child(6)) { grid-template-columns: repeat(3, 1fr); } }
 .s-industrias .topo nav a:not(.btn) { white-space: nowrap; }
 @media (min-width: 961px) and (max-width: 1180px) { .s-industrias .topo .nav-cta { display: none; } }
+
+/* Faixa de ligação com o site principal da Overtus, acima do topo */
+.faixa-overtus { background: #0f1830; font-size: 13.5px; }
+.faixa-overtus .in { display: flex; justify-content: space-between; gap: 16px; min-height: 36px; align-items: center; }
+.faixa-overtus a { color: rgba(254,249,225,.78); text-decoration: none; font-weight: 500; }
+.faixa-overtus a:hover { color: #fef9e1; }

@@ -2,14 +2,38 @@
 // Rodar depois de mudar qualquer texto: node clientes/agencia/_origem/gerar.mjs
 import fs from 'node:fs';
 import path from 'node:path';
-import { site, menu, grupos, diferencial, etapas, principios, projetos, legendaProjetos, segmentos, chamada, paginas, especialidades } from './conteudo.mjs';
+import { site, menu, grupos, diferencial, etapas, principios, projetos, legendaProjetos, setores, chamada, paginas } from './conteudo.mjs';
 
 const pub = path.join(path.dirname(new URL(import.meta.url).pathname), '../public');
+const clientes = path.join(pub, '../..');
+
+// Título e descrição de cada setor vêm do próprio setor.
+for (const s of setores) paginas['setores/' + s.slug] = [`${s.nome} · Overtus`, `${s.titulo} ${s.lead}`.slice(0, 300)];
+const setorDe = Object.fromEntries(setores.map(s => [s.slug, s]));
+
+// Fatos de cada projeto lidos da pasta do cliente: páginas da versão A, idiomas, versões e o endereço da prévia.
+function fatos(p) {
+  const [c, , , fixas] = p;
+  const base = path.join(clientes, c, 'public');
+  const url = `https://${c}.overtus.com.br/`;
+  if (fixas || !fs.existsSync(path.join(base, 'a'))) return { tags: fixas || [], url };
+  const contar = d => fs.readdirSync(d, { withFileTypes: true }).reduce((n, e) => n + (e.isDirectory() ? (['en', 'es'].includes(e.name) ? 0 : contar(path.join(d, e.name))) : e.name === 'index.html' ? 1 : 0), 0);
+  const paginasA = contar(path.join(base, 'a'));
+  const idiomas = ['en', 'es'].filter(l => fs.existsSync(path.join(base, l)) || fs.existsSync(path.join(base, 'a', l)));
+  const versoes = fs.readdirSync(base).filter(d => /^[a-d]$/.test(d)).length;
+  const tags = [`${paginasA} páginas`];
+  if (idiomas.length) tags.push(idiomas.length === 2 ? '3 idiomas' : '2 idiomas');
+  if (versoes > 1) tags.push(`${versoes === 2 ? 'Duas' : versoes} versões`);
+  return { tags, url: url + 'a/' };
+}
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const num = i => String(i + 1).padStart(2, '0');
 const img = (nome, alt, attrs = '') => `<img src="/assets/img/${nome}.webp" alt="${esc(alt)}" loading="lazy" decoding="async"${attrs ? ' ' + attrs : ''}>`;
 const imgProjeto = p => p[4] || `p-${p[0]}`;
+// Na inicial: o primeiro projeto de cada setor, até seis.
+const destaques = setores.slice(0, 6).map(s => projetos.find(p => p[1] === s.slug));
+const quantos = slug => projetos.filter(p => p[1] === slug).length;
 
 // Ícones de traço simples, um por grupo de serviço.
 const ICONES = {
@@ -86,9 +110,9 @@ function gerarVersao(v) {
   <div class="in">
     <div class="r-marca"><a class="marca" href="${L('index')}">${marca}</a><p>${site.slogan}</p><p class="r-2">${site.linha2}</p></div>
     <div><h3>Serviços</h3><ul>${grupos.map(g => `<li><a href="${L('servicos/' + g.slug)}">${g.nome}</a></li>`).join('')}</ul></div>
-    <div><h3>Overtus</h3><ul>${menu.filter(([s]) => s !== 'servicos').map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
-    <div><h3>Segmentos</h3><ul>${especialidades.map(([, n, , u]) => `<li><a href="${u}/${v}/">${n}</a></li>`).join('')}</ul></div>
-    <div><h3>Conversar</h3><ul><li><a href="${site.agenda}" data-agendar>Agendar conversa</a></li><li><a href="${site.agenda}" target="_blank" rel="noopener">cal.com/overtus</a></li></ul></div>
+    <div><h3>Setores</h3><ul>${setores.map(s => `<li><a href="${L('setores/' + s.slug)}">${s.nome}</a></li>`).join('')}</ul></div>
+    <div><h3>Overtus</h3><ul>${menu.filter(([s]) => !['servicos', 'setores'].includes(s)).map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
+    <div><h3>Conversar</h3><ul><li><a href="${site.agenda}" data-agendar>Agendar conversa</a></li><li><a href="mailto:${site.email}">${site.email}</a></li><li><a href="${site.agenda}" target="_blank" rel="noopener">cal.com/overtus</a></li></ul></div>
   </div>
   <div class="in r-base"><span>© ${new Date().getFullYear()} Overtus</span><span>Sites, sistemas e estrutura comercial</span></div>
 </footer>`;
@@ -119,16 +143,24 @@ function gerarVersao(v) {
   // Etapas: linha do tempo com marcadores (horizontal no computador, vertical no celular).
   const linhaEtapas = (detalhe = false) => `<ol class="etapas${detalhe ? ' etapas-det' : ''}">${etapas.map(([t, d, e], i) => `<li><span class="n">${num(i)}</span><div><h3>${t}</h3><p>${d}</p>${detalhe ? `<p class="entrega"><b>O que você recebe</b>${e}</p>` : ''}</div></li>`).join('')}</ol>`;
 
-  const gradeProjetos = (lista = projetos) => `<div class="projs">${lista.map(p => `<article class="proj">
-    ${tela(imgProjeto(p), `Página inicial do projeto para ${p[1].toLowerCase()}`)}
-    <div class="proj-c"><span class="rotulo">${p[1]}</span><p>${p[2]}</p><ul class="tags">${p[3].map(t => `<li>${t}</li>`).join('')}</ul></div>
-  </article>`).join('')}</div>`;
+  const gradeProjetos = (lista = projetos) => `<div class="projs">${lista.map(p => {
+    const f = fatos(p);
+    return `<article class="proj" data-setor="${p[1]}">
+    <a class="proj-tela" href="${f.url}" target="_blank" rel="noopener" aria-label="Abrir o projeto de ${esc(p[2].toLowerCase())} em nova aba">${tela(imgProjeto(p), `Página inicial do projeto de ${p[2].toLowerCase()}`)}</a>
+    <div class="proj-c"><span class="rotulo">${setorDe[p[1]].nome}</span><h3>${p[2]}</h3><ul class="tags">${f.tags.map(t => `<li>${t}</li>`).join('')}</ul></div>
+  </article>`;
+  }).join('')}</div>`;
 
-  // Especialistas por segmento: cada cartão leva ao site do segmento, na mesma versão.
-  const espec = cls => `<section class="${cls} espec" id="segmentos">
+  // Setores: lista à esquerda e, no computador, o print de um projeto do setor apontado à direita.
+  const capaSetor = s => imgProjeto(projetos.find(p => p[1] === s.slug));
+  const listaSetores = () => `<div class="setlista">
+    <ol>${setores.map((s, i) => `<li><a href="${L('setores/' + s.slug)}" data-tela="/assets/img/${capaSetor(s)}.webp"><span class="n">${num(i)}</span><span class="sl-t"><b>${s.nome}</b><small>${s.resumo}</small></span><span class="sl-q">${quantos(s.slug)} projetos</span>${seta}</a></li>`).join('')}</ol>
+    <div class="setlista-tela" aria-hidden="true">${tela(capaSetor(setores[0]), '', 'projeto do setor')}</div>
+  </div>`;
+  const espec = cls => `<section class="${cls} espec" id="setores">
   <div class="in">
-    <div class="sec-cab"><div><span class="rotulo">Especialistas no seu segmento</span><h2 class="h-secao">Uma estrutura pensada para a forma como o seu setor vende.</h2></div></div>
-    <div class="espec-g">${especialidades.map(([k, n, t, u]) => `<a class="espec-c espec-${k}" href="${u}/${v}/"><span class="rotulo">Overtus para</span><h3>${n}</h3><p>${t}</p><b class="mais">Conhecer ${seta}</b></a>`).join('')}</div>
+    <div class="sec-cab"><div><span class="rotulo">Especialistas no seu setor</span><h2 class="h-secao">Uma estrutura pensada para a forma como o seu setor vende.</h2></div><a class="link" href="${L('setores')}">Todos os setores ${seta}</a></div>
+    ${listaSetores()}
   </div>
 </section>`;
 
@@ -190,9 +222,10 @@ ${cta()}`;
   });
 
   // ---------- Projetos ----------
-  P.projetos = `${cabeca('Portfólio', 'Projetos desenvolvidos', 'Estudos de redesenho criados pela Overtus para empresas de diferentes segmentos. Cada projeto tem identidade visual própria, várias páginas e versão em mais de um idioma quando a empresa atua fora do país.', [[null, 'Projetos']])}
+  P.projetos = `${cabeca('Portfólio', 'Projetos desenvolvidos', `${projetos.length} estudos de redesenho criados pela Overtus para empresas de ${setores.length} setores. Cada projeto tem identidade visual própria, várias páginas e versão em mais de um idioma quando a empresa atua fora do país. Clique em um projeto para navegar no site.`, [[null, 'Projetos']])}
 <section class="secao">
   <div class="in">
+    <div class="filtro" role="group" aria-label="Filtrar projetos por setor" data-filtro hidden><button type="button" aria-pressed="true" data-setor="">Todos <i>${projetos.length}</i></button>${setores.map(s => `<button type="button" aria-pressed="false" data-setor="${s.slug}">${s.nome} <i>${quantos(s.slug)}</i></button>`).join('')}</div>
     ${gradeProjetos()}
     <p class="legenda">${legendaProjetos}</p>
   </div>
@@ -204,6 +237,72 @@ ${cta()}`;
   </div>
 </section>
 ${cta()}`;
+
+  // ---------- Setores (visão geral): faixas alternadas, sem cartões ----------
+  P.setores = `${cabeca('Setores', 'Especialistas na forma como o seu setor vende.', 'Cada setor tem um comprador diferente, um caminho diferente até o pedido e um jeito próprio de mostrar a empresa. Por isso o site, os sistemas e a rotina comercial partem do setor, não de um modelo.', [[null, 'Setores']])}
+<section class="secao">
+  <div class="in setfaixas">${setores.map((s, i) => {
+    const proj = projetos.filter(p => p[1] === s.slug);
+    return `<article class="setfaixa">
+      <a class="sf-tela" href="${L('setores/' + s.slug)}" tabindex="-1" aria-hidden="true">${tela(imgProjeto(proj[0]), '', proj[0][2].toLowerCase())}</a>
+      <div class="sf-txt"><span class="n">${num(i)} · ${proj.length} projetos</span><h2><a href="${L('setores/' + s.slug)}">${s.nome}</a></h2><p>${s.lead}</p>
+      <ul>${s.precisa.slice(0, 3).map(x => `<li>${check}${x}</li>`).join('')}</ul>
+      <a class="link" href="${L('setores/' + s.slug)}">Ver o setor ${seta}</a></div>
+    </article>`;
+  }).join('')}</div>
+</section>
+${cta()}`;
+
+  setores.forEach((s, si) => {
+    const proj = projetos.filter(p => p[1] === s.slug);
+    const outros = setores.filter(o => o.slug !== s.slug);
+    // Fundo alternado depois dos projetos: a faixa do site do setor, quando existe, já ocupa um fundo alternado.
+    const alt = impar => (impar === 1) !== Boolean(s.site) ? ' secao-alt' : '';
+    P['setores/' + s.slug] = `${cabeca(s.nome, s.titulo, s.lead, [['setores', 'Setores'], [null, s.nome]])}
+<section class="secao">
+  <div class="in">
+    <div class="sec-cab"><div><span class="rotulo">O que trava a venda</span><h2 class="h-secao">Onde o comprador desiste antes de falar com você.</h2></div></div>
+    <ol class="dores">${s.dores.map(([t, d], i) => `<li><span class="n">${num(i)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+  </div>
+</section>
+<section class="secao secao-alt">
+  <div class="in duas">
+    <div><span class="rotulo">O que o site precisa ter</span><h2>Cinco pontos que fazem diferença no seu setor.</h2><p class="lead">Cada item abaixo entra no projeto quando faz sentido para a empresa. Você vê tudo funcionando na prévia antes de decidir.</p></div>
+    <ul class="precisa">${s.precisa.map(x => `<li>${check}<span>${x}</span></li>`).join('')}</ul>
+  </div>
+</section>
+<section class="secao">
+  <div class="in">
+    <div class="sec-cab"><div><span class="rotulo">Projetos do setor</span><h2 class="h-secao">${proj.length} estudos de redesenho em ${s.nome.toLowerCase()}.</h2></div><a class="link" href="${L('projetos')}">Todos os projetos ${seta}</a></div>
+    ${gradeProjetos(proj)}
+    <p class="legenda">${legendaProjetos}</p>
+  </div>
+</section>
+${s.site ? `<section class="secao secao-alt">
+  <div class="in">
+    <a class="espec-c espec-${s.slug}" href="${s.site[2]}/${v}/"><span class="rotulo">Site completo do setor</span><h3>${s.site[0]}</h3><p>${s.site[1]}</p><b class="mais">Conhecer as soluções do setor ${seta}</b></a>
+  </div>
+</section>` : ''}
+<section class="secao${alt(1)}">
+  <div class="in duas duas-topo">
+    <div><span class="rotulo">Como resolvemos</span><h2>O que entra no projeto para ${s.nome.split(' e ')[0].toLowerCase()}.</h2></div>
+    <div class="outros outros-1">${s.servicos.map(g => grupos.find(x => x.slug === g)).map(o => `<a href="${L('servicos/' + o.slug)}">${icone(o.slug)}<span><b>${o.nome}</b>${o.resumo}</span>${seta}</a>`).join('')}</div>
+  </div>
+</section>
+<section class="secao${alt(0)}">
+  <div class="in duas duas-topo">
+    <div><span class="rotulo">Perguntas</span><h2>O que as empresas do setor perguntam.</h2></div>
+    <div class="faq">${s.perguntas.map(([q, r]) => `<details><summary>${q}</summary><p>${r}</p></details>`).join('')}</div>
+  </div>
+</section>
+<section class="secao${alt(1)} setores-outros">
+  <div class="in">
+    <span class="rotulo">Outros setores</span>
+    <ul class="segs">${outros.map(o => `<li><a href="${L('setores/' + o.slug)}">${o.nome}</a></li>`).join('')}</ul>
+  </div>
+</section>
+${cta()}`;
+  });
 
   // ---------- Como trabalhamos ----------
   P['como-trabalhamos'] = `${cabeca('Como trabalhamos', 'Primeiro o site pronto. Depois a conversa sobre o projeto.', diferencial.texto, [[null, 'Como trabalhamos']])}
@@ -228,7 +327,7 @@ ${cta()}`;
 ${cta()}`;
 
   // ---------- Sobre ----------
-  P.sobre = `${cabeca('Sobre', 'Uma agência especializada em empresas que vendem de verdade.', 'A Overtus cria sites, sistemas e estrutura comercial para empresas que vendem de forma consultiva, em que o cliente pesquisa, compara e pede orçamento antes de comprar.', [[null, 'Sobre']])}
+  P['quem-somos'] = `${cabeca('Quem somos', 'Uma agência especializada em empresas que vendem de verdade.', 'A Overtus cria sites, sistemas e estrutura comercial para empresas que vendem de forma consultiva, em que o cliente pesquisa, compara e pede orçamento antes de comprar.', [[null, 'Quem somos']])}
 <section class="secao">
   <div class="in duas">
     <div><span class="rotulo">O que fazemos</span><h2>${site.slogan}</h2></div>
@@ -246,9 +345,18 @@ ${cta()}`;
   </div>
 </section>
 <section class="secao">
-  <div class="in duas">
-    <div><span class="rotulo">Para quem</span><h2>Segmentos que atendemos</h2><p class="lead">Indústrias e empresas de serviços em que cada venda passa por uma conversa.</p></div>
-    <ul class="segs">${segmentos.map(s => `<li>${s}</li>`).join('')}</ul>
+  <div class="in">
+    <div class="sec-cab"><div><span class="rotulo">Para quem</span><h2 class="h-secao">Setores que atendemos</h2><p class="lead">Indústrias e empresas de serviços em que cada venda passa por uma conversa.</p></div><a class="link" href="${L('projetos')}">Ver os ${projetos.length} projetos ${seta}</a></div>
+    ${listaSetores()}
+  </div>
+</section>
+<section class="secao secao-alt">
+  <div class="in duas duas-topo">
+    <div><span class="rotulo">Fale com a gente</span><h2>Atendimento direto, sem intermediário.</h2><p class="lead">Quem conversa com você é quem acompanha o projeto do estudo à publicação.</p></div>
+    <ul class="canais">
+      <li><span>Agenda</span><a href="${site.agenda}" data-agendar>Agendar uma conversa por vídeo ${seta}</a></li>
+      <li><span>E-mail</span><a href="mailto:${site.email}">${site.email}</a></li>
+    </ul>
   </div>
 </section>
 ${cta()}`;
@@ -266,6 +374,7 @@ ${cta()}`;
         <li><b>Combinamos a prévia</b>Se fizer sentido, montamos as duas versões do novo site para você ver no ar.</li>
       </ol>
       <p class="nota">${chamada.nota}</p>
+      <p class="contato-email">Prefere escrever? <a href="mailto:${site.email}">${site.email}</a></p>
       <a class="btn btn-sec" href="${site.agenda}" target="_blank" rel="noopener">Abrir a agenda em outra aba</a>
     </aside>
   </div>
@@ -318,7 +427,7 @@ ${espec('secao secao-alt')}
 <section class="secao">
   <div class="in">
     <div class="sec-cab"><div><span class="rotulo">Portfólio</span><h2 class="h-secao">Projetos desenvolvidos</h2></div><a class="link" href="${L('projetos')}">Todos os projetos ${seta}</a></div>
-    ${gradeProjetos(projetos.slice(0, 6))}
+    ${gradeProjetos(destaques)}
     <p class="legenda">${legendaProjetos}</p>
   </div>
 </section>
@@ -377,7 +486,7 @@ ${espec('secao')}
 <section class="secao vitrine">
   <div class="in">
     <div class="sec-cab"><div><span class="rotulo">Portfólio</span><h2 class="h-secao">Projetos desenvolvidos</h2></div><a class="link" href="${L('projetos')}">Todos os projetos ${seta}</a></div>
-    ${gradeProjetos(projetos.slice(0, 6))}
+    ${gradeProjetos(destaques)}
     <p class="legenda">${legendaProjetos}</p>
   </div>
 </section>
