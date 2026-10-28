@@ -3,12 +3,11 @@
 // Vale custom domain ("<cliente>.overtus.com.br") ou rota de zona ("<cliente>.overtus.com.br/*").
 import fs from 'node:fs';
 import path from 'node:path';
-import { repo } from './paths.mjs';
+import { repo, clientesPublicados } from './paths.mjs';
 
 const wrangler = fs.readFileSync(path.join(repo, 'wrangler.jsonc'), 'utf8');
 const rotas = new Set([...wrangler.matchAll(/"pattern"\s*:\s*"([^"]+)"/g)].map(m => m[1].replace(/\/\*$/, '')));
-const clientes = fs.readdirSync(path.join(repo, 'clientes'))
-  .filter(c => fs.existsSync(path.join(repo, 'clientes', c, 'site.config.json')));
+const clientes = clientesPublicados();
 const faltando = clientes.filter(c => !rotas.has(`${c}.overtus.com.br`));
 
 if (faltando.length) {

@@ -2,12 +2,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { repo } from './paths.mjs';
+import { repo, clientesPublicados } from './paths.mjs';
 
 const run = (script, arg) => execFileSync(process.execPath, [path.join(repo, 'scripts', script), ...(arg ? [arg] : [])], { stdio: 'inherit' });
-const clientes = fs.existsSync(path.join(repo, 'clientes'))
-  ? fs.readdirSync(path.join(repo, 'clientes')).filter(c => fs.existsSync(path.join(repo, 'clientes', c, 'site.config.json')))
-  : [];
+const clientes = clientesPublicados();
 
 // Cliente ainda sem design/ (fase de direções visuais): publica só a pasta public/.
 const temDesign = c => fs.existsSync(path.join(repo, 'clientes', c, 'design/layout.html'));
