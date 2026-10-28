@@ -20,5 +20,6 @@ for (const c of clientes) {
   }
 }
 run('hub.mjs');
+run('check-arquivos.mjs');
 run('check.mjs');
 for (const c of clientes) if (temDesign(c)) run('check.mjs', `clientes/${c}`);
