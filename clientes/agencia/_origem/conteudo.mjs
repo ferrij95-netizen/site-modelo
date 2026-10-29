@@ -1,4 +1,4 @@
-// Textos do site da Overtus. As duas versões usam os mesmos textos; só o visual muda.
+// Textos do site da Overtus (uma versão só, servida na raiz de agencia.overtus.com.br).
 // Sem preços (a precificação ainda não foi aprovada) e sem clientes ou depoimentos inventados.
 
 export const site = {
@@ -95,6 +95,39 @@ export const etapas = [
   ['Escolha e ajustes', 'Você escolhe a versão, pede os ajustes e aprova cada página. Só então conversamos sobre o projeto.', 'Lista de ajustes acompanhada até a aprovação.'],
   ['Publicação', 'O site vai para o seu domínio, com hospedagem, SEO, compartilhamento em redes e medição de contatos configurados.', 'Site no ar e contatos chegando no lugar certo.'],
   ['Acompanhamento', 'Atualizamos o site, cuidamos dos anúncios e organizamos a rotina comercial para que as visitas virem negócio.', 'Pedidos atendidos por mensagem e relatório de contatos.'],
+];
+
+// O cartão à direita de cada etapa, na inicial: o que aparece na tela naquele momento do projeto.
+// [título, texto, linhas]. Linhas: ['anexo', nome, detalhe] | ['campo', rótulo, valor] | ['lista', texto, estado].
+export const etapasCartao = [
+  ['Material da empresa', 'O que reunimos na primeira conversa para desenhar com a identidade real.', [
+    ['anexo', 'Logo da empresa', 'vetor ou imagem em boa resolução'],
+    ['anexo', 'Fotos da estrutura e dos produtos', 'as que a empresa já tem'],
+    ['anexo', 'Textos e páginas do site atual', 'aproveitados e revisados'],
+    ['anexo', 'Catálogo ou lista de produtos', 'PDF, planilha ou site'],
+  ]],
+  ['Prévia no ar', 'Duas versões completas, publicadas em um link para abrir no computador e no celular.', [
+    ['versoes'],
+    ['campo', 'Endereço da prévia', 'suaempresa.overtus.com.br'],
+  ]],
+  ['Lista de ajustes', 'Você navega, anota o que mudar e aprova página por página.', [
+    ['lista', 'Página inicial', 'Aprovada'],
+    ['lista', 'Produtos: trocar a ordem das linhas', 'Ajustado'],
+    ['lista', 'Sobre: incluir a foto da equipe', 'Ajustado'],
+    ['lista', 'Contato: WhatsApp do comercial', 'Aprovada'],
+  ]],
+  ['Site no seu domínio', 'O que fica configurado na publicação.', [
+    ['lista', 'Domínio da empresa e certificado https', 'Configurado'],
+    ['lista', 'Títulos e descrições para o Google', 'Configurado'],
+    ['lista', 'Imagem de compartilhamento em todas as páginas', 'Configurado'],
+    ['lista', 'Medição de contatos por formulário e WhatsApp', 'Configurado'],
+  ]],
+  ['Pedidos por mensagem', 'Depois da publicação, a empresa pede e nós publicamos.', [
+    ['campo', 'Pedido', 'Trocar a foto da capa e incluir a nova linha de produtos'],
+    ['lista', 'Foto da capa', 'Publicado'],
+    ['lista', 'Nova linha de produtos', 'Em andamento'],
+    ['campo', 'Relatório do mês', 'Contatos por origem: site, anúncios e WhatsApp'],
+  ]],
 ];
 
 // Princípios (por que a Overtus).
