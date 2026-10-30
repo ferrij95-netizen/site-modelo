@@ -25,6 +25,7 @@ const SETORES = {
   consultoria: 'Consultoria',
   construcao: 'Construção e imobiliário',
   solar: 'Energia solar',
+  educacao: 'Educação',
 };
 const nomeSetor = s => SETORES[s] || (s ? s[0].toUpperCase() + s.slice(1) : 'Sem setor');
 
