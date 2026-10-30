@@ -1,0 +1,210 @@
+/* Colégio Favo: base comum às versões A e B. Cores do site e do logo atuais: azul-marinho #0F2B4D do topo, azul-petróleo
+   #066682 dos favos do logo, amarelo-mel #ECB327 do logo do Favo de Mel Kids. Títulos em Cabin (a mais próxima do nome
+   "Colégio Favo" no logo), texto em Inter (A) ou Open Sans, a fonte do site atual (B). */
+:root{--marinho:#0F2B4D;--marinho2:#0A1F38;--petroleo:#066682;--petroleo2:#05506A;--agua:#5790A2;--ceu:#E3EFF4;--ceu2:#F3F8FA;
+  --mel:#ECB327;--mel2:#D99A12;--mel-claro:#FDF3D6;--preto:#0E2233;--txt:#344654;--cinza:#5F707C;--linha:#D8E4EA;--whats:#1E8E3E;
+  --h:Cabin,system-ui,sans-serif;--b:Inter,system-ui,sans-serif;--r:10px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--b);font-size:17px;line-height:1.65;color:var(--txt);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+figure{margin:0}
+[hidden]{display:none!important}
+a{color:inherit}
+h1,h2,h3{font-family:var(--h);color:var(--preto);line-height:1.1;margin:0 0 .45em;text-wrap:balance;font-weight:700}
+h1{font-size:clamp(38px,5vw,64px);letter-spacing:-.015em}
+h2{font-size:clamp(30px,3.4vw,46px);letter-spacing:-.01em}
+h3{font-size:22px}
+p{margin:0 0 1em}
+.in{max-width:1220px;margin:0 auto;padding:0 28px}
+.pular{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;z-index:99}.pular:focus{left:8px}
+.eyebrow{font-family:var(--h);font-weight:700;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--petroleo);margin:0 0 12px}
+.tit{max-width:740px;margin:0 0 44px}.tit p:not(.eyebrow){font-size:18px;color:var(--cinza)}
+.lead{font-size:19.5px;color:var(--preto)}
+.ic{width:20px;height:20px;flex:none}
+.link{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--petroleo);text-decoration:none}
+.link .ic{transition:transform .2s}.link:hover .ic{transform:translateX(4px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--h);font-weight:700;font-size:17px;text-decoration:none;padding:14px 26px;border-radius:99px;border:2px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s;line-height:1.2}
+.btn:hover{transform:translateY(-1px)}
+.btn-peq{padding:10px 20px;font-size:15.5px}
+.btn-mel{background:var(--mel);color:var(--marinho)}.btn-mel:hover{background:#F5C24A}
+.btn-azul{background:var(--petroleo);color:#fff}.btn-azul:hover{background:var(--petroleo2)}
+.btn-borda{border-color:currentColor;color:var(--marinho);background:transparent}.btn-borda:hover{background:var(--marinho);border-color:var(--marinho);color:#fff}
+.botoes{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 0}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.sec{padding:96px 0}
+.h-peq{font-size:24px;margin:36px 0 16px}
+.hex{display:block}.hex path{fill:currentColor}
+
+/* barra de acessos (como a barra azul do site atual) */
+.pre{background:var(--marinho2);color:#fff;font-size:14px}
+.pre .in{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:42px}
+.pre a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;opacity:.88;padding:6px 0}.pre a:hover{opacity:1;text-decoration:underline}
+.pre .ic{width:17px;height:17px;color:var(--mel)}
+.pre-acessos,.pre-cont{display:flex;gap:22px;flex-wrap:wrap}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:50}
+.topo .in{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:84px}
+.marca img{width:auto;height:50px}
+.menu{display:flex;align-items:center;gap:2px}
+.menu a{font-family:var(--h);font-size:16.5px;font-weight:600;text-decoration:none;padding:8px 13px;border-radius:99px;white-space:nowrap}
+.menu .btn{margin-left:12px}
+.menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:inherit}.menu-btn .ic{width:28px;height:28px}
+
+/* rodapé */
+.rodape{background:var(--marinho2);color:rgba(255,255,255,.8);font-size:15px}
+.rodape .in{display:grid;grid-template-columns:1.4fr 1fr 1.1fr .8fr;gap:40px;padding-top:64px;padding-bottom:48px}
+.rodape h3{font-family:var(--h);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--mel);margin:6px 0 16px}
+.rodape a{text-decoration:none}.rodape a:hover{color:#fff;text-decoration:underline}
+.rodape p a{display:inline-flex;align-items:center;gap:8px;margin:2px 0}
+.rodape nav a{display:block;padding:3px 0}
+.rod-marca img{width:220px;height:auto;margin-bottom:18px}
+.rodape .link{color:#fff}
+.rod-fim{margin:0;padding:16px 28px;text-align:center;font-size:13.5px;border-top:1px solid rgba(255,255,255,.1)}
+.redes{display:flex;gap:10px;margin:16px 0 0}
+.redes a{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid currentColor;opacity:.85;text-decoration:none}.redes a:hover{opacity:1}
+.whats-flut{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--whats);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.whats-flut .ic{width:30px;height:30px}
+
+/* acesso rápido: calendário, portal e matrícula (os três quadros do site atual) */
+.rapido{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.rapido a{display:flex;gap:18px;align-items:flex-start;padding:30px 30px;text-decoration:none;transition:background .2s}
+.rapido a+a{border-left:1px solid var(--linha)}
+.rapido b{display:block;font-family:var(--h);font-size:21px;color:var(--preto);margin-bottom:4px}
+.rapido span{font-size:15px;color:var(--cinza);line-height:1.5}
+.ic-g{width:44px;height:44px;padding:10px;border-radius:12px;background:var(--mel-claro);color:var(--mel2);flex:none}
+
+/* filosofia */
+.filo{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.filo-item{position:relative;padding-top:86px}
+.filo-hex{position:absolute;top:0;left:0;width:70px;height:70px}
+.filo-n{position:absolute;top:22px;left:0;width:70px;text-align:center;font-family:var(--h);font-weight:700;font-size:22px}
+.filo-item h3{font-size:28px}
+.filo-item ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.filo-item li{display:flex;gap:10px;font-size:15.5px}.filo-item li .ic{color:var(--mel);margin-top:3px}
+
+/* citação Rubem Alves */
+.citacao{margin:0 0 32px;position:relative}
+.citacao p{text-wrap:balance;font-family:var(--h);font-weight:600;font-size:clamp(26px,2.6vw,36px);line-height:1.2;color:var(--preto);margin:0 0 10px}
+.citacao cite{font-style:normal;font-weight:600;color:var(--cinza)}
+.ic-aspas{width:44px;height:44px;color:var(--mel);margin-bottom:12px}
+.foto-borda img{border-radius:var(--r);width:100%}
+
+/* galeria da estrutura */
+.galeria{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.galeria figure{position:relative;overflow:hidden;border-radius:var(--r);aspect-ratio:4/3;background:var(--ceu)}
+.galeria img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.galeria li:hover img{transform:scale(1.04)}
+.galeria figcaption{position:absolute;left:12px;bottom:12px;background:rgba(10,31,56,.86);color:#fff;font-family:var(--h);font-weight:600;font-size:15px;padding:6px 12px;border-radius:6px}
+.g-duas{grid-template-columns:repeat(2,1fr)}
+.g-quatro{grid-template-columns:repeat(4,1fr)}
+
+/* projetos */
+.projetos{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px 36px}
+.projetos li{border-top:2px solid var(--linha);padding-top:22px}
+.ic-p{width:40px;height:40px;color:var(--petroleo);margin-bottom:12px}
+.projetos h3{font-size:22px;margin-bottom:6px}
+.projetos p{font-size:15.5px;margin:0}
+
+/* parceiros */
+.parceiros{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.parceiros li{display:flex;gap:18px;align-items:center}
+.parceiros img{width:120px;height:72px;object-fit:contain;background:#fff;border:1px solid var(--linha);border-radius:8px;padding:8px;flex:none}
+.parceiros b{display:block;font-family:var(--h);font-size:18px;color:var(--preto)}
+.parceiros span{font-size:15px;color:var(--cinza);line-height:1.45}
+
+/* orgulho: aprovação e nota do ENEM */
+.orgulho{padding:96px 0}
+.orgulho .in{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+.orgulho figure img{border-radius:var(--r);box-shadow:0 24px 50px rgba(10,31,56,.22)}
+.nota{display:flex;align-items:baseline;gap:14px;margin:6px 0 18px}
+.nota b{font-family:var(--h);font-size:clamp(64px,7vw,96px);line-height:1;color:var(--mel)}
+.nota span{font-family:var(--h);font-weight:600;font-size:20px}
+
+/* contatos e formulário */
+.contatos{list-style:none;padding:0;margin:0;display:grid;gap:18px}
+.contatos li{display:flex;gap:16px;align-items:flex-start}
+.contatos .ic{width:24px;height:24px;color:var(--petroleo);margin-top:3px}
+.contatos b{display:block;font-family:var(--h);font-size:17px;color:var(--preto)}
+.contatos a{text-decoration:none}.contatos a:hover{text-decoration:underline}
+.coords{display:grid;gap:0;border-top:1px solid var(--linha)}
+.coords p{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0;padding:12px 0;border-bottom:1px solid var(--linha);font-size:15.5px}
+.coords span{font-weight:600;color:var(--preto)}.coords a{color:var(--petroleo)}
+.form-box{background:var(--ceu2);border-radius:16px;padding:36px}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+.campos label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:var(--preto)}
+.campos .largo{grid-column:1/-1}
+.campos input,.campos select,.campos textarea{font:inherit;font-weight:400;font-size:16px;padding:12px 14px;border:1px solid #C3D3DB;border-radius:8px;background:#fff;color:var(--preto)}
+.campos input:focus,.campos select:focus,.campos textarea:focus{outline:2px solid var(--petroleo);outline-offset:1px}
+.form-ok{margin:16px 0 0;font-size:15px;background:#E5F4EA;padding:12px 16px;border-radius:8px}
+.mapa iframe{width:100%;height:420px;border:0;border-radius:var(--r);display:block}
+
+/* capa das páginas internas */
+.capa-int .in{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:72px}
+.capa-int .in>div:only-child{grid-column:1/-1;max-width:800px}
+.capa-int h1{font-size:clamp(36px,4.4vw,58px)}
+.capa-int p:not(.eyebrow){font-size:19px;margin:0}
+.capa-int figure img{border-radius:var(--r);width:100%;aspect-ratio:4/3;object-fit:cover}
+
+/* o colégio */
+.texto-colegio .in{align-items:start}
+.texto-colegio .corpo p:first-child{font-family:var(--h);font-weight:600;font-size:24px;color:var(--preto);line-height:1.35}
+.destaque-num{display:grid;gap:26px}
+.destaque-num p{margin:0;display:flex;gap:20px;align-items:center;padding-bottom:22px;border-bottom:1px solid var(--linha)}
+.destaque-num b{font-family:var(--h);font-size:64px;line-height:1;color:var(--petroleo);min-width:96px}
+.destaque-num span{font-size:17px;color:var(--preto);font-weight:500}
+
+/* ensino: etapas em detalhe */
+.etapa-det{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;padding:48px 0;border-bottom:1px solid var(--linha);scroll-margin-top:120px}
+.etapa-det:nth-child(even) figure{order:2}
+.etapa-det figure img{border-radius:var(--r);width:100%;aspect-ratio:4/3;object-fit:cover}
+.etapa-det .series{font-family:var(--h);font-weight:700;font-size:20px;color:var(--mel2);margin-top:-6px}
+.coord{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--cinza)}.coord .ic{color:var(--petroleo);margin-top:3px}
+.coord a{color:var(--petroleo)}
+.est-tit{display:flex;align-items:center;gap:14px;font-size:30px;margin-bottom:28px}
+.est-hex{width:30px;height:30px;color:var(--mel)}
+.cta-visita{text-align:center}
+.cta-visita .in{max-width:760px}
+.abelha-voa{position:absolute;right:28px;top:-20px;width:150px;pointer-events:none}
+.proj-sec .in{position:relative}
+
+@media (max-width:1080px){
+  .menu-btn{display:block}
+  .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;padding:12px 20px 22px;gap:2px;box-shadow:0 18px 30px rgba(0,0,0,.12)}
+  .menu.aberto{display:flex}
+  .menu a{padding:12px 10px;border-radius:8px}
+  .menu .btn{margin:10px 0 0}
+  .topo .in{position:relative}
+  .pre-acessos a:nth-child(2){display:none}
+  .rodape .in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .sec,.orgulho{padding:64px 0}
+  .duas,.orgulho .in,.capa-int .in,.etapa-det{grid-template-columns:1fr;gap:36px}
+  .etapa-det:nth-child(even) figure{order:0}
+  .rapido{grid-template-columns:1fr}.rapido a+a{border-left:0;border-top:1px solid var(--linha)}
+  .filo,.projetos,.parceiros{grid-template-columns:1fr}
+  .filo{gap:36px}
+  .galeria,.g-quatro{grid-template-columns:1fr 1fr;gap:12px}
+  .galeria figcaption{font-size:13px;left:8px;bottom:8px;padding:4px 9px}
+  .tit{margin-bottom:32px}
+  .abelha-voa{width:96px;top:-40px;right:12px}
+  .capa-int .in{padding-top:48px;padding-bottom:48px}
+}
+@media (max-width:620px){
+  .in{padding:0 18px}
+  body{font-size:16.5px}
+  .pre .in{justify-content:center}.pre-cont{display:none}.pre-acessos{gap:18px;font-size:13.5px}
+  .marca img{height:42px}
+  .topo .in{min-height:70px}
+  .rodape .in{grid-template-columns:1fr}
+  .campos{grid-template-columns:1fr}
+  .form-box{padding:24px 18px}
+  .g-duas{grid-template-columns:1fr}
+  .parceiros li{align-items:flex-start}.parceiros img{width:96px;height:60px}
+  .mapa iframe{height:320px}
+  .destaque-num b{font-size:52px;min-width:76px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.tecnologia .parceiros{grid-template-columns:1fr;gap:18px}
