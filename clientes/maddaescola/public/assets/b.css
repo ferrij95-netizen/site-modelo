@@ -1,0 +1,155 @@
+/* Versão B "Jardim": clara, fotos em círculos com os aros verde, laranja e lilás do logo, faixa de fatos roxa,
+   espaços com foto fixa que troca, rodapé roxo arredondado. */
+.v-b .topo{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);box-shadow:0 1px 0 #EADFF2}
+.v-b .topo .in{display:flex;align-items:center;gap:20px;min-height:88px}
+.v-b .marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+.v-b .marca img{width:72px;height:72px}
+.v-b .marca span{font-family:var(--h);font-weight:500;font-size:16px;line-height:1.15;color:#29A3D6}
+.v-b .menu{margin-left:auto;display:flex;align-items:center;gap:2px}
+.v-b .menu a{font-family:var(--h);font-weight:500;font-size:17px;color:var(--tinta);text-decoration:none;padding:8px 13px;border-radius:999px;transition:background .2s}
+.v-b .menu a:hover{background:var(--lilas-bg)}
+.v-b .menu a[aria-current]{background:var(--lilas-claro);color:var(--roxo)}
+.v-b .menu .menu-cta{display:inline-flex;align-items:center;gap:8px;background:var(--verde);color:var(--tinta);font-weight:600;margin-left:10px;padding:10px 18px}
+.v-b .menu .menu-cta:hover{background:#cfe57f}
+
+/* abertura */
+.hero-b{background:radial-gradient(70% 90% at 100% 0,#EFE1FA 0,transparent 60%),radial-gradient(60% 80% at 0 100%,#F1F7DC 0,transparent 60%),#fff;padding:70px 0 90px;overflow:hidden}
+.hero-b .in{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
+.fita{display:inline-block;background:var(--verde);color:var(--tinta);font-family:var(--h);font-weight:700;font-size:20px;text-transform:uppercase;letter-spacing:.04em;
+  padding:8px 20px;border-radius:12px;transform:rotate(-2.5deg);margin-bottom:24px;box-shadow:4px 4px 0 var(--roxo)}
+.hero-b h1{color:var(--roxo);font-weight:700;font-size:clamp(44px,6vw,80px);line-height:1.02}
+.hero-b .hero-sub{font-size:20px;color:var(--texto);max-width:470px}
+.bts{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.colagem{position:relative;aspect-ratio:1/1;width:100%;max-width:560px;justify-self:end}
+.circ{position:absolute;border-radius:50%;overflow:hidden;border:8px solid #fff;box-shadow:0 0 0 6px var(--anel),0 20px 40px rgba(78,59,102,.2)}
+.circ img{width:100%;height:100%;object-fit:cover}
+.circ.c1{--anel:var(--verde);width:64%;aspect-ratio:1;right:2%;top:2%}
+.circ.c2{--anel:var(--laranja);width:46%;aspect-ratio:1;left:2%;bottom:3%}
+.circ.c3{--anel:var(--lilas);width:28%;aspect-ratio:1;left:8%;top:8%}
+.ovelha{position:absolute;right:6%;bottom:4%;width:24%;border-radius:50%;background:#fff;padding:5px;box-shadow:0 14px 28px rgba(78,59,102,.22)}
+
+/* fatos */
+.fatos{background:var(--roxo);color:#D9CCE6;padding:30px 0}
+.fatos .in{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.fatos p{display:flex;gap:12px;align-items:flex-start;margin:0;font-size:15px;line-height:1.35}
+.fatos .ic{width:30px;height:30px;color:var(--verde)}
+.fatos b{display:block;font-family:var(--h);font-weight:600;font-size:19px;color:#fff;margin-bottom:2px}
+
+/* bem-vindo */
+.bv-b{padding:96px 0}
+.bv-b .in{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.bv-foto{border-radius:48% 52% 46% 54%/52% 46% 54% 48%;overflow:hidden;aspect-ratio:1;box-shadow:0 0 0 10px var(--lilas-bg)}
+.bv-foto img{width:100%;height:100%;object-fit:cover}
+.bv-b h2{font-size:clamp(26px,2.6vw,34px);font-weight:500;color:var(--roxo)}
+
+/* pilares */
+.pilares-b{background:linear-gradient(180deg,var(--lilas-bg),#EFE2F8);padding:90px 0}
+.pilares-cab{max-width:640px;margin-bottom:40px}
+.pilares-b ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:44px;counter-reset:p}
+.pilares-b li{border-top:6px solid var(--anel);padding-top:22px;border-radius:3px}
+.pb-n{font-family:var(--h);font-weight:700;font-size:56px;line-height:1;color:var(--anel);opacity:.5}
+.pilares-b h3{font-size:38px;font-weight:700;color:var(--tom);margin:8px 0}
+.c-laranja{--anel:var(--laranja);--tom:var(--laranja-esc)} .c-verde{--anel:var(--verde-2);--tom:var(--verde-esc)} .c-lilas{--anel:var(--lilas);--tom:var(--roxo-2)}
+
+/* espaços com foto que troca */
+.troca{padding:96px 0 60px;background:#fff}
+.troca-cab{margin-bottom:20px}
+.troca-grade{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start}
+.troca-midia{position:sticky;top:120px;aspect-ratio:4/3;border-radius:34px;overflow:hidden;background:var(--lilas-bg)}
+.troca-midia figure{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .6s}
+.troca-midia figure.on{opacity:1}
+.troca-midia img{width:100%;height:100%;object-fit:cover}
+.troca .ilustra{width:100%;height:100%;display:grid;place-content:center;justify-items:center;gap:12px;background:radial-gradient(circle at 30% 30%,#F7EEFC,#E6D5F3);color:var(--roxo-2);font-family:var(--h);font-size:30px;font-weight:600}
+.troca figure:last-child .ilustra{background:radial-gradient(circle at 30% 30%,#FFF4E8,#FCDDBC);color:var(--laranja-esc)}
+.troca .ilustra .ic-g{width:120px;height:120px;stroke-width:1.4}
+.troca-passos{list-style:none;margin:0;padding:0 0 10vh}
+.troca-passos li{padding:13vh 0;opacity:.4;transition:opacity .4s}
+.troca-passos li:first-child{padding-top:6vh}
+.troca-passos li.on{opacity:1}
+.troca-passos h3{font-size:36px;font-weight:700;color:var(--roxo)}
+.troca-passos p{font-size:18px}
+.troca-mob{display:none}
+
+/* tira de fotos */
+.tira{background:#FDF1E4;padding:56px 0}
+.tira-faixa{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 24px 12px;scrollbar-width:thin}
+.tira-faixa figure{flex:0 0 min(420px,78vw);margin:0;scroll-snap-align:start;border-radius:26px;overflow:hidden;aspect-ratio:4/3}
+.tira-faixa figure:nth-child(even){aspect-ratio:1;flex-basis:min(315px,60vw)}
+.tira-faixa img{width:100%;height:100%;object-fit:cover}
+
+/* turmas */
+.turmas-b{padding:90px 0}
+.turmas-b .in{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start}
+.turma-foto{width:220px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:7px solid #fff;box-shadow:0 0 0 5px var(--anel);margin-bottom:22px}
+.turma-foto img{width:100%;height:100%;object-fit:cover}
+.turma h2{color:var(--tom)}
+.turma-online{background:var(--lilas-bg);border-radius:30px;padding:32px}
+.turma-online .ic-g{color:var(--roxo-2);margin-bottom:12px}
+.turmas-pag .in{grid-template-columns:1fr 1fr}
+
+/* visita */
+.visita-b{background:#F3F8E4;padding:90px 0 130px}
+.visita-b .in{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center}
+
+/* páginas internas */
+.cab-b{background:radial-gradient(70% 90% at 100% 0,#EFE1FA 0,transparent 60%),radial-gradient(60% 80% at 0 100%,#F1F7DC 0,transparent 60%),#fff;padding:60px 0}
+.cab-b .in{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.cab-b h1{color:var(--roxo);font-weight:700}
+.cab-b p{font-size:19px;max-width:560px}
+.cab-circulo{width:min(360px,100%);aspect-ratio:1;justify-self:end;border-radius:50%;overflow:hidden;border:8px solid #fff;box-shadow:0 0 0 6px var(--verde),0 20px 40px rgba(78,59,102,.2)}
+.cab-circulo img{width:100%;height:100%;object-fit:cover}
+.cab-b.sem-foto{padding:70px 0 50px} .cab-b.sem-foto .in{grid-template-columns:1fr}
+.texto-b{padding:90px 0;background:#fff}
+.texto-b .in{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.online-b{padding:80px 0 130px;background:#fff}
+.online-b ol{list-style:none;margin:0 0 50px;padding:0;display:grid;gap:30px;max-width:760px}
+.online-b li{display:flex;gap:22px;align-items:flex-start}
+.online-b .ic-g{width:60px;height:60px;padding:14px;border-radius:50%;background:var(--lilas-bg);color:var(--roxo-2);box-sizing:content-box}
+.online-b h2{font-size:26px;margin-bottom:4px}
+.online-b .online-cta{background:var(--lilas-bg);border-radius:30px;padding:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.online-b .online-cta h2{width:100%;margin:0} .online-b .online-cta p{width:100%;margin:0 0 6px}
+.extras-b{background:var(--lilas-bg);padding:80px 0}
+.extras-b dl{margin:30px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.extras-b .ic-g{color:var(--roxo-2);margin-bottom:10px}
+.extras-b dt{font-family:var(--h);font-weight:600;font-size:22px;color:var(--tinta);margin-bottom:6px}
+.extras-b dd{margin:0}
+.contato-b{padding:70px 0 130px;background:#fff}
+.contato-b .in{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:start}
+.v-b .form-caixa{background:#fff;border:2px solid #EADFF2;border-radius:30px;padding:34px}
+
+/* rodapé roxo arredondado */
+.v-b .rodape{background:linear-gradient(135deg,#4E3B66,#3A2B4F);color:#DCCFE8;border-radius:48px 48px 0 0;margin-top:-48px;position:relative}
+.v-b .rodape h2{color:#fff} .v-b .rodape .ic{color:var(--verde)}
+.v-b .rod-fim{border-top:1px solid rgba(255,255,255,.12);color:#BDAFCD}
+
+@media (max-width:1100px){
+  .v-b .marca span{display:none}
+  .v-b .menu a{font-size:15px;padding:8px 9px}
+}
+@media (max-width:900px){
+  .menu-btn{display:block;margin-left:auto}
+  .v-b .marca span{display:block}
+  .v-b .topo .in{min-height:74px} .v-b .marca img{width:58px;height:58px}
+  .v-b .menu{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;align-items:stretch;padding:16px 24px 26px;box-shadow:0 12px 20px rgba(78,59,102,.15)}
+  .v-b .menu.aberto{display:flex}
+  .v-b .menu a{font-size:19px}
+  .v-b .menu .menu-cta{margin:10px 0 0;justify-content:center}
+  .hero-b .in,.bv-b .in,.troca-grade,.visita-b .in,.cab-b .in,.texto-b .in,.contato-b .in,.turmas-b .in,.turmas-pag .in{grid-template-columns:1fr}
+  .colagem{justify-self:center;max-width:420px}
+  .fatos .in{grid-template-columns:1fr 1fr}
+  .pilares-b ol{grid-template-columns:1fr;gap:30px}
+  .troca-midia{display:none}
+  .troca-passos li{padding:24px 0;opacity:1}
+  .troca-mob{display:block;border-radius:22px;overflow:hidden;margin-bottom:14px}
+  .troca-mob img{width:100%;aspect-ratio:16/10;object-fit:cover}
+  .cab-circulo{justify-self:start;width:240px}
+  .extras-b dl{grid-template-columns:1fr 1fr}
+  .bv-foto{max-width:380px}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .fatos .in{grid-template-columns:1fr}
+  .extras-b dl{grid-template-columns:1fr}
+  .v-b .form-caixa{padding:22px}
+  .v-b .marca span{font-size:14px}
+}
