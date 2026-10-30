@@ -1,8 +1,9 @@
 // Gera as páginas da Overtus por segmento, cada uma em duas versões (A "Editorial" e B "Marinho"):
 //   clientes/construtoras/public/  -> construtoras.overtus.com.br (construtoras e incorporadoras)
 //   clientes/industrias/public/    -> industrias.overtus.com.br (indústrias)
-// O visual é o do site da agência (clientes/agencia): base.css, a.css, b.css, fontes e imagens são copiados de lá a cada geração,
-// e seg.css / seg.js (nesta pasta) acrescentam as peças próprias dos segmentos.
+// O visual é o do site da agência na versão A/B (base.css, a.css, b.css, site.js, fontes Fraunces/General Sans), guardado em
+// _origem/visual/ e copiado de lá a cada geração; seg.css / seg.js (nesta pasta) acrescentam as peças próprias dos segmentos.
+// (O site da agência passou a ter visual próprio em uma só versão; os prints p-*.webp continuam vindo de clientes/agencia/public/assets/img.)
 // Indústrias tem também a versão em inglês (conteudo-industrias-en.mjs), em /en/, /en/a/ e /en/b/, com troca de idioma no topo.
 // Textos fixos (botões, rodapé, escolha de versão) por idioma em ui.mjs.
 // Rodar depois de mudar qualquer texto: node clientes/construtoras/_origem/gerar.mjs
@@ -17,6 +18,7 @@ import UI from './ui.mjs';
 const aqui = path.dirname(new URL(import.meta.url).pathname);
 const clientes = path.join(aqui, '../..');
 const agencia = path.join(clientes, 'agencia/public/assets');
+const visual = path.join(aqui, 'visual');
 const SEGMENTOS = [construtoras, industrias];
 // Idiomas de cada segmento: o conteúdo em português e, quando houver, a tradução (mesmas páginas, mesmos endereços com /en na frente).
 construtoras.idiomas = { pt: construtoras };
@@ -216,7 +218,7 @@ function gerarVersao(seg, v) {
   const trocaIdioma = slug => (idiomas.length > 1 ? `<div class="idioma" role="group" aria-label="${t.idiomaAria}">${idiomas.map(l => `<a href="${prefixo(l)}/${v}/${slug === 'index' ? '' : slug + '/'}" hreflang="${UI[l].html}" lang="${UI[l].html}"${l === lang ? ' aria-current="true"' : ''} title="${UI[l].nome}">${UI[l].curto}</a>`).join('')}</div>` : '');
 
   // Faixa fina acima do topo: liga o site do segmento ao site principal da Overtus.
-  const faixaOvertus = `<div class="faixa-overtus"><div class="in"><a href="${AGENCIA}/${v}/">${t.inicioOvertus}</a><a href="${AGENCIA}/${v}/setores/">${t.todosSetores} →</a></div></div>`;
+  const faixaOvertus = `<div class="faixa-overtus"><div class="in"><a href="${AGENCIA}/">${t.inicioOvertus}</a><a href="${AGENCIA}/setores/">${t.todosSetores} →</a></div></div>`;
   const topo = slug => `<header class="topo">
   ${faixaOvertus}
   <div class="in">
@@ -232,7 +234,7 @@ function gerarVersao(seg, v) {
     <div class="r-marca"><a class="marca" href="${L('index')}">${marcaHTML(seg)}</a><p>${t.slogan}</p><p class="r-2">${seg.hero.lead}</p></div>
     <div><h3>${t.solucoes}</h3><ul>${grupos.map(g => `<li><a href="${L('solucoes/' + g.slug)}">${g.nome}</a></li>`).join('')}</ul></div>
     <div><h3>${seg.segmento}</h3><ul>${seg.menu.filter(([s]) => s !== 'solucoes').map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
-    <div><h3>${t.overtus}</h3><ul><li><a href="${AGENCIA}/${v}/">${t.inicioOvertus}</a></li><li><a href="${AGENCIA}/${v}/setores/">${t.todosSetores}</a></li>${lang === 'pt' ? `<li><a href="${outro.dominio}/${v}/">${t.paraSeg(outro)}</a></li>` : ''}<li><a href="${AGENDA}" data-agendar>${t.agendar}</a></li></ul></div>
+    <div><h3>${t.overtus}</h3><ul><li><a href="${AGENCIA}/">${t.inicioOvertus}</a></li><li><a href="${AGENCIA}/setores/">${t.todosSetores}</a></li>${lang === 'pt' ? `<li><a href="${outro.dominio}/${v}/">${t.paraSeg(outro)}</a></li>` : ''}<li><a href="${AGENDA}" data-agendar>${t.agendar}</a></li></ul></div>
   </div>
   <div class="in r-base"><span>© ${new Date().getFullYear()} Overtus</span><span>${t.especialistas(seg)}</span></div>
 </footer>`;
@@ -297,7 +299,7 @@ function gerarVersao(seg, v) {
 
   const projetos = cls => (seg.projetos ? `<section class="${cls}">
   <div class="in">
-    <div class="sec-cab"><div><span class="rotulo">${t.portfolio}</span><h2 class="h-secao">${t.projetosTit}</h2></div>${lang === 'pt' ? `<a class="link" href="${AGENCIA}/${v}/projetos/">${t.todosProjetos} ${seta}</a>` : ''}</div>
+    <div class="sec-cab"><div><span class="rotulo">${t.portfolio}</span><h2 class="h-secao">${t.projetosTit}</h2></div>${lang === 'pt' ? `<a class="link" href="${AGENCIA}/projetos/">${t.todosProjetos} ${seta}</a>` : ''}</div>
     <div class="projs">${seg.projetos.map(([im, s, d]) => `<article class="proj">${tela(im, t.projAlt(s))}<div class="proj-c"><span class="rotulo">${s}</span><p>${d}</p></div></article>`).join('')}</div>
     <p class="legenda">${seg.legendaProjetos}</p>
   </div>
@@ -552,15 +554,15 @@ for (const seg of SEGMENTOS) {
   const pub = path.join(clientes, seg.slug, 'public');
   const assets = path.join(pub, 'assets');
   fs.mkdirSync(path.join(assets, 'img'), { recursive: true });
-  // Visual da agência (copiado, nunca editado aqui) + peças dos segmentos.
-  for (const f of ['base.css', 'a.css', 'b.css', 'site.js']) fs.copyFileSync(path.join(agencia, f), path.join(assets, f));
-  fs.cpSync(path.join(agencia, 'fontes'), path.join(assets, 'fontes'), { recursive: true });
+  // Visual A/B (copiado de _origem/visual, nunca editado em public/) + peças dos segmentos.
+  for (const f of ['base.css', 'a.css', 'b.css', 'site.js']) fs.copyFileSync(path.join(visual, f), path.join(assets, f));
+  fs.cpSync(path.join(visual, 'fontes'), path.join(assets, 'fontes'), { recursive: true });
   const conteudos = Object.values(seg.idiomas);
   const projetos = new Set(conteudos.flatMap(c => (c.projetos || []).map(([im]) => `${im}.webp`)));
-  // Imagens: as da agência e, quando não estão lá, as desta pasta (_origem/img).
+  // Imagens: de _origem/visual/img (ícones e forma), senão os prints da agência, senão as desta pasta (_origem/img).
   for (const f of ['favicon-48.png', 'icone-apple-180.png', 'forma.webp', ...projetos]) {
-    const daAgencia = path.join(agencia, 'img', f);
-    fs.copyFileSync(fs.existsSync(daAgencia) ? daAgencia : path.join(aqui, 'img', f), path.join(assets, 'img', f));
+    const fonte = [path.join(visual, 'img', f), path.join(agencia, 'img', f), path.join(aqui, 'img', f)].find(x => fs.existsSync(x));
+    fs.copyFileSync(fonte, path.join(assets, 'img', f));
   }
   for (const f of ['seg.css', 'seg.js']) fs.copyFileSync(path.join(aqui, f), path.join(assets, f));
 
