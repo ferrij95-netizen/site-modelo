@@ -1,0 +1,200 @@
+/* Versão B "Estrada": mais nova. Foto cheia da cegonha com cotação rápida, diferenciais sobre a estrada preta com
+   faixa branca do logo, segmentos no roxo, mapa com as duas bases no azul-marinho e galeria em mosaico.
+   Títulos em Archivo larga e pesada (o "Hawai" do logo é uma grotesca tipo Arial Bold). */
+.v-b h1, .v-b h2 { font-weight: 800; font-stretch: 104%; letter-spacing: -.02em; }
+.rotulo { font: 700 13px/1.2 var(--texto); letter-spacing: .14em; text-transform: uppercase; color: var(--logo-laranja); margin-bottom: 14px; }
+
+/* topo */
+.v-b .topo { position: sticky; top: 0; z-index: 30; background: #fff; box-shadow: 0 1px 0 var(--linha); transition: background .3s, box-shadow .3s; }
+.v-b .topo-linha { display: flex; align-items: center; gap: 22px; height: 84px; }
+.v-b .marca { width: 80px; flex: none; }
+.v-b .marca img { width: 100%; height: auto; }
+.v-b #menu { margin-left: auto; }
+.v-b #menu ul { display: flex; gap: 2px; }
+.v-b #menu a { display: block; padding: 10px 13px; font-weight: 700; font-size: 15.5px; text-decoration: none; color: var(--tinta); border-radius: 999px; }
+.v-b #menu a:hover { background: var(--claro); }
+.v-b #menu a.ativo { background: var(--roxo); color: #fff; }
+.topo-wa { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; text-decoration: none; font-size: 15.5px; white-space: nowrap; }
+.topo-wa .ic { color: #25d366; width: 22px; height: 22px; }
+.topo-cotar { padding: 12px 22px; font-size: 15px; }
+/* abertura */
+.heroi-b { position: relative; min-height: calc(100vh - 84px); min-height: calc(100svh - 84px); display: flex; flex-direction: column; justify-content: flex-end; color: #fff; background: var(--marinho-esc); overflow: hidden; isolation: isolate; }
+.hb-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; z-index: -2; }
+.heroi-b::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(11, 25, 60, .9) 0%, rgba(30, 28, 90, .62) 42%, rgba(11, 25, 60, 0) 72%), linear-gradient(0deg, rgba(11, 25, 60, .75) 0%, rgba(11, 25, 60, 0) 40%); }
+.hb-in { padding-top: 96px; }
+.heroi-b h1 { font-size: clamp(40px, 6.2vw, 84px); max-width: 13ch; line-height: 1; margin-bottom: 22px; }
+.hb-sub { font-size: clamp(18px, 1.6vw, 21px); max-width: 40ch; opacity: .92; }
+.hb-form { padding: 28px 0 44px; }
+.cot-rapida { display: flex; align-items: flex-end; gap: 12px; background: #fff; color: var(--tinta); padding: 18px; border-radius: 14px; box-shadow: 0 24px 60px rgba(5, 10, 40, .35); }
+.cot-rapida label { display: flex; flex-direction: column; gap: 4px; flex: 1; font: 700 12px var(--texto); letter-spacing: .08em; text-transform: uppercase; color: var(--cinza); }
+.cot-rapida .cr-veic { flex: 1.2; }
+.cr-seta { padding-bottom: 12px; color: var(--logo-laranja); }
+.cr-seta .ic { width: 24px; height: 24px; }
+.cot-rapida .btn { padding: 15px 24px; white-space: nowrap; }
+
+/* estrada com os diferenciais */
+.estrada { background: var(--claro); padding: 84px 0 80px; }
+.estrada .sec-h, .v-b .sec-h { font-size: clamp(30px, 3.8vw, 48px); color: var(--roxo); margin-bottom: 36px; max-width: 20ch; }
+.estrada-pista { height: 46px; background: var(--asfalto); border-radius: 23px; position: relative; margin: 0 0 -23px; }
+.estrada-pista::after { content: ''; position: absolute; left: 24px; right: 24px; top: 21px; height: 4px; background: repeating-linear-gradient(90deg, #fff 0 30px, transparent 30px 52px); }
+.pil-b { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; position: relative; }
+.pil-b li { padding: 0 6px; }
+.pil-b .ic { box-sizing: content-box; width: 30px; height: 30px; padding: 14px; border-radius: 50%; background: var(--amarelo); color: var(--asfalto); border: 4px solid var(--claro); margin: 0 0 18px 12px; }
+.pil-b li:nth-child(even) .ic { background: var(--logo-laranja); color: #fff; }
+.pil-b h3 { font-size: 23px; color: var(--marinho); margin-bottom: 6px; }
+.pil-b p { color: var(--cinza); margin: 0; font-size: 16px; }
+
+/* desde os anos 90 */
+.desde { padding: 96px 0; display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; }
+.desde h2 { font-size: clamp(32px, 4vw, 52px); color: var(--roxo); max-width: 16ch; }
+.desde p { color: var(--cinza); }
+.desde-foto { position: relative; }
+.desde-foto img { border-radius: 14px; aspect-ratio: 4 / 3.4; object-fit: cover; width: 100%; }
+.desde-foto::before { content: ''; position: absolute; inset: -18px 18px 18px -18px; border-radius: 18px; background: linear-gradient(135deg, var(--amarelo), var(--logo-laranja)); z-index: -1; }
+.desde-foto { isolation: isolate; }
+.desde-foto figcaption { position: absolute; left: 16px; bottom: 16px; background: rgba(11, 25, 60, .82); color: #fff; font-size: 14px; padding: 6px 12px; border-radius: 999px; }
+
+/* segmentos no roxo */
+.seg-b { background: linear-gradient(120deg, var(--roxo) 0%, var(--roxo-esc) 100%); color: #fff; padding: 84px 0; }
+.seg-b .sec-h { color: #fff; }
+.seg-b .segmentos { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255, 255, 255, .25); }
+.seg-b .segmentos li { padding: 28px 26px 8px 0; }
+.seg-b .segmentos li + li { padding-left: 26px; border-left: 1px solid rgba(255, 255, 255, .18); }
+.seg-b .segmentos span { font: 800 46px/1 var(--titulo); color: var(--amarelo); display: block; margin-bottom: 18px; }
+.seg-b .segmentos h3 { font-size: 25px; margin-bottom: 8px; }
+.seg-b .segmentos p { opacity: .85; margin: 0; font-size: 16px; }
+
+/* mapa no azul-marinho */
+.mapa-sec { background: var(--marinho) radial-gradient(circle at 75% 40%, #164a8a 0%, var(--marinho) 45%, var(--marinho-esc) 100%); color: #fff; padding: 88px 0; overflow: hidden; }
+.mapa-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.mapa-sec h2 { font-size: clamp(30px, 3.6vw, 46px); margin-bottom: 28px; }
+.mapa-sec .claro { opacity: .88; font-size: 18px; margin-bottom: 26px; }
+.mb-un { padding: 18px 0; border-top: 1px solid rgba(255, 255, 255, .2); }
+.mb-un h3 { font-size: 22px; margin-bottom: 4px; color: var(--amarelo); }
+.mb-un p { margin: 0; opacity: .9; }
+.mb-un a { text-decoration: none; font-weight: 700; }
+.mapa-b { max-width: 520px; width: 100%; justify-self: center; }
+.mapa-b .uf { fill: rgba(255, 255, 255, .07); stroke: rgba(255, 255, 255, .28); }
+.mapa-b .uf.base { fill: rgba(255, 255, 255, .26); }
+.mapa-b .rota { stroke: var(--amarelo); }
+.mapa-b .pino circle { fill: var(--logo-laranja); }
+.mapa-b .pino .pino-halo { fill: rgba(234, 122, 21, .3); }
+.mapa-b .pino text { fill: #fff; }
+
+/* galeria em mosaico */
+.sec-tit { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+.mosaico-sec { padding: 88px 0; }
+.mosaico-sec .sec-h { margin: 0; }
+.gal-b { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 250px 250px; gap: 14px; }
+.gal-b li:first-child { grid-row: span 2; }
+.gal-b li:nth-child(4) { grid-column: span 2; }
+.gal-b li:nth-child(5) { display: none; }
+.gal-b a { height: 100%; border-radius: 12px; }
+.gal-b span { position: absolute; left: 12px; bottom: 12px; right: 12px; font-size: 14px; color: #fff; text-shadow: 0 1px 6px rgba(0, 0, 0, .7); font-weight: 700; }
+.gal-b.gal-toda { grid-template-columns: repeat(3, 1fr); grid-template-rows: none; grid-auto-rows: 260px; }
+.gal-b.gal-toda li:first-child { grid-row: span 2; }
+.gal-b.gal-toda li:nth-child(4) { grid-column: auto; }
+.gal-b.gal-toda li:nth-child(5) { display: block; }
+.gal-b.gal-toda li:nth-child(8) { grid-column: span 2; }
+.frota-b { padding: 72px 0; }
+
+/* chamada final */
+.cta-b { background: linear-gradient(100deg, var(--amarelo) 0%, #f9c623 45%, var(--logo-laranja) 100%); color: var(--roxo-esc); padding: 64px 0; }
+.cta-b .in { display: flex; align-items: center; justify-content: space-between; gap: 18px 40px; flex-wrap: wrap; }
+.cta-b h2 { font-size: clamp(28px, 3.6vw, 44px); margin: 0; max-width: 18ch; }
+.cta-b p { margin: 0; flex: 1; min-width: 240px; font-size: 18px; }
+.cta-b .btn-cotar { background: var(--roxo); }
+.cta-b .btn-cotar:hover { background: var(--roxo-esc); }
+.cta-b .wa-nums { justify-content: flex-start; }
+.cta-b .wa-nums .ic { color: var(--roxo); }
+
+/* cabeçalho das páginas internas */
+.cab-b { position: relative; background: linear-gradient(115deg, var(--roxo) 0%, var(--roxo-esc) 55%, var(--marinho) 100%); color: #fff; padding: 84px 0 96px; overflow: hidden; }
+.cab-b h1 { font-size: clamp(36px, 5.2vw, 66px); max-width: 18ch; margin: 0; line-height: 1.04; }
+.cab-b .cab-sub { font-size: 19px; max-width: 52ch; margin: 18px 0 0; opacity: .9; }
+.cab-b .faixas { position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: var(--asfalto); }
+.cab-b .faixas::after { content: ''; position: absolute; left: 0; right: 0; top: 13px; height: 4px; background: repeating-linear-gradient(90deg, #fff 0 30px, transparent 30px 52px); }
+
+/* empresa */
+.emp-b { padding: 88px 0; display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
+.emp-foto { position: sticky; top: 110px; }
+.emp-foto img { border-radius: 14px; aspect-ratio: 3 / 4; object-fit: cover; width: 100%; }
+.emp-txt h2 { font-size: clamp(26px, 3vw, 36px); color: var(--roxo); margin-top: 1.2em; }
+.emp-txt h2:first-child { margin-top: 0; }
+.emp-txt p { color: var(--cinza); font-size: 18px; }
+
+/* etapas */
+.etapas-b { padding: 88px 0; }
+.et-b { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; counter-reset: e; }
+.et-b li { position: relative; padding-top: 26px; border-top: 4px solid var(--roxo); }
+.et-b li:nth-child(odd) { border-top-color: var(--logo-laranja); }
+.et-b .et-n { font: 800 56px/1 var(--titulo); color: #e4e3f2; display: block; margin-bottom: 8px; }
+.et-b h3 { font-size: 21px; color: var(--marinho); margin-bottom: 6px; }
+.et-b p { margin: 0; color: var(--cinza); font-size: 15.5px; }
+
+/* cotação e contato */
+.cot-pag { padding: 72px 0 88px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: start; }
+.cot-b .cot-cheia { background: #fff; border: 1px solid var(--linha); box-shadow: 0 20px 50px rgba(20, 20, 70, .08); padding: 34px; border-radius: 16px; }
+.cot-b label span { font-weight: 700; color: var(--marinho); }
+.cot-lado h2 { font-size: 30px; color: var(--roxo); }
+.cot-lado p { display: flex; flex-direction: column; margin-bottom: 18px; }
+.cot-lado p strong { font: 800 19px var(--titulo); }
+.cot-lado p a { text-decoration: none; font-weight: 700; color: var(--marinho); }
+.cot-lado .wa-nums { justify-content: flex-start; background: var(--claro); padding: 16px; border-radius: 12px; }
+.contato-pag { padding: 72px 0; }
+.un-b { display: grid; gap: 24px; }
+.un-b .unidade { border-radius: 16px; }
+.un-b .un-texto { padding: 36px; }
+
+/* rodapé */
+.v-b .rodape { background: var(--marinho-esc); }
+.v-b .rodape::before { content: ''; display: block; height: 8px; background: linear-gradient(90deg, var(--roxo) 0 33%, var(--logo-laranja) 33% 66%, var(--amarelo) 66%); }
+.v-b .rod-base { background: #081f40; }
+
+@media (max-width: 1180px) {
+  .topo-wa span { display: none; }
+}
+@media (max-width: 1020px) {
+  .v-b .menu-btn { display: block; }
+  .v-b #menu { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #fff; padding: 12px 20px 22px; box-shadow: 0 16px 30px rgba(0, 0, 0, .14); }
+  .v-b.menu-aberto #menu { display: block; }
+  .v-b #menu ul { flex-direction: column; }
+  .v-b #menu a { font-size: 18px; }
+  .topo-wa { margin-left: auto; }
+  .cot-rapida { flex-wrap: wrap; }
+  .cot-rapida label { flex: 1 1 40%; }
+  .cr-seta { display: none; }
+  .cot-rapida .cr-veic { flex: 1 1 100%; }
+  .cot-rapida .btn { flex: 1 1 100%; }
+  .pil-b { grid-template-columns: 1fr 1fr; }
+  .estrada-pista { display: none; }
+  .pil-b .ic { margin-left: 0; }
+  .desde, .mapa-grade, .emp-b, .cot-pag { grid-template-columns: 1fr; gap: 44px; }
+  .emp-foto { position: static; }
+  .emp-foto img { aspect-ratio: 16 / 10; }
+  .seg-b .segmentos { grid-template-columns: 1fr 1fr; }
+  .seg-b .segmentos li:nth-child(3) { padding-left: 0; border-left: 0; }
+  .et-b { grid-template-columns: 1fr 1fr; gap: 30px 18px; }
+  .gal-b { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px 220px; }
+  .gal-b li:first-child { grid-row: auto; grid-column: span 2; }
+  .gal-b li:nth-child(4) { grid-column: auto; }
+  .gal-b li:nth-child(5) { display: block; }
+  .gal-b.gal-toda { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
+  .gal-b.gal-toda li:first-child { grid-row: auto; }
+  .gal-b.gal-toda li:nth-child(8) { grid-column: auto; }
+  .gal-b.gal-toda li:last-child { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+  .v-b .topo-linha { height: 70px; gap: 10px; }
+  .v-b .marca { width: 64px; }
+  .topo-cotar { display: none; }
+  .hb-in { padding-top: 64px; }
+  .heroi-b { min-height: calc(100svh - 70px); }
+  .pil-b, .seg-b .segmentos, .et-b { grid-template-columns: 1fr; }
+  .seg-b .segmentos li, .seg-b .segmentos li + li { padding: 22px 0 18px; border-left: 0; border-bottom: 1px solid rgba(255, 255, 255, .18); }
+  .gal-b, .gal-b.gal-toda { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 220px; }
+  .gal-b li:first-child, .gal-b.gal-toda li:last-child { grid-column: auto; }
+  .desde { padding: 72px 0; }
+  .desde-foto::before { inset: -10px 10px 10px -10px; }
+  .un-b .un-texto { padding: 24px; }
+}
