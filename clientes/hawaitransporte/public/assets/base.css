@@ -1,0 +1,130 @@
+/* Hawai Transportes: base comum às versões A e B. Cores do site atual: roxo #3a3582 (formulário, faixa e rodapé),
+   azul-marinho #0b366b (galeria), laranja #ec971f (botão) e o amarelo/laranja/preto da estrada do logo. */
+:root {
+  --roxo: #3a3582;
+  --roxo-esc: #2a2663;
+  --marinho: #0b366b;
+  --marinho-esc: #0b2a55;
+  --laranja: #ec971f;
+  --laranja-esc: #d58512;
+  --logo-laranja: #ea7a15;
+  --amarelo: #f6e400;
+  --asfalto: #1a1a1f;
+  --tinta: #1f2233;
+  --cinza: #5b5f72;
+  --linha: #dfe1ea;
+  --claro: #f4f4f8;
+  --titulo: 'Archivo', 'Arial Narrow', Arial, sans-serif;
+  --texto: 'Lato', Arial, sans-serif;
+  --larg: 1200px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; font: 400 17px/1.65 var(--texto); color: var(--tinta); background: #fff; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--titulo); line-height: 1.12; margin: 0 0 .5em; letter-spacing: -.01em; }
+p { margin: 0 0 1em; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+figure { margin: 0; }
+address { font-style: normal; }
+.in { width: min(var(--larg), 100% - 40px); margin-inline: auto; }
+.ic { width: 1.15em; height: 1.15em; flex: none; }
+.pular { position: absolute; left: -9999px; }
+.pular:focus { left: 12px; top: 12px; z-index: 100; background: #fff; padding: 8px 12px; }
+.so-cel { display: none; }
+
+.btn { display: inline-flex; align-items: center; gap: .55em; justify-content: center; font: 700 16px/1 var(--texto); padding: 15px 28px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; transition: background .2s, transform .2s; }
+.btn-cotar { background: var(--laranja); color: #fff; }
+.btn-cotar:hover { background: var(--laranja-esc); transform: translateY(-1px); }
+.btn .ic { width: 1.2em; height: 1.2em; }
+.mais { display: inline-flex; align-items: center; gap: .45em; font-weight: 700; color: var(--roxo); text-decoration: none; }
+.mais:hover { text-decoration: underline; }
+.mais.claro { color: #fff; }
+
+/* menu do celular */
+.menu-btn { display: none; background: none; border: 0; padding: 8px; color: inherit; cursor: pointer; }
+.menu-btn .ic { width: 28px; height: 28px; }
+
+/* formulário de cotação */
+.cotacao .cot-grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.cotacao label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.cotacao .c2 { grid-column: span 2; }
+.cotacao .c4 { grid-column: span 4; }
+.cotacao input, .cotacao select, .cotacao textarea, .cot-rapida select, .cot-rapida input {
+  font: 400 16px/1.3 var(--texto); padding: 11px 12px; border: 1px solid var(--linha); border-radius: 6px; background: #fff; color: var(--tinta); width: 100%; min-width: 0;
+}
+.cotacao textarea { resize: vertical; }
+.cotacao label.erro input, .cotacao label.erro select, .cot-rapida label.erro select { border-color: #e0453a; box-shadow: 0 0 0 2px rgba(224, 69, 58, .25); }
+.cotacao .btn { margin-top: 16px; }
+.cot-aviso { font-size: 13px; margin: 10px 0 0; opacity: .8; }
+
+/* galeria e caixa de fotos */
+.galeria a { display: block; position: relative; overflow: hidden; text-decoration: none; }
+.galeria img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.galeria a:hover img { transform: scale(1.04); }
+.caixa-foto { position: fixed; inset: 0; z-index: 90; background: rgba(10, 12, 30, .92); display: grid; place-items: center; padding: 24px; }
+.caixa-foto[hidden] { display: none; }
+.caixa-foto figure { max-width: min(1000px, 100%); }
+.caixa-foto img { max-height: 80vh; width: auto; margin: auto; border-radius: 4px; }
+.caixa-foto figcaption { color: #fff; text-align: center; margin-top: 12px; }
+.caixa-fechar { position: absolute; top: 16px; right: 16px; background: none; border: 0; color: #fff; cursor: pointer; }
+.caixa-fechar .ic { width: 32px; height: 32px; }
+
+/* unidades com mapa */
+.unidade { display: grid; grid-template-columns: 1fr 1.25fr; gap: 0; background: #fff; border: 1px solid var(--linha); border-radius: 10px; overflow: hidden; }
+.un-texto { padding: 28px; display: flex; flex-direction: column; gap: 6px; }
+.un-texto address { display: flex; flex-direction: column; }
+.un-texto address strong { font: 800 22px/1.2 var(--titulo); color: var(--roxo); margin-bottom: 6px; }
+.tels { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 10px 0 0; }
+.tels a { text-decoration: none; font-weight: 700; white-space: nowrap; }
+.tels a:hover { text-decoration: underline; }
+.un-rota { margin-top: auto; padding-top: 14px; display: inline-flex; gap: 6px; align-items: center; color: var(--roxo); font-weight: 700; text-decoration: none; font-size: 15px; }
+.un-mapa { width: 100%; height: 100%; min-height: 300px; border: 0; display: block; filter: saturate(.85); }
+
+/* números de WhatsApp */
+.wa-nums { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 18px; margin: 0; }
+.wa-nums .ic { width: 26px; height: 26px; color: #25d366; }
+.wa-nums span { font-weight: 700; }
+.wa-nums a { text-decoration: none; font-weight: 700; white-space: nowrap; }
+.wa-nums a:hover { text-decoration: underline; }
+
+/* mapa do Brasil */
+.mapa-br svg { width: 100%; height: auto; display: block; overflow: visible; }
+.mapa-br .uf { stroke-width: 1.2; stroke-linejoin: round; }
+.mapa-br .rota { fill: none; stroke-width: 5; stroke-dasharray: 16 12; stroke-linecap: round; }
+.mapa-br .pino text { font: 800 26px var(--titulo); }
+
+/* WhatsApp flutuante */
+.wa-flutua { position: fixed; right: 20px; bottom: 20px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #25d366; color: #fff; display: grid; place-items: center; box-shadow: 0 6px 20px rgba(0, 0, 0, .25); }
+.wa-flutua .ic { width: 32px; height: 32px; }
+
+/* rodapé comum */
+.rodape { color: #fff; }
+.rod-grade { display: grid; grid-template-columns: 1.3fr 1fr 1fr .8fr; gap: 36px; padding: 56px 0 40px; }
+.rod-marca img { width: 170px; margin-bottom: 16px; }
+.rod-marca p { opacity: .85; font-size: 15px; }
+.rod-redes { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.rod-redes a { display: inline-flex; gap: 6px; align-items: center; text-decoration: none; font-weight: 700; }
+.rod-un address { display: flex; flex-direction: column; font-size: 15px; opacity: .92; }
+.rod-un address strong { font: 800 18px var(--titulo); margin-bottom: 4px; opacity: 1; }
+.rod-un .tels { font-size: 15px; }
+.rod-nav li { margin-bottom: 6px; }
+.rod-nav a { text-decoration: none; opacity: .85; font-size: 15px; }
+.rod-nav a:hover { opacity: 1; text-decoration: underline; }
+.rod-base { font-size: 13px; padding: 16px 0; }
+.rod-base .in { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; opacity: .75; }
+
+@media (max-width: 960px) {
+  .rod-grade { grid-template-columns: 1fr 1fr; }
+  .unidade { grid-template-columns: 1fr; }
+  .un-mapa { min-height: 240px; }
+}
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .cotacao .cot-grade { grid-template-columns: 1fr 1fr; }
+  .cotacao .c4 { grid-column: span 2; }
+  .cotacao label.c2:nth-child(-n+2) { grid-column: span 2; }
+  .rod-grade { grid-template-columns: 1fr; gap: 24px; }
+  .wa-flutua { width: 54px; height: 54px; right: 14px; bottom: 14px; }
+}
