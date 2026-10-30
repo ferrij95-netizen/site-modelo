@@ -1,0 +1,153 @@
+/* Versão B "Recreio": azul como o site atual. Topo azul com filete amarelo, títulos na letra de faculdade do nome,
+   capa de foto inteira com o bilhete de matrícula, diferenciais numerados numa faixa azul, ensino em abas,
+   projetos numa esteira de fotos, convênios em etiquetas e galeria em mosaico. */
+.v-b h1,.v-b h2{font-family:var(--nome);font-weight:400;letter-spacing:.005em;text-transform:none}
+.v-b h2{font-size:clamp(28px,3vw,42px)}
+.v-b .pre{background:var(--azul4);color:rgba(255,255,255,.9)}
+.v-b .topo{background:var(--azul);color:#fff;box-shadow:inset 0 -5px 0 var(--amarelo)}
+.v-b .marca-txt b{color:#fff}
+.v-b .menu a{color:#fff}
+.v-b .menu a:hover{background:rgba(255,255,255,.14)}
+.v-b .menu a[aria-current=page]:not(.btn){background:#fff;color:var(--azul3)}
+.v-b .faixa-marca{display:none}
+.v-b .eyebrow{color:var(--azul)}
+
+/* capa com foto inteira e bilhete */
+.hero-b{position:relative;min-height:640px;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 35%}
+.hero-b::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,53,88,.95) 0%,rgba(13,66,110,.88) 36%,rgba(15,76,126,.35) 62%,rgba(15,76,126,0) 80%),linear-gradient(0deg,rgba(10,53,88,.55),transparent 45%)}
+.hero-b .in{position:relative;width:100%;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-top:110px;padding-bottom:80px}
+.hb-txt{max-width:620px}
+.hb-txt .eyebrow{color:var(--amarelo)}
+.hero-b h1{color:#fff;font-size:clamp(40px,5.6vw,76px);line-height:1}
+.hb-txt>p:not(.eyebrow){font-size:19px;opacity:.94}
+.bilhete{flex:none;width:250px;display:flex;flex-direction:column;text-decoration:none;background:var(--amarelo);color:var(--azul4);border-radius:16px;padding:22px 24px;transform:rotate(3deg);box-shadow:0 18px 40px rgba(0,0,0,.3);position:relative;transition:transform .3s}
+.bilhete:hover{transform:rotate(0)}
+.bilhete::before,.bilhete::after{content:"";position:absolute;top:62%;width:22px;height:22px;border-radius:50%;background:var(--azul3)}
+.bilhete::before{left:-11px}.bilhete::after{right:-11px}
+.bl-top{font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:13px}
+.bilhete b{font-family:var(--nome);font-weight:400;font-size:72px;line-height:1;margin:6px 0 8px}
+.bilhete span:not(.bl-top){font-size:14.5px;font-weight:600}
+.bl-fim{display:flex;align-items:center;gap:8px;border-top:2px dashed rgba(10,53,88,.35);margin-top:18px;padding-top:14px}
+
+/* diferenciais numerados */
+.difs-b{padding:96px 0;background:linear-gradient(160deg,var(--azul) 0%,var(--azul3) 100%);color:#fff}
+.tit-claro h2{color:#fff}.tit-claro .eyebrow{color:var(--amarelo)}
+.difs-num{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:d;border-top:1px solid rgba(255,255,255,.2)}
+.difs-num li{counter-increment:d;position:relative;padding:34px 30px 34px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.difs-num li:not(:nth-child(3n)){border-right:1px solid rgba(255,255,255,.2);margin-right:0}
+.difs-num li:not(:nth-child(3n+1)){padding-left:30px}
+.difs-num li::before{content:"0" counter(d);position:absolute;right:24px;top:26px;font-family:var(--nome);font-size:38px;color:var(--amarelo);opacity:.9}
+.dn-ic{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.12);color:var(--amarelo);margin-bottom:16px}
+.difs-num h3{color:#fff;font-size:19px;max-width:80%}
+.difs-num p{margin:0;opacity:.82;font-size:15.5px}
+
+/* ensino em abas */
+.ensino-b{padding:96px 0}
+.p-ensino .ensino-b{padding-top:72px}
+.abas-bts{display:inline-flex;gap:6px;padding:6px;background:var(--fundo);border-radius:99px;margin-bottom:34px}
+.abas-bts button{font:inherit;font-weight:600;font-size:16px;border:0;background:none;padding:12px 24px;border-radius:99px;cursor:pointer;color:var(--azul3)}
+.abas-bts button[aria-selected=true]{background:var(--azul);color:#fff}
+.aba{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.aba figure{border-radius:24px;overflow:hidden;aspect-ratio:4/3;box-shadow:16px 16px 0 var(--amarelo)}
+.aba figure img{width:100%;height:100%;object-fit:cover}
+.aba h3{font-family:var(--nome);font-weight:400;font-size:28px;color:var(--azul3)}
+.idades{list-style:none;padding:0;margin:24px 0;display:flex;flex-wrap:wrap;gap:12px}
+.idades li{display:flex;flex-direction:column;align-items:center;justify-content:center;width:104px;padding:16px 8px;border-radius:16px;border:2px solid var(--linha);text-align:center;line-height:1.1}
+.idades b{font-family:var(--nome);font-weight:400;font-size:34px;color:var(--azul)}
+.idades span{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--cinza)}
+.idades em{font-style:normal;font-weight:700;font-size:13.5px;margin-top:8px;color:var(--preto)}
+
+/* esteira de projetos */
+.proj-b{padding:96px 0;background:var(--fundo)}
+.esteira{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(28px,calc((100vw - 1220px)/2 + 28px)) 18px;scrollbar-width:thin}
+.esteira figure{flex:0 0 min(340px,78vw);scroll-snap-align:start;position:relative;border-radius:20px;overflow:hidden;aspect-ratio:3/4}
+.esteira img{width:100%;height:100%;object-fit:cover}
+.esteira figcaption{position:absolute;inset:auto 0 0 0;padding:60px 22px 22px;background:linear-gradient(transparent,rgba(10,53,88,.92));color:#fff}
+.esteira b{display:block;font-family:var(--h);font-size:19px;line-height:1.2;margin-bottom:6px}
+.esteira span{font-size:14.5px;opacity:.88}
+
+/* história */
+.hist-b{padding:96px 0}
+.hist-b .in{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.hist-b .linha .ano{background:var(--amarelo);color:var(--azul4)}
+
+/* equipe */
+.equipe-b{padding:0 0 96px}
+.equipe-b .in{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center}
+.equipe-b figure{border-radius:24px;overflow:hidden}
+.equipe-pag{padding:88px 0}
+.equipe-pag .diretoria{grid-template-columns:repeat(3,1fr);gap:24px}
+.equipe-pag .diretoria li{padding:24px;border-radius:20px;background:var(--azul);color:#fff}
+.equipe-pag .diretoria b{color:#fff}.equipe-pag .diretoria span{color:var(--amarelo)}
+.equipe-pag .diretoria img{background:#fff;border-radius:50%;padding:4px}
+
+/* convênios em etiquetas */
+.conv-b{padding:96px 0;background:var(--fundo)}
+.etiquetas{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
+.etiquetas li{font-family:var(--h);font-weight:800;font-size:15px;color:var(--azul3);background:#fff;border:2px solid var(--azul);padding:9px 18px;border-radius:99px}
+.etiquetas li:nth-child(4n+2){background:var(--amarelo);border-color:var(--amarelo)}
+.conv-pag{padding:80px 0}
+
+/* mosaico */
+.gal-b{padding:96px 0}
+.gal-b.gal-pag{padding:72px 0 96px}
+.mosaico{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;grid-auto-flow:dense;gap:12px}
+.mosaico .g{position:relative;border-radius:18px;overflow:hidden}
+.mosaico .g0,.mosaico .g6{grid-column:span 2}
+.mosaico .g1,.mosaico .g4{grid-row:span 2}
+.mosaico img{width:100%;height:100%;object-fit:cover}
+.mosaico figcaption{position:absolute;left:10px;bottom:10px;right:10px;font-size:13px;color:#fff;background:rgba(10,53,88,.8);padding:6px 10px;border-radius:8px;opacity:0;transition:opacity .3s}
+.mosaico .g:hover figcaption{opacity:1}
+
+/* páginas internas */
+.capa-b{position:relative;min-height:420px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;box-shadow:inset 0 -6px 0 var(--amarelo)}
+.capa-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.capa-b::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,53,88,.92),rgba(15,76,126,.55) 60%,rgba(15,76,126,.2))}
+.capa-b .in{position:relative;width:100%;padding-top:80px;padding-bottom:64px}
+.capa-b h1{color:#fff;font-size:clamp(34px,4.4vw,60px);max-width:900px}
+.capa-b .eyebrow{color:var(--amarelo)}
+.capa-b p:not(.eyebrow){font-size:19px;max-width:680px;opacity:.92;margin:0}
+.trilha-b{padding:96px 0;background:var(--azul3)}
+.trilha-b .trilha h3{color:#fff}.trilha-b .trilha p{color:rgba(255,255,255,.75)}
+.intro-b{padding:72px 0}
+.intro-b .in{max-width:920px}
+.missao-b{background:var(--amarelo);color:var(--azul4)}
+.missao-b .eyebrow{color:var(--azul3)}
+.fund-b .fundamentos div{padding-top:18px;border-top:3px solid var(--azul)}
+.visita-b{background:var(--azul)}
+.ct-b .form{border-top:6px solid var(--amarelo)}
+.news-pag{padding:72px 0 96px}
+
+@media (max-width:1180px){
+  .v-b .menu a[aria-current=page]:not(.btn){background:var(--fundo)}
+}
+@media (max-width:980px){
+  .hero-b{min-height:0;display:block;background:linear-gradient(160deg,var(--azul3),var(--azul4))}
+  .hero-b>img{position:relative;height:300px;object-position:50% 30%}
+  .hero-b::before{display:none}
+  .hero-b .in{flex-direction:column;align-items:flex-start;padding-top:40px;padding-bottom:56px}
+  .bilhete{position:absolute;right:28px;top:-150px;width:210px}
+  .bilhete b{font-size:56px}
+  .mosaico{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .difs-num{grid-template-columns:1fr 1fr}
+  .difs-num li,.difs-num li:not(:nth-child(3n+1)){padding:28px 22px 28px 0;border-right:0}
+  .difs-num li:nth-child(odd){border-right:1px solid rgba(255,255,255,.2)}
+  .difs-num li:nth-child(even){padding-left:22px}
+  .aba,.hist-b .in,.equipe-b .in{grid-template-columns:1fr;gap:36px}
+  .equipe-pag .diretoria{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .hero-b>img{height:240px}
+  .bilhete{position:relative;right:auto;top:auto;width:100%;max-width:300px;transform:rotate(-1.5deg)}
+  .bilhete b{font-size:56px}
+  .difs-num{grid-template-columns:1fr}
+  .difs-num li,.difs-num li:nth-child(even),.difs-num li:nth-child(odd){padding:26px 0;border-right:0}
+  .abas-bts{display:flex}.abas-bts button{flex:1;padding:12px 10px;font-size:15px}
+  .idades li{width:calc(33% - 8px)}
+  .capa-b{min-height:340px}
+}
+
+/* camadas da capa: foto, véu azul, texto */
+.hero-b::before,.capa-b::before{z-index:1}
+.hero-b .in,.capa-b .in{z-index:2}
