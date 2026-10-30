@@ -1,0 +1,51 @@
+/* Versão A "Atelier": creme e rosa do site atual, vídeo da clínica na abertura. */
+.v-a .pre{background:var(--creme);color:var(--txt)}.v-a .pre a:hover{color:var(--rosa-forte)}.v-a .pre .ic{color:var(--rosa-forte)}
+.v-a .idiomas{border-color:rgba(26,23,27,.15)}
+
+.hero-a{position:relative;min-height:min(86vh,780px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero-a .hero-video{position:absolute;inset:0}
+.hero-a .hero-video::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,23,27,.82) 0%,rgba(26,23,27,.55) 45%,rgba(26,23,27,.05) 80%),linear-gradient(0deg,rgba(26,23,27,.55),transparent 45%)}
+.hero-a .hero-txt{position:relative;z-index:2;padding-top:120px;padding-bottom:88px}
+.hero-a h1{color:#fff;max-width:720px}
+.hero-a .lead{max-width:560px;color:rgba(255,255,255,.86)}
+.hero-a .eyebrow{color:var(--rosa)}
+.hero-assin{font-size:13px;color:rgba(255,255,255,.6);margin:0;letter-spacing:.02em}
+.hero-assin::before{content:'';display:inline-block;width:28px;height:1px;background:var(--rosa);vertical-align:middle;margin-right:10px}
+
+.v-a .selos-sec{background:#fff;padding:36px 0;border-bottom:1px solid var(--linha)}
+.v-a .prof{padding:0;background:var(--grafite)}
+.v-a .prof-grid{max-width:none;padding:0}
+.v-a .prof-esq{background:var(--creme);text-align:center;padding:72px max(32px,calc((100vw - var(--in))/2 + 32px)) 72px 56px;padding-left:max(32px,calc((100vw - 1200px)/2 + 32px))}
+.v-a .prof-esq .bio{text-align:left}
+.v-a .prof-foto{max-width:420px;margin:0 auto}
+.v-a .prof-foto figcaption{background:var(--azul);color:#fff}
+.v-a .prof-dir{background:linear-gradient(90deg,rgba(43,43,43,.92),rgba(43,43,43,.82)),url(img/consultorio-fundo.webp) center/cover;color:rgba(255,255,255,.85);padding:72px 56px;padding-right:max(32px,calc((100vw - 1200px)/2 + 32px));display:flex;flex-direction:column;justify-content:center}
+.v-a .prof-dir h3{color:#fff;font-size:26px}
+.v-a .prof-dir .titulos .ic{color:var(--azul)}
+.v-a .prof-dir .btn{align-self:flex-start;color:#fff}
+.v-a .prof-dir .aval{color:var(--ouro)}
+
+.v-a .cp{background:#fff}
+.v-a .cp-grid{border-top:1px solid var(--linha);border-left:1px solid var(--linha)}
+.v-a .cp-grid li{border-right:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.v-a .cp-grid a:hover{background:var(--creme-2)}
+
+.v-a .mapa{background:linear-gradient(180deg,var(--creme) 0%,var(--creme-2) 100%)}
+.v-a .mapa .abas-lista button{background:#fff}.v-a .mapa .abas-lista button[aria-selected=true]{background:var(--rosa);border-color:var(--rosa);color:var(--tinta)}
+
+.v-a .videos{background:linear-gradient(160deg,#9AD4E6 0%,var(--azul) 55%,#BFE4EF 100%);color:var(--tinta)}
+.v-a .videos .eyebrow{color:var(--tinta)}
+.v-a .depo{background:#fff}
+.v-a .passos{background:var(--creme-2)}
+.v-a .hosp{background:#fff}
+.v-a .fale{background:linear-gradient(120deg,#E8C3B2 0%,#DDB09E 100%);padding-bottom:0}
+.v-a .fale .tit p,.v-a .fale label{color:var(--tinta)}
+.v-a .fale .eyebrow{color:var(--tinta)}
+.v-a .fale-grid{align-items:end}.v-a .fale-grid>div{padding-bottom:96px}
+.v-a .local{background:var(--creme)}
+
+.v-a .capa{background:var(--creme)}
+.v-a .dr-titulos,.v-a .imprensa{background:#fff}.v-a .clinica-b{background:var(--creme-2)}
+.v-a .grupo:nth-of-type(odd){background:var(--creme-2)}
+.v-a .hosp-por{background:var(--creme)}
+@media(max-width:860px){.v-a .prof-esq,.v-a .prof-dir{padding:48px 20px}.v-a .fale-grid>div{padding-bottom:72px}.hero-a{min-height:640px}}
