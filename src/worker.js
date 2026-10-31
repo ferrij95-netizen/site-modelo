@@ -6,6 +6,7 @@ import { resultados } from './resultados.js';
 import { lembretes } from './lembretes.js';
 import { posvenda } from './posvenda.js';
 import { email } from './email.js';
+import { api, chaveEnviada, chaveValida, publicoApi } from './api.js';
 
 const PREFIX = '/_clientes/';
 // hub.overtus.com.br (dist/_hub/), com tela de login em /entrar/: na raiz o canvas de prospecção, em /sites/ a lista de clientes.
@@ -40,7 +41,13 @@ async function hub(request, env, url) {
   if (url.pathname === '/sair') return redirecionar('/entrar/', 'hub=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0');
 
   const publico = url.pathname.startsWith('/entrar/') || url.pathname.startsWith('/app/') || url.pathname === '/sw.js';
-  if (!publico) {
+  // Agentes entram na /api/ com a chave do segredo HUB_API_KEY em vez do login (ver src/api.js e docs/api-do-hub.md).
+  const chave = url.pathname.startsWith('/api') ? chaveEnviada(request) : null;
+  if (url.pathname.startsWith('/api') && publicoApi(url)) return api(request, env, url);
+  if (chave) {
+    if (!(await chaveValida(chave, env))) return new Response('{"code":"chave_invalida","erro":"Chave da API inválida"}', { status: 401, headers: { 'Content-Type': 'application/json' } });
+    if (url.pathname.startsWith('/api/email/')) return new Response('{"code":"sem_permissao","erro":"E-mail não está liberado para agentes"}', { status: 403, headers: { 'Content-Type': 'application/json' } });
+  } else if (!publico) {
     const cookie = (request.headers.get('Cookie') || '').match(/(?:^|;\s*)hub=([0-9a-f]{64})/);
     if (!cookie || (await sha256(cookie[1])) !== SESSAO_HASH) {
       if (url.pathname.startsWith('/api/')) return new Response('{"code":"session_expired"}', { status: 401, headers: { 'Content-Type': 'application/json' } });
@@ -56,6 +63,8 @@ async function hub(request, env, url) {
   if (url.pathname === '/api/posvenda') return posvenda(request, env);
   // E-mail da Overtus (aba /email/), pela API do Hostinger Mail; o token fica no segredo HOSTINGER_MAIL_TOKEN.
   if (url.pathname.startsWith('/api/email/')) return email(request, env, url);
+  // Rotas extras para agentes (busca, listas, sites publicados e ações: criar, importar, triagem, contato, etapa); também funcionam com o login.
+  if (['/api/eu', '/api/busca', '/api/listas', '/api/sites'].includes(url.pathname.replace(/\/$/, '')) || url.pathname.startsWith('/api/acoes/')) return api(request, env, url);
   // Enquanto o banco do canvas estiver vazio (antes da cópia dos dados), a raiz continua mostrando a lista de sites.
   if (url.pathname === '/' && env.PROSPECCAO && !(await env.PROSPECCAO.prepare('SELECT 1 FROM empresas LIMIT 1').first().catch(() => null))) {
     url.pathname = '/sites/';

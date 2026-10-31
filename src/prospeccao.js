@@ -115,10 +115,10 @@ export async function prospeccao(request, env, url) {
 //   POST /api/empresas/_pedidos {id, obs?}          -> pede o site de uma empresa que já está no canvas
 //   POST /api/empresas/_pedidos {url, nome?, obs?}  -> acha a empresa pelo domínio em qualquer lista ou cria em "Minhas empresas"
 //   POST /api/empresas/_pedidos {id, cancelar:true} -> tira da fila (só se ainda não começou)
-const dominio = s => String(s || '').trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#]/)[0].replace(/:\d+$/, '');
+export const dominio = s => String(s || '').trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#]/)[0].replace(/:\d+$/, '');
 const nomeDoDominio = d => d.split('.')[0].replace(/[-_]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 
-async function mudar(db, id, fn) {
+export async function mudar(db, id, fn) {
   for (let i = 0; i < 5; i++) {
     const row = await db.prepare('SELECT doc, versao FROM empresas WHERE id = ? AND apagado = 0').bind(id).first();
     if (!row) return null;
