@@ -440,3 +440,10 @@ for (const c of clientes) {
 fs.mkdirSync(path.join(out, 'ligar'), { recursive: true });
 fs.writeFileSync(path.join(out, 'ligar', 'index.html'), paginaLigar(clientes.filter(c => c.ligacao), esc));
 console.log(`hub: ${clientes.length} clientes em dist/_hub/, ${setores.length} setores`);
+
+// Lista de sites para a API dos agentes (GET /api/sites, src/api.js): um arquivo só, sem o roteiro de ligação.
+fs.writeFileSync(path.join(out, 'sites.json'), JSON.stringify(clientes.map(c => ({
+  slug: c.slug, nome: c.nome, setor: c.setor, cidade: c.cidade, url: c.url, hub: `https://hub.overtus.com.br/ver/${c.slug}/`,
+  completo: c.completo, telefone: c.telefone, whatsapp: c.whatsapp,
+  vistas: c.vistas.map(v => ({ nome: v.nome, url: c.url + v.path })),
+}))));
