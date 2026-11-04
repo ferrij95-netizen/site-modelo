@@ -400,6 +400,7 @@ main>.sec:not(.sec-inds) .inds p{color:var(--suave)}
 .rodape li{margin-bottom:8px}
 .rodape .rod-dados .ic{color:var(--acento)}
 .rod-certs{font-size:.85rem;color:var(--acento);font-weight:600}
+.rod-logo.logo-txt{display:inline-block;color:var(--cor-esc);font-size:1.15rem}
 .rod-base{margin-top:48px;border-top:1px solid rgba(255,255,255,.12);padding:18px 0;font-size:.82rem;color:#9aa1a7}
 .rod-base .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:1080px){.btn-topo{display:none}.menu a{padding:10px 8px;font-size:.9rem}}
@@ -560,6 +561,7 @@ main .sec:not(.sec-qual) .cert{background:var(--claro);border-color:var(--linha)
 .rodape li{margin-bottom:8px}
 .rodape .rod-dados .ic{color:#fff;opacity:.8}
 .rod-certs{font:500 .8rem var(--mono)}
+.rod-logo.logo-txt{display:inline-block;color:var(--cor-esc);font-size:1.1rem}
 .rod-base{margin-top:48px;border-top:1px solid rgba(255,255,255,.18);padding:18px 0;font-size:.82rem;opacity:.85}
 .rod-base .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:1100px){.topo-fone{display:none}.menu a{padding:8px 9px;font-size:.9rem}}
