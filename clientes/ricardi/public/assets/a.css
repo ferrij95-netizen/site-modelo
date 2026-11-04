@@ -1,0 +1,135 @@
+/* Versão A "Selo Verde": fundo verde-claro do site atual, menu verde com item ativo marrom, coluna lateral creme. */
+:root{--cor:#18582c;--cor-esc:#0f3e1e;--marrom:#6b4513;--creme:#fdf3c9;--tinta:#1f2a20;--suave:#55604f;--fundo:#e9efe6;--linha:#d5ddcf;--ft:'Barlow Condensed',system-ui,sans-serif;--fx:Inter,system-ui,sans-serif;--raio:4px}
+.topo{background:var(--fundo)}
+.topo-linha{display:flex;align-items:center;gap:22px;padding:12px 0}
+.selo30{width:84px;border-radius:6px}
+.marca img{width:150px}
+.slogan{font:600 clamp(1.3rem,2.4vw,2rem) var(--ft);color:#3a3020;margin:0 auto 0 8px}
+.topo-wa{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cor)}
+.topo-wa .ic{width:34px;height:34px;color:#25a244}
+.topo-wa small{display:block;font-size:.72rem;color:var(--suave);text-transform:uppercase;letter-spacing:.08em}
+.topo-wa span{font:700 1.25rem var(--ft);line-height:1.1}
+.menu{background:transparent}
+.menu ul{display:flex;background:var(--cor)}
+.menu li{flex:1}
+.menu a{display:block;text-align:center;padding:12px 8px;color:#fff;text-decoration:none;font-weight:500}
+.menu a:hover{background:#226c38}
+.menu a.ativo{background:var(--marrom)}
+main{background:var(--fundo)}
+.k{font:600 .8rem var(--fx);letter-spacing:.14em;text-transform:uppercase;color:#cfe6c5;margin-bottom:10px}
+.btn-marrom{background:var(--marrom);border-color:var(--marrom);min-height:40px;padding:.45em 1.1em}
+.btn-marrom:hover{background:#563710;border-color:#563710}
+
+.hero-a{height:clamp(340px,46vw,540px);margin-top:16px}
+.hero-a .slide{height:100%}
+.hero-a-cx{position:absolute;inset:0;display:flex;align-items:flex-end;background:linear-gradient(0deg,rgba(10,35,18,.85),rgba(10,35,18,0) 65%);pointer-events:none}
+.hero-a-txt{max-width:660px;padding:0 0 56px;color:#fff;pointer-events:auto}
+.hero-a h1{font:800 clamp(2rem,4.4vw,3.4rem)/1.02 var(--ft);text-transform:uppercase}
+
+.duas-a{display:grid;grid-template-columns:1.6fr 1fr;gap:0;background:#fff;margin-top:24px}
+.col-principal{padding:40px}
+.col-principal h2,.col-lado h2{font:700 2rem var(--ft);color:var(--cor);margin-bottom:.4em}
+.col-principal p{color:var(--suave);text-align:justify}
+.col-principal hr{border:0;border-top:1px solid #444;margin:32px 0}
+.col-lado{background:var(--creme);padding:32px 28px}
+.col-lado article{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid #eadb9f}
+.col-lado article img{aspect-ratio:16/10;object-fit:cover;width:100%;margin-bottom:12px}
+.col-lado h3{font:700 1.3rem var(--ft);color:var(--tinta)}
+.col-lado p{color:#5a5136;font-size:.93rem}
+.col-lado>img{margin-bottom:20px}
+.linhas-a{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.linhas-a a{display:grid;grid-template-columns:auto 1fr;column-gap:12px;padding:16px;border:1px solid var(--linha);text-decoration:none;height:100%;transition:border-color .2s,background .2s}
+.linhas-a a:hover{border-color:var(--cor);background:#f4f8f1}
+.linhas-a .ic{grid-row:span 2;width:40px;height:40px;padding:8px;background:var(--cor);color:#fff;border-radius:50%}
+.linhas-a strong{font:700 1.2rem var(--ft);color:var(--cor)}
+.linhas-a span{font-size:.88rem;color:var(--suave)}
+.marcas{display:grid;gap:12px;justify-items:start}
+.marcas p{font:700 1.1rem var(--ft);color:var(--cor);margin:0}
+.marcas img{width:180px;background:#fff;padding:6px;border-radius:var(--raio)}
+
+.faixa-prod{background:var(--cor);padding:56px 0;margin-top:24px}
+.faixa-prod h2{font:700 2.2rem var(--ft);color:#fff;text-align:center;margin-bottom:28px}
+.prod-a{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.prod-a a{display:grid;grid-template-rows:auto auto 1fr auto;height:100%;background:#fff;text-decoration:none;color:var(--tinta);border-bottom:4px solid var(--marrom)}
+.prod-a img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.prod-a strong{font:700 1.35rem/1.1 var(--ft);color:var(--cor);padding:14px 16px 4px}
+.prod-a span{font-size:.9rem;color:var(--suave);padding:0 16px}
+.prod-a em{font-style:normal;font-weight:600;color:var(--marrom);padding:10px 16px 16px}
+.centro{text-align:center;margin:28px 0 0}
+.faixa-prod .btn{background:var(--marrom);border-color:var(--marrom)}
+
+.faixa-a{background:linear-gradient(90deg,var(--cor-esc),var(--cor));color:#fff;padding:40px 0;margin-top:16px}
+.faixa-a h1{font:800 clamp(2rem,4vw,3rem) var(--ft);margin:0;text-transform:uppercase}
+.faixa-a p{margin:.4em 0 0;color:#d6ead0;max-width:760px}
+.mv-a{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.mv-a div{border-top:4px solid var(--marrom);padding-top:12px}
+.mv-a h3{font:700 1.5rem var(--ft);color:var(--cor)}
+.selo-grande{width:180px}
+.valores-a li{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #eadb9f}
+.valores-a .ic{color:var(--cor)}
+
+.linha-sec{background:#fff;padding:36px 32px;margin-top:24px}
+.linha-sec h2{display:flex;gap:12px;align-items:center;font:700 2rem var(--ft);color:var(--cor);margin-bottom:22px;scroll-margin-top:20px}
+.linha-sec h2 .ic{width:40px;height:40px;padding:8px;background:var(--marrom);color:#fff;border-radius:50%}
+.linha-sec .prod-a a{border:1px solid var(--linha);border-bottom:4px solid var(--marrom)}
+
+.trilha-nav{padding:18px 0 0;font-size:.88rem;color:var(--suave)}
+.trilha-nav a{color:var(--cor)}
+.prod{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;background:#fff;padding:32px;margin-top:12px}
+.prod-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-content:start}
+.prod-fotos a{display:block}
+.prod-fotos img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.prod-fotos .prod-principal{grid-column:1/-1}
+.prod-txt .k{color:var(--marrom)}
+.prod-txt h1{font:800 clamp(2rem,3.6vw,2.8rem)/1.05 var(--ft);color:var(--cor)}
+.prod-txt p{color:var(--suave)}
+.bts{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.prod-nota{font-size:.88rem;margin-top:14px}
+.outros{background:#fff;padding:28px 32px;margin-top:16px}
+.outros h2{font:700 1.6rem var(--ft);color:var(--cor)}
+.outros ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.outros a{display:grid;gap:6px;text-decoration:none;font-weight:600;color:var(--tinta)}
+.outros img{aspect-ratio:4/3;object-fit:cover;width:100%}
+
+.contato-lista{display:grid;gap:20px}
+.contato-lista li{display:flex;gap:12px}
+.contato-lista li>.ic{color:var(--cor);margin-top:3px}
+.contato-lista div{display:grid;gap:2px;min-width:0}
+.contato-lista a,.contato-lista span{color:#5a5136;overflow-wrap:anywhere}
+.contato-lista a{display:inline-flex;gap:4px;align-items:center}
+.mapa-sec{margin-top:24px}
+
+.rodape{background:var(--cor-esc);color:#cfe0c8;margin-top:40px}
+.rod-grade{display:grid;grid-template-columns:1.3fr 1fr 1.3fr;gap:40px;padding:48px 0 32px}
+.rod-marca img{width:170px;background:#fff;padding:8px;border-radius:var(--raio);margin-bottom:12px}
+.rod-redes{display:flex;gap:10px}
+.rod-redes a{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1)}
+.rodape h3{font:700 1.2rem var(--ft);color:#fff;text-transform:uppercase;letter-spacing:.06em}
+.rodape li{margin:.4em 0}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px}
+.rod-dados .ic{color:#8fd07a;margin-top:3px}
+.rod-base{border-top:1px solid rgba(255,255,255,.12);font-size:.82rem}
+.rod-base .in{display:flex;justify-content:space-between;padding:16px 0;gap:12px;flex-wrap:wrap}
+
+@media (max-width:1000px){
+  .slogan,.selo30{display:none}
+  .topo-linha{justify-content:space-between}
+  .menu-btn{display:block;color:var(--cor)}
+  .menu{display:none}
+  .menu-aberto .menu{display:block}
+  .menu ul{flex-direction:column;width:100%}
+  .menu a{text-align:left;padding:14px 18px}
+  .duas-a,.prod{grid-template-columns:1fr}
+  .prod-a{grid-template-columns:1fr 1fr}
+  .rod-grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .topo-wa span{display:none}
+  .col-principal,.col-lado,.linha-sec,.prod,.outros{padding:24px 16px}
+  .prod-a,.linhas-a,.mv-a{grid-template-columns:1fr}
+  .rod-grade{grid-template-columns:1fr}
+  .col-principal p{text-align:left}
+  .hero-a-txt{padding-bottom:44px}
+}
