@@ -31,6 +31,8 @@ h2{font-size:clamp(1.7rem,3vw,2.5rem)}
 .hero-fig{position:relative}
 .hero-fig img{width:100%;aspect-ratio:4/4.3;object-fit:cover;border-radius:var(--raio)}
 .hero-fig::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:1.5px solid var(--cor);border-radius:var(--raio);z-index:-1}
+.hero-fig-mos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hero-fig-mos img{aspect-ratio:1!important}
 .hero-fig figcaption{position:absolute;left:14px;bottom:14px;background:var(--tinta);color:#fff;padding:6px 10px;font-size:.72rem;border-radius:3px}
 .sec{padding:88px 0}
 .sec-topo{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}

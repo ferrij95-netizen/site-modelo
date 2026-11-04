@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 const sharp = createRequire(import.meta.url)('sharp');
-export async function prepImgs(pub, origem, mapa, logo) {
+export async function prepImgs(pub, origem, mapa, logo, o = {}) {
   const dir = path.join(pub, 'assets/img'); fs.mkdirSync(dir, { recursive: true });
   for (const [nome, v] of Object.entries(mapa)) {
     const [arq, larg] = Array.isArray(v) ? v : [v, 1600];
@@ -12,7 +12,9 @@ export async function prepImgs(pub, origem, mapa, logo) {
     if (fs.existsSync(dest)) continue;
     const src = path.join(origem, arq);
     if (!fs.existsSync(src)) { console.log('falta imagem', arq); continue; }
-    await sharp(src).rotate().resize({ width: larg, withoutEnlargement: true }).webp({ quality: 80 }).toFile(dest);
+    let im = sharp(src).rotate();
+    if (o.inset) { const m = await sharp(src).metadata(); im = sharp(src).extract({ left: o.inset, top: o.inset, width: m.width - 2 * o.inset, height: m.height - 2 * o.inset }); }
+    await im.resize({ width: larg, withoutEnlargement: true }).webp({ quality: 80 }).toFile(dest);
   }
   if (logo) {
     const dest = path.join(pub, 'assets', logo.arq);

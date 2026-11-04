@@ -109,7 +109,12 @@ export function gerarUS(C, dir) {
   function home(v) {
     const H = C.home;
     const hero = v === 'a'
-      ? `<section class="hero">${H.fotos?.length > 1 ? `<div class="hero-fotos" data-carrossel="6500">${H.fotos.map((f, i) => `<div class="slide${i ? '' : ' ativo'}">${img(f, '', i ? '' : ' fetchpriority="high" loading="eager"')}</div>`).join('')}</div>` : `<div class="hero-fotos">${img(H.fotos[0], '', ' fetchpriority="high" loading="eager"')}</div>`}
+      ? H.mosaico ? `<section class="hero hero-mos"><div class="in hero-in"><div class="hero-txt"><p class="eyebrow">${esc(H.eyebrow)}</p><h1>${H.titulo}</h1><p class="hero-sub">${H.sub}</p>
+  <div class="hero-acoes"><a class="btn" href="${quote(v)}">Request a Quote ${seta}</a><a class="btn btn-linha" href="${link(v, 'capabilities')}">Our Capabilities</a></div></div>
+  <div class="mos">${H.mosaico.map((f, i) => img(f, '', i ? '' : ' fetchpriority="high" loading="eager"')).join('')}</div></div>
+</section>
+${C.numeros?.length ? `<section class="numeros"><div class="in"><ul>${C.numeros.map(n => `<li><strong>${esc(n.n)}</strong><span>${esc(n.l)}</span></li>`).join('')}</ul></div></section>` : ''}`
+      : `<section class="hero">${H.fotos?.length > 1 ? `<div class="hero-fotos" data-carrossel="6500">${H.fotos.map((f, i) => `<div class="slide${i ? '' : ' ativo'}">${img(f, '', i ? '' : ' fetchpriority="high" loading="eager"')}</div>`).join('')}</div>` : `<div class="hero-fotos">${img(H.fotos[0], '', ' fetchpriority="high" loading="eager"')}</div>`}
   <div class="in hero-in"><p class="eyebrow">${esc(H.eyebrow)}</p><h1>${H.titulo}</h1><p class="hero-sub">${H.sub}</p>
   <div class="hero-acoes"><a class="btn" href="${quote(v)}">Request a Quote ${seta}</a><a class="btn btn-linha" href="${link(v, 'capabilities')}">Our Capabilities</a></div></div>
 </section>
@@ -118,7 +123,7 @@ ${C.numeros?.length ? `<section class="numeros"><div class="in"><ul>${C.numeros.
   <div class="hero-txt"><p class="eyebrow mono">${esc(H.eyebrow)}</p><h1>${H.titulo}</h1><p class="hero-sub">${H.sub}</p>
   <div class="hero-acoes"><a class="btn" href="${quote(v)}">Request a Quote ${seta}</a><a class="link-seta" href="${link(v, 'capabilities')}">See capabilities ${seta}</a></div>
   ${C.ficha?.length ? `<dl class="ficha">${C.ficha.map(f => `<div><dt class="mono">${esc(f.k)}</dt><dd>${esc(f.v)}</dd></div>`).join('')}</dl>` : ''}</div>
-  <figure class="hero-fig">${img(H.fotos[H.fotoB ?? 0], '', ' fetchpriority="high" loading="eager"')}${H.legendaB ? `<figcaption class="mono">${esc(H.legendaB)}</figcaption>` : ''}</figure>
+  <figure class="hero-fig${H.mosaico ? ' hero-fig-mos' : ''}">${H.mosaico ? H.mosaico.map(f => img(f, '')).join('') : img(H.fotos[H.fotoB ?? 0], '', ' fetchpriority="high" loading="eager"')}${H.legendaB ? `<figcaption class="mono">${esc(H.legendaB)}</figcaption>` : ''}</figure>
 </div></section>`;
 
     const intro = `<section class="intro"><div class="in intro-in">
@@ -141,7 +146,7 @@ ${C.numeros?.length ? `<section class="numeros"><div class="in"><ul>${C.numeros.
   <div><p class="eyebrow${v === 'b' ? ' mono' : ''}">Quality</p><h2>${esc(C.qualidade.titulo)}</h2>${para(C.qualidade.texto.slice(0, 1))}<div class="certs">${certs}</div><a class="link-seta" href="${link(v, 'quality')}">Quality system ${seta}</a></div>
 </div></section>` : '';
 
-    const gal = C.galeria?.length >= 4 ? `<section class="sec sec-gal"><div class="in"><div class="sec-topo"><div><p class="eyebrow${v === 'b' ? ' mono' : ''}">From the shop floor</p><h2>${esc(C.galTitulo || 'Recent work')}</h2></div><a class="link-seta" href="${link(v, 'gallery')}">Full gallery ${seta}</a></div>${galeriaBloco(C.galeria.slice(0, 8))}</div></section>` : '';
+    const gal = C.galeria?.length >= 4 ? `<section class="sec sec-gal"><div class="in"><div class="sec-topo"><div><p class="eyebrow${v === 'b' ? ' mono' : ''}">From the shop floor</p><h2>${esc(C.galTitulo || 'Recent work')}</h2></div><a class="link-seta" href="${link(v, 'gallery')}">Full gallery ${seta}</a></div>${galeriaBloco(C.galeria.slice(0, C.galeria.length >= 8 ? 8 : 4))}</div></section>` : '';
 
     const corpo = v === 'a' ? [intro, caps, inds, qual, gal] : [caps, etapas(), intro, inds, qual, gal];
     return head(v, 'index', C.seoTitulo, C.seoDesc) + topo(v, 'index') + hero + corpo.join('\n') + ctaFaixa(v) + rodape(v);
@@ -226,9 +231,14 @@ ${C.numeros?.length ? `<section class="numeros"><div class="in"><ul>${C.numeros.
     const pags = {};
     for (const n of nav) pags[n.slug] = gens[n.slug](v);
     escreverVersao(pub, v, pags);
-    fs.writeFileSync(path.join(pub, 'assets', `${v}.css`), cssVars(T) + (v === 'a' ? CSS_A : CSS_B) + (T.css?.[v] || ''));
+    fs.writeFileSync(path.join(pub, 'assets', `${v}.css`), cssVars(T) + (v === 'a' ? CSS_A : CSS_B) + (T.fotosPequenas ? (v === 'a' ? PEQ_A : PEQ_B) : '') + (T.css?.[v] || ''));
   }
   copiarSiteJs(pub, '');
+  fs.writeFileSync(path.join(dir, 'site.config.json'), JSON.stringify({
+    name: C.nome, legalName: C.nome, tagline: C.resumo, setor: 'metalmecanica', domain: `https://${C.slug}.overtus.com.br`, whatsapp: '',
+    phone: C.fone, phoneHref: `+1${String(C.fone).replace(/\D/g, '')}`, email: C.email || '', address: endereco,
+    defaultLang: 'en', langs: ['en'], theme: { brand: T.cor, brandDeep: T.corEsc }, pages: nav.map(n => n.slug), hubName: C.nome,
+  }, null, 2) + '\n');
   return escolha(pub, {
     lang: 'en', nome: C.nome, url: E.url, cor: T.cor, fundo: T.escuro || '#14171a', claro: T.claro,
     fonteTitulo: T.fonteTitulo, fonteTexto: "'Inter', system-ui, sans-serif", googleFonts: FONTES,
@@ -272,6 +282,12 @@ h2{font-size:clamp(1.7rem,3.2vw,2.6rem)}
 .hero-sub{font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:54ch;color:#dfe3e6}
 .hero-acoes{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
 .hero .btn-linha{color:#fff}
+.hero-mos{min-height:auto;align-items:center;background:radial-gradient(120% 90% at 85% 10%,color-mix(in srgb,var(--cor) 38%,var(--escuro)) 0%,var(--escuro) 60%)}
+.hero-mos::after{display:none}
+.hero-mos .hero-in{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;padding:84px 0}
+.mos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.mos img:nth-child(2){transform:translateY(28px)}.mos img:nth-child(4){transform:translateY(28px)}
 .numeros{background:linear-gradient(100deg,var(--cor-esc),var(--cor));color:var(--sobre-cor)}
 .numeros ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
 .numeros li{padding:30px 22px;border-left:1px solid rgba(255,255,255,.22)}
@@ -397,6 +413,7 @@ main>.sec:not(.sec-inds) .inds p{color:var(--suave)}
   .util-in a:last-of-type{display:none}
   .intro-in,.serv,.qual-in,.qual-pg,.sobre-in,.contato-in,.rod-grade{grid-template-columns:1fr;gap:32px}
   .serv:nth-child(even) figure{order:0}
+  .hero-mos .hero-in{grid-template-columns:1fr;gap:36px;padding:56px 0 64px}
   .numeros li{border-left:0;padding:18px 0}
   .etapas li::before{display:none}
   .sec,.intro{padding:64px 0}
@@ -442,6 +459,8 @@ h2{font-size:clamp(1.7rem,3vw,2.5rem)}
 .hero-fig{position:relative}
 .hero-fig img{width:100%;aspect-ratio:4/4.3;object-fit:cover;border-radius:var(--raio)}
 .hero-fig::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:1.5px solid var(--cor);border-radius:var(--raio);z-index:-1}
+.hero-fig-mos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hero-fig-mos img{aspect-ratio:1!important}
 .hero-fig figcaption{position:absolute;left:14px;bottom:14px;background:var(--tinta);color:#fff;padding:6px 10px;font-size:.72rem;border-radius:3px}
 .sec{padding:88px 0}
 .sec-topo{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
@@ -565,4 +584,18 @@ main .sec:not(.sec-qual) .cert{background:var(--claro);border-color:var(--linha)
 }
 @media (max-width:620px){.inds-b{grid-template-columns:1fr}}
 @media (max-width:520px){.ficha{grid-template-columns:1fr}.ficha div:nth-child(odd){border-right:0}.ficha div:nth-child(even){padding-left:0}.equip{grid-template-columns:1fr}}
+`;
+
+const PEQ_A = `
+.serv{grid-template-columns:minmax(0,380px) 1fr}
+.serv:nth-child(even){grid-template-columns:1fr minmax(0,380px)}
+.qual-in{grid-template-columns:minmax(0,420px) 1fr}
+.sobre-in{grid-template-columns:1.6fr minmax(0,400px)}
+@media (max-width:900px){.serv,.serv:nth-child(even),.qual-in,.sobre-in{grid-template-columns:1fr}.serv figure{max-width:420px}}
+`;
+const PEQ_B = `
+.galeria a:nth-child(5n+1){grid-column:auto;grid-row:auto}
+.qual-in{grid-template-columns:minmax(0,420px) 1fr}
+.sobre-in{grid-template-columns:1.6fr minmax(0,400px)}
+@media (max-width:900px){.qual-in,.sobre-in{grid-template-columns:1fr}}
 `;

@@ -29,6 +29,12 @@ h2{font-size:clamp(1.7rem,3.2vw,2.6rem)}
 .hero-sub{font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:54ch;color:#dfe3e6}
 .hero-acoes{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
 .hero .btn-linha{color:#fff}
+.hero-mos{min-height:auto;align-items:center;background:radial-gradient(120% 90% at 85% 10%,color-mix(in srgb,var(--cor) 38%,var(--escuro)) 0%,var(--escuro) 60%)}
+.hero-mos::after{display:none}
+.hero-mos .hero-in{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;padding:84px 0}
+.mos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.mos img:nth-child(2){transform:translateY(28px)}.mos img:nth-child(4){transform:translateY(28px)}
 .numeros{background:linear-gradient(100deg,var(--cor-esc),var(--cor));color:var(--sobre-cor)}
 .numeros ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
 .numeros li{padding:30px 22px;border-left:1px solid rgba(255,255,255,.22)}
@@ -154,6 +160,7 @@ main>.sec:not(.sec-inds) .inds p{color:var(--suave)}
   .util-in a:last-of-type{display:none}
   .intro-in,.serv,.qual-in,.qual-pg,.sobre-in,.contato-in,.rod-grade{grid-template-columns:1fr;gap:32px}
   .serv:nth-child(even) figure{order:0}
+  .hero-mos .hero-in{grid-template-columns:1fr;gap:36px;padding:56px 0 64px}
   .numeros li{border-left:0;padding:18px 0}
   .etapas li::before{display:none}
   .sec,.intro{padding:64px 0}
