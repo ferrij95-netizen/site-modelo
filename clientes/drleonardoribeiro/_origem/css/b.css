@@ -1,0 +1,63 @@
+/* Dr. Leonardo Ribeiro B "Consultório": clara, verde do logo como acento, o médico em destaque. Noto Sans + Inter. */
+:root{--cor:#2f5a4e;--cor-esc:#244a40;--verde:#4f8a7a;--verde-esc:#2f5a4e;--azul:#1d5a73;--claro:#e9f1ee;--anel:#f4f7f5;--tinta:#1c2724;--suave:#55625d;--fundo:#f4f7f5;--cartao:#fff;--topo:rgba(244,247,245,.95);--linha:#d9e3df;--ft:'Noto Sans',system-ui,sans-serif;--fx:Inter,system-ui,sans-serif;--raio:4px}
+.topo{background:rgba(255,255,255,.96)}
+.hero-b{padding:64px 0 80px;background:linear-gradient(180deg,#fff 0%,var(--fundo) 100%)}
+.hero-b-in{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center}
+.hero-b h1{font-size:clamp(2.4rem,5vw,4.1rem);line-height:1.04}
+.hero-b-txt>p:not(.k):not(.bts){font-size:1.12rem;color:var(--suave);max-width:560px}
+.hero-b-foto{position:relative}
+.hero-b-foto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:40% 30%;border-radius:var(--raio)}
+.hero-b-foto::before{content:"";position:absolute;inset:-18px 18px 18px -18px;border:2px solid var(--verde);border-radius:var(--raio);z-index:-1}
+.hero-b-foto figcaption{position:absolute;left:-24px;bottom:28px;background:var(--verde-esc);color:#d5e6e0;padding:14px 20px;font-size:.86rem;border-radius:var(--raio)}
+.hero-b-foto figcaption b{display:block;color:#fff;font:600 1.1rem var(--ft)}
+.areas-b{padding:88px 0}
+.areas-lista>li{border-top:1px solid var(--linha)}.areas-lista>li:last-child{border-bottom:1px solid var(--linha)}
+.areas-lista a{display:grid;grid-template-columns:70px 1.2fr 1fr 32px;gap:28px;align-items:center;padding:28px 8px;text-decoration:none;transition:background .2s}
+.areas-lista a:hover{background:#fff}
+.areas-lista .n{font:600 1.6rem var(--ft);color:var(--verde)}
+.areas-lista h3{font-size:1.5rem;color:var(--verde-esc);margin-bottom:.2em}
+.areas-lista p{color:var(--suave);margin:0}
+.areas-lista ul{display:flex;flex-wrap:wrap;gap:6px}
+.areas-lista ul li{font-size:.85rem;background:var(--claro);color:var(--verde-esc);padding:4px 10px;border-radius:99px}
+.areas-lista>li>a>.ic{color:var(--verde)}
+.faixa-b{background:var(--verde-esc)}
+.faixa-b-fotos{display:grid;grid-template-columns:repeat(3,1fr)}
+.faixa-b-fotos a{position:relative;display:block;color:#fff;text-decoration:none;overflow:hidden}
+.faixa-b-fotos img{width:100%;aspect-ratio:930/400;object-fit:cover;transition:transform .5s}
+.faixa-b-fotos a:hover img{transform:scale(1.04)}
+.faixa-b-fotos span{position:absolute;inset:auto 0 0 0;padding:40px 22px 18px;background:linear-gradient(transparent,rgba(20,40,35,.85));font-size:.88rem}
+.faixa-b-fotos b{display:block;font:600 1.15rem var(--ft)}
+.melasma-b{display:grid;grid-template-columns:.9fr 1.6fr;gap:56px;padding:96px 0;align-items:start}
+.melasma-b-intro p:not(.k){color:var(--suave)}
+.melasma-b .melasma{grid-template-columns:1fr;gap:0}
+.melasma-b .melasma li{padding:0 0 32px 84px;min-height:88px}
+.melasma-b .melasma .n{position:absolute;left:0;top:0;border-radius:var(--raio)}
+.melasma-b .melasma li::before{left:27px;right:auto;top:56px;bottom:0;width:2px;height:auto;background:var(--linha)}
+.pele-b{background:#fff;padding:80px 0;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.az{columns:4 220px;column-gap:28px}
+.az li{break-inside:avoid}
+.az a{display:flex;align-items:center;gap:12px;padding:10px 0;text-decoration:none;border-bottom:1px dashed var(--linha)}
+.az a:hover{color:var(--verde-esc)}
+.az b{display:grid;place-items:center;width:30px;height:30px;flex:none;background:var(--claro);color:var(--verde-esc);font:600 .95rem var(--ft);border-radius:var(--raio)}
+.visita-b{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center;padding:88px 0}
+.visita-b p{color:var(--suave)}.visita-b p b{color:var(--tinta)}
+.cab-b{background:#fff;border-bottom:1px solid var(--linha);padding:56px 0 48px}
+.cab-b h1{font-size:clamp(2.1rem,4.4vw,3.4rem)}
+.cab-b-in p:not(.k){color:var(--suave);font-size:1.1rem;max-width:720px;margin:0}
+.artigos{display:grid;grid-template-columns:260px 1fr;gap:56px;align-items:start}
+.indice{position:sticky;top:100px;background:#fff;border:1px solid var(--linha);padding:20px 22px;border-radius:var(--raio)}
+.indice ol{counter-reset:i;display:grid;gap:2px}
+.indice li{counter-increment:i}
+.indice a{display:flex;gap:10px;padding:6px 0;text-decoration:none;font-size:.93rem;color:var(--suave)}
+.indice a::before{content:counter(i,decimal-leading-zero);color:var(--verde);font:600 .8rem/1.6 var(--ft)}
+.indice a:hover{color:var(--verde-esc)}
+.artigo{padding:0 0 48px;margin-bottom:48px;border-bottom:1px solid var(--linha);scroll-margin-top:100px;display:grid;grid-template-columns:1fr 240px;gap:0 36px}
+.artigo header,.artigo-txt{grid-column:1}
+.artigo-foto{grid-column:2;grid-row:1/span 2}
+.artigo-foto img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--raio)}
+.artigo h2{font-size:1.7rem;margin-bottom:.15em}
+.artigo .sub{color:var(--verde);font-weight:600;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
+.artigo-txt p{color:var(--suave);max-width:720px}
+.artigo:last-child{border-bottom:0}
+@media (max-width:1020px){.hero-b-in,.melasma-b,.visita-b{grid-template-columns:1fr;gap:40px}.hero-b-foto{max-width:440px}.artigos{grid-template-columns:1fr}.indice{position:static}.areas-lista a{grid-template-columns:50px 1fr 28px}.areas-lista ul{display:none}}
+@media (max-width:720px){.faixa-b-fotos{grid-template-columns:1fr}.artigo{grid-template-columns:1fr}.artigo-foto{grid-column:1;grid-row:auto;margin:10px 0 18px}.artigo-foto img{aspect-ratio:16/9}.hero-b-foto figcaption{left:0}.hero-b-foto::before{inset:-10px 10px 10px -10px}.areas-lista a{gap:16px}}

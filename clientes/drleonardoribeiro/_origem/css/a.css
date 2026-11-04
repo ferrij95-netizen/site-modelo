@@ -1,0 +1,61 @@
+/* Dr. Leonardo Ribeiro A "Laser": verde do logo LR com faixa em degradê verde-azulado (o site atual usa fundo azul). Noto Sans (o logo é Droid Sans) + Inter. */
+:root{--cor:#3f7a69;--cor-esc:#2f5a4e;--verde:#4f8a7a;--verde-esc:#2f5a4e;--azul:#1d5a73;--claro:#e6f0ec;--anel:#e6f0ec;--tinta:#1f2e2a;--suave:#56655f;--fundo:#fbfcfb;--cartao:#fff;--topo:rgba(251,252,251,.95);--linha:#dbe6e1;--ft:'Noto Sans',system-ui,sans-serif;--fx:Inter,system-ui,sans-serif;--raio:10px}
+.btn{border-radius:8px}
+.hero-a{background:linear-gradient(125deg,#244a40 0%,#2f5a4e 40%,#1d5a73 100%);color:#fff;padding:56px 0 64px;position:relative;overflow:hidden}
+.hero-a::after{content:"";position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(147,188,174,.28),transparent 65%)}
+.hero-a-in{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center;position:relative;z-index:1}
+.hero-a h1{color:#fff;font-size:clamp(2.4rem,4.8vw,4rem);line-height:1.04}
+.hero-a .k{color:#a9d2c4}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.1rem;color:#d5e6e0;max-width:500px}
+.hero-a-car{border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.3);aspect-ratio:930/400;background:#e9d4cb}
+.hero-a-car .slide{display:block;text-decoration:none;color:#fff;height:100%}
+.legenda{position:absolute;left:18px;bottom:40px;background:rgba(31,59,52,.82);backdrop-filter:blur(4px);padding:12px 18px;border-radius:8px;font-size:.9rem;max-width:70%}
+.legenda b{display:block;font:600 1.15rem var(--ft)}
+.destaques-a{padding:80px 0 72px}
+.destaques{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.destaques li+li{border-left:1px solid var(--linha)}
+.destaques a{display:block;padding:32px 28px;text-decoration:none;height:100%;transition:background .2s}
+.destaques a:hover{background:var(--claro)}
+.destaques .ic{width:34px;height:34px;color:var(--verde);margin-bottom:16px}
+.destaques h3{font-size:1.4rem;margin-bottom:.2em}
+.destaques p{color:var(--suave);margin:0}
+.melasma-a{background:var(--claro);padding:80px 0}
+.melasma-a .melasma .n{box-shadow:0 0 0 8px #fff}
+.duo-a{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:88px 0}
+.duo{display:grid;grid-template-columns:1fr 1fr;text-decoration:none;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;transition:box-shadow .2s,transform .2s}
+.duo:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(31,59,52,.12)}
+.duo img{width:100%;height:100%;object-fit:cover;min-height:260px}
+.duo div{padding:28px}
+.duo p:not(.k){color:var(--suave)}
+.duo h3{font-size:1.35rem}
+.pele-a{background:linear-gradient(120deg,#1f3b34,#1d5a73);color:#fff;padding:80px 0}
+.pele-a-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.pele-a h2{color:#fff}.pele-a .k{color:#a9d2c4}.pele-a p{color:#d5e6e0}
+.pele-a .btn{background:#fff;border-color:#fff;color:var(--verde-esc)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips a{display:block;padding:9px 16px;border:1px solid rgba(255,255,255,.28);border-radius:99px;text-decoration:none;font-size:.95rem;transition:background .2s}
+.chips a:hover{background:rgba(255,255,255,.14)}
+.dr-a{display:grid;grid-template-columns:380px 1fr;gap:56px;align-items:center;padding:88px 0}
+.dr-a img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--raio);box-shadow:24px 24px 0 var(--claro)}
+.dr-a p:not(.k){color:var(--suave)}
+.cab-a{background:linear-gradient(125deg,#244a40,#2f5a4e 45%,#1d5a73);color:#fff;padding:48px 0}
+.cab-a-in{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.cab-a h1{color:#fff;font-size:clamp(2.1rem,4.2vw,3.3rem)}
+.cab-a .k{color:#a9d2c4}
+.cab-a-in p:not(.k){color:#d5e6e0;font-size:1.08rem;margin:0}
+.cab-a figure img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px}
+.procs{display:grid;gap:10px}
+.proc{background:var(--cartao);border-radius:var(--raio);border:1px solid var(--linha)}
+.proc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px}
+.proc summary::-webkit-details-marker{display:none}
+.proc summary b{display:block;font:600 1.18rem/1.25 var(--ft);color:var(--tinta)}
+.proc summary small{display:block;color:var(--verde);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.proc summary .ic{color:var(--verde);transform:rotate(90deg);transition:transform .2s}
+.proc[open]{border-color:var(--verde)}
+.proc[open] summary .ic{transform:rotate(-90deg)}
+.proc-corpo{display:grid;grid-template-columns:280px 1fr;gap:28px;padding:0 24px 24px}
+.proc-corpo.sem-foto{grid-template-columns:1fr}
+.proc-corpo img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px}
+.proc-corpo p{color:var(--suave);max-width:740px}
+@media (max-width:1020px){.hero-a-in,.cab-a-in,.pele-a-in,.dr-a{grid-template-columns:1fr;gap:32px}.duo-a{grid-template-columns:1fr}.dr-a figure{max-width:380px}}
+@media (max-width:720px){.destaques{grid-template-columns:1fr}.destaques li+li{border-left:0;border-top:1px solid var(--linha)}.duo{grid-template-columns:1fr}.duo img{min-height:0;aspect-ratio:16/9}.proc-corpo{grid-template-columns:1fr}.legenda{left:10px;bottom:34px;max-width:85%;font-size:.8rem;padding:8px 12px}.legenda b{font-size:1rem}.hero-a-car{aspect-ratio:4/3}.cab-a figure{display:none}}
