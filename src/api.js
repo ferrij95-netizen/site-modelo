@@ -47,7 +47,8 @@ const chavesDoSegredo = env => String(env.HUB_API_KEY || '').replace(/^\s*HUB_AP
 // (e nomes parecidos, caso tenha sido salvo com outro nome).
 export function motivoRecusa(env) {
   if (!env.HUB_API_KEY) {
-    const parecidos = Object.keys(env).filter(n => /api|key|chave|hub/i.test(n) && n !== 'ASSETS' && n !== 'PROSPECCAO');
+    // Só os nomes das variáveis que chegaram ao worker (nunca os valores), para saber se o segredo foi publicado.
+    const parecidos = Object.keys(env).sort();
     return { diagnostico: 'segredo_ausente', dica: 'O worker não tem o segredo HUB_API_KEY. Crie em Workers > site-modelo > Settings > Variables and Secrets e clique em Deploy.', nomesParecidos: parecidos };
   }
   return { diagnostico: 'chave_diferente', chavesNoSegredo: chavesDoSegredo(env).length, dica: 'O segredo existe, mas a chave enviada não é igual a nenhuma das que estão nele.' };
