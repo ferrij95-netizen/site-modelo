@@ -26,6 +26,17 @@
     });
     window.open(`https://wa.me/${f.dataset.numero || WA}?text=${encodeURIComponent(linhas.join('\n'))}`, '_blank', 'noopener');
   }));
+  // <form data-email="destino@empresa" data-assunto="..."> para clientes sem WhatsApp: abre o e-mail com os campos preenchidos
+  document.querySelectorAll('form[data-email]').forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault();
+    const falta = [...f.querySelectorAll('[required]')].find(c => !c.value.trim());
+    if (falta) { const l = falta.closest('label'); if (l) l.classList.add('erro'); falta.focus(); return; }
+    const linhas = [...f.elements].filter(c => c.name && c.type !== 'submit' && c.value.trim()).map(c => {
+      const rot = (c.closest('label') && c.closest('label').firstChild.textContent.trim()) || c.name;
+      return `${rot.replace(/\*$/, '').trim()}: ${c.tagName === 'SELECT' ? c.options[c.selectedIndex].text : c.value.trim()}`;
+    });
+    location.href = `mailto:${f.dataset.email}?subject=${encodeURIComponent(f.dataset.assunto || 'Contato pelo site')}&body=${encodeURIComponent(linhas.join('\n'))}`;
+  }));
   document.addEventListener('input', e => { const l = e.target.closest && e.target.closest('label.erro'); if (l && e.target.value.trim()) l.classList.remove('erro'); });
 
   // Caixa de fotos: links com data-foto="legenda"
