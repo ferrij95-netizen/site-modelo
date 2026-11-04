@@ -1,0 +1,44 @@
+/* Versão B "Chão de fábrica": preto e amarelo, fotos em tela cheia */
+.hero{position:relative;min-height:min(86vh,740px);display:flex;align-items:center;color:#fff;background:#000}
+.hero .slide{position:absolute!important;inset:0;height:100%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.65) 45%,rgba(0,0,0,.15) 100%);z-index:1;pointer-events:none}
+.hero-in{position:relative;z-index:2;padding:clamp(70px,10vw,120px) 0}
+.hero h1{max-width:760px;text-transform:uppercase}
+.hero h1::after{content:"";display:block;width:110px;height:7px;background:var(--cor);margin-top:20px}
+.hero .sobre{color:var(--cor)}
+.lead{font-size:1.16rem;color:#e0e0e0;max-width:580px}
+.hero-bts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero .btn-linha{color:#fff}
+.hero .pontos{position:static;justify-content:flex-start;margin-top:36px}
+.hero .pontos button.ativo{background:var(--cor)}
+
+.selos-sec{background:var(--cor);padding:34px 0}
+.selos-sec .selo p{color:#111}
+.selos-sec .selo-iso small{background:#111;color:#fff}
+
+.maq-sec{background:var(--preto);color:#fff}
+.maq-sec .sobre{color:var(--cor)}
+.maq-grade{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.maq-grade a{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;text-decoration:none;color:#fff;background:#222}
+.maq-grade img{width:100%;height:100%;object-fit:cover;transition:transform .5s,opacity .3s;opacity:.85}
+.maq-grade a:hover img{transform:scale(1.05);opacity:1}
+.maq-grade a::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.9))}
+.maq-q{position:absolute;left:12px;top:12px;z-index:1;padding:3px 8px;background:var(--cor);color:#111;font:800 .74rem var(--ft);text-transform:uppercase}
+.maq-t{position:absolute;left:12px;right:12px;bottom:12px;z-index:1;font:800 .98rem/1.25 var(--ft)}
+
+.set-sec{background:#fff}
+.metro-home{background:var(--claro)}
+.metro-home-in{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:clamp(18px,3vw,36px);align-items:center}
+.metro-home figure img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.cli-sec{background:#fff}
+
+.equip{border-top-color:var(--cor)}
+.pg-topo{border-bottom:6px solid var(--cor)}
+.pg-topo h1::after{display:none}
+
+@media (max-width:1100px){.maq-grade{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:820px){
+  .maq-grade{grid-template-columns:1fr 1fr}
+  .metro-home-in{grid-template-columns:1fr 1fr}.metro-home-in>div{grid-column:1/-1}
+  .hero{min-height:auto}
+}
