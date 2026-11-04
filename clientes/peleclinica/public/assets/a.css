@@ -1,0 +1,146 @@
+/* Pele Clínica A "Orquídea": vinho e rosa do logo (orquídea), fundo creme rosado. Nunito arredondada (como o "PeleClínica") + Nunito Sans. */
+:root{--cor:#955a6c;--cor-esc:#5b3039;--vinho:#5b3039;--rosa:#955a6c;--blush:#f4e7e8;--tinta:#3a1f26;--suave:#6e5a5f;--fundo:#fffaf8;--cartao:#fff;--topo:rgba(255,250,248,.96);--linha:#eddcdc;--ft:Nunito,system-ui,sans-serif;--fx:'Nunito Sans',system-ui,sans-serif;--raio:18px}
+h1,h2{font-weight:800;color:var(--vinho);letter-spacing:-.015em}
+h2{font-size:clamp(1.8rem,3.2vw,2.6rem)}
+h3{font-weight:700;color:var(--tinta)}
+.k{font:700 .8rem/1.3 var(--fx);letter-spacing:.14em;text-transform:uppercase;color:var(--rosa);margin:0 0 .8em}
+.btn{border-radius:99px}
+.btn-linha{color:var(--vinho)}
+.menu a{border-radius:99px}.menu a:hover{background:var(--blush)}.menu a.ativo{background:var(--blush);color:var(--vinho)}
+
+.hero-a{padding:64px 0 88px;background:radial-gradient(circle at 85% 20%,var(--blush),transparent 55%)}
+.hero-a-in{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.hero-a h1{font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:1.02}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.15rem;color:var(--suave);max-width:520px}
+.hero-a-fotos{position:relative;padding:0 0 70px 60px}
+.hero-a-fotos .f1 img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:200px 200px var(--raio) var(--raio)}
+.hero-a-fotos .f2{position:absolute;left:0;bottom:0;width:46%;border:8px solid var(--fundo);border-radius:calc(var(--raio) + 8px)}
+.hero-a-fotos .f2 img{aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.selo{position:absolute;right:-10px;bottom:24px;background:var(--vinho);color:#fff;border-radius:var(--raio);padding:14px 20px;margin:0}
+.selo b{display:block;font:800 1.8rem/1 var(--ft)}.selo span{font-size:.85rem;color:#ecd9de}
+
+.areas-a{padding:24px 0 88px}
+.areas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.areas a{display:block;height:100%;text-decoration:none;background:#fff;border-radius:var(--raio);overflow:hidden;border:1px solid var(--linha);transition:transform .2s,box-shadow .2s}
+.areas a:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(91,48,57,.12)}
+.areas figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.areas div{padding:22px 24px 24px}
+.areas small{color:var(--rosa);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.76rem}
+.areas h3{font-size:1.6rem;margin:.1em 0 .3em;color:var(--vinho)}
+.areas p{color:var(--suave)}
+
+.equipe-a{background:var(--blush);padding:88px 0}
+.equipe-a .medicas{grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
+.equipe-a .medicas>li{flex-direction:column;align-items:center;text-align:center;background:#fff;border-radius:var(--raio);padding:26px 16px}
+.equipe-a .medicas h3{font-size:1.05rem}
+.equipe-a .medicas p{font-size:.86rem}
+
+.clinica-a{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:96px 0}
+.clinica-a img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio) 200px var(--raio) var(--raio)}
+.clinica-a p{color:var(--suave)}
+.cuide-a{padding:0 0 96px}
+.cuide-a-in{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:center;background:#fff;border:1px solid var(--linha);border-radius:var(--raio);padding:48px}
+.cuide-a-in p{color:var(--suave)}
+
+.cab-a{padding:56px 0 64px;background:radial-gradient(circle at 90% 0,var(--blush),transparent 60%)}
+.cab-a-in{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.cab-a h1{font-size:clamp(2.2rem,4.4vw,3.6rem);line-height:1.05}
+.cab-a-in p:not(.k){color:var(--suave);font-size:1.1rem}
+.cab-a figure img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:200px 200px var(--raio) var(--raio)}
+.cab-a+.in>section:first-child{padding-top:32px}
+
+@media (max-width:1060px){.equipe-a .medicas{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:960px){.hero-a-in,.cab-a-in,.clinica-a,.cuide-a-in{grid-template-columns:1fr;gap:32px}.areas{grid-template-columns:1fr}.cuide-a-in{padding:28px}}
+@media (max-width:640px){.hero-a{padding-top:36px}.hero-a-fotos{padding:0 0 50px 30px}.selo{right:0;bottom:auto;top:16px}.equipe-a .medicas{grid-template-columns:1fr 1fr;gap:12px}.equipe-a .medicas>li{padding:18px 10px}.equipe-a .medicas p{display:none}}
+.bts{display:flex;flex-wrap:wrap;gap:12px;margin:1.5em 0 0}
+.tit{margin-bottom:36px;max-width:760px}
+.tit-linha{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;max-width:none}
+.topo{position:sticky;top:0;z-index:40;background:var(--topo);border-bottom:1px solid var(--linha);backdrop-filter:blur(6px)}
+.topo-linha{display:flex;align-items:center;gap:20px;min-height:80px;position:relative}
+.marca img{width:190px;height:auto}
+.menu{margin-left:auto}.menu ul{display:flex;gap:2px}
+.menu a{display:block;padding:8px 11px;text-decoration:none;font:600 .95rem var(--fx);color:var(--tinta)}
+.btn-topo{min-height:44px;padding:.5em 1.1em}
+.medicas{display:grid;gap:22px}
+.medicas>li{display:flex;gap:20px;align-items:flex-start}
+.medicas img{width:92px;height:92px;border-radius:50%;object-fit:cover;flex:none}
+.medicas h3{margin:0 0 2px;font-size:1.2rem}
+.medicas small{display:block;color:var(--rosa);font-weight:700;font-size:.82rem;letter-spacing:.04em;margin-bottom:8px}
+.medicas p{margin:0;color:var(--suave);font-size:.95rem}
+.medicas ul li{color:var(--suave);font-size:.95rem;padding-left:16px;position:relative;margin:.25em 0}
+.medicas ul li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--rosa)}
+.texto-pag{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;padding:80px 0 40px}
+.texto-pag p{color:var(--suave)}.lead{font-size:1.2rem;color:var(--tinta)!important}
+.texto-pag img{width:100%;border-radius:var(--raio)}
+.texto-pag figcaption{font-size:.86rem;color:var(--suave);margin-top:8px}
+.espaco{padding:40px 0 88px}
+.galeria{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.galeria a{display:block;overflow:hidden;border-radius:var(--raio)}
+.galeria img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s}
+.galeria a:hover img{transform:scale(1.04)}
+.equipe-pag{padding:72px 0 88px}
+.equipe-pag .lead{max-width:780px;margin-bottom:40px}
+.equipe-pag .medicas{grid-template-columns:1fr 1fr;gap:28px 40px}
+.equipe-pag .medicas>li{padding:26px;background:var(--cartao);border-radius:var(--raio)}
+.area-pag{padding:56px 0 88px}
+.ancoras{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.ancoras a{text-decoration:none;padding:8px 18px;border:1px solid var(--linha);border-radius:99px;font-weight:600}
+.ancoras a[aria-current]{background:var(--vinho);border-color:var(--vinho);color:#fff}
+.procs{display:grid;gap:10px}
+.proc{background:var(--cartao);border-radius:var(--raio);border:1px solid var(--linha)}
+.proc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px}
+.proc summary::-webkit-details-marker{display:none}
+.proc summary b{display:block;font:700 1.2rem/1.25 var(--ft);color:var(--tinta)}
+.proc summary small{display:block;color:var(--rosa);font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.proc summary .ic{color:var(--rosa);transform:rotate(90deg);transition:transform .2s}
+.proc[open] summary .ic{transform:rotate(-90deg)}
+.proc-corpo{display:grid;grid-template-columns:260px 1fr;gap:28px;padding:0 24px 24px}
+.proc-corpo:not(:has(figure)){grid-template-columns:1fr}
+.proc-corpo img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.proc-corpo p{color:var(--suave);max-width:720px}
+.horas{margin:0}
+.horas div{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--linha)}
+.horas dt{font-weight:600}.horas dd{margin:0;font:700 1.1rem var(--ft);color:var(--vinho)}
+.contato-pag{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;padding:72px 0 88px;align-items:start}
+.contato-form{background:var(--cartao);padding:34px;border-radius:var(--raio)}
+.contato-form>p{color:var(--suave)}
+.contato-lista{display:grid;gap:18px;margin-bottom:24px}
+.contato-lista li{display:flex;gap:14px}
+.contato-lista .ic{color:var(--rosa);width:24px;height:24px;margin-top:2px}
+.contato-lista div{display:grid}
+.contato-lista a{text-decoration:none;font-weight:600}
+.contato-lista span{color:var(--suave)}
+.cta{background:var(--vinho);color:#fff}
+.cta-in{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:60px 0;flex-wrap:wrap}
+.cta h2{color:#fff;margin-bottom:.2em}.cta p{margin:0;color:#ecd9de}
+.btn-claro{background:#fff;border-color:#fff;color:var(--vinho)}.btn-claro:hover{background:var(--rosa);border-color:var(--rosa);color:#fff}
+.cta .btn-linha{color:#fff}
+.rodape{background:#3e1f27;color:#d3bcc3;padding-top:56px}
+.rod-grade{display:grid;grid-template-columns:1.3fr 1fr 1.3fr;gap:40px;padding-bottom:40px}
+.rod-marca img{width:200px}.rod-marca p{margin-top:16px;font-size:.92rem}
+.rodape h3{color:#fff;font-size:1.1rem}
+.rodape ul li{margin:.35em 0}
+.rodape a{text-decoration:none}.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px;align-items:flex-start}
+.rod-dados .ic{color:#e3b5c3;margin-top:.2em}
+.rod-base{border-top:1px solid rgba(255,255,255,.12);padding:16px 0;font-size:.82rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:1060px){.menu a{padding:8px 8px;font-size:.9rem}.marca img{width:160px}}
+@media (max-width:960px){
+  .menu-btn{display:block;color:var(--tinta);margin-left:auto}
+  .btn-topo{display:none}
+  .menu{display:none;position:absolute;left:-16px;right:-16px;top:100%;background:var(--fundo);border-bottom:1px solid var(--linha)}
+  .menu-aberto .menu{display:block}.menu ul{flex-direction:column;padding:10px 16px}
+  .texto-pag,.contato-pag,.equipe-pag .medicas{grid-template-columns:1fr;gap:28px}
+  .tit-linha{flex-direction:column;align-items:flex-start;gap:12px}
+  .rod-grade{grid-template-columns:1fr 1fr}.rod-marca{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .proc-corpo{grid-template-columns:1fr}
+  .galeria{grid-template-columns:1fr 1fr}
+  .medicas>li{gap:14px}.medicas img{width:72px;height:72px}
+  .equipe-pag .medicas>li{padding:18px;flex-direction:column}
+  .contato-form{padding:22px}
+  .rod-grade{grid-template-columns:1fr}
+  .marca img{width:150px}
+}
