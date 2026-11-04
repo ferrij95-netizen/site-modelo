@@ -1,0 +1,224 @@
+/* Versão B "Oficina": grafite e vermelho, Archivo larga + Public Sans */
+:root{--cor:#d81e25;--cor-esc:#b0141a;--cor-clara:#ff4a50;--tinta:#141517;--suave:#5b5d61;--fundo:#fff;--cartao:#f3f3f2;--topo:#141517;--topo-t:#fff;--faixa:#000;--faixa-t:#a9a9a9;--linha:#dedede;--ft:Archivo,system-ui,sans-serif;--fx:"Public Sans",system-ui,sans-serif;--raio:2px}
+h1,h2,h3{font-stretch:112%;text-transform:none}
+h1,h2{font-weight:900;letter-spacing:-.015em}
+.topo{border-bottom:3px solid var(--cor)}
+.menu a{font-weight:500}
+.hero-b{background:var(--tinta);color:#fff;overflow:hidden}
+.hero-b-in{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:center;padding:72px 0 64px}
+.hero-b h1{font-size:clamp(2.4rem,5.2vw,4.4rem);line-height:1;color:#fff}
+.hero-b h1 span{color:var(--cor-clara)}
+.hero-b-txt>p:not(.k):not(.bts){color:#c9c9c9;font-size:1.1rem;max-width:520px}
+.hero-b .btn-linha{color:#fff}
+.hero-b-foto{position:relative;display:grid;place-items:center}
+.hero-b-foto .oval{position:absolute;inset:4% 0 8%;border-radius:50%;background:#fff;box-shadow:0 0 0 12px var(--cor),0 0 0 26px rgba(255,255,255,.06)}
+.hero-b-foto img{position:relative;width:86%;mix-blend-mode:multiply}
+.hero-b-foto::after{content:"";position:absolute;inset:auto 10% 4%;height:14px;border-radius:50%;background:rgba(0,0,0,.4);filter:blur(8px)}
+.numeros-b{background:#000;color:#fff}
+.numeros-b ul{display:grid;grid-template-columns:repeat(4,1fr)}
+.numeros-b li{padding:26px 20px;border-left:1px solid rgba(255,255,255,.14);display:grid}
+.numeros-b b{font:900 1.9rem/1.05 var(--ft);font-stretch:125%}
+.numeros-b span{color:#9a9a9a;font-size:.92rem}
+.linhas-b{margin-top:88px;margin-bottom:88px}
+.linhas-l{border-top:2px solid var(--tinta)}
+.linhas-l a{display:grid;grid-template-columns:70px 1fr 200px 32px;gap:24px;align-items:center;padding:16px 0;border-bottom:1px solid var(--linha);text-decoration:none;transition:background .2s}
+.linhas-l a:hover{background:var(--cartao)}
+.linhas-l .n{font:900 1.6rem var(--ft);color:var(--cor);padding-left:8px}
+.linhas-l h3{font-size:1.35rem;margin-bottom:.2em}
+.linhas-l p{margin:0;color:var(--suave)}
+.linhas-l figure img{width:200px;height:120px;object-fit:contain;mix-blend-mode:multiply}
+.linhas-l .tile-ic{display:grid;place-items:center;width:200px;height:120px}
+.linhas-l .tile-ic .ic{width:54px;height:54px;color:var(--cor)}
+.linhas-l>li>a>.ic{color:var(--cor);width:26px;height:26px}
+.fab-b{background:var(--cartao);padding:88px 0}
+.fab-b-in{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.fab-b figure img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:var(--raio)}
+.fab-b p:not(.k){color:var(--suave)}
+.news-b{margin-top:88px;margin-bottom:88px}
+.pv-b{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center;margin-bottom:88px;padding:40px;background:var(--tinta);color:#fff}
+.pv-b h2{color:#fff}
+.pv-b .pv-lista li{border-color:rgba(255,255,255,.16)}
+.pv-b .btn-linha{color:#fff}
+.prod{background:#fff}
+.prod .prod-foto{background:#fff}
+.cab-b{background:var(--tinta);color:#fff;overflow:hidden}
+.cab-b-in{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;min-height:300px}
+.cab-b h1{font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.02;color:#fff}
+.cab-b figure{align-self:stretch;position:relative}
+.cab-b figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%)}
+.cab-b figure.recorte img{object-fit:contain;background:#fff;padding:16px}
+.cta{background:var(--tinta);border-top:6px solid var(--cor)}
+.cta .btn-claro{background:var(--cor);color:#fff;border-color:var(--cor)}
+.tempo-l b{font-stretch:125%}
+@media (max-width:900px){
+  .hero-b-in,.fab-b-in,.pv-b,.cab-b-in{grid-template-columns:1fr;gap:28px}
+  .hero-b-in{padding:48px 0}
+  .numeros-b ul{grid-template-columns:1fr 1fr}
+  .linhas-l a{grid-template-columns:48px 1fr 120px;gap:14px}
+  .linhas-l figure img,.linhas-l .tile-ic{width:120px;height:80px}
+  .linhas-l>li>a>.ic{display:none}
+  .cab-b-in{padding-top:40px;min-height:0}
+  .cab-b figure{height:220px;margin-inline:-16px}
+  .cab-b figure img{clip-path:none}
+  .pv-b{padding:26px}
+}
+@media (max-width:560px){
+  .linhas-l a{grid-template-columns:40px 1fr}
+  .linhas-l figure{display:none}
+  .linhas-l .n{font-size:1.2rem;padding-left:0}
+  .numeros-b b{font-size:1.4rem}
+  .numeros-b li{padding:18px 12px}
+}
+/* ---- comum Tramontini ---- */
+.k{font:700 .8rem/1.2 var(--fx);letter-spacing:.14em;text-transform:uppercase;color:var(--cor);margin-bottom:.8em}
+h1,h2,h3{font-weight:800}
+h2{font-size:clamp(1.7rem,3.4vw,2.6rem)}
+h3{font-size:1.18rem}
+.lead{font-size:1.18rem;line-height:1.55}
+.bts{display:flex;flex-wrap:wrap;gap:12px;margin:1.4em 0 0}
+.tit{margin-bottom:34px;max-width:780px}
+.tit-linha{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;max-width:none}
+.tit-lado{max-width:440px;color:var(--suave);margin:0}
+.nota{color:var(--suave);font-size:.92rem}
+main section{scroll-margin-top:90px}
+/* topo */
+.topo{position:sticky;top:-37px;z-index:40;background:var(--topo);border-bottom:1px solid var(--linha)}
+.faixa-topo{background:var(--faixa);color:var(--faixa-t);font-size:.85rem}
+.faixa-topo .in{display:flex;gap:24px;justify-content:flex-end;align-items:center;padding:7px 0}
+.faixa-topo span,.faixa-topo a{display:inline-flex;align-items:center;gap:7px;text-decoration:none}
+.faixa-topo span{margin-right:auto}
+.faixa-topo .ic{width:15px;height:15px}
+.faixa-topo .ft-rev{font-weight:700;color:#fff;background:var(--cor);padding:2px 10px;border-radius:3px}
+.topo-linha{display:flex;align-items:center;gap:22px;min-height:76px;position:relative}
+.marca img{width:198px;height:auto}
+.menu{margin-left:auto}
+.menu ul{display:flex;gap:2px}
+.menu a{display:block;padding:8px 12px;text-decoration:none;font:600 1rem var(--fx);color:var(--topo-t);border-bottom:3px solid transparent}
+.menu a:hover,.menu a.ativo{border-color:var(--cor)}
+.btn-topo{min-height:44px;padding:.5em 1.1em}
+/* blocos */
+.cab-a+.in>section:first-child,.cab-a+.in>nav:first-child,.cab-b+.in>section:first-child,.cab-b+.in>nav:first-child{margin-top:64px}
+.in>section{margin-bottom:84px}
+.ancoras{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:56px}
+.ancoras a{text-decoration:none;border:1px solid var(--linha);padding:7px 15px;font-weight:600;font-size:.94rem;border-radius:99px}
+.ancoras a:hover{border-color:var(--cor);color:var(--cor)}
+.grupo{font-size:1.05rem;text-transform:uppercase;letter-spacing:.08em;margin:34px 0 16px;color:var(--suave)}
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.prod{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;display:flex;flex-direction:column}
+.prod-foto{display:block;background:#fff;border-bottom:1px solid var(--linha)}
+.prod-foto img{width:100%;aspect-ratio:4/3;object-fit:contain;transition:transform .3s}
+.prod-foto:hover img{transform:scale(1.04)}
+.prod-txt{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.prod h3{font-size:1.05rem;margin:0}
+.prod .link-seta{margin-top:auto}
+.prod details{font-size:.9rem}
+.prod summary{cursor:pointer;font-weight:600;color:var(--suave)}
+.ficha-l{margin-top:8px;display:grid;gap:3px}
+.ficha-l li{padding-left:12px;position:relative;line-height:1.4}
+.ficha-l li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;background:var(--cor)}
+.ficha-l li.sub{padding:6px 0 0;font-weight:700;font-size:.8rem;letter-spacing:.06em}
+.ficha-l li.sub::before{display:none}
+.eletrica{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:40px;border-radius:var(--raio);background:var(--cartao);border:1px solid var(--linha)}
+.sub-el{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sub-el li{display:flex;gap:10px;align-items:center;padding:12px 14px;border:1px solid var(--linha);border-radius:var(--raio);font-weight:600}
+.sub-el .ic{color:var(--cor)}
+/* empresa */
+.texto-pag{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:start}
+.ficha figure img{width:100%;border-radius:var(--raio);margin-bottom:20px}
+.ficha dl{margin:0;display:grid;gap:14px}
+.ficha dl div{border-top:1px solid var(--linha);padding-top:12px}
+.ficha dt{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--suave);font-weight:700}
+.ficha dd{margin:2px 0 0;font-weight:600}
+.tempo-l{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--tinta)}
+.tempo-l li{padding:22px 24px 10px 0;border-bottom:1px solid var(--linha)}
+.tempo-l b{display:block;font:800 2rem/1 var(--ft);color:var(--cor);margin-bottom:10px}
+.mvv{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px}
+.mvv article{padding:28px;border-radius:var(--raio);background:var(--cartao);border:1px solid var(--linha)}
+.logo-ev{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.noticias{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.noticias li{display:flex;flex-direction:column;gap:14px}
+.noticias figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.noticias time{font-size:.85rem;font-weight:700;color:var(--cor)}
+.noticias h3{font-size:1.1rem;margin:.2em 0 .4em}
+.noticias p{color:var(--suave);font-size:.95rem}
+/* tratores */
+.carraro{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start}
+.carraro-pts{display:grid;gap:12px}
+.carraro-pts li{display:grid;padding:16px 18px;border-left:4px solid var(--cor);background:var(--cartao)}
+.carraro-pts span{color:var(--suave);font-size:.95rem}
+/* pos-venda */
+.pv{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start}
+.pv-caixa{padding:28px;border-radius:var(--raio);background:var(--cartao);border:1px solid var(--linha)}
+.pv-caixa h2{font-size:1.4rem}
+.pv-lista{display:grid;gap:12px}
+.pv-lista li{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--linha)}
+.pv-lista li span{font-weight:600}
+.pv-lista .btn{min-height:42px;padding:.45em 1em;font-size:.95rem}
+.porque-l{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.porque-l .n{font:800 1.1rem var(--ft);color:var(--cor)}
+.porque-l p{color:var(--suave)}
+.assist,.revendedor{padding:40px;border-radius:var(--raio);background:var(--cartao);border:1px solid var(--linha)}
+.revendedor{display:flex;justify-content:space-between;gap:32px;align-items:center;flex-wrap:wrap}
+.revendedor>div{max-width:720px}
+.pv-faixa h2{font-size:1.5rem}
+.pv-faixa .pv-lista{grid-template-columns:repeat(3,1fr)}
+.pv-faixa .pv-lista li{flex-direction:column;align-items:flex-start}
+/* contato */
+.contato-pag{display:grid;grid-template-columns:1.1fr 1fr;gap:56px}
+.form-duas{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contato-lista{display:grid;gap:18px;margin-bottom:20px}
+.contato-lista li{display:flex;gap:14px}
+.contato-lista .ic{color:var(--cor);width:24px;height:24px;margin-top:2px}
+.contato-lista div{display:grid}
+.contato-lista a{text-decoration:none;font-weight:600;overflow-wrap:anywhere}
+.contato-lista span{color:var(--suave)}
+.redes{display:flex;gap:10px;margin:0 0 20px}
+.redes a{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--linha);border-radius:50%}
+.redes a:hover{color:var(--cor);border-color:var(--cor)}
+.mapa{width:100%;height:300px;border:0;border-radius:var(--raio)}
+/* cta e rodapé */
+.cta{background:var(--cor);color:#fff}
+.cta-in{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:56px 0;flex-wrap:wrap}
+.cta h2{color:#fff;margin-bottom:.2em;font-size:clamp(1.5rem,3vw,2.2rem)}
+.cta p{margin:0}
+.cta .btn-claro{background:#fff;color:var(--cor);border-color:#fff}
+.cta .btn-linha{color:#fff}
+.rodape{background:#111214;color:#b9b9b9;padding-top:56px}
+.rod-grade{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:36px;padding-bottom:40px}
+.rod-marca img{width:180px;margin-bottom:16px}
+.rodape .redes a{border-color:rgba(255,255,255,.2);color:#fff}
+.rodape h3{color:#fff;font-size:1.05rem}
+.rodape ul li{margin:.35em 0}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px;align-items:flex-start}
+.rod-dados .ic{color:var(--cor-clara);margin-top:.2em}
+.rod-base{border-top:1px solid rgba(255,255,255,.1);padding:16px 0;font-size:.82rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:1060px){
+  .faixa-topo{display:none}.topo{top:0}
+  .menu-btn{display:block;color:var(--topo-t);margin-left:auto}
+  .btn-topo{display:none}
+  .menu{display:none;position:absolute;left:-16px;right:-16px;top:100%;background:var(--topo);border-bottom:1px solid var(--linha)}
+  .menu ul{flex-direction:column;padding:8px 16px 16px}
+  .menu-aberto .menu{display:block}
+  .rod-grade{grid-template-columns:1fr 1fr}
+  .porque-l{grid-template-columns:1fr 1fr}
+}
+@media (max-width:800px){
+  .tit-linha{flex-direction:column;align-items:flex-start}
+  .texto-pag,.carraro,.pv,.contato-pag,.logo-ev,.eletrica,.mvv{grid-template-columns:1fr;gap:32px}
+  .tempo-l{grid-template-columns:1fr}
+  .pv-faixa .pv-lista{grid-template-columns:1fr}
+  .eletrica,.assist,.revendedor{padding:26px}
+  .in>section{margin-bottom:64px}
+}
+@media (max-width:560px){
+  .rod-grade,.porque-l,.form-duas,.sub-el{grid-template-columns:1fr}
+  .marca img{width:160px}
+  .prods{grid-template-columns:1fr 1fr;gap:12px}
+  .prod-txt{padding:12px}
+  .prod h3{font-size:.95rem}
+  .lead{font-size:1.08rem}
+}
+@media (max-width:380px){.prods{grid-template-columns:1fr}}
