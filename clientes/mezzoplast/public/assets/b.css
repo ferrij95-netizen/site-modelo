@@ -1,0 +1,186 @@
+/* Mezzoplast B "Catálogo Técnico": azul-marinho escuro com amarelo. Chivo (títulos), Lato (texto), Chivo Mono (medidas). */
+:root{--cor:#fbb800;--cor-esc:#e0a500;--sobre-cor:#10192b;--marinho:#172740;--azul:#4a9be0;--laranja:#f39a2c;--verde:#2fcf7f;--tinta:#e6eaf1;--suave:#9eabc0;--fundo:#10192b;--painel:#17233a;--linha:rgba(255,255,255,.12);--ft:Chivo,system-ui,sans-serif;--fx:Lato,system-ui,sans-serif;--mono:'Chivo Mono',ui-monospace,monospace;--raio:2px}
+h1,h2,h3{font-weight:800;color:#fff;letter-spacing:-.015em}
+h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+.k{font:500 .74rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--cor);margin:0 0 .9em}
+.btn{color:#10192b}.btn-linha{color:#fff}
+.lead{font-size:1.15rem;color:#fff}
+
+.logo{width:200px;height:auto}
+.topo{position:sticky;top:0;z-index:40;background:rgba(16,25,43,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--linha)}
+.topo-linha{display:flex;align-items:center;gap:20px;min-height:74px;position:relative}
+.marca{flex:none;display:block}
+.menu{margin-left:auto}.menu ul{display:flex;gap:2px}
+.menu a{display:block;padding:8px 11px;text-decoration:none;font:600 .95rem var(--ft);color:#c9d2e0}
+.menu a:hover{color:#fff}.menu a.ativo{color:var(--cor)}
+.btn-topo{min-height:42px;padding:.5em 1.1em;font-size:.9rem}
+.bts{display:flex;flex-wrap:wrap;gap:12px;margin:1.4em 0 0}
+
+.hero-b{padding:72px 0 64px;border-bottom:1px solid var(--linha)}
+.hero-b-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center}
+.hero-b h1{font-size:clamp(2rem,3.8vw,3.2rem);line-height:1.06}
+.hero-b p{color:#c9d2e0;font-size:1.06rem}
+.hero-b-grade{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:10px}
+.hb{position:relative;display:block;overflow:hidden;text-decoration:none}
+.hb:first-child{grid-row:span 2}
+.hb img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.hb:hover img{transform:scale(1.05)}
+.hb span{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:rgba(16,25,43,.92);font:700 .95rem var(--ft);color:#fff;border-top:3px solid}
+.hb.f-azul span{border-color:var(--azul)}.hb.f-laranja span{border-color:var(--laranja)}.hb.f-verde span{border-color:var(--verde)}
+.hb .ic{color:var(--cor)}
+
+.num-b .in{display:grid;grid-template-columns:repeat(4,1fr)}
+.num-b div{padding:26px 20px;border-left:1px solid var(--linha);display:grid}
+.num-b div:last-child{border-right:1px solid var(--linha)}
+.num-b b{font:800 1.8rem/1.1 var(--ft);color:var(--cor)}
+.num-b span{color:var(--suave);font-size:.9rem}
+.num-b{border-bottom:1px solid var(--linha)}
+
+.tit-b{margin-bottom:28px;max-width:760px}
+.tabela-b{padding:88px 0}
+.tabela-rola{overflow-x:auto;margin-bottom:24px;border:1px solid var(--linha)}
+.tabela-b table{width:100%;min-width:560px;border-collapse:collapse;font:400 .9rem var(--mono)}
+.tabela-b th{text-align:left;font:600 .8rem var(--ft);text-transform:uppercase;letter-spacing:.06em;color:var(--suave);padding:12px 16px;background:var(--painel)}
+.tabela-b td{padding:11px 16px;border-top:1px solid var(--linha);color:#fff}
+.tabela-b td a{color:var(--cor);font-weight:500}
+.tabela-b tr:hover td{background:rgba(251,184,0,.06)}
+
+.resf-b{background:var(--painel);padding:88px 0}
+.resf-grade{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.resf-grade a{text-decoration:none;background:#10192b;border:1px solid var(--linha);padding:18px;display:flex;flex-direction:column;transition:border-color .2s}
+.resf-grade a:hover{border-color:var(--verde)}
+.resf-grade figure{background:#dfe6ee;padding:12px;margin-bottom:14px}
+.resf-grade img{width:100%;aspect-ratio:4/3;object-fit:contain}
+.resf-grade .k{color:var(--verde);font-size:.68rem}
+.resf-grade h3{font-size:1.1rem}
+.resf-grade p:last-child{color:var(--suave);font-size:.88rem;margin:0}.resf-grade b{color:#fff;font-family:var(--mono);font-weight:500}
+
+.obra-b{padding:88px 0}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:0}
+.par>div{position:relative;overflow:hidden;background:var(--painel)}
+.par img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.tag{position:absolute;left:0;top:0;padding:5px 10px;font:500 .68rem var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.tag.antes{background:#c43d3d;color:#fff}.tag.depois{background:var(--verde);color:#10192b}
+.pares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:24px}
+
+.cta-b{background:var(--cor);padding:56px 0}
+.cta-b .in{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta-b h2{color:#10192b;margin:0;max-width:620px}
+.cta-b .bts{margin:0}
+.cta-b .btn{background:#10192b;border-color:#10192b;color:#fff}
+.cta-b .btn-linha{background:transparent;color:#10192b;border-color:#10192b}
+
+.cab-b{border-bottom:1px solid var(--linha)}
+.cab-b-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;padding:52px 0}
+.cab-b h1{font-size:clamp(1.9rem,3.6vw,3rem)}
+.cab-b figure img{width:100%;aspect-ratio:16/9;object-fit:cover}
+
+.texto-pag{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;padding:72px 0 40px;align-items:start}
+.texto-pag>*{min-width:0}
+.texto-pag p{color:#c3ccdb}
+.numeros{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.numeros>div{background:#10192b;padding:20px;display:grid;align-content:start}
+.numeros b{font:800 1.5rem/1.1 var(--ft);color:var(--cor)}
+.numeros span{font-size:.86rem;color:var(--suave)}
+.frentes-pag{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:32px 0 88px}
+.frente{display:flex;flex-direction:column;padding:28px;background:var(--painel);text-decoration:none;border-top:4px solid}
+.frente.f-azul{border-color:var(--azul)}.frente.f-laranja{border-color:var(--laranja)}.frente.f-verde{border-color:var(--verde)}
+.ic-g{width:48px;height:48px;margin-bottom:14px;color:var(--cor)}
+.frente h2{font-size:1.35rem}.frente p{color:var(--suave)}
+.frente .link-seta{margin-top:auto}
+
+.intro-pag{padding:56px 0 8px;max-width:900px}
+.filtros{display:flex;flex-wrap:wrap;margin-top:18px;border:1px solid var(--linha);width:fit-content;max-width:100%}
+.filtros a{padding:10px 16px;text-decoration:none;font:500 .82rem var(--mono);border-right:1px solid var(--linha)}
+.filtros a:last-child{border-right:0}
+.filtros a:hover{background:var(--cor);color:#10192b}
+.grupo-cab{padding:40px 0;scroll-margin-top:90px}
+.cabides{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.cabide{background:#10192b;display:flex;flex-direction:column;scroll-margin-top:90px}
+.cabide-foto{display:block;background:#ecebe8}
+.cabide-foto img{width:100%;aspect-ratio:1;object-fit:cover}
+.cabide-foto.sem{aspect-ratio:1;display:grid;place-items:center;align-content:center;gap:8px;color:#8a93a3;font:500 .74rem var(--mono);background:var(--painel)}
+.cabide-foto.sem .ic-g{width:60px;height:60px;margin:0;color:#5a6780}
+.cabide-txt{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cabide h3{font-size:1.1rem;margin-bottom:.4em}
+.cabide dl{margin:0 0 12px;display:grid;gap:3px;font-size:.84rem}
+.cabide dl div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--linha);padding-bottom:3px}
+.cabide dt{color:var(--suave)}.cabide dd{margin:0;font-family:var(--mono);color:#fff}
+.cabide .link-seta{margin-top:auto;font-size:.88rem}
+.perso{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center;padding:56px 0 88px;scroll-margin-top:90px}
+.perso figure img{width:100%}
+.perso p{color:#c3ccdb}
+
+.destaque-20{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:center;max-width:none}
+.vinte{border:1px solid var(--laranja);padding:24px;display:grid}
+.vinte b{font:800 3.2rem/1 var(--ft);color:var(--laranja)}
+.vinte span{color:#c3ccdb}
+.vantagens{padding:48px 0}
+.vant-grade{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.vant-grade>div{background:#10192b;padding:22px}
+.vant-grade .num{font:500 .8rem var(--mono);color:var(--laranja)}
+.vant-grade p{color:var(--suave);font-size:.93rem;margin:0}
+.grupo-obra{padding:40px 0;border-top:1px solid var(--linha)}
+.grupo-obra header{max-width:760px;margin-bottom:20px}.grupo-obra header p{color:var(--suave)}
+.cta-faixa{margin:56px 0 88px;padding:44px;background:var(--painel);border-left:4px solid var(--cor)}
+.cta-faixa p{color:var(--suave)}
+
+.produto-r{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:48px;padding:56px 0;border-bottom:1px solid var(--linha);scroll-margin-top:90px;align-items:start}
+.produto-r figure{background:#dfe6ee;padding:28px}
+.produto-r figure img{width:100%}
+.produto-r .k{color:var(--verde)}
+.produto-r p{color:#c3ccdb}.produto-r .material b{color:#fff}
+.dados{margin:16px 0;border:1px solid var(--linha)}
+.dados div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:12px;padding:10px 14px;border-top:1px solid var(--linha)}
+.dados div:first-child{border-top:0}
+.dados dt{color:var(--suave);font-size:.9rem}.dados dd{margin:0;font:500 .86rem var(--mono);color:#fff}
+.nota{border-left:3px solid var(--verde);padding:12px 16px;background:var(--painel)}
+.rodape-nota{font:400 .78rem var(--mono);color:var(--suave);margin-top:14px}
+.sobre-ench{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:44px;padding:56px 0 88px}
+.sobre-ench p{color:#c3ccdb}
+.sobre-ench li{color:#dfe5ee}
+
+.contato-pag{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:44px;padding:72px 0 88px;align-items:start}
+.contato-pag>*{min-width:0}
+.contato-form{background:var(--painel);padding:32px}
+.contato-lista{display:grid;gap:18px;margin-bottom:24px}
+.contato-lista li{display:flex;gap:14px}.contato-lista .ic{color:var(--cor);width:24px;height:24px;margin-top:2px}
+.contato-lista div{display:grid}.contato-lista strong{color:#fff}.contato-lista a{text-decoration:none;overflow-wrap:anywhere}
+.contato-lista span{color:var(--suave)}
+
+.rodape{background:#0a1120;color:var(--suave);padding-top:56px;border-top:1px solid var(--linha)}
+.rodape .logo{width:190px}
+.rod-grade{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:40px;padding-bottom:40px}
+.rod-marca p{margin-top:16px;font-size:.92rem;max-width:340px}
+.rodape h3{font:500 .76rem var(--mono);text-transform:uppercase;color:var(--cor)}
+.rodape ul li{margin:.35em 0}
+.rodape a{text-decoration:none}.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px;align-items:flex-start}.rod-dados .ic{color:var(--cor);margin-top:.2em}
+.rod-dados a{overflow-wrap:anywhere}
+.rod-base{border-top:1px solid var(--linha);padding:16px 0;font:400 .74rem var(--mono)}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:1100px){.btn-topo{display:none}}
+@media (max-width:980px){
+  .menu-btn{display:block;color:#fff;margin-left:auto}
+  .menu{display:none;position:absolute;left:-16px;right:-16px;top:100%;background:#10192b;border-bottom:1px solid var(--linha)}
+  .menu-aberto .menu{display:block}.menu ul{flex-direction:column;padding:10px 16px}
+  .hero-b-in,.cab-b-in,.texto-pag,.perso,.destaque-20,.produto-r,.sobre-ench,.contato-pag{grid-template-columns:1fr;gap:28px}
+  .num-b .in{grid-template-columns:1fr 1fr}.num-b div{border-top:1px solid var(--linha)}
+  .resf-grade{grid-template-columns:1fr 1fr}
+  .frentes-pag{grid-template-columns:1fr}
+  .cabides{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .vant-grade,.pares{grid-template-columns:1fr 1fr}
+  .rod-grade{grid-template-columns:1fr 1fr}.rod-marca{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .logo{width:160px}
+  .hero-b-grade{grid-template-rows:180px 140px}
+  .cabides{grid-template-columns:1fr 1fr}
+  .vant-grade,.pares{grid-template-columns:1fr}
+  .dados div{grid-template-columns:1fr;gap:2px}
+  .filtros a{flex:1 1 50%;border-bottom:1px solid var(--linha)}
+  .contato-form{padding:22px}
+  .cta-faixa{padding:28px 22px}
+  .rod-grade{grid-template-columns:1fr}
+}
