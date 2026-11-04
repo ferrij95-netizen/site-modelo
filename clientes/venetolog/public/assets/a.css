@@ -1,0 +1,203 @@
+/* Versão A "Tricolor": fiel ao site atual. Vermelho, verde e branco do logo, bloco vermelho "o seu suporte logístico" com as fotos da frota, quadros com cantos marcados e rodapé verde. */
+:root{--cor:#d71a2b;--cor-esc:#b01222;--verde:#17793f;--verde-esc:#0f5c2f;--tinta:#2a2a2a;--suave:#5d5d5d;--fundo:#efefef;--linha:#dadada;--ft:'Titillium Web',system-ui,sans-serif;--fx:'Titillium Web',system-ui,sans-serif;--raio:3px}
+body{background:linear-gradient(#fff,var(--fundo) 520px)}
+h1,h2,h3{font-weight:700}
+.k{font:700 .78rem var(--ft);letter-spacing:.12em;text-transform:uppercase;color:var(--verde);margin:0 0 6px}
+.topo-linha{display:flex;align-items:center;gap:28px;padding:14px 0 10px}
+.marca img{width:150px;height:auto}
+.topo-dir{flex:1;display:grid;justify-items:end;gap:10px}
+.topo-acoes{display:flex;gap:8px;margin:0}
+.topo-acoes a{display:inline-flex;align-items:center;gap:6px;background:var(--cor);color:#fff;text-decoration:none;font-weight:700;font-size:.8rem;text-transform:uppercase;padding:6px 12px;border-radius:var(--raio)}
+.topo-acoes a+a{background:var(--verde)}
+.topo-acoes .ic{width:1.1em;height:1.1em}
+.menu{width:100%;border-top:3px solid var(--cor)}
+.menu ul{display:flex;justify-content:flex-end;padding-top:8px}
+.menu li+li{border-left:1px solid var(--linha)}
+.menu a{display:block;padding:4px 14px;color:#444;text-decoration:none;font-size:.95rem}
+.menu a:hover{color:var(--cor)}
+.menu a.ativo{background:var(--cor);color:#fff;border-radius:var(--raio)}
+
+.hero-a{display:grid;grid-template-columns:300px 1fr;background:var(--cor);margin-top:10px;min-height:290px}
+.hero-a-txt{display:flex;align-items:center;padding:28px;color:#fff}
+.hero-a h1{font-weight:400;font-size:1.6rem;line-height:1.15;margin:0}
+.hero-a h1 span{display:block;font-size:2.6rem;line-height:1}
+.hero-a h1 em{font-style:normal;display:block;font-size:2.2rem;margin-top:.2em}
+.hero-a h1 strong{display:block;font-size:2.8rem;font-weight:600;text-align:right;line-height:1}
+.hero-a-fotos{position:relative;min-height:290px}
+.hero-a-fotos .slide{height:100%}
+.selo{position:absolute;top:18px;right:0;background:var(--verde);color:#fff;margin:0;padding:8px 18px;font-size:1.05rem;z-index:2}
+.destaques{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}
+.dest{position:relative;display:grid;align-content:start;gap:2px;padding:16px 18px 14px;text-decoration:none;color:var(--suave);min-height:130px}
+.dest::before,.dest::after{content:"";position:absolute;width:12px;height:12px;border:2px solid var(--cor)}
+.dest::before{top:0;right:0;border-left:0;border-bottom:0}
+.dest::after{bottom:0;left:0;border-right:0;border-top:0}
+.dest small{text-transform:uppercase;font-size:.85rem}
+.dest b{text-transform:uppercase;font-size:1.45rem;line-height:1.05;color:#555;font-weight:400}
+.dest span{margin-top:auto;padding-top:14px;font-size:.82rem;color:#888}
+a.dest:hover b{color:var(--cor)}
+.rastreio{background:#fff}
+.rastreio small{color:#444;font-size:1rem}
+.rastreio p{font-size:.85rem;margin:4px 0 10px}
+.rastreio .btn{min-height:38px;padding:.4em 1em;font-size:.9rem;justify-self:start}
+.chamadas{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.chamadas a{display:grid;grid-template-columns:1fr 238px;background:var(--cor);color:#fff;text-decoration:none;border-bottom:3px solid var(--cor-esc);overflow:hidden}
+.chamadas div{padding:20px 16px}
+.chamadas small{display:block;text-transform:uppercase}
+.chamadas b{display:block;text-transform:uppercase;font-size:1.7rem;font-weight:400;line-height:1.05}
+.chamadas img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.chamadas a:hover img{transform:scale(1.05)}
+.servicos-a{background:#fff;padding:30px;margin-top:36px;border-top:4px solid var(--verde)}
+.servicos-a h2{color:var(--verde);font-size:1.6rem}
+.servicos-a ul{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.servicos-a .ic{width:34px;height:34px;color:var(--cor)}
+.servicos-a h3{font-size:1.1rem;margin:.4em 0 .3em}
+.servicos-a p{font-size:.92rem;color:var(--suave);margin:0}
+.unid-faixa{margin-top:28px}
+.unid-faixa h2{font-size:1.4rem;color:#444}
+.unid-faixa ul{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.unid-faixa a{display:grid;padding:12px;background:#fff;text-decoration:none;font-size:.88rem;line-height:1.25;border-left:3px solid var(--cor);height:100%}
+.unid-faixa b{color:var(--cor);font-size:1.2rem}
+
+.tit-a{padding:22px 0 14px;border-bottom:3px solid var(--cor);margin:10px 0 24px}
+.tit-a h1{font-size:clamp(1.7rem,3.4vw,2.4rem);margin:0;color:#444;text-transform:uppercase;font-weight:400}
+.texto-pag{display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:center;background:#fff;padding:30px;margin-bottom:20px}
+.texto-pag>*{min-width:0}
+.texto-pag.inverso{grid-template-columns:1fr 1.5fr}
+.texto-pag h2{color:var(--cor);font-size:1.5rem}
+.texto-pag p{color:var(--suave)}
+.texto-pag figure img{width:100%;border:6px solid #fff;box-shadow:0 0 0 2px var(--verde)}
+.texto-pag .lista-check .ic{color:var(--verde)}
+.texto-pag .bts{display:flex;gap:12px;flex-wrap:wrap}
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.numeros li{display:grid;padding:10px;background:var(--fundo);text-align:center}
+.numeros b{font-size:1.6rem;color:var(--cor);line-height:1.1}
+.numeros span{font-size:.8rem}
+.video-a a{position:relative;display:block}
+.video-a img{width:100%;max-height:520px;object-fit:cover}
+.video-a span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;gap:10px;align-items:center;background:var(--cor);color:#fff;padding:14px 22px;font-weight:700;font-size:1.1rem;border-radius:var(--raio)}
+.video-a .ic{width:28px;height:28px}
+
+.atuacao{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;background:#fff;padding:28px;align-items:center}
+.atuacao>*{min-width:0}
+.atuacao h2{color:var(--cor)}
+.atuacao p{color:var(--suave)}
+.estados{display:grid;gap:8px}
+.estados li{display:grid;grid-template-columns:44px 1fr;column-gap:12px;align-items:center;padding:8px 10px;background:var(--fundo)}
+.estados b{grid-row:1/3;display:grid;place-items:center;height:44px;background:var(--cor);color:#fff;font-size:1.1rem;border-radius:var(--raio)}
+.estados span{font-weight:700}
+.estados em{font-style:normal;display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.88rem}
+.estados a{color:var(--verde)}
+.mapa-img img{width:100%;max-width:330px;margin:auto}
+.unids{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+.unid{background:#fff;display:grid;grid-template-rows:auto 1fr;scroll-margin-top:20px}
+.unid figure{position:relative}
+.unid figure img{width:100%;aspect-ratio:16/8;object-fit:cover}
+.unid .cod{position:absolute;left:0;bottom:0;background:var(--cor);color:#fff;font-weight:700;font-size:1.3rem;padding:4px 14px}
+.unid>div{padding:16px 20px 20px}
+.unid h3{font-size:1.35rem;margin:0;color:#333}
+.unid h3 small{color:var(--cor)}
+.unid-tipo{color:var(--verde);font-weight:700;margin:0 0 8px;font-size:.92rem}
+.unid ul{display:grid;gap:6px;font-size:.92rem}
+.unid li{display:flex;gap:8px;align-items:flex-start;overflow-wrap:anywhere}
+.unid li .ic{color:var(--cor);margin-top:2px}
+.areas{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 0;padding-top:10px;border-top:1px solid var(--linha);font-size:.85rem;color:var(--suave)}
+.areas b{color:var(--tinta)}
+
+.citacao{background:var(--verde);color:#fff;padding:32px 36px}
+.citacao .k{color:#c8f0d5}
+.citacao blockquote{margin:0;font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.45}
+.politicas{background:#fff;padding:30px;margin-top:20px}
+.politicas h2{color:var(--cor)}
+.politicas ol{display:grid;grid-template-columns:1fr 1fr;gap:16px;counter-reset:p}
+.politicas li{counter-increment:p;padding:16px 18px 16px 60px;position:relative;background:var(--fundo)}
+.politicas li::before{content:counter(p);position:absolute;left:16px;top:16px;width:30px;height:30px;border-radius:50%;background:var(--cor);color:#fff;display:grid;place-items:center;font-weight:700}
+.politicas h3{font-size:1.05rem;margin:0 0 .3em}
+.politicas p{margin:0;color:var(--suave);font-size:.93rem}
+.fotos-linha{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.fotos-linha img{width:100%;aspect-ratio:3/2;object-fit:cover}
+
+.docs{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+.docs>*{min-width:0;background:#fff;padding:26px}
+.docs h2{color:var(--cor);font-size:1.3rem}
+.doc-lista{display:grid;gap:6px}
+.doc-lista a{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 12px;background:var(--fundo);text-decoration:none;font-size:.92rem}
+.doc-lista a:hover{background:#e5f2e9}
+.doc-lista .ic{color:var(--cor)}
+.doc-lista em{font-style:normal;font-size:.8rem;color:var(--verde);font-weight:700;white-space:nowrap}
+.nota{font-size:.88rem;color:var(--suave);margin-top:14px}
+.nota a{color:var(--verde)}
+.docs aside{display:grid;gap:10px;justify-items:start}
+.docs aside h2:not(:first-child){margin-top:16px}
+.docs aside p{margin:0;color:var(--suave)}
+
+.contato-pag{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start}
+.contato-pag>*{min-width:0;background:#fff;padding:26px}
+.contato-form{border-top:4px solid var(--cor)}
+.contato-pag h2{color:var(--cor);font-size:1.3rem}
+.coleta-lista{display:grid;gap:10px}
+.coleta-lista li{display:flex;gap:12px;align-items:flex-start}
+.coleta-lista b{flex:none;background:var(--cor);color:#fff;padding:2px 8px;font-size:.9rem}
+.coleta-lista div{display:grid;font-size:.92rem;min-width:0}
+.coleta-lista a{color:var(--suave);overflow-wrap:anywhere}
+.contato-pag .bts{margin-top:18px}
+
+.rodape{background:var(--verde);color:#e4f3e9;margin-top:48px}
+.rod-grade{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:36px;padding:38px 0 26px}
+.rod-marca img{width:130px;height:auto;margin-bottom:10px;background:#fff;padding:8px;border-radius:4px}
+.rodape h3{color:#fff;text-transform:uppercase;font-size:1rem;letter-spacing:.06em}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:#fff;text-decoration:underline}
+.rod-unid li,.rod-dados li{margin:.35em 0}
+.rod-unid b{display:inline-block;min-width:40px;color:#fff}
+.rod-dados li{display:flex;gap:8px;align-items:center}
+.rod-base{background:var(--verde-esc);font-size:.82rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 0}
+
+@media (max-width:1000px){
+  .menu-btn{display:block;color:var(--tinta)}
+  .topo-linha{flex-wrap:wrap;position:relative}
+  .topo-dir{justify-items:end}
+  .menu{display:none}
+  .menu-aberto .menu{display:block}
+  .menu ul{flex-direction:column;align-items:stretch}
+  .menu li+li{border-left:0}
+  .menu a{padding:10px 12px}
+  .topo-dir{order:2}
+  .menu-btn{order:3}
+  .hero-a{grid-template-columns:1fr}
+  .hero-a-txt{padding:22px}
+  .hero-a h1 strong{text-align:left}
+  .hero-a-fotos{min-height:0;aspect-ratio:679/206}
+  .destaques{grid-template-columns:1fr 1fr}
+  .chamadas,.texto-pag,.texto-pag.inverso,.atuacao,.unids,.docs,.contato-pag{grid-template-columns:1fr}
+  .servicos-a ul{grid-template-columns:1fr 1fr}
+  .unid-faixa ul{grid-template-columns:repeat(4,1fr)}
+  .rod-grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .marca img{width:110px}
+  .topo-linha{gap:10px}
+  .topo-dir{flex:1;justify-items:end}
+  .topo-acoes a{font-size:.7rem;padding:6px 8px}
+  .hero-a h1{font-size:1.3rem}
+  .hero-a h1 span{font-size:2rem}
+  .hero-a h1 em{font-size:1.6rem}
+  .hero-a h1 strong{font-size:2.1rem}
+  .selo{font-size:.78rem;padding:5px 10px;top:8px}
+  .destaques{gap:10px}
+  .dest{padding:12px 12px 10px;min-height:110px}
+  .dest b{font-size:1.15rem}
+  .rastreio{grid-column:1/-1}
+  .chamadas{gap:14px}
+  .chamadas a{grid-template-columns:1fr 140px}
+  .servicos-a ul,.politicas ol,.fotos-linha,.rod-grade,.numeros{grid-template-columns:1fr 1fr}
+  .servicos-a ul{grid-template-columns:1fr}
+  .rod-grade{grid-template-columns:1fr}
+  .unid-faixa ul{grid-template-columns:1fr 1fr}
+  .servicos-a,.texto-pag,.atuacao,.politicas,.docs>*,.contato-pag>*{padding:20px 16px}
+  .politicas ol{grid-template-columns:1fr}
+  .citacao{padding:24px 18px}
+  .doc-lista a{grid-template-columns:auto 1fr}
+  .doc-lista em{grid-column:2}
+  .video-a span{font-size:.9rem;padding:10px 14px}
+}
