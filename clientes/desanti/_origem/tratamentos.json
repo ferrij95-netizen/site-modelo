@@ -1,0 +1,762 @@
+{
+ "doencas": [
+  {
+   "slug": "dermatologia",
+   "t": "Acne",
+   "s": "",
+   "f": "acne",
+   "b": [
+    [
+     "p",
+     "É uma dermatose que causa a formação de espinhas, cravos, cistos, caroços e cicatrizes. É um conjunto de manifestações muito comum na adolescência, devido ao nível elevado de hormônios que aumentam a secreção das glândulas sebáceas."
+    ]
+   ]
+  },
+  {
+   "slug": "vitiligo",
+   "t": "Vitiligo",
+   "s": "",
+   "f": "vitiligo",
+   "b": [
+    [
+     "p",
+     "É uma patologia que causa a perda da coloração da pele, devido à ausência ou à diminuição dos melanócitos, que são as células responsáveis por produzir a melanina que oferece pigmento à pele."
+    ]
+   ]
+  },
+  {
+   "slug": "micoses",
+   "t": "Micoses",
+   "s": "",
+   "f": "micoses",
+   "b": [
+    [
+     "p",
+     "A micose é uma doença que possui origem fúngica, ou seja, ela é causada por fungos que atingem a pele, unhas e cabelos. Os fungos estão em todos os lugares e quando encontram as condições favoráveis, como calor e umidade, eles se reproduzem facilmente. O tratamento é feito com medicamentos via oral ou pomadas, de acordo com o diagnóstico."
+    ]
+   ]
+  },
+  {
+   "slug": "psoriase",
+   "t": "Psoríase",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "A Psoríase é uma doença de pele muito comum que causa vermelhidão e irritação. Além disso, ela é cíclica, ou seja, ela pode desaparecer e reaparecer, sua causa é desconhecida, porém ela está relacionada com o sistema imunológico."
+    ]
+   ]
+  },
+  {
+   "slug": "alergia",
+   "t": "Alergia",
+   "s": "",
+   "f": "alergia",
+   "b": [
+    [
+     "p",
+     "A alergia é uma reação inflamatória do organismo que se desenvolve após a exposição a um determinado antígeno que, geralmente, provoca coceira, vermelhidão, descamação, o surgimento de bolinhas brancas ou avermelhadas na pele, em uma parte ou por todo o corpo."
+    ]
+   ]
+  },
+  {
+   "slug": "hanseniase",
+   "t": "Hanseníase",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "Popularmente conhecida como Lepra, a Hanseníase é uma doença infecto contagiosa causada por uma bactéria chamada Mycobacterium leprae, a transmissão é feita através do contato íntimo e contínuo com o doente não tratado, e também, por meio de regiões mucosas. Ela afeta a pele, olhos, nervos periféricos e outros órgãos. A hanseníase não é hereditária e sua evolução depende de características do sistema imunológico da pessoa que foi infectada."
+    ]
+   ]
+  },
+  {
+   "slug": "cancer-pele",
+   "t": "Câncer de pele",
+   "s": "",
+   "f": "cancer-pele",
+   "b": [
+    [
+     "p",
+     "O Câncer de Pele não melanoma é o tipo de câncer mais comum no Brasil, ele é provocado pelo crescimento anormal e descontrolado das células que formam a pele, por isso existem diversos tipos de câncer de pele, os mais comuns são os carcinomas basocelulares e os espinocelulares. Mais raro e letal que os carcinomas, o melanoma é o tipo mais agressivo de câncer da pele. A principal responsável pelo surgimento desta patologia é a radiação solar, seja por exposição excessiva ou pelo uso de câmaras de bronzeamento artificial."
+    ]
+   ]
+  },
+  {
+   "slug": "dermatoses-virais",
+   "t": "Dermatoses virais",
+   "s": "",
+   "f": "herpes",
+   "b": [
+    [
+     "h",
+     "Molusco Contagioso"
+    ],
+    [
+     "p",
+     "É caracterizado pelo aparecimento de pápulas localizadas em qualquer região da pele, mas são mais comuns, na genitália, no tronco e membros. Ela é causada por um vírus que afeta exclusivamente o epitélio (vírus epitélio-tropico) chamado de molluscipoxvirus."
+    ],
+    [
+     "h",
+     "Herpes"
+    ],
+    [
+     "p",
+     "Herpes é uma doença viral na qual ocorre a erupção vesicobolhosa, ela é contagiosa e existem dois tipos: Herpes Simples (HSV) e Herpes Zoster (HZV). Ela pode ser desencadeada por traumas, exposição ao sol, tensão emocional, menstruação e infecções respiratórias."
+    ],
+    [
+     "h",
+     "Lesões por HPV"
+    ],
+    [
+     "p",
+     "São lesões caracterizadas por proliferações epidérmicas na pele e mucosas causadas pelo vírus papiloma humano (HPV)."
+    ],
+    [
+     "h",
+     "Lesões"
+    ],
+    [
+     "li",
+     "Verruga Vulgar"
+    ],
+    [
+     "li",
+     "Verruga Plana"
+    ],
+    [
+     "li",
+     "Verruga Plantar"
+    ],
+    [
+     "li",
+     "Epidermodisplasia Verruciforme"
+    ],
+    [
+     "li",
+     "Verruga ano-genital (Condiloma Acuminado)"
+    ],
+    [
+     "li",
+     "Papulose Bowenóide"
+    ]
+   ]
+  },
+  {
+   "slug": "melasma",
+   "t": "Melasma",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "Melasma é o surgimento de manchas escuras na pele, elas são comuns na face, colo e braços, afeta mais frequentemente as mulheres. Ainda não há uma causa definida, porém está relacionada ao uso de anticoncepcionais, à gravidez e principalmente à exposição solar."
+    ]
+   ]
+  },
+  {
+   "slug": "alteracoes-cabelos",
+   "t": "Alterações dos cabelos",
+   "s": "",
+   "f": "cabelos",
+   "b": [
+    [
+     "p",
+     "Alopecia Areata é uma patologia que causa a queda dos cabelos, ela ainda não tem causa definida, mas pode ser de origem genética. Os cabelos começam a cair formando pequenas ou grandes áreas sem cabelos."
+    ]
+   ]
+  },
+  {
+   "slug": "unhas",
+   "t": "Alterações das unhas",
+   "s": "",
+   "f": "unhas",
+   "b": [
+    [
+     "p",
+     "Algumas alterações nas unhas podem denunciar deficiências e problemas de saúde, como:"
+    ],
+    [
+     "p",
+     "Anemia: unhas opacas, quebradiças, secas e apresentam vários sulcos transversais."
+    ],
+    [
+     "p",
+     "Doenças cardiorespiratórias: unhas com coloração azulada."
+    ],
+    [
+     "p",
+     "Doenças gastrointestinais: unhas com alteração na forma, cor e descolamento."
+    ],
+    [
+     "p",
+     "Doenças renais: estrias brancas transversais nas unhas."
+    ],
+    [
+     "p",
+     "Existem uma infinidade de alterações que podem ser detectadas pelas unhas por isso, consulte seu dermatologista."
+    ]
+   ]
+  },
+  {
+   "slug": "der-seborreica",
+   "t": "Dermatite seborreica",
+   "s": "",
+   "f": "dermatite",
+   "b": [
+    [
+     "p",
+     "A Dermatite Seborreica popularmente conhecida como caspa é uma afecção crônica que causa a escamação e vermelhidão em áreas como a face, sobrancelhas, cantos do nariz, couro cabeludo e colo, locais onde existem maior produção de óleo pelas glândulas sebáceas ou a presença do fungo: Pityrosporum Ovale."
+    ]
+   ]
+  },
+  {
+   "slug": "lupus",
+   "t": "Lúpus",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "É doença autoimune do tecido conjuntivo que pode afetar a longo prazo a pele, as articulações, os rins, o cérebro e outros órgãos. A causa do Lupus é desconhecida, por ser uma doença autoimune ela afeta as próprias células e tecidos do corpo, resultando em inflamação e dano tecidual."
+    ]
+   ]
+  }
+ ],
+ "laser": [
+  {
+   "slug": "botox-e-preenchimento",
+   "t": "Botox e preenchimento",
+   "s": "Toxina botulínica",
+   "f": "botox",
+   "b": [
+    [
+     "p",
+     "A Toxina Botulínica popularmente conhecida como Botox produz um efeito tensor sob a pele, por isso, ela é amplamente usada para suavizar linhas de expressão e rugas na região da face."
+    ],
+    [
+     "p",
+     "Quando o Botox é injetado ele age como um bloqueador neuromuscular, ou seja, bloqueando a transmissão de estímulos dos neurônios para os músculos, impedindo, parcial ou totalmente, a contração muscular."
+    ]
+   ]
+  },
+  {
+   "slug": "harmony",
+   "t": "Laser Harmony",
+   "s": "Luz intensa pulsada e Erbium-YAG",
+   "f": "harmony",
+   "b": [
+    [
+     "p",
+     "É um laser de última geração, ideal para manchas de acne, foto-rejuvenescimento, lesões vasculares, estrias, manchas e olheiras!"
+    ],
+    [
+     "p",
+     "O Harmony é uma tecnologia multiplataforma, que reúne luz intensa pulsada e o laser Erbium-YAG fracionado. O aparelho de última geração ideal para:"
+    ],
+    [
+     "li",
+     "Acne: Tratamento gradual não agressivo à pele."
+    ],
+    [
+     "li",
+     "Fotorejuvenescimento: Pele saudável e aparência natural."
+    ],
+    [
+     "li",
+     "Lesões vasculares: Desaparecimento e aspecto saudável."
+    ],
+    [
+     "li",
+     "Lesões pigmentadas: Clareamento gradual."
+    ],
+    [
+     "li",
+     "Epilação: Tratamento rápido e eficaz."
+    ],
+    [
+     "li",
+     "Estrias: Brancas ou vermelhas."
+    ],
+    [
+     "li",
+     "Olheiras: Tratamento seguro e clareamento gradual."
+    ]
+   ]
+  },
+  {
+   "slug": "light-sheer",
+   "t": "Laser Light Sheer",
+   "s": "Depilação a laser",
+   "f": "light-sheer",
+   "b": [
+    [
+     "p",
+     "Simplesmente a melhor tecnologia para a remoção definitiva dos pelos, a depilação a Laser Light Sheer gera uma luz com feixe reto, focado para a célula-alvo, atingindo células da raiz do pelo e destruindo-a. Para que o pelo volte a nascer novamente o organismo terá que desenvolver uma nova célula e isso leva uma média de oito anos. No entanto, algumas alterações hormonais e períodos como o gestacional podem acelerar um pouco esse processo. Por isso, nesse tipo de procedimento utilizamos o termo “definitivo”. Porém, o cliente fica sujeito a manutenções após quatro anos."
+    ],
+    [
+     "p",
+     "A técnica elimina quase 100% dos pelinhos indesejáveis apresentando resultados mais rápidos em pessoas com pelos escuros e, normalmente, não apresenta resultados em pessoas com pelos brancos, pois o laser é atraído pelo pigmento do pelo."
+    ],
+    [
+     "h",
+     "Áreas"
+    ],
+    [
+     "li",
+     "Virilha"
+    ],
+    [
+     "li",
+     "Axilas"
+    ],
+    [
+     "li",
+     "Buço"
+    ],
+    [
+     "li",
+     "Buço + queixo"
+    ],
+    [
+     "li",
+     "Pernas"
+    ],
+    [
+     "li",
+     "Barba"
+    ]
+   ]
+  },
+  {
+   "slug": "laser-co2",
+   "t": "Laser CO2 fracionado",
+   "s": "Rejuvenescimento",
+   "f": "co2",
+   "b": [
+    [
+     "p",
+     "É a mais nova tecnologia para rejuvenescer a pele, seu mecanismo de ação permite que seja realizada a dermoabrasão com uma profundidade bem calculada, o que traz segurança ao procedimento. O laser CO2 fracionado trabalha por meio de uma tecnologia capaz de disparar feixes de luz que são absorvidos pelas moléculas de água do nosso corpo e, ao evaporá-las acaba promovendo a cicatrização desta área."
+    ],
+    [
+     "h",
+     "Indicações"
+    ],
+    [
+     "li",
+     "Cicatrizes de Acne"
+    ],
+    [
+     "li",
+     "Poros abertos/Dilatados"
+    ],
+    [
+     "li",
+     "Manchas na pele"
+    ],
+    [
+     "li",
+     "Estrias"
+    ],
+    [
+     "li",
+     "Rejuvenescimento"
+    ],
+    [
+     "li",
+     "Flacidez Facial"
+    ],
+    [
+     "li",
+     "Olheiras"
+    ]
+   ]
+  }
+ ],
+ "facial": [
+  {
+   "slug": "peeling-de-cristal",
+   "t": "Peeling de cristal",
+   "s": "",
+   "f": "cristal",
+   "b": [
+    [
+     "p",
+     "A microdermoabrasão é um tratamento que promove uma esfoliação na pele por um sistema que lança um fluxo de microcristais na pele através do vácuo controlado. Essa inflamação desencadeia uma inflamação aguda localizada, onde os fibroblastos irão atuar no processo regenerativo desse tecido."
+    ],
+    [
+     "h",
+     "Indicações"
+    ],
+    [
+     "li",
+     "Fotoenvelhecimento cutâneo"
+    ],
+    [
+     "li",
+     "Poros dilatados"
+    ],
+    [
+     "li",
+     "Linhas de expressão suaves"
+    ],
+    [
+     "li",
+     "Cicatriz pós-acne, pós-cirúrgica"
+    ],
+    [
+     "li",
+     "Hipercromias (melasma, melanose solar, hiperpigmentação pós-inflamatória)"
+    ],
+    [
+     "li",
+     "Revitalização celular"
+    ]
+   ]
+  },
+  {
+   "slug": "quimico",
+   "t": "Peeling químico",
+   "s": "",
+   "f": "quimico",
+   "b": [
+    [
+     "p",
+     "É realizada uma esfoliação média/profunda a partir de substâncias ácidas de acordo com cada tipo de pele."
+    ],
+    [
+     "h",
+     "Indicações"
+    ],
+    [
+     "li",
+     "Manchas"
+    ],
+    [
+     "li",
+     "Cicatrizes"
+    ],
+    [
+     "li",
+     "Fotoenvelhecimento"
+    ]
+   ]
+  },
+  {
+   "slug": "diamante",
+   "t": "Peeling de diamante",
+   "s": "",
+   "f": "diamante",
+   "b": [
+    [
+     "p",
+     "É uma técnica que utiliza uma caneta com uma ponteira diamantada que serve para eliminar a camada mais externa da pele, deixando a pele mais suave e aveludada. O peeling de diamante não precisa de recuperação, e pode ser feito em qualquer época do ano."
+    ]
+   ]
+  },
+  {
+   "slug": "limpeza-pele",
+   "t": "Limpeza de pele",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "Indicada para a remoção de cravos, milliuns, células mortas, impurezas da pele e amenizar a oleosidade. Assim como, é necessária para a preparação da pele antes de tratamentos como peeling, laser e dermaroller."
+    ],
+    [
+     "h",
+     "Indicação"
+    ],
+    [
+     "p",
+     "Todos os tipos de Pele."
+    ]
+   ]
+  },
+  {
+   "slug": "hidratacao",
+   "t": "Hidratação facial",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "A hidratação facial é um procedimento simples, porém muito importante para a saúde da sua pele, pois ela evita o ressecamento da pele, melhora a luminosidade, protege contra poluição, previne manchas, evita o envelhecimento precoce e controla o brilho e a oleosidade."
+    ],
+    [
+     "h",
+     "Indicação"
+    ],
+    [
+     "p",
+     "Todos os tipos de Pele."
+    ]
+   ]
+  },
+  {
+   "slug": "dermaroller",
+   "t": "Dermaroller",
+   "s": "",
+   "f": "dermaroller",
+   "b": [
+    [
+     "p",
+     "É um equipamento que promove um microagulhamento na pele, estimulando a formação de colágeno, elastina e a renovação celular."
+    ],
+    [
+     "h",
+     "Indicação"
+    ],
+    [
+     "p",
+     "Rejuvenescimento de face, pescoço, orelha e mãos."
+    ],
+    [
+     "p",
+     "Acne e Cicatrizes de Acne"
+    ],
+    [
+     "p",
+     "Estrias"
+    ],
+    [
+     "p",
+     "Cicatrizes (para melhorar o aspecto delas)"
+    ],
+    [
+     "p",
+     "Rugas e linhas de expressão"
+    ],
+    [
+     "p",
+     "Flacidez leve"
+    ],
+    [
+     "p",
+     "Poros abertos"
+    ],
+    [
+     "p",
+     "Como auxiliar no tratamento de manchas."
+    ]
+   ]
+  },
+  {
+   "slug": "eletrolifting",
+   "t": "Eletrolifting",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "É um aparelho que usa uma corrente galvânica associada a uma caneta de eletrolifiting. Ele estimula a produção de colágeno e atua nas áreas mais afetadas pelo envelhecimento."
+    ],
+    [
+     "h",
+     "Indicação"
+    ],
+    [
+     "li",
+     "Marcas de Expressão"
+    ],
+    [
+     "li",
+     "Rugas finas"
+    ],
+    [
+     "li",
+     "Flacidez Tissular"
+    ]
+   ]
+  },
+  {
+   "slug": "modeladora-facial",
+   "t": "Massagem modeladora facial",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "É realizada sem produtos químicos com o objetivo de fortalecer os músculos da face, atenuar marcas de expressão e consequentemente, modelar a face. É indicada para amenizar as marcas de expressão, ativa a circulação sanguínea, retarda o aparecimento de rugas e estimula a produção de colágeno e elastina."
+    ],
+    [
+     "h",
+     "Indicação"
+    ],
+    [
+     "li",
+     "Flacidez facial"
+    ],
+    [
+     "li",
+     "Rugas"
+    ],
+    [
+     "li",
+     "Marcas de expressão"
+    ]
+   ]
+  },
+  {
+   "slug": "linfatica-facial",
+   "t": "Drenagem linfática facial",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "Promove a circulação sanguínea, eliminando toxinas e edemas"
+    ]
+   ]
+  },
+  {
+   "slug": "facial-relaxante",
+   "t": "Massagem facial relaxante",
+   "s": "",
+   "f": "relaxante",
+   "b": [
+    [
+     "p",
+     "Relaxa os músculos da face, aliviando o estresse do dia a dia, diminuindo marcas de expressão (rugas) e produzindo uma agradável sensação de tranquilidade."
+    ]
+   ]
+  }
+ ],
+ "corporal": [
+  {
+   "slug": "gordura-localizada",
+   "t": "Gordura localizada, celulite e flacidez",
+   "s": "",
+   "f": "gordura",
+   "b": [
+    [
+     "h",
+     "Pacote Corporal"
+    ],
+    [
+     "p",
+     "Combina: massagem modeladora, Ultrassom, Corrente Russa e Vácuo."
+    ],
+    [
+     "p",
+     "10 sessões"
+    ],
+    [
+     "h",
+     "Massagem modeladora"
+    ],
+    [
+     "p",
+     "É uma técnica que, através de movimentos rápidos, repetitivos e vigorosos, estimula a circulação e tonificação da musculatura corpórea, auxiliando no combate à gordura localizada e à celulite."
+    ],
+    [
+     "h",
+     "Ultrassom"
+    ],
+    [
+     "p",
+     "É um equipamento que por meio de ondas sonoras com freqüência situada acima do limite audível promove o aumento da circulação sanguínea, melhora o metabolismo celular, hiperemia nos tecidos e relaxamento."
+    ],
+    [
+     "p",
+     "É indicado para: Celulite, Gordura localizada, flacidez e pós-operatório."
+    ],
+    [
+     "h",
+     "Corrente Russa"
+    ],
+    [
+     "p",
+     "É uma corrente alternada e não polarizada de média freqüência que realizada a contração muscular. É indicada para: estimulação e fortalecimento de certas regiões e modelação da silhueta."
+    ],
+    [
+     "h",
+     "Endermologia (Vacuoterapia)"
+    ],
+    [
+     "p",
+     "É um aparelho compressor gerador de vácuo com aspiração contínua ou pulsátil. É indicado para: Celulite, Gordura localizada, modelagem corporal e restaurar a elasticidade da pele."
+    ]
+   ]
+  },
+  {
+   "slug": "estrias",
+   "t": "Estrias",
+   "s": "",
+   "f": "estrias",
+   "b": [
+    [
+     "h",
+     "Dermaroller"
+    ],
+    [
+     "p",
+     "É um equipamento que promove um microagulhamento na pele, estimulando a formação de colágeno, elastina e a renovação celular."
+    ]
+   ]
+  },
+  {
+   "slug": "drenagem-linfatica",
+   "t": "Drenagem linfática",
+   "s": "",
+   "f": "drenagem",
+   "b": [
+    [
+     "p",
+     "É uma técnica muito tradicional que tem como objetivo estimular o sistema linfático, eliminando resíduos, toxinas e diminuindo edemas."
+    ],
+    [
+     "h",
+     "Benefícios"
+    ],
+    [
+     "li",
+     "Reduz a retenção de líquidos"
+    ],
+    [
+     "li",
+     "Ativa a circulação sanguínea"
+    ],
+    [
+     "li",
+     "Ameniza a celulite"
+    ],
+    [
+     "li",
+     "Reduz edemas e inchaços"
+    ],
+    [
+     "p",
+     "Sensação de relaxamento."
+    ]
+   ]
+  },
+  {
+   "slug": "pos-operatorio",
+   "t": "Pós-operatório",
+   "s": "",
+   "f": null,
+   "b": [
+    [
+     "p",
+     "São os cuidados que devem ser tomados após um procedimento cirúrgico, buscando acelerar a recuperação do organismo."
+    ],
+    [
+     "h",
+     "Técnicas"
+    ],
+    [
+     "li",
+     "Drenagem Linfática"
+    ],
+    [
+     "p",
+     "Ultrassom."
+    ]
+   ]
+  }
+ ]
+}

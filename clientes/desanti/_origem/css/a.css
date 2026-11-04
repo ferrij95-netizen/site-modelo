@@ -1,0 +1,53 @@
+/* Clínica de Santi A "Folha": verde do logo (#008547) com degradês para o verde-claro (#8AC165) do site atual. Open Sans (logo) + Lato. */
+:root{--cor:#008547;--cor-esc:#006b39;--verde:#008547;--verde-esc:#00602f;--claro:#eaf4ec;--tinta:#1d2a22;--suave:#55635a;--fundo:#fbfcfa;--cartao:#fff;--topo:rgba(255,255,255,.96);--linha:#dce8df;--ft:'Open Sans',system-ui,sans-serif;--fx:Lato,system-ui,sans-serif;--raio:12px}
+.hero-a{background:linear-gradient(120deg,#004d2a 0%,#008547 55%,#5fae5a 100%);color:#fff;padding:56px 0 64px;position:relative;overflow:hidden}
+.hero-a::before{content:"";position:absolute;left:-10%;right:-10%;bottom:-160px;height:260px;border-radius:50%;border-top:2px solid rgba(255,255,255,.16)}
+.hero-a-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;position:relative}
+.hero-a h1{color:#fff;font-size:clamp(2.4rem,4.8vw,3.9rem);line-height:1.05}
+.hero-a .k{color:#c7e6b4}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.12rem;color:#e0f0e5;max-width:500px}
+.hero-a .btn-linha{color:#fff}
+.hero-a-car{border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28);aspect-ratio:475/444;max-height:460px;background:#fff;margin-left:auto;width:min(100%,500px)}
+.hero-a-car .slide{display:block;text-decoration:none;color:#fff;height:100%}
+.legenda{position:absolute;left:16px;right:16px;bottom:40px;background:rgba(0,77,42,.85);backdrop-filter:blur(4px);padding:12px 16px;border-radius:10px;font-size:.9rem}
+.legenda b{display:block;font:700 1.08rem var(--ft)}
+.duas-a{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:80px 0}
+.area-a{display:flex;gap:22px;text-decoration:none;padding:32px;border-radius:var(--raio);background:var(--cartao);border:1px solid var(--linha);transition:transform .2s,box-shadow .2s}
+.area-a:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,96,47,.12)}
+.area-a .n{flex:none;display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#008547,#8ac165);color:#fff}
+.area-a .n .ic{width:28px;height:28px}
+.area-a p{color:var(--suave)}
+.mini{display:flex;flex-wrap:wrap;gap:6px}
+.mini li{font-size:.84rem;background:var(--claro);color:var(--verde-esc);padding:4px 10px;border-radius:99px}
+.laser-a{background:var(--claro);padding:80px 0}
+.aparelhos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.aparelhos a{display:block;text-decoration:none;background:#fff;border-radius:var(--raio);padding:18px;height:100%;text-align:center;transition:transform .2s}
+.aparelhos a:hover{transform:translateY(-4px)}
+.aparelhos img{height:200px;width:100%;object-fit:contain;margin-bottom:14px}
+.aparelhos h3{font-size:1.1rem;margin-bottom:.2em}
+.aparelhos p{color:var(--suave);font-size:.9rem;margin:0}
+.clinica-a{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding:88px 0}
+.clinica-a-fotos{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;align-items:end}
+.clinica-a-fotos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.clinica-a-fotos img:last-child{aspect-ratio:3/4}
+.clinica-a p:not(.k){color:var(--suave)}
+.equipe-a{background:linear-gradient(180deg,var(--fundo),var(--claro));padding:80px 0}
+.conv-a{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;padding:72px 0}
+.conv-a h2{margin:0}
+.cab-a{background:linear-gradient(120deg,#004d2a,#008547 65%,#5fae5a);color:#fff;padding:44px 0}
+.cab-a-in{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.cab-a h1{color:#fff;font-size:clamp(2rem,4vw,3.1rem)}
+.cab-a .k{color:#c7e6b4}
+.cab-a-in p:not(.k){color:#e0f0e5;font-size:1.06rem;margin:0}
+.cab-a figure img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px}
+.itens-a{display:grid;gap:22px}
+.item-a{display:grid;grid-template-columns:260px 1fr;gap:32px;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:26px;scroll-margin-top:140px}
+.item-a:nth-child(even){grid-template-columns:1fr 260px}
+.item-a:nth-child(even) figure{order:2}
+.item-a.sem-foto{grid-template-columns:1fr;border-left:4px solid var(--verde)}
+.item-a figure img{width:100%;max-height:320px;object-fit:cover;border-radius:8px}
+.item-a h3{font-size:1.45rem;color:var(--verde-esc);margin-bottom:.3em}
+.item-a .sub{color:var(--verde);font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.item-a p:not(.sub){color:var(--suave);max-width:760px}
+@media (max-width:1020px){.hero-a-in,.cab-a-in,.clinica-a,.conv-a{grid-template-columns:1fr;gap:32px}.duas-a{grid-template-columns:1fr}.aparelhos{grid-template-columns:1fr 1fr}.hero-a-car{margin:0}}
+@media (max-width:640px){.area-a{flex-direction:column;padding:24px}.item-a,.item-a:nth-child(even){grid-template-columns:1fr;padding:20px}.item-a:nth-child(even) figure{order:0}.item-a figure img{max-height:220px}.aparelhos img{height:150px}.cab-a figure{display:none}}
