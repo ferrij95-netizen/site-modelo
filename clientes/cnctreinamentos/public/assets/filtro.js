@@ -1,0 +1,1 @@
+document.querySelectorAll('.filtro-b').forEach(g=>{const l=g.nextElementSibling;g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.classList.toggle('ativo',x===b));l.querySelectorAll('li').forEach(li=>{li.hidden=!!b.dataset.filtro&&li.dataset.area!==b.dataset.filtro})})});
