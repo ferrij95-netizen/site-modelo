@@ -1,7 +1,8 @@
 // API do hub para agentes (qualquer IA ou programa, não só o Claude): as mesmas rotas /api/* que as páginas do hub usam,
 // liberadas com uma chave em vez do login. Guia para o agente: docs/api-do-hub.md e GET /api/openapi.json (público).
 //
-// Chave: segredo HUB_API_KEY do worker no Cloudflare (Workers > site-modelo > Settings > Variables and Secrets).
+// Chave: segredo HUB_API_KEY do worker no Cloudflare (Workers > site-modelo > Settings > Variables and Secrets),
+// ou o sha256 da chave na tabela api_chaves do D1 "prospeccao" (para cortar um agente: ativo = 0).
 // Pode ter várias chaves separadas por vírgula, uma por agente, para tirar uma sem mexer nas outras.
 // O agente manda "Authorization: Bearer <chave>" (ou "X-API-Key: <chave>"). A chave nunca vai para o repositório.
 // Com chave o agente não usa /api/email/ (mandar e-mail não tem volta): isso continua só com o login do João.
@@ -47,6 +48,7 @@ const chavesDoSegredo = env => String(env.HUB_API_KEY || '').replace(/^\s*HUB_AP
 // (e nomes parecidos, caso tenha sido salvo com outro nome).
 export function motivoRecusa(env) {
   if (!env.HUB_API_KEY) {
+    // (sem o segredo, a chave ainda pode estar no D1, na tabela api_chaves)
     // Só os nomes das variáveis que chegaram ao worker (nunca os valores), para saber se o segredo foi publicado.
     const parecidos = Object.keys(env).sort();
     return { diagnostico: 'segredo_ausente', dica: 'O worker não tem o segredo HUB_API_KEY. Crie em Workers > site-modelo > Settings > Variables and Secrets e clique em Deploy.', nomesParecidos: parecidos };
@@ -56,11 +58,13 @@ export function motivoRecusa(env) {
 
 // Compara pelo hash para não vazar a chave pelo tempo de resposta.
 export async function chaveValida(chave, env) {
-  const chaves = chavesDoSegredo(env);
-  if (!chave || !chaves.length) return false;
+  if (!chave || chave.length < 20) return false;
   const h = await sha256(chave);
-  for (const k of chaves) if ((await sha256(k)) === h) return true;
-  return false;
+  for (const k of chavesDoSegredo(env)) if ((await sha256(k)) === h) return true;
+  // Também vale uma chave guardada só como hash na tabela api_chaves do D1 (hash, nome, criado, ativo):
+  // o hash não abre nada sozinho e nunca vai para o repositório. Serve quando o segredo do painel não chega ao worker.
+  const row = await env.PROSPECCAO?.prepare('SELECT 1 AS ok FROM api_chaves WHERE hash = ? AND ativo = 1').bind(h).first().catch(() => null);
+  return !!row;
 }
 
 export const publicoApi = url => url.pathname === '/api' || url.pathname === '/api/' || url.pathname === '/api/openapi.json';
