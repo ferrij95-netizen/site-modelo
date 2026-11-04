@@ -39,9 +39,23 @@ export function chaveEnviada(request) {
   return m ? m[1] : (request.headers.get('X-API-Key') || '').trim() || null;
 }
 
+// Aceita o valor colado com aspas, crases ou "HUB_API_KEY=" na frente, que é fácil acontecer no painel.
+const chavesDoSegredo = env => String(env.HUB_API_KEY || '').replace(/^\s*HUB_API_KEY\s*=/i, '')
+  .split(/[\s,;]+/).map(k => k.replace(/^["'`]+|["'`]+$/g, '')).filter(k => k.length >= 20);
+
+// Por que a chave foi recusada, sem mostrar nenhum valor: só se o segredo existe e quantas chaves tem
+// (e nomes parecidos, caso tenha sido salvo com outro nome).
+export function motivoRecusa(env) {
+  if (!env.HUB_API_KEY) {
+    const parecidos = Object.keys(env).filter(n => /api|key|chave|hub/i.test(n) && n !== 'ASSETS' && n !== 'PROSPECCAO');
+    return { diagnostico: 'segredo_ausente', dica: 'O worker não tem o segredo HUB_API_KEY. Crie em Workers > site-modelo > Settings > Variables and Secrets e clique em Deploy.', nomesParecidos: parecidos };
+  }
+  return { diagnostico: 'chave_diferente', chavesNoSegredo: chavesDoSegredo(env).length, dica: 'O segredo existe, mas a chave enviada não é igual a nenhuma das que estão nele.' };
+}
+
 // Compara pelo hash para não vazar a chave pelo tempo de resposta.
 export async function chaveValida(chave, env) {
-  const chaves = String(env.HUB_API_KEY || '').split(/[\s,]+/).filter(k => k.length >= 20);
+  const chaves = chavesDoSegredo(env);
   if (!chave || !chaves.length) return false;
   const h = await sha256(chave);
   for (const k of chaves) if ((await sha256(k)) === h) return true;
