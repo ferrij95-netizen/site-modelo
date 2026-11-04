@@ -1,0 +1,138 @@
+/* Versão A "Amarelo Hyster": fiel ao site atual. Barra preta com os telefones, banners amarelos com a Hyster, logo em destaque e faixa amarela com os quatro selos. */
+:root{--cor:#e9e000;--cor-esc:#cfc600;--amarelo:#fff212;--oliva:#d6d43a;--preto:#141414;--tinta:#2b2b2b;--suave:#5f5f5f;--fundo:#fff;--cinza:#f2f2ee;--linha:#e0e0d8;--ft:Questrial,'Century Gothic',sans-serif;--fx:Questrial,'Century Gothic',sans-serif;--raio:4px;--sobre-cor:#141414}
+h1,h2,h3{font-weight:400;text-transform:uppercase;letter-spacing:.01em}
+.k{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#7d7a00;margin:0 0 6px}
+.btn{color:var(--preto);font-weight:600}
+.btn-linha{color:var(--tinta)}
+.topo{background:#fff;position:sticky;top:0;z-index:40;border-bottom:2px solid #555}
+.topo-barra{background:#000;color:#eee;font-size:.82rem;text-transform:uppercase}
+.topo-barra .in{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;padding:5px 0}
+.topo-barra a{display:inline-flex;align-items:center;gap:4px;text-decoration:none}
+.topo-barra .ic{width:1em;height:1em;color:var(--amarelo)}
+.topo-linha{display:flex;align-items:center;gap:24px;padding:8px 0}
+.marca img{width:170px;height:auto}
+.menu{margin-left:auto}
+.menu ul{display:flex;gap:4px}
+.menu a{display:block;padding:8px 12px;text-decoration:none;text-transform:uppercase;font-size:.92rem;color:#444}
+.menu a:hover{color:#000}
+.menu a.ativo{box-shadow:inset 0 -3px 0 var(--amarelo);color:#000}
+.btn-topo{min-height:42px;padding:.5em 1em}
+
+.carrossel-a{height:min(50vw,640px);background:var(--amarelo)}
+.carrossel-a .slide{height:100%}
+.marca-a{text-align:center;padding:56px 0 40px;max-width:820px}
+.marca-a img{width:min(400px,80%);margin:0 auto 22px}
+.marca-a h1{font-size:clamp(1.4rem,2.6vw,1.9rem);color:#333}
+.marca-a p{color:var(--suave)}
+.faixa-amarela{background:var(--oliva);padding:44px 0}
+.selos-a{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center}
+.selos-a img{width:170px;margin:0 auto 14px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+.selos-a p{font-size:.92rem;margin:0;color:#222}
+.produto-a{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;padding:64px 0}
+.produto-a figure img{width:100%;max-width:420px;margin:auto}
+.produto-a h2{font-size:1.8rem}
+.ficha{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);margin:0 0 22px;border-top:4px solid var(--amarelo)}
+.ficha div{background:#fff;padding:10px 14px}
+.ficha dt{font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--suave)}
+.ficha dd{margin:0;font-weight:600;color:var(--tinta)}
+.faixa-cinza{background:var(--preto);color:#fff;padding:44px 0}
+.faixa-cinza h2{text-align:center;font-size:1.5rem}
+.setores{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
+.setores li{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid #444;border-radius:999px}
+.setores .ic{color:var(--amarelo)}
+.visita-a{text-align:center;padding:56px 0 8px}
+.visita-a h2{font-size:clamp(1.4rem,2.8vw,2rem);color:#333}
+.visita-a p{color:var(--suave);margin:.4em 0}
+.fones{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-size:1.2rem}
+.fones a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--tinta)}
+.btn-wa{background:#25d366;border-color:#25d366;color:#fff;margin-top:16px}
+.btn-wa:hover{background:#1eb257;border-color:#1eb257}
+
+.tit-a{background:linear-gradient(110deg,var(--amarelo),#c8d600);padding:40px 0 34px}
+.tit-a .k{color:#4c4a00}
+.tit-a h1{font-size:clamp(1.6rem,3.4vw,2.5rem);margin:0;color:#111}
+.texto-pag{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;align-items:start;padding:52px 0}
+.texto-pag>*{min-width:0}
+.texto-pag .lead{font-size:1.15rem;color:var(--tinta)}
+.texto-pag p{color:var(--suave)}
+.texto-pag h2{font-size:1.4rem;margin-top:1.2em}
+.texto-pag .lista-check .ic{color:#9c9500}
+.texto-pag figure img{width:100%;border-radius:var(--raio)}
+.vantagens{background:var(--cinza);padding:32px;border-radius:var(--raio)}
+.vantagens h2{font-size:1.4rem}
+.vantagens ul{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.vantagens .ic{width:34px;height:34px;color:#9c9500}
+.vantagens h3{font-size:1rem;margin:.4em 0 .3em}
+.vantagens p{margin:0;color:var(--suave);font-size:.92rem}
+.produto{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;padding:52px 0}
+.produto>*{min-width:0}
+.produto-foto img{width:100%;max-width:440px;margin:auto}
+.produto h2{font-size:1.8rem}
+.produto p{color:var(--suave)}
+.bts{display:flex;gap:12px;flex-wrap:wrap}
+.outras{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;align-items:center;background:var(--cinza);padding:32px;border-radius:var(--raio)}
+.outras>*{min-width:0}
+.outras h2{font-size:1.3rem;margin:0}
+.outras p{color:var(--suave);margin:0}
+.outras figure{grid-column:2;grid-row:1/3}
+.outras img{width:100%;border-radius:var(--raio)}
+.servs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:52px 0}
+.serv{display:grid;justify-items:center;text-align:center;gap:8px;padding:26px 20px;background:var(--cinza);border-radius:var(--raio)}
+.serv-ic img{width:140px}
+.serv-ic .ic{width:64px;height:64px;padding:14px;background:var(--preto);color:var(--amarelo);border-radius:50%;margin:38px 0}
+.serv h2{font-size:1.1rem}
+.serv p{margin:0;color:var(--suave);font-size:.94rem}
+.passos-sec h2{font-size:1.5rem;text-align:center}
+.passos-sec ol{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.passos-sec li{padding:22px;border:1px solid var(--linha);border-top:4px solid var(--amarelo)}
+.passos-sec b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--preto);color:var(--amarelo);font-size:1.1rem;margin-bottom:10px}
+.passos-sec h3{font-size:1rem}
+.passos-sec p{margin:0;color:var(--suave);font-size:.92rem}
+
+.contato-pag{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:start;padding:52px 0}
+.contato-pag>*{min-width:0}
+.contato-form{background:var(--cinza);padding:28px;border-top:4px solid var(--amarelo)}
+.contato-form h2{font-size:1.4rem}
+.contato-lista{display:grid;gap:14px;margin-bottom:20px}
+.contato-lista li{display:flex;gap:12px}
+.contato-lista li>.ic{flex:none;color:#9c9500;margin-top:3px}
+.contato-lista div{display:grid;gap:2px;min-width:0}
+.contato-lista a,.contato-lista span{color:var(--suave);overflow-wrap:anywhere}
+
+.rodape{background:var(--preto);color:#bbb;margin-top:56px;border-top:6px solid var(--amarelo)}
+.rod-grade{display:grid;grid-template-columns:1.3fr 1fr 1.3fr;gap:40px;padding:44px 0 28px}
+.rod-marca img{width:220px;height:auto;margin-bottom:12px}
+.rodape h3{color:#fff;font-size:1rem;letter-spacing:.08em}
+.rodape li{margin:.45em 0}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px}
+.rod-dados .ic{flex:none;color:var(--amarelo);margin-top:3px}
+.rod-base{background:#000;font-size:.82rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0}
+
+@media (max-width:960px){
+  .menu-btn{display:block;color:var(--tinta)}
+  .menu{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;box-shadow:0 10px 20px rgba(0,0,0,.1)}
+  .menu-aberto .menu{display:block}
+  .menu ul{flex-direction:column;padding:8px 16px}
+  .btn-topo{margin-left:auto}
+  .selos-a{grid-template-columns:1fr 1fr}
+  .produto-a,.texto-pag,.produto,.contato-pag{grid-template-columns:1fr}
+  .vantagens ul,.passos-sec ol{grid-template-columns:1fr 1fr}
+  .servs{grid-template-columns:1fr 1fr}
+  .rod-grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .marca img{width:120px}
+  .topo-barra{font-size:.72rem}
+  .btn-topo{font-size:.85rem;padding:.4em .8em;min-height:40px}
+  .car-ant,.car-prox{display:none}
+  .selos-a img{width:120px}
+  .selos-a p{font-size:.84rem}
+  .ficha,.vantagens ul,.passos-sec ol,.servs,.rod-grade{grid-template-columns:1fr}
+  .outras{grid-template-columns:1fr;padding:22px 16px}
+  .outras figure{grid-column:auto;grid-row:auto}
+  .vantagens,.contato-form{padding:22px 16px}
+}
+.outras h2{align-self:end}.outras p{align-self:start}
