@@ -6,7 +6,7 @@ import { resultados } from './resultados.js';
 import { lembretes } from './lembretes.js';
 import { posvenda } from './posvenda.js';
 import { email } from './email.js';
-import { api, chaveEnviada, chaveValida, publicoApi } from './api.js';
+import { api, chaveEnviada, chaveValida, motivoRecusa, publicoApi } from './api.js';
 
 const PREFIX = '/_clientes/';
 // hub.overtus.com.br (dist/_hub/), com tela de login em /entrar/: na raiz o canvas de prospecção, em /sites/ a lista de clientes.
@@ -45,7 +45,7 @@ async function hub(request, env, url) {
   const chave = url.pathname.startsWith('/api') ? chaveEnviada(request) : null;
   if (url.pathname.startsWith('/api') && publicoApi(url)) return api(request, env, url);
   if (chave) {
-    if (!(await chaveValida(chave, env))) return new Response('{"code":"chave_invalida","erro":"Chave da API inválida"}', { status: 401, headers: { 'Content-Type': 'application/json' } });
+    if (!(await chaveValida(chave, env))) return new Response(JSON.stringify({ code: 'chave_invalida', erro: 'Chave da API inválida', ...motivoRecusa(env) }), { status: 401, headers: { 'Content-Type': 'application/json; charset=utf-8' } });
     if (url.pathname.startsWith('/api/email/')) return new Response('{"code":"sem_permissao","erro":"E-mail não está liberado para agentes"}', { status: 403, headers: { 'Content-Type': 'application/json' } });
   } else if (!publico) {
     const cookie = (request.headers.get('Cookie') || '').match(/(?:^|;\s*)hub=([0-9a-f]{64})/);
