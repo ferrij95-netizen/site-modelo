@@ -1,0 +1,159 @@
+/* Versão A "Azul CEPEP": topo branco com logo e selo 25 anos, barra azul de menu com CEPEP Online e Faculdade, grade de fotos dos cursos, faixa de números. */
+:root{--cor:#13007c;--cor-esc:#001651;--menu:#002581;--verm:#e3141b;--verde:#3cb44b;--ouro:#f2b347;--tinta:#22252f;--suave:#5b6070;--fundo:#f1f2f4;--linha:#dcdfe6;--ft:'Russo One',system-ui,sans-serif;--fx:Inter,system-ui,sans-serif;--raio:3px}
+body{background:var(--fundo);color:var(--tinta)}
+h1,h2,h3{font-family:var(--ft);font-weight:400;line-height:1.15}
+.topo{background:#fff}
+.topo-linha{display:flex;align-items:center;gap:24px;padding:12px 0}
+.marca{display:flex;align-items:center;gap:10px}
+.marca img{width:220px;height:auto}.marca .selo{width:58px}
+.topo-dados{display:flex;gap:28px;margin-left:auto}
+.topo-dados p{margin:0;display:grid;gap:2px}
+.topo-dados small{font-weight:600;color:var(--suave);font-size:.78rem}
+.topo-dados a{display:flex;gap:6px;align-items:center;text-decoration:none;color:var(--tinta);font-weight:600;font-size:.9rem}
+.topo-dados .ic{width:16px;height:16px;color:var(--cor)}
+.menu{background:var(--menu)}
+.menu-in{display:flex;align-items:center;gap:12px}
+.menu ul{display:flex;flex-wrap:wrap}
+.menu a{display:block;padding:13px 14px;color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+.menu a:hover{background:rgba(255,255,255,.1)}
+.menu a.ativo{background:var(--cor-esc)}
+.menu-ext{display:flex;gap:8px;margin:0 0 0 auto}
+.menu-ext a{padding:7px 14px;border-radius:var(--raio);text-transform:uppercase;font-size:.78rem}
+.m-verde{background:var(--verde)}.m-verm{background:var(--verm)}
+.menu-ext a:hover{filter:brightness(1.1);background:inherit}
+.m-verde:hover{background:var(--verde)}.m-verm:hover{background:var(--verm)}
+
+.banner-a{position:relative;aspect-ratio:1670/350;border-bottom:4px solid var(--verm);background:#ddd}
+.banner-a .slide img{width:100%;height:100%;object-fit:cover}
+.tit-linha{font-size:1.7rem;color:var(--tinta);padding-bottom:12px;margin-bottom:24px;border-bottom:1px solid var(--ouro)}
+.bloco-a{padding:40px 0}
+.cursos-a{display:grid;grid-template-columns:repeat(5,1fr);gap:20px 18px}
+.cursos-a a{display:grid;gap:10px;text-decoration:none;color:var(--suave);text-align:center;font-weight:600}
+.cursos-a img{width:100%;aspect-ratio:430/320;object-fit:cover;transition:transform .25s,box-shadow .25s}
+.cursos-a a:hover img{transform:translateY(-3px);box-shadow:0 10px 20px -10px rgba(0,0,60,.5)}
+.cursos-a a:hover span{color:var(--cor)}
+
+.numeros-a{background:#001b6b url(/assets/img/fundo-numeros.webp) center/cover;color:#fff;padding:44px 0}
+.numeros-a h2{text-align:center;font-size:1.8rem;margin-bottom:28px}
+.numeros-a ul{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.numeros-a li{display:grid;justify-items:center;gap:6px}
+.numeros-a img{height:64px;width:auto}
+.numeros-a b{font:400 1.7rem var(--ft)}
+.numeros-a span{font-weight:600}
+
+.duas-a{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:48px 0}
+.duas-a .tit-linha{text-align:center}
+.video-a{position:relative;display:block}
+.video-a img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.video-a span{position:absolute;inset:0;display:grid;place-items:center}
+.video-a .ic{width:72px;height:72px;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.video-leg{font-weight:600;margin-top:8px}
+.depo-a{position:relative;min-height:250px;background:var(--cor) url(/assets/img/fundo-depoimentos.webp) center/cover;color:#fff;padding:36px 32px 48px;text-align:center}
+.depo-a .slide{display:none;margin:0}.depo-a .slide.ativo{display:block}
+.depo-a p{font-style:italic;font-size:1.08rem}
+.depo-a footer{font-size:.9rem;color:#d6dcff}
+.depo-a .pontos{position:absolute;left:0;right:0;bottom:16px}
+
+.parceiros-a{background:#e6e7ea;padding:40px 0}
+.parceiros-a .tit-linha{text-align:center}
+.parc-a{display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;gap:20px}
+.parc-a img{height:40px;width:auto;filter:grayscale(1);opacity:.85}
+
+.trilha{font-size:.85rem;color:var(--suave);margin:18px 0 0}
+.trilha a{color:var(--cor)}
+.tit-a{padding:28px 0 18px;border-bottom:1px solid var(--ouro);margin-bottom:24px}
+.tit-a h1{font-size:clamp(1.8rem,3.4vw,2.4rem);color:var(--cor);margin:0}
+.tit-a p{margin:.4em 0 0;color:var(--suave)}
+.caixa-a{background:#fff;padding:28px;margin-bottom:20px}
+.caixa-a h2{font-size:1.4rem;color:var(--cor)}
+.texto-a{display:grid;grid-template-columns:1fr 240px;gap:36px;background:#fff;padding:32px;margin-bottom:24px}
+.texto-a p{color:var(--suave);text-align:justify}
+.texto-a aside{display:grid;justify-items:center;align-content:start;gap:16px;border-left:1px solid var(--linha);padding-left:28px}
+.texto-a aside ul{display:grid;gap:8px;text-align:center}
+.texto-a aside b{display:block;font:400 1.5rem var(--ft);color:var(--verm)}
+.area-a{margin-bottom:36px}
+.area-a h2{font-size:1.3rem;color:var(--cor);margin-bottom:14px}
+.estagio-a p{max-width:780px;color:var(--suave)}
+
+.curso{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start}
+.curso-txt{background:#fff;padding:32px}
+.curso-txt section+section{margin-top:28px;padding-top:24px;border-top:1px solid var(--linha)}
+.curso-txt h2{font-size:1.35rem;color:var(--cor)}
+.curso-txt p{color:var(--suave)}
+.disciplinas{columns:2;column-gap:28px;padding-left:1.3em;list-style:decimal;color:var(--suave)}
+.disciplinas li{break-inside:avoid;padding:3px 0}
+.docs{columns:2;column-gap:24px}
+.curso-lado{display:grid;gap:16px;position:sticky;top:16px}
+.curso-lado figure img{width:100%}
+.ficha{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);margin:0}
+.ficha div{background:#fff;padding:12px 14px}
+.ficha div:last-child:nth-child(odd){grid-column:1/-1}
+.ficha dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--suave)}
+.ficha dd{margin:0;font-weight:700;color:var(--cor)}
+.curso-form{background:#fff;padding:22px;border-top:4px solid var(--verm)}
+.curso-form h2{font-size:1.3rem;color:var(--cor)}
+.form-nota{font-size:.8rem;color:var(--suave);margin:0}
+.outros{background:#fff;padding:28px;margin-top:24px}
+.outros h2{font-size:1.4rem;color:var(--cor)}
+.outros ul{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.outros a{display:grid;gap:8px;text-decoration:none;font-weight:600;color:var(--tinta)}
+.outros img{width:100%;aspect-ratio:430/320;object-fit:cover}
+
+.tabela-rola{overflow-x:auto}
+.prog{width:100%;border-collapse:collapse;font-size:.93rem}
+.prog th,.prog td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--linha)}
+.prog thead th{background:var(--menu);color:#fff;font-weight:600}
+.prog tbody th{color:var(--cor)}
+.prog tbody tr:nth-child(even){background:#f7f8fb}
+.prog a{color:var(--verm);font-weight:600;white-space:nowrap}
+
+.contato-a{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}
+.contato-lista{display:grid;gap:16px}
+.contato-lista li{display:flex;gap:12px}
+.contato-lista li>.ic{flex:none;color:var(--cor);margin-top:3px}
+.contato-lista div{display:grid;gap:2px;min-width:0}
+.contato-lista a,.contato-lista span{color:var(--suave);overflow-wrap:anywhere}
+
+.rodape{background:var(--cor-esc);color:#c9d0e8;margin-top:0}
+.parceiros-a+.rodape,main+.rodape{margin-top:0}
+main{padding-bottom:40px}
+.pg-index main{padding-bottom:0}
+.rod-grade{display:grid;grid-template-columns:1.3fr 1fr 1.2fr 1fr;gap:32px;padding:44px 0 30px}
+.rod-marca img{width:170px;height:auto;margin-bottom:12px}
+.rodape h3{font:400 1.05rem var(--ft);color:#fff;text-transform:uppercase;padding-bottom:10px;border-bottom:2px solid var(--ouro);display:inline-block}
+.rodape li{margin:.45em 0}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px}
+.rod-dados .ic{flex:none;color:var(--ouro);margin-top:3px}
+.rod-base{background:#000f3a;font-size:.82rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0}
+
+@media (max-width:1100px){
+  .topo-dados{display:none}
+  .marca{margin-right:auto}
+  .menu-btn{display:block;color:var(--cor)}
+  .menu{display:none}
+  .menu-aberto .menu{display:block}
+  .menu-in{flex-direction:column;align-items:stretch;gap:0}
+  .menu ul{flex-direction:column}
+  .menu-ext{margin:8px 0 14px}
+  .cursos-a{grid-template-columns:repeat(3,1fr)}
+  .curso{grid-template-columns:1fr}
+  .curso-lado{position:static}
+  .rod-grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:700px){
+  .marca img{width:160px}.marca .selo{width:42px}
+  .banner-a{aspect-ratio:16/7}
+  .cursos-a{grid-template-columns:1fr 1fr;gap:16px 12px}
+  .numeros-a ul{grid-template-columns:1fr 1fr;row-gap:28px}
+  .duas-a,.contato-a,.texto-a{grid-template-columns:1fr}
+  .texto-a{padding:22px 16px}
+  .texto-a p{text-align:left}
+  .texto-a aside{border-left:0;padding-left:0;border-top:1px solid var(--linha);padding-top:20px}
+  .caixa-a,.curso-txt,.outros{padding:22px 16px}
+  .disciplinas,.docs{columns:1}
+  .outros ul{grid-template-columns:1fr 1fr}
+  .rod-grade{grid-template-columns:1fr}
+}
