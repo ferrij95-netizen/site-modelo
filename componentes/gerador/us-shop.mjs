@@ -68,7 +68,7 @@ export function gerarUS(C, dir) {
     ${C.horario ? `<li>${ic('relogio')}<span>${esc(C.horario)}</span></li>` : ''}
   </ul></div>
 </div>
-<div class="rod-base"><div class="in"><span>© ${new Date().getFullYear()} ${esc(C.nome)}</span><span>Website preview by Overtus</span></div></div>
+<div class="rod-base"><div class="in"><span>© ${new Date().getFullYear()} ${esc(C.nome)}</span>${C.creditos ? `<span>${esc(C.creditos)}</span>` : ''}<span>Website preview by Overtus</span></div></div>
 </footer>
 </body>
 </html>
@@ -98,7 +98,7 @@ export function gerarUS(C, dir) {
     const L = curto ? C.industrias.slice(0, 8) : C.industrias;
     return v === 'a'
       ? `<ul class="inds${L.length % 3 === 0 && L.length % 4 ? ' inds-3' : ''}">${L.map(i => `<li class="sobe">${i.img ? img(i.img, i.nome) : ''}<div><h3>${esc(i.nome)}</h3>${!curto && i.texto ? `<p>${i.texto}</p>` : ''}</div></li>`).join('')}</ul>`
-      : `<ul class="inds-b">${L.map(i => `<li class="sobe"><h3>${esc(i.nome)}</h3>${!curto && i.texto ? `<p>${i.texto}</p>` : ''}</li>`).join('')}</ul>`;
+      : `<ul class="inds-b${L.length % 4 === 0 && L.length % 3 ? ' inds-b4' : ''}">${L.map(i => `<li class="sobe"><h3>${esc(i.nome)}</h3>${!curto && i.texto ? `<p>${i.texto}</p>` : ''}</li>`).join('')}</ul>`;
   };
 
   const galeriaBloco = (lista) => `<div class="galeria">${lista.map(g => `<a href="/assets/img/${g.img}.webp" data-foto="${esc(g.cap || C.nome)}">${img(g.img, g.cap || C.nome)}</a>`).join('')}</div>`;
@@ -492,6 +492,7 @@ h2{font-size:clamp(1.7rem,3vw,2.5rem)}
 .intro-in{display:grid;grid-template-columns:1fr 1.3fr;gap:56px}
 .intro-txt{font-size:1.06rem;color:var(--suave)}
 .inds-b{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--linha);border-left:1px solid var(--linha)}
+@media (min-width:901px){.inds-b4{grid-template-columns:repeat(4,1fr)}}
 .inds-b li{padding:24px;border-right:1px solid var(--linha);border-bottom:1px solid var(--linha);transition:background .2s}
 .inds-b li:hover{background:var(--claro)}
 .inds-b h3{font-size:1.12rem;margin:0;display:flex;gap:10px;align-items:center}
