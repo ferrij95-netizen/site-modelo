@@ -1,0 +1,114 @@
+/* Versão A "Oficina Azul": clara, com o azul-marinho do logo da Metalúrgica Mário e um azul-claro de apoio. Títulos em Red Hat Display, texto em Red Hat Text. */
+:root{--cor:#0c346c;--cor-esc:#082650;--claro:#2f7fd8;--tinta:#18202c;--suave:#5a6372;--fundo:#fff;--cinza:#f1f4f9;--linha:#dfe4ec;--ft:'Red Hat Display',system-ui,sans-serif;--fx:'Red Hat Text',system-ui,sans-serif;--raio:8px}
+body{font-size:17px}
+h1,h2,h3{font-weight:900;color:var(--cor);letter-spacing:-.02em}
+h3{font-weight:700}
+.k{font:700 .78rem var(--ft);letter-spacing:.16em;text-transform:uppercase;color:var(--claro);margin:0 0 10px}
+.tit{max-width:760px;margin:0 0 30px}.tit h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin:0}
+.bts{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{font-family:var(--ft);font-weight:700}
+.link-seta{color:var(--claro)}
+/* topo */
+.topo{background:#fff;position:sticky;top:0;z-index:40;box-shadow:0 1px 0 var(--linha)}
+.topo-linha{display:flex;align-items:center;gap:22px;padding:14px 0}
+.marca img{width:190px;height:auto}
+.menu{margin-left:auto}.menu ul{display:flex;gap:2px}
+.menu a{display:block;padding:8px 12px;text-decoration:none;font:700 .95rem var(--ft);color:var(--tinta);border-radius:999px}
+.menu a:hover{color:var(--claro)}.menu a.ativo{background:var(--cinza);color:var(--cor)}
+.btn-topo{min-height:42px;padding:.5em 1.1em}
+/* home */
+.hero-a{position:relative;overflow:hidden;background:var(--cor);color:#fff}
+.hero-a>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-a::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,30,64,.95) 30%,rgba(8,30,64,.55) 65%,rgba(8,30,64,.15))}
+.hero-a-in{position:relative;z-index:1;padding:110px 0 150px}
+.hero-a-in>*{max-width:620px}
+.hero-a .k{color:#8fc0ff}
+.hero-a h1{color:#fff;font-size:clamp(2.3rem,5vw,3.9rem);line-height:1.04}
+.hero-a-in>p:not(.k){color:#d3def0;font-size:1.08rem}
+.hero-a .btn{background:#fff;border-color:#fff;color:var(--cor)}
+.hero-a .btn-linha{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.segs-a{position:relative;z-index:2;margin-top:-80px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:#fff;border-radius:var(--raio);padding:28px;box-shadow:0 18px 40px rgba(12,52,108,.12)}
+.card .ic{width:2.2em;height:2.2em;color:var(--claro);margin-bottom:12px}
+.card h3{font-size:1.3rem}.card p{color:var(--suave);margin:0}
+.sobre-a{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;padding:80px 0}
+.sobre-a img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.sobre-a h2{font-size:clamp(1.6rem,3vw,2.3rem)}.sobre-a p{color:var(--suave)}
+.equip-a{background:var(--cinza);padding:72px 0}
+.equip-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.equip-grade>*{display:block;text-decoration:none;background:#fff;border-radius:var(--raio);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.equip-grade>a:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(12,52,108,.1)}
+.equip-grade figure{aspect-ratio:3/2;overflow:hidden}.equip-grade img{width:100%;height:100%;object-fit:cover}
+.equip-grade h3{font-size:1.2rem;padding:18px 20px 0}.equip-grade p{color:var(--suave);padding:0 20px 20px;margin:.4em 0 0}
+.marcos-a,.marcos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:56px 0}
+.marcos-a>div,.marcos>div{border-left:4px solid var(--claro);padding:6px 0 6px 16px;display:grid}
+.marcos-a b,.marcos b{font:900 1.7rem var(--ft);color:var(--cor)}.marcos-a span,.marcos span{color:var(--suave)}
+.cta-a{background:var(--cor);color:#fff;padding:44px 0;margin-bottom:-64px}
+.cta-a .in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.cta-a h2{color:#fff;font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 .2em}.cta-a p{margin:0;color:#b9c7dd}
+.cta-a .btn{background:#fff;border-color:#fff;color:var(--cor)}
+.cta-a .btn-linha{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+/* internas */
+.tit-a{position:relative;background:var(--cor);overflow:hidden}
+.tit-a>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3}
+.tit-a .in{position:relative;padding:76px 0 56px}
+.tit-a .k{color:#8fc0ff}.tit-a h1{color:#fff;font-size:clamp(1.9rem,4vw,3rem);margin:0}
+.texto-pag{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;padding:64px 0 16px}
+.texto-pag .lead{font-size:1.16rem;color:var(--tinta)}.texto-pag p{color:var(--suave)}
+.logo-grande{background:var(--cinza);border-radius:var(--raio);padding:40px;display:grid;place-items:center}.logo-grande img{max-width:300px}
+.segs{padding:24px 0 0}.segs h2{font-size:1.8rem}
+.segs>div{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.segs article{background:var(--cinza);padding:26px;border-radius:var(--raio)}
+.segs .ic{width:2em;height:2em;color:var(--claro);margin-bottom:10px}.segs p{color:var(--suave);margin:0}
+.equips{display:grid;gap:24px;padding:64px 0 24px}
+.equip{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.equip:nth-child(even) figure{order:2}
+.equip img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raio)}
+.equip h2{font-size:clamp(1.5rem,2.8vw,2rem)}.equip p{color:var(--suave)}
+.kanban{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;padding:24px 0}
+.kanban>div{background:var(--cinza);padding:28px;border-radius:var(--raio)}.kanban h2{font-size:1.4rem}.kanban p{color:var(--suave);margin:0}
+.cta-faixa{background:var(--cor);color:#fff;padding:36px;border-radius:var(--raio);margin:16px 0 0}
+.cta-faixa h2{color:#fff;font-size:1.6rem}.cta-faixa p{color:#b9c7dd}
+.cta-faixa .btn{background:#fff;border-color:#fff;color:var(--cor)}
+.cta-faixa .btn-linha{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.contato-pag{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:start;padding:56px 0}
+.contato-pag>*{min-width:0}
+.contato-form{background:var(--cinza);padding:28px;border-radius:var(--raio)}
+.contato-form h2{font-size:1.7rem}
+.contato-lista{display:grid;gap:14px;margin-bottom:20px}
+.contato-lista li{display:flex;gap:12px}
+.contato-lista li>.ic{flex:none;color:var(--claro);margin-top:3px}
+.contato-lista div{display:grid;gap:2px;min-width:0}
+.contato-lista a,.contato-lista span{color:var(--suave);overflow-wrap:anywhere}
+.mapa{width:100%;height:300px;border:0;border-radius:var(--raio)}
+/* rodapé */
+.rodape{background:#0a1d3b;color:#a9b6cc;margin-top:64px}
+.rod-grade{display:grid;grid-template-columns:1.3fr 1fr 1.3fr;gap:40px;padding:52px 0 32px}
+.rod-marca img{width:200px;margin-bottom:14px}
+.rodape h3{color:#fff;font-size:1.05rem}
+.rodape li{margin:.45em 0}.rodape a{text-decoration:none}.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px}.rod-dados .ic{flex:none;color:#8fc0ff;margin-top:3px}
+.redes a{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#16305a}
+.rod-base{border-top:1px solid #1b3257;font-size:.84rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0}
+@media (max-width:1000px){
+  .menu-btn{display:block;color:var(--cor)}
+  .menu{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--linha)}
+  .menu-aberto .menu{display:block}.menu ul{flex-direction:column;padding:8px 16px}
+  .btn-topo{margin-left:auto}
+  .sobre-a,.texto-pag,.equip,.kanban,.contato-pag{grid-template-columns:1fr}
+  .equip:nth-child(even) figure{order:0}
+  .marcos-a,.marcos{grid-template-columns:1fr 1fr}
+  .equip-grade,.cards,.segs>div{grid-template-columns:1fr 1fr}
+  .rod-grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .marca img{width:140px}
+  .btn-topo{font-size:.8rem;padding:.4em .8em;min-height:40px}.btn-topo .ic{display:none}
+  .hero-a-in{padding:64px 0 110px}
+  .cards,.equip-grade,.segs>div,.rod-grade{grid-template-columns:1fr}
+  .contato-form,.cta-faixa{padding:22px 16px}
+}
+.cta-faixa .btn,.cta-a .btn{max-width:100%;overflow-wrap:anywhere}
+.texto-pag>*{min-width:0}.texto-pag p{overflow-wrap:anywhere}
