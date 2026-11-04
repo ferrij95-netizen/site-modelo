@@ -117,7 +117,7 @@ function rodape(v) {
 
 const pagina = (v, slug, corpo) => cabeca({ E, v, slug, titulo: titulos[slug], descricao: desc[slug], fontes: FONTES, css: ['base.css', `${v}.css`], cor: v === 'a' ? '#EB891A' : '#2a2927' }) + topo(v, slug) + corpo + rodape(v);
 
-const cabecalhoPg = (v, sobre, titulo, texto, foto) => `<section class="pg-topo"${foto ? ` style="--foto:url(${IMG}${foto})"` : ''}><div class="in">
+const cabecalhoPg = (v, sobre, titulo, texto, foto) => `<section class="pg-topo">${foto ? `<div class="pg-foto" style="background-image:url(${IMG}${foto})"></div>` : ''}<div class="in">
   <p class="trilha"><a href="${link(v, 'index')}">Início</a> / ${esc(sobre)}</p>
   <h1>${titulo}</h1>${texto ? `<p class="pg-lead">${texto}</p>` : ''}
 </div></section>`;
