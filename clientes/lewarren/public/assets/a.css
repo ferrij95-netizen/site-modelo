@@ -70,6 +70,8 @@ h2{font-size:clamp(1.7rem,3.2vw,2.6rem)}
 .inds p{color:#c7ccd1;font-size:.95rem;margin:.5em 0 0}
 main>.sec:not(.sec-inds) .inds,main>.sec:not(.sec-inds) .inds li{border-color:var(--linha)}
 main>.sec:not(.sec-inds) .inds{grid-template-columns:repeat(3,1fr)}
+.sec-inds .inds-3{grid-template-columns:repeat(3,1fr)}.sec-inds .inds-3 li:nth-child(n){padding-left:24px;border-left:1px solid rgba(255,255,255,.14)}.sec-inds .inds-3 li:nth-child(3n+1){padding-left:0;border-left:0}
+@media (max-width:900px){.sec-inds .inds-3{grid-template-columns:1fr 1fr}.sec-inds .inds-3 li:nth-child(n){padding:20px 0;border-left:0}.sec-inds .inds-3 li:nth-child(even){padding-left:16px}}@media (max-width:520px){.sec-inds .inds-3{grid-template-columns:1fr}.sec-inds .inds-3 li:nth-child(n){padding-left:0}}
 main>.sec:not(.sec-inds) .inds li:nth-child(n){padding-left:24px;border-left:1px solid var(--linha)}
 main>.sec:not(.sec-inds) .inds li:nth-child(3n+1){padding-left:0;border-left:0}
 main>.sec:not(.sec-inds) .inds p{color:var(--suave)}
@@ -112,6 +114,7 @@ main>.sec:not(.sec-inds) .inds p{color:var(--suave)}
 .etapas h3{font-size:1.15rem}
 .etapas p{color:var(--suave);font-size:.95rem}
 .equip{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px}
+.equip-fotos-sec{padding-bottom:0}.equip-fotos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.equip-fotos img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:var(--raio)}@media (max-width:700px){.equip-fotos{grid-template-columns:repeat(2,1fr)}}
 .equip h3{font-size:1.25rem;padding-bottom:10px;border-bottom:3px solid var(--cor)}
 .equip table{width:100%;border-collapse:collapse;font-size:.95rem}
 .equip th,.equip td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--linha);vertical-align:top}
@@ -147,6 +150,7 @@ main>.sec:not(.sec-inds) .inds p{color:var(--suave)}
 .rodape li{margin-bottom:8px}
 .rodape .rod-dados .ic{color:var(--acento)}
 .rod-certs{font-size:.85rem;color:var(--acento);font-weight:600}
+.rod-logo.logo-txt{display:inline-block;color:var(--cor-esc);font-size:1.15rem}
 .rod-base{margin-top:48px;border-top:1px solid rgba(255,255,255,.12);padding:18px 0;font-size:.82rem;color:#9aa1a7}
 .rod-base .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:1080px){.btn-topo{display:none}.menu a{padding:10px 8px;font-size:.9rem}}

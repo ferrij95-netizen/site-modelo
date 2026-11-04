@@ -32,7 +32,7 @@ export function gerarUS(C, dir) {
   const mapa = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(C.nome + ', ' + endereco)}`;
   const mapaEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(C.nome + ', ' + endereco)}&output=embed`;
   const quote = v => link(v, 'contact') + '#quote';
-  const logo = (cls = 'logo') => C.logo ? `<img class="${cls}" src="/assets/${C.logo.arq}" alt="${esc(C.nome)}" width="${C.logo.w}" height="${C.logo.h}">` : `<span class="${cls} logo-txt">${esc(C.nome)}</span>`;
+  const logo = (cls = 'logo') => C.logo ? `<img class="${cls}" src="/assets/${C.logo.arq}" alt="${esc(C.nome)}" width="${C.logo.w}" height="${C.logo.h}">` : `<span class="${cls} logo-txt">${esc(C.marca || C.nome)}</span>`;
   const btnMenu = `<button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu">${ic('menu')}</button>`;
   const menu = (v, ativo) => nav.map(n => `<li><a href="${link(v, n.slug)}"${ativo === n.slug ? ' class="ativo" aria-current="page"' : ''}>${n.nome}</a></li>`).join('');
   const certs = (C.certificacoes || []).map(c => `<span class="cert">${ic('escudo')}${esc(c)}</span>`).join('');
@@ -97,7 +97,7 @@ export function gerarUS(C, dir) {
   const industriasBloco = (v, curto) => {
     const L = curto ? C.industrias.slice(0, 8) : C.industrias;
     return v === 'a'
-      ? `<ul class="inds">${L.map(i => `<li class="sobe">${i.img ? img(i.img, i.nome) : ''}<div><h3>${esc(i.nome)}</h3>${!curto && i.texto ? `<p>${i.texto}</p>` : ''}</div></li>`).join('')}</ul>`
+      ? `<ul class="inds${L.length % 3 === 0 && L.length % 4 ? ' inds-3' : ''}">${L.map(i => `<li class="sobe">${i.img ? img(i.img, i.nome) : ''}<div><h3>${esc(i.nome)}</h3>${!curto && i.texto ? `<p>${i.texto}</p>` : ''}</div></li>`).join('')}</ul>`
       : `<ul class="inds-b">${L.map(i => `<li class="sobe"><h3>${esc(i.nome)}</h3>${!curto && i.texto ? `<p>${i.texto}</p>` : ''}</li>`).join('')}</ul>`;
   };
 
@@ -123,7 +123,7 @@ ${C.numeros?.length ? `<section class="numeros"><div class="in"><ul>${C.numeros.
   <div class="hero-txt"><p class="eyebrow mono">${esc(H.eyebrow)}</p><h1>${H.titulo}</h1><p class="hero-sub">${H.sub}</p>
   <div class="hero-acoes"><a class="btn" href="${quote(v)}">Request a Quote ${seta}</a><a class="link-seta" href="${link(v, 'capabilities')}">See capabilities ${seta}</a></div>
   ${C.ficha?.length ? `<dl class="ficha">${C.ficha.map(f => `<div><dt class="mono">${esc(f.k)}</dt><dd>${esc(f.v)}</dd></div>`).join('')}</dl>` : ''}</div>
-  <figure class="hero-fig${H.mosaico ? ' hero-fig-mos' : ''}">${H.mosaico ? H.mosaico.map(f => img(f, '')).join('') : img(H.fotos[H.fotoB ?? 0], '', ' fetchpriority="high" loading="eager"')}${H.legendaB ? `<figcaption class="mono">${esc(H.legendaB)}</figcaption>` : ''}</figure>
+  <figure class="hero-fig${H.mosaico ? ' hero-fig-mos' : ''}">${H.mosaico ? H.mosaico.map(f => img(f, '')).join('') : img(H.imgB || H.fotos[H.fotoB ?? 0], '', ' fetchpriority="high" loading="eager"')}${H.legendaB ? `<figcaption class="mono">${esc(H.legendaB)}</figcaption>` : ''}</figure>
 </div></section>`;
 
     const intro = `<section class="intro"><div class="in intro-in">
@@ -170,6 +170,7 @@ ${C.numeros?.length ? `<section class="numeros"><div class="in"><ul>${C.numeros.
   function equipment(v) {
     return head(v, 'equipment', 'Equipment', `Machine list and equipment at ${C.nome}.`) + topo(v, 'equipment')
       + cab(v, 'Equipment', esc(C.equipTitulo || 'Equipment list'), C.equipSub, C.equipFoto)
+      + (C.equipFotos?.length ? `<section class="sec equip-fotos-sec"><div class="in"><ul class="equip-fotos">${C.equipFotos.map(f => `<li class="sobe">${img(f, C.nome + ' equipment')}</li>`).join('')}</ul></div></section>` : '')
       + `<section class="sec"><div class="in">${equipBloco()}</div></section>` + ctaFaixa(v) + rodape(v);
   }
 
@@ -323,6 +324,8 @@ h2{font-size:clamp(1.7rem,3.2vw,2.6rem)}
 .inds p{color:#c7ccd1;font-size:.95rem;margin:.5em 0 0}
 main>.sec:not(.sec-inds) .inds,main>.sec:not(.sec-inds) .inds li{border-color:var(--linha)}
 main>.sec:not(.sec-inds) .inds{grid-template-columns:repeat(3,1fr)}
+.sec-inds .inds-3{grid-template-columns:repeat(3,1fr)}.sec-inds .inds-3 li:nth-child(n){padding-left:24px;border-left:1px solid rgba(255,255,255,.14)}.sec-inds .inds-3 li:nth-child(3n+1){padding-left:0;border-left:0}
+@media (max-width:900px){.sec-inds .inds-3{grid-template-columns:1fr 1fr}.sec-inds .inds-3 li:nth-child(n){padding:20px 0;border-left:0}.sec-inds .inds-3 li:nth-child(even){padding-left:16px}}@media (max-width:520px){.sec-inds .inds-3{grid-template-columns:1fr}.sec-inds .inds-3 li:nth-child(n){padding-left:0}}
 main>.sec:not(.sec-inds) .inds li:nth-child(n){padding-left:24px;border-left:1px solid var(--linha)}
 main>.sec:not(.sec-inds) .inds li:nth-child(3n+1){padding-left:0;border-left:0}
 main>.sec:not(.sec-inds) .inds p{color:var(--suave)}
@@ -365,6 +368,7 @@ main>.sec:not(.sec-inds) .inds p{color:var(--suave)}
 .etapas h3{font-size:1.15rem}
 .etapas p{color:var(--suave);font-size:.95rem}
 .equip{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px}
+.equip-fotos-sec{padding-bottom:0}.equip-fotos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.equip-fotos img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:var(--raio)}@media (max-width:700px){.equip-fotos{grid-template-columns:repeat(2,1fr)}}
 .equip h3{font-size:1.25rem;padding-bottom:10px;border-bottom:3px solid var(--cor)}
 .equip table{width:100%;border-collapse:collapse;font-size:.95rem}
 .equip th,.equip td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--linha);vertical-align:top}
@@ -522,6 +526,7 @@ main .sec:not(.sec-qual) .cert{background:var(--claro);border-color:var(--linha)
 .texto-largo{max-width:74ch;font-size:1.05rem;color:var(--suave);margin-bottom:44px}
 .sec-mat{background:var(--claro)}
 .equip{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:36px}
+.equip-fotos-sec{padding-bottom:0}.equip-fotos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.equip-fotos img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:var(--raio)}@media (max-width:700px){.equip-fotos{grid-template-columns:repeat(2,1fr)}}
 .equip-grupo{border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden}
 .equip h3{font-size:1.05rem;margin:0;padding:14px 18px;background:var(--tinta);color:#fff;font-family:var(--mono);font-weight:500;letter-spacing:.02em}
 .equip table{width:100%;border-collapse:collapse;font-size:.93rem}

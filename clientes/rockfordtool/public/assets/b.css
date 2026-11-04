@@ -93,6 +93,7 @@ main .sec:not(.sec-qual) .cert{background:var(--claro);border-color:var(--linha)
 .texto-largo{max-width:74ch;font-size:1.05rem;color:var(--suave);margin-bottom:44px}
 .sec-mat{background:var(--claro)}
 .equip{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:36px}
+.equip-fotos-sec{padding-bottom:0}.equip-fotos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.equip-fotos img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:var(--raio)}@media (max-width:700px){.equip-fotos{grid-template-columns:repeat(2,1fr)}}
 .equip-grupo{border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden}
 .equip h3{font-size:1.05rem;margin:0;padding:14px 18px;background:var(--tinta);color:#fff;font-family:var(--mono);font-weight:500;letter-spacing:.02em}
 .equip table{width:100%;border-collapse:collapse;font-size:.93rem}
@@ -132,6 +133,7 @@ main .sec:not(.sec-qual) .cert{background:var(--claro);border-color:var(--linha)
 .rodape li{margin-bottom:8px}
 .rodape .rod-dados .ic{color:#fff;opacity:.8}
 .rod-certs{font:500 .8rem var(--mono)}
+.rod-logo.logo-txt{display:inline-block;color:var(--cor-esc);font-size:1.1rem}
 .rod-base{margin-top:48px;border-top:1px solid rgba(255,255,255,.18);padding:18px 0;font-size:.82rem;opacity:.85}
 .rod-base .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:1100px){.topo-fone{display:none}.menu a{padding:8px 9px;font-size:.9rem}}
