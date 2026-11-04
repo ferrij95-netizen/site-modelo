@@ -44,6 +44,12 @@ const I = {
   trator: '<circle cx="7" cy="16" r="4"/><circle cx="18" cy="17" r="3"/><path d="M7 12V6h6l2 5h4v4M11 6v6"/>',
   pacote: '<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>',
   empilhadeira: '<path d="M4 18V8h6l3 6v4"/><circle cx="6.5" cy="18.5" r="1.5"/><circle cx="12" cy="18.5" r="1.5"/><path d="M16 4v14h5M16 14h5"/>',
+  carro: '<path d="M3 16v-4l2.2-5.2A2 2 0 017 5.6h10a2 2 0 011.8 1.2L21 12v4"/><path d="M3 12h18"/><rect x="2" y="16" width="20" height="3" rx="1"/><circle cx="7" cy="14.5" r=".6"/><circle cx="17" cy="14.5" r=".6"/>',
+  medidor: '<path d="M4 18a9 9 0 1116 0"/><path d="M12 13l4-4"/><circle cx="12" cy="13" r="1.2"/>',
+  disco: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M21 12h-3M12 21v-3M3 12h3"/>',
+  floco: '<path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/><path d="M9 4l3 2 3-2M9 20l3-2 3 2"/>',
+  volante: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M3.5 10h6M14.5 10h6M12 14v7"/>',
+  oleo: '<path d="M3 10h9l3-3h4l2 2-4 1-3 6H3z"/><path d="M19 15s1.5 2 1.5 3a1.5 1.5 0 01-3 0c0-1 1.5-3 1.5-3z"/>',
   coracao: '<path d="M12 20s-8-5-8-11a4.5 4.5 0 018-3 4.5 4.5 0 018 3c0 6-8 11-8 11z"/>',
 };
 export const ic = (n, cls = 'ic') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n] || ''}</svg>`;
