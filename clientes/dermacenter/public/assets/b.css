@@ -1,0 +1,148 @@
+/* Dermacenter B "Corpo Clínico": verde-petróleo sóbrio, Newsreader nos títulos (editorial) + Ubuntu no texto (o nome do logo). Bolinhas do logo só como detalhe. */
+:root{--cor:#00ada2;--cor-esc:#008f86;--coral:#ee1746;--ambar:#fcaf16;--agua:#00ada2;--petroleo:#0f3b39;--petroleo2:#164a47;--tinta:#1f2a29;--suave:#5d6766;--fundo:#fbfaf7;--palha:#f1efe9;--linha:#e0ddd5;--ft:Newsreader,Georgia,serif;--fx:Ubuntu,system-ui,sans-serif;--raio:4px}
+body{font-size:15.5px}
+h1,h2,h3{font-weight:400;letter-spacing:-.01em;color:var(--tinta)}
+h3{font-family:var(--fx);font-weight:500;letter-spacing:0}
+h2{font-size:clamp(1.9rem,3.4vw,2.8rem)}
+.k{font:500 .76rem/1.3 var(--fx);letter-spacing:.18em;text-transform:uppercase;color:var(--cor-esc);margin:0 0 .9em}
+.btn{--sobre-cor:#fff;font-weight:500}
+.btn-claro{background:var(--ambar);border-color:var(--ambar);color:var(--tinta)}.btn-claro:hover{background:#fff;border-color:#fff;color:var(--tinta)}
+.bts{display:flex;flex-wrap:wrap;gap:12px;margin:1.6em 0 0}
+.bolinhas{display:flex;gap:5px;margin-bottom:14px}.bolinhas i{width:9px;height:9px;border-radius:50%;background:var(--coral)}.bolinhas i:nth-child(2){background:var(--ambar)}.bolinhas i:nth-child(3){background:var(--agua)}
+
+.topo{position:sticky;top:0;z-index:40;background:var(--petroleo);border-bottom:1px solid rgba(255,255,255,.08)}
+.topo-linha{display:flex;align-items:center;gap:20px;min-height:74px;position:relative}
+.marca{flex:none;display:block}.marca img{width:160px;height:auto}
+.menu{margin-left:auto}.menu ul{display:flex;gap:0}
+.menu a{display:block;padding:25px 11px;text-decoration:none;font:400 .93rem var(--fx);color:#c9dbd9;border-bottom:2px solid transparent}
+.menu a:hover{color:#fff}.menu a.ativo{color:#fff;border-bottom-color:var(--ambar)}
+.btn-topo{min-height:42px;padding:.5em 1.1em;font-size:.92rem;background:var(--ambar);border-color:var(--ambar);color:var(--tinta)}
+
+.hero-b{background:var(--petroleo);color:#fff;overflow:hidden}
+.hero-b-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center;padding:72px 0 0}
+.hero-b-in>div:first-child{padding-bottom:80px}
+.hero-b h1{color:#fff;font-size:clamp(2.5rem,5.2vw,4.3rem);line-height:1.04;margin-bottom:.4em}
+.hero-b h1 em{color:var(--ambar)}
+.hero-b .k{color:#8fd6cf}
+.hero-b-in>div>p:not(.k):not(.bts){color:#c9dbd9;font-size:1.06rem;max-width:540px}
+.hero-b .btn-linha{color:#fff}
+.hero-b-fotos{display:grid;grid-template-columns:1.2fr 1fr;gap:12px;align-items:end;align-self:end}
+.hero-b-fotos figure{overflow:hidden}
+.hero-b-fotos .f1{aspect-ratio:3/4}.hero-b-fotos .f2{aspect-ratio:3/4;margin-bottom:60px}
+.hero-b-fotos img{width:100%;height:100%;object-fit:cover}
+
+.faixa-b{background:var(--petroleo2);color:#fff}
+.faixa-b ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.faixa-b li{padding:24px 22px;border-left:1px solid rgba(255,255,255,.1)}
+.faixa-b li:last-child{border-right:1px solid rgba(255,255,255,.1)}
+.faixa-b b{display:block;font:400 2.2rem/1.1 var(--ft);color:var(--ambar)}
+.faixa-b span{color:#b9cfcc;font-size:.92rem}
+
+.tit{max-width:760px;margin-bottom:34px}
+.tit-linha{max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.areas-b{padding:88px 0 72px}
+.areas-lista{border-top:1px solid var(--linha)}
+.areas-lista a{display:grid;grid-template-columns:70px minmax(0,1fr) 30px;gap:24px;align-items:start;padding:30px 0;border-bottom:1px solid var(--linha);text-decoration:none;transition:background .2s}
+.areas-lista a:hover{background:var(--palha)}
+.areas-lista .n{font:400 2rem var(--ft);color:var(--cor-esc);padding-left:6px}
+.areas-lista h3{font:400 1.8rem var(--ft);margin-bottom:.25em}
+.areas-lista p{color:var(--suave);max-width:640px}
+.areas-lista a>.ic{margin-top:14px;color:var(--cor-esc)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}.tags li{font-size:.82rem;padding:4px 10px;border:1px solid var(--linha);border-radius:99px;color:var(--suave);background:#fff}
+
+.equipe-b{background:var(--palha);padding:80px 0}
+.equipe{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--linha)}
+.equipe li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 4px;border-bottom:1px solid var(--linha);margin-right:24px}
+.equipe b{font-weight:500;grid-column:1/-1}.equipe span{color:var(--cor-esc);font-size:.9rem}.equipe small{color:var(--suave);font-size:.82rem;align-self:center}
+
+.estr-b{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;padding:88px 0 48px;align-items:start}
+.estr-b-txt p:not(.k){color:var(--suave)}
+.estrutura{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.estrutura a{display:block;aspect-ratio:1;overflow:hidden}
+.estrutura img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.estrutura a:hover img{transform:scale(1.04)}
+
+.conv-b{padding:16px 0 80px}
+.convenios{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--linha);border-left:1px solid var(--linha)}
+.convenios li{padding:16px 22px;border-right:1px solid var(--linha);border-bottom:1px solid var(--linha);font:400 1.15rem var(--ft);flex:1 1 160px;text-align:center;background:#fff}
+
+.cta{background:var(--petroleo);color:#fff;padding:60px 0}
+.cta-in{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.cta h2{color:#fff;margin:0 0 .2em}.cta p{margin:0;color:#b9cfcc}.cta .bts{margin:0}.cta .btn-linha{color:#fff}
+
+.cab-b{background:var(--petroleo);color:#fff;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);overflow:hidden}
+.cab-b-in{width:auto;margin:0;padding:72px 48px 64px max(16px,calc((100vw - 1180px)/2))}
+.cab-b h1{color:#fff;font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.05;margin:0}
+.cab-b .k{color:#8fd6cf}
+.cab-b-foto{min-height:280px}.cab-b-foto img{width:100%;height:100%;object-fit:cover}
+
+.texto-pag{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;padding:72px 0 40px;align-items:start}
+.texto-pag>*{min-width:0}
+.lead{font:400 1.45rem/1.4 var(--ft);color:var(--tinta)}
+.texto-pag p{color:var(--suave)}.texto-pag p.lead{color:var(--tinta)}
+.numeros{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--linha);border-left:1px solid var(--linha)}
+.numeros li{padding:22px;border-right:1px solid var(--linha);border-bottom:1px solid var(--linha);background:#fff}
+.numeros b{display:block;font:400 2.6rem/1 var(--ft);color:var(--cor-esc);margin-bottom:6px}.numeros span{color:var(--suave)}
+.estr-sec,.equipe-sec{padding:40px 0}
+.equipe-sec{padding-bottom:88px}
+
+.area-pag{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:56px;padding:64px 0 88px;align-items:start}
+.area-pag>*{min-width:0}
+.area-lado{position:sticky;top:100px}
+.area-lado p{color:var(--suave)}.area-lado .lead{color:var(--tinta)}
+.alerta{border-left:3px solid var(--ambar);background:#fff;padding:20px 22px;margin:0 0 20px}
+.alerta h3{font-size:1.1rem}.alerta p{margin:0;font-size:.95rem}
+.proc-grupo{margin-bottom:40px}
+.proc-grupo h2{font-size:1.9rem;margin-bottom:.5em}
+.proc{border-top:1px solid var(--linha);scroll-margin-top:90px}
+.proc:last-child{border-bottom:1px solid var(--linha)}
+.proc summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;cursor:pointer;list-style:none;font:400 1.35rem var(--ft)}
+.proc summary::-webkit-details-marker{display:none}
+.proc summary .ic{color:var(--cor-esc);transition:transform .2s;transform:rotate(90deg)}
+.proc[open] summary .ic{transform:rotate(-90deg)}
+.proc-txt{padding:0 4px 22px}.proc-txt p{color:var(--suave)}
+.proc-q{padding-left:16px;border-left:3px solid var(--ambar)}
+
+.contato-pag{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:44px;padding:72px 0 48px;align-items:start}
+.contato-pag>*{min-width:0}
+.contato-form{background:#fff;border:1px solid var(--linha);border-top:3px solid var(--cor);padding:32px}
+.contato-lista{display:grid;gap:18px;margin-bottom:24px}
+.contato-lista li{display:flex;gap:14px}.contato-lista .ic{color:var(--cor-esc);width:24px;height:24px;margin-top:2px}
+.contato-lista div{display:grid}.contato-lista a{text-decoration:none;font-weight:500;overflow-wrap:anywhere}
+.contato-lista span{color:var(--suave)}
+.conv-sec{padding:24px 0 88px}.conv-nota{color:var(--suave);margin-top:14px}
+
+.rodape{background:#0a2927;color:#a9bfbc;padding-top:56px}
+.rod-marca img{width:170px}
+.rod-grade{display:grid;grid-template-columns:1.3fr 1fr 1.3fr;gap:40px;padding-bottom:40px}
+.rod-marca p{margin-top:16px;font-size:.92rem}
+.rod-redes{display:flex;gap:10px}.rod-redes a{display:grid;place-items:center;width:40px;height:40px;border:1px solid rgba(255,255,255,.15)}
+.rodape h3{color:#fff;font-size:1.05rem}
+.rodape ul li{margin:.35em 0}
+.rodape a{text-decoration:none}.rodape a:hover{color:var(--ambar)}
+.rod-dados li{display:flex;gap:10px;align-items:flex-start}.rod-dados .ic{color:var(--agua);margin-top:.2em}
+.rod-base{border-top:1px solid rgba(255,255,255,.08);padding:16px 0;font-size:.82rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:1100px){.menu a{padding:25px 8px;font-size:.88rem}}
+@media (max-width:1000px){
+  .menu-btn{display:block;color:#fff;margin-left:auto}
+  .btn-topo{display:none}
+  .menu{display:none;position:absolute;left:-16px;right:-16px;top:100%;background:var(--petroleo)}
+  .menu-aberto .menu{display:block}.menu ul{flex-direction:column;padding:6px 16px 12px}.menu a{padding:12px 4px}
+  .hero-b-in,.texto-pag,.estr-b,.area-pag,.contato-pag{grid-template-columns:1fr;gap:28px}
+  .hero-b-in>div:first-child{padding-bottom:0}
+  .cab-b{grid-template-columns:1fr}.cab-b-in{padding:56px 16px 40px}.cab-b-foto{height:220px}
+  .area-lado{position:static}
+  .faixa-b ul{grid-template-columns:1fr 1fr}
+  .equipe{grid-template-columns:1fr 1fr}
+  .rod-grade{grid-template-columns:1fr 1fr}.rod-marca{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .hero-b-fotos .f2{margin-bottom:30px}
+  .areas-lista a{grid-template-columns:44px minmax(0,1fr)}.areas-lista a>.ic{display:none}
+  .areas-lista .n{font-size:1.5rem}
+  .equipe{grid-template-columns:1fr}.equipe li{margin-right:0}
+  .estrutura{grid-template-columns:1fr 1fr}
+  .contato-form{padding:22px}
+  .rod-grade{grid-template-columns:1fr}
+}
