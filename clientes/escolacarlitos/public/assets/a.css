@@ -1,0 +1,193 @@
+/* Versão A "Faixa Amarela": topo branco com o logo, barra cinza-escura entre faixas amarelas, palco de fotos centralizado e os três cursos logo abaixo, como o site atual. */
+:root{--cor:#ffed00;--cor-esc:#e0cf00;--sobre-cor:#2b2b2b;--cinza:#444;--grafite:#2f2f2f;--tinta:#2b2b2b;--suave:#5d5d5d;--fundo:#fff;--papel:#f6f5f1;--linha:#e2e0d8;--ft:'Tenor Sans',system-ui,sans-serif;--fx:Inter,system-ui,sans-serif;--raio:2px}
+body{background:var(--fundo);color:var(--tinta);border-top:4px solid var(--grafite)}
+h1,h2,h3{font-family:var(--ft);font-weight:400;line-height:1.15}
+.btn{color:var(--tinta)}
+.topo-linha{display:flex;align-items:center;gap:20px;padding:20px 0 16px}
+.marca img{width:250px;height:auto}
+.topo-acesso{display:flex;gap:18px;align-items:center;margin:0 0 0 auto;font-size:.88rem}
+.topo-acesso a{text-decoration:none;color:var(--suave)}
+.topo-acesso a:hover{color:var(--tinta)}
+.topo-fone{display:inline-flex;gap:6px;align-items:center;font-weight:600;color:var(--tinta)!important}
+.topo-fone .ic{width:16px;height:16px}
+.menu{background:var(--cinza);border-top:4px solid var(--cor);border-bottom:1px solid #333}
+.menu ul{display:flex;justify-content:space-between}
+.menu li{flex:1;text-align:center;position:relative}
+.menu li+li::before{content:"";position:absolute;left:0;top:10px;bottom:10px;border-left:1px solid #888}
+.menu a{display:block;padding:11px 8px;color:#fff;text-decoration:none;font:400 1.08rem var(--ft)}
+.menu a:hover,.menu a.ativo{color:var(--cor)}
+
+.palco{padding-top:18px}
+.banner-a{position:relative;aspect-ratio:870/366;background:#ddd}
+.banner-a .slide img{width:100%;height:100%;object-fit:cover}
+.cursos-a{display:grid;grid-template-columns:repeat(3,1fr);border-top:3px solid var(--cor);background:var(--cinza)}
+.cursos-a a{padding:14px 10px;text-align:center;color:#fff;text-decoration:none;font:400 1.1rem var(--ft);border-left:1px solid #666}
+.cursos-a a:first-child{border-left:0}
+.cursos-a a:hover{background:#3a3a3a;color:var(--cor)}
+.lemas-a{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:44px 0}
+.lemas-a img{width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:14px}
+.lemas-a h2{font-size:1.35rem}
+.lemas-a p{color:var(--suave);font-style:italic}
+.link-seta{color:var(--tinta);font-weight:600;text-decoration-color:var(--cor);text-decoration-thickness:2px}
+.sobre-a{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:16px 0 48px}
+.sobre-a h2{font-size:1.9rem}
+.sobre-a p{color:var(--suave)}
+.sobre-a img{width:100%;aspect-ratio:3/2;object-fit:cover;border-bottom:6px solid var(--cor)}
+.viv-a{background:var(--papel);padding:48px 0}
+.viv-a h2{font-size:1.9rem;margin-bottom:20px}
+.viv-a ul,.outras-viv ul{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.viv-a a,.outras-viv a{position:relative;display:block;overflow:hidden;text-decoration:none}
+.viv-a img,.outras-viv img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .4s}
+.viv-a a:hover img,.outras-viv a:hover img{transform:scale(1.04)}
+.viv-a span,.outras-viv span{position:absolute;left:0;bottom:0;padding:8px 14px;background:var(--cinza);color:#fff;border-top:3px solid var(--cor);font-family:var(--ft)}
+.centro{text-align:center;margin:28px 0 0}
+.visita-a{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:40px 0}
+.visita-a div{margin-right:auto}
+.visita-a h2{font-size:1.7rem;margin:0}
+.visita-a p{margin:.3em 0 0;color:var(--suave)}
+
+.trilha{font-size:.85rem;color:var(--suave);margin:18px 0 0}
+.trilha a{color:var(--tinta)}
+.tit-a{padding:30px 0 20px;margin-bottom:28px;border-bottom:3px solid var(--cor)}
+.tit-a h1{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:0}
+.lema{font-style:italic;color:var(--suave);margin:.4em 0 0;font-size:1.08rem}
+.texto-pag{display:grid;grid-template-columns:1fr 280px;gap:48px}
+.texto-col p{color:var(--suave);text-align:justify}
+.destaque-lado{background:var(--papel);padding:24px;align-self:start;border-top:4px solid var(--cor)}
+.destaque-lado b{display:block;font:400 1.5rem var(--ft)}
+.destaque-lado p{color:var(--suave);font-size:.92rem;margin:.1em 0 1em}
+.ideario{margin-top:48px}
+.ideario>h2{font-size:1.9rem}
+.lead{font-size:1.1rem;color:var(--suave)}
+.ideario-grade{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.ideario-grade article{background:var(--papel);padding:24px}
+.ideario-grade span{font:400 1rem var(--ft);color:#b5a400}
+.ideario-grade h3{font-size:1.25rem;margin:.3em 0 .5em}
+.ideario-grade p{color:var(--suave);font-size:.95rem}
+
+.cursos-pag{display:grid;gap:24px}
+.cursos-pag article{display:grid;grid-template-columns:340px 1fr;gap:28px;align-items:center;padding-bottom:24px;border-bottom:1px solid var(--linha)}
+.cursos-pag img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.cursos-pag h2{font-size:1.6rem;margin:0}
+.cursos-pag h2 a{text-decoration:none;color:inherit}
+.idade{font-weight:600;color:#8a7d00;margin:.2em 0}
+.cursos-pag p{color:var(--suave)}
+.caixa{background:var(--papel);padding:28px;margin-top:28px}
+.caixa h2{font-size:1.5rem}
+.caixa p{color:var(--suave)}
+.tabela-rola{overflow-x:auto}
+.tabela{width:100%;border-collapse:collapse;font-size:.94rem;background:#fff}
+.tabela th,.tabela td{padding:10px 12px;border:1px solid var(--linha);text-align:left;vertical-align:top}
+.tabela thead th{background:var(--cinza);color:#fff;font-weight:600;border-color:var(--cinza)}
+.tabela tbody th{font-weight:600}
+
+.curso-corpo{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start}
+.curso-txt p{color:var(--suave);text-align:justify}
+.curso-txt h3,.viv-txt h3{font-size:1.3rem;margin-top:1.2em}
+.curso-lado{display:grid;gap:14px;position:sticky;top:16px}
+.ficha{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);margin:0;border-top:4px solid var(--cor)}
+.ficha div{background:var(--papel);padding:12px 14px}
+.ficha dt{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--suave)}
+.ficha dd{margin:0;font-weight:600}
+.curso-fotos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.curso-fotos a:first-child{grid-column:1/-1}
+.curso-fotos img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.outros-cursos{margin-top:48px;padding-top:28px;border-top:1px solid var(--linha)}
+.outros-cursos h2,.outras-viv h2{font-size:1.5rem}
+.outros-cursos ul{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.outros-cursos a{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:center;text-decoration:none;color:var(--tinta)}
+.outros-cursos img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.outros-cursos span{display:grid;color:var(--suave);font-size:.9rem}
+.outros-cursos strong{font:400 1.15rem var(--ft);color:var(--tinta)}
+
+.viv-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.viv-grade a{display:grid;gap:10px;text-decoration:none;color:var(--tinta);height:100%}
+.viv-grade img{width:100%;aspect-ratio:3/2;object-fit:cover;border-bottom:4px solid var(--cor)}
+.viv-grade div{display:grid;gap:4px}
+.viv-grade strong{font:400 1.25rem var(--ft)}
+.viv-grade span{color:var(--suave);font-size:.92rem}
+.viv-corpo{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+.viv-txt p{color:var(--suave);text-align:justify}
+.viv-fotos{display:grid;gap:12px}
+.viv-fotos img{width:100%}
+.outras-viv{margin-top:48px;padding-top:28px;border-top:1px solid var(--linha)}
+.outras-viv ul{grid-template-columns:repeat(4,1fr)}
+
+.info-arq h2,.info-listas h2{font-size:1.5rem}
+.arquivos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.arquivos a{display:flex;gap:12px;align-items:center;padding:16px;background:var(--papel);text-decoration:none;color:var(--tinta);border-left:4px solid var(--cor)}
+.arquivos span{display:grid;font-size:.82rem;color:var(--suave)}
+.arquivos strong{font-size:1rem;color:var(--tinta)}
+.vida{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+.vida article{border-top:3px solid var(--cor);padding-top:14px}
+.vida .k{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:#8a7d00;font-weight:600;margin:0}
+.vida h2{font-size:1.4rem}
+.vida p{color:var(--suave);font-size:.94rem}
+.info-listas{margin-top:36px}
+.listas{display:flex;flex-wrap:wrap;gap:10px}
+.listas a{display:block;padding:9px 16px;background:var(--cinza);color:#fff;text-decoration:none}
+.listas a:hover{color:var(--cor)}
+.nota{color:var(--suave);font-size:.9rem;margin-top:14px}
+
+.ingresso{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.ingresso-txt p{color:var(--suave)}
+.ingresso-txt h2{font-size:1.4rem;margin-top:1.4em}
+.ingresso-txt a{color:var(--tinta)}
+.docs-duas{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.docs-duas h3{font-size:1.1rem}
+.ingresso-form,.contato-form{background:var(--papel);padding:26px;border-top:4px solid var(--cor);position:sticky;top:16px}
+.ingresso-form h2,.contato-form h2{font-size:1.4rem}
+fieldset{border:0;padding:0;margin:0 0 6px}
+legend{font-weight:600;margin-bottom:6px}
+.lista-check li::before{background:var(--cinza)!important}
+.contato-pag{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
+.contato-form{position:static}
+.contato-lista{display:grid;gap:16px;margin-bottom:20px}
+.contato-lista li{display:flex;gap:12px}
+.contato-lista li>.ic{flex:none;margin-top:3px}
+.contato-lista div{display:grid;gap:2px;min-width:0}
+.contato-lista a,.contato-lista span{color:var(--suave);overflow-wrap:anywhere}
+
+.rodape{background:var(--cinza);color:#ddd;border-top:4px solid var(--cor);margin-top:56px}
+.rod-grade{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:32px;padding:40px 0 28px}
+.rod-marca img{width:210px;height:auto;margin-bottom:12px}
+.rod-redes{display:flex;gap:8px}
+.rod-redes a{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#555}
+.rod-redes a:hover{background:var(--cor);color:var(--tinta)}
+.rodape h3{font-size:1.1rem;color:#fff}
+.rodape li{margin:.4em 0}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:var(--cor)}
+.rod-dados li{display:flex;gap:10px}
+.rod-dados .ic{flex:none;color:var(--cor);margin-top:3px}
+.rod-base{background:#3a3a3a;font-size:.8rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 0}
+.wa-flutua{color:#fff}
+
+@media (max-width:1000px){
+  .topo-acesso{display:none}
+  .marca{margin-right:auto}
+  .menu-btn{display:block;color:var(--tinta)}
+  .menu{display:none}
+  .menu-aberto .menu{display:block}
+  .menu ul{flex-direction:column}
+  .menu li{text-align:left}.menu li+li::before{display:none}
+  .menu a{padding:12px 4px}
+  .lemas-a,.vida,.viv-grade{grid-template-columns:1fr 1fr}
+  .texto-pag,.curso-corpo,.viv-corpo,.ingresso,.contato-pag,.sobre-a{grid-template-columns:1fr}
+  .curso-lado,.ingresso-form{position:static}
+  .outras-viv ul{grid-template-columns:1fr 1fr}
+  .rod-grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .marca img{width:190px}
+  .banner-a{aspect-ratio:4/3}
+  .cursos-a{grid-template-columns:1fr}
+  .cursos-a a{border-left:0;border-top:1px solid #666}
+  .lemas-a,.vida,.viv-grade,.viv-a ul,.ideario-grade,.arquivos,.docs-duas,.outros-cursos ul,.rod-grade{grid-template-columns:1fr}
+  .cursos-pag article{grid-template-columns:1fr}
+  .outros-cursos a{grid-template-columns:120px 1fr}
+  .texto-col p,.curso-txt p,.viv-txt p{text-align:left}
+  .caixa,.ingresso-form,.contato-form{padding:20px 16px}
+  .visita-a .btn{flex:1}
+}
