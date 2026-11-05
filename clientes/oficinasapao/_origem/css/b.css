@@ -1,0 +1,88 @@
+/* Versão B "Desde 1975": escura, marinho profundo com o dourado do selo de 50 anos e o vermelho da faixa. Títulos em Anybody larga e itálica (como um hot rod), texto em Karla. */
+:root{--cor:#d3a84c;--cor-esc:#e6c16e;--kc:#d3a84c;--titulo:#fff;--tinta:#d5dbea;--suave:#9aa5c2;--fundo:#0b1330;--cartao:#121c40;--topo:rgba(11,19,48,.96);--topo-solido:#0b1330;--topo-h:72px;--linha:#25315a;--rod:#070c22;--ft:'Anybody',system-ui,sans-serif;--fx:'Karla',system-ui,sans-serif;--raio:2px;--f1:#d3a84c;--f2:#0b1330;--f3:#d0242f;--sobre-cor:#0b1330;--rod-ic:#d3a84c;--num-f:italic 900 2.4rem/1.05 'Anybody',sans-serif}
+h1,h2,h3{font-family:var(--ft);font-weight:800;font-stretch:125%;color:var(--titulo);line-height:1.08;letter-spacing:-.01em}
+.btn{background:var(--cor);border-color:var(--cor);color:#0b1330;font-weight:700}
+.btn:hover{background:var(--cor-esc);border-color:var(--cor-esc)}
+.btn-linha{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn-linha:hover{background:#fff;color:#0b1330;border-color:#fff}
+.topo{border-bottom:1px solid var(--linha)}
+.menu a{color:#cdd4e8}
+.menu a:hover,.menu a.ativo{color:var(--cor)}
+.link-seta{color:var(--cor)}
+.faixa{height:6px}
+.passos b{color:#0b1330}
+.seg-lista li{border-color:#33406c}
+.form label{color:#fff}
+.form input,.form select,.form textarea{background:#0f1838;color:#fff;border-color:#33406c}
+.mapa{filter:grayscale(.3)}
+
+.hero-b{padding:60px 0 70px;background:radial-gradient(1200px 500px at 80% 0,#1a2a63 0,transparent 60%)}
+.hero-b-in{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.hero-b h1{font-size:clamp(3.2rem,9vw,7.4rem);font-style:italic;font-weight:900;font-stretch:150%;line-height:.92;margin:0 0 26px}
+.hero-b h1 span{display:block;font-size:.34em;font-stretch:100%;letter-spacing:.2em;text-transform:uppercase;color:var(--cor);font-style:normal;margin-bottom:.3em}
+.hero-b .lead{font-size:1.15rem;max-width:520px;margin-bottom:28px}
+.hero-b-mosaico{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,120px);gap:8px}
+.hero-b-mosaico a{display:block;min-height:0}
+.hero-b-mosaico img{width:100%;height:100%;object-fit:cover;border-radius:var(--raio)}
+.hero-b-mosaico .m1{grid-column:span 2;grid-row:span 2}
+
+.hero-b-mosaico .m5{grid-column:span 2}
+
+.num-b{border-block:1px solid var(--linha);padding:34px 0 0}
+.num-b .numeros li{border-top:0;border-left:3px solid var(--f3);padding:0 0 0 16px}
+.num-b .numeros b{color:#fff}
+
+.servs-b{padding:86px 0 60px}
+.cards-b{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card-b figure{position:relative;margin-bottom:14px}
+.card-b img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio);filter:saturate(.9)}
+.card-b .n{color:var(--f3);font-size:.9rem}
+.card-b h3{font-size:1.25rem;margin:.35em 0 .3em}
+.card-b p{margin:0;color:var(--suave)}
+.mais-b{margin:30px 0 0;color:var(--suave)}
+
+.livre-b{background:var(--cor);color:#1a1a1a;padding:70px 0}
+.livre-b-in{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center}
+.livre-b h2{color:#0b1330;font-size:clamp(2rem,4.4vw,3.4rem);font-style:italic;font-stretch:140%;font-weight:900;margin:0}
+.livre-b p:not(.bts){font-size:1.1rem;color:#1d2440;margin-bottom:24px}
+.livre-b .btn{background:#0b1330;border-color:#0b1330;color:#fff}
+.livre-b .btn-linha{background:transparent;color:#0b1330;border-color:#0b1330}
+.livre-b .btn-linha:hover{background:#0b1330;color:#fff}
+
+.hist-b{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;padding:86px 0}
+.hist-b figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.hist-b h2{font-size:clamp(1.6rem,3.2vw,2.5rem)}
+.hist-b p:not(.k){font-size:1.08rem}
+
+.verde-b{background:#0e1a2e;border-block:1px solid #1f3348;padding:76px 0}
+.verde-b .k{color:#7fc48a}
+.verde-b .lista-check .ic{color:#7fc48a}
+.verde-b-in{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:center}
+.verde-b h2{font-size:clamp(1.6rem,3.2vw,2.4rem)}
+.verde-b .lista-check{margin:0 0 22px}
+.verde-b .lista-check b{color:#fff}
+.verde-b-fotos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.verde-b-fotos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--raio)}
+.depo-b{padding:86px 0}
+
+.cta-b{background:linear-gradient(90deg,#d0242f 0 8px,transparent 8px),#070c22;padding:60px 0}
+.cta-b-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.cta-b h2{font-size:clamp(1.6rem,3vw,2.4rem);font-style:italic;margin-bottom:.3em}
+.cta-b p:not(.bts){color:var(--suave);margin:0}
+
+.cab-b{border-bottom:1px solid var(--linha)}
+.cab-b-in{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;padding:56px 0}
+.cab-b h1{font-size:clamp(1.9rem,4.4vw,3.4rem);font-style:italic;margin:0}
+.cab-b figure img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--raio);box-shadow:12px 12px 0 var(--f3)}
+
+@media (max-width:980px){
+  .hero-b-in,.livre-b-in,.hist-b,.verde-b-in,.cab-b-in{grid-template-columns:1fr;gap:34px}
+  .cards-b{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .hero-b{padding:40px 0 50px}
+  .hero-b-mosaico{grid-template-rows:repeat(3,86px)}
+  .cards-b{grid-template-columns:1fr}
+  .servs-b,.hist-b,.depo-b{padding:60px 0}
+  .cab-b figure img{box-shadow:8px 8px 0 var(--f3)}
+}
