@@ -1,0 +1,77 @@
+/* Versão B "É na Eurocar": cinza claro e amarelo, como as faixas do carrossel antigo, com o azul do logo no texto. Títulos em Sarpanch (quadrada, em caixa alta), texto em Radio Canada. Facetas amarelas do rodapé atual como divisórias. */
+:root{--azul:#00376a;--azul-esc:#00264a;--amarelo:#f1ce00;--cor:#f1ce00;--cor-esc:#ffdc1f;--kc:#00376a;--tinta:#111820;--suave:#4a525c;--fundo:#efefec;--topo:rgba(255,255,255,.97);--topo-solido:#fff;--topo-h:76px;--linha:#cfd0cb;--rod:#00376a;--ft:'Sarpanch',system-ui,sans-serif;--fx:'Radio Canada',system-ui,sans-serif;--raio:0;--sobre-cor:#00264a}
+h1,h2,h3{font-family:var(--ft);font-weight:800;color:var(--azul);line-height:1.04;text-transform:uppercase;letter-spacing:-.005em}
+h3{font-weight:700;text-transform:none;letter-spacing:0}
+.btn{color:var(--azul-esc);font-weight:600}
+.btn-linha{color:var(--azul);border-color:var(--azul);background:transparent}
+.btn-linha:hover{background:var(--azul);color:#fff;border-color:var(--azul)}
+.menu a{color:#223247}
+.menu a.ativo,.menu a:hover{background:var(--amarelo);color:var(--azul-esc)}
+.link-seta{color:var(--azul)}
+.lista-check li::before{border-radius:0!important;background:var(--amarelo)!important;outline:1px solid #b89c00}
+.facetas{display:block;width:100%;height:56px}
+
+.hero-b{position:relative;background:#fff}
+.hero-b-foto img{width:100%;height:min(78vh,640px);object-fit:cover;object-position:70% 40%}
+.hero-b-in{position:absolute;inset:0;display:flex;align-items:flex-end;padding-bottom:84px;pointer-events:none}
+.hero-b-caixa{background:var(--amarelo);padding:34px 36px;max-width:560px;pointer-events:auto}
+.hero-b-caixa .k{color:var(--azul-esc)}
+.hero-b h1{font-size:clamp(2rem,4.4vw,3.3rem);color:var(--azul-esc);margin-bottom:16px}
+.hero-b-caixa>p:not(.k):not(.bts){color:#1e2a36;font-size:1.06rem}
+.hero-b .btn{background:var(--azul);border-color:var(--azul);color:#fff}
+.hero-b .btn:hover{background:var(--azul-esc)}
+.hero-facetas{position:absolute;left:0;right:0;bottom:0}
+
+.ena-b{display:grid}
+.ena-linha{display:grid;grid-template-columns:1.2fr 1fr;min-height:340px;background:#7b7b7b}
+.ena-linha:nth-child(2n){background:#efefec}
+.ena-linha.inv .ena-foto{order:2}
+.ena-foto img{width:100%;height:100%;object-fit:cover}
+.ena-txt{padding:52px clamp(16px,5vw,70px);align-self:center;color:#fff}
+.ena-linha:nth-child(2n) .ena-txt{color:var(--tinta)}
+.ena-txt .k{color:#fff}
+.ena-linha:nth-child(2n) .ena-txt .k{color:var(--azul)}
+.ena-txt h2{font-size:clamp(2rem,4.4vw,3.4rem);color:var(--amarelo);margin:0}
+.ena-linha:nth-child(2n) h2{color:var(--azul)}
+.ena{font:600 italic clamp(1.2rem,2vw,1.5rem)/1.2 var(--fx);margin:.2em 0 .9em;text-transform:uppercase}
+.ena-txt p:last-child{max-width:460px;margin:0;opacity:.92}
+
+.servs-b{background:#fff;padding:84px 0 70px}
+.doze-b .n{background:var(--amarelo);color:var(--azul-esc);padding:3px 6px;justify-self:start}
+.duas-b{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;padding:84px 0}
+.duas-b h2{font-size:clamp(1.8rem,3.6vw,2.8rem)}
+.duas-b p:not(.k){color:var(--suave);font-size:1.08rem}
+.trio-b{display:grid;gap:0;border-top:3px solid var(--azul)}
+.trio-b li{display:flex;align-items:baseline;gap:18px;padding:18px 0;border-bottom:1px solid var(--linha)}
+.trio-b b{font:800 2.6rem/1 var(--ft);color:var(--azul);min-width:120px}
+.trio-b span{color:var(--suave)}
+
+.cab-b{position:relative;background:var(--azul)}
+.cab-b-foto img{width:100%;height:300px;object-fit:cover;opacity:.32}
+.cab-b-in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding-bottom:30px}
+.cab-b .k{color:var(--amarelo)}
+.cab-b h1{color:#fff;font-size:clamp(1.8rem,4.6vw,3.4rem);max-width:900px;margin:0}
+.cab-facetas{position:absolute;left:0;right:0;bottom:0}
+
+.cta-b{background:var(--amarelo)}
+.cta-b-in{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;padding:56px 0}
+.cta-b h2{font-size:clamp(1.7rem,3.6vw,2.6rem);color:var(--azul-esc);margin:0 0 .3em}
+.cta-b p:not(.bts){margin:0;color:#2a3440}
+.cta-b .btn{background:var(--azul);border-color:var(--azul);color:#fff}
+.rod-facetas{position:absolute;top:-55px;left:0;right:0}
+.rodape{margin-top:56px}
+.selo b{color:var(--azul)}
+
+@media (max-width:900px){
+  .hero-b-foto img{height:340px}
+  .hero-b-in{position:relative;inset:auto;padding:0 0 70px;margin-top:-60px}
+  .hero-b-caixa{padding:26px 22px}
+  .ena-linha,.duas-b,.cta-b-in{grid-template-columns:1fr}
+  .ena-linha.inv .ena-foto{order:0}
+  .ena-foto img{max-height:240px}
+  .ena-txt{padding:34px 16px 40px}
+  .duas-b{gap:30px;padding:60px 0}
+  .facetas{height:34px}
+  .rod-facetas{top:-33px}
+  .cab-b-foto img{height:240px}
+}
