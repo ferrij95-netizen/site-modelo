@@ -1,0 +1,92 @@
+/* Versão A "Avenida Brasil": clara, vermelho do letreiro (#c1242a) e amarelo da base da fachada (#f7b500), títulos em Pathway Extreme itálico pesado (como o letreiro), texto em Epilogue. */
+:root{--cor:#c1242a;--cor-esc:#9c1a1f;--kc:#9c1a1f;--amarelo:#f7b500;--tinta:#1c1a19;--suave:#5a5450;--fundo:#f6f4f1;--cartao:#fff;--topo:rgba(255,255,255,.97);--topo-solido:#fff;--topo-h:72px;--linha:#e2ddd7;--rod:#1c1a19;--ft:'Pathway Extreme',system-ui,sans-serif;--fx:'Epilogue',system-ui,sans-serif;--raio:4px;--faixa-f:#1c1a19;--faixa-t:#f7b500;--resg-f:#1c1a19;--resg-t:#fff}
+h1,h2,h3{font-family:var(--ft);font-weight:900;font-style:italic;color:var(--tinta);line-height:1.04;letter-spacing:-.01em}
+.btn{background:var(--cor);border-color:var(--cor);color:#fff}
+.btn-linha{background:transparent;color:var(--tinta);border-color:var(--tinta)}
+.btn-linha:hover{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.btn-claro{background:transparent;color:#fff;border-color:#fff}
+.btn-claro:hover{background:#fff;color:var(--tinta);border-color:#fff}
+.topo{border-bottom:1px solid var(--linha)}
+.menu a{color:#3a3532}
+.menu a:hover,.menu a.ativo{color:var(--cor)}
+.menu a.ativo{box-shadow:inset 0 -3px 0 var(--amarelo)}
+.listra{height:14px;background:linear-gradient(var(--amarelo) 0 50%,var(--cor) 50%)}
+
+.hero-a{padding-top:54px}
+.hero-a-in{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:end}
+.hero-a h1{font-size:clamp(2.4rem,5.2vw,4.4rem);margin-bottom:22px}
+.hero-a-txt{padding-bottom:46px}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.14rem;color:var(--suave);max-width:540px;margin-bottom:28px}
+.hero-a-foto{margin:0}
+.hero-a-foto img{width:100%;aspect-ratio:1170/625;object-fit:cover;border-radius:var(--raio) var(--raio) 0 0;display:block}
+.info-a{background:#fff;border-bottom:1px solid var(--linha)}
+.info-a ul{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:22px 0}
+.info-a li{display:flex;gap:12px;align-items:flex-start}
+.info-a .ic{width:24px;height:24px;color:var(--cor);margin-top:2px;flex:none}
+.info-a span{display:grid;font-size:.95rem;color:var(--suave)}
+.info-a b{font-weight:700;color:var(--tinta)}
+.info-a a{color:var(--tinta);font-weight:600;text-decoration:none}
+
+.servs-a{padding:84px 0 70px}
+.indice{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;border-top:2px solid var(--tinta)}
+.indice a{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:18px 4px;border-bottom:1px solid var(--linha);text-decoration:none;color:inherit;transition:background .15s}
+.indice a:hover{background:#fff}
+.indice .n{font-size:1.05rem}
+.indice .it{display:grid}
+.indice b{font:800 1.12rem/1.2 var(--ft)}
+.indice small{color:var(--suave);font-size:.86rem}
+.indice .ic{color:var(--cor);width:20px;height:20px}
+
+.salao-a{position:relative;min-height:540px;display:flex;align-items:flex-end}
+.salao-a>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.salao-a-in{position:relative;padding:60px 0}
+.salao-a-box{background:#fff;max-width:500px;padding:32px 34px;border-left:8px solid var(--amarelo)}
+.salao-a-box h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+.salao-a-box p:not(.k){color:var(--suave)}
+
+.duo-a{display:grid;grid-template-columns:1fr 1fr;gap:44px;padding:84px 0}
+.duo-a img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raio);margin-bottom:22px}
+.duo-a h2{font-size:clamp(1.5rem,2.6vw,2rem)}
+.duo-a p:not(.k){color:var(--suave);margin:0}
+
+.antigos-a{background:#fff;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.antigos-a-in{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding:72px 0}
+.antigos-a-fotos{display:grid;grid-template-columns:.8fr 1.2fr;gap:12px;align-items:end}
+.antigos-a-fotos img{width:100%;object-fit:cover;border-radius:var(--raio)}
+.antigos-a-fotos .p1 img{aspect-ratio:3/4}
+.antigos-a-fotos .p2 img{aspect-ratio:4/3}
+.antigos-a h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+.antigos-a p:not(.k){color:var(--suave)}
+
+.frotas-a{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;padding:72px 0}
+.frotas-a>div{max-width:680px}
+.frotas-a h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+.frotas-a p:not(.k):not(.bts){color:var(--suave);margin:0}
+.cta-a{background:var(--cor);color:#fff}
+.cta-a-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;padding:60px 0}
+.cta-a h2{color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);max-width:640px}
+.cta-a p:not(.bts){margin:0;color:#fde6e6}
+.cta-a .btn:not(.btn-claro){background:var(--amarelo);border-color:var(--amarelo);color:var(--tinta)}
+
+.tit-a{background:#fff}
+.tit-a-in{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;padding:44px 0}
+.tit-a h1{font-size:clamp(2rem,4.2vw,3.3rem);margin:0}
+.tit-a figure{margin:0}
+.tit-a figure img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--raio)}
+.tit-a .f-passat79 img{object-position:50% 60%}
+
+@media (max-width:980px){
+  .hero-a-in,.antigos-a-in,.tit-a-in{grid-template-columns:1fr}
+  .hero-a-txt{padding-bottom:0}
+  .indice,.duo-a{grid-template-columns:1fr}
+  .info-a ul{grid-template-columns:1fr;gap:14px}
+}
+@media (max-width:640px){
+  .hero-a{padding-top:34px}
+  .salao-a{min-height:0;display:block}
+  .salao-a>img{position:static;height:260px}
+  .salao-a-in{padding:0}
+  .salao-a-box{max-width:none;padding:24px 0 30px;border-left:0;border-top:8px solid var(--amarelo);margin-top:-8px}
+  .duo-a{padding:56px 0;gap:40px}
+  .tit-a-in{padding:30px 0;gap:22px}
+}
