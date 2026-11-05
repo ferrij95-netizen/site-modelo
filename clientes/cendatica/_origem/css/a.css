@@ -1,0 +1,55 @@
+/* A "Rede": azul do logo, fachada de 2005 na abertura, áreas em cartões */
+.hero-a{background:var(--navy);color:#fff;padding:60px 0 80px;overflow:hidden;position:relative}
+.hero-a::after{content:"";position:absolute;right:-140px;top:-140px;width:520px;height:520px;border-radius:50%;border:70px solid rgba(255,255,255,.05);box-shadow:0 0 0 60px rgba(255,255,255,.03)}
+.hero-a-in{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;position:relative;z-index:1}
+.hero-a h1{color:#fff;font-size:clamp(1.9rem,3.6vw,2.9rem)}
+.hero-a .k{color:var(--lar)}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.1rem;max-width:540px;opacity:.88}
+.v-a .hero-a .btn{--cor:var(--lar);--cor-esc:var(--lar-esc)}
+.v-a .hero-a .btn-linha{color:#fff;background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,255,.7)}
+.hero-a-fotos{position:relative;padding:0 0 70px 40px}
+.hero-a-fotos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.ha1{position:relative}
+.ha1::before{content:"";position:absolute;inset:-14px 14px 14px -14px;background:var(--lar);border-radius:var(--raio);z-index:-1}
+.ha2{position:absolute;left:0;bottom:0;width:46%;border:6px solid var(--navy);border-radius:12px}
+.nums-a{background:#fff;border-bottom:1px solid var(--linha)}
+.nums-in{display:grid;grid-template-columns:repeat(4,1fr)}
+.nums-in div{padding:26px 20px;display:grid;gap:2px;border-left:1px solid var(--linha)}
+.nums-in div:first-child{border-left:0;padding-left:0}
+.nums-in b{font:800 2.3rem/1 var(--ft);color:var(--navy)}
+.nums-in span{color:#5a6684;font-size:.95rem}
+.cats-a{padding:80px 0}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cat{display:flex;flex-direction:column;text-decoration:none;border-radius:var(--raio);overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--linha);transition:transform .2s,box-shadow .2s}
+.cat:hover{transform:translateY(-3px);box-shadow:0 0 0 2px var(--navy)}
+.cat img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.cat div{padding:20px 22px;display:flex;flex-direction:column;flex:1;border-top:4px solid var(--lar)}
+.cat h3{margin-bottom:.4em}.cat p{font-size:.93rem;color:#4b5672}
+.cat .link-seta{margin-top:auto}
+.metodo-a{background:var(--cinza);padding:80px 0}
+.metodo-a-in{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.metodo-a img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.passos-a{display:grid;gap:14px;margin-top:24px}
+.passos-a li{display:flex;gap:14px;align-items:flex-start}
+.passos-a span{flex:none;width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:700 1rem var(--ft)}
+.passos-a p{margin:2px 0 0}
+.emp-a{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;padding:80px 0}
+.emp-a img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.hor-a{background:var(--navy);color:#fff;padding:64px 0}
+.hor-a-in{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.hor-a h2{color:#fff}.hor-a .k{color:var(--lar)}.hor-a p{opacity:.88}
+.hor-a .btn{--cor:var(--lar);--cor-esc:var(--lar-esc)}
+.hor-cl th,.hor-cl td{border-color:rgba(255,255,255,.18)}
+.hor-cl thead th{color:rgba(255,255,255,.6)}.hor-cl tbody th{color:var(--lar)}
+.cab-a{background:var(--navy);color:#fff}
+.cab-a-in{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;padding:44px 0}
+.cab-a h1{margin:0;color:#fff}.cab-a .k{color:var(--lar)}
+.cab-a figure{position:relative}
+.cab-a img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--raio);box-shadow:10px 10px 0 var(--lar)}
+@media (max-width:860px){
+  .hero-a-in,.metodo-a-in,.emp-a,.hor-a-in,.cab-a-in{grid-template-columns:1fr;gap:34px}
+  .cats{grid-template-columns:1fr 1fr}
+  .nums-in{grid-template-columns:1fr 1fr}.nums-in div:nth-child(3){border-left:0;padding-left:0}.nums-in div{padding:18px 14px}
+  .hero-a-fotos{padding:0 0 50px 20px}
+}
+@media (max-width:600px){.cats{grid-template-columns:1fr}.hero-a{padding:40px 0 60px}.cab-a img{box-shadow:6px 6px 0 var(--lar)}}

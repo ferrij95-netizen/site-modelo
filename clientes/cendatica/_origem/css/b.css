@@ -1,0 +1,60 @@
+/* B "Didática": o nome CEN·DAT·ICA, laranja das paredes, catálogo em índice */
+.v-b{--cor:var(--lar);--cor-esc:var(--lar-esc)}
+.hero-b{background:var(--lar-cl);padding:56px 0 70px;border-bottom:6px solid var(--lar)}
+.hero-b-in{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.nome-hero{max-width:520px;margin-bottom:28px;background:#fff}
+.hero-b h1{font-size:clamp(1.9rem,3.6vw,2.8rem)}
+.hero-b-txt>p:not(.bts){font-size:1.1rem;max-width:540px}
+.v-b .hero-b .btn-linha{color:var(--navy);box-shadow:inset 0 0 0 2px var(--navy)}
+.hero-b-foto{position:relative;margin:0}
+.hero-b-foto img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio);border:8px solid #fff;box-shadow:0 20px 40px -24px rgba(11,46,138,.5)}
+.hero-b-foto figcaption{position:absolute;left:-18px;bottom:26px;background:var(--navy);color:#fff;font:700 .95rem var(--ft);padding:10px 16px;border-radius:6px}
+.passos-b{padding:70px 0 40px}
+.passos-b-l{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--navy)}
+.passos-b-l li{padding:24px 28px 10px 0}
+.passos-b-l span{display:block;font:800 2.6rem/1 var(--ft);color:var(--lar);margin-bottom:10px}
+.passos-b-l b{font:700 1.25rem var(--ft);color:var(--navy)}
+.passos-b-l p{margin:.4em 0 0}
+.indice-b{padding:40px 0 70px}
+.indice{columns:3;column-gap:36px}
+.ind{break-inside:avoid;margin-bottom:30px}
+.ind h3{font-size:1.1rem;padding-bottom:8px;border-bottom:2px solid var(--navy);margin-bottom:6px}
+.ind h3 a{text-decoration:none}
+.ind li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;text-decoration:none}
+.ind li a:hover span{color:var(--lar-esc)}
+.ind li span{font-weight:600}
+.ind li i{flex:1;border-bottom:2px dotted #c3cbe0;transform:translateY(-4px)}
+.ind li em{font-style:normal;font-size:.86rem;color:#5a6684;white-space:nowrap}
+.fotos-b{background:var(--navy);padding:56px 0 40px}
+.fotos-b-in{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:14px}
+.fotos-b figure{position:relative;margin:0;border-radius:var(--raio);overflow:hidden}
+.fotos-b .fb0{grid-row:span 2}
+.fotos-b .fb3{grid-column:span 2}
+.fotos-b img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.fotos-b .fb3 img{aspect-ratio:21/9}
+.fotos-b .fb0 img{aspect-ratio:auto}
+.fotos-b figcaption{position:absolute;left:12px;bottom:12px;background:#fff;color:var(--navy);font:600 .85rem var(--fx);padding:5px 10px;border-radius:4px}
+.fotos-b-link{margin:20px auto 0}.fotos-b-link a{color:#fff}
+.emp-b{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;padding:70px 0}
+.labs-b{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.labs-b div{padding:26px;border:2px solid var(--navy);border-radius:var(--raio);display:grid;gap:4px}
+.labs-b b{font:800 3.4rem/1 var(--ft);color:var(--lar)}
+.labs-b span{font-weight:600;color:var(--navy)}
+.hor-b{background:var(--cinza);padding:64px 0;border-top:1px solid var(--linha)}
+.hor-b-in{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center}
+.contato-mini li{display:flex;gap:10px;align-items:flex-start;margin:10px 0;font-weight:600}.contato-mini .ic{color:var(--lar-esc);flex:none;margin-top:3px}.contato-mini a{text-decoration:none}
+.hor-b .horario{background:#fff;border-radius:var(--raio);overflow:hidden}
+.cab-b{background:var(--lar-cl);border-bottom:6px solid var(--lar)}
+.cab-b-in{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;padding:40px 0}
+.cab-b h1{margin:0}
+.cab-b img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--raio);border:6px solid #fff}
+.v-b .curso{border-top-color:var(--lar)}
+.v-b .contato-dados .ic{background:var(--lar)}
+@media (max-width:860px){
+  .hero-b-in,.emp-b,.hor-b-in,.cab-b-in{grid-template-columns:1fr;gap:34px}
+  .indice{columns:2}
+  .passos-b-l{grid-template-columns:1fr}
+  .fotos-b-in{grid-template-columns:1fr 1fr}.fotos-b .fb0{grid-row:auto;grid-column:span 2}.fotos-b .fb0 img{aspect-ratio:16/9}
+  .hero-b-foto figcaption{left:10px}
+}
+@media (max-width:600px){.indice{columns:1}.hero-b{padding:36px 0 50px}}
