@@ -86,8 +86,10 @@ export default {
     const overtus = host.endsWith('.overtus.com.br');
 
     if (overtus && sub === 'hub') return hub(request, env, url);
-    // overtus.com.br/cases/ (rota de zona www.overtus.com.br/cases*): a vitrine de cases do site da agência, sem mexer no resto do domínio.
-    if ((host === 'www.overtus.com.br' || host === 'overtus.com.br') && /^\/cases(\/|$)/.test(url.pathname)) return cases(request, env, url);
+    // Domínio principal (rotas de zona overtus.com.br/* e www.overtus.com.br/*): o site da agência (clientes/agencia), o mesmo
+    // de agencia.overtus.com.br, com a vitrine em /cases/. O endereço sem www continua redirecionando para o www.
+    if (host === 'overtus.com.br') return Response.redirect(`https://www.overtus.com.br${url.pathname}${url.search}`, 301);
+    if (host === 'www.overtus.com.br') return servir(env, 'agencia', url, request);
 
     const cliente = overtus && sub !== 'site-modelo' ? sub : null;
 
@@ -137,24 +139,3 @@ async function servir(env, cliente, url, request, fresco = false) {
   return res;
 }
 
-// Vitrine de cases no domínio principal: /cases/ é a página clientes/agencia/public/cases/ e /cases/assets/* os arquivos
-// da agência. Os caminhos /assets/ da página e do CSS ganham o prefixo /cases/; os outros links internos vão para agencia.overtus.com.br.
-const AGENCIA = 'https://agencia.overtus.com.br';
-async function cases(request, env, url) {
-  if (url.pathname === '/cases') return Response.redirect(`https://${url.hostname}/cases/`, 301);
-  const dentro = url.pathname.slice('/cases'.length);
-  const caminho = dentro.startsWith('/assets/') ? dentro : dentro === '/' ? '/cases/' : null;
-  if (!caminho) return Response.redirect(AGENCIA + dentro + url.search, 302);
-  const alvo = new URL(url);
-  alvo.pathname = caminho;
-  const h = new Headers(request.headers);
-  h.delete('if-none-match'); h.delete('if-modified-since');
-  const res = await servir(env, 'agencia', alvo, new Request(alvo, { method: 'GET', headers: h }));
-  const tipo = res.headers.get('Content-Type') || '';
-  if (!res.ok || !/text\/(html|css)/.test(tipo)) return res;
-  let texto = (await res.text()).replace(/url\(\/assets\//g, 'url(/cases/assets/').replace(/"\/assets\//g, '"/cases/assets/');
-  if (tipo.includes('html')) texto = texto.replace(/href="\/(?!cases\/)/g, `href="${AGENCIA}/`).replace(`<link rel="canonical" href="${AGENCIA}/cases/">`, '<link rel="canonical" href="https://www.overtus.com.br/cases/">');
-  const out = new Response(texto, res);
-  out.headers.delete('Content-Length'); out.headers.delete('ETag');
-  return out;
-}
