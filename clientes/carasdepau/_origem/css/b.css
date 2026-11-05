@@ -1,0 +1,60 @@
+/* B "Todas as tribos": azul e amarelo das artes de 2022 */
+.v-b{--cor:var(--azul);--cor-esc:var(--azul-esc)}
+.topo{background:#fff;box-shadow:0 1px 0 var(--linha)}
+.v-b .menu{background:#fff}
+.v-b .menu a:hover{color:var(--azul)}
+.v-b .menu a.ativo{color:var(--azul);box-shadow:inset 0 -3px 0 var(--amar)}
+.v-b .btn-topo{--cor:var(--amar);--cor-esc:var(--amar-esc);color:var(--preto)}
+.hero-b{background:var(--azul);color:#fff;overflow:hidden}
+.hero-b-in{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end}
+.hero-b-txt{padding:70px 0}
+.hero-b h1{color:#fff;font-size:clamp(2.4rem,5.4vw,4.4rem)}
+.hero-b h1 em{font-style:normal;color:var(--amar);display:block}
+.hero-b .k{color:var(--amar)}
+.hero-b-txt>p:not(.k):not(.bts){font-size:1.18rem;max-width:560px;opacity:.92}
+.v-b .hero-b .btn{--cor:var(--amar);--cor-esc:var(--amar-esc);color:var(--preto)}
+.v-b .hero-b .btn-linha{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
+.hero-b-foto{margin:0;justify-self:center;position:relative}
+.hero-b-foto::before{content:"";position:absolute;left:50%;top:18%;width:440px;height:440px;transform:translateX(-50%);border-radius:50%;background:var(--amar)}
+.hero-b-foto img{position:relative;width:360px;height:auto;display:block;-webkit-mask-image:radial-gradient(ellipse 72% 80% at 50% 45%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 72% 80% at 50% 45%,#000 60%,transparent 100%)}
+.lista-b{padding:80px 0 60px}
+.cursos-b{border-top:2px solid var(--preto)}
+.cursos-b li{border-bottom:1px solid var(--linha)}
+.cursos-b a{display:grid;grid-template-columns:60px 220px 1fr auto 28px;gap:20px;align-items:center;padding:22px 0;text-decoration:none;transition:background .2s,padding .2s}
+.cursos-b a:hover{background:var(--amar-cl);padding-left:12px}
+.cursos-b .n{font:900 1.4rem var(--ft);color:var(--azul)}
+.cursos-b b{font:900 1.6rem var(--ft)}
+.cursos-b .r{color:#444}
+.cursos-b .t{font:800 .74rem var(--fx);letter-spacing:.06em;text-transform:uppercase;background:var(--azul);color:#fff;padding:4px 10px;border-radius:99px;white-space:nowrap}
+.cursos-b .ic{color:var(--azul)}
+.mosaico-b{background:var(--creme);padding:70px 0}
+.mosaico-in{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:auto auto;gap:14px}
+.mosaico-b figure{position:relative;margin:0;border-radius:var(--raio);overflow:hidden}
+.mosaico-b img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.mosaico-b .m0{grid-row:span 2}.mosaico-b .m0 img{aspect-ratio:auto}
+.mosaico-b .m3{grid-column:span 2}.mosaico-b .m3 img{aspect-ratio:900/292}
+.m-txt{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.4fr;gap:10px 40px;align-items:center;padding:26px 30px;border-radius:var(--raio);background:var(--azul);color:#fff}
+.m-txt h2{color:#fff;margin:0}.m-txt .k{grid-column:1/-1;margin:0}.m-txt p:not(.k){margin:0}.m-txt .link-seta{grid-column:2}.m-txt .k{color:var(--amar)}.m-txt .link-seta{color:#fff}
+.turnos-b{padding:70px 0}
+.turnos-b .horario{font-size:1.08rem}
+.turnos-b .horario tbody th{color:var(--azul)}
+.ebooks-b{background:var(--azul);padding:70px 0}
+.ebooks-b h2{color:#fff}.ebooks-b .k{color:var(--amar)}
+.ebooks.claro .ebook{box-shadow:none}
+.ebooks.claro .ebook-capa{background:var(--azul-esc)}
+.local-b{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;padding:70px 0}
+.local-b .btn-linha{color:var(--azul)}
+.cab-b{background:var(--azul);color:#fff;border-bottom:6px solid var(--amar)}
+.cab-b-in{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;padding:44px 0}
+.cab-b h1{margin:0;color:#fff}.cab-b .k{color:var(--amar)}
+.cab-b img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--raio);border:6px solid #fff}
+.v-b .contato-dados .ic{background:var(--azul);color:#fff}
+.v-b .cta-seg{background:var(--azul)}
+@media (max-width:1000px){.cursos-b a{grid-template-columns:44px 1fr auto 24px}.cursos-b .r{display:none}}
+@media (max-width:860px){
+  .hero-b-in,.local-b,.cab-b-in{grid-template-columns:1fr;gap:20px}
+  .hero-b-txt{padding:44px 0 0}
+  .hero-b-foto img{width:280px}.hero-b-foto::before{width:320px;height:320px}
+  .mosaico-in{grid-template-columns:1fr 1fr}.mosaico-b .m0{grid-row:auto;grid-column:span 2}.mosaico-b .m0 img{aspect-ratio:16/9}.m-txt{grid-template-columns:1fr}.m-txt .link-seta{grid-column:auto}
+}
+@media (max-width:600px){.cursos-b a{grid-template-columns:34px 1fr 20px;gap:12px}.cursos-b .t{display:none}.cursos-b b{font-size:1.3rem}}
