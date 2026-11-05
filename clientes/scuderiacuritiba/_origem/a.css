@@ -1,0 +1,55 @@
+/* ---- A · Arquivo: papel quente, azul aço do escudo, Cinzel nos títulos ---- */
+:root{--cor:#2c3a52;--cor-esc:#1c2638;--cor-k:#5a6f8f;--tinta:#1f2430;--suave:#5b6070;--fundo:#f4f1ea;--cartao:#fbf9f4;--linha:#ddd7ca;--topo:#f4f1ea;--cta-fundo:#2c3a52;--rod-fundo:#1c2230;--ft:"Cinzel",Georgia,serif;--fx:"Nunito Sans",system-ui,sans-serif;--raio:4px}
+h1,h2,h3{font-weight:600}
+.menu a{color:var(--tinta)}.menu a:hover,.menu a.ativo{color:var(--cor-k)}
+.menu a.ativo{box-shadow:inset 0 -2px 0 var(--cor-k)}
+/* hero */
+.hero-a{padding:56px 0 64px;border-bottom:1px solid var(--linha)}
+.hero-a-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:center}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.15rem;color:var(--suave);max-width:520px}
+.hero-a-par{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hero-a-par figure{position:relative;overflow:hidden;border-radius:var(--raio)}
+.hero-a-par img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.hero-a-par figcaption{position:absolute;left:12px;top:12px;background:var(--fundo);color:var(--tinta);font:700 .72rem var(--fx);letter-spacing:.16em;text-transform:uppercase;padding:6px 10px;border-radius:3px}
+.hero-a-par figure+figure figcaption{background:var(--cor);color:#fff}
+.hero-a-leg{grid-column:1/-1;margin:4px 0 0;font-size:.86rem;color:var(--suave)}
+.faixa-a{background:var(--cor);color:#e7ecf3}
+.faixa-a .in{display:flex;justify-content:space-between;gap:12px 32px;flex-wrap:wrap;padding:18px 0}
+.faixa-a p{margin:0}.faixa-a b{color:#fff}
+.faixa-segs{font-size:.9rem;opacity:.8}
+/* serviços */
+.servs-a{padding:88px 0}
+.servs-a-lista{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 24px;margin-bottom:32px}
+.servs-a-lista a{display:grid;gap:6px;text-decoration:none;color:var(--tinta)}
+.servs-a-lista img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raio);margin-bottom:10px;transition:filter .3s}
+.servs-a-lista a:hover img{filter:brightness(1.08)}
+.servs-a-lista .n{font:600 .82rem var(--ft);color:var(--cor-k)}
+.servs-a-lista b{font:600 1.25rem/1.25 var(--ft)}
+.servs-a-lista .d{color:var(--suave);font-size:.95rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+/* história */
+.hist-a{background:#e9e4d8;padding:80px 0}
+.hist-a-in{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:48px;align-items:center}
+.hist-a-in>div:first-child p:not(.k){color:var(--suave)}
+.hist-a .arquivo{grid-template-columns:1fr 1fr}
+/* casos */
+.casos-a{padding:88px 0}
+.casos-a-grade{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:28px}
+.casos-a-grade h3{font-size:1.2rem}
+/* local */
+.local-a{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;padding:0 0 88px}
+/* cabeçalho das páginas */
+.cab-a{border-bottom:1px solid var(--linha);padding:48px 0}
+.cab-a-in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end}
+.cab-a h1{margin:0}
+.cab-a img{width:100%;aspect-ratio:16/8;object-fit:cover;border-radius:var(--raio)}
+@media (max-width:960px){
+  .hero-a-in,.hist-a-in,.local-a,.cab-a-in{grid-template-columns:1fr;gap:32px}
+  .servs-a-lista{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .hero-a{padding:32px 0 40px}
+  .hero-a-par img{aspect-ratio:3/4}
+  .servs-a,.casos-a{padding:64px 0}
+  .servs-a-lista,.casos-a-grade{grid-template-columns:1fr}
+  .cab-a{padding:32px 0}
+}
