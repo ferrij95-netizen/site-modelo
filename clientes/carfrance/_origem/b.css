@@ -1,0 +1,62 @@
+/* Car France B "Ficha": papel de ficha técnica, marinho dominante e vermelho só nas referências. Familjen Grotesk + Public Sans, referências em DM Mono. */
+:root{--marinho:#000f6b;--vermelho:#d9201a;--cor:#000f6b;--cor-esc:#000a4a;--tinta:#0b1238;--suave:#535a78;--fundo:#f2f3f7;--cartao:#fff;--topo:#f2f3f7;--linha:#d5d8e4;--ft:'Familjen Grotesk',system-ui,sans-serif;--fx:'Public Sans',system-ui,sans-serif;--fk:'DM Mono',ui-monospace,monospace;--raio:0}
+h1,h2,h3{font-weight:700;letter-spacing:-.025em;color:var(--marinho)}
+.k{font-weight:500;letter-spacing:.06em;color:var(--suave)}.k span{color:var(--vermelho)}
+.topo{border-bottom:1px solid var(--marinho)}
+.menu a{font-weight:500;color:var(--tinta)}.menu a:hover{color:var(--vermelho)}.menu a.ativo{color:var(--marinho);text-decoration:underline;text-decoration-color:var(--vermelho);text-decoration-thickness:3px;text-underline-offset:8px}
+.btn-topo{margin-left:4px}
+.hero-b{padding:64px 0 0;border-bottom:1px solid var(--marinho)}
+.hero-b h1{font-size:clamp(2.5rem,6.4vw,5.6rem);line-height:.98;margin:0 0 40px;max-width:1100px}
+.hero-b-dados{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;border-top:1px solid var(--marinho)}
+.hero-b-dados div{padding:14px 18px 18px 0;border-right:1px solid var(--linha)}.hero-b-dados div+div{padding-left:18px}.hero-b-dados div:last-child{border:0}
+.hero-b-dados dt{font:500 .74rem var(--fk);letter-spacing:.08em;text-transform:uppercase;color:var(--vermelho)}
+.hero-b-dados dd{margin:4px 0 0;font:600 1.08rem/1.35 var(--ft)}.hero-b-dados a{text-decoration:none}
+.tira{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2px;margin-top:8px;background:var(--marinho);padding-top:2px}
+.tira figure{position:relative}
+.tira img{width:100%;height:clamp(220px,32vw,420px);object-fit:cover}
+.tira figcaption{position:absolute;left:0;bottom:0;padding:6px 10px;background:var(--fundo);font:500 .74rem var(--fk);color:var(--tinta)}
+.servs-b{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;padding:96px 0 88px;align-items:start}
+.servs-b-cab{position:sticky;top:120px}.servs-b-cab p:not(.k){color:var(--suave)}
+.ficha{width:100%;border-collapse:collapse;background:var(--cartao);border:1px solid var(--marinho)}
+.ficha tr{border-top:1px solid var(--linha)}
+.ficha th{width:84px;vertical-align:top;padding:22px 0 22px 18px;text-align:left;font:500 .8rem var(--fk);color:var(--vermelho);border-right:1px dashed var(--linha)}
+.ficha td{padding:0}
+.ficha a{display:grid;gap:4px;padding:20px 22px;text-decoration:none;transition:background .15s}
+.ficha a:hover{background:#e9ecf6}
+.ficha b{font:700 1.3rem var(--ft);color:var(--marinho)}.ficha span{color:var(--suave)}
+.selo-b{background:var(--marinho);color:#fff;padding:80px 0}
+.selo-b-in{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:end}
+.selo-b blockquote{margin:0}.selo-b blockquote p{font:600 clamp(1.5rem,2.8vw,2.3rem)/1.2 var(--ft);margin:0;letter-spacing:-.015em}
+.selo-b-in>div p{color:#c5cbe6}.selo-b .link-seta{color:#fff}
+.pecas-b{padding:88px 0 40px}
+.pecas-b-cab{display:grid;grid-template-columns:1fr auto;align-items:end;margin-bottom:28px}.pecas-b-cab .k{grid-column:1/-1}.pecas-b-cab h2{margin:0}
+.pecas-b .pecas{grid-template-columns:repeat(7,minmax(0,1fr))}
+.pecas figure{border-color:var(--marinho)}.pecas .ref{color:var(--vermelho)}
+.dicas-b{padding:56px 0 88px}.dicas-b-cab{margin-bottom:16px}
+.dicas-b .dicas{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 32px;margin-bottom:24px}
+.dica{border-top-color:var(--marinho)}.dica-n{font:500 .9rem var(--fk);color:var(--vermelho);padding-top:4px}
+.local-b{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;padding:72px 0 88px;border-top:1px solid var(--marinho)}
+.cab-b{padding:56px 0 0}
+.cab-b-in{padding-bottom:32px}.cab-b h1{font-size:clamp(2.1rem,5vw,4rem);line-height:1;max-width:980px;margin:0}
+.cab-b figure img{width:100%;height:clamp(200px,30vw,360px);object-fit:cover;border:1px solid var(--marinho)}
+.serv-bloco{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);padding-top:40px;border-top:1px solid var(--marinho)}
+.serv-bloco figure{order:2}
+.serv-bloco .n{font:500 .85rem var(--fk);color:var(--vermelho)}.serv-bloco .n::before{content:"S-"}
+.mapa{border:1px solid var(--marinho)}
+.contato-form{border-color:var(--marinho)}
+.cta{background:var(--vermelho)}
+.cta .btn-claro{color:var(--vermelho)}.cta .btn-claro:hover{background:var(--marinho);border-color:var(--marinho);color:#fff}
+@media (max-width:960px){
+  .hero-b-dados{grid-template-columns:1fr 1fr}.hero-b-dados div:nth-child(2){border-right:0}.hero-b-dados div:nth-child(3){padding-left:0}.hero-b-dados div:nth-child(n+3){border-top:1px solid var(--linha)}
+  .servs-b,.selo-b-in,.local-b{grid-template-columns:1fr;gap:28px}.servs-b-cab{position:static}
+  .pecas-b .pecas{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .dicas-b .dicas{grid-template-columns:1fr}
+  .serv-bloco figure{order:0}
+}
+@media (max-width:640px){
+  .hero-b{padding-top:40px}
+  .tira{grid-template-columns:1fr 1fr}.tira figure:first-child{grid-column:1/-1}.tira img{height:200px}
+  .tira figure:not(:first-child) figcaption{display:none}
+  .pecas-b .pecas{grid-template-columns:1fr 1fr}
+  .ficha th{width:56px;padding-left:12px}.ficha a{padding:16px}
+}
