@@ -1,0 +1,123 @@
+/* A "Colmeia": clara, no azul-petróleo do logo; azul-marinho do site atual na barra de acessos, na filosofia e no rodapé. */
+.v-a .topo{background:rgba(255,255,255,.97);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--linha)}
+.v-a .menu a{color:var(--marinho)}
+.v-a .menu a:not(.btn):hover{background:var(--ceu)}
+.v-a .menu a[aria-current=page]:not(.btn){color:var(--petroleo);box-shadow:inset 0 -3px 0 var(--mel);border-radius:0}
+.v-a .menu{background:#fff}
+
+/* capa */
+.v-a .hero{background:linear-gradient(115deg,#fff 0%,var(--ceu2) 38%,#CFE2EA 100%);overflow:hidden;position:relative}
+.v-a .hero::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0l28 16v32L28 64 0 48V16zM28 64v33' fill='none' stroke='%23066682' stroke-opacity='.07' stroke-width='1.5'/%3E%3C/svg%3E");mask:linear-gradient(90deg,transparent 30%,#000 80%)}
+.v-a .hero .in{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:end;position:relative;min-height:600px}
+.v-a .hero-txt{padding:88px 0 120px}
+.v-a .hero h1{color:var(--marinho)}
+.v-a .hero-img{position:relative;align-self:end;display:flex;justify-content:center}
+.v-a .hero-img>img{position:relative;z-index:2;width:100%;max-width:560px;max-height:560px;object-fit:contain;object-position:bottom}
+.v-a .hero-hex{position:absolute;z-index:1;width:470px;height:470px;left:50%;bottom:30px;transform:translateX(-50%) rotate(90deg);color:var(--petroleo)}
+.v-a .hero-hex2{position:absolute;z-index:1;width:150px;height:150px;right:0;top:70px;transform:rotate(90deg);color:var(--mel)}
+.v-a .hero-selo{position:absolute;z-index:3;left:0;bottom:150px;display:flex;align-items:center;gap:10px;background:#fff;padding:10px 18px 10px 12px;border-radius:99px;font-family:var(--h);font-weight:700;color:var(--marinho);box-shadow:0 12px 30px rgba(10,31,56,.18)}
+.v-a .hero-selo img{width:34px;height:auto}
+
+/* faixa de acessos logo abaixo da capa */
+.v-a .faixa{position:relative;z-index:3;margin-top:-64px}
+.v-a .faixa .rapido{background:#fff;border-radius:16px;box-shadow:0 22px 50px rgba(10,31,56,.14)}
+.v-a .rapido a:hover{background:var(--ceu2)}
+.v-a .rapido a:first-child{border-radius:16px 0 0 16px}.v-a .rapido a:last-child{border-radius:0 16px 16px 0}
+
+/* o colégio na home */
+.v-a .mosaico{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:460px}
+.v-a .mosaico img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.v-a .mosaico img:first-child{grid-row:1/3}
+
+/* filosofia no azul-marinho */
+.v-a .filosofia{background:linear-gradient(160deg,var(--marinho) 0%,var(--marinho2) 70%);color:rgba(255,255,255,.85)}
+.v-a .filosofia h2,.v-a .filosofia h3{color:#fff}
+.v-a .filosofia .eyebrow{color:var(--mel)}
+.v-a .filo-hex{color:var(--mel)}
+.v-a .filo-n{color:var(--marinho)}
+
+/* trilha de favos: as 4 etapas */
+.v-a .trilha-sec{background:#fff}
+.v-a .trilha{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.v-a .trilha::before{content:"";position:absolute;left:60px;right:12%;top:58px;height:3px;background:repeating-linear-gradient(90deg,var(--mel) 0 12px,transparent 12px 20px)}
+.v-a .trilha a{display:block;text-decoration:none;position:relative}
+.v-a .t-hex{position:relative;display:block;width:118px;height:118px;color:var(--petroleo);transition:transform .25s}
+.v-a .trilha li:nth-child(1) .t-hex,.v-a .trilha li:nth-child(2) .t-hex{color:var(--mel)}
+.v-a .t-hex .hex{width:100%;height:100%}
+.v-a .t-hex b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--h);font-size:30px;color:#fff}
+.v-a .trilha li:nth-child(1) .t-hex b,.v-a .trilha li:nth-child(2) .t-hex b{color:var(--marinho)}
+.v-a .trilha a:hover .t-hex{transform:translateY(-4px)}
+.v-a .t-txt{display:block;margin-top:18px}
+.v-a .t-txt small{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cinza)}
+.v-a .t-txt strong{display:block;font-family:var(--h);font-size:24px;color:var(--preto);line-height:1.2;margin:4px 0}
+.v-a .t-txt em{font-style:normal;color:var(--petroleo);font-weight:600}
+
+/* estrutura na home */
+.v-a .est-home{background:var(--ceu2)}
+.v-a .est-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px}
+.v-a .est-cab .tit{margin:0}
+.v-a .g-home{grid-template-columns:repeat(4,1fr)}
+.v-a .g-home li:first-child{grid-row:span 2;grid-column:span 2}
+.v-a .g-home li:first-child figure{aspect-ratio:auto;height:100%}
+
+/* projetos e proposta */
+.v-a .proj-home .in{grid-template-columns:.8fr 1.2fr;align-items:start}
+.v-a .p-compacta{grid-template-columns:1fr 1fr;gap:28px 32px}
+.v-a .p-compacta li:nth-child(odd) .ic-p{color:var(--mel2)}
+.v-a .proposta-home,.v-a .proposta{background:var(--ceu)}
+.v-a .proposta-home .tit{margin:0}
+
+/* orgulho */
+.v-a .orgulho{background:linear-gradient(120deg,var(--petroleo2) 0%,var(--marinho) 100%);color:rgba(255,255,255,.85)}
+.v-a .orgulho h2{color:#fff}.v-a .orgulho .eyebrow{color:var(--mel)}.v-a .nota span{color:#fff}
+
+.v-a .contato-home{background:var(--ceu2)}
+.v-a .contato-home .form-box{background:#fff;box-shadow:0 18px 40px rgba(10,31,56,.08)}
+.v-a .contato-home .redes{color:var(--petroleo)}
+
+/* páginas internas */
+.v-a .capa-int{background:linear-gradient(115deg,#fff 0%,var(--ceu2) 45%,#D6E7EE 100%)}
+.v-a .capa-int h1{color:var(--marinho)}
+.v-a .est-grupo.alt{background:var(--ceu2)}
+.v-a .cta-visita{background:linear-gradient(120deg,var(--petroleo) 0%,var(--marinho) 100%);color:rgba(255,255,255,.88)}
+.v-a .cta-visita h2{color:#fff}
+.v-a .proj-sec.kids{background:var(--mel-claro)}
+.v-a .proj-sec.kids .ic-p{color:var(--mel2)}
+.v-a .proj-sec.kids .eyebrow{color:var(--mel2)}
+.v-a .tecnologia{background:var(--ceu2)}
+.v-a .rapido-sec .rapido{border:1px solid var(--linha);border-radius:16px}
+.v-a .rapido-sec:not(.faixa){background:var(--ceu2)}
+.v-a .rapido-sec:not(.faixa) .rapido{background:#fff}
+.v-a .mapa-sec{padding-top:0}
+
+@media (max-width:1080px){
+  .v-a .hero .in{grid-template-columns:1fr 1fr}
+  .v-a .hero-hex{width:380px;height:380px}
+}
+@media (max-width:860px){
+  .v-a .hero .in{grid-template-columns:1fr;min-height:0;gap:0}
+  .v-a .hero-txt{padding:56px 0 24px}
+  .v-a .hero-img>img{max-width:420px}
+  .v-a .hero-hex{width:330px;height:330px;bottom:10px}
+  .v-a .hero-hex2{width:90px;height:90px;top:0}
+  .v-a .hero-selo{bottom:auto;top:20px;font-size:14px}
+  .v-a .faixa{margin-top:0;padding-top:0}
+  .v-a .faixa .rapido{border-radius:0;box-shadow:none;border-bottom:1px solid var(--linha)}
+  .v-a .rapido a:first-child,.v-a .rapido a:last-child{border-radius:0}
+  .v-a .mosaico{height:360px}
+  .v-a .trilha{grid-template-columns:1fr;gap:18px}
+  .v-a .trilha::before{left:44px;right:auto;top:20px;bottom:20px;width:3px;height:auto;background:repeating-linear-gradient(180deg,var(--mel) 0 12px,transparent 12px 20px)}
+  .v-a .trilha a{display:flex;align-items:center;gap:20px}
+  .v-a .t-hex{width:90px;height:90px;flex:none}.v-a .t-hex b{font-size:24px}
+  .v-a .t-txt{margin:0}
+  .v-a .est-cab{flex-direction:column;align-items:flex-start}
+  .v-a .g-home{grid-template-columns:1fr 1fr}
+  .v-a .g-home li:first-child{grid-row:auto;grid-column:1/-1}
+  .v-a .g-home li:first-child figure{aspect-ratio:16/10}
+  .v-a .proj-home .in{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .v-a .p-compacta{grid-template-columns:1fr}
+  .v-a .mosaico{height:300px}
+  .v-a .hero-img>img{max-width:100%}
+}

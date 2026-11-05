@@ -1,0 +1,190 @@
+/* Versão A "Tradição": branco, como o site atual; o filete vermelho do logo sob os títulos, faixa vermelha da agenda de leilões,
+   números em vermelho como os contadores de hoje, rodapé grafite com a barra vermelha no fim. */
+.v-a h2::after{content:"";display:block;width:64px;height:3px;background:var(--verm);margin-top:18px}
+.v-a .tit-centro h2::after{margin-left:auto;margin-right:auto}
+.v-a .eyebrow{color:var(--verde)}
+
+.pre{background:var(--verde3);color:rgba(255,255,255,.85);font-size:13.5px}
+.pre .in{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:38px}
+.pre-slogan{font-family:var(--h);font-size:16px;letter-spacing:.04em;color:#fff}
+.pre-cont{display:flex;gap:22px}
+.pre a{display:inline-flex;align-items:center;gap:7px;text-decoration:none}.pre a:hover{color:#fff}
+.pre .ic{width:15px;height:15px}
+.v-a .topo{background:#fff;border-bottom:1px solid var(--linha)}
+.v-a .menu a:not(.btn){color:#4C4C4C}
+.v-a .menu a:not(.btn):hover,.v-a .menu a[aria-current=page]:not(.btn){color:var(--verm)}
+.v-a .menu a[aria-current=page]:not(.btn){box-shadow:inset 0 -2px 0 var(--verm);border-radius:0}
+.v-a .menu-btn{color:var(--preto)}
+@media (max-width:1040px){.v-a .menu{background:#fff}}
+
+/* hero */
+.v-a .hero{position:relative;min-height:min(84vh,760px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.v-a .hero-img{position:absolute;inset:0}
+.v-a .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.v-a .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,30,17,.82) 0%,rgba(0,30,17,.55) 45%,rgba(0,0,0,0) 80%),linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,0) 40%)}
+.v-a .hero .in{position:relative;z-index:2;width:100%;padding-top:110px;padding-bottom:96px}
+.v-a .hero-txt{max-width:700px}
+.v-a .hero h1{color:#fff;font-size:clamp(40px,5vw,66px)}
+.v-a .hero p{font-size:19px;max-width:580px;color:rgba(255,255,255,.9)}
+.v-a .hero .eyebrow{color:#fff;opacity:.85}
+.v-a .hero h1::after,.v-a .capa h1::after{content:"";display:block;width:84px;height:3px;background:var(--verm);margin-top:22px}
+
+/* agenda (faixa vermelha do site atual) */
+.agenda{background:linear-gradient(100deg,var(--verm2),var(--verm) 55%,#C42020);color:#fff}
+.agenda .in{display:grid;grid-template-columns:auto 1fr auto auto;gap:36px;align-items:center;padding-top:30px;padding-bottom:30px}
+.ag-data{display:flex;align-items:center;gap:14px;padding-right:36px;border-right:1px solid rgba(255,255,255,.35)}
+.ag-data .dia{font-family:var(--h);font-weight:700;font-size:72px;line-height:.85}
+.ag-data .mes{text-transform:uppercase;letter-spacing:.18em;font-size:13px;font-weight:600;line-height:1.5}
+.agenda .eyebrow{color:#fff;opacity:.8;margin-bottom:6px}
+.agenda h2{color:#fff;font-size:clamp(28px,2.8vw,38px);margin:0 0 4px}
+.agenda h2::after{display:none}
+.agenda p{margin:0;opacity:.92;font-size:15.5px}
+.agenda .contagem span{background:rgba(0,0,0,.18)}
+
+/* empresa: tríptico */
+.v-a .sobre{padding:104px 0 96px}
+.triptico{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;border-radius:var(--r);overflow:hidden}
+.tri{position:relative;display:block;aspect-ratio:3/4.1;color:#fff;text-decoration:none;overflow:hidden}
+.tri img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.tri::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,25,14,.9) 0%,rgba(0,25,14,.35) 50%,rgba(0,0,0,0) 75%)}
+.tri:hover img{transform:scale(1.05)}
+.tri-txt{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:30px}
+.tri-num{display:block;font-family:var(--h);font-size:52px;line-height:1;font-weight:700}
+.tri-num small{display:block;font-family:var(--b);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-top:6px;opacity:.85}
+.tri h3{color:#fff;font-size:32px;margin:18px 0 8px;padding-top:16px;border-top:2px solid var(--verm);display:inline-block}
+.tri-p{display:block;font-size:15px;line-height:1.55;opacity:.9}
+
+/* touros */
+.v-a .touros-home{background:var(--fundo);padding:104px 0}
+.v-a .touros-home .in{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.th-img img{border-radius:var(--r);width:100%}
+.th-img figcaption{font-size:13.5px;color:var(--cinza);padding-top:10px}
+.th-txt h3{font-size:28px;margin-top:8px}
+.v-a .touros-home .pilares li{background:#fff}
+
+/* trilha */
+.v-a .etapas{padding:104px 0;background:#fff}
+.v-a .trilha .n{background:var(--verm);color:#fff}
+.v-a .trilha li::before{background:repeating-linear-gradient(90deg,var(--verm) 0 8px,transparent 8px 14px)}
+.v-a .trilha li:last-child .n{background:var(--verde)}
+@media (max-width:620px){.v-a .trilha li::before{background:repeating-linear-gradient(180deg,var(--verm) 0 8px,transparent 8px 14px)}}
+.v-a .etapas-claro{background:var(--fundo)}
+
+/* comprar */
+.comprar{background:linear-gradient(120deg,var(--verde3),var(--verde) 85%);color:#fff;padding:0}
+.comprar .in{display:grid;grid-template-columns:1.3fr 1fr;gap:0;padding:0;max-width:none}
+.cp-a{padding:88px 56px 88px max(28px,calc((100vw - 1220px)/2 + 28px))}
+.cp-a h2{color:#fff}.cp-a .eyebrow{color:#fff;opacity:.8}.cp-a p{color:rgba(255,255,255,.88)}
+.cp-a h2::after{background:#fff!important}
+.cp-b{position:relative;display:flex;align-items:flex-end;color:#fff;text-decoration:none;min-height:420px;overflow:hidden}
+.cp-b figure{position:absolute;inset:0}.cp-b img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.cp-b:hover img{transform:scale(1.04)}
+.cp-b::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,0) 65%)}
+.cp-b>span{position:relative;z-index:1;padding:36px;display:flex;flex-direction:column;gap:6px;max-width:440px;font-size:15.5px}
+.cp-b b{font-family:var(--h);font-size:32px;font-weight:600}
+.cp-b .link{color:#fff;margin-top:8px}
+
+/* números */
+.v-a .numeros{background:var(--fundo);padding:88px 0;text-align:center}
+.v-a .numeros dd{margin-left:auto;margin-right:auto}
+.v-a .numeros .eyebrow{margin-bottom:40px}
+.v-a .num-claro{background:#fff;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+
+/* news */
+.v-a .news-home{padding:104px 0}
+.v-a .parceiros{background:var(--fundo)}
+
+/* palavra */
+.v-a .palavra{padding:104px 0}
+.pal-destaque{max-width:900px;margin:0 auto 64px;text-align:center}
+.pal-destaque .depo p{font-size:clamp(26px,2.6vw,34px);line-height:1.3}
+.pal-destaque .depo p::before{content:"“";display:block;font-size:110px;line-height:.6;color:var(--verm);height:44px}
+.pal-destaque .depo footer{align-items:center}
+.pal-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;border-top:1px solid var(--linha);padding-top:44px}
+.pal-cols .depo p,.pal-mural .depo p{font-size:20px}
+.pal-mural{columns:3;column-gap:40px}
+.pal-mural .depo{break-inside:avoid;padding:0 0 26px;margin-bottom:28px;border-bottom:1px solid var(--linha)}
+
+/* contato */
+.v-a .contato{background:var(--fundo)}
+.v-a .ct-form{background:#fff;padding:40px;border-radius:var(--r);box-shadow:0 2px 0 var(--verm) inset,0 18px 40px rgba(0,0,0,.06)}
+.v-a .ct-pag{background:#fff}
+.v-a .ct-pag .ct-form{background:var(--fundo);box-shadow:0 3px 0 var(--verm) inset}
+.v-a .contato .redes a{color:var(--verde)}
+
+/* capa das páginas internas */
+.v-a .capa{position:relative;min-height:440px;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.v-a .capa-img{position:absolute;inset:0}
+.v-a .capa-img img{width:100%;height:100%;object-fit:cover}
+.v-a .capa::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(0,25,14,.85),rgba(0,25,14,.25) 70%)}
+.v-a .capa .in{position:relative;z-index:2;width:100%;padding-top:80px;padding-bottom:64px}
+.v-a .capa h1{color:#fff}
+.v-a .capa .eyebrow{color:#fff;opacity:.85}
+.v-a .capa p:not(.eyebrow){font-size:19px;max-width:640px;margin:0;color:rgba(255,255,255,.9)}
+
+/* empresa interna */
+.v-a .historia{background:var(--verde3);color:rgba(255,255,255,.88)}
+.v-a .historia h2{color:#fff}.v-a .historia .eyebrow{color:#fff;opacity:.75}
+.v-a .tempo{display:grid;grid-template-columns:repeat(8,1fr);gap:18px;border-top:2px solid var(--verm);padding-top:0}
+.v-a .tempo li{position:relative;padding-top:30px;font-size:14.5px;line-height:1.5}
+.v-a .tempo li::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--verm);border:3px solid var(--verde3)}
+.v-a .tempo b{display:block;font-family:var(--h);font-size:26px;color:#fff;margin-bottom:6px;line-height:1.1}
+.v-a .ativ{padding:24px 0 96px}
+.v-a .at{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;padding:56px 0;border-bottom:1px solid var(--linha);scroll-margin-top:110px}
+.v-a .at:nth-child(even) figure{order:2}
+.v-a .at figure{border-radius:var(--r);overflow:hidden;aspect-ratio:16/10}
+.v-a .at figure img{width:100%;height:100%;object-fit:cover}
+.at-num{font-size:15px;color:var(--cinza)}.v-a .at-num b{font-family:var(--h);font-size:36px;color:var(--verm);margin-right:6px}
+.v-a .local{background:var(--fundo)}
+.v-a .glossario{background:var(--fundo)}
+.v-a .glossario article{padding:36px;background:#fff;border-radius:var(--r);border-top:3px solid var(--verde)}
+.v-a .indice-sec{background:#fff}
+.v-a .leilao-cond{background:var(--fundo)}
+.v-a .como .in{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.v-a .como figure{border-radius:var(--r);overflow:hidden}
+.v-a .gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:240px 240px;gap:6px}
+.v-a .gal figure{overflow:hidden;border-radius:4px}.v-a .gal img{width:100%;height:100%;object-fit:cover}
+.v-a .gal .g0{grid-row:1/3}.v-a .gal .g3{grid-column:2/4}
+.v-a .sum-home{background:var(--fundo)}
+
+/* rodapé */
+.v-a .rodape{background:var(--grafite)}
+.v-a .rod-fim{background:var(--verm);color:#fff}
+
+@media (max-width:1040px){
+  .pre-cont a:last-child{display:none}
+  .agenda .in{grid-template-columns:auto 1fr;row-gap:20px}
+  .agenda .contagem{grid-column:1/2}
+  .v-a .tempo{grid-template-columns:repeat(4,1fr);row-gap:36px;border-top:0}
+  .v-a .tempo li{border-top:2px solid var(--verm)}
+  .v-a .tempo li::before{top:-8px}
+  .pal-mural{columns:2}
+}
+@media (max-width:820px){
+  .pre-slogan{display:none}.pre .in{justify-content:center}
+  .v-a .hero{min-height:620px}
+  .v-a .hero::before{background:linear-gradient(0deg,rgba(0,30,17,.9) 0%,rgba(0,30,17,.55) 60%,rgba(0,0,0,.15) 100%)}
+  .v-a .hero .in{padding-bottom:56px}
+  .triptico{grid-template-columns:1fr;gap:4px}
+  .tri{aspect-ratio:auto;min-height:400px}
+  .v-a .touros-home .in,.v-a .como .in,.v-a .at{grid-template-columns:1fr;gap:28px}
+  .v-a .at:nth-child(even) figure{order:0}
+  .comprar .in{grid-template-columns:1fr}
+  .cp-a{padding:68px 20px}
+  .cp-b{min-height:340px}
+  .pal-cols{grid-template-columns:1fr;gap:32px}
+  .v-a .sobre,.v-a .touros-home,.v-a .etapas,.v-a .news-home,.v-a .palavra{padding:72px 0}
+  .v-a .ct-form{padding:26px 20px}
+  .v-a .capa{min-height:360px}
+  .v-a .gal{grid-template-columns:1fr 1fr;grid-template-rows:200px 160px 160px}
+  .v-a .gal .g0{grid-row:auto;grid-column:1/3}.v-a .gal .g3{grid-column:1/3}
+}
+@media (max-width:620px){
+  .pre-cont{gap:14px;font-size:13px}
+  .agenda .in{grid-template-columns:1fr;gap:16px}
+  .ag-data{border-right:0;padding-right:0}
+  .agenda .btn{justify-self:start}
+  .v-a .tempo{grid-template-columns:1fr 1fr}
+  .pal-mural{columns:1}
+  .v-a .numeros dl{text-align:left}
+}

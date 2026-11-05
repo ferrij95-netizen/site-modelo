@@ -1,0 +1,155 @@
+/* B "Favo de Mel": azul-marinho e amarelo-mel mais fortes, texto em Open Sans (a fonte do site atual). A porta dupla da home
+   atual (Colégio Favo azul, Favo de Mel Kids amarelo) é a capa; o mel escorrendo é a arte atv33.jpg do site atual. */
+.v-b{--b:"Open Sans",system-ui,sans-serif}
+.v-b .pre{background:#061629}
+.v-b .topo{background:var(--marinho);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.v-b .menu a{color:#fff}
+.v-b .menu a:not(.btn):hover{background:rgba(255,255,255,.1)}
+.v-b .menu a[aria-current=page]:not(.btn){background:rgba(236,179,39,.18);color:var(--mel)}
+.v-b .menu{background:var(--marinho)}
+.v-b .eyebrow{color:var(--mel2)}
+.v-b .btn-borda{color:var(--marinho)}
+
+/* porta dupla */
+.v-b .portas{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.v-b .porta{position:relative;overflow:hidden;display:flex;align-items:flex-end;text-decoration:none;padding:56px 0 0 max(28px,calc((100vw - 1220px)/2 + 28px))}
+.v-b .porta-favo{padding-left:max(28px,calc((100vw - 1220px)/2 + 10px))}
+.v-b .porta-kids{padding-left:56px}
+.v-b .porta-favo{background:radial-gradient(circle at 80% 30%,#1B4C79 0%,var(--marinho) 55%,var(--marinho2) 100%);color:#fff}
+.v-b .porta-kids{background:radial-gradient(circle at 75% 30%,#FFE071 0%,#F8CB3B 45%,var(--mel) 100%);color:var(--marinho)}
+.v-b .porta::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0l28 16v32L28 64 0 48V16zM28 64v33' fill='none' stroke='%23fff' stroke-opacity='.08' stroke-width='1.5'/%3E%3C/svg%3E")}
+.v-b .porta-kids::before{opacity:.9}
+.v-b .porta-txt{position:relative;z-index:2;align-self:center;max-width:250px;text-wrap:balance;display:flex;flex-direction:column;gap:6px;padding-bottom:56px}
+.v-b .porta-txt img{width:64px;height:auto;margin-bottom:10px}
+.v-b .porta-txt small{font-family:var(--h);font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.v-b .porta-txt strong{font-family:var(--h);font-size:clamp(34px,3.6vw,50px);line-height:1.05}
+.v-b .porta-txt>span{font-size:17px;opacity:.9;margin:4px 0 14px}
+.v-b .porta-txt em{font-style:normal;font-family:var(--h);font-weight:700;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:10px 20px;border-radius:99px;border:2px solid currentColor;transition:background .2s,color .2s}
+.v-b .porta-favo:hover em{background:#fff;color:var(--marinho);border-color:#fff}
+.v-b .porta-kids:hover em{background:var(--marinho);color:#fff;border-color:var(--marinho)}
+.v-b .porta-img{position:absolute;z-index:1;right:-10px;bottom:0;height:84%;width:auto;max-width:54%;object-fit:contain;object-position:bottom right;transition:transform .5s}
+.v-b .porta:hover .porta-img{transform:scale(1.02)}
+.v-b .porta-abelha{position:absolute;z-index:3;width:120px;right:46%;top:34px;transform:scaleX(-1)}
+.v-b .mel{height:110px;background:url(/assets/img/mel-escorrendo.webp) repeat-x top/auto 140px;margin-top:-26px;position:relative;z-index:4;pointer-events:none}
+
+/* abertura */
+.v-b .intro-b{padding-top:40px;text-align:center}
+.v-b .intro-b .in>*:not(.rapido){max-width:860px;margin-left:auto;margin-right:auto}
+.v-b .intro-b h1{color:var(--marinho)}
+.v-b .intro-b .botoes{justify-content:center}
+.v-b .intro-b .rapido{margin-top:56px;text-align:left;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.v-b .rapido a:hover{background:var(--mel-claro)}
+
+/* filosofia: favo de três células */
+.v-b .favo3{background:linear-gradient(170deg,var(--marinho) 0%,var(--marinho2) 100%);color:#fff;overflow:hidden}
+.v-b .tit.claro h2{color:#fff}.v-b .tit.claro .eyebrow{color:var(--mel)}
+.v-b .favo3 .tit{text-align:center;margin-left:auto;margin-right:auto}
+.v-b .colmeia{display:flex;justify-content:center;gap:14px;padding-bottom:70px}
+.v-b .cel{width:350px;aspect-ratio:.866;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:flex;flex-direction:column;justify-content:center;text-align:center;padding:0 46px;flex:none}
+.v-b .cel:nth-child(1){background:var(--mel);color:var(--marinho)}
+.v-b .cel:nth-child(2){background:#fff;color:var(--txt);margin-top:140px}
+.v-b .cel:nth-child(3){background:var(--petroleo);color:#fff}
+.v-b .cel h3{font-size:30px;color:inherit;margin-bottom:8px}
+.v-b .cel:nth-child(2) h3{color:var(--marinho)}
+.v-b .cel p{font-size:14.5px;line-height:1.5;margin:0}
+
+/* estrutura em abas */
+.v-b .abas-lista{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.v-b .abas-lista button{font:inherit;font-family:var(--h);font-weight:700;font-size:16px;padding:10px 20px;border-radius:99px;border:2px solid var(--linha);background:#fff;color:var(--marinho);cursor:pointer}
+.v-b .abas-lista button[aria-selected=true]{background:var(--marinho);border-color:var(--marinho);color:#fff}
+.v-b .g-aba{grid-template-columns:2fr 1fr 1fr;grid-template-rows:240px 240px}
+.v-b .g-aba figure{aspect-ratio:auto;height:100%}
+.v-b .g-aba li:first-child{grid-row:span 2}
+.v-b .g-aba li:first-child figure{aspect-ratio:auto;height:100%}
+.v-b .g-aba li:nth-child(4){grid-column:2/4}
+.v-b .g-aba li:nth-child(4) figure{aspect-ratio:auto;height:100%}
+.v-b .abas-est>.in>p{margin:28px 0 0}
+
+/* etapas */
+.v-b .etapas-b{background:var(--ceu2)}
+.v-b .etapas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.v-b .etapa-b{position:relative;display:block;border-radius:14px;overflow:hidden;aspect-ratio:3/4;text-decoration:none;color:#fff}
+.v-b .etapa-b img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.v-b .etapa-b:hover img{transform:scale(1.05)}
+.v-b .etapa-b::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,31,56,.92) 100%)}
+.v-b .et-infantil::after,.v-b .et-fund1::after{background:linear-gradient(180deg,transparent 35%,rgba(150,98,0,.92) 100%)}
+.v-b .etapa-b span{position:absolute;z-index:2;left:22px;right:22px;bottom:22px}
+.v-b .etapa-b small{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.9}
+.v-b .etapa-b strong{display:block;font-family:var(--h);font-size:25px;line-height:1.15;margin:4px 0}
+.v-b .etapa-b em{font-style:normal;font-weight:600;color:var(--mel)}
+.v-b .et-infantil em,.v-b .et-fund1 em{color:#FFE9A8}
+
+/* projetos lado a lado */
+.v-b .proj-duas{align-items:start;gap:48px}
+.v-b .proj-h{display:flex;align-items:center;gap:12px;font-size:26px;padding-bottom:16px;border-bottom:3px solid var(--marinho);margin-bottom:8px}
+.v-b .proj-h .hex{width:28px;height:28px;color:var(--petroleo)}
+.v-b .proj-col.kids .proj-h{border-color:var(--mel)}.v-b .proj-col.kids .proj-h .hex{color:var(--mel)}
+.v-b .p-linha{grid-template-columns:1fr;gap:0}
+.v-b .p-linha li{display:grid;grid-template-columns:52px 1fr;column-gap:16px;border-top:0;border-bottom:1px solid var(--linha);padding:18px 0}
+.v-b .p-linha .ic-p{grid-row:span 2;margin:2px 0 0;width:44px;height:44px;padding:9px;border-radius:12px;background:var(--ceu);color:var(--petroleo)}
+.v-b .proj-col.kids .ic-p{background:var(--mel-claro);color:var(--mel2)}
+.v-b .p-linha h3{font-size:20px;margin:0 0 2px}
+
+.v-b .citacao-b{background:var(--mel-claro);text-align:center}
+.v-b .citacao-b .citacao{max-width:820px;margin:0 auto}
+.v-b .citacao-b .citacao p{font-size:clamp(30px,3.6vw,48px)}
+
+.v-b .orgulho{background:linear-gradient(120deg,#F8CB3B 0%,var(--mel) 100%);color:var(--marinho)}
+.v-b .orgulho .eyebrow{color:var(--marinho)}
+.v-b .orgulho .nota b{color:var(--marinho)}
+.v-b .orgulho .btn-mel{background:var(--marinho);color:#fff}.v-b .orgulho .btn-mel:hover{background:var(--marinho2)}
+
+/* páginas internas */
+.v-b .capa-int{background:linear-gradient(160deg,var(--marinho) 0%,var(--marinho2) 100%);color:rgba(255,255,255,.88);position:relative;overflow:hidden}
+.v-b .capa-int::after{content:"";position:absolute;left:0;right:0;bottom:0;height:10px;background:var(--mel)}
+.v-b .capa-int h1{color:#fff}
+.v-b .capa-int .eyebrow{color:var(--mel)}
+.v-b .filosofia{background:var(--mel-claro)}
+.v-b .filo-hex{color:var(--mel)}.v-b .filo-n{color:var(--marinho)}
+.v-b .proposta{background:var(--ceu2)}
+.v-b .est-grupo.alt{background:var(--ceu2)}
+.v-b .est-hex{color:var(--mel)}
+.v-b .cta-visita{background:var(--mel);color:var(--marinho)}
+.v-b .cta-visita .btn-mel{background:var(--marinho);color:#fff}
+.v-b .proj-sec.kids{background:var(--mel-claro)}
+.v-b .proj-sec.kids .ic-p{color:var(--mel2)}
+.v-b .tecnologia{background:var(--ceu2)}
+.v-b .rapido-sec{background:var(--ceu2)}
+.v-b .rapido-sec .rapido{background:#fff;border-radius:16px;border:1px solid var(--linha)}
+.v-b .mapa-sec{padding-top:0}
+.v-b .etapa-det .series{color:var(--mel2)}
+
+@media (max-width:1080px){
+  .v-b .colmeia{flex-wrap:wrap}
+  .v-b .cel{width:310px;padding:0 38px}
+  .v-b .cel:nth-child(2){margin-top:0}
+  .v-b .etapas-grid{grid-template-columns:1fr 1fr}
+  .v-b .porta-img{max-width:56%}
+}
+@media (max-width:860px){
+  .v-b .portas{grid-template-columns:1fr;min-height:0}
+  .v-b .porta,.v-b .porta-kids{padding:40px 22px 0;min-height:400px}
+  .v-b .porta-txt{max-width:52%;padding-bottom:40px}
+  .v-b .porta-img{height:80%;max-width:50%}
+  .v-b .intro-b{text-align:left}.v-b .intro-b .botoes{justify-content:flex-start}
+  .v-b .porta-abelha{width:80px;right:auto;left:58%;top:18px}
+  .v-b .mel{height:80px;background-size:auto 100px;margin-top:-18px}
+  .v-b .colmeia{flex-direction:column;align-items:center;gap:14px;padding-bottom:0}
+  .v-b .cel{width:100%;max-width:420px;aspect-ratio:auto;clip-path:none;border-radius:16px;padding:32px 28px}
+  .v-b .g-aba{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .v-b .g-aba figure{aspect-ratio:4/3;height:auto}
+  .v-b .g-aba li:first-child{grid-row:auto;grid-column:1/-1}
+  .v-b .g-aba li:first-child figure,.v-b .g-aba li:nth-child(4) figure{aspect-ratio:4/3;height:auto}
+  .v-b .g-aba li:nth-child(4){grid-column:1/-1}
+}
+@media (max-width:620px){
+  .v-b .porta-txt{max-width:62%}
+  .v-b .porta-txt strong{font-size:32px}
+  .v-b .porta-txt>span{font-size:15px}
+  .v-b .etapas-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .v-b .etapa-b span{left:14px;right:14px;bottom:14px}
+  .v-b .etapa-b strong{font-size:19px}
+  .v-b .abas-lista{flex-wrap:nowrap;overflow-x:auto;margin:0 -18px 22px;padding:0 18px 4px}
+  .v-b .abas-lista button{white-space:nowrap;font-size:15px}
+}
+.v-b .contato-home{background:var(--ceu2)}

@@ -1,0 +1,122 @@
+/* Versão A "Vitrine": clara, foto grande, grotesca larga (Archivo), laranja só em botões e destaques. */
+:root{
+  --fh:'Archivo',system-ui,sans-serif;--fb:'Inter',system-ui,sans-serif;
+  --tinta:#14171c;--texto:#3b424d;--suave:#6b7380;--fundo:#fff;--fundo2:#f4f3f0;
+  --linha:#e6e4df;--linha-forte:#cfccc5;--foco:rgba(228,87,46,.18);
+  --acento:#e4572e;--acento-h:#cc4520;--acento-txt:#fff;--acento-forte:#d24a22;--rotulo:#d24a22;--fav:#e4572e;--ok:#1d7a4f;
+  --topo-bg:#14171c;--topo-txt:rgba(255,255,255,.78);
+  --cab-bg:#fff;--cab-txt:#14171c;--cab-linha:#ecebe7;--hover-cab:#f4f3f0;--cab-menu:#fff;--cab-menu-txt:#14171c;
+  --rod-bg:#14171c;--rod-txt:rgba(255,255,255,.72);
+  --raio:4px;--raio-btn:2px;--raio-campo:2px;--raio-foto:2px;--raio-selo:2px;
+}
+h1,h2{font-stretch:118%;font-weight:800}
+h3{font-weight:700;font-stretch:108%}
+.marca-txt b{font-stretch:125%}
+.marca-ic{color:#14171c}
+.rod .marca-ic rect:not(:last-child){fill:#fff}
+
+/* cabeçalho por cima da foto na home e nas páginas com foto */
+.cab-foto{position:fixed;left:0;right:0;top:36px;background:transparent;color:#fff;border-bottom-color:rgba(255,255,255,.18)}
+.cab-foto .marca-ic rect:not(:last-child){fill:#fff}
+.cab-foto .fav-link:hover{background:rgba(255,255,255,.14)}
+.cab-foto.rolou{top:0;position:fixed;background:#fff;color:#14171c;border-bottom-color:#ecebe7;box-shadow:0 10px 30px -18px rgba(0,0,0,.3)}
+.cab-foto.rolou .marca-ic rect:not(:last-child){fill:#14171c}
+.cab-foto~main .pag-topo-foto{padding-top:200px}
+
+/* hero */
+.hero{position:relative;min-height:min(100svh,900px);display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:#14171c;padding-top:150px}
+.hero-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,12,16,.5) 0%,rgba(10,12,16,.05) 35%,rgba(10,12,16,.25) 60%,rgba(10,12,16,.82) 100%)}
+.hero .in{position:relative;z-index:2;width:100%}
+.hero-in{padding-bottom:40px}
+.hero h1{color:#fff;font-size:clamp(40px,6.4vw,92px);line-height:.98;max-width:13ch;margin-bottom:22px}
+.hero .rotulo{color:#fff;opacity:.85}
+.hero-sub{font-size:clamp(17px,1.4vw,20px);max-width:560px;color:rgba(255,255,255,.88);margin:0}
+.hero-busca{margin-bottom:-56px}
+.hero-busca .busca{max-width:980px}
+.destaques-a{padding-top:150px}
+
+/* destaques: um grande e dois menores */
+.dest-grade{display:grid;grid-template-columns:1.7fr 1fr;grid-template-rows:auto auto;gap:28px 32px}
+.dest-grande{grid-row:span 2;position:relative;display:flex;flex-direction:column}
+.dest-foto{display:block;overflow:hidden;flex:1;min-height:420px;border-radius:2px}
+.dest-foto img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.dest-grande:hover .dest-foto img{transform:scale(1.03)}
+.dest-info{display:grid;grid-template-columns:1fr auto;column-gap:24px;align-items:end;padding-top:20px}
+.dest-info .card-loc{grid-column:1/-1}
+.dest-info h3{font-size:clamp(22px,2vw,30px);margin:0 0 10px;line-height:1.15}.dest-info h3 a{text-decoration:none}
+.dest-info .specs{margin:0}
+.dest-info .card-preco{grid-row:2/4;grid-column:2;font-size:28px;margin:0;align-self:end}
+.card-lado .card-foto{aspect-ratio:16/10}
+
+/* bairros: lista tipográfica com prévia de foto */
+.bairros-a{background:var(--fundo2)}
+.bairros-a-in{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+.bairros-a-txt{position:sticky;top:110px}
+.bairro-preview{position:relative;margin:28px 0 0;aspect-ratio:4/3;overflow:hidden;border-radius:2px;background:#ddd}
+.bairro-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity .45s,transform .9s}
+.bairro-preview img.on{opacity:1;transform:none}
+.bairros-lista{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--tinta)}
+.bairros-lista a{display:grid;grid-template-columns:1fr auto 28px;align-items:center;gap:20px;padding:22px 4px;border-bottom:1px solid var(--linha-forte);text-decoration:none;transition:padding .3s,color .2s}
+.bl-nome{font-family:var(--fh);font-weight:700;font-stretch:115%;font-size:clamp(24px,2.6vw,38px);letter-spacing:-.02em;color:var(--tinta);line-height:1.1}
+.bl-n{font-size:14px;color:var(--suave);font-weight:600}
+.bairros-lista .ic{color:var(--tinta);transition:transform .3s}
+.bairros-lista a:hover,.bairros-lista a:focus-visible{padding-left:16px}
+.bairros-lista a:hover .bl-nome{color:var(--acento-forte)}
+.bairros-lista a:hover .ic{transform:translateX(6px)}
+
+/* linha do tempo */
+.linha-tempo{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:28px;position:relative}
+.linha-tempo::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:linear-gradient(90deg,var(--tinta),var(--acento))}
+.linha-tempo li{position:relative}
+.lt-n{display:block;font-family:var(--fh);font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--suave);margin-bottom:58px}
+.lt-ic{position:absolute;top:6px;left:0;width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid var(--tinta);display:grid;place-items:center;color:var(--tinta);transition:background .3s,color .3s}
+.lt-n{position:absolute;top:16px;left:56px;margin:0;background:#fff;padding:0 8px}
+.linha-tempo li{padding-top:76px}
+.linha-tempo li:last-child .lt-ic{background:var(--acento);border-color:var(--acento);color:#fff}
+.linha-tempo li:hover .lt-ic{background:var(--tinta);color:#fff}
+.linha-tempo h3{font-size:20px}
+.linha-tempo p{font-size:15px;color:var(--texto)}
+
+/* anuncie com foto */
+.anuncie-a{position:relative;color:#fff;padding:110px 0;overflow:hidden;background:#14171c}
+.anuncie-a>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4}
+.anuncie-a::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,16,20,.92) 30%,rgba(14,16,20,.35))}
+.anuncie-a-in{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.anuncie-a h2{color:#fff;font-size:clamp(32px,4vw,54px)}
+.anuncie-a .rotulo{color:#ff8a65}
+.anuncie-a p{color:rgba(255,255,255,.85);font-size:18px;max-width:520px}
+.form-escuro{background:#fff;color:var(--tinta);padding:30px;border-radius:4px}
+
+/* faixa final */
+.faixa-contato{background:var(--acento);color:#fff;padding:64px 0}
+.fc-in{display:grid;grid-template-columns:auto 1fr auto;gap:12px 48px;align-items:center}
+.faixa-contato h2{color:#fff;margin:0;font-size:clamp(26px,2.8vw,38px)}
+.faixa-contato p{margin:0;max-width:480px;color:rgba(255,255,255,.92)}
+.faixa-contato .btn{background:#14171c;color:#fff}.faixa-contato .btn:hover{background:#000}
+
+@media (max-width:1100px){
+  .cab-foto .nav.aberto{color:#14171c}
+  .linha-tempo{grid-template-columns:1fr;gap:0}
+  .linha-tempo::before{left:21px;right:auto;top:0;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,var(--tinta),var(--acento))}
+  .linha-tempo li{padding:0 0 32px 72px}
+  .lt-ic{top:0}.lt-n{position:static;padding:0;margin:10px 0 6px;display:block}
+  .bairros-a-in,.anuncie-a-in{grid-template-columns:1fr;gap:36px}
+  .bairros-a-txt{position:static}.bairro-preview{display:none}
+  .fc-in{grid-template-columns:1fr}
+  .fc-in .btn{justify-self:start}
+}
+@media (max-width:760px){
+  .cab-foto{top:36px}
+  .hero{min-height:auto;padding-top:180px}
+  .hero::before{background:linear-gradient(180deg,rgba(10,12,16,.55),rgba(10,12,16,.62) 40%,rgba(10,12,16,.85))}
+  .bairros-lista a{grid-template-columns:1fr 24px;gap:4px 12px;padding:18px 4px}
+  .bl-n{grid-row:2;grid-column:1}.bairros-lista .ic{grid-row:1/3;grid-column:2}
+  .hero-busca{margin-bottom:-120px}
+  .destaques-a{padding-top:190px}
+  .dest-grade{grid-template-columns:1fr}
+  .dest-grande{grid-row:auto}.dest-foto{min-height:260px}
+  .dest-info{grid-template-columns:1fr}.dest-info .card-preco{grid-row:auto;grid-column:auto;margin-top:12px}
+  .anuncie-a{padding:72px 0}
+  .form-escuro{padding:22px}
+}
