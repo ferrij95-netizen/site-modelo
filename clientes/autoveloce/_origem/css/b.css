@@ -1,0 +1,64 @@
+/* Versão B "Alinhamento": azul-marinho do letreiro (#121a2b) alternado com o branco do salão, laranja só em botões e marcas. Goldman + Kumbh Sans. */
+:root{--cor:#ff752c;--cor-esc:#f0631a;--sobre-cor:#121a2b;--tinta:#141a26;--suave:#566070;--fundo:#fff;--linha:#dfe3ea;--ft:'Goldman',system-ui,sans-serif;--fx:'Kumbh Sans',system-ui,sans-serif;--raio:4px;--raio-foto:4px;
+--topo:#121a2b;--topo-solido:#121a2b;--topo-h:70px;--faixa:#0b111d;--faixa-t:#aeb6c4;--rod:#0b111d;--promo:#121a2b;--promo-t:#fff;--suave-bg:#eef1f5;--kc:#c9500f;--cor-ic:#121a2b;
+--esp-f:700 1.25rem/1.1 'Goldman',sans-serif;--num-f:700 2rem/1 'Goldman',sans-serif}
+h1,h2,h3{font-weight:700;letter-spacing:-.005em}
+.btn{font-weight:700}
+.topo{color:#fff}
+.menu a{color:#d5dbe5}
+.menu a:hover{color:#fff}
+.menu a.ativo{color:#fff;box-shadow:inset 0 -2px 0 var(--cor)}
+.btn-topo{color:#121a2b}
+.topo .btn-linha{color:#fff}
+
+/* hero: oficina iluminada à noite */
+.hero-b{position:relative;min-height:min(78vh,700px);display:flex;align-items:flex-end;color:#fff;background:#121a2b;overflow:hidden}
+.hero-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero-b::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,17,29,.95) 0%,rgba(11,17,29,.85) 42%,rgba(11,17,29,.35) 75%,rgba(11,17,29,.15) 100%),linear-gradient(180deg,rgba(11,17,29,0) 50%,rgba(11,17,29,.7) 100%)}
+.hero-b-in{position:relative;z-index:2;padding:150px 0 64px}
+.hero-b .k{color:var(--cor)}
+.hero-b h1{font-size:clamp(2.2rem,5.2vw,4.2rem);max-width:720px;line-height:1.04}
+.hero-b p:not(.k):not(.bts){max-width:560px;font-size:1.15rem;color:#dfe4ec}
+.hero-b .btn-linha{color:#fff}
+
+/* especialidades como ficha */
+.esp-b{background:#eef1f5;padding:80px 0}
+.esp-linhas{grid-template-columns:1fr 1fr;border-top:2px solid #121a2b}
+.esp-linhas li{padding:26px 20px 26px 0;border-bottom:1px solid #c9d0db}
+.esp-linhas li:nth-child(odd){padding-right:40px}
+.esp-linhas b{font-size:1.45rem}
+
+.serv-b{padding:80px 0}
+.exp-b{background:#121a2b;color:#fff}
+.exp-b-in{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;padding:56px 0}
+.num b{display:block;font:700 clamp(2.6rem,5vw,4rem)/1 'Goldman',sans-serif;color:var(--cor)}
+.num span{display:block;margin-top:10px;color:#c3cad6;max-width:240px}
+.equipe-b{padding:80px 0 40px}
+.duo-b{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:stretch;padding:30px 0 80px}
+.realizado-b{border:1px solid var(--linha);border-radius:var(--raio);padding:30px}
+.realizado-b h2{font-size:clamp(1.4rem,2.4vw,1.9rem)}
+.realizado-b p:not(.k){color:var(--suave);margin:0}
+.cta-b{background:#121a2b;color:#fff}
+.cta-b-in{display:grid;grid-template-columns:300px 1fr;gap:50px;align-items:center;padding:60px 0}
+.cta-b figure img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--raio)}
+.cta-b h2{font-size:clamp(1.8rem,3.4vw,2.8rem)}
+.cta-b p:not(.bts){color:#c3cad6}
+.cta-b .btn-linha{color:#fff}
+
+/* cabeçalho das internas */
+.cab-b{position:relative;color:#fff;background:#121a2b;overflow:hidden}
+.cab-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38}
+.cab-b-in{position:relative;padding:110px 0 54px}
+.cab-b .k{color:var(--cor)}
+.cab-b h1{font-size:clamp(2rem,4.6vw,3.6rem);max-width:860px;margin:0}
+.dica .n{color:#121a2b}
+.esp .n{color:#c9500f}
+
+@media (max-width:900px){
+  .esp-linhas{grid-template-columns:1fr}
+  .esp-linhas li:nth-child(odd){padding-right:20px}
+  .exp-b-in,.duo-b,.cta-b-in{grid-template-columns:1fr}
+  .cta-b figure{max-width:220px}
+}
+@media (max-width:560px){.hero-b-in{padding-top:120px}.hero-b::before{background:linear-gradient(180deg,rgba(11,17,29,.55) 0%,rgba(11,17,29,.92) 55%)}}
+.tit-b{max-width:760px;margin-bottom:30px}
