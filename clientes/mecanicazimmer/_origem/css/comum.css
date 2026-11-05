@@ -1,0 +1,120 @@
+/* estrutura comum às duas versões (o gerador junta este arquivo ao a.css / b.css) */
+body{background:var(--fundo);color:var(--tinta);font-family:var(--fx)}
+.k{font:700 .78rem/1.25 var(--fx);letter-spacing:.16em;text-transform:uppercase;color:var(--kc,var(--cor));margin:0 0 12px}
+.bts{display:flex;gap:12px;flex-wrap:wrap;margin:0}
+section{scroll-margin-top:90px}
+h1,h2,h3{font-family:var(--ft)}
+.tit,.tit-b{max-width:720px;margin-bottom:30px}
+.tit h2,.tit-b h2{font-size:clamp(1.8rem,3.6vw,2.7rem);margin:0}
+.topo{position:sticky;top:0;z-index:40;background:var(--topo)}
+.topo-linha{display:flex;align-items:center;gap:24px;padding:12px 0}
+.marca img{width:250px;height:auto}
+.menu{margin-left:auto}
+.menu ul{display:flex;gap:2px}
+.menu a{display:block;padding:8px 12px;text-decoration:none;font-weight:700;font-size:.95rem}
+.btn-topo{min-height:42px;padding:.5em 1.05em;font-size:.92rem;white-space:nowrap}
+@media (max-width:1060px){
+  .menu-btn{display:block;margin-left:auto}
+  .menu{position:fixed;inset:var(--topo-h,64px) 0 auto 0;background:var(--topo-solido);padding:10px 16px 18px;box-shadow:0 18px 30px rgba(0,0,0,.2);display:none;margin:0}
+  body.menu-aberto .menu{display:block}
+  .menu ul{flex-direction:column}
+  .menu a{padding:12px 8px;font-size:1.06rem}
+  .btn-topo{display:none}
+  .marca img{width:200px}
+}
+.intro{max-width:760px;font-size:1.14rem;color:var(--suave);margin:48px 0 34px}
+.cta-linha{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 70px}
+.n{font:900 italic .95rem/1 var(--ft);letter-spacing:.06em;color:var(--cor)}
+.consulte{font:900 italic 1.4rem/1.2 var(--ft);color:var(--cor);margin:10px 0 24px}
+
+/* faixa quadriculada (bandeira do logo) */
+.xadrez{height:16px;background:conic-gradient(var(--xa,#1d1f21) 25%,var(--xb,#fff) 0 50%,var(--xa,#1d1f21) 0 75%,var(--xb,#fff) 0) 0 0/16px 16px}
+
+/* horário */
+.horario{border-collapse:collapse;width:100%;max-width:520px}
+.horario caption{text-align:left;font:700 .78rem/1.3 var(--fx);letter-spacing:.14em;text-transform:uppercase;color:var(--suave);padding:0 0 10px}
+.horario th,.horario td{padding:13px 14px 13px 0;border-top:1px solid var(--linha);text-align:left;white-space:nowrap}
+.horario tr:last-child th,.horario tr:last-child td{border-bottom:1px solid var(--linha)}
+.horario th{font-weight:700}
+.horario td{font-variant-numeric:tabular-nums}
+
+/* empresa */
+.empresa-pag{display:grid;grid-template-columns:1.6fr 1fr;gap:64px;padding:60px 0 30px;align-items:start}
+.empresa-txt p{font-size:1.12rem;margin:0 0 1.1em;max-width:680px}
+.marcos dl{display:grid;gap:0}
+.marcos div{padding:18px 0;border-top:1px solid var(--linha)}
+.marcos div:last-child{border-bottom:1px solid var(--linha)}
+.marcos dt{font:900 italic 2.4rem/1 var(--ft);color:var(--cor)}
+.marcos dd{margin:6px 0 0;color:var(--suave)}
+.lema-pag{margin:30px 0 50px;padding:34px 0;border-top:3px solid var(--tinta);border-bottom:3px solid var(--tinta)}
+.lema-pag p:not(.k){font:900 italic clamp(1.6rem,3.6vw,2.6rem)/1.15 var(--ft);margin:0;max-width:900px}
+.galeria{display:grid;gap:16px;margin:10px 0 50px}
+.galeria img{width:100%;height:100%;object-fit:cover;border-radius:var(--raio)}
+.galeria figure{display:flex;flex-direction:column;margin:0}
+.galeria figure>a{flex:1;min-height:0;display:block}
+.galeria figcaption{font-size:.88rem;color:var(--suave);margin-top:8px}
+.g-emp{grid-template-columns:2fr 1fr 1fr;grid-template-areas:"g e r" "g e n"}
+.g-emp .f-galpao{grid-area:g}.g-emp .f-espera{grid-area:e}.g-emp .f-recepcao{grid-area:r}.g-emp .f-entrada{grid-area:n}
+.g-ofi{grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;grid-auto-flow:dense}
+.g-ofi .f-panorama{grid-column:span 2;grid-row:span 2}
+.g-ofi .f-motor,.g-ofi .f-espera{grid-row:span 2}
+.g-ofi .f-fusca{grid-column:span 2}
+
+/* serviços */
+.principais-pag{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;border-top:3px solid var(--tinta);margin-bottom:56px}
+.principais-pag article{padding:26px 0}
+.principais-pag h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:.3em 0 .2em}
+.principais-pag p{color:var(--suave);margin:0;font-size:1.08rem}
+.motor-pag,.reparos-pag{display:grid;grid-template-columns:1fr 2fr;gap:48px;padding:40px 0;border-top:1px solid var(--linha)}
+.motor-pag h2,.reparos-pag h2{font-size:clamp(1.5rem,2.6vw,2rem);margin:0}
+.lista-motor{columns:2;column-gap:40px}
+.lista-motor li{break-inside:avoid;padding:10px 0 10px 22px;border-bottom:1px solid var(--linha);position:relative}
+.lista-motor li::before{content:"";position:absolute;left:0;top:18px;width:10px;height:10px;background:conic-gradient(var(--tinta) 25%,transparent 0 50%,var(--tinta) 0 75%,transparent 0) 0 0/5px 5px}
+.reparos{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin:0}
+.reparos div{padding:14px 0;border-bottom:1px solid var(--linha)}
+.reparos dt{font:700 1.15rem/1.3 var(--ft)}
+.reparos dd{margin:4px 0 0;color:var(--suave)}
+
+/* contato */
+.contato-pag{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;padding:56px 0 70px;align-items:start}
+.contato-lista{display:grid;gap:20px;margin-bottom:30px}
+.contato-lista li{display:flex;gap:14px}
+.contato-lista .ic{color:var(--cor);width:24px;height:24px;margin-top:3px;flex:none}
+.contato-lista div{display:grid}
+.contato-lista strong{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--suave)}
+.contato-lista a{color:inherit;font-weight:700}
+.contato-pag .horario{margin-bottom:26px}
+.contato-pag .mapa{min-height:440px}
+
+/* rodapé */
+.rodape{background:var(--rod);color:#c9ccd0}
+.rodape .xadrez{--xa:#1d1f21;--xb:#d9dbde;height:12px;background-size:12px 12px}
+.rod-grade{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:40px;padding:56px 0 40px}
+.rod-marca img{width:260px;height:auto;margin-bottom:16px}
+.rod-marca p{max-width:380px;font-size:.94rem}
+.rodape h3{font:700 .78rem/1.2 var(--fx);letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.rodape ul li{margin:7px 0}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px;align-items:flex-start}
+.rod-dados .ic{width:18px;height:18px;margin-top:4px;color:var(--rod-ic,var(--cor));flex:none}
+.rod-base{border-top:1px solid rgba(255,255,255,.1);font-size:.82rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 0}
+.tel-flutua{background:var(--cor)!important;color:#fff!important}
+
+@media (max-width:980px){
+  .empresa-pag,.contato-pag,.motor-pag,.reparos-pag{grid-template-columns:1fr;gap:28px}
+  .rod-grade{grid-template-columns:1fr 1fr}
+  .rod-marca{grid-column:1/-1}
+  .g-ofi{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+}
+@media (max-width:640px){
+  .principais-pag,.reparos,.rod-grade{grid-template-columns:1fr}
+  .lista-motor{columns:1}
+  .g-emp{grid-template-columns:1fr 1fr;grid-template-areas:"g g" "e r" "e n"}
+  .g-ofi{grid-auto-rows:150px}
+  .g-ofi .f-panorama{grid-row:span 2}
+  .horario th,.horario td{padding-right:8px;font-size:.92rem}
+  .contato-pag .mapa{min-height:300px}
+  .marca img{width:180px}
+}
