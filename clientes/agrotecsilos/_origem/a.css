@@ -1,0 +1,19 @@
+/* A "Pós-colheita": clara, duas fotos de obra sobrepostas */
+.hero{background:linear-gradient(180deg,var(--claro),#fff);overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(44px,6vw,80px) 0}
+.hero h1{color:var(--escuro)}
+.hero h1::after{content:"";display:block;width:0;height:0;margin-top:18px;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:20px solid var(--laranja)}
+.lead{font-size:1.12rem;color:var(--suave);max-width:560px}
+.hero .btn-linha{color:var(--cor);border-color:var(--cor)}
+.hero-fotos{position:relative;padding:0 0 60px 60px}
+.hf-1{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;box-shadow:0 30px 60px rgba(15,42,22,.18)}
+.hf-2{position:absolute;left:0;bottom:0;width:44%;aspect-ratio:1;object-fit:cover;border-radius:8px;border:6px solid #fff;box-shadow:0 20px 40px rgba(15,42,22,.2)}
+.hero-selo{position:absolute;right:-10px;top:24px;background:var(--laranja);color:#1d1203;padding:12px 16px;border-radius:6px;font-size:.84rem;max-width:200px;box-shadow:0 12px 30px rgba(0,0,0,.15)}
+.hero-selo b{display:block;font:800 1.05rem var(--ft)}
+.fluxo-sec{background:#fff;border-top:1px solid var(--linha)}
+.destaques-sec{background:var(--claro)}
+.dif-home{background:#fff}
+.dif-home-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.dif-home img{width:100%;border-radius:8px}
+.dif-home p:not(.sobre){color:var(--suave)}
+@media (max-width:860px){.hero-in,.dif-home-in{grid-template-columns:1fr}.hero-fotos{padding:0 0 40px 30px}.hero-selo{right:0}}
