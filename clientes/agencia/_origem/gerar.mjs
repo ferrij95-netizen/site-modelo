@@ -2,6 +2,8 @@
 // Rodar depois de mudar qualquer texto: node clientes/agencia/_origem/gerar.mjs
 //
 // Fotos de banco (public/assets/img/hero-pessoa, sobre-*, proc-*, set-*): Unsplash, Unsplash License (uso livre, sem atribuição obrigatória).
+// Fotos do mosaico do topo (hero-*.webp): hero-linha-producao e hero-empilhadeira = USDA via rawpixel (CC0, ids 3307063 e 3306981); hero-colheita = rawpixel 6036711 (CC0);
+// hero-aperto-de-mao = Unsplash photo-1521791136064-7986c2920216; hero-obra = Unsplash photo-1541888946425-d81bb19240f5 (licença Unsplash). Fotos de banco: ninguém é equipe ou cliente da Overtus.
 //   hero-pessoa  https://unsplash.com/photos/1507003211169-0a1dd7228f2d
 //   sobre-equipe https://unsplash.com/photos/1521737711867-e3b97375f902
 //   sobre-reuniao https://unsplash.com/photos/1551836022-d5d88e9218df
@@ -227,17 +229,17 @@ P.index = `<section class="hero">
       <div class="acoes">${agendar()}<a class="btn btn-sec" href="${L('projetos')}">Ver projetos</a></div>
     </div>
     <div class="mosaico" aria-label="Fotos de empresas em operação e prints de sites desenvolvidos pela Overtus">
-      <div class="m-a">${img('hero-pessoa', 'Profissional de terno em escritório', 'loading="eager"')}</div>
-      <div class="m-b">${img('proc-fabrica', 'Linha de produção de uma fábrica', 'loading="eager" fetchpriority="high"')}</div>
+      <div class="m-a">${img('hero-aperto-de-mao', 'Aperto de mãos fechando um negócio', 'loading="eager"')}</div>
+      <div class="m-b">${img('hero-linha-producao', 'Linha de produção de uma indústria de alimentos', 'loading="eager" fetchpriority="high"')}</div>
       <div class="m-c">${img('sobre-reuniao', 'Reunião de trabalho', 'loading="eager"')}</div>
       <div class="m-d forma forma-q4"></div>
       <div class="m-e">${tela('p-texian', 'Site de engenharia e montagem industrial', '', 'loading="eager"')}</div>
-      <div class="m-f">${img('set-escritorio', 'Escritório', 'loading="eager"')}</div>
+      <div class="m-f">${img('hero-colheita', 'Colheitadeira em lavoura', 'loading="eager"')}</div>
       <div class="m-g forma forma-mist forma-c"></div>
       <div class="m-h forma forma-q1"></div>
-      <div class="m-i">${img('proc-solda', 'Soldador em uma indústria', 'loading="eager"')}</div>
+      <div class="m-i">${img('hero-obra', 'Equipe em obra de construção', 'loading="eager"')}</div>
       <div class="m-j">${tela('p-engenho-am', 'Site de beneficiamento de arroz', '', 'loading="eager"')}</div>
-      <div class="m-k">${img('set-distribuicao', 'Galpão de distribuição', 'loading="eager"')}</div>
+      <div class="m-k">${img('hero-empilhadeira', 'Empilhadeira em centro de distribuição', 'loading="eager"')}</div>
     </div>
   </div>
 </section>
