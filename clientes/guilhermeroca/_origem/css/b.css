@@ -1,0 +1,126 @@
+/* Guilherme Roça B "Noturno": azul-marinho #002C53 dominante, foto P&B do centro cirúrgico, condensada e firme. */
+:root{--cor:#3d84bd;--cor-esc:#002C53;--acento:#8DADCA;--acento-claro:#bcd3e6;--claro:#edf2f6;--tinta:#16222d;--suave:#56636f;--fundo:#f4f6f8;--cartao:#fff;--topo:rgba(0,30,57,.97);--linha:#dbe3ea;--ft:"Barlow Condensed",system-ui,sans-serif;--fx:Barlow,system-ui,sans-serif;--raio:0px}
+body{background:var(--fundo);font-family:var(--fx);color:var(--tinta)}
+h1,h2,h3{font-weight:500!important;letter-spacing:0}
+h2{font-size:clamp(2rem,3.4vw,2.8rem);line-height:1.08;text-transform:none}
+.k{color:var(--cor)}
+.btn{background:#fff;border-color:#fff;color:var(--cor-esc);border-radius:0;font-weight:600}.btn:hover{background:var(--acento-claro);border-color:var(--acento-claro)}
+.btn-linha{background:transparent;color:var(--cor-esc);border-color:var(--cor-esc)}
+main .btn:not(.btn-linha){background:var(--cor-esc);border-color:var(--cor-esc);color:#fff}
+main .btn:not(.btn-linha):hover{background:var(--cor);border-color:var(--cor)}
+.topo{border-bottom-color:rgba(255,255,255,.08)}
+.faixa-topo{background:#001a33}
+.topo .menu a{color:#d4e0ea;font-family:var(--fx);font-weight:500;font-size:.96rem}
+.topo .menu a:hover,.topo .menu a.ativo{color:#fff;background:rgba(255,255,255,.08)}
+.menu-btn{color:#fff!important}
+
+.hero-b{background:#002C53;color:#d4e0ea;overflow:hidden}
+.hero-b-in{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;min-height:min(680px,calc(100vh - 110px))}
+.hero-b-in>div{align-self:center;padding:64px 0;max-width:640px}
+.hero-b .k{color:var(--acento)}
+.hero-b h1{color:#fff;font-size:clamp(2.8rem,5.6vw,5rem);line-height:.98;margin:0 0 .35em;text-transform:uppercase;font-weight:500!important}
+.hero-b-in>div>p:not(.k):not(.bts){font-size:1.12rem;max-width:540px}
+main .hero-b .btn:not(.btn-linha){background:#fff;border-color:#fff;color:var(--cor-esc)}
+.hero-b .btn-linha{color:#fff;border-color:rgba(255,255,255,.5)}.hero-b .btn-linha:hover{background:#fff;color:var(--cor-esc)}
+.hero-b-foto{margin:0;position:relative;margin-right:calc(-1 * max(16px,(100vw - 1180px)/2))}
+.hero-b-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-b-foto::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#002C53 0,rgba(0,44,83,0) 30%)}
+
+.numeros-b{background:#001a33;color:#a9bccd}
+.numeros-b .in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.numeros-b .in>div{padding:24px 22px;border-left:1px solid rgba(255,255,255,.1)}
+.numeros-b .in>div:first-child{border-left:0;padding-left:0}
+.numeros-b b{display:block;font:500 1.8rem/1.1 var(--ft);color:#fff;text-transform:uppercase}
+.numeros-b span{font-size:.88rem}
+
+.pos-b{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;padding:96px 0 72px;align-items:start}
+.pos-b p{color:var(--suave)}
+.etapas-b{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:2px solid var(--cor-esc)}
+.etapas-b li{padding:22px 22px 24px 0;border-bottom:1px solid var(--linha)}
+.etapas-b li:nth-child(odd){border-right:1px solid var(--linha)}
+.etapas-b li:nth-child(even){padding-left:22px}
+.etapas-b .n{font:500 2.2rem/1 var(--ft);color:var(--cor)}
+.etapas-b h3{font-size:1.5rem;margin:.3em 0 .2em;color:var(--cor-esc)}
+.etapas-b p{margin:0;font-size:.94rem}
+
+.ad-b{background:var(--cor-esc);color:#d4e0ea;padding:80px 0}
+.ad-b h2{color:#fff}.ad-b .k{color:var(--acento)}.ad-b .link-seta{color:#fff}
+
+.esp-b{padding:96px 0 80px}
+.esp-b-lista{border-top:2px solid var(--cor-esc)}
+.esp-linha{display:grid;grid-template-columns:60px 260px 1fr 120px 28px;gap:20px;align-items:center;padding:16px 0;border-bottom:1px solid var(--linha);text-decoration:none;color:inherit;transition:background .2s}
+.esp-linha:hover{background:#fff}
+.esp-linha .num{font:500 1.4rem var(--ft);color:var(--cor)}
+.esp-linha b{font:500 1.9rem/1 var(--ft);color:var(--cor-esc);text-transform:uppercase}
+.esp-linha .itens{color:var(--suave);font-size:.9rem}
+.esp-linha img{width:120px;height:80px;object-fit:cover;filter:grayscale(1);transition:filter .3s}
+.esp-linha:hover img{filter:none}
+.esp-linha .ic{color:var(--cor)}
+
+.sobre-b{background:#fff;border-top:1px solid var(--linha);padding:88px 0}
+.sobre-b-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.sobre-b figure{margin:0;background:#0b1520}.sobre-b figure img{width:100%;aspect-ratio:566/800;object-fit:cover}
+
+.depo-b{background:var(--claro);padding:88px 0}
+.depo-b-in{max-width:900px;text-align:center;display:grid;justify-items:center;gap:10px}
+.depo-b blockquote{margin:0}
+.depo-b blockquote p{font:500 clamp(1.5rem,2.6vw,2.1rem)/1.25 var(--ft);color:var(--cor-esc)}
+.depo-b-mais{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;text-align:left;margin-top:12px}
+.depo-b-mais li{border-top:2px solid var(--cor);padding-top:12px;color:var(--suave);font-size:.94rem}
+
+.fora-b{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;padding:96px 0}
+.fora-b figure{margin:0}.fora-b img{width:100%;aspect-ratio:1;object-fit:cover;object-position:left center}
+.fora-b p:not(.k){color:var(--suave)}
+
+.cta-b{background:#001a33;padding:56px 0}
+.cta-b .cta-in{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta-b h2{color:#fff;margin:0;text-transform:uppercase}.cta-b .bts{margin:0}
+main .cta-b .btn:not(.btn-linha){background:#fff;border-color:#fff;color:var(--cor-esc)}
+.cta-b .btn-linha{color:#fff;border-color:rgba(255,255,255,.5)}
+
+.cab-b{position:relative;min-height:360px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#002C53}
+.cab-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.35;filter:grayscale(1)}
+.cab-b .in{position:relative;padding:72px 0 48px}
+.cab-b .in>*{max-width:760px}
+.cab-b .k{color:var(--acento)}
+.cab-b h1{color:#fff;font-size:clamp(2.6rem,5vw,4.2rem);line-height:1;margin:0 0 .3em;text-transform:uppercase}
+.cab-b p:not(.k){color:#d4e0ea;font-size:1.06rem}
+
+.grupo-b{padding:40px 0 16px;scroll-margin-top:120px}
+.grupo-b .grupo-tit{display:flex;align-items:baseline;gap:18px;margin-bottom:16px;flex-wrap:wrap;border-bottom:2px solid var(--cor-esc);padding-bottom:10px}
+.grupo-b .grupo-tit h2{margin:0;text-transform:uppercase}.grupo-b .grupo-tit p{margin:0;color:var(--suave)}
+.procs{display:grid;gap:8px}
+.proc{background:var(--cartao);border:1px solid var(--linha);scroll-margin-top:170px}
+.proc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:20px;padding:16px 22px;font:500 1.45rem var(--ft);color:var(--cor-esc)}
+.proc summary::-webkit-details-marker{display:none}
+.proc summary .num{font:500 1.1rem var(--ft);color:var(--cor);width:30px;flex:none}
+.proc summary b{flex:1;font-weight:500}
+.proc summary .ic{transition:transform .2s;color:var(--cor);flex:none}
+.proc[open] summary .ic{transform:rotate(90deg)}
+.proc-corpo{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:4px 22px 24px 72px}
+.proc-corpo.sem-foto{grid-template-columns:1fr}
+.proc-corpo figure{margin:0}.proc-corpo img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.proc-corpo p{color:var(--suave);margin-top:0}
+
+@media (max-width:1020px){
+  .hero-b-in{grid-template-columns:1fr;gap:0}
+  .hero-b-foto{margin:0 -16px;min-height:380px}
+  .hero-b-foto::before{background:linear-gradient(180deg,#002C53 0,rgba(0,44,83,0) 30%)}
+  .numeros-b .in{grid-template-columns:1fr 1fr}
+  .numeros-b .in>div:nth-child(3){border-left:0;padding-left:0}
+  .pos-b,.sobre-b-in,.fora-b{grid-template-columns:1fr;gap:36px}
+  .esp-linha{grid-template-columns:44px 1fr 90px 24px}
+  .esp-linha .itens{grid-column:2/3;grid-row:2}
+  .esp-linha img{width:90px;height:70px;grid-row:span 2}
+  .proc-corpo{grid-template-columns:160px 1fr;padding-left:22px}
+}
+@media (max-width:640px){
+  .hero-b h1{font-size:2.6rem}
+  .etapas-b{grid-template-columns:1fr}.etapas-b li:nth-child(odd){border-right:0}.etapas-b li:nth-child(even){padding-left:0}
+  .esp-linha{grid-template-columns:36px 1fr 24px}.esp-linha img{display:none}
+  .esp-linha b{font-size:1.5rem}
+  .depo-b-mais{grid-template-columns:1fr}
+  .proc summary{padding:14px 16px;font-size:1.25rem;gap:12px}
+  .proc-corpo{grid-template-columns:1fr;padding:0 16px 16px}.proc-corpo img{aspect-ratio:4/3}
+  .pos-b,.esp-b,.sobre-b,.fora-b,.depo-b,.ad-b{padding:64px 0}
+}
