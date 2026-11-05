@@ -1,0 +1,28 @@
+/* A "Planta": clara, foto da fábrica ao lado do título */
+.hero{background:linear-gradient(180deg,var(--claro),#fff);overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(48px,7vw,88px) 0}
+.hero h1{color:var(--escuro)}
+.hero h1::after{content:"";display:block;width:72px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--cor) 60%,var(--azul) 60%);margin-top:20px}
+.lead{font-size:1.15rem;color:var(--suave);max-width:560px}
+.hero-foto{margin:0;position:relative}
+.hero-foto img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;box-shadow:0 30px 60px rgba(13,42,28,.18)}
+.hero-foto figcaption{position:absolute;left:-22px;bottom:28px;background:#fff;padding:14px 18px;border-radius:8px;box-shadow:0 14px 34px rgba(13,42,28,.16);font-size:.88rem;color:var(--suave);border-left:4px solid var(--cor)}
+.hero-foto figcaption b{display:block;font:800 1.3rem var(--ft);color:var(--tinta)}
+.cats-home{background:#fff}
+.cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.cats a{display:flex;flex-direction:column;height:100%;padding:18px;border:1px solid var(--linha);border-radius:8px;text-decoration:none;color:var(--tinta);transition:border-color .2s,box-shadow .2s,transform .2s}
+.cats a:hover{border-color:var(--cor);transform:translateY(-3px);box-shadow:0 16px 36px rgba(13,42,28,.1)}
+.cats-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:16px}
+.cats-fotos img{width:100%;aspect-ratio:1;object-fit:contain}
+.cats h3{margin:0 0 6px;font-size:1.1rem}
+.cats p{margin:0 0 14px;color:var(--suave);font-size:.9rem;flex:1}
+.cats .link-seta{font-size:.9rem}
+.fabs-home{background:var(--claro)}
+.clientes-sec{border-top:1px solid var(--linha)}
+@media (max-width:1180px){.cats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){
+  .hero-in{grid-template-columns:1fr}
+  .hero-foto figcaption{left:12px}
+  .cats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){.cats{grid-template-columns:1fr}}
