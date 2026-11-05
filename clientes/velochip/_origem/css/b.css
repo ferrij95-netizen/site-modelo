@@ -1,0 +1,68 @@
+/* Versão B "Circuito": parte da arte de circuito do próprio site da Velochip, em azul-marinho, alternando faixas escuras e claras. Títulos em Tektur (letra técnica, de painel), texto em Nunito (arredondada como a marca). */
+:root{--cor:#d7141f;--cor-esc:#b00f18;--kc:#d7141f;--graf:#0f2a4a;--marinho:#0b2240;--ciano:#5fd3e6;--tinta:#1a2533;--suave:#5a6676;--fundo:#fff;--topo:rgba(11,34,64,.97);--topo-solido:#0b2240;--topo-h:68px;--linha:#dde3ea;--rod:#081a31;--faixa:#0b2240;--sobre-faixa:#fff;--ft:'Tektur',system-ui,sans-serif;--fx:'Nunito',system-ui,sans-serif;--fm:'Tektur',system-ui,sans-serif;--raio:2px;--cor-rod:#5fd3e6;--cod:#d7141f}
+body{font-family:var(--fx)}
+h1,h2,h3{font-family:var(--ft);font-weight:700;color:var(--graf);line-height:1.08;letter-spacing:-.01em}
+.btn{background:var(--cor);color:#fff;border-color:var(--cor);font-weight:800}
+.btn:hover{background:var(--cor-esc);border-color:var(--cor-esc)}
+.btn-linha{background:transparent;color:var(--graf);border-color:var(--graf)}
+.btn-linha:hover{background:var(--graf);color:#fff}
+.topo .menu a{color:#d8e3ef}
+.topo .menu a:hover,.topo .menu a.ativo{color:#fff}
+.topo .menu a.ativo{box-shadow:inset 0 -2px 0 var(--ciano)}
+.menu-btn{color:#fff}
+.link-seta{color:var(--cor-esc);font-weight:800}
+.k{letter-spacing:.12em}
+
+.hero-b{position:relative;background:var(--marinho);color:#fff;overflow:hidden;min-height:min(78vh,640px);display:flex;align-items:flex-end}
+.hero-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.95}
+.hero-b::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,34,64,.96) 18%,rgba(11,34,64,.55) 55%,rgba(11,34,64,.1))}
+.hero-b-in{position:relative;z-index:1;padding:200px 0 56px}
+.hero-b .k{color:var(--ciano)}
+.hero-b h1{color:#fff;font-size:clamp(2.3rem,5.4vw,4.4rem);max-width:900px;margin-bottom:18px}
+.hero-b-in>p:not(.k):not(.bts){font-size:1.15rem;max-width:640px;color:#d8e3ef;margin-bottom:26px}
+.hero-b .btn-linha,.pano-b .btn-linha{color:#fff;border-color:rgba(255,255,255,.7)}
+.hero-b .btn-linha:hover,.pano-b .btn-linha:hover{background:#fff;color:var(--marinho)}
+.selo-b{background:var(--cor);color:#fff}
+.selo-b-in{display:grid;grid-template-columns:repeat(4,1fr)}
+.selo-b p{margin:0;padding:24px 20px;display:grid;gap:6px}
+.selo-b p+p{border-left:1px solid rgba(255,255,255,.3)}
+.selo-b b{font:700 clamp(1.6rem,3vw,2.3rem)/1 var(--ft)}
+.selo-b span{font-size:.92rem;opacity:.92}
+.sist-b{padding:80px 0}
+.sist-linhas .sis{grid-template-columns:190px 1fr;align-items:baseline}
+.sist-linhas .cod,.sist-pag .cod{font-size:2.2rem;letter-spacing:.02em;margin:0}
+.fotos-b-g{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fotos-b-g img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--raio)}
+.fotos-b-g .fb2{margin-top:48px}
+.fotos-b .pilares{grid-template-columns:1fr;gap:18px;margin-top:26px}
+.pano-b{position:relative;color:#fff;background:var(--marinho)}
+.pano-b>img{width:100%;height:clamp(360px,44vw,560px);object-fit:cover;opacity:.55}
+.pano-b-in{position:absolute;left:0;right:0;bottom:44px}
+.pano-b .k{color:var(--ciano)}
+.pano-b h2{color:#fff;font-size:clamp(1.8rem,3.6vw,2.8rem);max-width:640px;margin-bottom:20px}
+.loja-b{padding:80px 0}
+.loja-b>div:first-child{background:var(--fundo-2,#f2f5f9);padding:36px;border-left:4px solid var(--cor)}
+
+.cab-b{background:var(--marinho);color:#fff;background-image:linear-gradient(rgba(11,34,64,.9),rgba(11,34,64,.96)),url(/assets/img/circuito.webp);background-size:cover;background-position:center}
+.cab-b-in{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;padding:56px 0}
+.cab-b .k{color:var(--ciano)}
+.cab-b h1{color:#fff;font-size:clamp(2rem,4.2vw,3.3rem)}
+.cab-b figure{margin:0}
+.cab-b figure img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--raio);border:1px solid rgba(95,211,230,.35)}
+.loja-faixa{background:var(--marinho)}
+
+@media (max-width:980px){
+  .cab-b-in{grid-template-columns:1fr;gap:28px}
+  .selo-b-in{grid-template-columns:1fr 1fr}
+  .selo-b p:nth-child(3){border-left:0}
+  .selo-b p:nth-child(n+3){border-top:1px solid rgba(255,255,255,.3)}
+}
+@media (max-width:640px){
+  .hero-b-in{padding:150px 0 40px}
+  .sist-b,.loja-b{padding:56px 0}
+  .sist-linhas .sis{grid-template-columns:1fr}
+  .sist-linhas .cod,.sist-pag .cod{font-size:1.7rem}
+  .fotos-b-g .fb2{margin-top:28px}
+  .loja-b>div:first-child{padding:22px}
+  .pano-b-in{bottom:26px}
+}
