@@ -40,8 +40,8 @@ em { font-style: normal; color: var(--navy); font-weight: 600; }
 .topo { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .2s; }
 .topo.rolou { border-bottom-color: var(--line-2); }
 .topo .in { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 88px; position: relative; max-width: 1400px; }
-.marca { display: inline-flex; align-items: center; }
-.marca img { height: 34px; width: auto; display: block; }
+.marca { display: inline-flex; align-items: center; flex: none; }
+.marca img { height: 34px; width: auto; max-width: none; display: block; }
 .topo nav { display: flex; align-items: center; gap: 4px; }
 .topo nav a { font-size: 14.5px; font-weight: 500; padding: 8px 12px; border-radius: 999px; color: var(--ink); white-space: nowrap; transition: background .15s; }
 .topo nav a:hover { background: var(--panel-2); }
@@ -50,7 +50,8 @@ em { font-style: normal; color: var(--navy); font-weight: 600; }
 .topo-mail { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--ink); white-space: nowrap; }
 .topo-mail small { font-weight: 400; color: var(--muted); font-size: 13px; }
 .topo-mail svg { width: 18px; height: 18px; color: var(--navy); }
-.menu-btn { display: none; width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line); place-items: center; }
+.so-cel { display: none; }
+.menu-btn { display: none; flex: none; width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line); place-items: center; }
 .menu-btn span { display: block; width: 18px; height: 1.6px; background: var(--ink); margin: 2.4px auto; transition: transform .2s, opacity .2s; }
 .menu-btn em { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
@@ -397,6 +398,9 @@ em { font-style: normal; color: var(--navy); font-weight: 600; }
 }
 @media (max-width: 600px) {
   .in { padding: 0 16px; }
+  .marca img { height: 30px; }
+  .so-pc { display: none; }
+  .so-cel { display: inline; }
   .folha { margin: 6px; border-radius: 18px; }
   h1 { font-size: clamp(32px, 9vw, 40px); }
   .grupos, .setores-faixa, .projs, .outros, .campos-2, .ab { grid-template-columns: 1fr; }

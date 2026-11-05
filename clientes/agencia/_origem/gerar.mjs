@@ -133,7 +133,7 @@ const topo = slug => `<header class="topo">
     <nav id="nav">${menu.map(([s, t]) => `<a href="${L(s)}"${slug === s || slug.startsWith(s + '/') ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav>
     <div class="topo-acoes">
       <a class="topo-mail" href="mailto:${site.email}">${iMail}<span>${site.email}</span></a>
-      ${agendar('Agendar conversa', 'btn btn-prim btn-sm')}
+      ${agendar('<span class="so-pc">Agendar conversa</span><span class="so-cel">Agendar</span>', 'btn btn-prim btn-sm')}
       <button class="menu-btn" data-menu aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span><em>Menu</em></button>
     </div>
   </div>
