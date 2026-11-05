@@ -1,0 +1,83 @@
+/* Versão B "Ouro sobre preto": escura, preto e dourado como o logo, com os martelos cruzados da marca. Títulos em Bricolage Grotesque, texto em Figtree. */
+:root{--cor:#d4b13f;--cor-esc:#e6c65a;--sobre-cor:#121211;--kc:#d4b13f;--ouro:#d4b13f;--tinta:#ece8dc;--suave:#a9a597;--fundo:#0f0f0e;--cartao:#181816;--topo:rgba(12,12,11,.95);--topo-solido:#0c0c0b;--topo-h:66px;--linha:#2c2b27;--linha-topo:#22211e;--rod:#080808;--ft:'Bricolage Grotesque',system-ui,sans-serif;--fx:'Figtree',system-ui,sans-serif;--raio:4px}
+h1,h2,h3{font-weight:700;letter-spacing:-.02em;color:#f3efe2}
+h3{font-size:1.3rem}
+a{color:inherit}
+.btn{color:#121211}
+.btn-linha{border-color:#5a574c;color:#f3efe2;background:transparent}
+.btn-linha:hover{border-color:var(--ouro);background:transparent;color:var(--ouro)}
+.menu a{color:#d6d2c5}
+.menu a:hover,.menu a.ativo{color:var(--ouro)}
+.menu-btn{color:#f3efe2}
+.link-seta{color:var(--ouro)}
+.form input,.form select,.form textarea{background:#161614;color:#f3efe2;border-color:#3a3934}
+.form label{color:#d6d2c5}
+.chips li{border-color:#3a3934}
+
+.hero-b{position:relative;min-height:min(88vh,760px);display:flex;align-items:flex-end;overflow:hidden}
+.hero-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 30%}
+.hero-b::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,9,.94) 0,rgba(10,10,9,.82) 38%,rgba(10,10,9,.25) 75%),linear-gradient(0deg,rgba(10,10,9,.9),transparent 45%)}
+.hero-b-in{position:relative;z-index:1;padding:90px 0 70px;max-width:1180px}
+.hero-b .martelos{width:74px;margin-bottom:20px}
+.hero-b h1{font-size:clamp(2.8rem,6.6vw,5.4rem);line-height:.98;margin-bottom:22px;max-width:760px}
+.hero-b h1 em{font-style:normal;color:var(--ouro)}
+.hero-b-in>p:not(.k):not(.bts){font-size:1.14rem;color:#d6d2c5;max-width:520px;margin-bottom:28px}
+
+.servs-b{padding:84px 0 70px}
+.servs-b-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.serv-b{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:250px;padding:24px;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);text-decoration:none;overflow:hidden}
+.serv-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;transition:opacity .25s,transform .4s}
+.serv-b:hover>img{opacity:.55;transform:scale(1.03)}
+.serv-b::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,12,11,.95) 15%,transparent 85%)}
+.serv-b>*:not(img){position:relative}
+.serv-b .n{position:absolute;top:20px;right:22px;font:700 .85rem/1 var(--fx);letter-spacing:.14em;color:var(--ouro)}
+.serv-b h3{margin-bottom:6px}
+.serv-b p{color:#bcb8aa;margin:0;font-size:.95rem}
+.serv-b:not(.com-foto){border-color:#3d3a2c;background:linear-gradient(160deg,#1c1b16,#121210)}
+
+.ad-b{display:grid;grid-template-columns:.8fr 2fr;gap:40px;align-items:center;padding:30px 0 80px}
+.ad-b h2{font-size:clamp(1.9rem,3.4vw,2.6rem)}
+.ad-b-txt p:not(.k){color:var(--suave)}
+.ad-b-pares{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+.citacao-b{background:#14130f;border-top:1px solid #2f2c20;border-bottom:1px solid #2f2c20;padding:70px 0;text-align:center}
+.citacao-b img{width:60px;margin:0 auto 20px}
+.citacao-b blockquote{margin:0 auto;max-width:880px;font:600 clamp(1.4rem,2.8vw,2.1rem)/1.3 var(--ft);color:#f3efe2;letter-spacing:-.01em}
+.citacao-b .assin{margin-top:20px;color:var(--ouro);font-size:.9rem;letter-spacing:.12em;text-transform:uppercase}
+
+.fotos-b{display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:center;padding:84px 0}
+.fotos-b-grade{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.fotos-b-grade img{width:100%;height:100%;object-fit:cover;border-radius:var(--raio)}
+.fotos-b-grade .f1{grid-column:1/-1}
+.fotos-b-grade .f1 img{aspect-ratio:16/8}
+.fotos-b-grade .f2 img,.fotos-b-grade .f3 img{aspect-ratio:4/3}
+.fotos-b h2{font-size:clamp(1.8rem,3.2vw,2.5rem)}
+.fotos-b-txt>p:not(.k){color:var(--suave)}
+.lista-check{margin:18px 0 22px}
+.lista-check .ic{color:var(--ouro)}
+
+.cta-b{background:var(--ouro);color:#121211;padding:56px 0}
+.cta-b-in{display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap}
+.cta-b h2{color:#121211;font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:.2em}
+.cta-b p{margin:0;overflow-wrap:anywhere}
+.cta-b .btn{background:#121211;border-color:#121211;color:var(--ouro)}
+.cta-b .btn-linha{background:transparent;color:#121211;border-color:#121211}
+
+.cab-b{position:relative;min-height:340px;display:flex;align-items:flex-end;overflow:hidden}
+.cab-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cab-b::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,12,11,.96) 10%,rgba(12,12,11,.55))}
+.cab-b-in{position:relative;z-index:1;padding:80px 0 40px}
+.cab-b h1{font-size:clamp(2.3rem,5vw,3.8rem);margin:0;max-width:820px}
+.serv-indice a{border-color:#3a3934}
+.redes a{border-color:#3a3934}
+
+@media (max-width:980px){
+  .servs-b-grade{grid-template-columns:1fr 1fr}
+  .ad-b,.fotos-b{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .servs-b-grade,.ad-b-pares{grid-template-columns:1fr}
+  .hero-b-in{padding:70px 0 46px}
+  .serv-b{min-height:200px}
+  .servs-b,.fotos-b{padding:56px 0}
+}
