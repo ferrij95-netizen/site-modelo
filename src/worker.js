@@ -86,6 +86,10 @@ export default {
     const overtus = host.endsWith('.overtus.com.br');
 
     if (overtus && sub === 'hub') return hub(request, env, url);
+    // Domínio principal (rotas de zona overtus.com.br/* e www.overtus.com.br/*): o site da agência (clientes/agencia), o mesmo
+    // de agencia.overtus.com.br, com a vitrine em /cases/. O endereço sem www continua redirecionando para o www.
+    if (host === 'overtus.com.br') return Response.redirect(`https://www.overtus.com.br${url.pathname}${url.search}`, 301);
+    if (host === 'www.overtus.com.br') return servir(env, 'agencia', url, request);
 
     const cliente = overtus && sub !== 'site-modelo' ? sub : null;
 
@@ -134,3 +138,4 @@ async function servir(env, cliente, url, request, fresco = false) {
   }
   return res;
 }
+

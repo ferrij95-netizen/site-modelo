@@ -204,6 +204,9 @@ const abasEtapas = () => `<div class="painel">
 
 const gradeProjetos = (lista = projetos) => `<div class="projs">${lista.map(p => {
   const f = fatos(p);
+  // Link direto para a versão escolhida na vitrine (nunca a página de escolha A/B), quando o site está lá.
+  const escolhido = cases.find(x => x[0] === p[0]);
+  if (escolhido) f.url = `https://${escolhido[0]}.overtus.com.br/${escolhido[1] ? escolhido[1] + '/' : ''}`;
   return `<article class="proj" data-setor="${p[1]}">
     <a class="proj-tela" href="${f.url}" target="_blank" rel="noopener" aria-label="Abrir o projeto de ${esc(p[2].toLowerCase())} em nova aba">${tela(imgProjeto(p), `Página inicial do projeto de ${p[2].toLowerCase()}`, p[0] + '.overtus.com.br')}</a>
     <div><span class="rotulo">Estudo de redesenho · ${setorDe[p[1]].nome}</span><h3>${p[2]}</h3><div class="chips">${f.tags.map(t => `<span class="chip">${t}</span>`).join('')}</div></div>
@@ -268,7 +271,7 @@ P.index = `<section class="hero">
 </section>
 <section class="secao" style="padding-top:0">
   <div class="in">
-    <div class="sec-cab"><div><span class="rotulo">Portfólio</span><h2>Projetos desenvolvidos</h2><p class="lead">${projetos.length} estudos de redesenho em ${setores.length} setores. Clique para navegar no site.</p></div><a class="link" href="${L('projetos')}">Todos os projetos ${seta}</a></div>
+    <div class="sec-cab"><div><span class="rotulo">Portfólio</span><h2>Projetos desenvolvidos</h2><p class="lead">${cases.length} sites refeitos pela Overtus, de indústrias a oficinas. Clique para navegar no site.</p></div><a class="link" href="${L('projetos')}">Todos os projetos ${seta}</a></div>
     ${gradeProjetos(destaques)}
     <p class="legenda">${legendaProjetos}</p>
   </div>
@@ -345,24 +348,6 @@ ${cta()}`;
 });
 
 // ---------- Projetos ----------
-P.projetos = `${cabeca('Projetos desenvolvidos', `${projetos.length} estudos de redesenho criados pela Overtus para empresas de ${setores.length} setores. Cada projeto tem identidade visual própria, várias páginas e versão em mais de um idioma quando a empresa atua fora do país. Clique em um projeto para navegar no site.`, [[null, 'Projetos']])}
-<section class="secao" style="padding-top:0">
-  <div class="in">
-    <div class="filtro" role="group" aria-label="Filtrar projetos por setor" data-filtro hidden><button type="button" aria-pressed="true" data-setor="">Todos <i>${projetos.length}</i></button>${setores.map(s => `<button type="button" aria-pressed="false" data-setor="${s.slug}">${s.nome} <i>${quantos(s.slug)}</i></button>`).join('')}</div>
-    ${gradeProjetos()}
-    <p class="legenda">${legendaProjetos}</p>
-  </div>
-</section>
-<section class="secao" style="padding-top:0">
-  <div class="in">
-    <div class="painel"><div class="duas" style="padding:20px">
-      <div><span class="rotulo">Sempre duas versões</span><h2>O mesmo projeto, dois caminhos.</h2><p class="lead" style="margin-top:14px">Em cada estudo entregamos duas versões coerentes com a marca, uma clara e outra escura, ou uma mais institucional e outra mais técnica. A empresa escolhe com o site navegável na mão.</p></div>
-      ${duasVersoes('dht')}
-    </div></div>
-  </div>
-</section>
-${cta()}`;
-
 // ---------- Setores (visão geral) ----------
 P.setores = `${cabeca('Especialistas na forma como o seu setor vende.', 'Cada setor tem um comprador diferente, um caminho diferente até o pedido e um jeito próprio de mostrar a empresa. Por isso o site, os sistemas e a rotina comercial partem do setor, não de um modelo.', [[null, 'Setores']])}
 <section class="secao" style="padding-top:0">
@@ -541,15 +526,15 @@ P.contato = `${cabeca('Agende uma conversa.', chamada.texto, [[null, 'Contato']]
   </div>
 </section>`;
 
-// ---------- Cases (vitrine: uma versão por site, link direto para ela) ----------
+// ---------- Projetos (vitrine de cases: uma versão por site, link direto para ela) ----------
 // Prints em faixas de 10 (cases-prints.mjs): cada cartão mostra um pedaço da faixa, deslocado por --k.
 const POR_FAIXA = 10;
 const urlCase = ([c, v]) => `https://${c}.overtus.com.br/${v ? v + '/' : ''}`;
 const quantosCases = g => cases.filter(x => x[2] === g).length;
 const ingles = cases.filter(x => /EUA/.test(x[4])).length;
-P.cases = `<section class="cabeca cases-cab">
+P.projetos = `<section class="cabeca cases-cab">
   <div class="in">
-    ${trilha([[null, 'Cases']])}
+    ${trilha([[null, 'Projetos']])}
     <span class="rotulo">Portfólio Overtus</span>
     <h1>Sites que a Overtus <em>refez</em>.</h1>
     <p class="lead">${cases.length} sites completos, cada um com a identidade da própria empresa: logo, cores, fotos e produtos reais, várias páginas e versão para celular. Clique em qualquer um para navegar no site no ar.</p>
@@ -582,4 +567,7 @@ for (const [slug, corpo] of Object.entries(P)) {
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), documento({ slug, corpo: `${topo(slug)}\n<main>\n${corpo}\n</main>\n${rodape()}` }));
 }
+// Endereço antigo da vitrine (/cases/, 2026-11-05) leva para /projetos/.
+fs.mkdirSync(path.join(pub, 'cases'), { recursive: true });
+fs.writeFileSync(path.join(pub, 'cases', 'index.html'), '<!doctype html><meta charset="utf-8"><title>Projetos · Overtus</title><meta name="robots" content="noindex"><link rel="canonical" href="/projetos/"><meta http-equiv="refresh" content="0; url=/projetos/"><a href="/projetos/">Projetos</a>\n');
 console.log(`agencia: ${Object.keys(P).length} páginas`);

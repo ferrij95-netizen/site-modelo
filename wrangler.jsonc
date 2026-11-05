@@ -102,6 +102,9 @@
     { "pattern": "famop.overtus.com.br", "custom_domain": true },
     // A zona overtus.com.br aceita no máximo 100 custom domains (limite da Cloudflare). Os 89 acima ficam como estão;
     // do Alumac em diante, cada cliente entra como rota de zona (limite 1.000), servida pelo DNS curinga *.overtus.com.br.
+    // Domínio principal: site da agência (o site antigo de agentes de IA não é mais usado, pedido do Joao em 2026-11-05).
+    { "pattern": "www.overtus.com.br/*", "zone_name": "overtus.com.br" },
+    { "pattern": "overtus.com.br/*", "zone_name": "overtus.com.br" },
     // Cliente novo: acrescente no fim { "pattern": "<cliente>.overtus.com.br/*", "zone_name": "overtus.com.br" }.
     { "pattern": "alumac.overtus.com.br/*", "zone_name": "overtus.com.br" },
     { "pattern": "gastaldischultz.overtus.com.br/*", "zone_name": "overtus.com.br" },
