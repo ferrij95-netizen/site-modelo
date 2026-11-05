@@ -1,0 +1,35 @@
+/* A "Muro": amarelo com bolinhas brancas do muro da escola, azul do logo */
+.hero-a{background:var(--amar) radial-gradient(circle,rgba(255,255,255,.9) 9px,transparent 10px) 0 0/58px 58px;padding:60px 0 80px}
+.hero-a-in{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.hero-a-txt{background:#fff;padding:40px;border-radius:24px;box-shadow:0 18px 40px -24px rgba(0,59,120,.45)}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.12rem}
+.hero-a-foto{margin:0}
+.hero-a-foto img{width:100%;aspect-ratio:16/11;object-fit:cover;border-radius:24px;border:8px solid #fff;box-shadow:0 18px 40px -24px rgba(0,59,120,.45)}
+.difer-a{padding:80px 0 50px}
+.bolhas{display:flex;flex-wrap:wrap;gap:14px}
+.bolhas li{padding:16px 24px;border-radius:99px;font:700 1.1rem var(--ft);color:var(--azul-esc);background:var(--azul-cl)}
+.bolhas .b1{background:var(--amar)}.bolhas .b2{background:var(--verde-cl)}.bolhas .b3{background:#FDECEB}.bolhas .b4{background:var(--azul);color:#fff}.bolhas .b5{background:var(--amar-cl)}.bolhas .b6{background:var(--verde);color:#fff}
+.prop-a{background:var(--azul);color:#fff;padding:72px 0}
+.prop-a-in{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.prop-a h2{color:#fff}.prop-a .k{color:var(--amar)}.prop-a .lista-check .ic{color:var(--amar)}.prop-a .link-seta{color:var(--amar)}
+.mosaico{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mosaico img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}
+.mosaico img:nth-child(1){border-radius:50% 16px 16px 16px}.mosaico img:nth-child(4){border-radius:16px 16px 50% 16px}
+.turnos-a{padding:72px 0 30px}
+.esp-a{padding:50px 0 70px}
+.equipe-a{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;padding:40px;margin-bottom:70px;border-radius:24px;background:var(--verde-cl)}
+.visita-a{background:var(--amar) radial-gradient(circle,rgba(255,255,255,.9) 7px,transparent 8px) 0 0/46px 46px;padding:56px 0}
+.visita-a-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;background:#fff;padding:36px 40px;border-radius:24px}
+.visita-a h2{margin:0 0 .2em}.visita-a p{margin:0}
+.cab-a{background:var(--amar) radial-gradient(circle,rgba(255,255,255,.85) 7px,transparent 8px) 0 0/46px 46px}
+.cab-a-in{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:44px 0}
+.cab-a-in>div{background:#fff;padding:30px 34px;border-radius:20px}
+.cab-a h1{margin:0;font-size:clamp(1.9rem,3.6vw,2.9rem)}
+.cab-a figure{margin:0}
+.cab-a img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:20px;border:6px solid #fff}
+@media (max-width:860px){
+  .hero-a-in,.prop-a-in,.equipe-a,.cab-a-in{grid-template-columns:1fr;gap:28px}
+  .hero-a-txt{padding:28px}
+  .equipe-a{padding:28px}
+  .bolhas li{font-size:1rem;padding:12px 18px}
+}

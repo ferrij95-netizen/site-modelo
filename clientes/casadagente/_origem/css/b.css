@@ -1,0 +1,46 @@
+/* B "Quintal": verde da árvore do logo, fotos grandes, natureza */
+.v-b{--cor:var(--verde-esc);--cor-esc:#214d15}
+.v-b .faixa-topo{background:var(--verde-esc)}
+.v-b .rodape{background:#1f3f16}
+.v-b .k{color:var(--verde-esc)}
+.v-b .lista-check .ic{color:var(--verde)}
+.hero-b{position:relative;min-height:600px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-b{flex-direction:column;justify-content:flex-end}.hero-b-in{position:relative;padding:60px 0;align-self:stretch}
+.hero-b-caixa{max-width:600px;background:#fff;padding:40px;border-radius:24px 24px 24px 0;border-left:10px solid var(--amar)}
+.hero-b-caixa>p:not(.k):not(.bts){font-size:1.12rem}
+.pilares-b{padding:80px 0 30px}
+.pilares-b .pilares{padding:0}
+.fotos-b{padding:30px 0 60px}
+.fotos-b-in{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:230px 230px;gap:12px}
+.fotos-b figure{margin:0;position:relative;border-radius:16px;overflow:hidden}
+.fotos-b .fb0{grid-column:span 2;grid-row:span 2}
+.fotos-b img{width:100%;height:100%;object-fit:cover}
+.fotos-b figcaption{position:absolute;left:12px;bottom:12px;background:#fff;padding:5px 12px;border-radius:99px;font-weight:700;font-size:.88rem;color:var(--verde-esc)}
+.dia-b{display:grid;grid-template-columns:1fr 1.6fr;gap:44px;align-items:center;padding:50px 0}
+.dia-b .horarios{margin:0}.dia-b .horarios b{font-size:1.3rem}
+.valores-b{background:var(--verde-esc);color:#fff;padding:64px 0;text-align:center}
+.valores-b .k{color:var(--amar)}
+.valores-b .valores li{background:rgba(255,255,255,.12);color:#fff}
+.valores-b .frase{color:#fff;max-width:820px;margin:20px auto 0}
+.adapt-b{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;padding:80px 0}
+.adapt-b figure{margin:0}
+.adapt-b img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px 24px 24px 0}
+.visita-b{background:var(--amar);padding:56px 0}
+.visita-b-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.visita-b h2{margin:0}.visita-b p{margin:0}.visita-b .k{color:var(--azul-esc)}
+.visita-b .btn-linha{background:transparent}
+.cab-b{position:relative;min-height:340px;display:flex;align-items:flex-end;background:var(--verde-esc);overflow:hidden}
+.cab-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cab-b{flex-direction:column;justify-content:flex-end}.cab-b-in{position:relative;padding:40px 0;align-self:stretch}
+.cab-b-caixa{display:inline-block;max-width:680px;background:#fff;padding:26px 32px;border-radius:20px 20px 20px 0;border-left:8px solid var(--amar)}
+.cab-b h1{margin:0;font-size:clamp(1.8rem,3.4vw,2.7rem)}
+@media (max-width:860px){
+  .hero-b{min-height:520px}
+  .hero-b-caixa{padding:26px}
+  .fotos-b-in{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .fotos-b figure{aspect-ratio:4/3}
+  .fotos-b .fb0{grid-row:auto}
+  .dia-b,.adapt-b{grid-template-columns:1fr;gap:26px}
+  .cab-b{min-height:260px}
+}
