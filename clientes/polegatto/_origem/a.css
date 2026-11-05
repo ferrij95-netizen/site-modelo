@@ -1,0 +1,26 @@
+/* A "Oficina": clara, prensa em recorte ao lado do título */
+.hero{background:radial-gradient(circle at 78% 40%,#fff 0,#f3f5f1 55%);overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(44px,6vw,80px) 0}
+.hero h1{color:var(--escuro)}
+.hero h1::after{content:"";display:block;width:84px;height:8px;margin-top:20px;background:repeating-linear-gradient(-45deg,var(--amarelo) 0 8px,var(--escuro) 8px 16px);border-radius:2px}
+.lead{font-size:1.15rem;color:var(--suave);max-width:580px}
+.hero-foto{margin:0;position:relative;max-width:520px;justify-self:center}
+.hero-foto img{width:100%;height:auto;mix-blend-mode:multiply}
+.hero-foto figcaption{position:absolute;right:0;bottom:12%;background:var(--escuro);color:#fff;padding:14px 18px;border-radius:8px;font-size:.88rem;max-width:200px}
+.hero-foto figcaption b{display:block;font:700 1.6rem var(--ft);color:var(--amarelo)}
+.selos-sec{background:#fff;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.selos li{border:0;background:transparent;padding:6px 0}
+.proj-home{background:var(--escuro);color:#fff}
+.proj-home .sobre{color:var(--amarelo)}
+.proj-home p:not(.sobre){color:#c9d1c8}
+.proj-home-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.proj-home .btn{--cor:var(--vivo);--cor-esc:#447f21;margin-top:10px}
+.proj-mini{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.proj-mini img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px}
+.proj-mini img:nth-child(even){margin-top:28px}
+@media (max-width:860px){
+  .hero-in,.proj-home-in{grid-template-columns:1fr}
+  .hero-foto{max-width:420px}
+  .proj-mini{grid-template-columns:1fr 1fr}
+  .proj-mini img:nth-child(even){margin-top:0}
+}
