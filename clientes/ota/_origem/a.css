@@ -1,0 +1,28 @@
+/* A "Chassi": clara, foto do distribuidor ao lado do título */
+.hero{background:linear-gradient(180deg,var(--claro),#fff);overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(48px,7vw,88px) 0}
+.hero h1{color:var(--escuro)}
+.hero h1::after{content:"";display:block;width:72px;height:5px;border-radius:3px;background:var(--cor);margin-top:20px}
+.lead{font-size:1.15rem;color:var(--suave);max-width:560px}
+.hero-bts{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero-foto{margin:0;position:relative}
+.hero-foto img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;box-shadow:0 30px 60px rgba(16,38,27,.18)}
+.hero-foto figcaption{position:absolute;left:-22px;bottom:28px;background:#fff;padding:14px 18px;border-radius:10px;box-shadow:0 14px 34px rgba(16,38,27,.16);max-width:250px;font-size:.88rem;color:var(--suave);border-left:4px solid var(--cor)}
+.hero-foto figcaption b{display:block;font:700 1.1rem var(--ft);color:var(--tinta)}
+.setores-faixa{border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);padding:34px 0;background:#fff}
+.equips-sec{background:#fff}
+.quem-home-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.quem-home p:not(.sobre){color:var(--suave)}
+.quem-fotos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.quem-fotos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px}
+.quem-fotos img:last-child{margin-top:40px}
+.pecas-home{background:var(--escuro);color:#fff}
+.pecas-home .sobre{color:#4fd08d}
+.pecas-home p:not(.sobre){color:#b9c9be}
+.pecas-home .btn-linha{color:#fff;border-color:rgba(255,255,255,.5);background:transparent}
+.pecas-home-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.pecas-home .galeria{grid-template-columns:1fr 1fr}
+@media (max-width:860px){
+  .hero-in,.quem-home-in,.pecas-home-in{grid-template-columns:1fr}
+  .hero-foto figcaption{left:12px}
+}
