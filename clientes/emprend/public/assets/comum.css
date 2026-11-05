@@ -1,0 +1,186 @@
+/* Comum às duas versões da Emprend (topo, cartões, filtro, ficha, contato, rodapé). Cores e fontes em a.css / b.css */
+body{font-family:var(--fx);color:var(--tinta);background:var(--fundo)}
+h1,h2,h3{font-family:var(--ft)}
+.k{display:flex;align-items:center;gap:10px;font:600 .78rem/1.3 var(--fx);letter-spacing:.18em;text-transform:uppercase;color:var(--cor-k);margin:0 0 .9em}
+.tit{margin:0 0 30px;max-width:760px}
+.tit h2{font-size:clamp(1.7rem,3.2vw,2.5rem);margin:0}
+.tit-linha{display:flex;justify-content:space-between;align-items:end;gap:20px;max-width:none;flex-wrap:wrap}
+.bts{display:flex;flex-wrap:wrap;gap:12px;margin:1.4em 0 0}
+.ic.vira{transform:rotate(180deg)}
+section{scroll-margin-top:110px}
+.barras{display:inline-flex;align-items:end;gap:3px;height:16px}
+.barras i{display:block;width:4px;background:var(--verde)}
+.barras i:nth-child(1){height:55%}.barras i:nth-child(2){height:100%}.barras i:nth-child(3){height:75%;background:var(--cor-k)}.barras i:nth-child(4){height:40%;background:var(--cor-k)}
+
+.topo{position:sticky;top:0;z-index:40;background:var(--topo);border-bottom:1px solid var(--linha)}
+.topo-fino{background:var(--fino);color:var(--fino-txt);font-size:.84rem}
+.topo-fino .in{display:flex;gap:26px;align-items:center;min-height:34px}
+.topo-fino a{text-decoration:none;font-weight:600}
+.topo-area{margin-left:auto;display:inline-flex;gap:6px;align-items:center}
+.topo-area .ic{width:16px;height:16px}
+.topo-linha{display:flex;align-items:center;gap:26px;min-height:80px}
+.marca{display:inline-flex;flex:none}
+.marca img{width:auto;height:58px}
+.menu{margin-left:auto}
+.menu ul{display:flex;gap:2px}
+.menu a{display:block;padding:10px 14px;text-decoration:none;font-weight:500;font-size:.98rem}
+.menu a.ativo{color:var(--cor-k);box-shadow:inset 0 -2px 0 var(--verde)}
+.so-cel{display:none}
+.topo-zap{min-height:44px;padding:.5em 1.1em;white-space:nowrap}
+
+/* cartões */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card a:hover{transform:translateY(-3px);box-shadow:0 16px 32px -20px rgba(0,0,0,.55)}
+.card figure{position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--suave)}
+.card figure>img{width:100%;height:100%;object-fit:cover}
+.card-neg{position:absolute;left:0;bottom:0;font:600 .74rem/1 var(--fx);letter-spacing:.14em;text-transform:uppercase;padding:9px 12px}
+.card-venda{background:var(--cor);color:#fff}
+.card-aluguel{background:var(--verde);color:#0b2436}
+.card-txt{padding:16px 18px 20px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card-local{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.65;margin:0}
+.card h3{font-size:1.25rem;margin:0}
+.card-dados{margin:0;font-size:.93rem;opacity:.8}
+.card-preco{margin:auto 0 0;padding-top:12px;display:flex;align-items:baseline;gap:4px;flex-wrap:wrap}
+.card-preco b{font:600 1.35rem/1 var(--ft);color:var(--cor-k)}
+.card-preco small{font-size:.85rem;opacity:.65}
+
+/* filtro sem JS */
+.filtro{border:0;padding:0;margin:0 0 26px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filtro legend{float:left;margin-right:10px;font-weight:600;font-size:.9rem}
+.filtro label{cursor:pointer}
+.filtro input{position:absolute;opacity:0}
+.filtro span{display:inline-block;padding:9px 16px;border:1px solid var(--linha);border-radius:var(--raio);background:var(--cartao);font-weight:500}
+.filtro small{opacity:.6;margin-left:4px}
+.filtro input:checked+span{background:var(--cor);border-color:var(--cor);color:#fff}
+.filtro input:focus-visible+span{outline:2px solid var(--cor);outline-offset:2px}
+.filtro-lista:has(input[value=venda]:checked) .card:not([data-g~=venda]),
+.filtro-lista:has(input[value=aluguel]:checked) .card:not([data-g~=aluguel]),
+.filtro-lista:has(input[value=comercial]:checked) .card:not([data-g~=comercial]),
+.filtro-lista:has(input[value=residencial]:checked) .card:not([data-g~=residencial]),
+.filtro-lista:has(input[value=chacara]:checked) .card:not([data-g~=chacara]){display:none}
+.lista-pag{padding:44px 0 80px}
+.lista-pag .cards{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.pedido{margin-top:50px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:30px 34px;border:1px solid var(--linha);border-radius:var(--raio);background:var(--cartao)}
+.pedido h2{font-size:1.6rem;margin:0 0 .3em}
+.pedido p{margin:0}
+.pedido .bts{margin:0}
+
+/* serviços */
+.servs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.servs li{display:flex;flex-direction:column;gap:12px;padding:20px;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);font:600 1.1rem/1.2 var(--ft)}
+.servs .ic{width:30px;height:30px;color:var(--verde-esc)}
+
+/* fichas cadastrais e área do cliente */
+.fichas{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ficha-doc h3{font-size:1.15rem;margin:0 0 10px}
+.ficha-doc h3 small{display:block;font:400 .86rem/1.3 var(--fx);opacity:.65;margin-top:2px}
+.ficha-doc ul{display:grid;gap:8px}
+.ficha-doc a{display:grid;grid-template-columns:24px 1fr 18px;gap:12px;align-items:center;padding:14px 16px;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);text-decoration:none;transition:border-color .2s}
+.ficha-doc a:hover{border-color:var(--cor-k)}
+.ficha-doc a>.ic:first-child{width:22px;height:22px;color:var(--cor-k)}
+.ficha-doc a>.ic:last-child{width:16px;height:16px;opacity:.5}
+.ficha-doc span{font-size:.82rem;opacity:.85}
+.ficha-doc b{display:block;font-size:1rem;opacity:1}
+.area-cli{display:grid;grid-template-columns:40px 1fr auto;gap:18px;align-items:center;margin:30px 0;padding:22px 26px;border:1px solid var(--linha);border-left:4px solid var(--verde);border-radius:var(--raio);background:var(--cartao)}
+.area-cli>.ic{width:34px;height:34px;color:var(--cor-k)}
+.area-cli h3{font-size:1.2rem;margin:0 0 .2em}
+.area-cli p{margin:0;font-size:.95rem;opacity:.85}
+.area-cli .btn .ic{width:16px;height:16px}
+
+/* ficha do imóvel */
+.ficha{padding:30px 0 80px}
+.voltar a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:.95rem}
+.ficha-grade{display:grid;grid-template-columns:1.15fr 1fr;gap:44px;margin-top:20px;align-items:start}
+.galeria{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.galeria a{display:block;aspect-ratio:1;overflow:hidden;border-radius:var(--raio)}
+.galeria a:first-child{grid-column:span 4;aspect-ratio:3/2}
+.galeria img{width:100%;height:100%;object-fit:cover}
+.ficha h1{font-size:clamp(2rem,3.6vw,2.8rem);margin:.1em 0 .3em}
+.ficha-local{display:flex;gap:8px;align-items:center;margin:0 0 18px;font-weight:600}
+.ficha-local .ic{color:var(--cor-k)}
+.ficha-preco{display:flex;align-items:baseline;gap:6px;margin:0 0 22px;flex-wrap:wrap}
+.ficha-preco b{font:600 clamp(2rem,3.2vw,2.6rem)/1 var(--ft);color:var(--cor-k)}
+.ficha-preco small{opacity:.7}
+.dados{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);margin:0 0 22px}
+.dados div{background:var(--cartao);padding:12px 14px}
+.dados dt{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+.dados dd{margin:2px 0 0;font-weight:600}
+.ficha-desc{max-width:760px;margin-top:44px;font-size:1.05rem}
+.ficha-desc .aviso{font-size:.88rem;opacity:.65;border-top:1px solid var(--linha);padding-top:14px;margin-top:24px}
+
+/* contato, empresa */
+.contato-lista{display:grid;gap:18px}
+.contato-lista li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.contato-lista .ic{width:24px;height:24px;color:var(--cor-k);margin-top:2px}
+.contato-lista strong{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65}
+.contato-lista a{font-weight:600}
+.contato-pag{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;padding:50px 0 40px}
+.contato-pag h2{font-size:1.6rem}
+.anuncie-pag{padding-bottom:50px}
+.mapa-sec{padding:0 0 80px}
+.mapa-sec .mapa,.visita .mapa{width:100%;min-height:320px;border:0;border-radius:var(--raio)}
+.inst{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;padding:56px 0 40px;align-items:center}
+.lead{font-size:1.2rem}
+.frase{font:600 1.35rem/1.35 var(--ft);color:var(--cor-k);border-left:4px solid var(--verde);padding-left:18px}
+.inst-fotos{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;align-items:end}
+.inst-fotos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--raio)}
+.inst-fotos img+img{aspect-ratio:1}
+.inst+.servs{margin-bottom:20px}
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.numeros li{border-top:2px solid var(--verde);padding-top:12px}
+.numeros b{display:block;font:400 2.6rem/1 var(--ft)}
+.numeros span{font-size:.9rem;opacity:.75}
+.visita{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;padding:60px 0 80px;align-items:center}
+
+/* rodapé */
+.rodape{background:var(--rod);color:#e8eef2;padding:60px 0 0}
+.rodape a{color:inherit}
+.rod-grade{display:grid;grid-template-columns:1.1fr 1.2fr 1.4fr .9fr;gap:36px;padding-bottom:44px}
+.rodape h3{font:600 .78rem/1.3 var(--fx);letter-spacing:.16em;text-transform:uppercase;margin:0 0 16px;opacity:.7}
+.rodape ul{display:grid;gap:10px}
+.rod-dados li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.rod-dados .ic{width:18px;height:18px;margin-top:.2em;opacity:.8}
+.rod-dados a{overflow-wrap:anywhere}
+.rod-marca .marca img{height:auto;width:170px;margin-bottom:16px}
+.rod-marca p{opacity:.8;max-width:260px}
+.rod-redes{display:flex;gap:10px}
+.rod-redes a{display:grid;place-items:center;width:40px;height:40px;border:1px solid rgba(255,255,255,.25);border-radius:50%}
+.rod-redes .ic{width:18px;height:18px}
+.rod-base{border-top:1px solid rgba(255,255,255,.14);padding:18px 0;font-size:.84rem;opacity:.7}
+.rod-base .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:1100px){
+  .rod-grade{grid-template-columns:1fr 1fr}
+  .servs{grid-template-columns:repeat(2,1fr)}
+  .topo-linha{gap:14px}
+  .menu a{padding:10px 10px}
+}
+@media (max-width:960px){
+  .topo-fino{display:none}
+  .menu-btn{display:block;margin-left:0}
+  .topo-zap{margin-left:auto}
+  .menu{position:fixed;inset:80px 0 auto 0;background:var(--topo);border-bottom:1px solid var(--linha);display:none;padding:10px 16px 18px;margin:0}
+  .menu-aberto .menu{display:block}
+  .menu ul{flex-direction:column}
+  .so-cel{display:block}
+  .menu a{padding:14px 8px;font-size:1.1rem}
+  .menu a.ativo{box-shadow:inset 3px 0 0 var(--verde);padding-left:14px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .ficha-grade,.contato-pag,.inst,.visita,.pedido{grid-template-columns:1fr}
+  section{scroll-margin-top:90px}
+}
+@media (max-width:560px){
+  .topo-linha{min-height:68px;gap:10px}
+  .menu{inset:68px 0 auto 0}
+  .marca img{height:46px}
+  .topo-zap span{display:none}
+  .topo-zap{padding:.5em .8em}
+  .cards,.fichas{grid-template-columns:1fr}
+  .rod-grade{grid-template-columns:1fr}
+  .numeros{grid-template-columns:1fr 1fr;gap:18px 14px}
+  .numeros b{font-size:2.1rem}
+  .pedido{padding:24px 20px}
+  .area-cli{grid-template-columns:1fr;padding:20px}
+  .galeria{grid-template-columns:repeat(4,1fr)}
+}

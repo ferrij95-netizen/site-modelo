@@ -1,0 +1,57 @@
+/* Versão A "Plano Piloto": clara, azul e verde do logo, céu de Brasília na abertura, barras dos prédios do logo nos títulos. Josefin Sans + Hind */
+:root{--cor:#07517e;--cor-esc:#053c5e;--cor-k:#07517e;--verde:#74b847;--verde-esc:#4f8a2a;--tinta:#16242e;--suave:#e6eef1;--fundo:#f4f7f6;--cartao:#fff;--topo:rgba(255,255,255,.97);--linha:#d9e3e6;--ft:"Josefin Sans",system-ui,sans-serif;--fx:Hind,system-ui,sans-serif;--raio:3px;--rod:#06324e;--fino:#07517e;--fino-txt:#e4eef4}
+h1,h2,h3{font-weight:600;letter-spacing:.01em;line-height:1.08}
+.card h3,.ficha h1,.servs li{text-transform:uppercase;letter-spacing:.04em}
+.hero-a{position:relative;min-height:620px;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero-a>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-a::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,40,62,.85) 0%,rgba(6,40,62,.45) 55%,rgba(6,40,62,.1) 100%),linear-gradient(180deg,rgba(6,40,62,0) 40%,rgba(6,40,62,.8) 100%)}
+.hero-a-in{position:relative;padding:120px 0 46px;display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:end}
+.hero-a .k{color:#cfe8bd}
+.hero-a h1{font-size:clamp(2.3rem,4.8vw,4rem);margin:0 0 .4em;text-transform:uppercase;letter-spacing:.03em;max-width:760px}
+.hero-a-txt>p:not(.k){font-size:1.1rem;max-width:560px;opacity:.92;margin:0}
+.escolha-a{display:grid;background:rgba(255,255,255,.97);color:var(--tinta);border-radius:var(--raio);border-top:4px solid var(--verde)}
+.escolha-a a{display:grid;grid-template-columns:1fr auto;gap:0 10px;padding:16px 22px;text-decoration:none;color:inherit;transition:background .2s}
+.escolha-a a+a{border-top:1px solid var(--linha)}
+.escolha-a a:hover{background:var(--suave)}
+.escolha-a span{font-size:.88rem;opacity:.7;grid-column:1}
+.escolha-a b{font:600 1.35rem/1.15 var(--ft);text-transform:uppercase;letter-spacing:.04em;grid-column:1;color:var(--cor)}
+.escolha-a .ic{grid-row:1/3;grid-column:2;align-self:center;width:22px;height:22px;color:var(--verde-esc)}
+.dest-a{padding:76px 0 10px}
+.dest-a+.com-a{margin-top:76px}
+.tit h2,.com-a h2,.sobre-a h2,.docs-a h2,.cab-a h1{text-transform:uppercase;letter-spacing:.03em}
+.com-a{background:var(--rod);color:#e8eef2;padding:76px 0}
+.com-a .k{color:#cfe8bd}
+.com-a-in{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.com-a h2{font-size:clamp(1.9rem,3.4vw,2.8rem)}
+.com-a p{opacity:.85}
+.com-a .btn{background:var(--verde);border-color:var(--verde);color:#06324e}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mini a{display:block;text-decoration:none;color:inherit}
+.mini img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raio);transition:opacity .2s}
+.mini a:hover img{opacity:.8}
+.mini span{display:block;padding-top:10px;font-size:.92rem;opacity:.9}
+.mini b{display:block;font:600 1.05rem/1.15 var(--ft);text-transform:uppercase;letter-spacing:.04em}
+.mini em{display:block;font-style:normal;color:#cfe8bd;font-weight:600}
+.sobre-a{margin-top:80px;background:var(--suave);padding:76px 0}
+.sobre-a-in{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.sobre-a figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio);box-shadow:24px 24px 0 -6px var(--verde)}
+.sobre-a h2{font-size:clamp(1.7rem,3vw,2.4rem);color:var(--cor)}
+.docs-a{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center;padding:80px 0 0}
+.docs-a h2{font-size:clamp(1.7rem,3vw,2.3rem)}
+.cab-a{padding:50px 0 40px;border-bottom:1px solid var(--linha);background:linear-gradient(var(--suave),var(--fundo))}
+.cab-a h1{font-size:clamp(2.1rem,4.2vw,3.4rem);max-width:900px;color:var(--cor)}
+.cab-a p:not(.k){max-width:660px;font-size:1.08rem;margin:0}
+.numeros b{color:var(--cor)}
+@media (max-width:960px){
+  .hero-a-in,.com-a-in,.sobre-a-in,.docs-a{grid-template-columns:1fr}
+  .hero-a-in{gap:30px;padding-top:160px}
+  .sobre-a figure img{box-shadow:14px 14px 0 -4px var(--verde)}
+}
+@media (max-width:560px){
+  .hero-a{min-height:0}
+  .hero-a-in{padding:150px 0 30px}
+  .escolha-a a{padding:14px 18px}
+  .mini{gap:12px}
+  .dest-a{padding-top:56px}
+  .sobre-a,.com-a{padding:56px 0}
+}

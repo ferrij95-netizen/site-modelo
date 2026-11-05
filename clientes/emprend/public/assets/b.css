@@ -1,0 +1,71 @@
+/* Versão B "Eixo": escura e sóbria, azul-noite com verde do logo, carteira em lista por tipo. Tenor Sans + Lexend */
+:root{--cor:#74b847;--cor-esc:#5d9c35;--sobre-cor:#0b2436;--cor-k:#8fd05f;--verde:#74b847;--verde-esc:#8fd05f;--tinta:#e6edf1;--suave:#12324a;--fundo:#0b2436;--cartao:#102e45;--topo:rgba(11,36,54,.97);--linha:#21445f;--ft:"Tenor Sans",Georgia,serif;--fx:Lexend,system-ui,sans-serif;--raio:0;--rod:#071a28;--fino:#071a28;--fino-txt:#b7c8d3}
+body{font-weight:300}
+h1,h2,h3{font-weight:400;letter-spacing:.01em;line-height:1.12}
+strong,b,.menu a,.btn{font-weight:500}
+.btn{color:#0b2436}
+.btn-linha{color:inherit}
+.card-venda{background:#e6edf1;color:#0b2436}
+.card-preco b,.ficha-preco b{color:#e6edf1}
+.form input,.form select,.form textarea{background:#f4f7f8}
+.hero-b{position:relative;min-height:640px;display:flex;align-items:center;overflow:hidden}
+.hero-b-foto{position:absolute;inset:0 0 0 38%}
+.hero-b-foto img{width:100%;height:100%;object-fit:cover}
+.hero-b-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0b2436 0%,rgba(11,36,54,.6) 30%,rgba(11,36,54,0) 65%)}
+.hero-b-in{position:relative;padding:80px 0}
+.hero-b-txt{max-width:600px}
+.hero-b h1{font-size:clamp(2.3rem,4.6vw,3.9rem);margin:0 0 .5em}
+.hero-b-txt>p:not(.k){font-size:1.08rem;opacity:.85}
+.num-b{border-block:1px solid var(--linha);padding:34px 0;background:#0d2a40}
+.idx-b{padding:76px 0 40px}
+.grupo{margin-bottom:40px}
+.grupo h3{font-size:1.5rem;margin:0 0 12px;display:flex;align-items:baseline;gap:10px}
+.grupo h3 small{font:400 .9rem var(--fx);color:var(--cor-k)}
+.linhas{border-top:1px solid var(--linha)}
+.linhas a{display:grid;grid-template-columns:96px 1fr 120px 90px 150px 22px;gap:18px;align-items:center;padding:12px 6px;border-bottom:1px solid var(--linha);text-decoration:none;color:inherit;transition:background .2s}
+.linhas a:hover{background:var(--suave)}
+.ln-foto img{width:96px;height:64px;object-fit:cover}
+.ln-end b{display:block;font:400 1.15rem/1.2 var(--ft)}
+.ln-end small{opacity:.7;font-size:.88rem}
+.ln-m2{font-size:.92rem;opacity:.8}
+.ln-neg{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;justify-self:start;padding:5px 8px;border:1px solid currentColor}
+.ln-venda{color:#e6edf1}
+.ln-aluguel{color:var(--cor-k)}
+.ln-preco{font-weight:500;text-align:right;white-space:nowrap}
+.ln-preco small{opacity:.6;font-weight:300}
+.linhas .ic{width:18px;height:18px;color:var(--cor-k)}
+.mv-b{background:#e6edf1;color:#0b2436;padding:80px 0}
+.mv-b .link-seta{color:#2c6b14}
+.mv-b-in{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+.mv-b blockquote{margin:0}
+.mv-b blockquote p{font:400 clamp(1.8rem,3.4vw,2.8rem)/1.2 var(--ft);margin:0 0 .5em}
+.mv-b cite{font-style:normal;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;opacity:.65}
+.anuncie-b{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center;padding:80px 0}
+.anuncie-b h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+.visita-b{background:#0d2a40;border-top:1px solid var(--linha)}
+.visita-b .area-cli{margin-bottom:0}
+.cab-b{padding:56px 0 44px;border-bottom:1px solid var(--linha);background:#0d2a40}
+.cab-b h1{font-size:clamp(2.1rem,4.2vw,3.4rem);max-width:900px}
+.cab-b p:not(.k){max-width:660px;font-size:1.05rem;opacity:.85;margin:0}
+.numeros b{color:#e6edf1}
+.dados dd{color:#fff}
+.mapa{filter:grayscale(.3)}
+@media (max-width:960px){
+  .linhas a{grid-template-columns:80px 1fr auto 18px;gap:6px 14px}
+  .ln-foto{grid-row:1/3}.ln-foto img{width:80px;height:56px}
+  .ln-end{grid-column:2/4}
+  .ln-m2{display:none}
+  .ln-neg{grid-column:2;grid-row:2}
+  .ln-preco{grid-column:3;grid-row:2}
+  .linhas .ic{grid-column:4;grid-row:1/3}
+  .mv-b-in,.anuncie-b{grid-template-columns:1fr;gap:30px}
+  .hero-b{min-height:0;display:block}
+  .hero-b-foto{position:relative;inset:auto;height:300px}
+  .hero-b-foto::after{background:linear-gradient(0deg,#0b2436 0%,rgba(11,36,54,0) 60%)}
+  .hero-b-in{padding:10px 0 50px}
+}
+@media (max-width:560px){
+  .hero-b-foto{height:240px}
+  .idx-b,.anuncie-b{padding:56px 0 30px}
+  .mv-b{padding:56px 0}
+}
