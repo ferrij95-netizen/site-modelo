@@ -1,0 +1,240 @@
+/* comum às duas versões */
+.k{font:600 .78rem/1.3 var(--fx);letter-spacing:.14em;text-transform:uppercase;color:var(--cor-esc);margin:0 0 .7em}
+.tit{margin:0 0 30px;max-width:760px}
+.tit h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+.tit-linha{display:flex;justify-content:space-between;align-items:end;gap:20px;max-width:none;flex-wrap:wrap}
+.tit-linha h2{margin:0}
+.bts{display:flex;flex-wrap:wrap;gap:12px;margin:1.4em 0 0}
+.ic.vira{transform:rotate(180deg)}
+section{scroll-margin-top:90px}
+
+.topo{position:sticky;top:0;z-index:40;background:var(--topo);border-bottom:1px solid var(--linha)}
+.topo-linha{display:flex;align-items:center;gap:28px;min-height:76px}
+.marca{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--marca-txt,var(--tinta));flex:none}
+.menu{margin-left:auto}
+.menu ul{display:flex;gap:4px}
+.menu a{display:block;padding:10px 12px;text-decoration:none;font-weight:500;font-size:.98rem;border-radius:var(--raio)}
+.menu a:hover{background:var(--suave)}
+.menu a.ativo{color:var(--cor-esc);box-shadow:inset 0 -2px 0 var(--cor)}
+
+/* cartões */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px}
+.card a{display:flex;flex-direction:column;height:100%;text-decoration:none;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card a:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.12)}
+.card figure{position:relative;aspect-ratio:4/3;background:var(--suave);overflow:hidden}
+.card figure img{width:100%;height:100%;object-fit:cover}
+.card-txt{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.card-local{font-size:.82rem;color:var(--cor-esc);font-weight:600;margin:0 0 4px}
+.card h3{font:600 1.02rem/1.3 var(--fx);letter-spacing:.02em;margin:0 0 6px;overflow-wrap:anywhere}
+.card-res{font-size:.9rem;opacity:.8;margin:0 0 12px}
+.card-preco{margin:auto 0 0;font-size:1.2rem}
+.card-preco small{font-size:.8rem;opacity:.7;margin-left:3px}
+
+/* filtro sem JS */
+.filtro{border:0;padding:0;margin:0 0 24px;display:flex;flex-wrap:wrap;gap:8px}
+.filtro legend{float:left;margin-right:6px;padding:9px 0;font-weight:600}
+.filtro input{position:absolute;opacity:0;pointer-events:none}
+.filtro span{display:inline-block;padding:8px 14px;border:1px solid var(--linha);border-radius:99px;cursor:pointer;background:var(--cartao)}
+.filtro small{opacity:.6;margin-left:3px}
+.filtro input:checked+span{background:var(--cor);border-color:var(--cor);color:var(--sobre-cor,#fff)}
+.filtro input:focus-visible+span{outline:3px solid var(--cor);outline-offset:2px}
+.filtro-lista:has(input[value=apartamentos]:checked) .card:not([data-g=apartamentos]),
+.filtro-lista:has(input[value=comerciais]:checked) .card:not([data-g=comerciais]),
+.filtro-lista:has(input[value=casas]:checked) .card:not([data-g=casas]),
+.filtro-lista:has(input[value=terrenos]:checked) .card:not([data-g=terrenos]){display:none}
+.lista-pag{padding:44px 0 80px}
+
+/* ficha */
+.ficha{padding:22px 0 80px}
+.voltar a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;color:var(--cor-esc)}
+.galeria{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:8px;margin:14px 0 34px;border-radius:var(--raio);overflow:hidden}
+.galeria a{display:block;overflow:hidden;background:var(--suave)}
+.galeria img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.galeria a:hover img{transform:scale(1.04)}
+.galeria .g0{grid-row:span 2}
+.galeria:has(>a:nth-child(2):last-child){grid-template-columns:2fr 1fr}
+.galeria:has(>a:only-child){grid-template-columns:1fr}
+.galeria a:nth-child(n+6){display:none}
+.galeria-vazia{display:block;height:260px;background:var(--suave)}
+.ficha-grade{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start}
+.ficha h1{font-size:clamp(1.6rem,3.4vw,2.4rem);overflow-wrap:anywhere}
+.ficha h2{font-size:1.25rem;margin-top:1.6em}
+.ficha-local{display:flex;align-items:center;gap:8px;font-weight:600}
+.ficha-local .ic{color:var(--cor)}
+.dados{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;margin:22px 0}
+.dados div{background:var(--cartao);padding:12px 14px}
+.dados dt{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;opacity:.7}
+.dados dd{margin:0;font-size:1.25rem;font-weight:600}
+.amen{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px 16px}
+.preco-box{position:sticky;top:100px;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:24px;display:grid;gap:12px}
+.preco-box p{margin:0}
+.pb-rot{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;opacity:.75}
+.pb-valor{font:600 2rem/1.1 var(--ft)}
+.pb-valor small{font-size:.9rem;font-weight:400;opacity:.7}
+.preco-box dl{margin:0;display:grid;gap:6px}
+.preco-box dl div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--linha);padding-bottom:6px}
+.preco-box dd{margin:0;font-weight:600}
+.btn-wa{background:#1fa855;border-color:#1fa855;color:#fff}
+.btn-wa:hover{background:#178a45;border-color:#178a45}
+.preco-box .btn{width:100%}
+.pb-nota{font-size:.82rem;opacity:.7}
+.preco-m{display:none}
+
+/* proprietários */
+
+/* imobiliária / contato */
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.numeros b{display:block;font:300 clamp(2.2rem,5vw,3.4rem)/1 var(--ft);color:var(--cor-esc)}
+.numeros span{font-size:.92rem}
+.contato-pag{display:grid;grid-template-columns:1.2fr 1fr;gap:44px;padding:50px 0 30px}
+.contato-pag .lojas{grid-template-columns:1fr;padding:20px 0 0}
+.contato-lista{display:grid;gap:14px}
+.contato-lista li{display:flex;gap:12px;align-items:flex-start}
+.contato-lista .ic{color:var(--cor);margin-top:.25em}
+.contato-lista strong{display:block}
+.contato-lista a{overflow-wrap:anywhere}
+
+/* rodapé */
+.rodape{background:var(--rod,#0c1a13);color:#e9efe9;padding:60px 0 0;margin-top:0}
+.rodape a{color:inherit;text-decoration:none}
+.rodape a:hover{text-decoration:underline}
+.rod-grade{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px}
+.rodape h3{font:600 .8rem/1.3 var(--fx);letter-spacing:.14em;text-transform:uppercase;color:#8fd8a8}
+.rodape ul{display:grid;gap:9px;font-size:.95rem}
+.rod-dados li{display:flex;gap:10px;align-items:flex-start}
+.rod-dados .ic{color:#8fd8a8;margin-top:.2em}
+.rod-marca .marca{color:#fff;margin-bottom:16px}
+.rod-marca p{opacity:.8;max-width:300px}
+.rod-base{border-top:1px solid rgba(255,255,255,.12);padding:18px 0;font-size:.84rem;opacity:.7}
+.rod-base .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:1100px){
+  .topo-wa span{display:none}
+  
+  .rod-grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .menu-btn{display:block;margin-left:auto}
+  .topo-wa{margin-left:auto}
+  .menu-btn{margin-left:0}
+  .menu{position:fixed;inset:76px 0 auto 0;background:var(--topo);border-bottom:1px solid var(--linha);display:none;padding:10px 16px 18px;margin:0}
+  .menu-aberto .menu{display:block}
+  .menu ul{flex-direction:column}
+  .menu a{padding:14px 8px;font-size:1.1rem}
+  .ficha-grade,.contato-pag{grid-template-columns:1fr}
+  .preco-box{position:static}
+  .preco-m{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:14px 0 0;font-size:1.5rem}
+  .preco-m small{font-size:.85rem;opacity:.7;margin-left:-10px}
+  .preco-m .btn{font-size:.95rem;min-height:44px;padding:.5em 1em}
+  .galeria{grid-template-columns:1fr 1fr;grid-template-rows:240px 140px}
+  .galeria .g0{grid-column:span 2;grid-row:auto}
+  .galeria a:nth-child(n+4){display:none}
+  .numeros{grid-template-columns:1fr 1fr}
+  .escritorio{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  
+  
+  
+  .rod-grade{grid-template-columns:1fr}
+  .form-duas{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+}
+/* GWM: marca, selos, preço da Caixa */
+.marca img{height:46px;width:auto}
+.topo-wa{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;white-space:nowrap}
+.topo-wa .ic{color:#1fa855}
+.selo{position:absolute;left:12px;top:12px;background:var(--etq,#fff);color:var(--etq-txt,#2a201a);font:600 .74rem/1 var(--fx);letter-spacing:.06em;text-transform:uppercase;padding:7px 9px;border-radius:2px}
+.selo-caixa{background:var(--caixa,#1c5aa6);color:#fff}
+.card-preco s{display:block;font-size:.8rem;opacity:.6}
+.card h3{font:600 1.05rem/1.3 var(--fx);letter-spacing:.02em}
+.ficha h1 small{display:block;font:500 1rem/1.4 var(--fx);opacity:.75;margin-top:.4em;letter-spacing:0}
+.desc p{margin:0 0 1em}
+.desc-lista{list-style:disc;padding-left:1.2em;margin:0 0 1em}
+.perto{display:flex;flex-wrap:wrap;gap:8px}
+.perto li{padding:6px 12px;border:1px solid var(--linha);border-radius:99px;font-size:.9rem;background:var(--cartao)}
+.pb-aval{font-size:1.2rem;opacity:.65}
+.pb-desc{display:inline-block;justify-self:start;background:var(--caixa,#1c5aa6);color:#fff;font-weight:600;padding:5px 10px;border-radius:2px;font-size:.9rem}
+.galeria.n1{grid-template-columns:1fr;grid-template-rows:420px}
+.galeria.n1 .g0{grid-row:auto}
+.galeria.n2{grid-template-columns:2fr 1fr}
+.galeria.n3{grid-template-columns:2fr 1fr}
+.galeria.n1 img{object-fit:contain;background:var(--suave)}
+/* regras da Caixa */
+.regras{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.regras li{padding:24px 22px;border-top:2px solid var(--cor)}
+.rg-n{display:block;font:400 2rem/1 var(--ft);color:var(--cor);margin-bottom:12px}
+.regras h3{font-size:1.1rem}
+.regras p{margin:0;font-size:.95rem;opacity:.85}
+.caixa-regras{padding:70px 0 0}
+/* escritório */
+.escritorio{display:grid;grid-template-columns:1fr 1.3fr;gap:36px;align-items:center;padding:60px 0 80px}
+.escritorio h3{font-size:1.6rem}
+.escritorio p:not(.k):not(.bts){display:flex;align-items:center;gap:10px;margin:.3em 0}
+.mapa{width:100%;height:320px;border:0;border-radius:var(--raio)}
+.contato-lista small{display:block;font-size:.82rem;opacity:.7}
+.contato-lista a{display:block}
+@media (max-width:900px){
+  .regras{grid-template-columns:1fr 1fr}
+  .galeria.n1{grid-template-rows:280px}
+}
+@media (max-width:560px){
+  .regras{grid-template-columns:1fr}
+  .marca img{height:38px}
+  .galeria.n2,.galeria.n3{grid-template-columns:1fr 1fr}
+}
+/* Versão A "Losango": clara, areia e marrom do logo, Marcellus + Jost, linhas duplas do símbolo */
+:root{--cor:#5a4331;--cor-esc:#3f2e21;--areia:#b8977a;--tinta:#2f241b;--suave:#efe6da;--fundo:#f8f4ee;--cartao:#fff;--topo:rgba(248,244,238,.95);--linha:#e2d7c8;--ft:Marcellus,Georgia,serif;--fx:Jost,system-ui,sans-serif;--raio:2px;--rod:#2f241b;--caixa:#1d5fa8}
+body{background:var(--fundo);color:var(--tinta);font-family:var(--fx)}
+h1,h2,h3{font-family:var(--ft);font-weight:400;letter-spacing:.01em}
+.k{color:#8a6a4f}
+.hero-a{padding:56px 0 70px;position:relative;overflow:hidden}
+.hero-a::before{content:"";position:absolute;right:-120px;top:-60px;width:620px;height:390px;background:url(/assets/simbolo.webp) center/contain no-repeat;opacity:.12;pointer-events:none}
+.hero-a-in{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;position:relative}
+.hero-a h1{font-size:clamp(2.2rem,4.6vw,3.7rem);line-height:1.08}
+.hero-a h1 em{font-style:normal;color:#8a6a4f}
+.hero-a-txt>p:not(.k){font-size:1.1rem;max-width:520px}
+.portas{display:grid;gap:10px;margin-top:28px;max-width:520px}
+.porta{display:grid;grid-template-columns:1fr auto;align-items:center;padding:16px 20px;text-decoration:none;background:var(--cor);color:#fff;border-radius:var(--raio);transition:background .2s}
+.porta:hover{background:var(--cor-esc)}
+.porta-caixa{background:#fff;color:var(--tinta);border:1px solid var(--linha);border-left:4px solid var(--caixa)}
+.porta-caixa:hover{background:var(--suave)}
+.porta span{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.porta b{font:400 1.3rem/1.25 var(--ft)}
+.porta .ic{grid-row:1/3;grid-column:2;width:24px;height:24px}
+.hero-a-foto{position:relative;margin:0}
+.hero-a-foto img{width:100%;aspect-ratio:5/4;object-fit:cover;clip-path:polygon(0 0,82% 0,100% 18%,100% 100%,18% 100%,0 82%)}
+.hero-a-foto::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:1px solid var(--areia);clip-path:polygon(0 0,82% 0,100% 18%,100% 100%,18% 100%,0 82%);z-index:-1}
+.hero-a-foto figcaption{position:absolute;left:20px;bottom:20px;background:var(--fundo);padding:7px 11px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.dest-a{padding:40px 0 0}
+.caixa-a{margin-top:80px;background:var(--suave);padding:70px 0}
+.caixa-a-in{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.caixa-a h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+.descontos{display:grid;gap:8px}
+.descontos a{display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:center;padding:14px 16px;background:#fff;border:1px solid var(--linha);text-decoration:none}
+.descontos a:hover{border-color:var(--caixa)}
+.d-pct{font:400 1.45rem/1 var(--ft);color:var(--caixa)}
+.d-txt b{display:block;font-weight:600}
+.d-txt small{opacity:.75}
+.d-val{text-align:right;font-weight:600;white-space:nowrap}
+.d-val s{display:block;font-weight:400;font-size:.8rem;opacity:.55}
+.regras-a{padding:80px 0 0}
+.esc-a{border-bottom:0}
+.cab-a{position:relative;overflow:hidden;padding:56px 0 44px;border-bottom:1px solid var(--linha)}
+.cab-a h1{font-size:clamp(1.9rem,4vw,3rem);max-width:800px}
+.cab-a p:not(.k){max-width:640px;font-size:1.08rem}
+.losango{position:absolute;right:-60px;top:50%;width:380px;height:240px;transform:translateY(-50%);background:url(/assets/simbolo.webp) center/contain no-repeat;opacity:.13;pointer-events:none}
+.rodape h3{color:var(--areia)}
+.rod-dados .ic{color:var(--areia)}
+.rod-marca img{height:54px}
+@media (max-width:900px){
+  .hero-a-in,.caixa-a-in{grid-template-columns:1fr;gap:36px}
+  .hero-a::before{width:380px;right:-140px}
+}
+@media (max-width:560px){
+  .descontos a{grid-template-columns:72px 1fr}
+  .d-val{grid-column:2;text-align:left}
+  .d-pct{font-size:1.2rem}
+  .losango{right:0;width:180px;height:120px;top:20px;transform:none}
+  .hero-a-foto::before{display:none}
+}
