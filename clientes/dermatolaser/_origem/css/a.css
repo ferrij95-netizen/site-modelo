@@ -1,0 +1,94 @@
+/* Dermatolaser A "Bolhas": branco, azul #004c8a e verde #76a83c do logo, bolhas como desenho. Raleway + Lato. */
+:root{--cor:#0a5a9c;--cor-esc:#0d2a47;--acento:#5f9a2f;--acento-claro:#d9ecc4;--claro:#eef5fb;--tinta:#22303d;--suave:#596877;--fundo:#ffffff;--cartao:#fff;--topo:rgba(255,255,255,.96);--linha:#e1e8ef;--ft:Raleway,system-ui,sans-serif;--fx:Lato,system-ui,sans-serif;--raio:18px;--az:#1e86cf;--vd:#8cc63f}
+body{background:var(--fundo);font-family:var(--fx);color:var(--tinta)}
+h1,h2,h3{font-weight:800!important;letter-spacing:-.015em}
+h2{font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.12}
+.btn{background:var(--acento);border-color:var(--acento);color:#fff;border-radius:99px;font-weight:700}.btn:hover{background:var(--cor-esc);border-color:var(--cor-esc)}
+.btn-linha{background:transparent;color:var(--cor-esc);border-color:var(--cor-esc)}.btn-linha:hover{background:var(--cor-esc);color:#fff}
+.faixa-topo{background:var(--cor-esc);color:#cdd9e6}
+.menu a{font-family:var(--ft);font-weight:600;font-size:.95rem}
+.menu a:hover,.menu a.ativo{color:var(--cor);background:var(--claro)}
+.grupos-nav{top:120px;background:linear-gradient(#fff 70%,rgba(255,255,255,0))}
+.b{position:absolute;border-radius:50%;z-index:2}
+.b1{background:radial-gradient(circle at 40% 38%,#5fbbea,#0b5fa8)}
+.b2{background:radial-gradient(circle at 40% 38%,#d3e86b,#5f9a2f)}
+.b3{background:radial-gradient(circle at 40% 38%,#e4ecf7,#a6badd)}
+.b4{background:radial-gradient(circle at 40% 38%,#eef2e4,#b6c597)}
+
+.hero-a{padding:48px 0 72px;overflow:hidden;background:radial-gradient(60% 80% at 85% 30%,#e6f1fa 0,rgba(230,241,250,0) 70%),radial-gradient(40% 60% at 5% 90%,#eef6e4 0,rgba(238,246,228,0) 70%)}
+.hero-a-in{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.hero-a h1{font-size:clamp(2.5rem,4.6vw,4rem);line-height:1.06;margin:0 0 .35em;color:var(--cor-esc)}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.14rem;color:var(--suave);max-width:520px}
+.hero-a-foto{position:relative}
+.hero-a-foto>img{width:100%;aspect-ratio:1;object-fit:cover;object-position:60% center;border-radius:50%}
+.hero-a-foto .b1{width:96px;height:96px;top:4%;left:0}
+.hero-a-foto .b2{width:120px;height:120px;bottom:2%;left:-4%}
+.hero-a-foto .b3{width:56px;height:56px;top:-2%;right:20%}
+.hero-a-foto .b4{width:40px;height:40px;bottom:6%;right:16%}
+
+.trat-a{padding:88px 0 96px}
+.trat-grade{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.trat{text-decoration:none;color:inherit;text-align:center}
+.trat figure{margin:0 0 12px;border-radius:50%;overflow:hidden;aspect-ratio:1;border:4px solid #fff;box-shadow:0 0 0 1px var(--linha);transition:box-shadow .25s}
+.trat img{width:100%;height:100%;object-fit:cover}
+.trat:hover figure{box-shadow:0 0 0 3px var(--vd)}
+.trat h3{font-size:1.02rem;margin:0;color:var(--cor-esc)}
+
+.sobre-a{background:var(--claro);padding:96px 0}
+.sobre-a-in{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.mosaico{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:12px;height:460px}
+.mosaico img{width:100%;height:100%;min-height:0;object-fit:cover;border-radius:var(--raio)}
+.mosaico img:first-child{grid-row:span 2}
+.sobre-a p:not(.k){color:var(--suave)}
+
+.eq-a{padding:96px 0}
+.eq-faixa{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.eq-faixa a{display:flex;flex-direction:column;align-items:center;text-decoration:none;text-align:center;background:#fff;border:1px solid var(--linha);border-radius:var(--raio);padding:12px 10px 16px;transition:border-color .2s}
+.eq-faixa a:hover{border-color:var(--az)}
+.eq-faixa figure{margin:0}.eq-faixa img{height:170px;width:auto}
+.eq-faixa span{font:700 .92rem var(--ft);color:var(--cor-esc);margin-top:8px}
+
+.melasma-a{background:linear-gradient(120deg,#0d2a47,#0a5a9c);color:#d5e3f1;padding:88px 0}
+.melasma-in{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.melasma-a h2{color:#fff}.melasma-a .k{color:var(--vd)}
+.melasma-a figure{margin:0}.melasma-a img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raio)}
+
+.not-a{padding:96px 0}
+
+.cta-a{background:var(--claro);padding:56px 0;border-top:1px solid var(--linha)}
+.cta-a .cta-in{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.cta-a .cta-in>img{height:80px;width:auto}
+.cta-a .cta-in>div{flex:1;min-width:240px}
+.cta-a h2{margin:0 0 .15em}.cta-a p{margin:0;color:var(--suave)}.cta-a .bts{margin:0}
+
+.cab-a{padding:40px 0 48px;border-bottom:1px solid var(--linha);background:radial-gradient(60% 80% at 85% 30%,#e6f1fa 0,rgba(230,241,250,0) 70%),radial-gradient(40% 60% at 5% 90%,#eef6e4 0,rgba(238,246,228,0) 70%)}
+.cab-a-in{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.cab-a h1{font-size:clamp(2.2rem,4.2vw,3.4rem);line-height:1.08;margin:0 0 .3em;color:var(--cor-esc)}
+.cab-a p:not(.k){color:var(--suave);font-size:1.06rem;max-width:560px}
+.cab-a figure{margin:0;position:relative;justify-self:center;width:min(320px,100%)}
+.cab-a figure>img:first-child{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%}
+.cab-bolhas{position:absolute;left:-30px;bottom:-14px;width:96px;height:auto}
+
+.procs-a{display:grid;gap:22px;padding:24px 0 40px}
+.proc-a{display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:start;background:#fff;border:1px solid var(--linha);border-radius:var(--raio);padding:18px;scroll-margin-top:180px}
+.proc-a figure{margin:0}.proc-a img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:calc(var(--raio) - 6px)}
+.proc-a h3{font-size:1.6rem;margin:6px 0 .4em;color:var(--cor)}
+.proc-a:nth-child(even) h3{color:var(--acento)}
+.proc-a p{color:var(--suave)}
+
+@media (max-width:1020px){
+  .hero-a-in,.sobre-a-in,.melasma-in,.cab-a-in{grid-template-columns:1fr;gap:32px}
+  .hero-a-foto{max-width:480px;justify-self:center}
+  .trat-grade{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .eq-faixa{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .proc-a{grid-template-columns:1fr}
+  .grupos-nav{top:104px}
+}
+@media (max-width:640px){
+  .hero-a h1{font-size:2.3rem}
+  .mosaico{height:340px}
+  .trat-grade{grid-template-columns:1fr 1fr}
+  .eq-faixa{grid-template-columns:1fr 1fr}.eq-faixa img{height:140px}
+  .trat-a,.sobre-a,.eq-a,.melasma-a,.not-a{padding:56px 0}
+  .grupos-nav{position:static}
+}
