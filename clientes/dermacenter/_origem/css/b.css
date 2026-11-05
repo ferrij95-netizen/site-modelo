@@ -1,0 +1,100 @@
+/* Dermacenter B "Turquesa": turquesa #00ada2 do logo dominante, amarelo e vermelho como acento. Ubuntu + Nunito Sans. */
+:root{--cor:#00897f;--cor-esc:#0b3b39;--acento:#00897f;--acento-claro:#8fe0d9;--claro:#e8f6f5;--tinta:#1d2b2a;--suave:#566463;--fundo:#f6f9f9;--cartao:#fff;--topo:rgba(11,59,57,.97);--linha:#dbe7e6;--ft:Ubuntu,system-ui,sans-serif;--fx:"Nunito Sans",system-ui,sans-serif;--raio:6px}
+body{background:var(--fundo);font-family:var(--fx);color:var(--tinta)}
+h1,h2,h3{font-weight:500!important}
+h2{font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.12}
+.k{color:var(--acento)}
+.btn{background:#fcaf16;border-color:#fcaf16;color:#1d1a12;border-radius:var(--raio);font-weight:700}.btn:hover{background:#fff;border-color:#fff;color:#0b3b39}
+main .btn:not(.btn-linha):not(.btn-linha-clara):hover{background:#0b3b39;border-color:#0b3b39;color:#fff}
+.btn-linha{background:transparent;color:var(--cor-esc);border-color:var(--cor-esc)}.btn-linha:hover{background:var(--cor-esc);color:#fff}
+.topo{border-bottom-color:rgba(255,255,255,.08)}
+.faixa-topo{background:#072927;color:#a8cbc8}
+.topo .menu a{color:#d2e8e6;font-family:var(--fx);font-weight:700;font-size:.93rem}
+.topo .menu a:hover,.topo .menu a.ativo{color:#fff;background:rgba(255,255,255,.08)}
+.menu-btn{color:#fff!important}
+@media (max-width:1020px){.menu{background:#0b3b39!important;border-bottom-color:rgba(255,255,255,.1)!important}}
+
+.hero-b{position:relative;background:#0b3b39;color:#d2e8e6;overflow:hidden}
+.hero-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
+.hero-b::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#0b3b39 35%,rgba(11,59,57,.55) 60%,rgba(11,59,57,0) 85%)}
+.hero-b-in{position:relative;z-index:2;padding:110px 0 120px}
+.hero-b-in>*{max-width:600px}
+.hero-b .k{color:#fcaf16}
+.hero-b h1{color:#fff;font-size:clamp(2.6rem,5vw,4.2rem);line-height:1.04;margin:0 0 .35em}
+.hero-b-in>p:not(.k):not(.bts){font-size:1.12rem}
+
+.faixa-b{background:#00ada2;color:#e9fbf9}
+.faixa-b .in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.faixa-b .in>div{padding:24px 20px;border-left:1px solid rgba(255,255,255,.25)}
+.faixa-b .in>div:first-child{border-left:0;padding-left:0}
+.faixa-b b{display:block;font:500 2rem/1.1 var(--ft);color:#fff}
+.faixa-b span{font-size:.9rem}
+
+.servicos-b{padding:96px 0 72px}
+.servicos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.serv{background:#fff;border:1px solid var(--linha);border-radius:var(--raio);padding:28px}
+.serv h3{display:flex;align-items:center;gap:12px;font-size:1.4rem;margin:0 0 16px;color:var(--cor-esc)}
+.bol{width:18px;height:18px;border-radius:50%;flex:none}.b1{background:#ee1746}.b2{background:#fcaf16}.b3{background:#00ada2}
+.serv ul{display:grid;gap:2px}
+.serv li a{display:block;text-decoration:none;color:var(--tinta);padding:8px 0;border-bottom:1px solid var(--linha)}
+.serv li a:hover{color:var(--cor)}
+.serv-onco{font-size:.88rem;color:var(--suave);margin-top:14px}
+
+.estrutura-b{background:#0b3b39;color:#d2e8e6;padding:88px 0}
+.estrutura-b h2{color:#fff}.estrutura-b .k{color:#fcaf16}.estrutura-b .link-seta{color:#fff}
+.estrutura-b .galeria{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+.medicos-b{display:grid;grid-template-columns:.8fr 1.6fr;gap:56px;padding:96px 0;align-items:start}
+.medicos-b p:not(.k){color:var(--suave)}
+.nomes{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;border-top:2px solid var(--cor-esc)}
+.nomes li{display:grid;padding:12px 0;border-bottom:1px solid var(--linha)}
+.nomes b{font:500 1.05rem var(--ft);color:var(--cor-esc)}.nomes span{font-size:.86rem;color:var(--suave)}
+
+.unid-b{background:#fff;border-top:1px solid var(--linha);padding:88px 0}
+.conv-b{margin-top:36px}
+
+.cta-b{background:#0b3b39;color:#d2e8e6;padding:56px 0}
+.cta-b .cta-in{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta-b h2{color:#fff;margin:0}.cta-b .bts{margin:0}
+.btn-linha-clara{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}.btn-linha-clara:hover{background:#fff;color:#0b3b39}
+
+.cab-b{position:relative;background:#0b3b39;color:#d2e8e6;padding:88px 0 64px;overflow:hidden}
+.cab-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:.25}
+.cab-b .in{position:relative}
+.cab-b .k{color:#fcaf16}
+.cab-b h1{color:#fff;font-size:clamp(2.3rem,4.4vw,3.6rem);line-height:1.06;margin:0 0 .3em;max-width:900px}
+.cab-b p:not(.k){font-size:1.08rem;max-width:640px}
+
+.procs-b{display:grid;gap:56px;padding:72px 0 40px}
+.proc-b{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;scroll-margin-top:150px}
+.proc-b.inv{grid-template-columns:1.1fr 1fr}.proc-b.inv figure{order:2}
+.proc-b figure{margin:0}.proc-b img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raio)}
+.proc-b .num{font:500 1.1rem var(--ft);color:#ee1746}
+.proc-b h2{margin:.1em 0 .4em}
+.proc-b p{color:var(--suave)}
+
+.grupo-b{padding:48px 0 16px;scroll-margin-top:120px}
+.grupo-b .grupo-tit{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;border-bottom:2px solid var(--cor-esc);padding-bottom:12px}
+.grupo-b .grupo-tit h2{margin:0}.grupo-b .grupo-tit p{margin:0;color:var(--suave)}
+.procs{display:grid}
+.proc{border-bottom:1px solid var(--linha)}
+.proc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:18px;align-items:center;padding:18px 0}
+.proc summary::-webkit-details-marker{display:none}
+.proc summary b{font:500 1.3rem var(--ft);color:var(--cor-esc)}
+.proc summary .ic{color:var(--cor);transition:transform .2s;flex:none}
+.proc[open] summary .ic{transform:rotate(90deg)}
+.proc>p{color:var(--suave);max-width:820px;margin:0 0 20px}
+
+@media (max-width:1020px){
+  .hero-b::before{background:linear-gradient(90deg,#0b3b39 0,rgba(11,59,57,.75) 100%)}
+  .faixa-b .in{grid-template-columns:1fr 1fr}.faixa-b .in>div:nth-child(3){border-left:0;padding-left:0}
+  .servicos{grid-template-columns:1fr}
+  .medicos-b,.proc-b,.proc-b.inv{grid-template-columns:1fr;gap:28px}
+  .proc-b.inv figure{order:0}
+  .estrutura-b .galeria{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .hero-b-in{padding:72px 0 80px}
+  .nomes{grid-template-columns:1fr}
+  .servicos-b,.estrutura-b,.medicos-b,.unid-b{padding:64px 0}
+}
