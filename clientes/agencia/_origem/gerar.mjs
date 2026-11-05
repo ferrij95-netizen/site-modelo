@@ -81,7 +81,7 @@ const iChat = SVG('<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H
 // Moldura de navegador com o print de um projeto.
 const tela = (nome, alt, endereco = '', attrs = '') => `<figure class="tela"><div class="tela-barra"><i></i><i></i><i></i>${endereco ? `<span>${esc(endereco)}</span>` : ''}</div>${img(nome, alt, attrs)}</figure>`;
 
-const marca = `<i aria-hidden="true">O</i>Overtus`;
+const marca = `<img src="/assets/img/logo-overtus.webp" alt="Overtus" width="800" height="198">`;
 const agendar = (txt = 'Agendar conversa', cls = 'btn btn-prim') => `<a class="${cls}" href="${site.agenda}" data-agendar>${txt}</a>`;
 const chipOk = txt => `<span class="chip chip-ok">${SVG('<path d="M5 12l5 5 9-10"/>', ' stroke-width="2.4"')}${txt}</span>`;
 

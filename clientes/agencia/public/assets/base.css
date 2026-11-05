@@ -40,8 +40,8 @@ em { font-style: normal; color: var(--navy); font-weight: 600; }
 .topo { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .2s; }
 .topo.rolou { border-bottom-color: var(--line-2); }
 .topo .in { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 88px; position: relative; max-width: 1400px; }
-.marca { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 21px; letter-spacing: -.03em; color: var(--navy); }
-.marca i { width: 26px; height: 26px; border-radius: 7px; background: var(--navy); color: #fff; display: grid; place-items: center; font: 700 15px/1 var(--ft); font-style: normal; letter-spacing: 0; }
+.marca { display: inline-flex; align-items: center; }
+.marca img { height: 34px; width: auto; display: block; }
 .topo nav { display: flex; align-items: center; gap: 4px; }
 .topo nav a { font-size: 14.5px; font-weight: 500; padding: 8px 12px; border-radius: 999px; color: var(--ink); white-space: nowrap; transition: background .15s; }
 .topo nav a:hover { background: var(--panel-2); }
