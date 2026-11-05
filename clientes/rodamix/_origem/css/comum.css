@@ -1,0 +1,122 @@
+/* estrutura comum às duas versões (o gerador junta este arquivo ao a.css / b.css) */
+body{background:var(--fundo);color:var(--tinta)}
+.k{font:700 .76rem/1.25 var(--fx);letter-spacing:.17em;text-transform:uppercase;color:var(--kc,var(--tinta));margin:0 0 12px}
+.bts{display:flex;gap:12px;flex-wrap:wrap;margin:0}
+section{scroll-margin-top:90px}
+.tit{max-width:760px;margin-bottom:30px}
+.tit h2,.tit-b h2{font-size:clamp(1.9rem,3.6vw,2.9rem);margin:0}
+.tit p:not(.k){color:var(--suave);margin:.6em 0 0}
+.xadrez{height:14px;background:conic-gradient(var(--xa) 25%,var(--xb) 0 50%,var(--xa) 0 75%,var(--xb) 0) 0 0/14px 14px}
+.topo{position:sticky;top:0;z-index:40;background:var(--topo)}
+.topo-linha{display:flex;align-items:center;gap:24px;padding:10px 0}
+.marca img{width:190px;filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))}
+.menu{margin-left:auto}
+.menu ul{display:flex;gap:2px}
+.menu a{display:block;padding:8px 12px;text-decoration:none;font-weight:600;font-size:.95rem}
+.btn-topo{min-height:42px;padding:.5em 1.05em;font-size:.92rem;white-space:nowrap}
+@media (max-width:980px){
+  .menu-btn{display:block;margin-left:auto}
+  .menu{position:fixed;inset:var(--topo-h,70px) 0 auto 0;background:var(--topo-solido);padding:10px 16px 18px;box-shadow:0 18px 30px rgba(0,0,0,.25);display:none;margin:0}
+  body.menu-aberto .menu{display:block}
+  .menu ul{flex-direction:column}
+  .menu a{padding:12px 8px;font-size:1.06rem}
+  .btn-topo{display:none}
+  .marca img{width:160px}
+}
+.intro{max-width:780px;font-size:1.12rem;color:var(--suave);margin:48px 0 34px}
+.cta-linha{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 64px}
+.n{font:700 .85rem/1 var(--fx);letter-spacing:.1em;color:var(--suave)}
+
+/* serviços por área */
+.servs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:26px}
+.serv-g{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:24px 24px 10px}
+.serv-g h3{font-size:1.5rem;margin:0 0 6px}
+.serv-g li{display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--linha)}
+.serv-g li:first-child{border-top:0}
+.serv-g .ic{flex:none;width:36px;height:36px;padding:8px;background:var(--cor);color:var(--sobre-cor);border-radius:var(--raio-ic,4px)}
+.serv-g li div{display:grid;gap:3px}
+.serv-g strong{font-weight:700;line-height:1.25}
+.serv-g span{font-size:.92rem;color:var(--suave)}
+.servs-pag{margin-bottom:56px}
+
+/* produtos */
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--linha)}
+.prods article{padding:22px 20px 22px 0;border-bottom:1px solid var(--linha)}
+.prods h3{font-size:1.35rem;margin:.35em 0 .25em}
+.prods p{color:var(--suave);margin:0;font-size:.95rem}
+.prods-pag{margin-bottom:60px}
+.pneus-pag{padding-bottom:30px}
+.pneus-marcas{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pneus-marcas h3{font-size:1.5rem;margin-bottom:10px}
+.pneus-marcas ul{display:flex;flex-wrap:wrap;gap:8px}
+.pneus-marcas li{border:1px solid var(--linha);border-radius:999px;padding:5px 12px;font-size:.88rem;background:var(--cartao)}
+
+/* linha do tempo */
+.tempo{display:grid;gap:0}
+.tempo li{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--linha)}
+.tempo b{font:var(--ano-f,800 2.6rem/1 var(--ft));color:var(--ano-c,var(--tinta))}
+.tempo h3{font-size:1.4rem;margin-bottom:.3em}
+.tempo p{color:var(--suave);margin:0;max-width:640px}
+.tempo-pag{margin-bottom:50px}
+.mercados{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:center;padding:40px 0;border-top:1px solid var(--linha)}
+.mercados h2{font-size:2rem}
+.publico{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.publico li{background:var(--cor);color:var(--sobre-cor);font:var(--pub-f,800 1.3rem/1.1 var(--ft));padding:18px 20px;border-radius:var(--raio)}
+.loja-pag{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:40px 0 80px}
+.loja-pag-fotos{display:grid;grid-template-columns:1fr;gap:14px}
+.loja-pag-fotos img{width:100%;border-radius:var(--raio)}
+.loja-pag h2{font-size:2rem;margin-bottom:.5em}
+.loja-pag .lista-check{margin-bottom:26px}
+.lista-check{display:grid;gap:10px}
+.lista-check li{display:flex;gap:10px;align-items:flex-start}
+.lista-check .ic{flex:none;color:var(--check,var(--tinta));margin-top:3px}
+
+/* serviços: cores */
+.cores-pag{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;padding:20px 0 80px}
+.cores-pag img{width:100%;border-radius:var(--raio)}
+.cores-pag h2{font-size:2.2rem;margin-bottom:.4em}
+.cores-pag p:not(.k):not(.bts){color:var(--suave)}
+
+/* contato */
+.contato-pag{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;padding:56px 0 70px;align-items:start}
+.contato-lista{display:grid;gap:20px;margin-bottom:26px}
+.contato-lista li{display:flex;gap:14px}
+.contato-lista .ic{color:var(--tinta);width:24px;height:24px;margin-top:3px;flex:none}
+.contato-lista div{display:grid}
+.contato-lista strong{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--suave)}
+.contato-lista a{color:inherit;font-weight:600;overflow-wrap:anywhere}
+.contato-pag .bts{margin-bottom:26px}
+.contato-pag .mapa{min-height:320px}
+.form-tit{font-size:2rem;margin-bottom:18px}
+
+/* rodapé */
+.rodape{background:var(--rod);color:#cfccc4}
+.rod-grade{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:40px;padding:56px 0 40px}
+.rod-marca img{width:230px;margin-bottom:16px}
+.rod-marca p{max-width:360px;font-size:.94rem}
+.rodape h3{font:700 .78rem/1.2 var(--fx);letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.rodape ul li{margin:7px 0}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px;align-items:flex-start}
+.rod-dados a{overflow-wrap:anywhere}
+.rod-dados .ic{width:18px;height:18px;margin-top:4px;color:#ffe600;flex:none}
+.rod-cred{font-size:.76rem;color:#8f8c85;border-top:1px solid rgba(255,255,255,.08)}
+.rod-cred .in{padding:12px 0}
+.rod-cred a{text-decoration:underline}
+.rod-base{border-top:1px solid rgba(255,255,255,.1);font-size:.82rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 0}
+.tel-flutua{background:#ffe600!important;color:#111!important}
+
+@media (max-width:980px){
+  .servs,.prods{grid-template-columns:1fr 1fr}
+  .contato-pag,.loja-pag,.cores-pag,.mercados{grid-template-columns:1fr}
+  .rod-grade{grid-template-columns:1fr 1fr}
+  .rod-marca{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .servs,.prods,.rod-grade,.pneus-marcas{grid-template-columns:1fr}
+  .tempo li{grid-template-columns:1fr;gap:8px}
+  .publico li{font-size:1.1rem;padding:14px}
+  .contato-pag .mapa{min-height:260px}
+}
