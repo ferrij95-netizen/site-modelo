@@ -1,0 +1,166 @@
+/* Poison Motors, versão A "Bloco e pistão": clara, cinza-concreto, preto e o vermelho do logo. Audiowide + Geist */
+:root{--cor:#c8101a;--cor-esc:#a30c14;--tinta:#151515;--suave:#55524e;--fundo:#efeeeb;--papel:#fbfaf8;--linha:#d6d3cd;--ft:'Audiowide',system-ui,sans-serif;--fx:'Geist',system-ui,sans-serif;--raio:3px}
+body{font-size:16.5px}
+.k{font:600 .78rem/1.2 var(--fx);letter-spacing:.18em;text-transform:uppercase;color:var(--cor);margin-bottom:14px}
+h1,h2,h3{font-weight:400;letter-spacing:-.01em}
+.lead{font-size:1.14rem;color:var(--suave);max-width:58ch}
+.bts{display:flex;flex-wrap:wrap;gap:12px;margin:0}
+.btn{border-radius:var(--raio)}
+.btn-linha{color:var(--tinta)}
+.btn .ic{width:20px;height:20px}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:40;background:rgba(251,250,248,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--linha)}
+.topo-linha{display:flex;align-items:center;gap:24px;padding:10px 0}
+.marca img{width:150px}
+.menu{margin-left:auto}
+.menu ul{display:flex;gap:2px}
+.menu a{display:block;padding:8px 13px;text-decoration:none;font-weight:500;font-size:.96rem;border-bottom:2px solid transparent}
+.menu a:hover{color:var(--cor)}
+.menu a.ativo{border-bottom-color:var(--cor)}
+.btn-topo{min-height:42px;padding:.5em 1.05em;font-size:.92rem}
+@media (max-width:980px){
+  .menu-btn{display:block;margin-left:auto}
+  .menu{position:fixed;inset:70px 0 auto 0;background:var(--papel);padding:10px 16px 18px;box-shadow:0 18px 30px rgba(0,0,0,.15);display:none;margin:0}
+  body.menu-aberto .menu{display:block}
+  .menu ul{flex-direction:column}
+  .menu a{padding:12px 8px;font-size:1.06rem}
+  .btn-topo{display:none}
+}
+
+/* hero */
+.hero-a{padding:72px 0 64px;background:linear-gradient(90deg,transparent calc(100% - 6px),var(--cor) 0) no-repeat,var(--fundo)}
+.hero-a-in{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:end}
+.hero-a h1{font-size:clamp(2.7rem,7.2vw,6rem);line-height:.98;margin-bottom:.35em}
+.hero-a h1 span{display:block;color:var(--cor)}
+.hero-a .lead{margin-bottom:28px}
+.hero-a-lista{border-top:3px solid var(--tinta)}
+.hero-a-lista li{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--linha)}
+.hero-a-lista .n{font:400 1.05rem/1 var(--ft);color:var(--cor);padding-top:4px}
+.hero-a-lista b{display:block;font-weight:600;font-size:1.06rem}
+.hero-a-lista small{color:var(--suave);font-size:.92rem}
+
+/* faixa de injeções */
+.faixa-a{background:var(--tinta);color:#fff;padding:22px 0}
+.faixa-a .in{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.faixa-a p{margin:0;font:600 .78rem/1.2 var(--fx);letter-spacing:.18em;text-transform:uppercase;color:#bdb8b1}
+.faixa-a ul{display:flex;flex-wrap:wrap;gap:8px 30px;align-items:baseline}
+.faixa-a li{font:400 clamp(1.25rem,2.6vw,1.8rem)/1.1 var(--ft)}
+.faixa-a li.mais{font:400 .95rem var(--fx);color:#bdb8b1}
+
+/* índice de serviços */
+.tit{max-width:640px;margin-bottom:34px}
+.tit h2,.indice-a h2{font-size:clamp(1.9rem,4vw,2.9rem)}
+.tit p{color:var(--suave)}
+.indice-a{padding:84px 0}
+.indice{display:grid;grid-template-columns:repeat(2,1fr);column-gap:48px;border-top:3px solid var(--tinta)}
+.indice a{display:grid;grid-template-columns:44px 1fr auto 22px;gap:14px;align-items:center;padding:17px 4px;border-bottom:1px solid var(--linha);text-decoration:none;transition:background .15s,padding .15s}
+.indice a:hover{background:var(--papel);padding-left:12px}
+.indice .n{font:400 .95rem var(--ft);color:var(--cor)}
+.indice .t{font-weight:600;font-size:1.06rem}
+.indice .q{font-size:.85rem;color:var(--suave)}
+.indice .ic{color:var(--cor);width:18px;height:18px}
+
+/* preparação */
+.prep-a{background:var(--papel);border-block:1px solid var(--linha);padding:80px 0}
+.prep-a-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.prep-a h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.prep-a p{color:var(--suave);margin-bottom:24px}
+.prep-lista{columns:2;column-gap:28px;border-left:6px solid var(--cor);padding-left:24px}
+.prep-lista li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--linha);font-weight:500}
+
+/* carro */
+.carro-a{padding:56px 0 8px}
+.carro-a img{width:100%;border-radius:var(--raio)}
+.carro-a figcaption{font-size:.86rem;color:var(--suave);margin-top:10px}
+
+/* diagnóstico */
+.diag-a{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding:72px 0 88px}
+.diag-a h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.diag-a p{color:var(--suave)}
+.diag-a .lista-check{margin:0 0 22px}
+.diag-a figure img{border-radius:var(--raio);filter:grayscale(.2)}
+
+/* cta */
+.cta-a{background:var(--cor);color:#fff;padding:52px 0}
+.cta-a-in{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.cta-a h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:.2em}
+.cta-a p{margin:0;opacity:.92}
+.cta-a .btn{background:#fff;color:var(--tinta);border-color:#fff}
+.cta-a .btn:hover{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.cta-a .btn-linha{background:transparent;color:#fff;border-color:#fff}
+
+/* cabeçalho de página */
+.cab-a{padding:64px 0 48px;border-bottom:3px solid var(--tinta);background:linear-gradient(90deg,transparent calc(100% - 6px),var(--cor) 0) no-repeat}
+.cab-a h1{font-size:clamp(2.1rem,5.2vw,4rem);max-width:18ch}
+
+/* página de serviços */
+.servs-a{padding:24px 0 72px}
+.serv-a{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;padding:36px 0;border-bottom:1px solid var(--linha);scroll-margin-top:90px}
+.serv-a header{display:grid;grid-template-columns:52px 1fr;column-gap:12px;align-content:start}
+.serv-a .n{font:400 1.2rem var(--ft);color:var(--cor);grid-row:span 2;padding-top:6px}
+.serv-a h2{font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:.3em}
+.serv-a header p{grid-column:2;color:var(--suave);margin:0}
+.itens{display:grid;gap:0}
+.itens li{padding:9px 0 9px 22px;border-bottom:1px dashed var(--linha);position:relative}
+.itens li::before{content:"";position:absolute;left:0;top:1.05em;width:10px;height:3px;background:var(--cor)}
+.itens.duas{grid-template-columns:1fr 1fr;column-gap:32px}
+.sem-itens{color:var(--suave);font-style:italic;margin:0;padding-top:6px}
+
+/* preparação (página) */
+.prep-pag{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;padding:56px 0 64px}
+.prep-col h2,.diag-pag h2{font-size:1.5rem;margin-bottom:.6em}
+.obs{color:var(--suave);margin-top:16px;font-size:.95rem}
+.prep-ret{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;padding:72px 0 16px}
+.prep-ret h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.prep-ret p{color:var(--suave)}
+
+/* diagnóstico (página) */
+.diag-pag{display:grid;grid-template-columns:1fr 1fr;gap:40px 56px;padding:56px 0 72px}
+.diag-foto{grid-row:span 2}
+.diag-foto img{border-radius:var(--raio)}
+.diag-foto figcaption{font-size:.86rem;color:var(--suave);margin-top:10px}
+.diag-pag p{color:var(--suave)}
+.diag-ele{grid-column:1/-1;border-top:3px solid var(--tinta);padding-top:28px}
+
+/* contato */
+.contato-pag{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;padding:56px 0 80px;align-items:start}
+.dados{margin-bottom:24px;border-top:3px solid var(--tinta)}
+.dados li{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--linha)}
+.dados .ic{color:var(--cor);margin-top:3px}
+.dados strong{display:block;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);margin-bottom:2px}
+.dados span,.dados a{display:block}
+.dados a{font-weight:600;text-decoration:none}
+.form-box{background:var(--papel);border:1px solid var(--linha);padding:32px}
+.form-box h2{font-size:1.7rem}
+
+/* rodapé */
+.rodape{background:#151515;color:#c9c5bf}
+.rod-grade{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:40px;padding:56px 0 40px}
+.rod-marca img{width:190px;margin-bottom:16px}
+.rod-marca p{max-width:360px;font-size:.94rem}
+.rodape h3{font:600 .78rem/1.2 var(--fx);letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.rodape ul li{margin:7px 0}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:#fff}
+.rod-dados li{display:flex;gap:10px;align-items:flex-start}
+.rod-dados .ic{width:18px;height:18px;margin-top:4px;color:#e3171f;flex:none}
+.rod-base{border-top:1px solid rgba(255,255,255,.1);font-size:.8rem}
+.rod-base .in{display:flex;justify-content:space-between;gap:8px 18px;flex-wrap:wrap;padding:16px 0}
+
+@media (max-width:980px){
+  .hero-a-in,.prep-a-in,.diag-a,.prep-pag,.prep-ret,.diag-pag,.contato-pag,.serv-a{grid-template-columns:1fr;gap:32px}
+  .diag-foto{grid-row:auto}
+  .indice{grid-template-columns:1fr}
+  .rod-grade{grid-template-columns:1fr 1fr}
+  .rod-marca{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .hero-a{padding:48px 0 44px}
+  .prep-lista,.itens.duas{columns:1;grid-template-columns:1fr}
+  .indice a{grid-template-columns:36px 1fr 18px}
+  .indice .q{display:none}
+  .rod-grade{grid-template-columns:1fr}
+  .form-box{padding:22px}
+  .marca img{width:126px}
+}
