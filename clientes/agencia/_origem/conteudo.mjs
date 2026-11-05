@@ -351,6 +351,7 @@ export const paginas = {
   'servicos/marketing': ['Marketing e aquisição · Overtus', 'SEO, anúncios no Google, geração de leads e social media para levar visitantes qualificados ao site e transformar visitas em contatos.'],
   'servicos/sistemas': ['Sistemas e automação · Overtus', 'Agente de IA, catálogo e cotação para indústrias, painel de notícias, agendamento online e sistemas sob medida.'],
   'servicos/comercial': ['Estrutura comercial · Overtus', 'CRM, prospecção ativa e painel comercial para que nenhum contato se perca e a equipe acompanhe cada negócio.'],
+  cases: ['Cases · Sites refeitos pela Overtus', 'Vitrine com os sites que a Overtus refez para indústrias, agro, saúde, construção, serviços e oficinas: cada um com a identidade real da empresa, multipágina e no ar.'],
   projetos: ['Projetos desenvolvidos · Overtus', 'Mais de 40 estudos de redesenho criados pela Overtus para indústrias, agro, construção, saúde, oficinas e serviços: sites multipágina, com identidade própria e em mais de um idioma.'],
   'como-trabalhamos': ['Como trabalhamos · Overtus', 'Estudo, duas versões completas no ar, escolha e ajustes, publicação e acompanhamento. Você vê o site pronto antes de falar de preço.'],
   setores: ['Setores que atendemos · Overtus', 'Sites, sistemas e estrutura comercial para indústria, agronegócio, construção, saúde, oficinas, consultorias e distribuidoras.'],
