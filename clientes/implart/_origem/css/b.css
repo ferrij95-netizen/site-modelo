@@ -1,0 +1,76 @@
+/* ImplArt B "Paulista": roxo profundo do logo, sala de espera em tela cheia, tratamentos numerados. Jost + Source Sans 3. */
+:root{--roxo:#513f95;--roxo-esc:#2b1f5c;--azul:#5a7fc2;--azul-claro:#8fb0e0;--lilas:#f1eff8;--tinta:#221c38;--suave:#5b5772;--fundo:#fbfafd;--cartao:#fff;--topo:rgba(43,31,92,.97);--linha:#e3dff0;--ft:Jost,system-ui,sans-serif;--fx:"Source Sans 3",system-ui,sans-serif;--raio:4px;--cor:#513f95;--cor-esc:#2b1f5c}
+.btn{background:var(--roxo);border-color:var(--roxo);color:#fff;border-radius:var(--raio)}.btn:hover{background:var(--roxo-esc);border-color:var(--roxo-esc)}
+.btn-linha{background:transparent;color:var(--roxo)}
+.topo{border-bottom-color:rgba(255,255,255,.1)}
+.faixa-topo{background:#1e1645}
+.topo .menu a{color:#e2def3}.topo .menu a:hover,.topo .menu a.ativo{color:#fff;background:rgba(255,255,255,.1)}
+.topo .menu-btn{color:#fff}
+.btn-topo{background:#fff;border-color:#fff;color:var(--roxo-esc)}
+.hero-b{position:relative;min-height:min(78vh,640px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-b::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,22,69,.92) 0%,rgba(43,31,92,.75) 45%,rgba(43,31,92,.15) 100%);z-index:1}
+.hero-b-in{position:relative;z-index:2;padding:96px 0 72px;max-width:720px}
+.hero-b h1{color:#fff;font-weight:400;font-size:clamp(2.2rem,4.3vw,3.5rem);line-height:1.08}
+.hero-b .k{color:#b9cdf0}
+.hero-b-in>p:not(.k):not(.bts){font-size:1.1rem;color:#e0dcf2}
+.hero-b .btn-linha{color:#fff;border-color:rgba(255,255,255,.6)}
+.numeros-b{background:var(--roxo);color:#fff}
+.numeros-b .in{display:grid;grid-template-columns:repeat(4,1fr)}
+.numeros-b div{padding:26px 20px;border-left:1px solid rgba(255,255,255,.18)}
+.numeros-b div:first-child{border-left:0;padding-left:0}
+.numeros-b b{display:block;font:400 2.2rem/1.1 var(--ft)}
+.numeros-b span{color:#d6d1ee;font-size:.92rem}
+.servicos-b{padding:88px 0 64px}
+.linhas{border-top:1px solid var(--linha)}
+.linha{display:grid;grid-template-columns:56px 180px 1fr 28px;gap:28px;align-items:center;padding:22px 0;border-bottom:1px solid var(--linha);text-decoration:none;color:inherit;transition:background .2s}
+.linha:hover{background:var(--lilas)}
+.linha .num{font:300 2rem var(--ft);color:var(--azul)}
+.linha img{width:180px;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raio)}
+.linha p{color:var(--suave);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.linha>.ic{color:var(--roxo)}
+.etapas-b{background:var(--roxo-esc);color:#fff;padding:80px 0}
+.etapas-b h2,.etapas-b h3{color:#fff}.etapas-b .k{color:#b9cdf0}.etapas-b .etapas p{color:#d6d1ee}
+.etapas-b .etapas .n{background:#fff;color:var(--roxo-esc)}
+.dr-b{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;padding:88px 0}
+.dr-b p{color:var(--suave)}
+.dr-b figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% center;border-radius:var(--raio)}
+.dr-b figcaption{font-size:.88rem;color:var(--suave);margin-top:8px}
+.estrutura-b{background:var(--lilas);padding:80px 0}
+.mosaico{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:180px 180px;gap:12px;margin-bottom:40px}
+.mosaico img{width:100%;height:100%;object-fit:cover;border-radius:var(--raio)}
+.mosaico img:first-child{grid-row:span 2}
+.mosaico img:nth-child(4){grid-column:2/4}
+.estrutura-b .icones{grid-template-columns:repeat(4,1fr)}
+.estrutura-b .icones li{flex-direction:column}
+.estrutura-b .icones>li>.ic{background:#fff}
+.antes-b{padding:88px 0}
+.depo-b{margin-top:40px;border-left:3px solid var(--roxo);padding-left:28px;max-width:860px}
+.depo-b blockquote{margin:0}.depo-b blockquote p{font:400 1.35rem/1.45 var(--ft);color:var(--roxo-esc)}
+.depo-b .quem{font-weight:700;color:var(--roxo)}
+.gcr-b{padding:0 0 88px;max-width:900px}
+.gcr-b .frase{font:300 1.6rem/1.4 var(--ft);color:var(--roxo-esc)}
+.cta-b{background:linear-gradient(110deg,#1e1645,#513f95)}
+.cta-b .cta-in{display:flex;justify-content:space-between;align-items:center;gap:28px;padding:52px 0;flex-wrap:wrap}
+.cta-b h2{color:#fff;margin:0}.cta-b h2 a{color:#b9cdf0;text-decoration:none;white-space:nowrap}
+.cta-b .bts{margin:0}.cta-b .btn-linha{color:#fff;border-color:rgba(255,255,255,.6)}
+.cab-b{position:relative;color:#fff;padding:96px 0 56px;overflow:hidden}
+.cab-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cab-b::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,22,69,.94),rgba(43,31,92,.7) 60%,rgba(43,31,92,.35));z-index:1}
+.cab-b .in{position:relative;z-index:2}
+.cab-b h1{color:#fff;font-weight:400;font-size:clamp(2rem,3.8vw,3rem);max-width:760px}
+.cab-b .k{color:#b9cdf0}.cab-b .in>p:not(.k){color:#e0dcf2;max-width:680px;font-size:1.06rem;margin:0}
+.procs{display:grid;gap:12px}
+.proc{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);scroll-margin-top:140px}
+.proc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:20px;padding:18px 22px;font:500 1.15rem var(--ft);color:var(--roxo-esc)}
+.proc summary::-webkit-details-marker{display:none}
+.proc summary .num{font:300 1.4rem var(--ft);color:var(--azul);width:34px}
+.proc summary b{flex:1;font-weight:500}
+.proc summary .ic{transition:transform .2s;color:var(--roxo)}
+.proc[open] summary .ic{transform:rotate(90deg)}
+.proc-corpo{display:grid;grid-template-columns:260px 1fr;gap:28px;padding:0 22px 22px 76px}
+.proc-corpo img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raio)}
+.proc-corpo p{color:var(--suave);margin-top:0}
+@media (max-width:1020px){.dr-b{grid-template-columns:1fr;gap:32px}.dr-b figure{max-width:420px}.estrutura-b .icones{grid-template-columns:1fr 1fr}.numeros-b .in{grid-template-columns:1fr 1fr}.numeros-b div:nth-child(3){border-left:0;padding-left:0}.linha{grid-template-columns:40px 120px 1fr 24px;gap:18px}.linha img{width:120px}
+  .topo .menu{background:var(--roxo-esc)}}
+@media (max-width:640px){.linha{grid-template-columns:36px 1fr 20px}.linha img{display:none}.mosaico{grid-template-columns:1fr 1fr;grid-template-rows:140px 140px 140px}.mosaico img:first-child{grid-column:1/-1;grid-row:auto}.mosaico img:nth-child(4){grid-column:auto}.proc-corpo{grid-template-columns:1fr;padding:0 18px 18px}.estrutura-b .icones{grid-template-columns:1fr}.hero-b-in{padding:64px 0 48px}.numeros-b b{font-size:1.7rem}}

@@ -1,0 +1,57 @@
+/* ImplArt A "Lavanda": branco com o lilás (#e7e4f2) e o roxo (#513f95) do site atual, azul do dente do logo como acento. Jost (próxima do logo) + Source Sans 3. */
+:root{--roxo:#513f95;--roxo-esc:#3a2b78;--azul:#4f74b8;--azul-claro:#7fa6d8;--lilas:#efedf7;--tinta:#231d3a;--suave:#5a5670;--fundo:#fff;--cartao:#fff;--topo:rgba(255,255,255,.96);--linha:#e2def0;--ft:Jost,system-ui,sans-serif;--fx:"Source Sans 3",system-ui,sans-serif;--raio:12px;--cor:#513f95;--cor-esc:#3a2b78}
+.btn{background:var(--roxo);border-color:var(--roxo);color:#fff}.btn:hover{background:var(--roxo-esc);border-color:var(--roxo-esc)}
+.btn-linha{background:transparent;color:var(--roxo)}
+.hero-a{background:linear-gradient(180deg,#e7e4f2,#f6f5fb);padding:64px 0 72px;overflow:hidden}
+.hero-a-in{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.hero-a h1{font-weight:400;font-size:clamp(2.3rem,4.4vw,3.6rem);line-height:1.08}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.12rem;color:var(--suave);max-width:520px}
+.hero-a .google{margin-top:26px}
+.hero-a-fotos{display:grid;grid-template-columns:1.2fr .8fr;grid-template-rows:auto auto;gap:14px}
+.hero-a-fotos figure{margin:0;border-radius:16px;overflow:hidden;position:relative}
+.hero-a-fotos img{width:100%;height:100%;object-fit:cover}
+.hero-a-fotos .f1{grid-column:1/-1;aspect-ratio:1440/560}
+.hero-a-fotos .f2{aspect-ratio:3/2}.hero-a-fotos .f3{min-height:100%}
+.hero-a-fotos figcaption{position:absolute;left:10px;bottom:10px;background:rgba(58,43,120,.88);color:#fff;font-size:.8rem;padding:4px 10px;border-radius:99px}
+.destaques-a{padding:88px 0 72px}
+.cards-a{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card-a{display:flex;flex-direction:column;text-decoration:none;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card-a:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(81,63,149,.14)}
+.card-a figure img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.card-a>div{padding:20px;display:flex;flex-direction:column;flex:1}
+.card-a p{color:var(--suave);font-size:.95rem;flex:1}
+.etapas-a{background:var(--lilas);padding:80px 0}
+.estrutura-a{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding:88px 0}
+.estrutura-a-txt h2{margin-bottom:32px}
+.estrutura-a-fotos{display:grid;gap:14px}
+.estrutura-a-fotos img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raio)}
+.estrutura-a-fotos img:last-child{width:78%;margin-left:auto;margin-top:-80px;border:6px solid #fff;box-shadow:0 12px 30px rgba(35,29,58,.15)}
+.dr-a{background:linear-gradient(120deg,#3a2b78,#513f95 60%,#5c6fb4);color:#fff;padding:80px 0}
+.dr-a-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.dr-a figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% center;border-radius:16px}
+.dr-a h2,.dr-a h3{color:#fff}.dr-a .k{color:#c7d6f2}.dr-a p{color:#e4e0f4}
+.dr-a .lista-check li{color:#e4e0f4}.dr-a .lista-check .ic{color:#a9c3ec}
+.dr-a .link-seta{color:#fff}
+.numeros{display:flex;gap:40px;margin:20px 0 24px}
+.numeros b{display:block;font:500 2.3rem/1 var(--ft)}
+.numeros span{font-size:.9rem;color:#d5d0ec}
+.antes-a{padding:88px 0}
+.depo-a{background:var(--lilas);padding:80px 0}
+.gcr-a{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;padding:80px 0}
+.gcr-a p:not(.k){color:var(--suave)}
+.idioma-box{background:var(--lilas);border-radius:var(--raio);padding:28px}
+.idioma-box p{color:var(--suave)}
+.cta-a{background:#e7e4f2}
+.cta-in{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:56px 0;flex-wrap:wrap}
+.cta-a h2{margin-bottom:.2em}.cta-a p{margin:0;color:var(--suave)}
+.cab-a{background:linear-gradient(180deg,#e7e4f2,#f6f5fb);padding:48px 0}
+.cab-a-in{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.cab-a h1{font-size:clamp(2rem,3.8vw,3rem);font-weight:400;line-height:1.1}
+.cab-a-in p:not(.k){color:var(--suave);font-size:1.06rem;margin:0}
+.cab-a figure img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px}
+.itens-a{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.item-a{display:grid;grid-template-columns:200px 1fr;gap:24px;background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:20px;scroll-margin-top:140px;align-items:start}
+.item-a figure img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px}
+.item-a p{color:var(--suave)}
+@media (max-width:1020px){.hero-a-in,.cab-a-in,.estrutura-a,.dr-a-in,.gcr-a{grid-template-columns:1fr;gap:32px}.cards-a{grid-template-columns:1fr 1fr}.itens-a{grid-template-columns:1fr}.dr-a figure{max-width:420px}}
+@media (max-width:640px){.cards-a{grid-template-columns:1fr}.item-a{grid-template-columns:1fr}.item-a figure img{aspect-ratio:3/2}.cab-a figure{display:none}.numeros{gap:24px}.estrutura-a-fotos img:last-child{margin-top:-40px}}
