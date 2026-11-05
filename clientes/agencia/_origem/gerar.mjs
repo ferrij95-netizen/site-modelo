@@ -79,7 +79,6 @@ const iGlobo = SVG('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 
 const iChat = SVG('<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H9l-5 4z"/><path d="M8 9h8M8 13h5"/>');
 
 // Moldura de navegador com o print de um projeto.
-const cel = (nome, alt, attrs = '') => `<figure class="cel">${img(nome, alt, attrs)}</figure>`;
 const tela = (nome, alt, endereco = '', attrs = '') => `<figure class="tela"><div class="tela-barra"><i></i><i></i><i></i>${endereco ? `<span>${esc(endereco)}</span>` : ''}</div>${img(nome, alt, attrs)}</figure>`;
 
 const marca = `<img src="/assets/img/logo-overtus.webp" alt="Overtus" width="800" height="198">`;
@@ -227,18 +226,18 @@ P.index = `<section class="hero">
       <p class="lead">${site.linha2}</p>
       <div class="acoes">${agendar()}<a class="btn btn-sec" href="${L('projetos')}">Ver projetos</a></div>
     </div>
-    <div class="mosaico" aria-label="Telas de sites desenvolvidos pela Overtus, no computador e no celular">
-      <div class="m-a">${cel('cel-agrogen', 'Site da Agrogen no celular', 'loading="eager"')}</div>
-      <div class="m-b">${tela('p-texian', 'Site de engenharia e montagem industrial', 'texian.overtus.com.br', 'loading="eager" fetchpriority="high"')}</div>
-      <div class="m-c">${tela('v-dht-a', 'Site de indústria de produtos hospitalares', 'dht.overtus.com.br', 'loading="eager"')}</div>
+    <div class="mosaico" aria-label="Fotos de empresas em operação e prints de sites desenvolvidos pela Overtus">
+      <div class="m-a">${img('hero-pessoa', 'Profissional de terno em escritório', 'loading="eager"')}</div>
+      <div class="m-b">${img('proc-fabrica', 'Linha de produção de uma fábrica', 'loading="eager" fetchpriority="high"')}</div>
+      <div class="m-c">${img('sobre-reuniao', 'Reunião de trabalho', 'loading="eager"')}</div>
       <div class="m-d forma forma-q4"></div>
-      <div class="m-e">${cel('cel-flamarsul', 'Site da Flamarsul no celular', 'loading="eager"')}</div>
-      <div class="m-f forma forma-mist forma-c"></div>
-      <div class="m-g">${cel('cel-khromatintas', 'Site da Khroma Tintas no celular', 'loading="eager"')}</div>
+      <div class="m-e">${tela('p-texian', 'Site de engenharia e montagem industrial', '', 'loading="eager"')}</div>
+      <div class="m-f">${img('set-escritorio', 'Escritório', 'loading="eager"')}</div>
+      <div class="m-g forma forma-mist forma-c"></div>
       <div class="m-h forma forma-q1"></div>
-      <div class="m-i">${img('p-emmig', 'Site de estruturas metálicas', 'loading="eager"')}</div>
-      <div class="m-j">${img('p-reina', 'Site de sementes', 'loading="eager"')}</div>
-      <div class="m-k">${img('p-unitec', 'Site de produtos hospitalares', 'loading="eager"')}</div>
+      <div class="m-i">${img('proc-solda', 'Soldador em uma indústria', 'loading="eager"')}</div>
+      <div class="m-j">${tela('p-engenho-am', 'Site de beneficiamento de arroz', '', 'loading="eager"')}</div>
+      <div class="m-k">${img('set-distribuicao', 'Galpão de distribuição', 'loading="eager"')}</div>
     </div>
   </div>
 </section>
