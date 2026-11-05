@@ -1,0 +1,78 @@
+/* Versão A "Chaveiro": clara, vermelho e grafite do logo; Lexend + Noto Sans; o "P" em forma de chave vira etiqueta de chaveiro */
+:root{--cor:#d8262b;--cor-esc:#b01c21;--tinta:#282829;--suave:#f6ece9;--fundo:#fbf9f7;--cartao:#fff;--topo:rgba(251,249,247,.96);--linha:#e6dfda;--ft:Lexend,system-ui,sans-serif;--fm:Lexend,system-ui,sans-serif;--fx:"Noto Sans",system-ui,sans-serif;--raio:10px;--rod:#282829;--etq:#fff;--etq-txt:#282829;--rod-real:#ff8a8d}
+body{background:var(--fundo);color:var(--tinta);font-family:var(--fx)}
+h1,h2,h3{font-family:var(--ft);font-weight:500;letter-spacing:-.02em;color:var(--tinta)}
+.marca-txt b{font-weight:300}
+
+.hero-a{padding:64px 0 0;background:linear-gradient(180deg,var(--fundo) 0 62%,var(--tinta) 62%)}
+.hero-a-in{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;padding-bottom:48px}
+.hero-a h1{font-size:clamp(2.3rem,5vw,4.1rem);font-weight:300;line-height:1.02;letter-spacing:-.035em}
+.hero-a h1 em{display:block;font-style:normal;font-weight:600;color:var(--cor)}
+.hero-a-txt>p:not(.k){font-size:1.12rem;max-width:520px;margin:0}
+
+/* chaveiro: três etiquetas com o furo da argola */
+.chaveiro{display:grid;gap:12px}
+.chaveiro a{--furo:radial-gradient(circle at 30px 50%,transparent 9px,#000 10px);position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px;padding:18px 22px 18px 58px;border-radius:14px 40px 40px 14px;text-decoration:none;background:var(--cor);color:#fff;-webkit-mask:var(--furo);mask:var(--furo);transition:transform .2s}
+.chaveiro a::before{content:"";position:absolute;left:21px;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.chaveiro a:nth-child(2){background:var(--tinta);margin-left:22px}
+.chaveiro a:nth-child(3){background:#fff;color:var(--tinta);margin-left:44px;box-shadow:inset 0 0 0 1px var(--linha)}
+.chaveiro a:nth-child(3)::before{box-shadow:0 0 0 3px var(--linha)}
+.chaveiro a:hover{transform:translateX(6px)}
+.chaveiro span{font-size:.86rem;opacity:.85;grid-column:1}
+.chaveiro b{font:500 1.28rem/1.2 var(--ft);grid-column:1}
+.chaveiro .ic{grid-row:1/3;grid-column:2;width:24px;height:24px}
+
+.tira-a{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px}
+.tira-a a{position:relative;display:block;border-radius:var(--raio);overflow:hidden;text-decoration:none}
+.tira-a img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .5s}
+.tira-a li:first-child img{aspect-ratio:auto;height:100%}
+.tira-a a:hover img{transform:scale(1.04)}
+.tira-a span{position:absolute;left:12px;bottom:12px;background:rgba(40,40,41,.86);color:#fff;font-size:.82rem;font-weight:600;padding:6px 10px;border-radius:99px}
+
+.dest-a{padding:76px 0 0}
+.dest-a .cards{grid-template-columns:repeat(3,1fr)}
+.dest-a .cards:has(>li:nth-child(4):last-child){grid-template-columns:repeat(4,1fr)}
+.card a{border-radius:var(--raio)}
+.card-tipo{border-radius:99px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.card-local{color:var(--cor-esc)}
+.card-preco b{font-family:var(--ft);font-weight:600}
+
+.bairros-a{margin-top:80px;padding:72px 0;background:var(--suave)}
+.bairros-a-in{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.bairros-a h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+.bairros-a p:not(.k){margin:0;max-width:460px}
+.barras{display:grid;gap:10px;counter-reset:b}
+.barras li{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;font-weight:600;font-size:.95rem}
+.barras i{display:block;height:14px;border-radius:0 99px 99px 0;background:linear-gradient(90deg,var(--cor) var(--p),transparent var(--p))}
+.barras li:first-child i{height:22px}
+.barras b{font:600 1.05rem/1 var(--ft);text-align:right}
+
+.anuncie-a{margin-top:80px;background:var(--cor);color:#fff;padding:56px 0}
+.anuncie-a-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.anuncie-a h2{color:#fff;font-size:clamp(1.6rem,3vw,2.3rem)}
+.anuncie-a .k{color:#ffd2d3}
+.anuncie-a p:not(.k){margin:0;max-width:560px}
+
+.visita-a{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;padding:80px 0;align-items:start}
+.visita-a h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:.2em}
+.visita-a .contato-lista{margin-top:24px}
+.visita-a .mapa{min-height:400px}
+
+.cab-a{padding:56px 0 44px;background:var(--suave);position:relative;overflow:hidden}
+.cab-a::after{content:"";position:absolute;right:-40px;top:50%;width:220px;height:220px;margin-top:-110px;border-radius:50%;box-shadow:inset 0 0 0 26px rgba(216,38,43,.09)}
+.cab-a h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:400;max-width:860px}
+.cab-a p:not(.k){max-width:640px;font-size:1.08rem;margin:0}
+.rodape{--m-esc:#fff}
+
+@media (max-width:1000px){.dest-a .cards,.dest-a .cards:has(>li:nth-child(4):last-child){grid-template-columns:1fr 1fr}}
+@media (max-width:900px){
+  .hero-a{padding-top:40px;background:linear-gradient(180deg,var(--fundo) 0 80%,var(--tinta) 80%)}
+  .hero-a-in,.bairros-a-in,.visita-a{grid-template-columns:1fr;gap:30px}
+  .chaveiro a:nth-child(2){margin-left:14px}.chaveiro a:nth-child(3){margin-left:28px}
+  .tira-a{grid-template-columns:1fr 1fr}.tira-a li:first-child{grid-column:1/-1}.tira-a li:first-child img{aspect-ratio:16/9;height:auto}
+}
+@media (max-width:560px){
+  .dest-a .cards,.dest-a .cards:has(>li:nth-child(4):last-child){grid-template-columns:1fr}
+  .barras li{grid-template-columns:104px 1fr 34px;font-size:.86rem;gap:8px}
+  .cab-a::after{display:none}
+}
