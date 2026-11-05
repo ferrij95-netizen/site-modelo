@@ -1,0 +1,79 @@
+/* Versão B "Hexágono": branca com faixas grafite e vermelhas, foto dos elevadores em tela cheia, títulos altos em Bebas Neue, texto em Overpass, serviços numerados dentro do hexágono do logo. */
+:root{--cor:#ed3237;--cor-esc:#c41d22;--kc:#c41d22;--graf:#2b2829;--tinta:#242122;--suave:#5b5758;--fundo:#fff;--cartao:#f4f4f4;--topo:#2b2829;--topo-solido:#2b2829;--topo-h:66px;--linha:#e2e2e2;--rod:#1f1d1e;--ft:'Bebas Neue',Impact,sans-serif;--fx:'Overpass',system-ui,sans-serif;--raio:0px;--serv-f:400 1.6rem/1.1 'Bebas Neue',sans-serif}
+h1,h2,h3{font-family:var(--ft);font-weight:400;color:var(--graf);line-height:.95;letter-spacing:.01em}
+.btn{background:var(--cor);color:#fff;border-color:var(--cor);font-weight:700}
+.btn:hover{background:var(--cor-esc);border-color:var(--cor-esc)}
+.btn-linha{background:transparent;color:var(--graf);border-color:var(--graf)}
+.btn-linha:hover{background:var(--graf);color:#fff}
+.topo{color:#fff;border-bottom:4px solid var(--cor)}
+.menu a{color:#e9e7e7}
+.menu a:hover,.menu a.ativo{color:#fff;background:rgba(255,255,255,.08)}
+.menu a.ativo{box-shadow:inset 0 -3px 0 var(--cor)}
+.link-seta{color:var(--cor-esc)}
+.link-seta.claro{color:#fff}
+.k{letter-spacing:.2em}
+.lista-serv{border-top-color:var(--cor)}
+.lista-serv .n{font:400 1.5rem/1 var(--ft)}
+
+.hero-b{position:relative;min-height:min(78vh,720px);display:flex;align-items:flex-end;overflow:hidden;background:var(--graf)}
+.hero-b-foto{position:absolute;inset:0}
+.hero-b-foto img{width:100%;height:100%;object-fit:cover}
+.hero-b-in{position:relative;padding:0 0 0}
+.hero-b-box{background:#fff;max-width:640px;padding:36px 40px 40px;border-top:8px solid var(--cor)}
+.hero-b h1{font-size:clamp(3rem,7vw,5.6rem);margin-bottom:16px}
+.hero-b-box>p:not(.k):not(.bts){color:var(--suave);font-size:1.08rem;margin-bottom:24px}
+
+.areas-b{background:var(--graf);color:#e7e5e5;padding:64px 0}
+.areas-b-lista{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.areas-b-lista li{display:grid;gap:18px;align-content:start}
+.areas-b h2{color:#fff;font-size:2.1rem;margin:0 0 .3em}
+.areas-b p{margin:0;color:#c9c5c6}
+.hxb{position:relative;display:grid;place-items:center;width:70px;height:76px}
+.hxb .hex{position:absolute;inset:0;width:100%;height:100%;color:var(--cor)}
+.hxb b{position:relative;color:#fff;font:400 1.9rem/1 var(--ft)}
+
+.emp-b{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding:80px 0}
+.emp-b img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.emp-b h2{font-size:clamp(2.4rem,4.6vw,3.8rem)}
+.emp-b p:not(.k){color:var(--suave)}
+
+.preco-b{background:var(--cor);color:#fff;padding:56px 0}
+.preco-b .k{color:#fff}
+.preco-b blockquote{margin:0;font:400 clamp(2.4rem,6vw,5rem)/1 var(--ft);max-width:16ch}
+
+.lista-b{padding:80px 0}
+.lista-b .tit h2{font-size:clamp(2.4rem,4.6vw,3.6rem)}
+
+.copa-b{background:#1f1d1e;padding:72px 0}
+.tit-claro h2{color:#fff;font-size:clamp(2.4rem,4.6vw,3.6rem)}
+.tit-claro p:not(.k){color:#bdb8b9}
+.g-copa-b{grid-template-columns:repeat(6,1fr);margin-bottom:26px}
+.g-copa-b .c1{grid-column:span 3;grid-row:span 2}
+.g-copa-b figure:nth-child(n+10){display:none}
+
+.cta-b{padding:64px 0;border-bottom:1px solid var(--linha)}
+.cta-b-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.cta-b h2{font-size:clamp(2.6rem,5vw,4rem);margin-bottom:.15em}
+.cta-b p:not(.bts){color:var(--suave);margin:0;overflow-wrap:anywhere}
+
+.cab-b{position:relative;min-height:340px;display:flex;align-items:flex-end;background:var(--graf);overflow:hidden}
+.cab-b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+.cab-b-in{position:relative;padding:60px 0 40px}
+.cab-b .k{color:#fff}
+.cab-b h1{color:#fff;font-size:clamp(2.8rem,6vw,5rem);margin:0;max-width:14ch}
+.emp-pag h2,.det-pag h2,.serv-pag h2,.dif-pag h2,.form-tit{font-size:clamp(2rem,3.6vw,2.8rem)}
+
+@media (max-width:900px){
+  .areas-b-lista{grid-template-columns:1fr 1fr}
+  .emp-b{grid-template-columns:1fr;gap:28px}
+  .g-copa-b{grid-template-columns:1fr 1fr}
+  .g-copa-b .c1{grid-column:span 2;grid-row:auto}
+  .g-copa-b figure:nth-child(n+8){display:none}
+  .hero-b{min-height:0;display:block}
+  .hero-b-foto{position:relative;height:260px}
+  .hero-b-in{width:100%}
+  .hero-b-box{max-width:none;padding:28px 16px 32px}
+}
+@media (max-width:560px){
+  .areas-b-lista{grid-template-columns:1fr}
+}
