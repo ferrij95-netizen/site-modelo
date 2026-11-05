@@ -19,6 +19,7 @@
 // Prints (img/p-*.webp, v-*.webp): estudos de redesenho desenvolvidos pela Overtus (legendaProjetos em conteudo.mjs).
 import fs from 'node:fs';
 import path from 'node:path';
+import { cases, grupos as gruposCases, legendaCases } from './cases.mjs';
 import { site, menu, grupos, diferencial, etapas, etapasCartao, principios, projetos, legendaProjetos, setores, chamada, paginas } from './conteudo.mjs';
 
 const pub = path.join(path.dirname(new URL(import.meta.url).pathname), '../public');
@@ -539,6 +540,38 @@ P.contato = `${cabeca('Agende uma conversa.', chamada.texto, [[null, 'Contato']]
     </div>
   </div>
 </section>`;
+
+// ---------- Cases (vitrine: uma versão por site, link direto para ela) ----------
+// Prints em faixas de 10 (cases-prints.mjs): cada cartão mostra um pedaço da faixa, deslocado por --k.
+const POR_FAIXA = 10;
+const urlCase = ([c, v]) => `https://${c}.overtus.com.br/${v ? v + '/' : ''}`;
+const quantosCases = g => cases.filter(x => x[2] === g).length;
+const ingles = cases.filter(x => /EUA/.test(x[4])).length;
+P.cases = `<section class="cabeca cases-cab">
+  <div class="in">
+    ${trilha([[null, 'Cases']])}
+    <span class="rotulo">Portfólio Overtus</span>
+    <h1>Sites que a Overtus <em>refez</em>.</h1>
+    <p class="lead">${cases.length} sites completos, cada um com a identidade da própria empresa: logo, cores, fotos e produtos reais, várias páginas e versão para celular. Clique em qualquer um para navegar no site no ar.</p>
+    <dl class="cases-num"><div><dt>${cases.length}</dt><dd>sites no ar</dd></div><div><dt>${gruposCases.length}</dt><dd>segmentos</dd></div><div><dt>${ingles}</dt><dd>empresas nos EUA</dd></div><div><dt>100%</dt><dd>multipágina</dd></div></dl>
+  </div>
+</section>
+<section class="secao" style="padding-top:0">
+  <div class="in">
+    <div class="filtro" role="group" aria-label="Filtrar por segmento" data-filtro hidden><button type="button" aria-pressed="true" data-setor="">Todos <i>${cases.length}</i></button>${gruposCases.map(([g, nome]) => `<button type="button" aria-pressed="false" data-setor="${g}">${nome} <i>${quantosCases(g)}</i></button>`).join('')}</div>
+    <div class="projs cases">${cases.map((x, n) => {
+      const [c, , g, ramo, cidade] = x;
+      const url = urlCase(x);
+      const faixa = Math.floor(n / POR_FAIXA) + 1, k = n % POR_FAIXA;
+      return `<article class="proj" data-setor="${g}">
+      <a class="proj-tela" href="${url}" target="_blank" rel="noopener" aria-label="Abrir o site de ${esc(ramo.toLowerCase())} em nova aba"><figure class="tela"><div class="tela-barra"><i></i><i></i><i></i><span>${c}.overtus.com.br</span></div><div class="case-img"><img src="/assets/img/cases-${faixa}.webp" alt="Página inicial do site de ${esc(ramo.toLowerCase())}" width="640" height="4000" loading="lazy" decoding="async" style="--k:${k}"></div></figure></a>
+      <div class="case-txt"><div><h3>${esc(ramo)}</h3>${cidade ? `<small>${esc(cidade)}</small>` : ''}</div><a class="link" href="${url}" target="_blank" rel="noopener">Abrir ${seta}</a></div>
+    </article>`;
+    }).join('\n    ')}</div>
+    <p class="legenda">${legendaCases}</p>
+  </div>
+</section>
+${cta()}`;
 
 // ---------- Escreve as páginas na raiz de public/ ----------
 for (const d of fs.readdirSync(pub, { withFileTypes: true })) {
