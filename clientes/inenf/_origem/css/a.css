@@ -1,0 +1,49 @@
+/* A "Plantão": branco, verde do INENF, linha de ECG do logo */
+.hero-a{position:relative;padding:56px 0 0;background:linear-gradient(180deg,#fff 0,#F4F8F5 100%);overflow:hidden}
+.hero-a-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-bottom:20px}
+.hero-a h1{color:#16201a}
+.hero-a h1 em{font-style:normal;color:var(--verde)}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.12rem;max-width:520px}
+.hero-a-foto{position:relative}
+.hero-a-foto::before{content:"";position:absolute;inset:-26px -26px auto auto;width:62%;aspect-ratio:1;border-radius:50%;border:10px solid var(--verm);border-left-color:transparent;transform:rotate(-30deg)}
+.hero-a-foto img{position:relative;width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:8px}
+.hero-a-foto figcaption{position:absolute;left:-24px;bottom:28px;background:#fff;padding:14px 20px;border-radius:6px;box-shadow:0 14px 30px -14px rgba(0,0,0,.35);font-weight:600;max-width:240px}
+.hero-a-foto figcaption b{display:block;font:800 1.9rem/1 var(--ft);color:var(--verde)}
+.ecg-hero{height:60px;color:var(--verde);margin-top:10px}
+.destaque-a{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;padding:70px 0}
+.destaque-a img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px}
+.cursos-a{padding-bottom:60px}
+.grupo-a{margin-bottom:36px}
+.grupo-a h3{font:600 .95rem var(--fx);padding-bottom:12px;margin-bottom:18px;border-bottom:1px solid #dde2de;color:var(--verde-esc)}
+.cards-a{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card-a{text-decoration:none;display:flex;flex-direction:column;border-radius:8px;overflow:hidden;background:#fff;border:1px solid #dde2de;transition:transform .2s,border-color .2s}
+.card-a:hover{transform:translateY(-3px);border-color:var(--verde)}
+.card-a img,.card-a .sem-foto{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:0}
+.card-a div{padding:16px 18px;display:grid;gap:2px}
+.card-a b{font:700 1.2rem/1.15 var(--ft)}
+.card-a span{font-size:.9rem;color:var(--verde-esc);font-weight:600}
+.nivel-a{background:var(--verde);color:#fff;padding:64px 0}
+.nivel-a .k{color:#c9f0d1}
+.nivel-a-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.nivel-a ul{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.nivel-a li{display:flex;gap:10px;align-items:center;padding:16px;background:rgba(255,255,255,.12);border-radius:6px;font-weight:600}
+.valores-a{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center;padding:80px 0}
+.valores-a .valores ol{grid-template-columns:repeat(5,1fr)}
+.valores-a .valores li{font-size:1rem}
+.cta-a{background:var(--verm);color:#fff;padding:48px 0}
+.cta-a-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.cta-a h2{margin:0 0 .2em}.cta-a p{margin:0;opacity:.9}
+.fones-cta{display:flex;flex-wrap:wrap;gap:10px 26px;margin:0}
+.cab-a{background:#F4F8F5}
+.cab-a-in{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;padding:44px 0 10px}
+.cab-a h1{margin:0}
+.cab-a img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px}
+.ecg-cab{height:46px}
+@media (max-width:860px){
+  .hero-a-in,.destaque-a,.nivel-a-in,.valores-a,.cab-a-in{grid-template-columns:1fr;gap:30px}
+  .cards-a{grid-template-columns:1fr 1fr}
+  .hero-a-foto figcaption{left:12px}
+  .hero-a-foto::before{inset:-14px -14px auto auto}
+  .valores-a .valores ol{grid-template-columns:1fr 1fr}
+  .nivel-a ul{grid-template-columns:1fr}
+}
