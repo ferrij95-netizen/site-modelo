@@ -1,0 +1,53 @@
+/* B "Brincar": creme e amarelo do sol, mascote, rotina em linha do tempo */
+.v-b .topo{background:var(--creme)}
+.v-b .menu{background:var(--creme)}
+.hero-b{background:var(--creme);padding:50px 0 70px;overflow:hidden}
+.hero-b-in{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero-b h1{font-size:clamp(2.1rem,4.4vw,3.4rem)}
+.hero-b h1 em{font-style:normal;color:var(--verm);display:block}
+.hero-b-txt>p:not(.k):not(.bts){font-size:1.15rem;max-width:520px}
+.v-b .hero-b .btn{--cor:var(--verm);--cor-esc:#a81e23}
+.v-b .hero-b .btn-linha{color:var(--azul-esc);background:#fff;box-shadow:inset 0 0 0 2px var(--azul-esc)}
+.hero-b-fotos{position:relative;height:500px}
+.hero-b-fotos figure{position:absolute;margin:0;border-radius:24px;overflow:hidden;border:8px solid #fff;box-shadow:0 20px 40px -24px rgba(15,105,154,.45)}
+.hero-b-fotos img{width:100%;height:100%;object-fit:cover}
+.hb1{left:0;top:0;width:72%;height:62%;transform:rotate(-2deg)}
+.hb2{right:0;bottom:0;width:44%;height:66%;transform:rotate(3deg)}
+.hero-b-fotos .mascote{position:absolute;left:4%;bottom:-6px;width:150px;height:auto;z-index:2}
+.dia-b{padding:80px 0 60px}
+.dia{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.dia::before{content:"";position:absolute;left:0;right:0;top:20px;height:4px;background:repeating-linear-gradient(90deg,var(--amar) 0 14px,transparent 14px 24px)}
+.dia li{position:relative;padding:50px 18px 0 0}
+.dia li::before{content:"";position:absolute;left:0;top:10px;width:24px;height:24px;border-radius:50%;background:var(--azul);border:5px solid #fff;box-shadow:0 0 0 2px var(--azul)}
+.dia li:nth-child(2)::before{background:var(--verm);box-shadow:0 0 0 2px var(--verm)}.dia li:nth-child(3)::before{background:var(--verde);box-shadow:0 0 0 2px var(--verde)}.dia li:nth-child(4)::before{background:var(--amar);box-shadow:0 0 0 2px var(--amar)}
+.dia .h{display:block;font:700 .82rem var(--fx);letter-spacing:.08em;text-transform:uppercase;color:var(--verm);margin-bottom:4px}
+.dia b{font:700 1.2rem var(--ft);color:var(--azul-esc)}
+.dia p{margin:.3em 0 0;font-size:.97rem}
+.serv-b{padding:30px 0 50px}
+.servb{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:36px 0}
+.servb.inv figure{order:2}
+.servb figure{margin:0}
+.servb img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:28px}
+.servb .idade{display:inline-block;font:700 .8rem var(--fx);padding:5px 12px;border-radius:99px;background:var(--amar);color:var(--azul-esc);margin-bottom:10px}
+.mvv-b{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;padding:56px 44px;margin-bottom:60px;border-radius:28px;background:var(--azul);color:#fff}
+.mvv-b h2{color:#fff;font-size:clamp(1.6rem,3vw,2.5rem)}.mvv-b .k{color:var(--amar)}
+.mvv-b .valores li{background:rgba(255,255,255,.14);color:#fff}
+.fotos-b{background:var(--creme);padding:50px 0}
+.visita-b{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;padding:70px 0}
+.horas-b{margin:0}
+.cab-b{background:var(--creme)}
+.cab-b-in{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;padding:40px 0}
+.cab-b h1{margin:0}
+.cab-b figure{margin:0}
+.cab-b img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:24px;border:8px solid #fff;transform:rotate(1.5deg)}
+.v-b .cta-seg{background:var(--azul);color:#fff}.v-b .cta-seg h2{color:#fff}
+.v-b .cta-seg .btn{--cor:var(--amar);--cor-esc:#d9a30e;color:var(--azul-esc)}
+.v-b .cta-seg .btn-linha{color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.8)}
+@media (max-width:1000px){.dia{grid-template-columns:1fr;gap:6px}.dia::before{left:10px;right:auto;top:0;bottom:0;width:4px;height:auto;background:repeating-linear-gradient(180deg,var(--amar) 0 14px,transparent 14px 24px)}.dia li{padding:4px 0 18px 44px}.dia li::before{top:4px}}
+@media (max-width:860px){
+  .hero-b-in,.servb,.mvv-b,.visita-b,.cab-b-in{grid-template-columns:1fr;gap:28px}
+  .servb.inv figure{order:0}
+  .hero-b-fotos{height:400px}.hero-b-fotos .mascote{width:110px}
+  .mvv-b{padding:32px 26px}
+}
+@media (max-width:600px){.hero-b-fotos{height:330px}}

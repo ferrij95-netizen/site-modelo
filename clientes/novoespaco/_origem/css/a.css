@@ -1,0 +1,43 @@
+/* A "Casinha": azul do logo, bolinhas coloridas da fachada */
+.bola{position:absolute;border-radius:50%;pointer-events:none}
+.hero-a{background:var(--ceu-cl);padding:56px 0 76px;overflow:hidden}
+.hero-a-in{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.15rem;max-width:520px}
+.v-a .hero-a .btn-linha{background:#fff}
+.hero-a-foto{position:relative;margin:0}
+.hero-a-foto img{position:relative;z-index:1;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:28px}
+.hero-a-foto .b1{width:120px;height:120px;background:var(--amar);right:-34px;top:-34px}
+.hero-a-foto .b2{width:70px;height:70px;background:var(--verm);left:-26px;bottom:40px;z-index:2}
+.hero-a-foto .b3{width:46px;height:46px;background:var(--verde);right:60px;bottom:-22px;z-index:2}
+.serv-a{padding:80px 0}
+.serv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.serv{display:flex;flex-direction:column;text-decoration:none;border-radius:var(--raio);overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--linha);transition:transform .2s,box-shadow .2s}
+.serv:hover{transform:translateY(-4px);box-shadow:0 0 0 2px var(--azul)}
+.serv img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.serv div{padding:22px;display:flex;flex-direction:column;flex:1}
+.serv .link-seta{margin-top:auto}
+.idade{align-self:flex-start;font:700 .78rem var(--fx);padding:4px 11px;border-radius:99px;background:var(--amar-cl);color:var(--azul-esc);margin-bottom:10px}
+.serv.s1 .idade{background:#FCEBEC}.serv.s2 .idade{background:#EEF6EA}
+.selo-a{background:var(--azul);color:#fff;padding:64px 0}
+.selo-a-in{display:grid;grid-template-columns:260px 1fr;gap:56px;align-items:center}
+.selo-a h2{color:#fff}.selo-a .k{color:var(--amar)}.selo-a p{opacity:.92;max-width:620px}.selo-a .link-seta{color:#fff}
+.estr-a{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:center;padding:80px 0}
+.ativ-a{background:var(--amar-cl);padding:64px 0}
+.ativ-chips{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.ativ-chips li b{display:block;padding:14px 24px;border-radius:99px;background:#fff;font:700 1.15rem var(--ft);color:var(--azul-esc);box-shadow:0 0 0 2px var(--amar)}
+.visita-a{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding:80px 0}
+.visita-a img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:28px}
+.visita-a h2{margin-bottom:.2em}
+.cab-a{background:var(--ceu-cl);position:relative;overflow:hidden}
+.cab-a-in{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;padding:44px 0;position:relative;z-index:1}
+.cab-a h1{margin:0}
+.cab-a img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:24px}
+.cab-a .b1{width:160px;height:160px;background:var(--amar);left:-60px;bottom:-70px;opacity:.9}
+.cab-a .b2{width:60px;height:60px;background:var(--verm);left:42%;top:24px}
+@media (max-width:860px){
+  .hero-a-in,.selo-a-in,.estr-a,.visita-a,.cab-a-in{grid-template-columns:1fr;gap:34px}
+  .serv-cards{grid-template-columns:1fr}
+  .hero-a-foto .b1{width:80px;height:80px;right:-12px;top:-24px}
+  .selo-a .selo{max-width:220px}
+  .cab-a .b2{display:none}
+}
