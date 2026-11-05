@@ -1,0 +1,64 @@
+/* Versão A "Aço escovado": clara, cinza-aço como as letras do logo, vermelho do traço do "V" só como marcação; títulos em Exo 2 itálico (desenho próximo do logo), texto em Outfit. */
+:root{--cor:#d3202a;--cor-esc:#a8141d;--cor-txt:#b5161f;--tinta:#1f2125;--suave:#545962;--fundo:#eef0f2;--campo:#fff;--topo:rgba(238,240,242,.96);--topo-solido:#eef0f2;--topo-h:72px;--linha:#d3d7dc;--linha-forte:#b9bec5;--rod:#1c1d20;--ft:'Exo 2',system-ui,sans-serif;--fx:'Outfit',system-ui,sans-serif;--raio:2px;--num-f:italic 800 1rem/1 'Exo 2',sans-serif;--tripe-f:italic 800 1.3rem/1.1 'Exo 2',sans-serif}
+h1,h2,h3{font-family:var(--ft);font-style:italic;font-weight:800;color:var(--tinta);line-height:1.04;letter-spacing:-.01em}
+.btn{background:var(--cor);border-color:var(--cor);color:#fff}
+.btn-linha{background:transparent;color:var(--tinta);border-color:var(--tinta)}
+.btn-linha:hover{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.topo{border-bottom:1px solid var(--linha)}
+.menu a{color:#33363b}
+.menu a:hover,.menu a.ativo{color:var(--cor-txt)}
+.menu a.ativo{box-shadow:inset 0 -3px 0 var(--cor)}
+
+.hero-a{background:linear-gradient(115deg,#f7f8f9 0%,#e3e6ea 55%,#cfd3d8 100%);border-bottom:1px solid var(--linha)}
+.hero-a-in{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;padding:64px 0 48px}
+.hero-a h1{font-size:clamp(2.6rem,6.2vw,5.2rem);font-weight:900;margin-bottom:22px}
+.hero-a h1 span{display:block;background:linear-gradient(100deg,#6d7279,#2a2d32 60%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.hero-a-txt>p:not(.k):not(.bts){font-size:1.15rem;color:var(--suave);max-width:520px;margin-bottom:30px}
+.hero-a-foto{margin:0;position:relative}
+.hero-a-foto img{width:100%;aspect-ratio:4/3;object-fit:cover;clip-path:polygon(9% 0,100% 0,91% 100%,0 100%)}
+.hero-a-foto::after{content:"";position:absolute;left:47%;top:-14px;bottom:-14px;width:14px;background:var(--cor);transform:skewX(-20deg)}
+.lista-a ul{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--linha-forte)}
+.lista-a li{flex:1 1 auto}
+.lista-a a{display:block;padding:16px 18px 18px 0;font:italic 700 1rem/1.2 var(--ft);text-decoration:none;color:var(--tinta);white-space:nowrap}
+.lista-a a:hover{color:var(--cor-txt)}
+
+.servs-a{padding:84px 0 70px}
+.exp-a{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center;padding:30px 0 80px}
+.exp-num{display:grid;gap:8px;border-left:10px solid var(--cor);padding-left:26px;transform:skewX(-6deg)}
+.exp-num b{font:italic 900 clamp(6rem,14vw,10rem)/.85 var(--ft);color:var(--tinta)}
+.exp-num span{font-size:1.1rem;color:var(--suave);max-width:240px}
+.exp-a h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.exp-a p:not(.k){color:var(--suave)}
+.fotos-a{background:#d9dde2;padding:16px 0}
+.fotos-a-in{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px}
+.fotos-a img{width:100%;height:280px;object-fit:cover}
+.garantia-a{display:grid;grid-template-columns:1fr 1.5fr;gap:56px;align-items:start;padding:80px 0}
+.garantia-a h2{font-size:clamp(2rem,4vw,3rem);margin:0}
+.garantia-a>p{font-size:1.12rem;color:var(--suave);margin:0}
+.cta-a{background:var(--tinta);color:#e7e9ec}
+.cta-a-in{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;padding:60px 0}
+.cta-a h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.8rem);margin:0 0 .25em}
+.cta-a p{margin:0}
+.cta-a .btn-linha{color:#fff;border-color:#fff}
+.cta-a .btn-linha:hover{background:#fff;color:var(--tinta)}
+
+.tit-a{background:linear-gradient(115deg,#f7f8f9,#dfe2e6);border-bottom:1px solid var(--linha)}
+.tit-a-in{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;padding:44px 0}
+.tit-a h1{font-size:clamp(2.1rem,4.6vw,3.6rem);margin:0}
+.tit-a figure{margin:0}
+.tit-a figure img{width:100%;aspect-ratio:16/9;object-fit:cover;clip-path:polygon(7% 0,100% 0,93% 100%,0 100%)}
+
+@media (max-width:900px){
+  .hero-a-in,.exp-a,.garantia-a,.tit-a-in{grid-template-columns:1fr}
+  .hero-a-in{gap:36px;padding:40px 0 34px}
+  .exp-a{gap:36px}
+  .garantia-a{gap:18px;padding:60px 0}
+  .fotos-a-in{grid-template-columns:1fr 1fr}
+  .fotos-a .fa1{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .lista-a ul{display:grid;grid-template-columns:1fr 1fr}
+  .lista-a a{white-space:normal;padding:12px 10px 12px 0;font-size:.95rem}
+  .fotos-a img{height:200px}
+  .tit-a-in{padding:30px 0;gap:22px}
+}
