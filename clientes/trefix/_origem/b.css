@@ -1,16 +1,28 @@
-/* Versão B "Linha de trefilação": grafite e laranja, foto da linha em tela cheia. */
-.hero-b{position:relative;min-height:clamp(520px,80vh,720px);display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;background:var(--aco-noite)}
-.hero-b-fundo{position:absolute;inset:0}
-.hero-b-fundo img{width:100%;height:100%;object-fit:cover;object-position:60% 40%;animation:kb 18s ease-out both}
-@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
-.hero-b-fundo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,26,28,.92) 0%,rgba(24,26,28,.7) 45%,rgba(24,26,28,.15) 100%),linear-gradient(0deg,rgba(24,26,28,.7),transparent 40%)}
-.hero-b-in{position:relative;padding:120px 0 56px;max-width:none}
-.hero-b .hero-pre{font:700 1.05rem/1 var(--fx);letter-spacing:.16em;text-transform:uppercase;color:#ffb27a;margin-bottom:14px}
-.hero-b h1{color:#fff;font-size:clamp(2.6rem,6.4vw,5.2rem);font-stretch:125%;max-width:900px;line-height:.98}
-.hero-b h1 span{background:linear-gradient(180deg,#ff8a2a,#f86300);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-b .lead{color:#dfe2e5;max-width:620px;font-size:1.18rem}
+/* Versão B "Linha de trefilação": abertura clara em estúdio, com o feixe de barras em destaque. */
+.hero-b{position:relative;overflow:hidden;background:linear-gradient(165deg,#fafaf8 0%,#ececE8 55%,#d9d9d4 100%)}
+.hero-b-palavra{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font:800 clamp(5rem,18vw,16.5rem)/1 var(--ft);font-stretch:125%;letter-spacing:-.03em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(43,46,49,.11);pointer-events:none;user-select:none}
+.hero-b-fio{position:absolute;inset:0;width:100%;height:100%}
+.hero-b-fio path{fill:none;stroke:#b4b9bd;stroke-width:2.5;stroke-dasharray:100;stroke-dashoffset:100;animation:traca 2.4s .2s cubic-bezier(.6,0,.2,1) forwards;vector-effect:non-scaling-stroke}
+@keyframes traca{to{stroke-dashoffset:0}}
+.hero-b-in{position:relative;display:grid;grid-template-columns:1fr 1.2fr;align-items:center;gap:24px;min-height:clamp(560px,76vh,700px);padding:56px 0}
+.hero-pre{font:700 .95rem/1 var(--fx);letter-spacing:.18em;text-transform:uppercase;color:var(--laranja-esc);margin-bottom:18px}
+.hero-b h1{font-size:clamp(2.6rem,5.6vw,4.9rem);font-stretch:125%;line-height:.98;letter-spacing:-.025em;margin-bottom:.4em}
+.hero-b h1 span{background:linear-gradient(180deg,#ff8a2a,#e05400);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-b .lead{max-width:540px}
 .hero-acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.hero-b .btn-linha{color:#fff}
+.hero-b-prod{position:relative;margin-right:-6%}
+.hb-barras{width:100%;filter:drop-shadow(0 46px 38px rgba(30,32,34,.32)) contrast(1.05);animation:entra-dir 1.2s cubic-bezier(.2,.7,.2,1) both}
+.hb-rolo{position:absolute;left:0;bottom:-7%;width:38%;filter:drop-shadow(0 26px 22px rgba(30,32,34,.4)) brightness(1.1);animation:entra-dir 1.2s .25s cubic-bezier(.2,.7,.2,1) both}
+@keyframes entra-dir{from{opacity:0;transform:translateX(40px)}}
+.hero-b-prod figcaption{position:absolute;top:2%;right:6%;display:flex;gap:10px}
+.hero-b-prod figcaption span{display:grid;padding:10px 14px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:3px solid var(--laranja);font:600 .74rem/1.3 var(--fx);letter-spacing:.1em;text-transform:uppercase;color:var(--suave);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.hero-b-prod figcaption b{font:800 1.15rem/1.15 var(--ft);font-stretch:112%;letter-spacing:0;text-transform:none;color:var(--aco)}
+@media (max-width:900px){
+  .hero-b-in{grid-template-columns:1fr;min-height:0;padding:44px 0 32px}
+  .hero-b-prod{margin:10px 0 0 10%}
+  .hero-b-palavra{top:72%}
+  .hero-b-fio{display:none}
+}
 .hero-b-regua{position:relative;background:var(--grad);color:#fff;font:700 .85rem/1 var(--fx);letter-spacing:.06em}
 .hero-b-regua .in{display:flex;align-items:center;gap:10px;padding:12px 0}
 .hero-b-regua i{flex:1;height:10px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.75) 0 1px,transparent 1px 10%);border-bottom:1px solid rgba(255,255,255,.75)}
@@ -121,8 +133,6 @@
   .ancora-b{top:84px}
 }
 @media (max-width:760px){
-  .hero-b{min-height:0}
-  .hero-b-in{padding:90px 0 40px}
   .hero-b-regua span:nth-child(n+3):not(:last-child),.hero-b-regua i:nth-of-type(n+2){display:none}
   .lb a{grid-template-columns:44px 1fr 28px;gap:12px}
   .lb-f{display:none}
@@ -131,7 +141,6 @@
   .pb li{padding:0}
   .pb figure{aspect-ratio:16/9}
   .pb .pb-ic{aspect-ratio:4/1}
-  .hero-b h1{margin-bottom:.5em}
   .pb-fio{margin-right:0}
   .regua-b .regua-in,.empresa-b-in,.emp-b-in,.seguranca-b .seg-in{grid-template-columns:1fr}
   .ancora-b{top:70px}
