@@ -211,15 +211,25 @@ function paginasA() {
   const P = {};
   P.index = head(v, 'index', '', descPadrao) + topo(v, 'index') + `
 <section class="hero-a">
-  <figure class="hero-a-foto">${imgTopo('linha-bobinadeira', 'Arame trefilado sendo bobinado na linha da Trefix')}</figure>
   <div class="in hero-a-in">
     <div class="hero-a-txt">
-      <p class="hero-pre">Especializada em</p>
-      <h1>Arames e barras trefiladas</h1>
+      <p class="hero-pre"><span class="ponto"></span>Especializada em</p>
+      <h1>Arames e barras <em>trefiladas</em></h1>
       <p class="lead">Trefilação de 1,80 a 32,00 mm, decapagem química e fosfatização, com grande estoque de aço SAE em Campo Alegre/SC.</p>
-      <div class="hero-acoes"><a class="btn" href="${link(v, 'produtos')}">Saiba mais ${ic('seta')}</a>${btnCot(v, 'Solicitar cotação', 'btn btn-linha')}</div>
+      <div class="hero-acoes"><a class="btn" href="${link(v, 'produtos')}">Conheça os produtos ${ic('seta')}</a>${btnCot(v, 'Solicitar cotação', 'btn btn-linha')}</div>
+    </div>
+    <div class="palco" aria-hidden="true">
+      <span class="palco-luz"></span>
+      <svg class="orb orb-tras" viewBox="0 0 600 300"><defs><linearGradient id="og" x1="0" x2="1"><stop offset="0" stop-color="#ff8a2a"/><stop offset="1" stop-color="#e05400"/></linearGradient></defs><ellipse cx="300" cy="150" rx="286" ry="96" transform="rotate(-9 300 150)" fill="none" stroke="url(#og)" stroke-width="7" pathLength="100"/></svg>
+      <img class="palco-rolo" src="/assets/img/rolo-recorte.webp" alt="" width="870" height="522" fetchpriority="high">
+      <img class="palco-carretel" src="/assets/img/carretel-recorte.webp" alt="" width="260" height="449">
+      <svg class="orb orb-frente" viewBox="0 0 600 300"><defs><linearGradient id="og2" x1="0" x2="1"><stop offset="0" stop-color="#ff8a2a"/><stop offset="1" stop-color="#e05400"/></linearGradient></defs><ellipse cx="300" cy="150" rx="286" ry="96" transform="rotate(-9 300 150)" fill="none" stroke="url(#og2)" stroke-width="7" pathLength="100"/></svg>
+      <span class="cota c1"><b>1,80 a 32,00 mm</b>bitolas</span>
+      <span class="cota c2"><b>200 a 1.000 kg</b>por rolo</span>
+      <span class="cota c3"><b>SAE 1004 a 1045</b>em estoque</span>
     </div>
   </div>
+  <div class="hero-a-base"><div class="in"><span>Arames trefilados</span><span>Barras até 12 m</span><span>Decapagem química</span><span>Fosfatização</span></div></div>
 </section>
 <section class="caixas-sec"><div class="in">${caixasHome(v)}</div></section>
 
@@ -329,12 +339,20 @@ function paginasB() {
   const P = {};
   P.index = head(v, 'index', '', descPadrao) + topo(v, 'index') + `
 <section class="hero-b">
-  <div class="hero-b-fundo">${imgTopo('linha-bobinadeira', 'Arame trefilado sendo bobinado na linha da Trefix')}</div>
+  <span class="hero-b-palavra" aria-hidden="true">TREFILADOS</span>
+  <svg class="hero-b-fio" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 330 C 300 330 420 120 760 150 S 1200 300 1460 90" pathLength="100"/></svg>
   <div class="in hero-b-in">
-    <p class="hero-pre">Especializada em</p>
-    <h1>Arames e barras <span>trefiladas</span></h1>
-    <p class="lead">Trefilação de 1,80 a 32,00 mm, rolos de 200 a 1.000 kg e barras de até 12 m. Decapagem química e fosfatização em rolos, barras e peças.</p>
-    <div class="hero-acoes"><a class="btn" href="${link(v, 'produtos')}">Saiba mais ${ic('seta')}</a><a class="btn btn-linha" href="${telHref(E.fone)}">${ic('tel')}${E.fone}</a></div>
+    <div class="hero-b-txt">
+      <p class="hero-pre">Especializada em</p>
+      <h1>Arames e barras <span>trefiladas</span></h1>
+      <p class="lead">Trefilação de 1,80 a 32,00 mm, rolos de 200 a 1.000 kg e barras de até 12 m. Decapagem química e fosfatização em rolos, barras e peças.</p>
+      <div class="hero-acoes"><a class="btn" href="${link(v, 'produtos')}">Conheça os produtos ${ic('seta')}</a><a class="btn btn-linha" href="${telHref(E.fone)}">${ic('tel')}${E.fone}</a></div>
+    </div>
+    <figure class="hero-b-prod">
+      <img class="hb-barras" src="/assets/img/barras-recorte.webp" alt="Feixe de barras trefiladas da Trefix" width="958" height="686" fetchpriority="high">
+      <img class="hb-rolo" src="/assets/img/rolo-recorte.webp" alt="" width="870" height="522" aria-hidden="true">
+      <figcaption><span><b>12 m</b>barras</span><span><b>32,00 mm</b>bitola máx.</span></figcaption>
+    </figure>
   </div>
   <div class="hero-b-regua" aria-hidden="true"><div class="in"><span>1,80</span><i></i><span>5</span><i></i><span>10</span><i></i><span>15</span><i></i><span>20</span><i></i><span>25</span><i></i><span>32,00 mm</span></div></div>
 </section>
