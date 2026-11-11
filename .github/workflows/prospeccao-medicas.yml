@@ -1,0 +1,60 @@
+# Busca indústrias médico-hospitalares no Google Maps pelo Brasil, dá nota aos sites e procura sinais de porte (resultado em prospeccao/medicas/saida/).
+name: prospeccao-medicas
+on:
+  push:
+    branches: [claude/project-thread-ejeiil]
+    paths: [.github/workflows/prospeccao-medicas.yml, prospeccao/medicas/maps.cjs, prospeccao/medicas/analisa.py]
+permissions:
+  contents: write
+jobs:
+  maps:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        cidade: [REFS, Porto Alegre RS, Cachoeirinha RS, Canoas RS, Gravataí RS, Caxias do Sul RS, Novo Hamburgo RS, São Leopoldo RS,
+                 Joinville SC, Blumenau SC, Florianópolis SC, Curitiba PR, São José dos Pinhais PR, Londrina PR, Maringá PR,
+                 São Paulo SP, Ribeirão Preto SP, Campinas SP, São José dos Campos SP, Sorocaba SP, Rio Claro SP, São Carlos SP,
+                 Jundiaí SP, Guarulhos SP, Barueri SP, Diadema SP, São Bernardo do Campo SP, Indaiatuba SP, Americana SP,
+                 Belo Horizonte MG, Contagem MG, Juiz de Fora MG, Pouso Alegre MG, Rio de Janeiro RJ, Petrópolis RJ,
+                 Goiânia GO, Anápolis GO, Brasília DF, Recife PE, Fortaleza CE, Salvador BA, Manaus AM, Vitória ES, Campo Grande MS]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Buscar no Maps
+        working-directory: prospeccao/medicas
+        env:
+          CIDADE: ${{ matrix.cidade }}
+          IDX: ${{ strategy.job-index }}
+        run: |
+          npm i --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node maps.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maps-${{ strategy.job-index }}
+          path: prospeccao/medicas/saida/
+          if-no-files-found: ignore
+  analisa:
+    needs: maps
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: maps-*
+          path: prospeccao/medicas/saida
+          merge-multiple: true
+      - name: Checar sites
+        working-directory: prospeccao/medicas
+        run: |
+          pip install requests
+          python analisa.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add -f prospeccao/medicas/saida
+          git commit -m "Prospecção médicas: resultados" && git pull --rebase origin claude/project-thread-ejeiil && git push
