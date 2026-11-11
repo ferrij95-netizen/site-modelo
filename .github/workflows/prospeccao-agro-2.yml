@@ -1,0 +1,24 @@
+# Etapa 2 da prospecção agro: CNPJ (capital social) e nova checagem dos sites que não abriram.
+name: prospeccao-agro-2
+on:
+  push:
+    branches: [claude/project-thread-4is0gm]
+    paths: [.github/workflows/prospeccao-agro-2.yml, prospeccao/agro/etapa2.py, prospeccao/agro/etapa2-in.json]
+permissions:
+  contents: write
+jobs:
+  etapa2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: CNPJ e sites
+        working-directory: prospeccao/agro
+        run: |
+          pip install requests
+          python etapa2.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add -f prospeccao/agro/saida/etapa2.json
+          git commit -m "Prospecção agro: etapa 2" && git pull --rebase origin claude/project-thread-4is0gm && git push
