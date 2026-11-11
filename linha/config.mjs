@@ -14,6 +14,7 @@ export const MODELOS = {
   conteudo: 'claude-haiku-5-5',
   redacao: 'claude-sonnet-5-5',
   traducao: 'claude-haiku-5-5',
+  critica: 'claude-haiku-5-5',
   revisao: 'claude-sonnet-5-5',
   abordagem: 'claude-haiku-5-5',
 };
@@ -24,9 +25,11 @@ export const MODELOS = {
 export const PROVEDOR = process.env.LINHA_IA || (process.env.ANTHROPIC_API_KEY ? 'anthropic' : process.env.DEEPSEEK_API_KEY ? 'deepseek' : 'anthropic');
 export const MODELO_DEEPSEEK = process.env.DEEPSEEK_MODELO || 'deepseek-chat';
 export const ETAPAS_COM_IMAGEM = ['triagem', 'revisao'];
+// Temperatura na DeepSeek: baixa onde é extrair ou traduzir fatos, média na redação (texto natural sem inventar).
+export const TEMPERATURA = { conteudo: 0.2, redacao: 0.6, critica: 0.3, traducao: 0.3, abordagem: 0.6 };
 
 export const ESFORCO = {
-  triagem: 'low', conteudo: 'low', redacao: 'medium', traducao: 'low', revisao: 'low', abordagem: 'low',
+  triagem: 'low', conteudo: 'low', redacao: 'medium', critica: 'low', traducao: 'low', revisao: 'low', abordagem: 'low',
 };
 
 // US$ por milhão de tokens (tabela da Anthropic, outubro de 2026). Cache: escrita 1,25x, leitura 0,1x. Lote: metade.

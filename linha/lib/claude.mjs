@@ -6,10 +6,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import { DADOS, MODELOS, ESFORCO, PRECOS, PROVEDOR, MODELO_DEEPSEEK, ETAPAS_COM_IMAGEM } from '../config.mjs';
+import { DADOS, MODELOS, ESFORCO, PRECOS, PROVEDOR, MODELO_DEEPSEEK, ETAPAS_COM_IMAGEM, TEMPERATURA } from '../config.mjs';
 import { arq, lerJson, gravarJson, log } from './util.mjs';
 
-export const MODO = process.env.LINHA_MODO || (process.env.ANTHROPIC_API_KEY || process.env.DEEPSEEK_API_KEY ? 'direto' : 'manual');
+// LINHA_IA=deepseek sem chave: a chave entra pelo proxy da nuvem do Claude (segredo de rede do ambiente), então é modo direto.
+export const MODO = process.env.LINHA_MODO || (process.env.ANTHROPIC_API_KEY || process.env.DEEPSEEK_API_KEY || process.env.LINHA_IA === 'deepseek' ? 'direto' : 'manual');
 const DEEPSEEK = PROVEDOR === 'deepseek';
 const modoDa = etapa => (DEEPSEEK && ETAPAS_COM_IMAGEM.includes(base(etapa)) ? 'manual' : MODO);
 let cliente = null;
@@ -90,8 +91,8 @@ async function deepseek(slug, etapa, sistema, conteudo, esquema, maxTokens) {
   for (let tentativa = 1; ; tentativa++) {
     const r = await fetch('https://api.deepseek.com/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}` },
-      body: JSON.stringify({ model: MODELO_DEEPSEEK, messages, response_format: { type: 'json_object' }, max_tokens: Math.min(maxTokens, 8192), temperature: 0.7 }),
+      headers: { 'Content-Type': 'application/json', ...(process.env.DEEPSEEK_API_KEY ? { Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}` } : {}) },
+      body: JSON.stringify({ model: MODELO_DEEPSEEK, messages, response_format: { type: 'json_object' }, max_tokens: Math.min(maxTokens, 8192), temperature: TEMPERATURA[base(etapa)] ?? 0.7 }),
     });
     if (!r.ok) throw new Error(`${etapa}: DeepSeek respondeu ${r.status} ${(await r.text()).slice(0, 300)}`);
     const d = await r.json();

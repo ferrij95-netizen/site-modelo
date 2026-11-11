@@ -15,7 +15,7 @@ Arquitetura e custo: `/mnt/project-files/linha-producao/ARQUITETURA.md`.
 | 1 | Captura (navegador: prints, textos, logo, fotos, cores, fontes, idiomas, contatos) | `etapas/captura.mjs` | nenhuma |
 | 2 | Triagem pelo print (só segue nota ≥ 6) | `etapas/agentes.mjs` | Haiku |
 | 3 | Ficha da empresa (só fatos do site) | `etapas/agentes.mjs` | Haiku |
-| 4 | Redação dos textos + tradução en/es se o site atual tem idiomas | `etapas/agentes.mjs` | Sonnet + Haiku |
+| 4 | Redação dos textos (com o kit de treino) + autocrítica + tradução en/es se o site atual tem idiomas | `etapas/agentes.mjs`, `kit/` | Sonnet + Haiku |
 | 5 | Montagem das duas versões a partir dos modelos | `etapas/montagem.mjs`, `modelos/` | nenhuma |
 | 6 | Revisão pelo print (antigo x novo), uma volta de ajustes | `etapas/agentes.mjs` | Sonnet |
 | 7 | Script de ligação a partir de `script-ligacao.md` | `etapas/agentes.mjs` | Haiku |
@@ -23,6 +23,23 @@ Arquitetura e custo: `/mnt/project-files/linha-producao/ARQUITETURA.md`.
 
 As instruções de cada agente estão em `lib/prompts.mjs`; modelos, preços e limites em `config.mjs`.
 Cada empresa tem uma pasta em `dados/empresas/<cliente>/` com o estado de cada etapa: a linha para e retoma de onde parou.
+
+## Kit de treino (para o gerador não sair genérico)
+
+Não há fine-tuning: o "treino" é o que vai na instrução do redator, em `kit/`:
+- `kit/guia.md`: as regras do projeto e as recusas do João (Engefrio "cara de IA", Haiku "muito genérico", Tri City C "a melhor de todas"), mais a lista de palavras proibidas.
+- `kit/exemplos.md`: reescritas genérico -> aprovado e trechos de sites aprovados (Dispra, Frigoestrela, Tri City) no mesmo JSON que a IA devolve.
+- `kit/checklist.md`: o que o revisor confere.
+- `lib/genericos.mjs`: detector sem IA (clichês, números que não estão na ficha, títulos vazios, seções vizinhas iguais, cards que começam igual, chamada sem produto nem cidade, páginas do menu faltando). Dá nota de 0 a 100.
+- Autocrítica (etapa `critica`): depois da redação, o detector aponta os problemas e a IA devolve só as trocas (caminho + texto novo). Fica a versão com nota maior, em `ia/redacao.revisada.json`.
+- A chamada ganhou `sobretitulo` (ex.: "Desde 1999 · Jataí, GO"), que os modelos A e B mostram acima do título.
+
+Para mudar o estilo, edite os arquivos de `kit/` (texto simples). Correção nova do João vira uma linha no guia ou uma reescrita nos exemplos.
+
+### Comparar antes e depois
+
+`node comparar.mjs` pega as empresas de `<dados>/empresas/` (faz a captura e a ficha se faltar), escreve os textos com o prompt antigo e com o kit, monta os dois sites em `<dados>/comparar/<empresa>/` e gera `<dados>/comparar/index.html` com os prints lado a lado e a nota do detector. Não mexe em `clientes/`.
+Com a DeepSeek: `set DEEPSEEK_API_KEY=...` no PC, ou, na nuvem do Claude, a chave como segredo de rede do ambiente para `api.deepseek.com` e `LINHA_IA=deepseek`.
 
 ## Como rodar (no PC, em `D:\overtus-coleta\linha`)
 

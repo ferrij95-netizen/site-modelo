@@ -1,5 +1,6 @@
 // Instruções fixas de cada agente e o formato JSON que cada um devolve.
 // Ficam iguais para todas as empresas (é isso que deixa o cache de prompt funcionar).
+import { KIT } from './kit.mjs';
 
 export const FONTES_TITULO = ['Montserrat', 'Poppins', 'Exo 2', 'Red Hat Display', 'Barlow', 'Barlow Condensed', 'Oswald', 'Rajdhani',
   'Titillium Web', 'Archivo', 'Raleway', 'Roboto Slab', 'Merriweather', 'Lato', 'Nunito Sans', 'Saira', 'Kanit', 'Work Sans', 'Libre Franklin', 'Source Serif 4'];
@@ -50,7 +51,8 @@ export const conteudoEsquema = fontes => obj({
 });
 
 // ---------- Redação ----------
-export const REDACAO_SISTEMA = `Você é redator de uma agência que refaz sites de empresas. Recebe a ficha da empresa (tirada do site atual) e escreve os textos do site novo, em português do Brasil.
+// V1: o prompt de antes do kit de treino. Fica só para comparar (node comparar.mjs).
+export const REDACAO_SISTEMA_V1 = `Você é redator de uma agência que refaz sites de empresas. Recebe a ficha da empresa (tirada do site atual) e escreve os textos do site novo, em português do Brasil.
 O site novo é o site atual da empresa, melhorado. Regras da agência:
 1. Identidade real: use os produtos, serviços, números, clientes e contatos da ficha. Nada inventado: nenhum número, prêmio, certificação, depoimento, cliente ou ano que não esteja na ficha. Sem depoimento na ficha, não crie seção de depoimentos.
 2. Estrutura fiel: mantenha as páginas do menu atual, na mesma ordem, e as seções da home na ordem do site atual. Pode juntar seções repetidas e cortar o que é lixo de modelo pronto.
@@ -60,11 +62,43 @@ O site novo é o site atual da empresa, melhorado. Regras da agência:
 6. imagem: só ids de imagens da ficha (ex.: "foto-3") ou "". Prefira fotos grandes e reais para as chamadas.
 7. slug: minúsculo, sem acento, com hífen (ex.: "quem-somos"). A primeira página é sempre a home, com slug "inicio".
 8. botao: o texto do botão principal (ex.: "Solicitar orçamento", "Falar com um consultor"), coerente com o que a empresa vende.`;
+
+// V2 (kit de treino): guia de estilo com as correções do João + exemplos de ouro. Texto fixo, então fica em cache.
+export const REDACAO_SISTEMA = `Você é o redator sênior da Overtus, agência que refaz sites de empresas e indústrias brasileiras. Recebe a ficha da empresa (tirada do site atual) e escreve, em português do Brasil, os textos do site novo em JSON.
+Antes de escrever, leia a ficha e anote mentalmente os fatos que você tem: produtos e linhas, serviços, números, cidades e estados, marcas, clientes, anos, canais de contato. Cada título e cada card do site deve usar esses fatos.
+
+${KIT.guia}
+
+${KIT.exemplos}
+
+Formato:
+- slug: minúsculo, sem acento, com hífen (ex.: "quem-somos"). A primeira página é sempre a home, com slug "inicio".
+- Cada página tem chamada (sobretitulo curto com fato, título forte, subtítulo de uma ou duas frases, imagem) e de 2 a 5 seções (a home pode ter até 7).
+- secoes[].subtitulo é o rótulo pequeno acima do título da seção.
+- Campos sem conteúdo ficam "" ou [], nunca com texto de preenchimento.`;
 const secao = obj({ tipo: { type: 'string', enum: TIPOS_SECAO }, titulo: str, subtitulo: str, texto: str, imagem: str, itens: { type: 'array', items: item } });
 export const SITE_ESQUEMA = obj({
   slogan: str, botao: str, rodape: str,
   paginas: { type: 'array', items: obj({ slug: str, menu: str, titulo_seo: str, descricao_seo: str,
-    chamada: obj({ titulo: str, subtitulo: str, imagem: str }), secoes: { type: 'array', items: secao } }) },
+    chamada: obj({ sobretitulo: str, titulo: str, subtitulo: str, imagem: str }), secoes: { type: 'array', items: secao } }) },
+});
+
+// ---------- Autocrítica ----------
+// Um segundo passo barato: o revisor confere o rascunho contra o checklist e os problemas que o detector achou
+// (lib/genericos.mjs) e devolve só as trocas, não o site inteiro (menos tokens e sem risco de cortar o JSON).
+export const CRITICA_SISTEMA = `Você é o editor-chefe da Overtus. Recebe a ficha da empresa, o rascunho dos textos do site novo (JSON) e uma lista de problemas encontrados por um verificador automático.
+Sua tarefa: deixar o rascunho específico desta empresa, sem nada genérico e sem nada inventado, seguindo o guia e o checklist abaixo.
+Devolva só as trocas necessárias. Cada troca tem caminho (ex.: "paginas[0].chamada.titulo", "paginas[1].secoes[2].itens[0].texto", "paginas[0].secoes[3].tipo") e novo (o texto novo; para tipo, um dos tipos permitidos).
+Para apagar uma seção ou um item (por exemplo, número ou depoimento inventado), use remover com o caminho da seção ou do item (ex.: "paginas[0].secoes[4]").
+Corrija todos os problemas da lista e tudo o que o checklist pegar. Não mexa no que já está bom. Use só fatos da ficha.
+
+${KIT.guia}
+
+${KIT.checklist}`;
+export const CRITICA_ESQUEMA = obj({
+  avaliacao: str,
+  trocas: { type: 'array', items: obj({ caminho: str, novo: str }) },
+  remover: strs,
 });
 
 // ---------- Tradução ----------

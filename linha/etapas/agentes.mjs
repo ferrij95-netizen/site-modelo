@@ -4,7 +4,8 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { REPO, DADOS } from '../config.mjs';
 import { pedir } from '../lib/claude.mjs';
-import { arq, lerJson, existe } from '../lib/util.mjs';
+import { arq, lerJson, gravarJson, existe, log } from '../lib/util.mjs';
+import { avaliar, resumo } from '../lib/genericos.mjs';
 import * as P from '../lib/prompts.mjs';
 
 // Recorta e reduz um print para a IA ver gastando pouco (imagem custa largura x altura / 750 tokens).
@@ -59,17 +60,66 @@ export async function conteudo(slug) {
   return pedir({ slug, etapa: 'conteudo', sistema: P.CONTEUDO_SISTEMA, esquema: P.conteudoEsquema(P.FONTES_TITULO), conteudo, maxTokens: 12000 });
 }
 
-// ---------- 4. Redação (+ tradução) ----------
-export async function redacao(slug) {
+// ---------- 4. Redação (+ autocrítica + tradução) ----------
+// etapa/sistema mudam só no comparador (node comparar.mjs), que roda o prompt antigo e o novo lado a lado.
+export async function redacao(slug, { etapa = 'redacao', sistema = P.REDACAO_SISTEMA } = {}) {
   const ficha = lerJson(arq(slug, 'ia', 'conteudo.resposta.json')).json;
   const c = lerJson(arq(slug, 'captura.json'));
   const fotos = c.imagens.filter(i => !i.logo).map(i => `${i.id} ${i.real?.w || i.w}x${i.real?.h || i.h} ${i.alt}`).join('\n');
-  return pedir({ slug, etapa: 'redacao', sistema: P.REDACAO_SISTEMA, esquema: P.SITE_ESQUEMA, maxTokens: 16000,
+  return pedir({ slug, etapa, sistema, esquema: P.SITE_ESQUEMA, maxTokens: 16000,
     conteudo: [`FICHA DA EMPRESA:\n${JSON.stringify(ficha)}\n\nFOTOS DISPONÍVEIS (id, largura x altura, alt):\n${fotos}\n\nEscreva os textos do site novo.`] });
 }
 
+// Autocrítica: o detector (sem IA) aponta o que está genérico ou inventado; o revisor devolve só as trocas.
+// O resultado vai para ia/<de>.revisada.json com a nota antes e depois. Se piorar, fica o rascunho.
+export async function critica(slug, { de = 'redacao' } = {}) {
+  const feito = lerJson(arq(slug, 'ia', `${de}.revisada.json`));
+  if (feito?.json) return feito.json;
+  const ficha = lerJson(arq(slug, 'ia', 'conteudo.resposta.json')).json;
+  const cap = lerJson(arq(slug, 'captura.json'));
+  const rascunho = lerJson(arq(slug, 'ia', `${de}.resposta.json`)).json;
+  const antes = avaliar(rascunho, ficha, cap);
+  const r = await pedir({ slug, etapa: de === 'redacao' ? 'critica' : `critica-${de.replace('redacao-', '')}`, sistema: P.CRITICA_SISTEMA, esquema: P.CRITICA_ESQUEMA, maxTokens: 6000,
+    conteudo: [`FICHA DA EMPRESA:\n${JSON.stringify(ficha)}\n\nRASCUNHO:\n${JSON.stringify(rascunho)}\n\nPROBLEMAS DO VERIFICADOR (${resumo(antes)}):\n${antes.problemas.map(p => `- ${p.onde}: ${p.texto}`).join('\n') || '- nenhum'}\n\nRevise.`] });
+  if (!r) return null;
+  const { site, erros } = aplicarTrocas(rascunho, r);
+  const depois = avaliar(site, ficha, cap);
+  const fica = depois.nota >= antes.nota ? site : rascunho;
+  gravarJson(arq(slug, 'ia', `${de}.revisada.json`), { json: fica, notaAntes: antes.nota, notaDepois: depois.nota, usouRevisao: fica === site,
+    trocas: r.trocas.length, remocoes: r.remover.length, errosAoAplicar: erros, problemasRestantes: avaliar(fica, ficha, cap).problemas, avaliacao: r.avaliacao });
+  log(`${slug} ${de}: autocrítica ${antes.nota} -> ${depois.nota} (${r.trocas.length} trocas, ${r.remover.length} remoções)`);
+  return fica;
+}
+
+// Textos finais do site: o revisado pela autocrítica, ou o rascunho.
+export const textosDoSite = (slug, de = 'redacao') => (lerJson(arq(slug, 'ia', `${de}.revisada.json`)) || lerJson(arq(slug, 'ia', `${de}.resposta.json`))).json;
+
+// "paginas[0].secoes[2].titulo" -> ['paginas', 0, 'secoes', 2, 'titulo']
+const partes = c => String(c).replace(/^\$?\.?/, '').split(/\.|\[(\d+)\]/).filter(x => x !== undefined && x !== '').map(x => /^\d+$/.test(x) ? Number(x) : x);
+const TIPOS = new Set(['texto', 'cards', 'lista', 'processo', 'numeros', 'galeria', 'marcas', 'depoimentos', 'cta', 'faq', 'contato']);
+const CAMPOS = new Set(['slogan', 'botao', 'rodape', 'menu', 'titulo_seo', 'descricao_seo', 'sobretitulo', 'titulo', 'subtitulo', 'texto', 'imagem', 'tipo']);
+export function aplicarTrocas(rascunho, { trocas = [], remover = [] }) {
+  const site = structuredClone(rascunho);
+  const erros = [];
+  for (const t of trocas) {
+    const ps = partes(t.caminho), campo = ps.at(-1);
+    let alvo = site;
+    for (const p of ps.slice(0, -1)) alvo = alvo?.[p];
+    if (!alvo || typeof alvo !== 'object' || !CAMPOS.has(campo) || (campo === 'tipo' && !TIPOS.has(t.novo))) { erros.push(t.caminho); continue; }
+    alvo[campo] = t.novo;
+  }
+  // Remoções do fim para o começo, para os índices não andarem.
+  const rem = remover.map(partes).filter(ps => typeof ps.at(-1) === 'number').sort((a, b) => b.at(-1) - a.at(-1));
+  for (const ps of rem) {
+    let lista = site;
+    for (const p of ps.slice(0, -1)) lista = lista?.[p];
+    if (Array.isArray(lista) && ps.at(-1) < lista.length) lista.splice(ps.at(-1), 1); else erros.push(ps.join('.'));
+  }
+  return { site, erros };
+}
+
 export async function traducao(slug, lingua) {
-  const site = lerJson(arq(slug, 'ia', 'redacao.resposta.json')).json;
+  const site = textosDoSite(slug);
   const nome = { en: 'inglês', es: 'espanhol' }[lingua];
   return pedir({ slug, etapa: `traducao-${lingua}`, sistema: P.TRADUCAO_SISTEMA, esquema: P.SITE_ESQUEMA, maxTokens: 16000,
     conteudo: [`Idioma: ${nome}.\n\n${JSON.stringify(site)}`] });

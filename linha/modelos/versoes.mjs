@@ -39,7 +39,7 @@ const CHAMADA = {
   a(ctx, pagina, home) {
     const c = pagina.chamada, url = ctx.img(c.imagem);
     if (home) return `<section class="chamada ch-home${url ? '' : ' sem-foto'}"><div class="in">
-  <div class="ch-texto"><span class="sobretitulo">${esc(ctx.dados.empresa.nome)}</span><h1>${esc(c.titulo)}</h1><p>${esc(c.subtitulo)}</p><div class="cta-botoes">${botoes(ctx)}</div></div>
+  <div class="ch-texto"><span class="sobretitulo">${esc(c.sobretitulo || ctx.dados.empresa.nome)}</span><h1>${esc(c.titulo)}</h1><p>${esc(c.subtitulo)}</p><div class="cta-botoes">${botoes(ctx)}</div></div>
   ${url ? `<figure class="ch-foto"><img src="${esc(url)}" alt="${esc(c.titulo)}" fetchpriority="high"></figure>` : ''}
 </div></section>`;
     return `<section class="chamada ch-interna"><div class="in"><nav class="trilha"><a href="${ctx.link('inicio')}">${UI[ctx.lingua].inicio}</a> / <span>${esc(pagina.menu)}</span></nav><h1>${esc(c.titulo)}</h1>${c.subtitulo ? `<p>${esc(c.subtitulo)}</p>` : ''}</div>${url ? `<img class="ch-fundo" src="${esc(url)}" alt="">` : ''}</section>`;
@@ -48,7 +48,7 @@ const CHAMADA = {
     const c = pagina.chamada, url = ctx.img(c.imagem);
     return `<section class="chamada ${home ? 'ch-home' : 'ch-interna'}${url ? '' : ' sem-foto'}">
   ${url ? `<img class="ch-fundo" src="${esc(url)}" alt="" fetchpriority="high">` : ''}
-  <div class="in"><div class="ch-texto">${home ? `<span class="sobretitulo">${esc(ctx.site.slogan)}</span>` : `<span class="sobretitulo">${esc(pagina.menu)}</span>`}<h1>${esc(c.titulo)}</h1>${c.subtitulo ? `<p>${esc(c.subtitulo)}</p>` : ''}${home ? `<div class="cta-botoes">${botoes(ctx)}</div>` : ''}</div></div>
+  <div class="in"><div class="ch-texto"><span class="sobretitulo">${esc(c.sobretitulo || (home ? ctx.site.slogan : pagina.menu))}</span><h1>${esc(c.titulo)}</h1>${c.subtitulo ? `<p>${esc(c.subtitulo)}</p>` : ''}${home ? `<div class="cta-botoes">${botoes(ctx)}</div>` : ''}</div></div>
 </section>`;
   },
 };

@@ -7,6 +7,7 @@ import { REPO, AQUI, DOMINIO } from '../config.mjs';
 import { arq, lerJson, gravarJson, existe, log } from '../lib/util.mjs';
 import { esc, paleta } from '../modelos/comum.mjs';
 import { pagina, VERSOES } from '../modelos/versoes.mjs';
+import { textosDoSite } from './agentes.mjs';
 
 const MODELOS = path.join(AQUI, 'modelos');
 
@@ -27,16 +28,17 @@ function chamadaAjustada(site, v, revisao) {
   return s;
 }
 
-export async function montar(slug, { revisao = null } = {}) {
+// de/destino/prefixo: o comparador (comparar.mjs) monta rascunhos diferentes em pastas de teste, sem tocar em clientes/.
+export async function montar(slug, { revisao = null, de = 'redacao', destino = null, prefixo = '' } = {}) {
   const emp = lerJson(arq(slug, 'empresa.json'));
   const cap = lerJson(arq(slug, 'captura.json'));
   const ficha = lerJson(arq(slug, 'ia', 'conteudo.resposta.json')).json;
-  const sites = { pt: lerJson(arq(slug, 'ia', 'redacao.resposta.json')).json };
-  for (const l of ['en', 'es']) { const t = lerJson(arq(slug, 'ia', `traducao-${l}.resposta.json`)); if (t?.json && ficha.idiomas.includes(l)) sites[l] = t.json; }
+  const sites = { pt: textosDoSite(slug, de) };
+  if (de === 'redacao') for (const l of ['en', 'es']) { const t = lerJson(arq(slug, 'ia', `traducao-${l}.resposta.json`)); if (t?.json && ficha.idiomas.includes(l)) sites[l] = t.json; }
   const linguas = Object.keys(sites);
 
   const sub = emp.sub;
-  const dest = path.join(REPO, 'clientes', sub);
+  const dest = destino || path.join(REPO, 'clientes', sub);
   const pub = path.join(dest, 'public');
   fs.rmSync(pub, { recursive: true, force: true });
   fs.mkdirSync(path.join(pub, 'assets', 'img'), { recursive: true });
@@ -75,7 +77,7 @@ export async function montar(slug, { revisao = null } = {}) {
   }
 
   // Prints do site novo (servidor local só para isso).
-  await prints(slug, pub, dest);
+  await prints(slug, pub, dest, prefixo);
   fs.writeFileSync(path.join(pub, 'index.html'), escolha(emp, ficha, cap));
   gravarJson(path.join(dest, 'site.config.json'), {
     name: ficha.empresa.nome_curto || ficha.empresa.nome, legalName: ficha.empresa.nome, tagline: sites.pt.slogan,
@@ -84,7 +86,7 @@ export async function montar(slug, { revisao = null } = {}) {
     theme: { brand: paleta(ficha.marca).cor, brandDeep: paleta(ficha.marca).escura }, hubName: ficha.empresa.nome, linha: true,
   });
   const n = sites.pt.paginas.length;
-  log(`${slug}: montado em clientes/${sub} (2 versões, ${n} páginas cada, idiomas: ${linguas.join(', ')})`);
+  log(`${slug}: montado em ${path.relative(REPO, dest)} (2 versões, ${n} páginas cada, idiomas: ${linguas.join(', ')})`);
 }
 
 // Página de escolha: versão A, versão B e o site atual para comparar.
@@ -132,7 +134,7 @@ async function servirDoDisco(ctx, raiz) {
   });
 }
 
-async function prints(slug, pub, dest) {
+async function prints(slug, pub, dest, prefixo = '') {
   const { chromium } = await import('playwright');
   const opc = {};
   if (process.env.CHROME) opc.executablePath = process.env.CHROME;
@@ -151,12 +153,12 @@ async function prints(slug, pub, dest) {
       await pc.screenshot({ path: path.join(pub, 'assets', `versao-${v}.jpg`), type: 'jpeg', quality: 78 });
       if (v === 'a') await pc.setViewportSize({ width: 1440, height: 756 }).then(() => pc.screenshot({ path: path.join(dest, 'capa.jpg'), type: 'jpeg', quality: 80 }));
       await pc.setViewportSize({ width: 1366, height: 854 });
-      await pc.screenshot({ path: path.join(p, `novo-${v}-computador.jpg`), type: 'jpeg', quality: 72, fullPage: true });
+      await pc.screenshot({ path: path.join(p, `${prefixo}novo-${v}-computador.jpg`), type: 'jpeg', quality: 72, fullPage: true });
       await pc.close();
       const cel = await cel0.newPage();
       await cel.goto(`${base}/${v}/`, { waitUntil: 'networkidle', timeout: 30000 }).catch(() => {});
       await cel.waitForTimeout(400);
-      await cel.screenshot({ path: path.join(p, `novo-${v}-celular.jpg`), type: 'jpeg', quality: 72, fullPage: true });
+      await cel.screenshot({ path: path.join(p, `${prefixo}novo-${v}-celular.jpg`), type: 'jpeg', quality: 72, fullPage: true });
       await cel.close();
     }
   } finally { await b.close(); }
