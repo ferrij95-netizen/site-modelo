@@ -5,6 +5,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { MAX_PAGINAS, MAX_FOTOS } from '../config.mjs';
 import { arq, gravarJson, log } from '../lib/util.mjs';
+import { semGoogle } from '../lib/semgoogle.mjs';
 
 let navegador = null;
 async function abrir() {
@@ -125,6 +126,7 @@ export async function capturar(emp) {
   const url = emp.site.startsWith('http') ? emp.site : 'https://' + emp.site;
 
   const ctx = await b.newContext({ viewport: { width: 1366, height: 800 }, userAgent: UA_PC, locale: 'pt-BR', ignoreHTTPSErrors: true });
+  await semGoogle(ctx);
   const pg = await ctx.newPage();
   const t0 = Date.now();
   let resp;
@@ -158,6 +160,7 @@ export async function capturar(emp) {
 
   // Print do celular (só a home).
   const cel = await b.newContext({ viewport: { width: 390, height: 844 }, userAgent: UA_CEL, isMobile: true, hasTouch: true, deviceScaleFactor: 1, ignoreHTTPSErrors: true });
+  await semGoogle(cel);
   const pc = await cel.newPage();
   await pc.goto(pg.url() || url, { waitUntil: 'domcontentloaded', timeout: 30000 }).catch(() => {});
   await pc.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
