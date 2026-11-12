@@ -159,7 +159,7 @@
     { "pattern": "energysolar.overtus.com.br/*", "zone_name": "overtus.com.br" },
     { "pattern": "hawaitransporte.overtus.com.br/*", "zone_name": "overtus.com.br" },
     { "pattern": "claudiolemos.overtus.com.br/*", "zone_name": "overtus.com.br" },
-    { "pattern": "gauss.overtus.com.br/*", "zone_name": "overtus.com.br" }
+    { "pattern": "gauss.overtus.com.br", "custom_domain": true }
   ],
   // Notícias e painel /admin dos clientes que têm notícias (src/noticias.js) e dados do canvas do hub.
   "d1_databases": [
