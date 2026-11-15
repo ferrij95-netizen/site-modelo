@@ -1,0 +1,18 @@
+/* Versão A "Força amarela": clara, motor diesel recortado sobre faixa amarela */
+.heroa{position:relative;background:var(--fundo2);overflow:hidden}
+.heroa::after{content:"";position:absolute;top:0;bottom:0;right:0;width:42%;background:var(--cor);clip-path:polygon(22% 0,100% 0,100% 100%,0 100%)}
+.ha-grade{position:relative;z-index:1;min-height:min(600px,calc(100vh - 150px));display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:40px;padding:56px 0}
+.heroa h1{font-size:clamp(52px,6.4vw,96px);line-height:.92;margin-bottom:22px}
+.heroa h1 em{display:block;color:var(--tinta);background:linear-gradient(transparent 58%,var(--cor) 58%);font-style:italic;width:fit-content}
+.ha-sub{font-size:1.15rem;color:var(--suave);max-width:560px}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.ha-prod{position:relative;display:grid;place-items:center}
+.ha-prod img{width:100%;max-width:520px;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.3));mix-blend-mode:multiply}
+.ha-tag{position:absolute;left:0;bottom:6%;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:var(--raio);font-size:.9rem}
+.ha-tag b{display:block;font:800 1.5rem/1 var(--ft);font-style:italic;color:var(--cor)}
+.faixa-num{background:var(--tinta);color:#fff;padding:30px 0}
+.faixa-num .numeros li{border-color:rgba(255,255,255,.18)}
+.faixa-num .numeros b{color:var(--cor)}
+.faixa-num .numeros span{color:rgba(255,255,255,.75)}
+@media (max-width:900px){.heroa::after{width:100%;top:auto;height:300px;clip-path:none}.ha-grade{grid-template-columns:1fr;min-height:0;padding:36px 0 30px}.ha-prod img{max-width:300px}}
+.ha-prod img{max-width:420px;mix-blend-mode:normal}

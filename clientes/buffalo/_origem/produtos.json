@@ -1,0 +1,3482 @@
+{
+"linhas": [
+{
+"id": "motores",
+"n": "Motores"
+},
+{
+"id": "geradores",
+"n": "Geradores"
+},
+{
+"id": "motobombas",
+"n": "Motobombas"
+},
+{
+"id": "agricola",
+"n": "Agrícola"
+},
+{
+"id": "construcao",
+"n": "Construção Civil"
+},
+{
+"id": "floresta",
+"n": "Floresta e Jardim"
+},
+{
+"id": "pulverizacao",
+"n": "Pulverização"
+},
+{
+"id": "hidrolavadoras",
+"n": "Hidrolavadora"
+},
+{
+"id": "nautica",
+"n": "Náutica"
+}
+],
+"cats": [
+{
+"l": "motores",
+"c": "Diesel 4T Pro",
+"s": "motores-diesel-4t-pro",
+"img": 70500,
+"m": [
+[
+70500,
+"MOTOR BFD 5.0 PRO",
+false
+],
+[
+70502,
+"MOTOR BFDE 5.0 PRO",
+false
+],
+[
+70503,
+"MOTOR BFD 5.0 PRO (REDUTOR 2:1)",
+false
+],
+[
+70700,
+"MOTOR BFD  7.0 PRO",
+false
+],
+[
+70701,
+"MOTOR BFDE 7.0 PRO",
+false
+],
+[
+70704,
+"MOTOR BFDE 7.0 PRO (EIXO 19,05)",
+false
+],
+[
+71000,
+"MOTOR BFD 10.0 PRO",
+false
+],
+[
+71001,
+"MOTOR BFDE 10.0 PRO",
+false
+],
+[
+71004,
+"MOTOR BFDE 10.0 PRO (FILTRO AR A OLEO)",
+false
+],
+[
+71002,
+"MOTOR BFDE 10.0 PRO (REDUTOR 2:1)",
+false
+],
+[
+71301,
+"MOTOR BFDE 13.0 PRO",
+false
+],
+[
+71303,
+"MOTOR BFD 13.0 PRO",
+false
+],
+[
+72100,
+"MOTOR BFDE 22.0 PRO",
+false
+],
+[
+72101,
+"MOTOR BFDE 22.0 PRO (EIXO PARA BOMBA DE INCENDIO)",
+false
+],
+[
+71500,
+"MOTOR BFD 15.0 PRO",
+true
+],
+[
+71501,
+"MOTOR BFDE 15.0 PRO",
+true
+]
+],
+"w": 299,
+"h": 300
+},
+{
+"l": "motores",
+"c": "Refrigerado à Água",
+"s": "motores-refrigerado-a-agua",
+"img": 71700,
+"m": [
+[
+71700,
+"MOTOR BFDE 385 (1800 RPM)",
+false
+],
+[
+72200,
+"MOTOR BFDE 480 (1800 RPM)",
+false
+],
+[
+72700,
+"MOTOR BFDE 385 (3000 RPM)",
+false
+],
+[
+72702,
+"MOTOR BFDE 485 (1800 RPM)",
+false
+],
+[
+73800,
+"MOTOR BFDE 480 (3000 RPM)",
+false
+],
+[
+73802,
+"MOTOR BFDE 490 (1800 RPM)",
+false
+],
+[
+74500,
+"MOTOR BFDE 485 (3000 RPM)",
+false
+],
+[
+74800,
+"MOTOR BFDE 4102 (1800 RPM)",
+false
+],
+[
+76000,
+"MOTOR BFDE 4105 (1800 RPM)",
+false
+],
+[
+78200,
+"MOTOR BFDE 4102 (3000 RPM)",
+false
+],
+[
+76802,
+"MOTOR BFDE 495 (3000 RPM)",
+false
+],
+[
+78100,
+"MOTOR BFDE 4105 TURBO (1800 RPM)",
+false
+],
+[
+4245,
+"PAINEL ANALOGICO 12V (OPCIONAL)",
+false
+],
+[
+4585,
+"PAINEL DIGITAL 12V (OPCIONAL)",
+false
+],
+[
+79904,
+"MOTOR BFDE 4110-TURBO",
+true
+]
+],
+"w": 386,
+"h": 520
+},
+{
+"l": "motores",
+"c": "Gasolina 4T PRO",
+"s": "motores-gasolina-4t-pro",
+"img": 62300,
+"m": [
+[
+62300,
+"MOTOR BFGE 23.0 PRO",
+false
+],
+[
+63500,
+"MOTOR BFGE 35.0 PRO",
+false
+],
+[
+63501,
+"MOTOR BFGE 35.0 PRO (EIXO REFORÇADO)",
+false
+],
+[
+60503,
+"MOTOR BFG 5.5 PRO",
+false
+],
+[
+60600,
+"MOTOR BFG 6.5 PRO",
+false
+],
+[
+60604,
+"MOTOR BFG 6.5 PRO EMBREAGEM",
+false
+],
+[
+60603,
+"MOTOR BFGE 6.5 PRO EMBREAGEM",
+false
+],
+[
+60702,
+"MOTOR BFG 7.0 PRO",
+false
+],
+[
+60701,
+"MOTOR BFGE 7.0 PRO",
+false
+],
+[
+60800,
+"MOTOR BFG 8.0 PRO",
+false
+],
+[
+61300,
+"MOTOR BFG 13.0 PRO",
+false
+],
+[
+61301,
+"MOTOR BFGE 13.0 PRO",
+false
+],
+[
+61305,
+"MOTOR BFG 13.0 PRO FILTRO DE AR A ÓLEO",
+false
+],
+[
+61500,
+"MOTOR BFG 15.0 PRO",
+false
+],
+[
+61501,
+"MOTOR BFGE 15.0 PRO",
+false
+]
+],
+"w": 310,
+"h": 300
+},
+{
+"l": "motores",
+"c": "Termossifão-Radiador",
+"s": "motores-termossifao-radiador",
+"img": 71309,
+"m": [
+[
+71309,
+"MOTOR BFDE 13.0 RADIADOR",
+false
+],
+[
+71308,
+"MOTOR BFD 13.0 RADIADOR",
+false
+],
+[
+71805,
+"MOTOR BFD 18.0 TERMOSSIFÃO",
+false
+],
+[
+71806,
+"MOTOR BFDE 18.0 TERMOSSIFÃO",
+false
+],
+[
+71807,
+"MOTOR BFD 18.0 RADIADOR",
+false
+],
+[
+71808,
+"MOTOR BFDE 18.0 RADIADOR",
+false
+],
+[
+72205,
+"MOTOR BFD 22.0 TERMOSSIFÃO",
+false
+],
+[
+72206,
+"MOTOR BFDE 22.0 TERMOSSIFÃO",
+false
+],
+[
+72207,
+"MOTOR BFDE 22.0 RADIADOR",
+false
+],
+[
+73007,
+"MOTOR BFDE 30.0 RADIADOR",
+true
+],
+[
+73006,
+"MOTOR BFDE 30.0 TERMOSSIFAO",
+true
+]
+],
+"w": 350,
+"h": 300
+},
+{
+"l": "motores",
+"c": "Gasolina 4T",
+"s": "motores-gasolina-4t",
+"img": 60903,
+"m": [
+[
+60903,
+"MOTOR BFG 9.0",
+false
+],
+[
+60708,
+"MOTOR BFG 7.0 (REDUTOR 2:1)",
+false
+],
+[
+60303,
+"MOTOR BFG 3.0",
+false
+],
+[
+60205,
+"MOTOR BFG 1.4",
+false
+],
+[
+60608,
+"MOTOR BFG 6.5",
+false
+],
+[
+60709,
+"MOTOR BFG 7.0",
+false
+],
+[
+61302,
+"MOTOR BFG 13.0",
+false
+],
+[
+61502,
+"MOTOR BFG 15.0",
+false
+],
+[
+60210,
+"MOTOR BFG 2.0 4T",
+true
+]
+],
+"w": 520,
+"h": 488
+},
+{
+"l": "motores",
+"c": "Diesel 4T",
+"s": "motores-diesel-4t",
+"img": 70505,
+"m": [
+[
+70505,
+"MOTOR BFD 5.0",
+false
+],
+[
+70506,
+"MOTOR BFDE 5.0",
+false
+],
+[
+70705,
+"MOTOR BFD 7.0",
+false
+],
+[
+70706,
+"MOTOR BFDE 7.0",
+false
+],
+[
+71005,
+"MOTOR BFD 10.0",
+false
+],
+[
+71007,
+"MOTOR BFDE 10.0",
+false
+],
+[
+71315,
+"MOTOR BFD 13.0",
+false
+],
+[
+71305,
+"MOTOR BFDE 13.0",
+false
+],
+[
+71006,
+"MOTOR BFDE  10.0CV - PRO",
+false
+]
+],
+"w": 302,
+"h": 299
+},
+{
+"l": "motores",
+"c": "Gasolina 4T Rental",
+"s": "motores-gasolina-4t-rental",
+"img": 61647,
+"m": [
+[
+61647,
+"MOTOR BFG 16.0 RENTAL",
+false
+],
+[
+60947,
+"MOTOR BFG 9.0 RENTAL",
+false
+],
+[
+60847,
+"MOTOR BFG 7.5 RENTAL",
+false
+],
+[
+60401,
+"MOTOR BFG 4.0 RENTAL (P/ COMPACTADOR DE SOLO)",
+false
+],
+[
+60848,
+"MOTOR BFGE 7.5 RENTAL",
+false
+],
+[
+60948,
+"MOTOR BFGE 9.0 RENTAL",
+false
+],
+[
+61646,
+"MOTOR BFGE 16.0 RENTAL",
+false
+],
+[
+62046,
+"MOTOR BFGE 20.0CV RENTAL (1.800RPM)",
+true
+],
+[
+62047,
+"MOTOR BFGE 20.0CV RENTAL",
+true
+]
+],
+"w": 312,
+"h": 300
+},
+{
+"l": "motores",
+"c": "Marine",
+"s": "motores-marine",
+"img": 71804,
+"m": [
+[
+71804,
+"MOTOR BFD 18.0 MARINE",
+false
+],
+[
+72204,
+"MOTOR BFD 22.0 MARINE",
+false
+],
+[
+61815,
+"MOTOR BFG 18.0 MARINE",
+false
+],
+[
+60815,
+"MOTOR BFG 8.5 MARINE",
+false
+]
+],
+"w": 300,
+"h": 300
+},
+{
+"l": "motores",
+"c": "Verticais",
+"s": "motores-verticais",
+"img": 60694,
+"m": [
+[
+60694,
+"MOTOR BFG 6.5 VERTICAL",
+false
+],
+[
+61690,
+"MOTOR BFGE 16.0 PRO VERTICAL",
+false
+],
+[
+62201,
+"MOTOR BFGE 22.0 PRO VERTICAL",
+false
+]
+],
+"w": 484,
+"h": 520
+},
+{
+"l": "geradores",
+"c": "Geradores Big PRO - Com Bateria",
+"s": "geradores-geradores-big-pro-com-bateria",
+"img": 72239,
+"m": [
+[
+72239,
+"MOTOGERADOR BFDE 12.000 PRO MONOFASICO",
+false
+],
+[
+78238,
+"MOTOGERADOR BFDE 70.000 PRO TRIFASICO 380V",
+false
+],
+[
+72241,
+"MOTOGERADOR BFDE 15.000 PRO TRIFASICO 220V - ABERTO",
+false
+],
+[
+78237,
+"MOTOGERADOR BFDE 70.000 PRO TRIFASICO 220V",
+false
+],
+[
+76535,
+"MOTOGERADOR BFDE 50.000 PRO TRIFASICO 380V",
+false
+],
+[
+76540,
+"MOTOGERADOR BFDE 50.000 PRO TRIFÁSICO 220V",
+false
+],
+[
+76539,
+"MOTOGERADOR BFDE 40.000 PRO MONOFASICO 230V",
+false
+],
+[
+75439,
+"MOTOGERADOR BFDE 32.000 PRO MONOFASICO",
+false
+],
+[
+75434,
+"MOTOGERADOR BFDE 40.000 PRO TRIFASICO 220V",
+false
+],
+[
+73434,
+"MOTOGERADOR BFDE 25.000 PRO TRIFASICO 220V",
+false
+],
+[
+73439,
+"MOTOGERADOR BFDE 20.000 PRO MONOFASICO",
+false
+],
+[
+72235,
+"MOTOGERADOR BFDE 15.000 PRO TRIFASICO 380V",
+false
+],
+[
+72234,
+"MOTOGERADOR BFDE 15.000 PRO TRIFASICO 220V",
+false
+],
+[
+72242,
+"MOTOGERADOR BFDE 15.000 PRO TRIFASICO 380V - ABERTO",
+false
+],
+[
+71830,
+"MOTOGERADOR BFD 10.000 TERMOSSIFAO",
+false
+],
+[
+71836,
+"MOTOGERADOR BFDE 10.000 TERMOSSIFAO",
+false
+],
+[
+71833,
+"MOTOGERADOR BFD 10.000 RADIADOR",
+false
+],
+[
+71839,
+"MOTOGERADOR BFDE 10.000 RADIADOR",
+false
+],
+[
+71837,
+"MOTOGERADOR BFDE 12.500 TERMOSSIFAO TRIFASICO 220V",
+false
+],
+[
+71834,
+"MOTOGERADOR BFD 12.500 RADIADOR TRIFASICO 220V",
+false
+],
+[
+71840,
+"MOTOGERADOR BFDE 12.500 RADIADOR TRIFASICO 220V",
+false
+],
+[
+71832,
+"MOTOGERADOR BFD 12.500 TERMOSSIFAO TRIFASICO 380V",
+false
+],
+[
+71831,
+"MOTOGERADOR BFD 12.500 TERMOSSIFAO TRIFASICO 220V",
+false
+],
+[
+71838,
+"MOTOGERADOR BFDE 12.500 TERMOSSIFAO TRIFASICO 380V",
+false
+],
+[
+71835,
+"MOTOGERADOR BFD 12.500 RADIADOR TRIFASICO 380V",
+false
+],
+[
+71841,
+"MOTOGERADOR BFDE 12.500 RADIADOR TRIFASICO 380V",
+false
+],
+[
+72240,
+"MOTOGERADOR BFDE 12.000 PRO MONOFASICO - ABERTO",
+false
+],
+[
+73435,
+"MOTOGERADOR BFDE 25.000 PRO TRIFASICO 380V",
+false
+],
+[
+75435,
+"MOTOGERADOR BFDE 40.000 PRO TRIFASICO 380V",
+false
+],
+[
+78235,
+"MOTOGERADOR BFDE 70.000 PRO TRIFASICO 380V",
+false
+],
+[
+78236,
+"MOTOGERADOR BFDE 70.000 PRO TRIFASICO 220V",
+false
+],
+[
+79934,
+"MOTOGERADOR BFDE 125.000 PRO TRIFASICO 220V",
+false
+],
+[
+79935,
+"MOTOGERADOR BFDE 125.000 PRO TRIFASICO 380V",
+false
+],
+[
+76541,
+"MOTOGERADOR BFDE 40.000 PRO MONOFÁSICO 440V",
+false
+]
+],
+"w": 520,
+"h": 353
+},
+{
+"l": "geradores",
+"c": "Diesel PRO",
+"s": "geradores-diesel-pro",
+"img": 70532,
+"m": [
+[
+70532,
+"MOTOGERADOR BFD  2.500 PRO",
+false
+],
+[
+70533,
+"MOTOGERADOR BFDE  2.500 PRO",
+false
+],
+[
+70732,
+"MOTOGERADOR BFD  4.000 PRO",
+false
+],
+[
+70733,
+"MOTOGERADOR BFDE  4.000 PRO",
+false
+],
+[
+71030,
+"MOTOGERADOR BFDE  6.500 PRO SILENCIOSO TRIFASICO 380V",
+false
+],
+[
+71031,
+"MOTOGERADOR BFDE  6.500 PRO SILENCIOSO TRIFASICO 220V",
+false
+],
+[
+71032,
+"MOTOGERADOR BFDE 6.500 PRO TRIFASICO 220V",
+false
+],
+[
+71033,
+"MOTOGERADOR BFDE 6.500 PRO TRIFASICO 380V",
+false
+],
+[
+71036,
+"MOTOGERADOR BFDE 6.500 PRO",
+false
+],
+[
+71038,
+"MOTOGERADOR BFDE  6.500 PRO SILENCIOSO",
+false
+],
+[
+71047,
+"MOTOGERADOR BFDE  6.500 STD - PRO",
+false
+],
+[
+71342,
+"MOTOGERADOR BFDE  8.000 PRO SILENCIOSO TRIFASICO 380V",
+false
+],
+[
+71341,
+"MOTOGERADOR BFDE  8.000 PRO SILENCIOSO TRIFASICO 220",
+false
+],
+[
+71340,
+"MOTOGERADOR BFDE  8.000 PRO SILENCIOSO",
+false
+],
+[
+71336,
+"MOTOGERADOR BFDE  8.000 PRO",
+false
+],
+[
+71332,
+"MOTOGERADOR BFDE  8.000 PRO TRIFASICO 220V",
+false
+],
+[
+71333,
+"MOTOGERADOR BFDE  8.000 PRO TRIFASICO 380V",
+false
+],
+[
+72134,
+"MOTOGERADOR BFDE 12.000 PRO SILENCIOSO",
+false
+],
+[
+72138,
+"MOTOGERADOR BFDE 15.000 PRO TRIFASICO 380V",
+false
+],
+[
+72139,
+"MOTOGERADOR BFDE 15.000 PRO TRIFASICO 220V",
+false
+],
+[
+72137,
+"MOTOGERADOR BFDE 12.000 PRO MONOFASICO",
+false
+],
+[
+72136,
+"MOTOGERADOR BFDE 15.000 PRO SILENCIOSO TRIFASICO 220V",
+false
+],
+[
+72135,
+"MOTOGERADOR BFDE 15.000 PRO SILENCIOSO TRIFASICO 380V",
+false
+],
+[
+71039,
+"MOTOSOLDADOR BFDE 190A PRO",
+false
+]
+],
+"w": 246,
+"h": 209
+},
+{
+"l": "geradores",
+"c": "Geradores Big PRO - Sem Bateria",
+"s": "geradores-geradores-big-pro-sem-bateria",
+"img": 72236,
+"m": [
+[
+72236,
+"MOTOGERADOR BFDE 12.000 PRO MONOFASICO",
+false
+],
+[
+72237,
+"MOTOGERADOR BFDE 15.000 PRO TRIFASICO 220V",
+false
+],
+[
+72238,
+"MOTOGERADOR BFDE 15.000 PRO TRIFASICO 380V",
+false
+],
+[
+73436,
+"MOTOGERADOR BFDE 20.000 PRO MONOFASICO",
+false
+],
+[
+73434,
+"MOTOGERADOR BFDE 25.000 PRO TRIFASICO 220V",
+false
+],
+[
+73437,
+"MOTOGERADOR BFDE 25.000 PRO TRIFASICO 220V",
+false
+],
+[
+73438,
+"MOTOGERADOR BFDE 25.000 PRO TRIFASICO 380V",
+false
+],
+[
+75436,
+"MOTOGERADOR BFDE 32.000 PRO MONOFASICO",
+false
+],
+[
+75437,
+"MOTOGERADOR BFDE 40.000 PRO TRIFASICO 220V",
+false
+],
+[
+75438,
+"MOTOGERADOR BFDE 40.000 PRO TRIFASICO 380V",
+false
+],
+[
+76536,
+"MOTOGERADOR BFDE 40.000 PRO MONOFASICO 230V",
+false
+],
+[
+76542,
+"MOTOGERADOR BFDE 40.000 PRO MONOFÁSICO 440V",
+false
+],
+[
+76537,
+"MOTOGERADOR BFDE 50.000 PRO TRIFÁSICO 220V",
+false
+],
+[
+76538,
+"MOTOGERADOR BFDE 50.000 PRO TRIFÁSICO 380V",
+false
+],
+[
+78237,
+"MOTOGERADOR BFDE 70.000 PRO TRIFASICO 220V",
+false
+],
+[
+78238,
+"MOTOGERADOR BFDE 70.000 PRO TRIFASICO 380V",
+false
+],
+[
+79931,
+"MOTOGERADOR BFDE 125.000 PRO TRIFASICO 220V",
+false
+],
+[
+79932,
+"MOTOGERADOR BFDE 125.000 PRO TRIFASICO 380V",
+false
+],
+[
+72231,
+"MOTOGERADOR BFDE 12.000 PRO MONOFASICO - ABERTO",
+false
+],
+[
+72232,
+"MOTOGERADOR BFDE 15.000 PRO TRIFASICO 220V - ABERTO",
+false
+],
+[
+72233,
+"MOTOGERADOR BFDE 15.000 TRIFASICO 380V PRO - ABERTO",
+false
+]
+],
+"w": 520,
+"h": 353
+},
+{
+"l": "geradores",
+"c": "Diesel",
+"s": "geradores-diesel",
+"img": 70535,
+"m": [
+[
+70535,
+"MOTOGERADOR BFD 2.500",
+true
+],
+[
+70536,
+"MOTOGERADOR BFDE 2.500",
+true
+],
+[
+70735,
+"MOTOGERADOR BFD 4.000",
+true
+],
+[
+71045,
+"MOTOGERADOR BFDE 6.500 STD",
+true
+],
+[
+71046,
+"MOTOGERADOR BFDE 6.500",
+true
+],
+[
+71043,
+"MOTOGERADOR BFDE 6.500 TRIFÁSICO 220V",
+true
+],
+[
+71044,
+"MOTOGERADOR BFDE 6.500 TRIFÁSICO 380V",
+true
+],
+[
+71331,
+"MOTOGERADOR BFDE 8.000",
+true
+],
+[
+71343,
+"MOTOGERADOR BFDE 8.000 TRIFÁSICO 220V",
+true
+],
+[
+71042,
+"MOTOGERADOR BFDE 6.500 SILENCIOSO",
+true
+],
+[
+71048,
+"MOTOGERADOR BFDE 6.500 SILENCIOSO TRIFÁSICO 220V",
+true
+],
+[
+71049,
+"MOTOGERADOR BFDE 6.500 SILENCIOSO TRIFÁSICO 380V",
+true
+],
+[
+71345,
+"MOTOGERADOR BFDE 8.000 SILENCIOSO",
+true
+],
+[
+71346,
+"MOTOGERADOR BFDE 8.000 SILENCIOSO TRIFÁSICO 220V",
+true
+],
+[
+71347,
+"MOTOGERADOR BFDE 8.000 SILENCIOSO TRIFÁSICO 380V",
+true
+],
+[
+71334,
+"MOTOGERADOR BFDE 8.000 TRIFÁSICO 380V",
+true
+]
+],
+"w": 520,
+"h": 481
+},
+{
+"l": "geradores",
+"c": "Plus",
+"s": "geradores-plus",
+"img": 61532,
+"m": [
+[
+61532,
+"MOTOGERADOR BFGE 5.000 PLUS",
+false
+],
+[
+61530,
+"MOTOGERADOR BFG 5.000 PLUS",
+false
+],
+[
+61534,
+"MOTOGERADOR BFG 6.500 PLUS",
+false
+],
+[
+61535,
+"MOTOGERADOR BFGE 6.500 PLUS",
+false
+],
+[
+61536,
+"MOTOGERADOR  BFGE 8.000 PLUS",
+false
+],
+[
+61635,
+"MOTOGERADOR BFGE 10.000 PLUS",
+false
+],
+[
+61636,
+"MOTOGERADOR BFGE 12.000 PLUS TRIF.220V",
+false
+],
+[
+61637,
+"MOTOGERADOR BFGE 12.000 PLUS TRIF.380V",
+false
+],
+[
+62030,
+"MOTOGERADOR BFGE 13.000 PLUS",
+false
+],
+[
+60733,
+"MOTOGERADOR BFG 3500 PLUS",
+false
+],
+[
+60731,
+"MOTOGERADOR BFGE 2500 PLUS",
+false
+],
+[
+60730,
+"MOTOGERADOR BFG 2500 PLUS",
+false
+],
+[
+62032,
+"MOTOGERADOR BFGE 16.000 PLUS TRIFÁSICO 380V",
+true
+],
+[
+62031,
+"MOTOGERADOR BFGE 16.000 PLUS TRIFÁSICO 220V",
+true
+]
+],
+"w": 520,
+"h": 459
+},
+{
+"l": "geradores",
+"c": "Termossifão e Radiador",
+"s": "geradores-termossifao-e-radiador",
+"img": 71830,
+"m": [
+[
+71830,
+"MOTOGERADOR BFD 10.000 TERMOSSIFAO",
+false
+],
+[
+71836,
+"MOTOGERADOR BFDE 10.000 TERMOSSIFAO",
+false
+],
+[
+71833,
+"MOTOGERADOR BFD 10.000 RADIADOR",
+false
+],
+[
+71839,
+"MOTOGERADOR BFDE 10.000 RADIADOR",
+false
+],
+[
+71831,
+"MOTOGERADOR BFD 12.500 TERMOSSIFAO TRIFASICO 220V",
+false
+],
+[
+71837,
+"MOTOGERADOR BFDE 12.500 TERMOSSIFAO TRIFASICO 220V",
+false
+],
+[
+71834,
+"MOTOGERADOR BFD 12.500 RADIADOR TRIFASICO 220V",
+false
+],
+[
+71840,
+"MOTOGERADOR BFDE 12.500 RADIADOR TRIFASICO 220V",
+false
+],
+[
+71832,
+"MOTOGERADOR BFD 12.500 TERMOSSIFAO TRIFASICO 380V",
+false
+],
+[
+71838,
+"MOTOGERADOR BFDE 12.500 TERMOSSIFAO TRIFASICO 380V",
+false
+],
+[
+71835,
+"MOTOGERADOR BFD 12.500 RADIADOR TRIFASICO 380V",
+false
+],
+[
+71841,
+"MOTOGERADOR BFDE 12.500 RADIADOR TRIFASICO 380V",
+false
+]
+],
+"w": 242,
+"h": 243
+},
+{
+"l": "geradores",
+"c": "Inverter",
+"s": "geradores-inverter",
+"img": 60338,
+"m": [
+[
+60338,
+"MOTOGERADOR BFG 2.000 INVERTER 127V",
+false
+],
+[
+60339,
+"MOTOGERADOR BFG 2.000 INVERTER 220V",
+false
+],
+[
+60430,
+"MOTOGERADOR BFG 2.500 INVERTER 127V",
+false
+],
+[
+60431,
+"MOTOGERADOR BFG 2.500 INVERTER 220V",
+false
+],
+[
+62036,
+"MOTOGERADOR BFGE 11.000 INVERTER 220V",
+false
+],
+[
+60834,
+"MOTOG.BFGE 4.500 INVERTER 220V SILENCIOSO - CONTROLE REMOTO",
+true
+],
+[
+60833,
+"MOTOG.BFG 4.500 INVERTER 220V SILENCIOSO",
+true
+],
+[
+60831,
+"MOTOG.BFG 4.500 INVERTER 127V SILENCIOSO",
+true
+],
+[
+60832,
+"MOTOG.BFGE 4.500 INVERTER 127V SILENCIOSO - CONTROLE REMOTO",
+true
+]
+],
+"w": 224,
+"h": 230
+},
+{
+"l": "geradores",
+"c": "Opcional - Geradores",
+"s": "geradores-opcional-geradores",
+"img": 13265,
+"m": [
+[
+13265,
+"PAINEL ATS TRIFÁSICO 380V - BFDE 15.000 PRO",
+false
+],
+[
+12416,
+"PAINEL ATS TRIFÁSICO 220V - BFDE 15.000 PRO",
+false
+],
+[
+12411,
+"PAINEL ATS MONOFÁSICO - BFDE 12.000 PRO",
+false
+],
+[
+4131,
+"PAINEL ATS TRIFÁSICO 220V - BFDE 6.500/8.000 PRO",
+false
+],
+[
+5203,
+"PAINEL ATS TRIFÁSICO 380V - BFDE 6.500/8.000 PRO",
+false
+],
+[
+5202,
+"PAINEL ATS MONOFASICO - BFDE 6.500/8.000 PRO",
+false
+],
+[
+14081,
+"KIT PARALELISMO - MOTOGERADOR BFG 2.000 / 2.500 INVERTER",
+false
+],
+[
+4168,
+"PAINEL ATS - MOTOGERADOR BFDE 125.000 PRO",
+false
+]
+],
+"w": 307,
+"h": 281
+},
+{
+"l": "geradores",
+"c": "Rental",
+"s": "geradores-rental",
+"img": 61630,
+"m": [
+[
+61630,
+"MOTOGERADOR BFGE  8.500 RENTAL",
+false
+],
+[
+62033,
+"MOTOGERADOR BFGE 12.000 RENTAL",
+false
+],
+[
+62034,
+"MOTOGERADOR BFGE 15.000 RENTAL TRIFASICO 220V",
+false
+],
+[
+62035,
+"MOTOGERADOR BFGE 15.000 RENTAL TRIFASICO 380V",
+false
+],
+[
+63532,
+"MOTOGERADOR BFGE 24.000 RENTAL TRIFÁSICO 380V",
+false
+],
+[
+63531,
+"MOTOGERADOR BFGE 24.000 RENTAL TRIFÁSICO 220V",
+false
+],
+[
+63530,
+"MOTOGERADOR BFGE 20.000 RENTAL",
+false
+]
+],
+"w": 520,
+"h": 459
+},
+{
+"l": "geradores",
+"c": "Gasolina",
+"s": "geradores-gasolina",
+"img": 60333,
+"m": [
+[
+60333,
+"MOTOGERADOR BFG 1200",
+true
+],
+[
+60736,
+"MOTOGERADOR BFG 2500",
+true
+],
+[
+60737,
+"MOTOGERADOR BFGE 2500",
+true
+],
+[
+60738,
+"MOTOGERADOR BFG 3100",
+true
+]
+],
+"w": 257,
+"h": 211
+},
+{
+"l": "motobombas",
+"c": "Elétricas",
+"s": "motobombas-eletricas",
+"img": 80370,
+"m": [
+[
+80370,
+"BOMBA PERIFÉRICA BFP60",
+false
+],
+[
+80371,
+"BOMBA PERIFÉRICA BFP80",
+false
+],
+[
+80372,
+"BOMBA CENTRÍFUGA BFC130",
+false
+],
+[
+80373,
+"BOMBA CENTRÍFUGA BFC158",
+false
+],
+[
+80374,
+"BOMBA CENTRÍFUGA BFC170",
+false
+],
+[
+80375,
+"BOMBA PRESSURIZADORA BFCP15-10Z",
+false
+],
+[
+80376,
+"BOMBA AUTO-ASPIRANTE BFA370-INOX",
+false
+],
+[
+80377,
+"BOMBA AUTO-ASPIRANTE BFA900-INOX",
+false
+],
+[
+80378,
+"BOMBA AUTO-ASPIRANTE BFA35-FE",
+false
+],
+[
+80379,
+"BOMBA AUTO-ASPIRANTE BFA55-FE",
+false
+],
+[
+80380,
+"BOMBA AUTO-ASPIRANTE BFA65-FE",
+false
+],
+[
+80381,
+"BOMBA PERIFÉRICA BFP 60-127",
+true
+],
+[
+80382,
+"BOMBA PERIFÉRICA BFP 60-220",
+true
+],
+[
+80384,
+"BOMBA PERIFÉRICA BFP 80-220",
+true
+],
+[
+80383,
+"BOMBA PERIFÉRICA BFP 80-127",
+true
+]
+],
+"w": 228,
+"h": 162
+},
+{
+"l": "motobombas",
+"c": "Diesel - Centrífugas",
+"s": "motobombas-diesel-centrifugas",
+"img": 70716,
+"m": [
+[
+70716,
+"MOTOBOMBA BFDE 2.1/2\"X2\" CENTRÍFUGA",
+false
+],
+[
+70717,
+"MOTOBOMBA BFD 2.1/2\"X2\" CENTRÍFUGA",
+false
+],
+[
+70712,
+"MOTOBOMBA BFDE 2\" INOX",
+false
+],
+[
+71321,
+"MOTOBOMBA BFDE 3” INOX",
+true
+],
+[
+71010,
+"MOTOBOMBA BFDE 2.1/2\" INCÊNDIO",
+false
+],
+[
+71013,
+"MOTOBOMBA BFD 3\"X2\" CENTRÍFUGA",
+false
+],
+[
+71012,
+"MOTOBOMBA BFDE 3\"X2\" CENTRÍFUGA",
+false
+],
+[
+71011,
+"MOTOBOMBA BFD 3\"X2\" CHORUME",
+false
+],
+[
+71017,
+"MOTOBOMBA BFDE 3\"X2 CHORUME",
+false
+],
+[
+71015,
+"MOTOBOMBA BFDE P15/3 MULTI-ESTÁGIO",
+false
+],
+[
+71023,
+"MOTOBOMBA BFDE 3\" PRO FERRO FUNDIDO",
+false
+],
+[
+71324,
+"MOTOBOMBA BFDE 3\"-188 PRO FERRO FUNDIDO",
+false
+],
+[
+71210,
+"MOTOBOMBA BFDE 2.1/2\" INCÊNDIO R173",
+false
+],
+[
+70519,
+"MOTOBOMBA BFD P11/4 MULTI-ESTÁGIO",
+false
+]
+],
+"w": 435,
+"h": 404
+},
+{
+"l": "motobombas",
+"c": "Diesel - Auto-Escorvantes",
+"s": "motobombas-diesel-auto-escorvantes",
+"img": 71024,
+"m": [
+[
+71024,
+"MOTOBOMBA BFDE 4\" AUTO-ESCORVANTE",
+false
+],
+[
+70726,
+"MOTOBOMBA BFDE 3\" AUTO-ESCORVANTE",
+false
+],
+[
+70723,
+"MOTOBOMBA BFD 3\" AUTO-ESCORVANTE",
+false
+],
+[
+70524,
+"MOTOBOMBA BFDE 2\" AUTO-ESCORVANTE",
+false
+],
+[
+70522,
+"MOTOBOMBA BFD 2\" AUTO-ESCORVANTE",
+false
+],
+[
+70512,
+"MOTOBOMBA BFD 2\" PRO AUTO-ESCORVANTE",
+false
+],
+[
+70514,
+"MOTOBOMBA BFDE 2\" PRO AUTO-ESCORVANTE",
+false
+],
+[
+70713,
+"MOTOBOMBA BFD 3\" PRO AUTO-ESCORVANTE",
+false
+],
+[
+70714,
+"MOTOBOMBA BFDE 3\" PRO AUTO-ESCORVANTE",
+false
+],
+[
+71014,
+"MOTOBOMBA BFDE 4\" PRO AUTO-ESCORVANTE",
+false
+],
+[
+70728,
+"MOTOBOMBA BFD 2\" PRO PU",
+false
+],
+[
+71326,
+"MOTOBOMBA BFDE 6\" PRO AUTO-ESCORVANTE",
+false
+],
+[
+60727,
+"MOTOBOMBA BFG 3\" SP AUTO-ESCORVANTE",
+false
+]
+],
+"w": 300,
+"h": 300
+},
+{
+"l": "motobombas",
+"c": "Gasolina - Centrífugas",
+"s": "motobombas-gasolina-centrifugas",
+"img": 60511,
+"m": [
+[
+60511,
+"MOTOBOMBA BFG  TJ-16/30 INJETORA",
+false
+],
+[
+60616,
+"MOTOBOMBA BFG  TH16 CENTRÍFUGA",
+false
+],
+[
+60618,
+"MOTOBOMBA BFG 2.1/2\"X 2\" CENTRÍFUGA",
+false
+],
+[
+60712,
+"MOTOBOMBA BFG TH18 CENTRÍFUGA",
+false
+],
+[
+60724,
+"MOTOBOMBA BFG 2\" INOX",
+false
+],
+[
+61310,
+"MOTOBOMBA BFGE 2.1/2\" INCÊNDIO",
+false
+],
+[
+60611,
+"MOTOBOMBA BFG P11/4 MULTI-ESTÁGIO",
+false
+],
+[
+60711,
+"MOTOBOMBA BFG P15/2 MULTI-ESTÁGIO",
+false
+],
+[
+61315,
+"MOTOBOMBA BFG P15/3 MULTI-ESTÁGIO",
+false
+],
+[
+60921,
+"MOTOBOMBA BFG 3” INOX",
+false
+]
+],
+"w": 520,
+"h": 415
+},
+{
+"l": "motobombas",
+"c": "Gasolina - Auto-Escorvantes",
+"s": "motobombas-gasolina-auto-escorvantes",
+"img": 60729,
+"m": [
+[
+60729,
+"MOTOBOMBA BFG 3\" PU AUTO-ESCORVANTE",
+false
+],
+[
+60728,
+"MOTOBOMBA BFG 2\" PU AUTO-ESCORVANTE",
+false
+],
+[
+60773,
+"MOTOBOMBA BFG 2\" ALTA PRESSÃO",
+false
+],
+[
+60722,
+"MOTOBOMBA BFG 3\"S AUTO-ESCORVANTE",
+false
+],
+[
+60721,
+"MOTOBOMBA BFG 2\"S AUTO-ESCORVANTE",
+false
+],
+[
+61511,
+"MOTOBOMBA BFG 6\" PRO AUTO-ESCORVANTE",
+false
+],
+[
+61314,
+"MOTOBOMBA BFG 4\" AUTO-ESCORVANTE",
+false
+],
+[
+60613,
+"MOTOBOMBA BFG 3\" PRO AUTO-ESCORVANTE",
+false
+],
+[
+60612,
+"MOTOBOMBA BFG 2\" PRO AUTO-ESCORVANTE",
+false
+],
+[
+60115,
+"MOTOBOMBA BFG 1\" AUTO-ESCORVANTE",
+false
+]
+],
+"w": 520,
+"h": 451
+},
+{
+"l": "agricola",
+"c": "Brocas / Alongadores / Lâminas",
+"s": "agricola-brocas-alongadores-laminas",
+"img": 12388,
+"m": [
+[
+12388,
+"ALONGADOR 30CM",
+false
+],
+[
+12389,
+"ALONGADOR 60CM",
+false
+],
+[
+12390,
+"ALONGADOR 80CM",
+false
+],
+[
+12391,
+"ALONGADOR 100CM",
+false
+],
+[
+12392,
+"LAMINA RETA 150MM",
+false
+],
+[
+12393,
+"LAMINA SERRILHADA 150MM",
+false
+],
+[
+12394,
+"LAMINA RETA 200MM",
+false
+],
+[
+12395,
+"LAMINA SERRILHADA 200MM",
+false
+],
+[
+12396,
+"LAMINA RETA 250MM",
+false
+],
+[
+12397,
+"LAMINA SERRILHADA 250MM",
+false
+],
+[
+12398,
+"LAMINA RETA 300MM",
+false
+],
+[
+12399,
+"LAMINA SERRILHADA 300MM",
+false
+],
+[
+12400,
+"BROCA 80MM X 1 METRO",
+false
+],
+[
+12401,
+"BROCA 100MM X 1 METRO",
+false
+],
+[
+12402,
+"BROCA 150MM X 1 METRO",
+false
+],
+[
+12403,
+"BROCA 200MM X 1 METRO",
+false
+],
+[
+12404,
+"BROCA 250MM X 1 METRO",
+false
+],
+[
+12406,
+"BROCA 15CM X 80CM",
+false
+],
+[
+12405,
+"BROCA 300MM X 1 METRO",
+false
+],
+[
+13651,
+"BROCA 60MM",
+false
+],
+[
+12407,
+"BROCA 20CM X 80CM",
+false
+],
+[
+13650,
+"PONTEIRA REFLORESTAMENTO",
+false
+]
+],
+"w": 378,
+"h": 63
+},
+{
+"l": "agricola",
+"c": "Acessórios para Motocultivadores",
+"s": "agricola-acessorios-para-motocultivadores",
+"img": 1991,
+"m": [
+[
+1991,
+"SULCADOR K1",
+false
+],
+[
+2651,
+"JOGO CAPINADEIRA BFG910",
+false
+],
+[
+3329,
+"CAPINADEIRA L.ESQ./920M",
+false
+],
+[
+3330,
+"CAPINADEIRA L.DIR./920M",
+false
+],
+[
+6302,
+"CONJ ENXADAS DIR/G",
+false
+],
+[
+6303,
+"CONJ ENXADAS ESQ/G",
+false
+],
+[
+10703,
+"CONJUNTO RODAS DE FERRO P/ BANHADO",
+false
+],
+[
+10704,
+"CONJUNTO SAPATA DE FERRO P/RODAS",
+false
+],
+[
+10705,
+"ARADO TIPO AIVECA",
+false
+],
+[
+10706,
+"SULCADOR AJUSTAVEL",
+false
+],
+[
+10707,
+"COLHEDOR DE BATATA",
+false
+],
+[
+10708,
+"CONJUNTO ENXADA ROTATIVA PROFUNDA",
+false
+],
+[
+10734,
+"CONJ ENXADAS ESQ/G",
+false
+],
+[
+10733,
+"CONJ ENXADAS DIR/G",
+false
+]
+],
+"w": 210,
+"h": 270
+},
+{
+"l": "agricola",
+"c": "Perfurador de Solo",
+"s": "agricola-perfurador-de-solo",
+"img": 60250,
+"m": [
+[
+60250,
+"PERFURADOR DE SOLO BFG520 2T (C/BROCA 20CM)",
+false
+],
+[
+60251,
+"PERFURADOR DE SOLO BFG520D 2T (C/BROCA 20CM)",
+false
+],
+[
+60252,
+"PERFURADOR DE SOLO BFG520 2T (S/BROCA)",
+false
+],
+[
+60253,
+"PERFURADOR DE SOLO BFG520D 2T (S/BROCA)",
+false
+],
+[
+60260,
+"PERFURADOR DE SOLO BFG520 4T (C/BROCA 20CM)",
+true
+],
+[
+60261,
+"PERFURADOR DE SOLO BFG520D 4T (C/BROCA 20CM)",
+true
+],
+[
+60262,
+"PERFURADOR DE SOLO BFG520 4T (S/BROCA)",
+true
+],
+[
+60263,
+"PERFURADOR DE SOLO BFG520D 4T (S/BROCA)",
+true
+]
+],
+"w": 225,
+"h": 520
+},
+{
+"l": "agricola",
+"c": "Motocultivadores Gasolina 4T",
+"s": "agricola-motocultivadores-gasolina-4t",
+"img": 60761,
+"m": [
+[
+60761,
+"MOTOCULTIVADOR BFG 800",
+false
+],
+[
+60760,
+"MOTOCULTIVADOR BFG 890",
+false
+],
+[
+60662,
+"MOTOCULTIVADOR BFG 900",
+false
+],
+[
+60671,
+"MOTOCULTIVADOR BFG 910 PLUS",
+false
+],
+[
+60663,
+"MOTOCULTIVADOR BFG 920 MASTER",
+false
+],
+[
+60960,
+"MOTOCULTIVADOR BFG 1000",
+false
+]
+],
+"w": 232,
+"h": 267
+},
+{
+"l": "agricola",
+"c": "Motocultivadores Diesel 4T",
+"s": "agricola-motocultivadores-diesel-4t",
+"img": 70564,
+"m": [
+[
+70564,
+"MOTOCULTIVADOR BFD 850 PLUS",
+false
+],
+[
+71063,
+"MOTOCULTIVADOR BFD 1120 PLUS",
+false
+],
+[
+71066,
+"MOTOCULTIVADOR BFDE 1120 PLUS",
+false
+],
+[
+71067,
+"MOTOCULTIVADOR BFDE 1120 PLUS C",
+false
+]
+],
+"w": 400,
+"h": 520
+},
+{
+"l": "agricola",
+"c": "Microtratores",
+"s": "agricola-microtratores",
+"img": 71260,
+"m": [
+[
+71260,
+"MICROTRATOR BFDE 130",
+false
+],
+[
+71860,
+"MICROTRATOR BFDE 180",
+false
+],
+[
+71861,
+"MICROTRATOR BFDE 180 (SEM ENXADAS ROTATIVAS)",
+false
+]
+],
+"w": 520,
+"h": 359
+},
+{
+"l": "agricola",
+"c": "Adaptador para Mandril / Kit Amortecedor",
+"s": "agricola-adaptador-para-mandril-kit-amortecedor",
+"img": 10324,
+"m": [
+[
+10324,
+"ADAPTADOR P/MANDRIL 1/2\"",
+false
+],
+[
+10325,
+"ADAPTADOR P/MANDRIL 5/8\"",
+false
+],
+[
+11515,
+"KIT AMORTECEDOR / MOLA",
+false
+]
+],
+"w": 400,
+"h": 297
+},
+{
+"l": "agricola",
+"c": "Carretas Agrícolas",
+"s": "agricola-carretas-agricolas",
+"img": 80192,
+"m": [
+[
+80192,
+"CARRETA AGRÍCOLA BF 500S",
+false
+],
+[
+80193,
+"CARRETA AGRÍCOLA BF 300",
+false
+]
+],
+"w": 399,
+"h": 221
+},
+{
+"l": "agricola",
+"c": "Furador de Palanque",
+"s": "agricola-furador-de-palanque",
+"img": 50163,
+"m": [
+[
+50163,
+"FURADOR PALANQUE BFG 23 2T",
+false
+]
+],
+"w": 265,
+"h": 161
+},
+{
+"l": "construcao",
+"c": "Demolição",
+"s": "construcao-civil-demolicao",
+"img": 80425,
+"m": [
+[
+80425,
+"MARTELO DEMOLIDOR BF 5/14 MAX 220V",
+false
+],
+[
+80426,
+"MARTELO DEMOLIDOR BF 5/14 MAX 127V",
+false
+],
+[
+80427,
+"MARTELO DEMOLIDOR BF 10/25 MAX 220V",
+false
+],
+[
+80428,
+"MARTELO DEMOLIDOR BF 10/25 MAX 127V",
+false
+],
+[
+80429,
+"MARTELO DEMOLIDOR BF 12/28 MAX 220V",
+false
+],
+[
+80430,
+"MARTELO DEMOLIDOR BF 12/28 MAX 127V",
+false
+],
+[
+80450,
+"MARTELO DEMOLIDOR BF 14/50 30HEX 220V (B.ÓLEO)",
+false
+],
+[
+80440,
+"MARTELO DEMOLIDOR BF 14/50 30HEX 127V (B.ÓLEO)",
+false
+],
+[
+80431,
+"MARTELO DEMOLIDOR BF 18/55 28HEX 220V",
+false
+],
+[
+80432,
+"MARTELO DEMOLIDOR BF 18/55 28HEX 127V",
+false
+],
+[
+80433,
+"MARTELO DEMOLIDOR BF 30/62 28HEX 220V",
+false
+],
+[
+80434,
+"MARTELO ROTATIVO BF 4R/3.5 PLUS 220V",
+false
+],
+[
+80435,
+"MARTELO ROTATIVO BF 4R/3.5 PLUS 127V",
+false
+],
+[
+80436,
+"MARTELO ROTATIVO BF 6R/10 MAX 220V",
+false
+],
+[
+80437,
+"MARTELO ROTATIVO BF 6R/10 MAX 127V",
+false
+],
+[
+80438,
+"MARTELO ROTATIVO BF 9R/15 MAX 220V",
+false
+],
+[
+80439,
+"MARTELO ROTATIVO BF 9R/15 MAX 127V",
+false
+],
+[
+80500,
+"TROLE REMOVEDOR DE PISO",
+false
+],
+[
+17511,
+"PONTEIRO SDS PLUS (14X250)",
+false
+],
+[
+17513,
+"TALHADEIRA ESTREITA SDS PLUS (14X250X20)",
+false
+],
+[
+17514,
+"TALHADEIRA LARGA SDS PLUS (14 X 250 X 50)",
+false
+],
+[
+17515,
+"PONTEIRO SDS MAX (18 X 280)",
+false
+],
+[
+17516,
+"PONTEIRO SDS MAX (18 X 400)",
+false
+],
+[
+17517,
+"PONTEIRO SDS MAX (18 X 1000)",
+false
+],
+[
+17518,
+"TALHADEIRA ESTREITA SDS MAX (18 X 280 X 25)",
+false
+],
+[
+17519,
+"TALHADEIRA ESTREITA SDS MAX (18 X 400 X 25)",
+false
+],
+[
+17520,
+"TALHADEIRA LARGA SDS MAX (18 X 280 X 50)",
+false
+],
+[
+17521,
+"TALHADEIRA LARGA SDS MAX (18 X 400 X 50)",
+false
+],
+[
+17522,
+"PONTEIRO HEX. 17 (17 X 350)",
+false
+],
+[
+17523,
+"TALHADEIRA ESTREITA HEX 17 (17 X 350 X 25)",
+false
+],
+[
+17524,
+"TALHADEIRA LARGA HEX 17 (17 X 350 X 50)",
+false
+],
+[
+17525,
+"PONTEIRO HEX. 22 (22 X 400)",
+false
+],
+[
+17526,
+"TALHADEIRA ESTREITA HEX 22 (22 X 400 X 30)",
+false
+],
+[
+17527,
+"TALHADEIRA LARGA HEX 22 (22 X 400 X 75)",
+false
+],
+[
+17528,
+"PONTEIRO HEX. 28 (28 X 500)",
+false
+],
+[
+17529,
+"TALHADEIRA ESTREITA HEX 28 (28 X 500 X 35)",
+false
+],
+[
+17530,
+"TALHADEIRA LARGA HEX 28 (28 X 500 X 75)",
+false
+],
+[
+17531,
+"PONTEIRO HEX. 30 (30 X 410)",
+false
+],
+[
+17532,
+"TALHADEIRA ESTREITA HEX 30 (30 X 410 X 35)",
+false
+],
+[
+17533,
+"TALHADEIRA LARGA HEX 30 (30 X 410 X 75)",
+false
+],
+[
+80451,
+"MARTELO COMBINADO BF 3/3.2 PLUS 220V",
+true
+],
+[
+80452,
+"MARTELO COMBINADO BF 3/3.2 PLUS 127V",
+true
+]
+],
+"w": 268,
+"h": 109
+},
+{
+"l": "construcao",
+"c": "Pisos e Acabamento",
+"s": "construcao-civil-pisos-e-acabamento",
+"img": 60243,
+"m": [
+[
+60243,
+"REGUA VIBRATORIA NIVELADORA - 2.4M",
+false
+],
+[
+60244,
+"REGUA VIBRATORIA NIVELADORA - 3.0M",
+false
+],
+[
+60246,
+"REGUA VIBRATORIA NIVELADORA - 2.4M - S/MOTOR",
+false
+],
+[
+60247,
+"REGUA VIBRATORIA NIVELADORA - 3.0M - S/MOTOR",
+false
+],
+[
+80041,
+"PERFIL REGUA VIBR.NIV.BFG 2.4M",
+false
+],
+[
+80042,
+"PERFIL REGUA VIBR.NIV.BFG 3.0M",
+false
+],
+[
+60843,
+"CORTADOR DE PISO BFG 350 RENTAL",
+false
+],
+[
+60853,
+"CORTADORA DE PISO BFG 350-7.5 PRO",
+true
+],
+[
+60953,
+"CORTADORA DE PISO BFG 350-9.0 PRO",
+true
+],
+[
+61643,
+"CORTADORA DE PISO BFG 500-16.0 RENTAL",
+false
+],
+[
+60841,
+"ALISADORA DE PISO BFG 60 RENTAL",
+false
+],
+[
+60744,
+"ALISADORA DE PISO BFG 100 RENTAL",
+false
+],
+[
+60944,
+"ALISADORA DE PISO BFG 120 RENTAL",
+false
+],
+[
+80360,
+"POLITRIZ BF2800",
+false
+],
+[
+80362,
+"POLITRIZ BF3500",
+false
+],
+[
+80361,
+"POLITRIZ BF4800",
+false
+],
+[
+12779,
+"ABRASIVO DESBASTE, HEX.30 (3 UNIDADES)",
+false
+],
+[
+12780,
+"ABRASIVO DESBASTE, HEX.60 (3 UNIDADES)",
+false
+],
+[
+12781,
+"ABRASIVO DESBASTE, HEX.120 (3 UNIDADES)",
+false
+],
+[
+12782,
+"ABRASIVO REMOÇÃO SETA, HEX.30 (3 UNIDADES)",
+false
+],
+[
+12783,
+"ABRASIVO REMOÇÃO DENTADA (3 UNIDADES)",
+false
+],
+[
+61644,
+"ALISADORA DUPLA BFGE 160 RENTAL",
+false
+]
+],
+"w": 279,
+"h": 228
+},
+{
+"l": "construcao",
+"c": "Bombas",
+"s": "construcao-civil-bombas",
+"img": 80322,
+"m": [
+[
+80322,
+"BOMBA SUBMERSA BFB 2\" SEM BOIA",
+false
+],
+[
+80323,
+"BOMBA SUBMERSA BFB 3\" SEM BOIA",
+false
+],
+[
+80324,
+"BOMBA SUBMERSA BFB 2\" COM BOIA",
+false
+],
+[
+80325,
+"BOMBA SUBMERSA BFB 3\" COM BOIA",
+false
+],
+[
+80326,
+"BOMBA SUBMERSA BFB 3\" SEM BOIA TRIF.220V",
+false
+],
+[
+80327,
+"BOMBA SUBMERSA BFB 3\" SEM BOIA TRIF.380V",
+false
+],
+[
+80620,
+"BOMBA LAMEIRA BF 3/40 TRIFASICO 220V",
+true
+],
+[
+80621,
+"BOMBA LAMEIRA BF 3/40 TRIFASICO 380V",
+true
+],
+[
+80622,
+"BOMBA LAMEIRA BF 4/60 TRIFASICO 220V",
+true
+],
+[
+80623,
+"BOMBA LAMEIRA BF 4/60 TRIFASICO 380V",
+true
+],
+[
+81020,
+"BOMBA LAMEIRA BF 6/100 TRIFASICO 220V",
+true
+],
+[
+81021,
+"BOMBA LAMEIRA BF 6/100 TRIFASICO 380V",
+true
+]
+],
+"w": 146,
+"h": 272
+},
+{
+"l": "construcao",
+"c": "Compactação",
+"s": "construcao-civil-compactacao",
+"img": 60445,
+"m": [
+[
+60445,
+"COMPACTADOR DE SOLO BFG 70 PRO",
+false
+],
+[
+60446,
+"COMPACTADOR DE SOLO BFG 70B PRO",
+true
+],
+[
+60341,
+"COMPACTADOR DE SOLO BFG 60B",
+false
+],
+[
+60444,
+"COMPACTADOR DE SOLO BFG 70B",
+false
+],
+[
+60443,
+"COMPACTADOR DE SOLO BFG 75B",
+false
+],
+[
+60440,
+"COMPACTADOR DE SOLO BFG 75R",
+false
+],
+[
+60745,
+"PLACA VIBRATORIA BFG  60 RENTAL",
+false
+],
+[
+60840,
+"PLACA VIBRATORIA BFG 85 RENTAL",
+false
+],
+[
+60741,
+"PLACA VIBRATORIA BFG 100 RENTAL",
+false
+],
+[
+60740,
+"PLACA VIBRATORIA BFG 125 RENTAL",
+false
+]
+],
+"w": 172,
+"h": 283
+},
+{
+"l": "construcao",
+"c": "Vibradores de Concreto",
+"s": "construcao-civil-vibradores-de-concreto",
+"img": 80442,
+"m": [
+[
+80442,
+"VIBRADOR DE CONCRETO V32",
+false
+],
+[
+80443,
+"VIBRADOR DE CONCRETO V38",
+false
+],
+[
+80444,
+"VIBRADOR DE CONCRETO V45",
+false
+],
+[
+80445,
+"VIBRADOR DE CONCRETO V60",
+false
+],
+[
+60640,
+"MOTOR DE ACIONAMENTO BFG 6.5",
+false
+],
+[
+70540,
+"MOTOR DE ACIONAMENTO BFD 5.0",
+false
+],
+[
+80002,
+"BOMBA DE MANGOTE BF 2\"",
+false
+],
+[
+80003,
+"BOMBA DE MANGOTE BF 3\"",
+false
+],
+[
+842,
+"KIT VIBRADOR",
+false
+]
+],
+"w": 264,
+"h": 129
+},
+{
+"l": "construcao",
+"c": "Mangueiras de PVC",
+"s": "construcao-civil-mangueiras-de-pvc",
+"img": 80020,
+"m": [
+[
+80020,
+"MANGUEIRA 1.1/2\" PVC AZUL",
+false
+],
+[
+80021,
+"MANGUEIRA 2,0\" PVC AZUL",
+false
+],
+[
+80022,
+"MANGUEIRA 2.1/2\" PVC AZUL",
+false
+],
+[
+80023,
+"MANGUEIRA 3,0\" PVC AZUL",
+false
+],
+[
+80024,
+"MANGUEIRA 4,0\" PVC AZUL",
+false
+],
+[
+80025,
+"MANGUEIRA 6,0\" PVC AZUL",
+false
+],
+[
+80026,
+"MANGUEIRA 8,0\" PVC AZUL",
+false
+],
+[
+80027,
+"MANGUEIRA 2\" P/IRRIGACAO",
+false
+]
+],
+"w": 400,
+"h": 213
+},
+{
+"l": "construcao",
+"c": "Iluminação",
+"s": "construcao-civil-iluminacao",
+"img": 61551,
+"m": [
+[
+61551,
+"TORRE ILUMINACAO BF 5000 G RENTAL",
+false
+],
+[
+80400,
+"TORRE ILUMINACAO BF 5000 RENTAL",
+false
+],
+[
+71051,
+"TORRE ILUMINACAO BF 5000 D RENTAL",
+false
+],
+[
+71740,
+"TORRE ILUMINACAO BF 9000 RENTAL",
+false
+]
+],
+"w": 193,
+"h": 274
+},
+{
+"l": "construcao",
+"c": "Dumpers",
+"s": "construcao-civil-dumpers",
+"img": 60845,
+"m": [
+[
+60845,
+"MINI DUMPER BF 500 RENTAL",
+false
+],
+[
+61645,
+"MINI DUMPER BF 800 RENTAL",
+false
+]
+],
+"w": 285,
+"h": 183
+},
+{
+"l": "construcao",
+"c": "Valetadeiras",
+"s": "construcao-civil-valetadeiras",
+"img": 61542,
+"m": [
+[
+61542,
+"VALETADEIRA BF 600 RENTAL",
+false
+]
+],
+"w": 399,
+"h": 285
+},
+{
+"l": "floresta",
+"c": "Acessórios Motosserras",
+"s": "floresta-e-jardim-acessorios-motosserras",
+"img": 6512,
+"m": [
+[
+6512,
+"CORRENTE EM BLISTER BFG 45/56 (.325X.058)",
+false
+],
+[
+6513,
+"CORRENTE EM ROLO 25P (.325X.058)",
+false
+],
+[
+6514,
+"SABRE LAMINADO BUFFALO 16 (.058)",
+false
+],
+[
+6515,
+"CORRENTE EM BLISTER BFG 62 (3/8X.058X32)",
+false
+],
+[
+6516,
+"CORRENTE EM ROLO 25P (3/8X.058)",
+false
+],
+[
+6517,
+"SABRE LAMINADO BUFFALO 18 (.058X33)",
+false
+],
+[
+6518,
+"CORRENTE EM ROLO 100P (3/8X.063)",
+false
+],
+[
+6519,
+"SABRE LAMINADO BUFFALO 18 (.063)",
+false
+],
+[
+6521,
+"SABRE LAMINADO BUFFALO 16 (.063)",
+false
+],
+[
+6522,
+"SABRE LAMINADO BUFFALO 20 (.063)",
+false
+],
+[
+7789,
+"CORRENTE EM BLISTER BFG 25 (3/8X.050)",
+false
+],
+[
+7790,
+"SABRE LAMINADO BUFFALO 12 (.050)",
+false
+],
+[
+13325,
+"CORRENTE EM BLISTER BFG 62 (3/8X.058X33)",
+false
+],
+[
+13326,
+"SABRE LAMINADO BUFFALO 18 (.058X32)",
+false
+]
+],
+"w": 194,
+"h": 300
+},
+{
+"l": "floresta",
+"c": "Roçadeiras",
+"s": "floresta-e-jardim-rocadeiras",
+"img": 50188,
+"m": [
+[
+50188,
+"ROCADEIRA BFGMC 26 2T (CAFE)",
+false
+],
+[
+60165,
+"ROCADEIRA BFG S37 (4 TEMPOS)",
+false
+],
+[
+50182,
+"ROCADEIRA BFG 26S 2T",
+false
+],
+[
+50183,
+"ROCADEIRA BFG 33S 2T",
+false
+],
+[
+50184,
+"ROCADEIRA BFG 43S 2T",
+false
+],
+[
+50256,
+"ROCADEIRA BFG 52S 2T",
+false
+],
+[
+50152,
+"ROCADEIRA BFG 43 2T (COSTAL)",
+false
+],
+[
+60265,
+"ROÇADEIRA BFG S48 (4 TEMPOS)",
+true
+]
+],
+"w": 175,
+"h": 280
+},
+{
+"l": "floresta",
+"c": "Cortadores de Grama",
+"s": "floresta-e-jardim-cortadores-de-grama",
+"img": 61880,
+"m": [
+[
+61880,
+"TRATOR CORTADOR DE GRAMA BF 1080",
+false
+],
+[
+60683,
+"CORTADOR GRAMA BFGT 53SLR (3 RODAS)",
+false
+],
+[
+60682,
+"CORTADOR GRAMA BFGT 53SLR",
+false
+],
+[
+60680,
+"CORTADOR GRAMA BFG 50SL",
+false
+],
+[
+60480,
+"CORTADOR GRAMA BFG 40R",
+false
+],
+[
+60681,
+"CORTADOR GRAMA BFG 53SLR",
+false
+]
+],
+"w": 247,
+"h": 210
+},
+{
+"l": "floresta",
+"c": "Motosserras",
+"s": "floresta-e-jardim-motosserras",
+"img": 50271,
+"m": [
+[
+50271,
+"MOTOSSERRA BFG 45 2T PLUS",
+false
+],
+[
+50371,
+"MOTOSSERRA BFG 56 2T PLUS",
+false
+],
+[
+50471,
+"MOTOSSERRA BFG 62 2T PLUS",
+false
+]
+],
+"w": 268,
+"h": 121
+},
+{
+"l": "floresta",
+"c": "Sopradores",
+"s": "floresta-e-jardim-sopradores",
+"img": 50164,
+"m": [
+[
+50164,
+"SOPRADOR BFG 260 SB 2T",
+false
+],
+[
+50165,
+"SOPRADOR BFG 260R SB 2T",
+false
+],
+[
+60351,
+"SOPRADOR COSTAL BFG 600 2T",
+false
+]
+],
+"w": 520,
+"h": 332
+},
+{
+"l": "floresta",
+"c": "Podadores",
+"s": "floresta-e-jardim-podadores",
+"img": 50162,
+"m": [
+[
+50162,
+"PODADOR DE LANÇA BFG 26 2T",
+false
+],
+[
+50166,
+"MULTIFUNCIONAL BFG 26SB 2T",
+false
+],
+[
+60153,
+"PODADOR CERCA VIVA BFG260 2T",
+false
+]
+],
+"w": 303,
+"h": 274
+},
+{
+"l": "pulverizacao",
+"c": "Pulverizadores Manuais",
+"s": "pulverizacao-pulverizadores-manuais",
+"img": 80600,
+"m": [
+[
+80600,
+"PULVERIZADOR BF 2L",
+false
+],
+[
+80601,
+"PULVERIZADOR BF 5L",
+false
+],
+[
+80602,
+"PULVERIZADOR BF 8L",
+false
+],
+[
+80603,
+"PULVERIZADOR COSTAL BF 20L - MANUAL",
+false
+],
+[
+80605,
+"PULVERIZADOR COSTAL BF 20L- ELÉTRICO E MANUAL",
+false
+]
+],
+"w": 174,
+"h": 300
+},
+{
+"l": "pulverizacao",
+"c": "Pulverizadores Gasolina 4T",
+"s": "pulverizacao-pulverizadores-gasolina-4t",
+"img": 60558,
+"m": [
+[
+60558,
+"PULVERIZADOR ESTACIONÁRIO BF22 4T",
+false
+],
+[
+60658,
+"PULVERIZADOR ESTACIONÁRIO BF45 4T",
+false
+],
+[
+80059,
+"BOMBA PARA PULVERIZAÇÃO BF22 (S/MOTOR)",
+false
+],
+[
+80069,
+"BOMBA PARA PULVERIZAÇÃO BF45 (S/MOTOR)",
+false
+]
+],
+"w": 298,
+"h": 300
+},
+{
+"l": "pulverizacao",
+"c": "Pulverizadores Costais",
+"s": "pulverizacao-pulverizadores-costais",
+"img": 50156,
+"m": [
+[
+50156,
+"PULVERIZADOR COSTAL BFG 26 2T",
+false
+],
+[
+60175,
+"PULVERIZADOR COSTAL BFG 40 4T",
+false
+]
+],
+"w": 379,
+"h": 300
+},
+{
+"l": "pulverizacao",
+"c": "Atomizador",
+"s": "pulverizacao-atomizador",
+"img": 60130,
+"m": [
+[
+60130,
+"ATOMIZADOR COSTAL BFG 450 2T",
+false
+],
+[
+60350,
+"ATOMIZADOR COSTAL BFG 600 2T",
+false
+]
+],
+"w": 199,
+"h": 281
+},
+{
+"l": "pulverizacao",
+"c": "Opcional",
+"s": "pulverizacao-opcional",
+"img": 10407,
+"m": [
+[
+10407,
+"CARRINHO DE TRANSPORTE",
+false
+],
+[
+8450,
+"BASE PULVERIZADOR BF22 / BF45",
+false
+]
+],
+"w": 251,
+"h": 262
+},
+{
+"l": "hidrolavadoras",
+"c": "Elétrica",
+"s": "hidrolavadora-eletrica",
+"img": 80354,
+"m": [
+[
+80354,
+"HIDROLAVADORA BF 2300 PRO - 127V",
+false
+],
+[
+80355,
+"HIDROLAVADORA BF 2300 PRO - 220V",
+false
+],
+[
+80356,
+"HIDROLAVADORA BF 1900 PRO - 220V",
+false
+],
+[
+80353,
+"HIDROLAVADORA BF 2000 HOME PRO - 220V",
+false
+],
+[
+80352,
+"HIDROLAVADORA BF 2000 HOME PRO - 127V",
+false
+]
+],
+"w": 162,
+"h": 269
+},
+{
+"l": "hidrolavadoras",
+"c": "Gasolina",
+"s": "hidrolavadora-gasolina",
+"img": 60774,
+"m": [
+[
+60774,
+"HIDROLAVADORA BFG 3000 RENTAL",
+true
+],
+[
+61578,
+"HIDROLAVADORA BFG 4400 RENTAL",
+false
+]
+],
+"w": 176,
+"h": 286
+},
+{
+"l": "nautica",
+"c": "Rabetas Horizontais Sem Motor",
+"s": "nautica-rabetas-horizontais-sem-motor",
+"img": 80550,
+"m": [
+[
+80550,
+"RAB COMPL 5.5/6.5CV 1.50M",
+false
+],
+[
+80551,
+"RAB COMPL 5.5/6.5CV 1.70M",
+false
+],
+[
+80552,
+"RAB COMPL 5.5/6.5CV 2.20M",
+false
+],
+[
+80553,
+"RAB STD 8.OCV 4T 2.20MT",
+false
+],
+[
+80554,
+"RAB STD 5.0CV 4T 2.20MT",
+false
+],
+[
+80555,
+"RAB STD  5.5/6.5CV 2.20MT",
+false
+],
+[
+80556,
+"RAB STD 5.5/6.5CV 1,70MT",
+false
+],
+[
+80557,
+"RAB STD 13,0CV",
+false
+],
+[
+80558,
+"RAB STD 6.5CV 4T 2.0MT",
+false
+],
+[
+80559,
+"RAB STD 10CV 2,80M DIES.",
+false
+],
+[
+80561,
+"RAB STD 7.0CV 2,20M DIES.",
+false
+]
+],
+"w": 275,
+"h": 249
+},
+{
+"l": "nautica",
+"c": "Caixas Reversoras - Marítima",
+"s": "nautica-caixas-reversoras-maritima",
+"img": 80150,
+"m": [
+[
+80150,
+"REVERSOR MARÍTIMO MECÂNICO 06 (2.5:1)",
+false
+],
+[
+80151,
+"REVERSOR MARÍTIMO MECÂNICO 06 (3,0:1)",
+false
+],
+[
+80153,
+"REVERSOR MARÍTIMO MECÂNICO 16A (2,5:1)",
+false
+],
+[
+80154,
+"REVERSOR MARÍTIMO MECÂNICO 16A (3,0:1)",
+false
+],
+[
+80156,
+"REVERSOR MARÍTIMO HIDRÁULICO MA142A (2,0:1)",
+false
+],
+[
+80157,
+"REVERSOR MARÍTIMO HIDRÁULICO MA142A (3,0:1)",
+false
+],
+[
+80158,
+"REVERSOR MARÍTIMO MECÂNICO 16A (4,0:1)",
+false
+],
+[
+80159,
+"REVERSOR MARÍTIMO HIDRÁULICO MA142A (4,0:1)",
+false
+],
+[
+80155,
+"REVERSOR MARÍTIMO MECÂNICO 16A (3,5:1)",
+false
+],
+[
+80152,
+"REVERSOR MARÍTIMO MECÂNICO 06 (3,5:1)",
+false
+]
+],
+"w": 209,
+"h": 300
+},
+{
+"l": "nautica",
+"c": "Motores Marine",
+"s": "nautica-motores-marine",
+"img": 72204,
+"m": [
+[
+72204,
+"MOTOR BFD 22.0 MARINE",
+false
+],
+[
+71804,
+"MOTOR BFD 18.0 MARINE",
+false
+],
+[
+61815,
+"MOTOR BFG 18.0 MARINE",
+false
+],
+[
+60815,
+"MOTOR BFG 8.5 MARINE",
+false
+]
+],
+"w": 312,
+"h": 300
+},
+{
+"l": "nautica",
+"c": "Motores de popa",
+"s": "nautica-motores-de-popa",
+"img": 50240,
+"m": [
+[
+50240,
+"MOTOR DE POPA BFG 52CC 2T",
+false
+],
+[
+60655,
+"MOTOR DE POPA BFG 6.5 4T",
+false
+],
+[
+60145,
+"MOTOR DE POPA BFG 1.4 4T",
+false
+]
+],
+"w": 260,
+"h": 300
+},
+{
+"l": "nautica",
+"c": "Rabetas Verticais Sem Motor",
+"s": "nautica-rabetas-verticais-sem-motor",
+"img": 80567,
+"m": [
+[
+80567,
+"RABETA VERTICAL S/MOTOR PARA BFG 1.4 4T / BFG 43 2T",
+false
+],
+[
+80568,
+"RABETA VERTICAL S/MOTOR PARA BFG 6.5 4T",
+false
+]
+],
+"w": 56,
+"h": 300
+},
+{
+"l": "nautica",
+"c": "Motores para Rabetas Verticais",
+"s": "nautica-motores-para-rabetas-verticais",
+"img": 60697,
+"m": [
+[
+60697,
+"MOTOR BFG 6.5 OUTBOARD",
+false
+],
+[
+50102,
+"MOTOR BFG 43 SB 2T",
+false
+]
+],
+"w": 484,
+"h": 520
+}
+]
+}
