@@ -1,0 +1,56 @@
+/* Versão B "Linha de automação": grafite e vermelho, foto da linha montada no cliente */
+:root{--fundo2:#efeff0}
+.topo{background:#1c1d20;color:#fff;box-shadow:none}
+.topo-barra{background:#111214;color:rgba(255,255,255,.75)}
+.menu a:hover{background:rgba(255,255,255,.08)}
+.menu a.ativo{color:#fff;box-shadow:inset 0 -3px 0 var(--cor)}
+.btn{border-radius:0}
+.herob{position:relative;min-height:min(86vh,760px);display:flex;align-items:flex-end;background:#111214;color:#fff;overflow:hidden}
+.hb-foto{position:absolute;inset:0}
+.hb-foto img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.hb-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,18,20,.94) 0%,rgba(17,18,20,.7) 42%,rgba(17,18,20,.15) 75%),linear-gradient(0deg,rgba(17,18,20,.9),transparent 45%)}
+.hb-txt{position:relative;padding:120px 0 72px}
+.herob h1{font-size:clamp(44px,6.4vw,92px);line-height:.98;font-weight:800;letter-spacing:-.03em;max-width:820px;text-transform:uppercase}
+.herob h1 em{font-style:normal;color:var(--cor);display:block}
+.hb-sub{font-size:clamp(17px,1.4vw,20px);color:rgba(255,255,255,.8);max-width:560px}
+.ha-acoes{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 0}
+.herob .btn-linha{color:#fff}
+.faixa-num{background:var(--cor);color:#fff;padding:34px 0}
+.faixa-num .numeros li{border-color:rgba(255,255,255,.35)}
+.faixa-num .numeros b{color:#fff}
+.faixa-num .numeros span{color:rgba(255,255,255,.9)}
+.proc-abas{display:grid;grid-template-columns:280px 1fr;gap:0;border:1px solid var(--linha)}
+.pa-lista{display:flex;flex-direction:column;background:#1c1d20}
+.pa-lista button{display:flex;gap:12px;align-items:baseline;text-align:left;font:600 17px var(--ft);color:rgba(255,255,255,.7);background:none;border:0;border-bottom:1px solid rgba(255,255,255,.08);padding:16px 20px;cursor:pointer}
+.pa-lista .pa-n{font-size:13px;color:var(--cor)}
+.pa-lista button[aria-selected=true]{background:var(--cor);color:#fff}
+.pa-lista button[aria-selected=true] .pa-n{color:#fff}
+.pa-painel{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;padding:32px;align-items:center}
+.pa-painel[hidden]{display:none}
+.pa-txt h3{font-size:30px}
+.pa-txt p{color:var(--suave)}
+.pa-fotos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pa-fotos img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff;border:1px solid var(--linha)}
+.pa-fotos img:first-child{grid-column:span 2}
+.perfis{margin-top:20px;border-radius:2px;width:100%;max-width:440px}
+.setores-b{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#111214}
+.setores-b a{position:relative;display:block;aspect-ratio:1/1;color:#fff;text-decoration:none;overflow:hidden}
+.setores-b img{width:100%;height:100%;object-fit:cover;transition:transform .6s,opacity .3s;opacity:.7}
+.setores-b a:hover img{transform:scale(1.06);opacity:.5}
+.setores-b span{position:absolute;left:18px;right:46px;bottom:16px;font:800 21px/1.1 var(--ft);text-transform:uppercase}
+.setores-b .ic{position:absolute;right:16px;bottom:18px;color:var(--cor)}
+.cab-pag{background:#1c1d20;color:#fff}
+.cab-pag p{color:rgba(255,255,255,.75)}
+.cab-pag h1{text-transform:uppercase}
+.sub-nav{background:#fff}
+.mq-foto,.caixa-form,.apl-foto img,.pa-fotos img{border-radius:0}
+.chamada{background:linear-gradient(110deg,#d40000,#ff0000)}
+.chamada .btn{background:#111214;border-color:#111214}
+@media (max-width:1180px){.menu{background:#1c1d20}.menu a{border-color:rgba(255,255,255,.1)}}
+@media (max-width:900px){
+  .proc-abas{grid-template-columns:1fr}
+  .pa-lista{flex-direction:row;overflow-x:auto}
+  .pa-lista button{white-space:nowrap;border-bottom:0;border-right:1px solid rgba(255,255,255,.08)}
+  .pa-painel{grid-template-columns:1fr;padding:22px}
+  .setores-b{grid-template-columns:repeat(2,1fr)}
+}
