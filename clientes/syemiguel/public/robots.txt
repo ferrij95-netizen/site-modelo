@@ -1,0 +1,8 @@
+# PRÉVIA: o site ainda não deve ser indexado.
+# Ao publicar de verdade (decisão do João): apague a linha "Disallow: /" e tire o "#" da linha "Allow: /",
+# e troque o meta robots "noindex, nofollow" por "index, follow" nas 5 páginas.
+User-agent: *
+Disallow: /
+# Allow: /
+
+Sitemap: https://syemiguel.overtus.com.br/sitemap.xml
