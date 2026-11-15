@@ -1,0 +1,44 @@
+/* Versão B "Lugar de gente feliz": marrom escuro elegante com o vermelho da marca */
+:root{--fundo:#f6f2ed;--fundo2:#ece4da;--escuro:#2b2321}
+.topo{background:var(--escuro);color:#f3ece5;box-shadow:none}
+.menu a.ativo{color:#ff5a6a}
+@media (max-width:1100px){.menu{background:var(--escuro)}.menu a{border-color:rgba(255,255,255,.14)}}
+.herob{position:relative;min-height:min(720px,calc(100vh - 80px));display:flex;align-items:flex-end;background:#1e1614;color:#fff;overflow:hidden}
+.hb-foto{position:absolute;inset:0}
+.hb-foto img{width:100%;height:100%;object-fit:cover;object-position:60% 55%}
+.hb-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,22,20,.92) 0%,rgba(30,22,20,.55) 48%,rgba(30,22,20,0) 78%),linear-gradient(0deg,rgba(30,22,20,.6),transparent 40%)}
+.hb-txt{position:relative;padding:96px 0 88px}
+.hb-txt>*{max-width:600px}
+.herob h1{font-size:clamp(42px,6vw,82px);line-height:1;color:#fff;margin-bottom:20px}
+.herob h1 em{font-style:normal;color:var(--cor)}
+.hb-sub{font-size:1.15rem;color:rgba(255,255,255,.86)}
+.herob .sobrelinha{color:#ff5a6a}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 0}
+.faixa-num{background:var(--escuro);color:#fff;padding:36px 0 44px;border-top:1px solid rgba(255,255,255,.1)}
+.faixa-num .numeros span{color:rgba(255,255,255,.66)}
+.faixa-num .numeros b{color:#fff}
+.faixa-num .numeros li{border-left:2px solid var(--cor);padding-left:18px}
+
+.abas-lista{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.abas-lista button{font:500 15px/1 var(--ft);border:1px solid var(--linha);background:#fff;color:var(--tinta);padding:12px 18px;border-radius:999px;cursor:pointer}
+.abas-lista button[aria-selected=true]{background:var(--escuro);border-color:var(--escuro);color:#fff}
+.aba-painel{display:grid;grid-template-columns:1.5fr 1fr;gap:0;background:#fff;border-radius:var(--raio);overflow:hidden;border:1px solid var(--linha)}
+.aba-painel[hidden]{display:none}
+.ap-foto img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/11}
+.ap-txt{padding:clamp(24px,3vw,40px)}
+.ap-txt h3{font-size:1.6rem}
+.ap-txt>p{color:var(--suave)}
+.ap-mod{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+.ap-mod a{display:inline-block;padding:7px 12px;border-radius:999px;background:var(--fundo2);text-decoration:none;font:500 14px/1 var(--ft)}
+.ap-mod a:hover{background:var(--cor);color:#fff}
+.sec-escura .pd-foto img{filter:drop-shadow(0 30px 50px rgba(0,0,0,.6))}
+.fabrica-b figure img{aspect-ratio:4/3;object-fit:cover}
+.cab-pag{background:var(--escuro);color:#fff}
+.cab-pag p{color:rgba(255,255,255,.75)}
+.sub-nav{top:80px}
+@media (max-width:900px){
+  .aba-painel{grid-template-columns:1fr}
+  .herob{min-height:620px}
+  .hb-foto::after{background:linear-gradient(0deg,rgba(30,22,20,.95) 0%,rgba(30,22,20,.7) 55%,rgba(30,22,20,.2) 100%)}
+}
+@media (max-width:600px){.sub-nav{top:68px}.abas-lista{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.abas-lista button{white-space:nowrap}}
