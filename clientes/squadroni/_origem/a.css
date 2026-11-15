@@ -1,0 +1,13 @@
+/* Versão A "Since 1953": clara, vermelho Squadroni, rodízios em destaque */
+.heroa{position:relative;background:linear-gradient(180deg,#fff 0%,var(--fundo2) 100%);padding:clamp(36px,5vw,64px) 0 36px;overflow:hidden}
+.ha-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:44px;align-items:center;position:relative;margin-bottom:40px}
+.heroa h1{font-size:clamp(40px,4.8vw,68px);line-height:1;margin-bottom:20px;color:var(--tinta)}
+.heroa h1 em{color:var(--cor);font-style:normal;display:block}
+.ha-sub{font-size:1.15rem;color:var(--suave);max-width:540px}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.ha-foto{position:relative}
+.ha-foto img{width:100%;border-radius:var(--raio);box-shadow:-18px 18px 0 var(--cor)}
+.numeros b{color:var(--tinta)}
+.numeros li:nth-child(1) b{font-family:'Libre Caslon Text',Georgia,serif;font-style:italic;font-weight:400;color:var(--cor)}
+.cab-pag{border-bottom-color:var(--cor)}
+@media (max-width:900px){.ha-grade{grid-template-columns:1fr}.ha-foto{max-width:560px}}

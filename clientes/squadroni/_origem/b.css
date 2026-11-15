@@ -1,0 +1,24 @@
+/* Versão B "Linha técnica": grafite e vermelho, abre como catálogo técnico */
+.topo{background:var(--marinho);box-shadow:none}
+.topo-barra{background:#111214}
+.menu a{color:#fff}
+.menu a:hover,.menu a.ativo{color:#ff5a5f}
+@media (max-width:1180px){.menu{background:var(--marinho)}.menu a{border-color:rgba(255,255,255,.14)}.menu-btn{color:#fff}}
+.herob{position:relative;background:#1d1e22 linear-gradient(115deg,#1d1e22 45%,#2a2b30);color:#fff;overflow:hidden}
+.herob::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px}
+.hb-grade{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center;min-height:min(620px,calc(100vh - 112px));padding:56px 0}
+.herob h1{font-size:clamp(52px,7vw,100px);line-height:.92;color:#fff;margin-bottom:18px;text-transform:uppercase}
+.herob h1 em{color:var(--cor);font-style:normal}
+.herob .sobrelinha{color:#ff7a7e}
+.hb-sub{font-size:1.15rem;color:rgba(255,255,255,.84);max-width:520px}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.herob .btn-linha{color:#fff;border-color:rgba(255,255,255,.6)}
+.hb-prod img{width:100%;border-radius:var(--raio);box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.faixa-num{background:var(--cor);color:#fff;padding:30px 0}
+.faixa-num .numeros li{border-color:rgba(255,255,255,.3)}
+.faixa-num .numeros b{color:#fff}
+.faixa-num .numeros span{color:rgba(255,255,255,.88)}
+.cab-pag{background:var(--marinho);color:#fff}
+.cab-pag p{color:rgba(255,255,255,.78)}
+.sec-escura .sobrelinha{color:#ff7a7e}
+@media (max-width:900px){.hb-grade{grid-template-columns:1fr}.hb-prod{max-width:520px}}
