@@ -1,0 +1,15 @@
+/* Versão A "Conforto em cada momento": areia e creme do catálogo, vermelho da marca */
+.heroa{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);min-height:min(680px,calc(100vh - 80px));background:var(--fundo2)}
+.heroa .ha-txt{grid-column:1;grid-row:1;align-self:center;width:auto;margin:0;padding:56px clamp(24px,4vw,48px) 56px max(16px,calc((100vw - 1180px)/2))}
+.ha-foto{grid-column:2;grid-row:1;position:relative;overflow:hidden;border-bottom-left-radius:120px}
+.ha-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 60%}
+.heroa h1{font-size:clamp(40px,5.4vw,72px);line-height:1.02;font-weight:600;margin-bottom:22px}
+.ha-sub{font-size:1.15rem;color:var(--suave);max-width:470px}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 0}
+.ha-acoes .btn-linha{color:var(--tinta)}
+.destaque .pf{box-shadow:0 30px 60px -36px rgba(43,35,33,.45)}
+@media (max-width:900px){
+  .heroa{grid-template-columns:1fr;min-height:0}
+  .ha-foto{grid-column:1;grid-row:1;aspect-ratio:4/3;border-bottom-left-radius:64px}
+  .heroa .ha-txt{grid-column:1;grid-row:2;padding:36px 16px 48px}
+}
