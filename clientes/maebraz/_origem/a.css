@@ -1,0 +1,15 @@
+/* Versão A "Usinagem de grande porte": clara, foto do torno vertical à direita */
+.heroa{position:relative;background:var(--fundo2);overflow:hidden}
+.ha-foto{position:absolute;top:0;right:0;bottom:0;width:50%}
+.ha-foto img{width:100%;height:100%;object-fit:cover}
+.ha-grade{position:relative;min-height:min(600px,calc(100vh - 112px));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;padding:56px 0}
+.ha-txt{padding-right:40px}
+.heroa h1{font-size:clamp(40px,4.6vw,66px);line-height:1;margin-bottom:20px;color:var(--tinta)}
+.heroa h1 em{color:var(--cor);font-style:normal}
+.ha-sub{font-size:1.12rem;color:var(--suave);max-width:520px}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.faixa-num{background:var(--marinho);color:#fff;padding:30px 0}
+.faixa-num .numeros li{border-color:rgba(255,255,255,.18)}
+.faixa-num .numeros b{color:#fff}
+.faixa-num .numeros span{color:rgba(255,255,255,.75)}
+@media (max-width:900px){.ha-foto{position:relative;width:100%;height:300px}.ha-grade{grid-template-columns:1fr;min-height:0;padding:36px 0}.ha-txt{padding:0}}
