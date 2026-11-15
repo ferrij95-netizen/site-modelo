@@ -27,3 +27,4 @@
 @media (max-width:900px){.lado{grid-template-columns:1fr}.lado figure{aspect-ratio:4/3}.hb-foto::after{background:linear-gradient(0deg,rgba(20,21,23,.95) 0,rgba(20,21,23,.6) 70%,rgba(20,21,23,.3) 100%)}}
 .hb-foto img{object-position:85% center}
 @media (min-width:901px){.hb-foto img{width:62%;margin-left:38%}.hb-foto{background:#141a16}}
+@media (min-width:901px){.hb-foto img{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 35%);mask-image:linear-gradient(90deg,transparent 0,#000 35%)}}
