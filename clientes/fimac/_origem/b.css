@@ -1,0 +1,31 @@
+/* Versão B "Tecnologia italiana": grafite, foto de fábrica cheia, ar editorial */
+.topo{background:var(--tinta);box-shadow:none}
+.topo-barra{background:#0e0f10}
+.menu a{color:#fff}
+.menu a:hover,.menu a.ativo{color:#ff7a80}
+.menu-btn{color:#fff}
+@media (max-width:1180px){.menu{background:var(--tinta)}.menu a{border-color:rgba(255,255,255,.15)}}
+.herob{position:relative;min-height:min(680px,calc(100vh - 140px));display:flex;align-items:flex-end;color:#fff;background:var(--tinta);overflow:hidden}
+.hb-foto{position:absolute;inset:0}
+.hb-foto img{width:100%;height:100%;object-fit:cover}
+.hb-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,21,23,.92) 0,rgba(20,21,23,.7) 45%,rgba(20,21,23,.1) 100%)}
+.hb-txt{position:relative;padding:80px 0 64px;max-width:640px}
+.herob .sobrelinha{color:#ff7a80}
+.herob h1{font-size:clamp(44px,5.4vw,82px);line-height:.98;color:#fff;margin-bottom:20px}
+.herob h1 em{font-style:normal;color:#ff7a80}
+.hb-sub{font-size:1.15rem;color:rgba(255,255,255,.85)}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.herob .btn-linha{color:#fff;border-color:#fff}
+.herob .btn-linha:hover{background:#fff;color:var(--tinta)}
+.hb-selo{display:flex;gap:28px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.2)}
+.hb-selo b{display:block;font:700 2rem/1 var(--ft);color:#fff}
+.hb-selo span{font-size:.9rem;color:rgba(255,255,255,.7)}
+.lado{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:520px}
+.lado figure{margin:0;position:relative}
+.lado figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lado>div{padding:clamp(40px,6vw,80px);display:flex;flex-direction:column;justify-content:center;background:var(--fundo2)}
+@media (max-width:900px){.lado{grid-template-columns:1fr}.lado figure{aspect-ratio:4/3}.hb-foto::after{background:linear-gradient(0deg,rgba(20,21,23,.95) 0,rgba(20,21,23,.6) 70%,rgba(20,21,23,.3) 100%)}}
+.hb-foto img{object-position:85% center}
+@media (min-width:901px){.hb-foto img{width:62%;margin-left:38%}.hb-foto{background:#0f1011}}
+
+@media (min-width:901px){.hb-foto img{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 35%);mask-image:linear-gradient(90deg,transparent 0,#000 35%)}}
