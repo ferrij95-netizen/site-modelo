@@ -1,0 +1,1436 @@
+{
+"cats": [
+{
+"s": "embalagem",
+"n": "Embalagem",
+"yt": "bfydqDI5Oz8",
+"w": 115,
+"h": 117
+},
+{
+"s": "extrusao",
+"n": "Extrusão",
+"yt": "Z4HAqBoJW5M",
+"w": 96,
+"h": 111
+},
+{
+"s": "pintura",
+"n": "Pintura",
+"yt": "7elLDdNAyxE",
+"w": 189,
+"h": 117
+},
+{
+"s": "secagem",
+"n": "Secagem",
+"yt": "UGonRcbtBrI",
+"w": 199,
+"h": 117
+},
+{
+"s": "transferencia-e-armazenagem",
+"n": "Transferência e Armazenagem",
+"yt": "MImZhEoKSUU",
+"w": 200,
+"h": 110
+},
+{
+"s": "recobrimento",
+"n": "Recobrimento",
+"yt": "MUx5l-kNNMs",
+"w": 200,
+"h": 72
+},
+{
+"s": "fresamento-lixamento-e-polimento",
+"n": "Fresamento, Lixamento e Polimento",
+"yt": "mS6el6AwTLg",
+"w": 197,
+"h": 117
+},
+{
+"s": "gravacao",
+"n": "Gravação",
+"yt": "KEy2ofN1aJw",
+"w": 160,
+"h": 117
+},
+{
+"s": "corte-e-modelagem",
+"n": "Corte e Modelagem",
+"yt": "h8QWdyiRKdA",
+"w": 189,
+"h": 94
+},
+{
+"s": "bruta",
+"n": "Bruta",
+"yt": "bgkWdtpQajo",
+"w": 200,
+"h": 93
+}
+],
+"prods": [
+{
+"s": "destopadeira-ig-dsa",
+"cat": "corte-e-modelagem",
+"n": "Destopadeira",
+"cod": "IG-DSA",
+"desc": "Equipamento específico com acionamento pneumático desenvolvido para efetuar o corte (destopo) de sarrafos (madeiras em geral) de",
+"dados": "Dimensões do Perfil:\nLargura : 10 à 160 mm\nComprimento : 10 mm à infinito\nEspessura : 03 à 60 mm\nEspessura do Corte(serra): 03 mm\nVelocidade do Corte: 3800 RPM",
+"apl": [],
+"dets": [
+[
+"Prensor Superior(segurança)",
+480,
+312
+]
+],
+"yt": "",
+"frase": "",
+"w": 355,
+"h": 324
+},
+{
+"s": "fatiador-multiplo-de-bobinas-ig-fmb",
+"cat": "corte-e-modelagem",
+"n": "Fatiador Multiplo de Bobinas",
+"cod": "IG-FMB",
+"desc": "Equipamento desenvolvido para cortes múltiplos em bobinas laminadas, possibilitando seccionar medidas variadas em diversos",
+"dados": "Dimensão Maxima da Bobina: 700mm\nLargura Maxima da Bobina: 700mm\nEspessura Minima de Corte: 15 à 30 mm\nVelocidade de Corte: 10 à 200 m/min",
+"apl": [],
+"dets": [
+[
+"Conceito de Corte",
+417,
+423
+],
+[
+"Bobinas Fatiadas",
+480,
+320
+]
+],
+"yt": "bU4XW7hQtYg",
+"frase": "Fatiador Multiplo de Bobinas - IG-FMB",
+"w": 390,
+"h": 268
+},
+{
+"s": "modelador-ig-m",
+"cat": "corte-e-modelagem",
+"n": "Modelador",
+"cod": "IG-M",
+"desc": "Equipamento desenvolvido para a modelagem de rodas emborrachadas e escovas abrasivas.",
+"dados": "Disco Modelador : 260mm x 1\" x 3.2mm",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 198,
+"h": 324
+},
+{
+"s": "separatriz-ig-s",
+"cat": "corte-e-modelagem",
+"n": "Separatriz",
+"cod": "IG-S",
+"desc": "Equipamento elaborado para o processo de usinagem inferior, utilizado geralmente para o trabalho com molduras decorativas.",
+"dados": "Dimensões do Perfil:\nLargura : 30 à 200 mm\nComprimento : 1000 mm à infinito\nEspessura : 10 à 80 mm\nVelocidade de Trabalho: 10 á 60 m/min.",
+"apl": [],
+"dets": [
+[
+"Usinagem Inferior",
+391,
+318
+],
+[
+"Avanço Totalmente Emborrachado",
+480,
+356
+]
+],
+"yt": "",
+"frase": "",
+"w": 408,
+"h": 324
+},
+{
+"s": "serra-circular-para-cortes-transversais-ig-scct",
+"cat": "corte-e-modelagem",
+"n": "Serra Circular para Cortes Transversais",
+"cod": "IG-SCCT",
+"desc": "Sistema de corte transversal angular, utilizando serras circulares, possibilitando corte em ângulos de 0, 45 e 90 graus. Sua estrutura possibilita a montagem",
+"dados": "Dimensões das peças:\nLargura da mesa: 500 mm\nComprimento: 450 à 2.700mm\nLargura da mesa: 500mm\nDistância entre cortes: 70 a 2.650mm\nÂngulos de corte: 0°, 45° e 90°",
+"apl": [
+"Fábrica de Berços",
+"Fábrica de Móveis",
+"Kit Porta Pronta",
+"Madeireira",
+"Molduras e Quadros",
+"Rodapés"
+],
+"dets": [
+[
+"Mesa em detalhe",
+460,
+379
+]
+],
+"yt": "h8QWdyiRKdA",
+"frase": "Cortes em 0º, 45º ou 90º em eficiência em perfis como marco / batentes de portas, alisar / vistas, molduras, rodapés.\nEsquadrejadeira de perfis.",
+"w": 647,
+"h": 324
+},
+{
+"s": "serra-dupla-transversal-ajustavel-para-destopo-ig-sdt",
+"cat": "corte-e-modelagem",
+"n": "Serra Dupla Transversal Ajustavel Para Destopo",
+"cod": "IG-SDT",
+"desc": "Equipamento desenvolvido para o destopo de perfis já em lâminas ao término do processo de recobrimento.",
+"dados": "- Dimensões das peças:\nLargura: 30 a 200mm\nEspessura: 10 a 50mm\nComprimento:\nModelo decorativo: 600 a 2460mm\nModelo civil: 800 a 5.200mm",
+"apl": [],
+"dets": [],
+"yt": "xkSFob5i_Pk",
+"frase": "Serra trabalhando na saída de uma linha de recobrimento.",
+"w": 497,
+"h": 324
+},
+{
+"s": "serra-partidora-para-perfis-acabados-com-gesso-ig-sp",
+"cat": "corte-e-modelagem",
+"n": "Serra Partidora para Perfis Acabados com Gesso",
+"cod": "IG-SP",
+"desc": "Equipamento utilizado ao final de linhas de produção, podendo partir a peça já acabada em 2, aumentando a produtividade da linha.",
+"dados": "Consulte nossa equipe para maiores informações",
+"apl": [
+"Madeireira",
+"Molduras e Quadros"
+],
+"dets": [],
+"yt": "hbpuhHSztyM",
+"frase": "Serra partidora para Perfis Acabados",
+"w": 480,
+"h": 199
+},
+{
+"s": "torno-universal-ig-tu",
+"cat": "corte-e-modelagem",
+"n": "Torno Universal",
+"cod": "IG-TU",
+"desc": "Equipamento desenvolvido para o corte de escovas abrasivas e estampas (Hot stamping), possibilitando também a modelagem de",
+"dados": "Disco do corte: 300 x 25 x 3.2\nDisco da modelagem: 260 x 25 x 3.2",
+"apl": [],
+"dets": [
+[
+"Corte de Escova Abrasiva",
+480,
+314
+],
+[
+"Estampas HS",
+370,
+276
+],
+[
+"Escovas Abrasivas",
+370,
+276
+],
+[
+"Frente",
+480,
+320
+]
+],
+"yt": "",
+"frase": "",
+"w": 337,
+"h": 220
+},
+{
+"s": "amarrador-de-bundles-sub-pacotes-de-molduras",
+"cat": "embalagem",
+"n": "Amarrador de bundles / Sub pacotes de molduras",
+"cod": "",
+"desc": "Este conjunto de módulos fazem a amarração de bundles (pilhas) de molduras, boards ou demais perfis compatíveis em pontos pré definidos de forma automática, utilizando filme plástico stretch, com capacidade para amarrar pilhas de até 140mm de altura por 300mm de largura.",
+"dados": "Consulte nossa equipe tecnica para maiores informações\n(48) 3658 -2635 / vendas@gaidzinski.com.br",
+"apl": [
+"Madeireira",
+"Molduras e Quadros",
+"Rodapés"
+],
+"dets": [],
+"yt": "Lhjs7Gbv4xU",
+"frase": "Amarrador de Perfis de Madeira",
+"w": 473,
+"h": 300
+},
+{
+"s": "embaladeira-automatica-industrial-ig-eai",
+"cat": "embalagem",
+"n": "Embaladeira Automática Industrial",
+"cod": "IG-EAI",
+"desc": "Equipamento automatizado, desenvolvido para efetuar processos de embalamento contínuo de perfilados em geral. Este sistema pode ser aplicado em perfilados de madeira, plástico, alumínio entre outros. Utiliza-se para esta operação uma bobina com o diâmetro de até 1000 mm. Equipamento industrial, indicado para a produção em grandes volumes, possibilitando a utilização de materiais bobinados (embalagem) como, papel, fil",
+"dados": "Dimensões das peças:\nLargura: 15 a 250mm\nComprimento: 1500mm a infinito\nEspessura: 15 a 200mm\nVelocidade de trabalho: 10 a 60 m/min.",
+"apl": [
+"Molduras e Quadros",
+"Rodapés"
+],
+"dets": [
+[
+"Bobinas de 1000 mm",
+460,
+379
+],
+[
+"Embalagens eficientes",
+480,
+379
+]
+],
+"yt": "MMjsbWXMT8U",
+"frase": "Contando com uma grande versatilidade, funcionamento eficiente, rápido, e pratico para grandes produções.",
+"w": 318,
+"h": 324
+},
+{
+"s": "embaladeira-automatica-profissional-ig-eap",
+"cat": "embalagem",
+"n": "Embaladeira Automática Profissional",
+"cod": "IG-EAP",
+"desc": "Sistema automatizado, elaborado para efetuar processos de embalamento contínuo de perfilados em geral. Este sistema pode ser",
+"dados": "Dimensões das peças:\nLargura: 15 a 210 mm\nComprimento: 1200 mm a infinito\nEspessura: 15 a 120 mm\nVelocidade de trabalho: 10 a 60 m/min.",
+"apl": [
+"Fábrica de Berços"
+],
+"dets": [
+[
+"2 bobinas de 600 mm",
+460,
+379
+],
+[
+"embalagens prontas",
+460,
+379
+]
+],
+"yt": "ioLLD1nWP0A",
+"frase": "Ideal para grandes produções devido à rapidez e segurança!",
+"w": 330,
+"h": 324
+},
+{
+"s": "embaladeira-decorativa-ig-ed",
+"cat": "embalagem",
+"n": "Embaladeira Decorativa",
+"cod": "IG-ED",
+"desc": "Equipamento desenvolvido para efetuar processos de embalamento contínuo de perfilados em geral. Este sistema pode ser aplicado em perfilados como madeira, plástico, alumínio entre outros.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 200 mm\nComprimento: 1000 mm a infinito\nAltura: 15 a 120 mm\nVelocidade de trabalho: 10 a 40 m/min.",
+"apl": [
+"Fábrica de Móveis"
+],
+"dets": [
+[
+"1 Ou 2 bobinas de 250 mm",
+460,
+379
+],
+[
+"Embalameno com bobinas plásticas",
+460,
+379
+]
+],
+"yt": "LDoVCQQi2JM",
+"frase": "Equipamentos automatizados ou semi-automatizados. Linha com grande flexibilidade, podendo operar rapidamente e eficientemente .",
+"w": 320,
+"h": 324
+},
+{
+"s": "embaladeira-seladora-com-tunel-de-encolhimento-ig-este",
+"cat": "embalagem",
+"n": "Embaladeira Seladora com túnel de Encolhimento",
+"cod": "IG-ESTE",
+"desc": "Embaladeira Seladora com túnel de encolhimento equipamento desenvolvido para embalagem de portas, painéis ou similares, com filmes plásticos lisos termo-encolhiveis",
+"dados": "Largura de Corte e Solda: 2300mm.\nTempo de selagem: 0 a 4 seg.\nAltura: 10 a 250mm.\nLargura: 200 a 1.200mm.\nComprimento: 300 a 2.200mm.\nLargura máxima para o filme plástico: 2300mm.\nDiâmetro máximo das bobinas: 300mm.",
+"apl": [
+"Fábrica de Móveis"
+],
+"dets": [],
+"yt": "QHdJJi3A8SQ",
+"frase": "Embaladeira Seladoura Termo encolhivel",
+"w": 486,
+"h": 178
+},
+{
+"s": "linha-de-embalagem-automatica-para-molduras",
+"cat": "embalagem",
+"n": "Linha de embalagem automática para molduras",
+"cod": "",
+"desc": "A linha de embalagem automática Gaidzinski foi projetada para transformar o final da sua produção em uma operação ágil, segura e livre de gargalos. Combinando tecnologia de ponta com uma estrutura extremamente robusta, nossas soluções garantem que cada perfil de madeira seja manuseado com o máximo cuidado, do empilhamento ao fardo final.",
+"dados": "Velocidade da linha: até 120 m/min.\nPacotes de 4, 6, 8 ou 10 peças.\nEtiquetação automática das peças.\nEtiquetação automática dos pacotes.\nCorte central das peças.",
+"apl": [
+"Madeireira",
+"Molduras e Quadros",
+"Rodapés"
+],
+"dets": [],
+"yt": "bfydqDI5Oz8",
+"frase": "Linha de Embalagem",
+"w": 571,
+"h": 324
+},
+{
+"s": "linha-de-embalagem-para-sets",
+"cat": "embalagem",
+"n": "Linha de embalagem para sets",
+"cod": "",
+"desc": "Linha de amarração e embalagem de sets, composta de 2 módulos amarradores com filme stretch, dispensador de etiquetas e embalagem com filme termoencolhível.",
+"dados": "Dimensões de sets:",
+"apl": [
+"Molduras e Quadros"
+],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 0,
+"h": 0
+},
+{
+"s": "engessadeira-industrial",
+"cat": "extrusao",
+"n": "Engessadeira Industrial",
+"cod": "",
+"desc": "A Engessadeira Industrial da Gaidzinski é a solução definitiva para empresas que buscam excelência no nivelamento e preparação de superfícies de perfis de madeira. Projetada para operar em regimes de alta produção, este equipamento combina a robustez mecânica com a precisão necessária para a aplicação de gesso (tráfila), pasta primer, massa UV, e outros compostos compatíveis.",
+"dados": "Dimensão de peças a processar:\nLargura dos Perfis: 20 mm a 300 mm.\nEspessura dos Perfis: 9 mm a 60 mm.\nComprimento: De 1.000 mm ao infinito (fluxo contínuo).\nVelocidade: Até 120 m/min em linhas de alta produção.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 346,
+"h": 324
+},
+{
+"s": "engessadeira-profissional-ig-ep",
+"cat": "extrusao",
+"n": "Engessadeira Profissional",
+"cod": "IG-EP",
+"desc": "Equipamento reforçado, desenvolvido para o trabalho com perfilados (peças) de pequeno e médio porte, fazendo o recobrimento por processo de extrusão, cobrindo no perfil falhas e imperfeições das mais variadas formas, deixando sua face perfeitamente nivelada, possibilitando novos processos.",
+"dados": "Dimensões dos perfis:\nLargura: 20 a 200/300mm\nComprimento: 1000 mm a infinito\nAltura: 10 à 60 mm\nVelocidade de trabalho: 10 a 110 mts/min.",
+"apl": [],
+"dets": [
+[
+"Caixa de relação",
+460,
+379
+],
+[
+"Produtos",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 366,
+"h": 324
+},
+{
+"s": "misturador-de-gesso-ig-mg",
+"cat": "extrusao",
+"n": "Misturador De Gesso",
+"cod": "IG-MG",
+"desc": "Equipamento desenvolvido para fazer a mistura dos ingredientes utilizados na fabricação da pasta de gesso, também",
+"dados": "Capacidade do reservatorio : 100 kg e 500 kg\n11",
+"apl": [],
+"dets": [
+[
+"Válvula de saída",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 213,
+"h": 324
+},
+{
+"s": "sistema-de-aplicacao-de-gesso-de-alta-densidade-ig-sagad",
+"cat": "extrusao",
+"n": "Sistema de Aplicação de Gesso de Alta Densidade",
+"cod": "IG-SAGAD",
+"desc": "-Equipamento desenvolvido para aplicação de pasta de gesso de alta densidade através de um sistema pressurizado com",
+"dados": "Equipamento para cobertura em 3 ou 4 faces do perfis\nConsulte nossa equipe tecnica para mais informações",
+"apl": [
+"Molduras e Quadros"
+],
+"dets": [],
+"yt": "Z4HAqBoJW5M",
+"frase": "Sistema de aplicação de gesso de alta densidade",
+"w": 239,
+"h": 280
+},
+{
+"s": "suporte-para-caixa-de-extrusao",
+"cat": "extrusao",
+"n": "Suporte para Caixa de Extrusão",
+"cod": "",
+"desc": "Esse dispositivo é um acessório que permite ter uma segunda caixa de extrusão próximo a linha, e dispõe dos mesmos pontos de referência da Engessadeira principal, onde pode-se preparar o setup de uma caixa de extrusão extra, previamente a troca de modelo de perfil da linha de produção, agilizando assim o setup da linha principal.",
+"dados": "Solicitar: vendas@gaidzinski.com.br",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 156,
+"h": 324
+},
+{
+"s": "lixadeira-decorativa-02-cabecotes-ig-ld2",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Decorativa 02 Cabeçotes",
+"cod": "IG-LD2",
+"desc": "Equipamento decorativo, composto por uma única estrutura, sendo constituído por diversos cabeçotes, possibilitando em apenas uma operação, realizar atividades como lixamento, polimento, entre outros processos, podendo operar em perfis planos ou moldurados.",
+"dados": "Dimensões dos perfis:\nLargura: 15 à 300 mm\nComprimento: 1000 mm a infinito\nAltura: 05 à 60 mm\nVelocidade de trabalho: 10 a 70 m/min.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 283,
+"h": 324
+},
+{
+"s": "lixadeira-decorativa-04-cabecotes-ig-ld",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Decorativa 04 Cabeçotes",
+"cod": "IG-LD",
+"desc": "Equipamento decorativo, composto por uma única estrutura, sendo constituído por diversos cabeçotes, possibilitando em apenas uma operação, realizar atividades como lixamento, polimento, entre outros processos, podendo operar em perfis planos ou moldurados.",
+"dados": "Dimensões dos perfis:\nLargura: 15 à 300 mm\nComprimento: 1000 mm a infinito\nAltura: 10 à 60 mm\nVelocidade de trabalho: 10 a 70 m/min.",
+"apl": [],
+"dets": [],
+"yt": "nU1wzyl5kMc",
+"frase": "Lixadeira Decorativa 04 Cabeçotes - IG-LD",
+"w": 345,
+"h": 324
+},
+{
+"s": "lixadeira-decorativa-06-cabecotes-com-banda-ig-ldb",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Decorativa 06 Cabeçotes com Banda",
+"cod": "IG-LDB",
+"desc": "Equipamento decorativo com lixa banda, composto por uma única estrutura, sendo constituída por diversos cabeçotes, possibilitando em apenas uma operação, realizar atividades como nivelamento, lixamento, polimento entre outros, podendo operar em superfícies planas ou molduradas.",
+"dados": "Dimensões dos perfis:\nLargura: 15 à 300 mm\nComprimento: 1000 mm a infinito\nAltura: 10 à 60 mm\nVelocidade de trabalho: 10 a 70 m/min.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 415,
+"h": 324
+},
+{
+"s": "lixadeira-decorativa-06-cabecotes-ig-ld",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Decorativa 06 Cabeçotes",
+"cod": "IG-LD",
+"desc": "Equipamento decorativo, composto por uma única estrutura, sendo constituído por diversos cabeçotes, possibilitando em apenas uma operação, realizar atividades como lixamento, polimento, entre outros processos, podendo operar em perfis planos ou moldurados.",
+"dados": "Dimensões dos perfis:\nLargura: 15 à 300 mm\nComprimento: 1000 mm a infinito\nAltura: 10 à 60 mm\nVelocidade de trabalho: 10 a 70 m/min.",
+"apl": [],
+"dets": [],
+"yt": "Jg5gjrhEpg4",
+"frase": "Lixadeira Decorativa 06 Cabeçotes - IG-LD",
+"w": 655,
+"h": 324
+},
+{
+"s": "lixadeira-decorativa-08-cabecotes-ig-ld",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Decorativa 08 Cabeçotes",
+"cod": "IG-LD",
+"desc": "Equipamento decorativo, composto por uma única estrutura, sendo constituído por diversos cabeçotes, possibilitando em apenas uma operação, realizar atividades como lixamento, polimento, entre outros processos, podendo operar em perfis planos ou moldurados.",
+"dados": "Dimensões dos perfis:\nLargura: 15 à 300 mm\nComprimento: 1000 mm a infinito\nAltura: 10 à 60 mm\nVelocidade de trabalho: 10 a 70 m/min.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 720,
+"h": 312
+},
+{
+"s": "lixadeira-fresadora-industrial",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Fresadora Industrial",
+"cod": "",
+"desc": "- Estrutura preparada para o recebimento dos diferentes modelos de cabeçotes disponível para a mesma tais como: Escovas",
+"dados": "Dimensões das peças:\nLargura: 20 à 200 mm\nComprimento: 1200 mm a infinito\nEspessura: 05 à 40 mm\nVelocidade de trabalho: 10 a 60 m/min.",
+"apl": [
+"Molduras e Quadros"
+],
+"dets": [
+[
+"Régua com Medidas",
+438,
+332
+],
+[
+"Cabeçote de Escovas Abrasivas 5CV",
+480,
+360
+],
+[
+"Cabeçote Fresador",
+480,
+360
+]
+],
+"yt": "MImZhEoKSUU",
+"frase": "Lixadeira Industrial Fresadora - IGLIF",
+"w": 720,
+"h": 320
+},
+{
+"s": "lixadeira-fresadora-industrial-dupla-ig-lfid",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Fresadora Industrial Dupla",
+"cod": "IG-LFID",
+"desc": "Equipamento industrial, constituído por dois módulos, sendo um fixo e outro móvel, projetado para atividades como fresamento (usinagem), lixamento, polimento entre outros, especialmente elaborado para o trabalho com bordas planas ou molduradas.",
+"dados": "Dimensões das peças:\nLargura: 20 à infinito\nComprimento: 330 a 2600mm\nAltura: 08 à 50 mm\nVelocidade de trabalho: 10 a 50 m/min.",
+"apl": [
+"Fábrica de Móveis"
+],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 492,
+"h": 324
+},
+{
+"s": "lixadeira-fresadora-industrial-master-dupla-para-bordas-ig-lfimd",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Fresadora Industrial Master Dupla para Bordas",
+"cod": "IG-LFIMD",
+"desc": "Equipamento industrial de grande porte, sendo constituído por diversos módulos, realizando atividades como fresamento (usinagem), lixamento, polimento entre outros processos, especialmente projetada para o trabalho com bordas planas ou molduradas.",
+"dados": "Dimensões dos perfis:\nLargura: 38 à 200 mm\nComprimento: 1000 mm a infinito\nAltura: 08 à 50 mm\nVelocidade de trabalho: 10 a 60 m/min.",
+"apl": [
+"Fábrica de Berços",
+"Fábrica de Móveis"
+],
+"dets": [],
+"yt": "1QkLsvnJr4Y",
+"frase": "Lixadeira Fresadora Industrial Master Dupla para Bordas - IG-LFIMD",
+"w": 575,
+"h": 316
+},
+{
+"s": "lixadeira-industrial-master-05-cabecotes-ig-lim",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Industrial Master 05 Cabeçotes",
+"cod": "IG-LIM",
+"desc": "Equipamento de grande porte estrutural, cuidadosamente elaborado em sua forma construtiva, sendo constituído por diversos módulos, possibilitando em apenas uma operação realizar atividades como: nivelamento, lixamento, polimento entre outros, podendo operar em superfícies planas ou molduradas.",
+"dados": "Dimensões dos perfis:\nLargura: 20 à 300 mm\nComprimento: 1200 mm a infinito\nAltura: 05 à 60 mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 558,
+"h": 324
+},
+{
+"s": "lixadeira-industrial-master-06-cabecotes-ig-lim",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Industrial Master 06 Cabeçotes",
+"cod": "IG-LIM",
+"desc": "Equipamento de grande porte estrutural, cuidadosamente elaborado em sua forma construtiva, sendo constituído por diversos módulos, possibilitando em apenas uma operação realizar atividades como: nivelamento, lixamento, polimento entre outros, podendo operar em superfícies planas ou molduradas.",
+"dados": "Dimensões dos perfis:\nLargura: 20 à 300 mm\nComprimento: 1200 mm a infinito\nAltura: 05 à 60 mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [],
+"dets": [],
+"yt": "yEOCQEHrHfA",
+"frase": "Lixadeira Industrial Master 06 Cabeçotes",
+"w": 675,
+"h": 324
+},
+{
+"s": "lixadeira-industrial-master-08-cabecotes",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Industrial Máster 08 Cabeçotes",
+"cod": "",
+"desc": "Equipamento de grande porte, cuidadosamente elaborado em sua forma construtiva, sendo constituído por diversos módulos,",
+"dados": "Dimensões dos perfis:\nLargura: 20 à 300 mm\nComprimento: 1200 mm a infinito\nAltura: 05 à 60 mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [
+"Fábrica de Berços",
+"Fábrica de Móveis",
+"Molduras e Quadros",
+"Rodapés"
+],
+"dets": [],
+"yt": "6Apqudkbp2E",
+"frase": "pequena demonstração do uso de nossa maquina!",
+"w": 613,
+"h": 324
+},
+{
+"s": "lixadeira-industrial-master-10-cabecotes-ig-lim",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Industrial Master 10 Cabeçotes",
+"cod": "IG-LIM",
+"desc": "Equipamento de grande porte estrutural, cuidadosamente elaborado em sua forma construtiva, sendo constituído por diversos módulos, possibilitando em apenas uma operação realizar atividades como: nivelamento, lixamento, polimento entre outros, podendo operar em superfícies planas ou molduradas.",
+"dados": "Dimensões dos perfis:\nLargura: 20 à 300 mm\nComprimento: 1200 mm a infinito\nAltura: 05 à 60 mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [],
+"dets": [],
+"yt": "yjIf9bIbglg",
+"frase": "Lixadeira Industrial Master 10 Cabeçotes - IG-LIM",
+"w": 576,
+"h": 190
+},
+{
+"s": "lixadeira-industrial-unilateral-para-bordas-ig-iupb",
+"cat": "fresamento-lixamento-e-polimento",
+"n": "Lixadeira Industrial Unilateral Para Bordas",
+"cod": "IG-IUPB",
+"desc": "- Equipamento de grande porte estrutural, sendo constituído por diversos módulos, possibilitando em apenas uma operação, realizar atividades como, fresamento (usinagem), lixamento, polimento, corte, entre outros, podendo operar em superfícies planas ou molduradas.",
+"dados": ".",
+"apl": [
+"Madeireira"
+],
+"dets": [],
+"yt": "mS6el6AwTLg",
+"frase": "Lixadeira Unilateral Para Bordas",
+"w": 533,
+"h": 324
+},
+{
+"s": "gravacao-a-quente-pirogravura-ig-gq",
+"cat": "gravacao",
+"n": "Gravação A Quente (Pirogravura)",
+"cod": "IG-GQ",
+"desc": "Equipamento desenvolvido para gravações a quente de baixo relevo em perfis ou similar. Seu principio de funcionamento consiste basicamente",
+"dados": "Dimensões dos perfis:\nLargura: 20 a 300 mm\nComprimento: 300 mm a infinito\nAltura: 03 a 60 mm\nVelocidade de trabalho: 10 a 35 m/min.",
+"apl": [
+"Molduras e Quadros"
+],
+"dets": [
+[
+"Sistema de Aquecimento Para o Cilindro",
+460,
+379
+]
+],
+"yt": "b_HJI9vyLBk",
+"frase": "Gravação A Quente (Pirogravura) - IG-GQ",
+"w": 276,
+"h": 324
+},
+{
+"s": "gravacao-automatica-industrial-ig-gai",
+"cat": "gravacao",
+"n": "Gravação automática industrial",
+"cod": "IG-GAI",
+"desc": "Equipamento automatizado com inclinação da mesa, desenvolvido para gravações de baixo, médio e alto relevo, em perfilados de",
+"dados": "Dimensões das peças:\nLargura: 20 à 300 mm\nComprimento: 1000 mm a infinito\nEspessura: 03 à 60 mm\nVelocidade de trabalho: 10 a 80 m/min.",
+"apl": [
+"Molduras e Quadros"
+],
+"dets": [
+[
+"Gravação",
+460,
+379
+]
+],
+"yt": "KEy2ofN1aJw",
+"frase": "demonstração das funcionalidades da gravadora automatica.\nrapidez e eficiencia sao evidentes!",
+"w": 332,
+"h": 324
+},
+{
+"s": "gravacao-decorativa-ig-gd",
+"cat": "gravacao",
+"n": "Gravação Decorativa",
+"cod": "IG-GD",
+"desc": "Máquina elaborada para gravações de baixo e médio relevo, em perfilados de formatos variados, utilizando para isto, massa madeirada,",
+"dados": "Dimensões das peças:\nLargura: 20 a 300 mm\nComprimento: 800 mm a infinito\nEspessura: 03 a 60 mm\nVelocidade de trabalho: 10 a 60 m/min.",
+"apl": [
+"Molduras e Quadros"
+],
+"dets": [
+[
+"Produto Finalizado",
+460,
+379
+]
+],
+"yt": "F-yjwd0Zwv0",
+"frase": "Gravação Decorativa - IG-GD",
+"w": 374,
+"h": 272
+},
+{
+"s": "pintura-a-vacuo-decorativa-ig-pvd",
+"cat": "pintura",
+"n": "Pintura a Vácuo Decorativa",
+"cod": "IG-PVD",
+"desc": "Sistema decorativo elaborado para o processo de pintura, utilizado para aplicação de materiais a base d’água como: primer, lacas, vernizes e materiais UV.",
+"dados": "Dimensões dos perfis:\nLargura: 20 a 300mm\nComprimento: 850mm a infinito\nAltura: 10 a 80mm\nVelocidade de trabalho: 10 a 50 m/min.",
+"apl": [],
+"dets": [],
+"yt": "2UnMVGqSZbM",
+"frase": "Pintura a vácuo Decorativa",
+"w": 367,
+"h": 324
+},
+{
+"s": "pintura-a-vacuo-industrial-evolution-ig-pvie",
+"cat": "pintura",
+"n": "Pintura a Vácuo Industrial Evolution",
+"cod": "IG-PVIE",
+"desc": "Equipamento industrial dedicado ao processo de pintura, desenvolvido para aplicação de materiais a base d’agua como: primer, lacas, vernizes e materiais UV.",
+"dados": "Dimensões dos perfis:\nLargura: 20 a 300mm\nComprimento: 1000mm a infinito\nAltura: 10 a 60mm\nVelocidade de trabalho: 10 a 110 m/min.",
+"apl": [],
+"dets": [],
+"yt": "n4CJRcDxLoU",
+"frase": "Pintura a Vácuo Evolution",
+"w": 302,
+"h": 324
+},
+{
+"s": "pintura-a-vacuo-industrial-ig-pvi",
+"cat": "pintura",
+"n": "Pintura a Vácuo Industrial",
+"cod": "IG-PVI",
+"desc": "Equipamento industrial dedicado ao processo de pintura, desenvolvido para aplicação de materiais a base d’agua como: primer, lacas, vernizes e materiais UV.",
+"dados": "Dimensões dos perfis:\nLargura: 20 a 300mm\nComprimento: 1000mm a infinito\nAltura: 10 a 60mm\nVelocidade de trabalho: 10 a 110 m/min.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 280,
+"h": 324
+},
+{
+"s": "pintura-a-vacuo-profissional-ig-pvp",
+"cat": "pintura",
+"n": "Pintura a Vácuo Profissional",
+"cod": "IG-PVP",
+"desc": "Equipamento profissional desenvolvido para o processo pintura, elaborado para aplicação de materiais a base d’agua como: primer, lacas, vernizes e materiais UV.",
+"dados": "Dimensões dos perfis:\nLargura: 20 a 300mm\nComprimento: 1000mm a infinito\nAltura: 10 a 60mm\nVelocidade de trabalho: 10 a 60 m/min.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 302,
+"h": 324
+},
+{
+"s": "pintura-automatica-ig-p",
+"cat": "pintura",
+"n": "Pintura Automática",
+"cod": "IG-P",
+"desc": "Equipamento elaborado para pintura de perfilados em um processo de aplicação por Spray, dispondo de sistema totalmente automatizado, com painel de controle, sensores de presença e pistolas automáticas de baixa pressão.",
+"dados": "Dimensões dos perfis:\nLargura: 20 a 300mm\nComprimento: 850mm a infinito\nAltura: 10 a 80mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [
+"Fábrica de Berços",
+"Fábrica de Móveis",
+"Kit Porta Pronta",
+"Molduras e Quadros",
+"Rodapés"
+],
+"dets": [],
+"yt": "p6I3BZ3aYgI",
+"frase": "Vídeo demonstrativo do equipamento.",
+"w": 365,
+"h": 324
+},
+{
+"s": "robo-de-pintura-automatica-para-portas-e-paineis-ig-pap",
+"cat": "pintura",
+"n": "Robô de Pintura Automática para Portas e Painéis",
+"cod": "IG-PAP",
+"desc": "Equipamento desenvolvido para a pintura de portas e painéis num processo de aplicação por Spray.",
+"dados": "Dimensões das portas / painéis:\nLargura: 600 a 1200mm\nComprimento: 1900 a 2400mm\nAltura: 30 a 60mm\nTempo médio da operação completa: 1min30seg.",
+"apl": [
+"Fábrica de Móveis",
+"Kit Porta Pronta"
+],
+"dets": [
+[
+"Carro vertical para Portas e Painéis",
+460,
+379
+],
+[
+"Cabine de Exaustão por cortina d'água",
+460,
+379
+]
+],
+"yt": "7elLDdNAyxE",
+"frase": "Vídeo demonstrativo do equipamento.\nPintura laqueada.",
+"w": 524,
+"h": 324
+},
+{
+"s": "laminadora-para-portas-e-paineis-ig-lpp",
+"cat": "recobrimento",
+"n": "Laminadora para Portas e Painéis",
+"cod": "IG-LPP",
+"desc": "Equipamento desenvolvido para a laminação de painéis planos em geral em geral com adesivos PVA (cola fria) ou hotmelt EVA e PUR.",
+"dados": "Dimensões das peças:\nLargura: 50 a 1.200mm / 1.850mm\nComprimento: 500mm a infinito\nEspessura: 03 a 50mm",
+"apl": [
+"Fábrica de Móveis",
+"Kit Porta Pronta"
+],
+"dets": [],
+"yt": "7vNxfGbY4Gk",
+"frase": "Linha de Laminação Plana Automatizada",
+"w": 392,
+"h": 324
+},
+{
+"s": "maquina-para-montagem-de-l-vista-ajustavel-ig-mml",
+"cat": "recobrimento",
+"n": "Máquina para montagem de L (Vista Ajustável)",
+"cod": "IG-MML",
+"desc": "Este equipamento foi desenvolvido para a montagem de perfis em L, mais utilizados como vistas ou guarnições ajustáveis para portas.",
+"dados": "Dimensões dos Perfis do avanço principal:\nLargura: 30 a 110mm\nComprimento: 2100 a 2300mm.\nEspessura: 08 a 15mm.\nDimensões das Abas (Ajustável):\nLargura: 15 a 70mm\nComprimento: 2100 a 2300mm\nEspessura: 03 a 05mm",
+"apl": [
+"Kit Porta Pronta"
+],
+"dets": [],
+"yt": "K8fpJaqHggc",
+"frase": "Máquina para montagem / colagem de vistas ajustável (Batentes reguláveis).",
+"w": 720,
+"h": 257
+},
+{
+"s": "plastificadora-de-perfis-profissional-ig-ppp",
+"cat": "recobrimento",
+"n": "Plastificadora de Perfis Profissional",
+"cod": "IG-PPP",
+"desc": "Trabalhando de forma contínua, permite alto desempenho rodando em velocidades de 10 a 60 metros por minuto, e aplicação em diversos formatos de perfis.",
+"dados": "Dimensões das peças:\nLargura: 15 a 230mm\nComprimento: 600m a infinito\nEspessura: 03 a 130mm",
+"apl": [],
+"dets": [],
+"yt": "Qdn3bKhjuEE",
+"frase": "Demonstrativo do equipamento.",
+"w": 289,
+"h": 324
+},
+{
+"s": "pre-fusor-de-cola-quente-industrial-ig-pf",
+"cat": "recobrimento",
+"n": "Pré-Fusor de Cola Quente Industrial",
+"cod": "IG-PF",
+"desc": "- Equipamento desenvolvido para fusão e alimentação precisa de adesivos hotmelt PUR em sistemas de laminação ou recobrimento que se utilizam de adesivo em alta temperatura para sua aplição.",
+"dados": "Equipamento disponivel em 3 modelos:\nFusor Tipo Drum (Capacidade de 200L)\nFusor Tipo Drum (Capacidade de 18L)\nFusor Tipo Tanque (Capacidade de 40L)\nEntre em contato para descobrir a melhor adequação a seu projeto.\nvendas@gaidzinski.com.br\n(48) 3658-2635.",
+"apl": [
+"Forros e Esquadrias de PVC",
+"Rodapés"
+],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 282,
+"h": 324
+},
+{
+"s": "recobridora-de-perfis-industrial-master-n15-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis Industrial Máster N15",
+"cod": "IG-RP",
+"desc": "Sistema desenvolvido para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) podendo ser plástico, alumínio, madeiras em geral entre outros. Utiliza-se materiais laminados como: papel, papel melamínico, tecido, madeira bobinada, PVC e PET.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 230mm\nComprimento: 600mm a infinito\nAltura: 03 a 130mm\nDimensões da lâmina:\nLargura: 20 a 340mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [],
+"dets": [
+[
+"Magazine com abertura e fechamento",
+460,
+379
+],
+[
+"Aplicação do adesivo por lábio",
+460,
+379
+]
+],
+"yt": "UrCekvmzX1M",
+"frase": "Recobridora de Perfis Industrial Master N15 PVC",
+"w": 700,
+"h": 324
+},
+{
+"s": "recobridora-de-perfis-industrial-master-n16-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis Industrial Máster N16",
+"cod": "IG-RP",
+"desc": "Sistema desenvolvido para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) podendo ser plástico, alumínio, madeiras em geral entre outros.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 230mm\nComprimento: 600mm a infinito\nAltura: 03 a 130mm\nDimensões da lâmina:\nLargura: 20 a 340mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [],
+"dets": [
+[
+"Magazine com abertura e fechamento",
+460,
+379
+]
+],
+"yt": "HtqpoPkZ1ck",
+"frase": "Recobridora de Perfis revestindo batentes de porta com lâminas de madeira.",
+"w": 720,
+"h": 256
+},
+{
+"s": "recobridora-de-perfis-industrial-master-n17-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis Industrial Máster N17",
+"cod": "IG-RP",
+"desc": "Sistema desenvolvido para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) podendo ser plástico, alumínio, madeiras em geral entre outros.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 230mm\nComprimento: 600mm a infinito\nAltura: 03 a 130mm\nDimensões da lâmina:\nLargura: 20 a 340mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [
+"Fábrica de Móveis",
+"Kit Porta Pronta",
+"Rodapés"
+],
+"dets": [
+[
+"Magazine com abertura e fechamento",
+460,
+379
+]
+],
+"yt": "WiS7SoSfQiI",
+"frase": "Recobridora de Perfis N17 Papel com PUR no rolo",
+"w": 720,
+"h": 263
+},
+{
+"s": "recobridora-de-perfis-industrial-master-n18-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis Industrial Máster N18",
+"cod": "IG-RP",
+"desc": "Sistema desenvolvido para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) podendo ser plástico, alumínio, madeiras em geral entre outros.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 230mm\nComprimento: 600mm a infinito\nAltura: 03 a 130mm\nDimensões da lâmina:\nLargura: 20 a 340mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [
+"Forros e Esquadrias de PVC",
+"Rodapés"
+],
+"dets": [],
+"yt": "DvvF196xC18",
+"frase": "Recobridora para perfis de PVC revestindo com lâminas de PVC e papel.",
+"w": 720,
+"h": 280
+},
+{
+"s": "recobridora-de-perfis-industrial-master-n19-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis Industrial Máster N19",
+"cod": "IG-RP",
+"desc": "Sistema desenvolvido para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) podendo ser plástico, alumínio, madeiras em geral entre outros.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 230mm\nComprimento: 600mm a infinito\nAltura: 03 a 130mm\nDimensões da lâmina:\nLargura: 20 a 340mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [
+"Kit Porta Pronta",
+"Rodapés"
+],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 613,
+"h": 324
+},
+{
+"s": "recobridora-de-perfis-n20-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis N20",
+"cod": "IG-RP",
+"desc": "Sistema desenvolvido para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) como batentes, vistas, rodapés entre outros.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 230mm\nComprimento: 600mm a infinito\nAltura: 03 a 130mm\nDimensões da lâmina:\nLargura: 20 a 340mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 720,
+"h": 268
+},
+{
+"s": "recobridora-de-perfis-n22-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis N22",
+"cod": "IG-RP",
+"desc": "Sistema desenvolvido para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) podendo ser plástico, alumínio, madeiras em geral entre outros.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 230mm\nComprimento: 600mm a infinito\nAltura: 03 a 130mm\nDimensões da lâmina:\nLargura: 20 a 340mm\nVelocidade de trabalho: 10 a 100 m/min.",
+"apl": [
+"Kit Porta Pronta"
+],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 720,
+"h": 261
+},
+{
+"s": "recobridora-de-perfis-n24-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis N24",
+"cod": "IG-RP",
+"desc": "Sistema desenvolvido para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) podendo ser plástico, alumínio, madeiras em geral entre outros.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 200mm\nComprimento: 600mm a infinito\nAltura: 10 a 80mm\nDimensões da lâmina:\nLargura: 20 a 280mm\nVelocidade de trabalho: 10 a 70 m/min.",
+"apl": [
+"Fábrica de Móveis",
+"Kit Porta Pronta",
+"Molduras e Quadros",
+"Rodapés"
+],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 720,
+"h": 181
+},
+{
+"s": "recobridora-de-perfis-profissional-n12-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis Profissional N12",
+"cod": "IG-RP",
+"desc": "Sistema desenvolvido para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) podendo ser plástico, alumínio, madeiras em geral entre outros. Utiliza-se materiais laminados como: papel, tecido, CPL, fórmica, madeira, PVC e PET.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 200mm\nComprimento: 600mm a infinito\nAltura: 10 a 80mm\nDimensões da lâmina:\nLargura: 20 a 280mm\nVelocidade de trabalho: 10 a 70 m/min.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 720,
+"h": 181
+},
+{
+"s": "recobridora-de-perfis-profissional-n4-ig-rp",
+"cat": "recobrimento",
+"n": "Recobridora de Perfis Profissional N4",
+"cod": "IG-RP",
+"desc": "A Recobridora de Perfis N4 foi desenvolvida para o recobrimento (revestimento) de perfilados em variados formatos (planos ou moldurados) podendo ser plástico, alumínio, madeiras em geral entre outros.",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 200mm\nComprimento: 600mm a infinito\nAltura: 10 a 80mm\nDimensões da lâmina:\nLargura: 20 a 280mm\nVelocidade de trabalho: 10 a 50 m/min.",
+"apl": [
+"Fábrica de Móveis",
+"Rodapés"
+],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 720,
+"h": 258
+},
+{
+"s": "tunel-de-secagem-linear-0-3-uv-1200-ig-tsl1200",
+"cat": "secagem",
+"n": "Túnel de Secagem Linear 0-3 UV 1200",
+"cod": "IG-TSL1200",
+"desc": "Equipamento desenvolvido para secagem instantânea de diversos materiais UV como: seladores, tintas, vernizes entre outros, aplicados sobre",
+"dados": "Dimensões das peças:\nLargura: 20 à 1200 mm\nComprimento: 410 mm à inf.\nEspessura: 03 à 60 mm\nVelocidade de trabalho: até 25 m/min.",
+"apl": [],
+"dets": [
+[
+"Posicionamento Das Lâmpadas UV",
+460,
+379
+],
+[
+"Mesa de Entrada",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 548,
+"h": 324
+},
+{
+"s": "tunel-de-secagem-linear-0-4-uv-laboratorio-ig-tsl",
+"cat": "secagem",
+"n": "Túnel de Secagem Linear 0-4 UV (Laboratório)",
+"cod": "IG-TSL",
+"desc": "Equipamento desenvolvido para secagem instantânea de diversos materiais ultravioleta como seladores, tinta, vernizes entre outros produtos.",
+"dados": "Dimensões das peças:\nLargura: 300 mm\nComprimento: 300 mm\nEspessura: 3 à 80mm\nVelocidade de trabalho: 0.5 a 15 m/min.",
+"apl": [],
+"dets": [
+[
+"Vista Interior do Compartimento de Secagem",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 335,
+"h": 324
+},
+{
+"s": "tunel-de-secagem-linear-0-8-uv-ig-tsl",
+"cat": "secagem",
+"n": "Túnel de Secagem Linear 0-8 UV",
+"cod": "IG-TSL",
+"desc": "Elaborado para secagem instantânea de diversos materiais ultravioleta como, seladores, tinta, verniz entre outros. Diferente da secagem UV",
+"dados": "Dimensões das peças:\nLargura: 15 à 300 mm\nComprimento: 400 mm à infinito\nEspessura: 80 mm\nVelocidade de trabalho: 10 a 55 m/min.",
+"apl": [
+"Fábrica de Berços",
+"Fábrica de Móveis"
+],
+"dets": [
+[
+"Posicionamento das lâmpadas UV",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 509,
+"h": 324
+},
+{
+"s": "tunel-de-secagem-transversal-civil-e-decorativo-ig-tst",
+"cat": "secagem",
+"n": "Tunel de Secagem Transversal Civil e Decorativo",
+"cod": "IG-TST",
+"desc": "Equipamentos desenvolvido para secagem de diversas coberturas como gesso, tinta, tingidor, verniz, entre outros, aplicados sobre o perfil (moldura) ou demais peças compatíveis com o dimensionamento do equipamento.",
+"dados": "Dimensões das peças:\nLargura: 15 à 300 mm\nComprimento: 1200 à 5200 mm\nEspessura: 10 à 80 mm\nVelocidade de trabalho: 10 a 110 m/min.",
+"apl": [],
+"dets": [
+[
+"Mesa de entrada com aletas",
+460,
+379
+],
+[
+"Mesa de entrada com roletes cônicos",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 674,
+"h": 305
+},
+{
+"s": "alimentador-automatico-linear-ig-aal",
+"cat": "transferencia-e-armazenagem",
+"n": "Alimentador Automático Linear",
+"cod": "IG-AAL",
+"desc": "Equipamento desenvolvido para a alimentação continua de perfis ou compatíveis em sentido linear, possibilitando a trabalhar com peças de pequeno e",
+"dados": "value",
+"apl": [],
+"dets": [
+[
+"Entrada",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 347,
+"h": 301
+},
+{
+"s": "alimentador-automatico-transversal-civil-e-decorativo-ig-aat",
+"cat": "transferencia-e-armazenagem",
+"n": "Alimentador Automático Transversal Civil e Decorativo",
+"cod": "IG-AAT",
+"desc": "Equipamento elaborado para alimentação automática de perfilados ou similares em linha de produção contínua.",
+"dados": "Dimensões dos perfis:\nLargura: 25 à 300 mm\nComprimento: 1200 à 5200 mm\nAltura: 10 à 80mm\nVelocidade de trabalho: 10 a 110 m/min.",
+"apl": [
+"Fábrica de Móveis"
+],
+"dets": [
+[
+"Sistema tracionador para perfis",
+460,
+379
+]
+],
+"yt": "Mv6kj3qB9Rw",
+"frase": "Alimentador Automático Transversal Civil e Decorativo  IG-AAT",
+"w": 590,
+"h": 324
+},
+{
+"s": "alimentador-automatico-transversal-industrial-master-ig-aati",
+"cat": "transferencia-e-armazenagem",
+"n": "Alimentador Automático Transversal Industrial Master",
+"cod": "IG-AATI",
+"desc": "Equipamento industrial, desenvolvido para alimentação automática de perfis em linha de produção continua, trabalhando com velocidade e alta produtividade. Sua forma construtiva",
+"dados": "value",
+"apl": [],
+"dets": [
+[
+"Detalhe",
+460,
+379
+]
+],
+"yt": "XA7eNf76iEo",
+"frase": "Alimentador Automático Transversal",
+"w": 382,
+"h": 241
+},
+{
+"s": "carro-com-14-ou-19-bracos-articulados-ig-cba",
+"cat": "transferencia-e-armazenagem",
+"n": "Carro com 14 ou 19 Braços Articulados",
+"cod": "IG-CBA",
+"desc": "Elaborado para armazenamento de perfis ou similar de médio e grande porte, que sofreram processos como pintura, engessamento, gravações",
+"dados": "value",
+"apl": [],
+"dets": [
+[
+"Perfis Devidamente Armazenados",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 161,
+"h": 324
+},
+{
+"s": "carro-com-28-ou-38-bracos-articulados-duplo-ig-cbad",
+"cat": "transferencia-e-armazenagem",
+"n": "Carro Com 28 ou 38 Braços Articulados Duplo",
+"cod": "IG-CBAD",
+"desc": "Desenvolvido para armazenamento de perfis ou similar de médio e grande porte, que sofreram processos como pintura, engessamento,",
+"dados": "value",
+"apl": [],
+"dets": [
+[
+"Rodízio para movimentação",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 283,
+"h": 324
+},
+{
+"s": "carro-vertical-para-portas-e-paineis-ig-cvpp",
+"cat": "transferencia-e-armazenagem",
+"n": "Carro Vertical Para Portas e Painéis",
+"cod": "IG-CVPP",
+"desc": "Equipamento desenvolvido para armazenamento de portas ou painéis, que sofreram processos de pintura, aguardando seu processo natural",
+"dados": "value",
+"apl": [
+"Kit Porta Pronta"
+],
+"dets": [
+[
+"Sistema de Fixação",
+460,
+379
+],
+[
+"Equipamento Ajustavel Com a Altura da Porta",
+460,
+379
+],
+[
+"Fixadores - Modelo A",
+460,
+379
+]
+],
+"yt": "",
+"frase": "",
+"w": 364,
+"h": 324
+},
+{
+"s": "descarregador-automatico-transversal-industrial-ig-dati",
+"cat": "transferencia-e-armazenagem",
+"n": "Descarregador Automático Transversal Indústrial",
+"cod": "IG-DATI",
+"desc": "Equipamento industrial, desenvolvido para fazer o recolhimento automática de perfis em linha de produção continua, trabalhando com velocidade e alta produtividade",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 200/300mm\nEspessura: 05 a 80mm\nComprimento: 1.000 a 3.000\nVelocidade de trabalho: 10 a 60 mts/min",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 424,
+"h": 220
+},
+{
+"s": "empilhador-de-madeira-ig-em",
+"cat": "transferencia-e-armazenagem",
+"n": "Empilhador de Madeira",
+"cod": "IG-EM",
+"desc": "Equipamento desenvolvido para empilhar perfis de madeira ou de substrato similar, em camadas, podendo trabalhar com madeira bruta ou com perfis acabados. Suporta trabalhar em velocidade de até 110 metros/minuto.",
+"dados": "Entre em contato com nossa equipe para maiores informações:\n(48) 3658 - 2635 / vendas@gaidzinski.com.br",
+"apl": [
+"Molduras e Quadros"
+],
+"dets": [],
+"yt": "U4l0Etvyac8",
+"frase": "Empilhador de Madeira",
+"w": 465,
+"h": 288
+},
+{
+"s": "mesa-transferidora-de-saida-com-roletes-planos-emborrachados-ig-mtsr",
+"cat": "transferencia-e-armazenagem",
+"n": "Mesa Transferidora de Saída com Roletes Planos Emborrachados",
+"cod": "IG-MTSR",
+"desc": "Equipamento desenvolvido para fazer a saída automática de perfis de uma linha transversal, dando sequência na linha de produção.",
+"dados": "value",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 516,
+"h": 324
+},
+{
+"s": "robo-para-alimentacao-descarga",
+"cat": "transferencia-e-armazenagem",
+"n": "Robô para alimentação / descarga",
+"cod": "",
+"desc": "O Robô Cartesiano Industrial é a solução definitiva de automação para a carga, descarga e manipulação de materiais pesados e de grandes dimensões. Projetado para integrar linhas de produção contínuas, o equipamento automatiza a movimentação de portas, painéis, blanks de madeira/MDF, perfis metálicos ou plásticos e demais produtos compatíveis.",
+"dados": "Equipamento desenvolvido de acordo com as necessidades do cliente.\nConsulte nossa equipe para desenvolver seu projeto.",
+"apl": [],
+"dets": [
+[
+"Portas e painéis",
+480,
+270
+],
+[
+"Madeira serrada",
+480,
+270
+],
+[
+"Molduras e boards",
+480,
+270
+]
+],
+"yt": "",
+"frase": "",
+"w": 476,
+"h": 324
+},
+{
+"s": "transfer-linear-com-correia-ig-tlc",
+"cat": "transferencia-e-armazenagem",
+"n": "Transfer Linear com Correia",
+"cod": "IG-TLC",
+"desc": "Item tendo a finalidade fazer a interligação das peças (perfis) entre dois equipamentos, peças estas já secas ou que não tenham cobertura",
+"dados": "Dimensões dos perfis:\nLargura: 15 a 200 mm\nComprimento: 1000 mm a infinito\nAltura: 15 a 120 mm\nVelocidade de trabalho: 10 a 40 m/min.",
+"apl": [],
+"dets": [],
+"yt": "",
+"frase": "",
+"w": 419,
+"h": 324
+}
+]
+}
