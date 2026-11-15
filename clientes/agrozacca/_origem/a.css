@@ -1,0 +1,18 @@
+/* Versão A "Nutrição Suprema": creme quente, embalagens em leque à direita */
+.heroa{position:relative;background:var(--fundo2);overflow:hidden;padding-bottom:30px}
+.heroa::before{content:"";position:absolute;right:-12%;top:-30%;width:62%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#f8e2c4 0%,rgba(248,226,196,0) 70%)}
+.ha-grade{position:relative;min-height:min(600px,calc(100vh - 160px));display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center;gap:30px;padding:50px 0 30px}
+.heroa h1{font-size:clamp(40px,4.8vw,68px);line-height:1;margin-bottom:20px;color:var(--tinta)}
+.heroa h1 em{color:var(--cor);font-style:italic}
+.ha-sub{font-size:1.12rem;color:var(--suave);max-width:540px}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.ha-sacos{position:relative;height:min(480px,52vw)}
+.saco{position:absolute;bottom:0;width:44%;filter:drop-shadow(0 26px 30px rgba(90,30,10,.28))}
+.saco img{width:100%;height:auto}
+.saco.s0{left:28%;z-index:3;width:48%}
+.saco.s1{left:0;bottom:6%;transform:rotate(-7deg);z-index:2}
+.saco.s2{right:0;bottom:6%;transform:rotate(7deg);z-index:1}
+.heroa .numeros{border-top:1px solid var(--linha);padding-top:22px}
+@media (max-width:900px){.ha-grade{grid-template-columns:1fr;min-height:0;padding:36px 0 10px}.ha-sacos{height:340px;max-width:460px;width:100%;margin:auto}}
+@media (max-width:600px){.ha-sacos{height:260px}}
+@media (max-width:600px){.ha-sacos{max-width:330px}}
