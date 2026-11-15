@@ -1,0 +1,11 @@
+/* Versão A "Tecnologia para o melhor acabamento": clara, laranja dos losangos e azul-marinho */
+.heroa{position:relative;background:linear-gradient(180deg,#fff 0%,var(--fundo2) 100%);padding:clamp(36px,5vw,64px) 0 36px;overflow:hidden}
+.heroa::before{content:"";position:absolute;right:-6%;top:-18%;width:46%;aspect-ratio:1;background:var(--laranja);opacity:.16;transform:rotate(45deg) skew(-8deg,-8deg);border-radius:18%}
+.ha-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:44px;align-items:center;position:relative;margin-bottom:40px}
+.heroa h1{font-size:clamp(40px,4.8vw,68px);line-height:1;margin-bottom:20px;color:var(--azul)}
+.heroa h1 em{color:var(--cor);font-style:normal}
+.ha-sub{font-size:1.12rem;color:var(--suave);max-width:540px}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.ha-foto img{width:100%;filter:drop-shadow(0 28px 36px rgba(0,29,73,.2))}
+.numeros b{color:var(--azul)}
+@media (max-width:900px){.ha-grade{grid-template-columns:1fr}.ha-foto{max-width:560px}}
