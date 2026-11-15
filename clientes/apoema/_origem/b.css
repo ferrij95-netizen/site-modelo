@@ -1,0 +1,64 @@
+/* Versão B: expedição (vídeo na abertura, topo escuro, trajetos sobre o mapa) */
+.topo{background:#24291f url(/assets/img/textura.webp) 0 0/1600px;border-bottom-color:#11140e}
+.marca-nome{color:#f3ebd5}
+.menu a{color:#f3ebd5}
+.menu a:hover{background:rgba(255,255,255,.1)}
+.menu a.ativo{background:var(--lima);color:#1e1a17;box-shadow:none}
+.agende{background:#c8261f}
+.agende .ic{color:#fff}
+.menu-btn{color:#f3ebd5}
+@media (max-width:1100px){.menu{background:#24291f}}
+
+.herob{position:relative;min-height:min(94vh,860px);display:flex;align-items:flex-end;overflow:hidden;background:#1a1a14 url(/assets/img/video-capa.webp) center/cover;padding:120px 0 96px}
+.hb-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.herob::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(18,16,12,.9) 0%,rgba(18,16,12,.45) 45%,rgba(18,16,12,.15) 100%)}
+.herob::after{content:"";position:absolute;z-index:2;left:0;right:0;bottom:-1px;height:40px;background:var(--papel);-webkit-mask:url(/assets/img/rasgado.svg) center/100% 100% no-repeat;mask:url(/assets/img/rasgado.svg) center/100% 100% no-repeat}
+.hb-in{position:relative;z-index:3}
+.herob h1{color:var(--mostarda);font-size:clamp(2.6rem,7vw,6rem);line-height:.98;max-width:900px;text-shadow:3px 4px 0 #1e1a17,0 8px 30px rgba(0,0,0,.5);margin-bottom:.25em}
+.hb-sub{color:#f3ebd5;font-size:clamp(1.05rem,1.5vw,1.25rem);max-width:640px}
+.acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.hb-numeros{display:flex;gap:clamp(20px,4vw,56px);margin-top:38px;flex-wrap:wrap}
+.hb-numeros li{color:#f3ebd5;border-left:4px solid var(--lima);padding-left:14px}
+.hb-numeros b{display:block;font:400 clamp(1.8rem,3vw,2.5rem)/1 var(--fe)}
+.hb-numeros span{font-size:.9rem;opacity:.85}
+
+/* trajetos sobre o mapa */
+.mapa-passeios{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.mp-mapa{position:relative}
+.mp-mapa .moldura{aspect-ratio:1;transform:rotate(-1.5deg)}
+.mp-mapa>img.mp-mancha{height:auto;position:absolute;width:110px;right:-30px;top:-34px;transform:rotate(20deg);opacity:.9}
+.ficha-lista{display:grid;gap:0;border-top:3px solid var(--tinta)}
+.ficha-lista a{display:grid;grid-template-columns:48px 1fr auto auto;gap:16px;align-items:center;padding:16px 6px;border-bottom:2px dashed var(--linha);text-decoration:none;transition:background .2s,padding .2s}
+.ficha-lista a:hover{background:rgba(156,192,108,.18);padding-left:14px}
+.fl-n{width:40px;height:40px;border-radius:50%;background:var(--tinta);color:var(--mostarda);display:grid;place-items:center;font:400 1.25rem/1 var(--fe)}
+.fl-nome{font:400 1.2rem/1.2 var(--ft)}
+.fl-nome small{display:block;font:500 .85rem/1.4 var(--fx);color:var(--suave);margin-top:4px}
+.fl-nome .pilula{font-size:.7rem;vertical-align:middle;margin-left:6px}
+.fl-km{font:400 1rem/1 var(--fe);text-align:right}
+.fl-km b{font-size:2rem}
+.fl-preco{font:400 1.2rem/1 var(--fe);color:var(--cor);min-width:96px;text-align:right}
+.nota-desconto{justify-content:flex-start}
+
+/* mosaico de fotos */
+.sec-mosaico{background:var(--areia)}
+.mosaico{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(80px,auto);gap:22px;align-items:stretch}
+.mo-a{grid-column:1/8;grid-row:1/4;min-height:420px}
+.mo-txt{grid-column:8/13;grid-row:1/3;align-self:center}
+.mo-b{grid-column:8/13;grid-row:3/6;min-height:300px;transform:rotate(2deg)}
+.mo-c{grid-column:2/8;grid-row:4/6;min-height:260px;transform:rotate(-1.5deg)}
+.selos-claro{margin-top:18px}
+
+@media (max-width:980px){
+  .mapa-passeios{grid-template-columns:1fr}
+  .mp-mapa{max-width:520px}
+  .mosaico{grid-template-columns:1fr 1fr}
+  .mo-a,.mo-txt,.mo-b,.mo-c{grid-column:auto;grid-row:auto;min-height:0}
+  .mo-a{grid-column:1/-1;aspect-ratio:16/10}
+  .mo-txt{grid-column:1/-1}
+  .mo-b,.mo-c{aspect-ratio:1}
+}
+@media (max-width:640px){
+  .ficha-lista a{grid-template-columns:40px 1fr auto;gap:10px}
+  .fl-preco{grid-column:2/-1;text-align:left;min-width:0}
+  .fl-km b{font-size:1.6rem}
+}
