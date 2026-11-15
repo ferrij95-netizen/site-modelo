@@ -1,0 +1,19 @@
+/* Versão A "Rolo vermelho": clara, LaGemata em fundo branco, faixa vermelha */
+.heroa{position:relative;background:linear-gradient(180deg,#fff 0,#fff 62%,var(--fundo2) 62%);overflow:hidden}
+.ha-grade{position:relative;min-height:min(620px,calc(100vh - 140px));display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:center;gap:40px;padding:48px 0}
+.heroa h1{font-size:clamp(44px,5.4vw,80px);line-height:.98;margin-bottom:22px}
+.heroa h1 em{font-style:normal;color:var(--cor)}
+.ha-sub{font-size:1.15rem;color:var(--suave);max-width:540px}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.ha-prod{position:relative}
+.ha-prod img{width:100%;height:auto;display:block}
+.ha-tag{position:absolute;right:4%;bottom:2%;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:var(--raio);font-size:.9rem;max-width:260px}
+.ha-tag b{display:block;font:700 1.3rem/1.1 var(--ft);color:#e8a1a8}
+.faixa{background:var(--cor);color:#fff;padding:22px 0}
+.faixa .in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 24px;font:600 .98rem/1.2 var(--ft)}
+@media (max-width:900px){.faixa .in{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.faixa .in{grid-template-columns:1fr}}
+.faixa span{display:inline-flex;gap:10px;align-items:center}
+.faixa .ic{width:18px;height:18px}
+@media (max-width:900px){.heroa{background:#fff}.ha-grade{grid-template-columns:1fr;min-height:0;padding:32px 0}.ha-tag{display:none}}
+.ha-prod img{aspect-ratio:16/10;object-fit:cover;border-radius:var(--raio)}
