@@ -1,9 +1,9 @@
-@font-face{font-family:'Corm';font-weight:500;font-style:normal;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Corm';font-weight:600;font-style:normal;font-display:swap;src:url(fonts/cormorant-garamond-latin-600-normal.woff2) format('woff2')}
-@font-face{font-family:'Corm';font-weight:500;font-style:italic;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-italic.woff2) format('woff2')}
-@font-face{font-family:'Man';font-weight:400;font-display:swap;src:url(fonts/manrope-latin-400-normal.woff2) format('woff2')}
-@font-face{font-family:'Man';font-weight:500;font-display:swap;src:url(fonts/manrope-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Man';font-weight:600;font-display:swap;src:url(fonts/manrope-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Corm';font-weight:500;font-style:normal;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Corm';font-weight:600;font-style:normal;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Corm';font-weight:500;font-style:italic;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-500-italic.woff2) format('woff2')}
+@font-face{font-family:'Man';font-weight:400;font-display:swap;src:url(/assets/fonts/manrope-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Man';font-weight:500;font-display:swap;src:url(/assets/fonts/manrope-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Man';font-weight:600;font-display:swap;src:url(/assets/fonts/manrope-latin-600-normal.woff2) format('woff2')}
 :root{--noite:#070B0A;--fundo:#0B1110;--sup:#111A18;--sup2:#16211F;--ouro:#CDAE72;--ouro-claro:#E6CF9E;--creme:#F1EBE0;--suave:#A8A296;--linha:rgba(205,174,114,.22);--esm:#1F6B52;--tit:'Corm','Cormorant Garamond',Georgia,serif;--txt:'Man','Manrope',system-ui,sans-serif;--gut:clamp(18px,5vw,72px)}
 html.cjk{--tit:'Corm','Noto Serif SC','Songti SC','STSong','SimSun',serif;--txt:'Man','PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif}
 *{box-sizing:border-box}
