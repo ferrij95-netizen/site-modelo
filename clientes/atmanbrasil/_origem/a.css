@@ -1,0 +1,18 @@
+/* Versão A "Conforto que rende": clara, macia */
+.heroa{background:linear-gradient(180deg,#fff 0%,var(--fundo2) 100%);padding:clamp(40px,6vw,72px) 0 clamp(48px,6vw,80px);overflow:hidden}
+.ha-grade{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.heroa h1{font-size:clamp(40px,5vw,68px);line-height:1.02;margin-bottom:20px;color:var(--tinta)}
+.heroa h1 em{font-style:normal;color:var(--cor);background:linear-gradient(transparent 70%,rgba(252,202,6,.6) 70%)}
+.ha-sub{font-size:1.15rem;color:var(--suave);max-width:520px}
+.ha-acoes{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.ha-acoes .btn:first-child{background:#25d366;border-color:#25d366}
+.ha-acoes .btn-linha{color:var(--cor)}
+.ha-fotos{position:relative;height:520px}
+.ha-fotos figure{position:absolute;overflow:hidden;border-radius:24px;box-shadow:0 30px 60px -30px rgba(1,33,104,.45)}
+.ha-fotos img{width:100%;height:100%;object-fit:cover}
+.haf-1{left:0;top:0;width:52%;height:78%}
+.haf-2{right:0;bottom:0;width:58%;height:56%}
+.haf-3{right:6%;top:2%;width:28%;height:38%;background:#fff;box-shadow:none!important}
+.haf-3 img{object-fit:contain;padding:10px}
+@media (max-width:900px){.ha-grade{grid-template-columns:1fr}.ha-fotos{height:380px}}
+@media (max-width:600px){.ha-fotos{height:300px}}
