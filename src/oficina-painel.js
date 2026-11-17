@@ -83,14 +83,14 @@ section.tela{padding-top:22px}
 .numeros{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
 @media(min-width:700px){.numeros{grid-template-columns:repeat(4,1fr)}}
 .num{padding:16px;border-radius:var(--r);background:var(--g1);border:1px solid var(--linha)}
-.num b{display:block;font:600 34px/1 var(--ser);color:var(--claro)}
+.num b{display:block;font:600 30px/1 var(--txt);letter-spacing:-.02em;color:var(--claro)}
 .num span{display:block;margin-top:6px;font-size:12.5px;color:var(--suave)}
 .bloco{margin-top:22px}
 .bloco h3{font-size:22px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
 .bloco h3 .cont{font:600 12px/1 var(--txt);background:var(--g3);color:var(--claro);padding:5px 9px;border-radius:99px}
 .funil{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
 .funil button{flex:1 0 auto;min-width:104px;text-align:left;padding:12px 14px;border-radius:12px;background:var(--g1);border:1px solid var(--linha)}
-.funil b{display:block;font:600 24px/1 var(--ser);color:var(--claro)}
+.funil b{display:block;font:600 22px/1 var(--txt);color:var(--claro)}
 .funil span{display:block;margin-top:4px;font-size:12px;color:var(--suave);white-space:nowrap}
 .vazio{padding:26px 18px;text-align:center;color:var(--suave);border:1px dashed var(--linha);border-radius:var(--r)}
 
