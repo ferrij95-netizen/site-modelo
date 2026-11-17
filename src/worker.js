@@ -1,6 +1,7 @@
 // Um worker para todos os previews: <cliente>.overtus.com.br serve dist/_clientes/<cliente>/,
 // qualquer outro endereço serve o site da raiz (dist/).
 import { noticias } from './noticias.js';
+import { oficina } from './oficina.js';
 import { prospeccao } from './prospeccao.js';
 import { resultados } from './resultados.js';
 import { lembretes } from './lembretes.js';
@@ -100,7 +101,9 @@ export default {
 
     // Painel e notícias dinâmicas (só para clientes com notícias; os demais seguem direto).
     // O conteúdo muda sem novo build, então aqui o arquivo é pedido sem cache condicional (sem 304).
-    const dyn = await noticias(request, env, cliente, url, u => servir(env, cliente, new URL(u), request, true));
+    const asset = u => servir(env, cliente, new URL(u), request, true);
+    // Área do cliente das oficinas (fotos de serviços + mini CRM de WhatsApp, src/oficina.js).
+    const dyn = await oficina(request, env, cliente, url, asset) || await noticias(request, env, cliente, url, asset);
     return noHub(dyn || await servir(env, cliente, url, request));
   },
 };

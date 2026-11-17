@@ -183,7 +183,7 @@ function dinamico(res, status) {
 async function segredo(db) {
   return (await db.prepare("SELECT valor FROM config WHERE chave = 'segredo_sessao'").first('valor'));
 }
-async function assina(db, msg) {
+export async function assina(db, msg) {
   const k = await crypto.subtle.importKey('raw', enc.encode(await segredo(db)), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
   return hex(await crypto.subtle.sign('HMAC', k, enc.encode(msg)));
 }
@@ -192,12 +192,12 @@ export async function hashSenha(senha, salHex) {
   const sal = new Uint8Array(salHex.match(/../g).map(h => parseInt(h, 16)));
   return hex(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: sal, iterations: 100000 }, k, 256));
 }
-function igual(a, b) {
+export function igual(a, b) {
   if (a.length !== b.length) return false;
   let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ b.charCodeAt(i);
   return d === 0;
 }
-async function logado(request, db, cliente) {
+export async function logado(request, db, cliente) {
   const c = (request.headers.get('cookie') || '').match(/(?:^|;\s*)painel=([^;]+)/)?.[1];
   if (!c) return false;
   const [cl, exp, sig] = decodeURIComponent(c).split('.');
