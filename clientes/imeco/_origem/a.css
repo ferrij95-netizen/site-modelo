@@ -1,0 +1,64 @@
+/* ===== Versão A "Linha de produção": azul IMECO, faixa vermelha de produtos, sol amarelo da marca ===== */
+:root{
+  --azul:#00427A;--azul-esc:#002a4f;--vermelho:#C21E23;--amarelo:#FBB22F;
+  --cor:#00427A;--cor-esc:#00335f;--destaque:#C21E23;--link:#00427A;
+  --tinta:#222;--suave:#5b6168;--fundo:#fff;--linha:#cfd5db;--raio:10px;
+  --ft:'Imeco Sans',system-ui,sans-serif;--fx:'Inter',system-ui,sans-serif;
+  --barra:#00427A;--cab-fundo:linear-gradient(115deg,#002a4f 0%,#00427A 60%,#0b5a9c 100%);--chamada-fundo:linear-gradient(110deg,#C21E23,#9c1418);
+  --rodape:#00427A;--titulo-ficha:#00427A;--porque-linha:rgba(255,255,255,.22)
+}
+h1,h2,h3{color:inherit}
+h2{color:var(--azul)}
+.sec-vermelha h2,.sec-azul h2,.chamada h2,.cab-pag h1,.sec-orc h2,.sec-foto h2,.hero-a h1{color:#fff}
+.faixa-catalogo h2{color:#1b1b1b}
+
+/* hero */
+.hero-a{position:relative;background:radial-gradient(120% 90% at 75% 40%,#0b5a9c 0%,#00427A 42%,#002a4f 100%);color:#fff;overflow:hidden;isolation:isolate;padding:clamp(48px,6vw,84px) 0 0}
+.ha-fundo{position:absolute;inset:0;z-index:-1}
+.ha-fundo img{width:100%;height:100%;object-fit:cover;opacity:.09;mix-blend-mode:screen;filter:grayscale(1) contrast(1.4)}
+.ha-grade{display:grid;grid-template-columns:1fr 1.05fr;gap:32px;align-items:center}
+.ha-kicker{display:flex;align-items:center;gap:12px;font:600 .9rem/1.2 var(--fx);letter-spacing:.04em;margin-bottom:22px;opacity:.95}
+.ha-kicker span{background:var(--amarelo);color:#1b1b1b;font:700 .82rem/1 var(--ft);text-transform:uppercase;letter-spacing:.1em;padding:7px 10px;border-radius:2px}
+.hero-a h1{font-size:clamp(2.6rem,1.4rem + 4.4vw,5.1rem);line-height:.98;letter-spacing:-.015em;font-style:italic;margin-bottom:.35em}
+.hero-a h1 span{display:block;color:var(--amarelo)}
+.ha-sub{font-size:clamp(1.02rem,.95rem + .3vw,1.2rem);max-width:34em;opacity:.92;margin-bottom:28px}
+.ha-acoes{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-a .btn-linha{color:#fff;border-color:rgba(255,255,255,.6)}
+.hero-a .btn-linha:hover{background:rgba(255,255,255,.1);border-color:#fff;color:#fff}
+.ha-prod{position:relative;aspect-ratio:1/0.86;min-height:360px}
+.ha-sol{position:absolute;left:12%;top:4%;width:78%;aspect-ratio:1;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,rgba(251,178,47,.95) 0 11deg,transparent 11deg 20deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 47%,#000 47.5% 70%,transparent 70.5%);mask:radial-gradient(circle,transparent 0 47%,#000 47.5% 70%,transparent 70.5%);opacity:.95}
+.ha-sol::after{content:"";position:absolute;inset:0;border-radius:50%}
+.ha-prod::before{content:"";position:absolute;left:24%;top:16%;width:54%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),rgba(255,255,255,0) 70%)}
+.ha-prod img{position:absolute;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+.ha-g{width:88%;left:6%;top:0;z-index:2}
+.ha-p{width:52%;right:-4%;bottom:2%;z-index:3}
+.ha-gr{width:46%;left:-4%;bottom:0;z-index:3}
+.ha-numeros{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(28px,4vw,48px);border-top:1px solid rgba(255,255,255,.2)}
+.ha-numeros li{padding:22px 22px 26px;border-left:1px solid rgba(255,255,255,.2);display:flex;gap:14px;align-items:baseline}
+.ha-numeros li:first-child{border-left:0;padding-left:0}
+.ha-numeros b{font:700 2.4rem/1 var(--ft);color:var(--amarelo);font-style:italic}
+.ha-numeros span{font-size:.88rem;opacity:.9;line-height:1.35}
+
+/* faixa vermelha de produtos */
+.sec-vermelha{background:linear-gradient(170deg,#C21E23 0%,#a3171b 100%);color:#fff}
+.sec-vermelha .sec-cab p{color:rgba(255,255,255,.88)}
+.sec-azul{background:linear-gradient(160deg,#00427A,#002a4f);color:#fff}
+.sec-azul .porque li:first-child{border-left:0}
+
+.cab-pag .cp-foto img{mix-blend-mode:luminosity}
+.ha-acoes .btn-orc{box-shadow:0 10px 24px rgba(251,178,47,.35)}
+
+@media (max-width:980px){
+  .ha-grade{grid-template-columns:1fr}
+  .ha-prod{max-width:560px;margin:0 auto;width:100%;min-height:0}
+  .ha-numeros{grid-template-columns:1fr 1fr}
+  .ha-numeros li:nth-child(3){border-left:0;padding-left:0}
+  .ha-numeros li{border-top:1px solid rgba(255,255,255,.2)}
+}
+@media (max-width:640px){
+  .ha-numeros li{padding:16px 12px 18px}
+  .ha-numeros li:nth-child(odd){padding-left:0;border-left:0}
+  .ha-numeros li{flex-direction:column;gap:6px}
+}

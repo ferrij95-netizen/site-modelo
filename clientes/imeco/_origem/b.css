@@ -1,0 +1,108 @@
+/* ===== Versão B "Catálogo": cinza claro do catálogo impresso, faixas amarelas, títulos vermelhos em itálico ===== */
+:root{
+  --azul:#00427A;--azul-esc:#2a2622;--vermelho:#C21E23;--amarelo:#FBB22F;
+  --cor:#C21E23;--cor-esc:#a3171b;--destaque:#C21E23;--link:#C21E23;
+  --tinta:#262626;--suave:#5f5f5f;--fundo:#fff;--linha:#cfcfcf;--raio:4px;
+  --ft:'Imeco Sans',system-ui,sans-serif;--fx:'Inter',system-ui,sans-serif;
+  --barra:#2b2b2b;--cab-fundo:#EEEEEE;--chamada-fundo:linear-gradient(110deg,#2b2b2b,#454545);
+  --rodape:#C21E23;--titulo-ficha:#C21E23;--porque-linha:#d4d4d4
+}
+h1,h2{font-style:italic}
+h2{color:#1d1d1d}
+.sobrelinha{color:var(--vermelho)}
+
+/* hero */
+.hero-b{background:linear-gradient(180deg,#f4f4f4 0%,#e6e6e6 100%);position:relative;overflow:hidden}
+.hb-grade{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;min-height:min(640px,78vh);padding:40px 0}
+.hb-tags{display:flex;gap:8px;margin-bottom:22px}
+.hb-tags span{font:700 .82rem/1 var(--ft);font-style:italic;text-transform:uppercase;letter-spacing:.08em;padding:8px 12px}
+.t-ver{background:var(--vermelho);color:#fff}
+.t-ama{background:var(--amarelo);color:#1b1b1b}
+.hero-b h1{font-size:clamp(2.6rem,1.3rem + 4.6vw,5.2rem);line-height:.96;letter-spacing:-.02em;color:#1d1d1d;margin-bottom:.35em}
+.hb-sub{font-size:clamp(1.02rem,.95rem + .3vw,1.18rem);max-width:32em;color:#444;margin-bottom:28px}
+.hero-b .ha-acoes{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.hb-palco{position:relative;align-self:stretch;display:grid;place-items:center;min-height:420px}
+.hb-losango{position:absolute;width:62%;aspect-ratio:1;background:var(--amarelo);transform:rotate(45deg);right:8%;top:12%;box-shadow:0 30px 60px rgba(0,0,0,.08)}
+.hb-l2{width:13%;background:var(--vermelho);right:2%;top:6%;box-shadow:none}
+.hb-maq{position:relative;width:min(100%,620px);mix-blend-mode:multiply;filter:contrast(1.04)}
+.hb-ficha{position:absolute;left:2%;bottom:8%;background:#fff;padding:14px 18px;text-decoration:none;box-shadow:0 14px 30px rgba(0,0,0,.12);max-width:280px;border-top:4px solid var(--vermelho)}
+.hb-ficha b{display:block;font:700 1.25rem/1.1 var(--ft);font-style:italic;color:var(--vermelho)}
+.hb-ficha span{font-size:.84rem;color:#555}
+.hb-faixa{background:var(--amarelo);color:#1b1b1b}
+.hb-faixa .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 0;font:700 1rem/1.3 var(--ft);font-style:italic;text-transform:uppercase;letter-spacing:.03em}
+
+/* título em barra (como no catálogo) */
+.tit-barra{margin:0 auto}
+.tit-barra span{display:inline-block;background:var(--amarelo);padding:.2em .8em .25em;color:#1b1b1b}
+
+/* vitrine: linhas alternadas */
+.vitrine{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:#ddd;border:2px solid #ddd}
+.vt{display:grid;grid-template-columns:1fr 1fr;align-items:center;background:#fff;text-decoration:none;color:#1d1d1d;transition:background .2s}
+.vt:hover{background:#f6f6f6}
+.vt-0{grid-column:span 2;grid-template-columns:1.2fr 1fr}
+.vt-img{background:linear-gradient(180deg,#f2f2f2,#e3e3e3);height:100%;display:grid;place-items:center;overflow:hidden}
+.vt-img img{width:100%;height:100%;object-fit:contain;max-height:300px;transition:transform .4s}
+.vt-0 .vt-img img{max-height:420px}
+.vt:hover .vt-img img{transform:scale(1.05)}
+.vt-txt{padding:26px 28px;display:flex;flex-direction:column;gap:10px}
+.vt-txt b{font:700 1.55rem/1.1 var(--ft);font-style:italic;color:var(--vermelho)}
+.vt-0 .vt-txt b{font-size:2.2rem}
+.vt-txt span{font-size:.94rem;color:#555}
+.vt-txt em{width:44px;height:44px;border-radius:50%;background:var(--amarelo);display:grid;place-items:center;color:#1b1b1b;transition:transform .2s}
+.vt:hover .vt-txt em{transform:translateX(6px)}
+.vt:nth-child(4),.vt:nth-child(5){grid-template-columns:1fr 1fr}
+.vt-3 .vt-img{order:2}
+
+/* sépia da fábrica */
+.sec-sepia{background:#2a2622;color:#efe9e1}
+.sec-sepia h2{color:#fff}
+.sec-sepia .sobrelinha{color:var(--amarelo)}
+.sec-sepia .link-seta{color:var(--amarelo)}
+.sec-sepia .mosaico img{filter:sepia(.25)}
+
+.segmentos{border-top-color:var(--vermelho)}
+.sg-n{font-style:italic}
+.porque li{border-left-color:#d4d4d4}
+.porque h3{font-style:italic;color:var(--vermelho)}
+
+/* páginas internas: cabeçalho claro com losango amarelo */
+.cab-pag{color:#1d1d1d;background:#EEEEEE}
+.cab-pag::after{content:"";position:absolute;right:-60px;top:-80px;width:300px;aspect-ratio:1;background:var(--amarelo);transform:rotate(45deg);z-index:-1}
+.cab-pag::before{content:"";position:absolute;right:250px;bottom:30px;width:44px;aspect-ratio:1;background:var(--vermelho);transform:rotate(45deg);z-index:-1}
+.cab-pag h1{color:var(--vermelho)}
+.cab-pag p{color:#444}
+.cab-pag .cp-tag{background:#1d1d1d;color:#fff;font-style:italic}
+.cp-foto{left:auto;width:46%;-webkit-mask:linear-gradient(90deg,transparent,#000 40%);mask:linear-gradient(90deg,transparent,#000 40%)}
+.cp-foto img{opacity:.6;filter:grayscale(1) contrast(1.05)}
+.cab-foto .in>*{position:relative}
+.tab thead th{background:#6f6f6f}
+.tab-tit span{background:var(--amarelo);color:#1b1b1b}
+.tab-tit-2 span{background:var(--vermelho);color:#fff}
+.fi-palco{border-radius:0}
+.contatos .ic{background:var(--vermelho)}
+.sec-rede{background:#EEEEEE}
+.rede-passos span{background:var(--vermelho);box-shadow:0 0 0 5px #EEEEEE}
+.rede-passos::before{background:var(--amarelo)}
+.btn{border-radius:2px}
+.chamada .btn-orc{color:#1b1b1b}
+.linhas a,.indice a{border-radius:2px}
+.menu a.ativo{color:var(--vermelho)}
+
+@media (max-width:980px){
+  .hb-grade{grid-template-columns:1fr;min-height:0;padding:36px 0 20px}
+  .hb-palco{min-height:340px}
+  .vitrine{grid-template-columns:1fr}
+  .vt-0{grid-column:auto}
+  .cp-foto{width:70%;opacity:.5}
+}
+@media (max-width:640px){
+  .vt,.vt-0,.vt:nth-child(4),.vt:nth-child(5){grid-template-columns:1fr}
+  .vt-3 .vt-img{order:0}
+  .vt-img img{max-height:220px}
+  .hb-ficha{position:relative;left:auto;bottom:auto;margin-top:-30px}
+  .hb-palco{min-height:0}
+  .cab-pag::after{width:180px;right:-90px}
+  .cab-pag::before{display:none}
+  .hb-faixa .in{font-size:.86rem}
+}
+.chamada h2{color:#fff}
