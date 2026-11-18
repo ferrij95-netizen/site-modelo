@@ -82,6 +82,7 @@ const iChat = SVG('<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H
 // Moldura de navegador com o print de um projeto.
 const tela = (nome, alt, endereco = '', attrs = '') => `<figure class="tela"><div class="tela-barra"><i></i><i></i><i></i>${endereco ? `<span>${esc(endereco)}</span>` : ''}</div>${img(nome, alt, attrs)}</figure>`;
 
+const marcaSimbolo = `<img src="/assets/img/logo-simbolo.webp" alt="" width="387" height="386">`;
 const marca = `<img src="/assets/img/logo-overtus.webp" alt="Overtus" width="800" height="198">`;
 const agendar = (txt = 'Agendar conversa', cls = 'btn btn-prim') => `<a class="${cls}" href="${site.agenda}" data-agendar>${txt}</a>`;
 const chipOk = txt => `<span class="chip chip-ok">${SVG('<path d="M5 12l5 5 9-10"/>', ' stroke-width="2.4"')}${txt}</span>`;
@@ -144,7 +145,7 @@ const topo = slug => `<header class="topo">
 const rodape = () => `<footer class="rodape">
   <div class="in">
     <div class="r-marca"><a class="marca" href="${L('index')}">${marca}</a><p>${site.slogan}</p><p>${site.linha2}</p></div>
-    <div><h3>Serviços</h3><ul>${grupos.map(g => `<li><a href="${L('servicos/' + g.slug)}">${g.nome}</a></li>`).join('')}</ul></div>
+    <div><h3>Serviços</h3><ul>${grupos.map(g => `<li><a href="${L('servicos/' + g.slug)}">${g.nome}</a></li>`).join('')}<li><a href="${L('orcamentos')}">Orçamentos automatizados</a></li></ul></div>
     <div><h3>Setores</h3><ul>${setores.map(s => `<li><a href="${L('setores/' + s.slug)}">${s.nome}</a></li>`).join('')}</ul></div>
     <div><h3>Overtus</h3><ul>${menu.filter(([s]) => !['servicos', 'setores'].includes(s)).map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
     <div><h3>Conversar</h3><ul><li><a href="${site.agenda}" data-agendar>Agendar conversa</a></li><li><a href="mailto:${site.email}">${site.email}</a></li><li><a href="${site.agenda}" target="_blank" rel="noopener">cal.com/overtus</a></li></ul></div>
@@ -558,6 +559,184 @@ P.projetos = `<section class="cabeca cases-cab">
   </div>
 </section>
 ${cta()}`;
+
+// ---------- Orçamentos automatizados (página de oferta para empresas B2B) ----------
+// Estrutura de landing de oferta: abertura, público, demonstração em abas, funções, implantação,
+// como funciona, o que muda, segmentos, perguntas e chamada final. Sem depoimentos nem logos de clientes
+// (não temos casos desta oferta ainda); as conversas e propostas da demonstração são exemplos ilustrativos.
+const iRaio = SVG('<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>');
+const iRelogio = SVG('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>');
+const iSino = SVG('<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/>');
+const iClip = SVG('<path d="M20 11.5 12 19.5a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7L9.7 17.2a1.7 1.7 0 0 1-2.4-2.4L15 7"/>');
+const ORC = {
+  ramos: ['Usinagem e caldeiraria', 'Plásticos e embalagens', 'Máquinas e equipamentos', 'Distribuição e atacado', 'Materiais de construção', 'Fundição e forjados', 'Serviços técnicos', 'Engenharia e montagem'],
+  funcoes: [
+    ['Atendimento e triagem', 'Responde todo pedido na hora e entrega a demanda organizada.', ['Atende pelo WhatsApp oficial, pelo formulário do site e por e-mail, sem número pessoal de vendedor', 'Pergunta o que falta: quantidade, material, desenho, prazo e local de entrega', 'Separa o pedido simples do pedido que precisa do engenheiro ou do vendedor']],
+    ['Montagem da proposta', 'Calcula com a sua tabela e as suas regras, no modelo da sua empresa.', ['Usa a tabela de preços, os descontos por volume e as condições que a diretoria definiu', 'Gera a proposta em PDF com o logo, a validade e as condições de pagamento', 'Pedidos fora da regra vão para aprovação antes de sair']],
+    ['Acompanhamento até o fechamento', 'Nenhuma proposta fica esquecida na caixa de entrada do comprador.', ['Cobra o retorno nos dias combinados, com mensagem educada e no tom da empresa', 'Avisa o vendedor quando o comprador pede negociação ou visita', 'Relatório semanal: propostas enviadas, respondidas, ganhas e perdidas']],
+  ],
+  conecta: ['WhatsApp Business oficial', 'Formulário do site', 'E-mail comercial', 'Planilha de preços', 'ERP da empresa', 'CRM', 'Google Drive', 'Proposta em PDF'],
+  passos: [
+    ['Entendemos o seu orçamento', 'Mapeamos por onde chegam os pedidos, quem orça hoje, quanto tempo leva e onde a proposta trava. Recebemos a tabela de preços, as regras de desconto e o modelo de proposta atual.'],
+    ['Treinamos o agente', 'Conectamos os canais, cadastramos produtos, preços e regras e definimos os limites: o que ele resolve sozinho e o que passa para a sua equipe aprovar.'],
+    ['Ele entra na rotina comercial', 'O agente começa a atender e orçar junto com o seu time. As correções da equipe viram regra, sem reprogramação e sem projeto de meses.'],
+  ],
+  antes: [
+    ['Tempo de resposta', 'Horas ou dias, conforme a fila do orçamentista', 'Minutos, a qualquer hora do dia'],
+    ['Pedidos fora do horário', 'Esperam o próximo dia útil', 'Atendidos e encaminhados na hora'],
+    ['Padrão da proposta', 'Cada vendedor monta de um jeito', 'Um modelo único, com a marca da empresa'],
+    ['Propostas sem retorno', 'Ficam esquecidas', 'Cobradas automaticamente até a resposta'],
+    ['Tempo do vendedor', 'Digitando orçamento', 'Negociando e fechando'],
+  ],
+  segmentos: [
+    ['set-industria', 'Indústria sob encomenda', 'Peças por desenho, lotes e prazos de produção. O agente recebe o desenho, confirma material e quantidade e devolve a proposta ou passa para a engenharia.', ['Desenho técnico em anexo', 'Preço por lote', 'Prazo de produção']],
+    ['set-distribuicao', 'Distribuição e atacado', 'Catálogo extenso, tabela por cliente e frete por região. O agente monta o pedido item a item e aplica a condição de cada comprador.', ['Catálogo com milhares de itens', 'Tabela por cliente', 'Frete e prazo de entrega']],
+    ['proc-projeto', 'Serviços técnicos e engenharia', 'Escopo variável, visita técnica e proposta detalhada. O agente qualifica a demanda, agenda a visita e prepara a proposta-base para o responsável.', ['Qualificação do escopo', 'Agenda de visita técnica', 'Proposta-base para revisão']],
+  ],
+  perguntas: [
+    ['O agente pode passar um preço errado?', 'Ele só calcula com a tabela e as regras que a sua empresa aprovou. Pedido fora da regra, desconto acima do limite ou item sem preço cadastrado vai para aprovação de uma pessoa antes de ser enviado.'],
+    ['Preciso trocar o sistema que já uso?', 'Não. O agente trabalha com o que a empresa já tem: planilha, ERP, CRM ou e-mail. Na primeira conversa avaliamos as integrações possíveis com o seu sistema.'],
+    ['O cliente percebe que está falando com uma IA?', 'O agente se apresenta em nome da empresa, com linguagem formal e as informações corretas. Quando o comprador pede para falar com uma pessoa, a conversa passa para o vendedor na hora.'],
+    ['Quanto tempo leva para começar?', 'A implantação é medida em dias, não em meses. O prazo exato depende do tamanho do catálogo e das integrações, e é definido na primeira conversa.'],
+  ],
+};
+const bolha = (quem, txt, hora) => `<div class="orc-msg orc-${quem}"><p>${txt}</p><small>${hora}</small></div>`;
+const demoChat = () => `<div class="orc-tel" aria-label="Exemplo ilustrativo de conversa de orçamento pelo WhatsApp">
+  <div class="orc-tel-topo"><span class="orc-av">${marcaSimbolo}</span><div><b>Comercial · Sua empresa</b><small>online agora</small></div></div>
+  <div class="orc-tel-corpo">
+    ${bolha('cli', 'Bom dia. Preciso de orçamento para 2.000 buchas em aço 1045, conforme o desenho.', '08:12')}
+    <div class="orc-msg orc-cli orc-arq"><span class="doc">${iDoc}</span><p><b>bucha-rev03.pdf</b><small>Desenho técnico · 214 KB</small></p></div>
+    ${bolha('ag', 'Bom dia, Carlos. Recebi o desenho, obrigado. Para fechar o valor: qual o prazo desejado e o local de entrega?', '08:12')}
+    ${bolha('cli', 'Entrega em Caxias do Sul, em até 20 dias.', '08:14')}
+    ${bolha('ag', 'Perfeito. Sua proposta segue em instantes, com valor, prazo e condições de pagamento.', '08:14')}
+  </div>
+  <div class="orc-tags">${chipOk('Desenho recebido')}${chipOk('2.000 peças')}${chipOk('Entrega em 20 dias')}<span class="chip">Comercial avisado</span></div>
+</div>`;
+const demoProposta = () => `<div class="orc-prop" aria-label="Exemplo ilustrativo de proposta comercial gerada automaticamente">
+  <div class="orc-prop-cab"><div><span class="rotulo">Proposta comercial</span><b>Nº 1027 · Metalúrgica Exemplo</b></div><span class="chip chip-ok">${SVG('<path d="M5 12l5 5 9-10"/>', ' stroke-width="2.4"')}Enviada 08:16</span></div>
+  <table>
+    <thead><tr><th>Item</th><th>Qtd.</th><th>Unitário</th><th>Total</th></tr></thead>
+    <tbody>
+      <tr><td>Bucha usinada, aço 1045, conforme desenho rev. 03</td><td>2.000</td><td>R$ 8,40</td><td>R$ 16.800,00</td></tr>
+      <tr><td>Tratamento superficial, oxidação negra</td><td>2.000</td><td>R$ 0,95</td><td>R$ 1.900,00</td></tr>
+      <tr><td>Frete até Caxias do Sul (RS)</td><td>1</td><td>R$ 420,00</td><td>R$ 420,00</td></tr>
+    </tbody>
+  </table>
+  <div class="orc-prop-pe"><div><small>Prazo</small><b>18 dias úteis</b></div><div><small>Pagamento</small><b>28/56 dias</b></div><div><small>Validade</small><b>10 dias</b></div><div class="orc-total"><small>Total</small><b>R$ 19.120,00</b></div></div>
+  <div class="orc-segue"><span class="ico-caixa">${iSino}</span><p><b>Acompanhamento programado</b>Sem resposta em 2 dias úteis, o agente retoma o contato com o comprador.</p></div>
+</div>`;
+
+P.orcamentos = `<section class="orc-hero">
+  <div class="in">
+    <div class="orc-hero-painel">
+      <div class="orc-hero-txt">
+        <a class="orc-selo" href="#na-pratica"><b>Novo</b>Orçamentos automatizados para empresas B2B${seta}</a>
+        <h1>Seu cliente pede orçamento. <span>A proposta sai em minutos.</span></h1>
+        <p class="lead">Um agente de inteligência artificial treinado com os seus produtos, preços e regras atende o pedido pelo WhatsApp, pelo site ou por e-mail, monta a proposta no padrão da sua empresa e acompanha o comprador até a resposta.</p>
+        <div class="acoes">${agendar('Agendar conversa', 'btn btn-claro')}<a class="btn btn-contorno" href="#na-pratica">Ver na prática</a></div>
+        <ul class="orc-hero-fatos"><li>${iRelogio}Atendimento 24 horas</li><li>${iDoc}Proposta no seu modelo</li><li>${iSino}Cobrança de retorno automática</li></ul>
+      </div>
+      <div class="orc-hero-vis">
+        <div class="orc-hero-foto">${img('proc-fabrica', 'Linha de produção de uma indústria', 'loading="eager" fetchpriority="high"')}</div>
+        <div class="orc-flut orc-flut-a"><span class="ico-caixa">${iChat}</span><p><b>Novo pedido · 08:12</b>2.000 buchas em aço 1045, com desenho</p></div>
+        <div class="orc-flut orc-flut-b"><span class="ico-caixa">${iDoc}</span><p><b>Proposta nº 1027 enviada</b>R$ 19.120,00 · 4 minutos depois</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="orc-ramos">
+  <div class="in">
+    <p>Feito para empresas que vendem sob encomenda e vivem de orçamento. Da mesma equipe que já entregou <a href="${L('projetos')}">${cases.length} sites de empresas B2B</a>.</p>
+    <div class="orc-faixa" aria-hidden="true"><div>${[...ORC.ramos, ...ORC.ramos].map(r => `<span>${r}</span>`).join('')}</div></div>
+  </div>
+</section>
+
+<section class="secao" id="na-pratica">
+  <div class="in">
+    <div class="sec-centro"><span class="rotulo">Na prática</span><h2>Não é mais um sistema para alimentar. É o orçamento com um responsável.</h2></div>
+    <div class="painel orc-demo">
+      <div class="abas" role="tablist" aria-label="Demonstração" data-abas>
+        <button type="button" role="tab" id="aba-atender" aria-controls="demo-atender" aria-selected="true"><b>01</b> · Atender</button>
+        <button type="button" role="tab" id="aba-orcar" aria-controls="demo-orcar" aria-selected="false"><b>02</b> · Orçar</button>
+      </div>
+      <div class="orc-demo-corpo" id="demo-atender" role="tabpanel" aria-labelledby="aba-atender">
+        <div class="orc-demo-txt"><span class="rotulo">Atendimento</span><h3>Responde em segundos, a qualquer hora.</h3><p>O pedido chega às oito da manhã ou às onze da noite e recebe a mesma atenção. O agente confirma o que o comprador precisa e pergunta só o que falta para calcular.</p>
+          <ul class="check">${['Recebe desenho, foto, lista de itens ou áudio', 'Confirma quantidade, material, prazo e entrega', 'Avisa o vendedor certo, pelo rodízio da equipe'].map(x => `<li>${check}${x}</li>`).join('')}</ul></div>
+        ${demoChat()}
+      </div>
+      <div class="orc-demo-corpo" id="demo-orcar" role="tabpanel" aria-labelledby="aba-orcar" hidden>
+        <div class="orc-demo-txt"><span class="rotulo">Orçamento</span><h3>Monta a proposta e envia, no padrão da empresa.</h3><p>O cálculo segue a tabela e as regras que a diretoria aprovou. A proposta sai em PDF com a sua marca, e o agente cobra o retorno sozinho até a resposta do comprador.</p>
+          <ul class="check">${['Preço, desconto por volume e frete calculados', 'Validade e condições de pagamento da empresa', 'Fora da regra, vai para aprovação antes de sair'].map(x => `<li>${check}${x}</li>`).join('')}</ul></div>
+        ${demoProposta()}
+      </div>
+      <p class="nota orc-ilustra">Conversa e proposta ilustrativas. No projeto, o agente usa os produtos, os preços e o modelo de proposta da sua empresa.</p>
+    </div>
+  </div>
+</section>
+
+<section class="secao orc-funcoes">
+  <div class="in">
+    <div class="sec-cab"><div><span class="rotulo">O agente</span><h2>Um agente, três frentes do orçamento.</h2></div><p class="lead">Ele assume o trabalho repetitivo do orçamento. A sua equipe fica com a negociação, a engenharia e o relacionamento.</p></div>
+    <ol class="orc-func">${ORC.funcoes.map(([t, d, itens], i) => `<li><span class="orc-num">${num(i)}</span><div><h3>${t}</h3><p>${d}</p></div><ul class="check">${itens.map(x => `<li>${check}${x}</li>`).join('')}</ul></li>`).join('')}</ol>
+    <div class="orc-conecta"><span class="rotulo">Conecta com o que a empresa já usa</span><div class="chips">${ORC.conecta.map(c => `<span class="chip">${c}</span>`).join('')}</div></div>
+  </div>
+</section>
+
+<section class="orc-prazo">
+  <div class="in">
+    <div class="orc-prazo-painel">
+      <span class="rotulo">Implantação</span>
+      <p class="orc-prazo-grande">Do primeiro contato ao primeiro orçamento automático: <span>dias, não meses.</span></p>
+      <div class="orc-prazo-linha">${['Conversa de 30 minutos', 'Tabela, regras e modelo de proposta', 'Agente treinado e testado pela sua equipe', 'Atendendo os seus compradores'].map((t, i) => `<div><b>${num(i)}</b><span>${t}</span></div>`).join('')}</div>
+    </div>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="in">
+    <div class="sec-centro"><span class="rotulo">Como funciona</span><h2>Três etapas, acompanhadas pela Overtus.</h2></div>
+    <ol class="orc-passos">${ORC.passos.map(([t, d], i) => `<li><span class="orc-num">${num(i)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+  </div>
+</section>
+
+<section class="secao orc-muda">
+  <div class="in">
+    <div class="sec-cab"><div><span class="rotulo">Resultado</span><h2>O que muda depois do primeiro mês.</h2></div><p class="lead">O mesmo time comercial, com o orçamento saindo no tempo em que o comprador ainda está decidindo.</p></div>
+    <div class="orc-tabela" role="table" aria-label="Antes e depois do orçamento automatizado">
+      <div class="orc-tl orc-tl-cab" role="row"><span role="columnheader"></span><span role="columnheader">Hoje</span><span role="columnheader">Com o agente</span></div>
+      ${ORC.antes.map(([a, b, c]) => `<div class="orc-tl" role="row"><b role="rowheader">${a}</b><span role="cell">${b}</span><span role="cell">${check}${c}</span></div>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="secao secao-topo">
+  <div class="in">
+    <div class="sec-centro"><span class="rotulo">Segmentos</span><h2>Cada empresa trava o orçamento em um ponto diferente.</h2></div>
+    <div class="orc-segs">${ORC.segmentos.map(([f, t, d, tags]) => `<article class="orc-seg">${img(f, '')}<div><h3>${t}</h3><p>${d}</p><div class="chips">${tags.map(x => `<span class="chip">${x}</span>`).join('')}</div></div></article>`).join('')}</div>
+  </div>
+</section>
+
+<section class="secao secao-topo">
+  <div class="in orc-faq-in">
+    <div><span class="rotulo">Perguntas</span><h2>O que as empresas perguntam antes de começar.</h2><p class="lead">Outra dúvida? Escreva para <a href="mailto:${site.email}">${site.email}</a>.</p></div>
+    <div class="faq">${ORC.perguntas.map(([q, r]) => `<details><summary>${q}</summary><p>${r}</p></details>`).join('')}</div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="in">
+    <div class="painel painel-azul">
+      <div><span class="rotulo">Vamos conversar</span><h2>Qual etapa do seu orçamento está travando as vendas?</h2><p>Em 30 minutos entendemos como a sua empresa orça hoje e mostramos como o agente funcionaria com os seus produtos.</p>
+      <div class="acoes">${agendar()}<a class="btn btn-sec" href="mailto:${site.email}">Enviar e-mail</a></div></div>
+      <div class="cta-lado cartao aba-cartao">
+        <h4>Agendar conversa</h4>
+        <div class="campo"><span>Agenda</span><div>${iCal}cal.com/overtus · 30 minutos, por vídeo</div></div>
+        <div class="campo"><span>E-mail</span><div>${iMail}<a href="mailto:${site.email}">${site.email}</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>`;
 
 // ---------- Escreve as páginas na raiz de public/ ----------
 for (const d of fs.readdirSync(pub, { withFileTypes: true })) {

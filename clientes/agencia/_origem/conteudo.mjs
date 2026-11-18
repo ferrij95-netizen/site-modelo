@@ -345,6 +345,7 @@ export const chamada = {
 
 // Título e descrição de cada página (SEO).
 export const paginas = {
+  orcamentos: ['Orçamentos automatizados para empresas B2B · Overtus', 'Um agente de inteligência artificial atende o pedido, monta a proposta no padrão da sua empresa e acompanha o comprador até a resposta. Orçamento em minutos, a qualquer hora.'],
   index: ['Overtus · Sites, sistemas e estrutura comercial', 'Agência especializada em sites sob medida, marketing, sistemas e estrutura comercial. Você vê o site pronto, em duas versões, antes de falar de preço.'],
   servicos: ['Serviços · Overtus', 'Sites sob medida, reformulação, SEO, anúncios no Google, geração de leads, agente de IA, catálogo e cotação, CRM e prospecção.'],
   'servicos/sites': ['Sites sob medida · Overtus', 'Criação e reformulação de sites institucionais multipágina, em mais de um idioma, com hospedagem e atualização.'],
