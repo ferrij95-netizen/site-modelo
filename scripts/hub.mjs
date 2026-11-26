@@ -35,7 +35,9 @@ const NOME_VERSAO = { a: 'Versão A', b: 'Versão B', c: 'Versão C', classica: 
 const nomeVersao = v => NOME_VERSAO[v] || v[0].toUpperCase() + v.slice(1);
 
 const dir = path.join(repo, 'clientes');
-const slugs = clientesPublicados().sort();
+// "hub": false no site.config.json tira o cliente do hub (prévias de prospecção), para caber no limite de arquivos.
+const naoNoHub = (s) => { try { return JSON.parse(fs.readFileSync(path.join(dir, s, 'site.config.json'), 'utf8')).hub === false; } catch { return false; } };
+const slugs = clientesPublicados().filter((s) => !naoNoHub(s)).sort();
 
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(path.join(out, 'capas'), { recursive: true });
