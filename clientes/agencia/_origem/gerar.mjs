@@ -79,6 +79,8 @@ const iLink = SVG('<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1.5 1.
 const iGlobo = SVG('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>');
 const iChat = SVG('<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H9l-5 4z"/><path d="M8 9h8M8 13h5"/>');
 
+const iWhats = `<svg viewBox="0 0 32 32" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M16.04 3C8.86 3 3.02 8.83 3.02 16c0 2.29.6 4.53 1.74 6.5L3 29l6.68-1.75A13 13 0 0 0 16.04 29C23.2 29 29.04 23.17 29.04 16S23.2 3 16.04 3zm0 23.8c-1.95 0-3.86-.52-5.53-1.51l-.4-.24-3.96 1.04 1.06-3.86-.26-.4A10.77 10.77 0 0 1 5.26 16c0-5.95 4.84-10.8 10.78-10.8S26.8 10.05 26.8 16s-4.83 10.8-10.76 10.8zm5.91-8.08c-.32-.16-1.92-.95-2.22-1.06-.3-.11-.51-.16-.73.16-.21.32-.84 1.06-1.02 1.27-.19.21-.38.24-.7.08-.32-.16-1.37-.5-2.6-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.5.14-.66.15-.14.32-.38.48-.56.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.56-.08-.16-.73-1.75-1-2.4-.26-.63-.53-.54-.73-.55h-.62c-.21 0-.56.08-.86.4-.3.32-1.13 1.1-1.13 2.69 0 1.58 1.16 3.12 1.32 3.33.16.21 2.28 3.48 5.52 4.88.77.33 1.37.53 1.84.68.77.25 1.48.21 2.03.13.62-.09 1.92-.78 2.19-1.54.27-.76.27-1.41.19-1.54-.08-.14-.29-.22-.61-.38z"/></svg>`;
+
 // Moldura de navegador com o print de um projeto.
 const tela = (nome, alt, endereco = '', attrs = '') => `<figure class="tela"><div class="tela-barra"><i></i><i></i><i></i>${endereco ? `<span>${esc(endereco)}</span>` : ''}</div>${img(nome, alt, attrs)}</figure>`;
 
@@ -124,6 +126,7 @@ function documento({ slug, corpo }) {
 <div class="folha">
 ${corpo}
 </div>
+<a class="whats-flut" href="${site.whatsappLink}" target="_blank" rel="noopener" aria-label="Falar com a Overtus pelo WhatsApp">${iWhats.replace(/width="18" height="18"/, 'width="30" height="30"')}</a>
 <script src="/assets/site.js" defer></script>
 </body>
 </html>
@@ -148,7 +151,7 @@ const rodape = () => `<footer class="rodape">
     <div><h3>Serviços</h3><ul>${grupos.map(g => `<li><a href="${L('servicos/' + g.slug)}">${g.nome}</a></li>`).join('')}<li><a href="${L('orcamentos')}">Orçamentos automatizados</a></li></ul></div>
     <div><h3>Setores</h3><ul>${setores.map(s => `<li><a href="${L('setores/' + s.slug)}">${s.nome}</a></li>`).join('')}</ul></div>
     <div><h3>Overtus</h3><ul>${menu.filter(([s]) => !['servicos', 'setores'].includes(s)).map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
-    <div><h3>Conversar</h3><ul><li><a href="${site.agenda}" data-agendar>Agendar conversa</a></li><li><a href="mailto:${site.email}">${site.email}</a></li><li><a href="${site.agenda}" target="_blank" rel="noopener">cal.com/overtus</a></li></ul></div>
+    <div><h3>Conversar</h3><ul><li><a href="${site.agenda}" data-agendar>Agendar conversa</a></li><li><a href="${site.whatsappLink}" target="_blank" rel="noopener">WhatsApp ${site.whatsapp}</a></li><li><a href="mailto:${site.email}">${site.email}</a></li><li><a href="${site.agenda}" target="_blank" rel="noopener">cal.com/overtus</a></li></ul></div>
   </div>
   <div class="in r-base"><span>© ${new Date().getFullYear()} Overtus</span><span>Sites, sistemas e estrutura comercial</span></div>
 </footer>`;
@@ -172,6 +175,7 @@ const cta = () => `<section class="cta">
         <h4>Agendar conversa</h4>
         <div class="campo"><span>Agenda</span><div>${iCal}cal.com/overtus · 30 minutos, por vídeo</div></div>
         <div class="campo"><span>E-mail</span><div>${iMail}<a href="mailto:${site.email}">${site.email}</a></div></div>
+        <div class="campo"><span>WhatsApp</span><div>${iWhats}<a href="${site.whatsappLink}" target="_blank" rel="noopener">${site.whatsapp}</a></div></div>
       </div>
     </div>
   </div>
@@ -514,6 +518,7 @@ P.contato = `${cabeca('Agende uma conversa.', chamada.texto, [[null, 'Contato']]
       <div class="campos-2">
         <div class="campo"><span>Agenda</span><div>${iCal}<a href="${site.agenda}" target="_blank" rel="noopener">cal.com/overtus</a></div></div>
         <div class="campo"><span>E-mail</span><div>${iMail}<a href="mailto:${site.email}">${site.email}</a></div></div>
+        <div class="campo"><span>WhatsApp</span><div>${iWhats}<a href="${site.whatsappLink}" target="_blank" rel="noopener">${site.whatsapp}</a></div></div>
       </div>
       <div class="campo"><span>Horários disponíveis</span><div class="agenda" id="agenda" data-agenda-inline style="padding:0"><p>Carregando a agenda… Se ela não abrir, <a href="${site.agenda}" target="_blank" rel="noopener">agende pelo cal.com/overtus</a>.</p></div></div>
       <div class="campo"><span>Na conversa</span>
@@ -733,6 +738,7 @@ P.orcamentos = `<section class="orc-hero">
         <h4>Agendar conversa</h4>
         <div class="campo"><span>Agenda</span><div>${iCal}cal.com/overtus · 30 minutos, por vídeo</div></div>
         <div class="campo"><span>E-mail</span><div>${iMail}<a href="mailto:${site.email}">${site.email}</a></div></div>
+        <div class="campo"><span>WhatsApp</span><div>${iWhats}<a href="${site.whatsappLink}" target="_blank" rel="noopener">${site.whatsapp}</a></div></div>
       </div>
     </div>
   </div>

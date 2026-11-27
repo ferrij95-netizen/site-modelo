@@ -7,6 +7,8 @@ export const site = {
   agenda: 'https://cal.com/overtus',
   calLink: 'overtus',
   email: 'joaovitor@overtus.com.br',
+  whatsapp: '+55 11 5304-7464',
+  whatsappLink: 'https://wa.me/551153047464?text=' + encodeURIComponent('Olá! Vim pelo site e gostaria de mais informações.'),
   slogan: 'Estrutura comercial para quem vende de verdade.',
   linha2: 'Sites sob medida, sistemas e a rotina comercial que transformam visita em contato e contato em venda.',
 };
