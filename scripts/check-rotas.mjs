@@ -10,7 +10,8 @@ const LIMITE_CUSTOM_DOMAINS = 89;
 
 const wrangler = fs.readFileSync(path.join(repo, 'wrangler.jsonc'), 'utf8');
 const rotas = new Set([...wrangler.matchAll(/"pattern"\s*:\s*"([^"]+)"/g)].map(m => m[1].replace(/\/\*$/, '')));
-const customDomains = [...wrangler.matchAll(/"custom_domain"\s*:\s*true/g)].length;
+// Só contam os custom domains da zona overtus.com.br; domínios próprios de clientes ficam em outras zonas.
+const customDomains = [...wrangler.matchAll(/"pattern"\s*:\s*"[^"]*overtus\.com\.br"\s*,\s*"custom_domain"\s*:\s*true/g)].length;
 const clientes = clientesPublicados();
 const faltando = clientes.filter(c => !rotas.has(`${c}.overtus.com.br`));
 

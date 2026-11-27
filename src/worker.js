@@ -8,6 +8,7 @@ import { lembretes } from './lembretes.js';
 import { posvenda } from './posvenda.js';
 import { email } from './email.js';
 import { api, chaveEnviada, chaveValida, motivoRecusa, publicoApi } from './api.js';
+import { DOMINIOS } from './dominios.js';
 
 const PREFIX = '/_clientes/';
 // hub.overtus.com.br (dist/_hub/), com tela de login em /entrar/: na raiz o canvas de prospecção, em /sites/ a lista de clientes.
@@ -92,7 +93,11 @@ export default {
     if (host === 'overtus.com.br') return Response.redirect(`https://www.overtus.com.br${url.pathname}${url.search}`, 301);
     if (host === 'www.overtus.com.br') return servir(env, 'agencia', url, request);
 
-    const cliente = overtus && sub !== 'site-modelo' ? sub : null;
+    // Domínio próprio do cliente (src/dominios.js): www vai para o endereço sem www.
+    const semWww = host.replace(/^www\./, '');
+    if (DOMINIOS[semWww] && host !== semWww) return Response.redirect(`https://${semWww}${url.pathname}${url.search}`, 301);
+
+    const cliente = DOMINIOS[host] || (overtus && sub !== 'site-modelo' ? sub : null);
 
     if (!cliente) {
       if (url.pathname.startsWith(PREFIX) || url.pathname.startsWith('/_hub/')) return new Response('Not found', { status: 404 });
