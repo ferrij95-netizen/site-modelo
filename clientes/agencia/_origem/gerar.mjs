@@ -761,9 +761,9 @@ P.orcamentos = `<section class="orc-hero">
 
 // ---------- Consultoria em IA (página de serviço pensada para busca: "consultoria em IA", "consultoria em inteligência artificial") ----------
 // Fotos (Unsplash License, uso livre): consultoria-ia-workshop-diagnostico https://unsplash.com/photos/1552664730-d307ca884978
-//   consultoria-ia-painel-de-dados https://unsplash.com/photos/1551288049-bebda4e38f71
+//   consultoria-ia-assistente-inteligencia-artificial https://unsplash.com/photos/1531746790731-6c087fecd65a
 //   consultoria-ia-infraestrutura-de-dados https://unsplash.com/photos/1573164713988-8665fc963095
-//   consultoria-ia-equipe-industria https://unsplash.com/photos/1581092160607-ee22621dd758
+//   consultoria-ia-chip-inteligencia-artificial https://unsplash.com/photos/1697577418970-95d99b5a55cf
 // Sem números de resultado, clientes ou preços: só o que a Overtus faz e como faz.
 const iEscudo = SVG('<path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>');
 const iGrafico = SVG('<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>');
@@ -811,7 +811,7 @@ const IA = {
 };
 const urlIA = `${site.dominio}/consultoria-ia/`;
 SCHEMA['consultoria-ia'] = [
-  { '@type': 'Service', '@id': urlIA + '#servico', name: 'Consultoria em inteligência artificial para empresas', alternateName: ['Consultoria em IA', 'Consultoria de IA para empresas'], serviceType: 'Consultoria em inteligência artificial', description: 'Diagnóstico, plano de IA, piloto, implantação e treinamento para empresas B2B usarem inteligência artificial em atendimento, vendas, documentos, dados e processos internos, com segurança e LGPD.', provider: { '@id': `${site.dominio}/#organizacao` }, areaServed: { '@type': 'Country', name: 'Brasil' }, availableLanguage: 'pt-BR', url: urlIA, image: `${site.dominio}/assets/img/consultoria-ia-workshop-diagnostico.webp`,
+  { '@type': 'Service', '@id': urlIA + '#servico', name: 'Consultoria em inteligência artificial para empresas', alternateName: ['Consultoria em IA', 'Consultoria de IA para empresas'], serviceType: 'Consultoria em inteligência artificial', description: 'Diagnóstico, plano de IA, piloto, implantação e treinamento para empresas B2B usarem inteligência artificial em atendimento, vendas, documentos, dados e processos internos, com segurança e LGPD.', provider: { '@id': `${site.dominio}/#organizacao` }, areaServed: { '@type': 'Country', name: 'Brasil' }, availableLanguage: 'pt-BR', url: urlIA, image: `${site.dominio}/assets/img/consultoria-ia-assistente-inteligencia-artificial.webp`,
     hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Etapas da consultoria em IA', itemListElement: IA.metodo.map(([t, d]) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: t, description: d } })) } },
   { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Início', item: `${site.dominio}/` }, { '@type': 'ListItem', position: 2, name: 'Consultoria em IA', item: urlIA }] },
   { '@type': 'FAQPage', mainEntity: IA.perguntas.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
@@ -827,12 +827,12 @@ P['consultoria-ia'] = `<section class="hero ia-hero">
       <div class="acoes">${agendar('Agendar diagnóstico')}<a class="btn btn-sec" href="#como-funciona">Como funciona</a></div>
       <ul class="ia-fatos"><li>${iAlvo}Do diagnóstico à implantação</li><li>${iEscudo}LGPD e dados protegidos</li><li>${iGlobo}Atendimento em todo o Brasil</li></ul>
     </div>
-    <div class="folhas" aria-label="Fotos de workshop de diagnóstico, painel de dados, infraestrutura e equipe industrial">
-      <div class="fo-1">${FOTO_IA('consultoria-ia-workshop-diagnostico', 'Workshop de diagnóstico de consultoria em IA com equipe e post-its no quadro', 'loading="eager" fetchpriority="high"')}</div>
-      <div class="fo-2">${FOTO_IA('consultoria-ia-painel-de-dados', 'Painel de dados e indicadores em um notebook, usado na análise com inteligência artificial', 'loading="eager"')}</div>
-      <div class="fo-3">${FOTO_IA('consultoria-ia-infraestrutura-de-dados', 'Profissionais em sala de servidores avaliando a infraestrutura de dados para IA', 'loading="eager"')}</div>
-      <div class="fo-4">${FOTO_IA('consultoria-ia-equipe-industria', 'Equipe técnica em uma indústria, onde a IA apoia processos e atendimento', 'loading="eager"')}</div>
-      <div class="fo-semente"></div>
+    <div class="circulos" aria-label="Fotos de inteligência artificial e de um workshop de consultoria">
+      <div class="ci-anel"></div><div class="ci-disco"></div>
+      <div class="ci-1">${img('consultoria-ia-assistente-inteligencia-artificial', 'Mão de robô estendida, representando um assistente de inteligência artificial para empresas', 'width="900" height="900" loading="eager" fetchpriority="high"')}</div>
+      <div class="ci-2">${FOTO_IA('consultoria-ia-workshop-diagnostico', 'Workshop de diagnóstico de consultoria em IA com equipe e post-its no quadro', 'loading="eager"')}</div>
+      <div class="ci-3">${img('consultoria-ia-chip-inteligencia-artificial', 'Chip com a sigla AI em uma placa de circuito, símbolo da inteligência artificial', 'width="360" height="360" loading="eager"')}</div>
+      <div class="ci-selo"><span class="ico-caixa">${iAlvo}</span><span><b>Do diagnóstico</b>à IA na rotina da empresa</span></div>
     </div>
   </div>
 </section>
@@ -952,7 +952,7 @@ fs.writeFileSync(path.join(pub, 'cases', 'index.html'), '<!doctype html><meta ch
 // Sitemap e robots.txt de www.overtus.com.br (o worker serve esta pasta na raiz do domínio).
 const hoje = new Date().toISOString().slice(0, 10);
 const prioridade = slug => slug === 'index' ? '1.0' : ['consultoria-ia', 'orcamentos', 'servicos'].includes(slug) ? '0.9' : '0.7';
-const imagensSitemap = { 'consultoria-ia': [['consultoria-ia-workshop-diagnostico', 'Workshop de diagnóstico de consultoria em IA'], ['consultoria-ia-painel-de-dados', 'Painel de dados analisado com inteligência artificial'], ['consultoria-ia-infraestrutura-de-dados', 'Infraestrutura de dados para IA'], ['consultoria-ia-equipe-industria', 'Equipe técnica em indústria usando IA']] };
+const imagensSitemap = { 'consultoria-ia': [['consultoria-ia-assistente-inteligencia-artificial', 'Assistente de inteligência artificial para empresas'], ['consultoria-ia-workshop-diagnostico', 'Workshop de diagnóstico de consultoria em IA'], ['consultoria-ia-chip-inteligencia-artificial', 'Chip de inteligência artificial'], ['consultoria-ia-infraestrutura-de-dados', 'Infraestrutura de dados para IA']] };
 fs.writeFileSync(path.join(pub, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${Object.keys(P).map(slug => `  <url><loc>${site.dominio}${L(slug)}</loc><lastmod>${hoje}</lastmod><priority>${prioridade(slug)}</priority>${(imagensSitemap[slug] || []).map(([n, t]) => `<image:image><image:loc>${site.dominio}/assets/img/${n}.webp</image:loc><image:title>${esc(t)}</image:title></image:image>`).join('')}</url>`).join('\n')}
