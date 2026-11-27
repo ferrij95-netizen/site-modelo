@@ -162,6 +162,9 @@
     { "pattern": "gauss.overtus.com.br/*", "zone_name": "overtus.com.br" },
     { "pattern": "lucaslog.overtus.com.br/*", "zone_name": "overtus.com.br" },
     { "pattern": "rremotorsport.overtus.com.br/*", "zone_name": "overtus.com.br" },
+    // Domínio próprio da RRE Motorsport (site vendido; zona rremotorsport.com.br na mesma conta). Ver docs/dominio-proprio.md.
+    { "pattern": "rremotorsport.com.br", "custom_domain": true },
+    { "pattern": "www.rremotorsport.com.br", "custom_domain": true },
     { "pattern": "syemiguel.overtus.com.br/*", "zone_name": "overtus.com.br" },
     { "pattern": "effisa.overtus.com.br/*", "zone_name": "overtus.com.br" },
     { "pattern": "takei.overtus.com.br/*", "zone_name": "overtus.com.br" },
