@@ -91,6 +91,13 @@ const marca = `<img src="/assets/img/logo-overtus.webp" alt="Overtus" width="800
 const agendar = (txt = 'Agendar conversa', cls = 'btn btn-prim') => `<a class="${cls}" href="${site.agenda}" data-agendar>${txt}</a>`;
 const chipOk = txt => `<span class="chip chip-ok">${SVG('<path d="M5 12l5 5 9-10"/>', ' stroke-width="2.4"')}${txt}</span>`;
 
+const jsonLd = (slug, titulo, desc, url) => ({ '@context': 'https://schema.org', '@graph': [
+  { '@type': 'Organization', '@id': `${site.dominio}/#organizacao`, name: site.nome, url: `${site.dominio}/`, logo: `${site.dominio}/assets/img/logo-overtus.webp`, email: site.email, telephone: site.whatsapp.replace(/[^+\d]/g, ''), slogan: site.slogan, areaServed: 'BR', contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: site.whatsapp.replace(/[^+\d]/g, ''), email: site.email, availableLanguage: 'Portuguese' } },
+  { '@type': 'WebSite', '@id': `${site.dominio}/#site`, url: `${site.dominio}/`, name: site.nome, inLanguage: 'pt-BR', publisher: { '@id': `${site.dominio}/#organizacao` } },
+  { '@type': 'WebPage', '@id': url + '#pagina', url, name: titulo, description: desc, inLanguage: 'pt-BR', isPartOf: { '@id': `${site.dominio}/#site` }, about: { '@id': SCHEMA[slug] ? url + '#servico' : `${site.dominio}/#organizacao` } },
+  ...(SCHEMA[slug] || []),
+] });
+
 function documento({ slug, corpo }) {
   const [titulo, desc] = paginas[slug];
   const url = `${site.dominio}${L(slug)}`;
@@ -102,7 +109,7 @@ function documento({ slug, corpo }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(desc)}">
-<meta name="robots" content="noindex">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="${url}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Overtus">
@@ -123,6 +130,7 @@ function documento({ slug, corpo }) {
 <link rel="apple-touch-icon" href="/assets/img/icone-apple-180.png">
 <link rel="preload" href="/assets/fontes/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/base.css">
+<script type="application/ld+json">${JSON.stringify(jsonLd(slug, titulo, desc, url))}</script>
 </head>
 <body class="p-${slug.split('/')[0]}" data-cal="${site.calLink}">
 <div class="folha">
@@ -150,9 +158,9 @@ const topo = slug => `<header class="topo">
 const rodape = () => `<footer class="rodape">
   <div class="in">
     <div class="r-marca"><a class="marca" href="${L('index')}">${marca}</a><p>${site.slogan}</p><p>${site.linha2}</p></div>
-    <div><h3>Serviços</h3><ul>${grupos.map(g => `<li><a href="${L('servicos/' + g.slug)}">${g.nome}</a></li>`).join('')}<li><a href="${L('orcamentos')}">Orçamentos automatizados</a></li></ul></div>
+    <div><h3>Serviços</h3><ul>${grupos.map(g => `<li><a href="${L('servicos/' + g.slug)}">${g.nome}</a></li>`).join('')}<li><a href="${L('consultoria-ia')}">Consultoria em IA</a></li><li><a href="${L('orcamentos')}">Orçamentos automatizados</a></li></ul></div>
     <div><h3>Setores</h3><ul>${setores.map(s => `<li><a href="${L('setores/' + s.slug)}">${s.nome}</a></li>`).join('')}</ul></div>
-    <div><h3>Overtus</h3><ul>${menu.filter(([s]) => !['servicos', 'setores'].includes(s)).map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
+    <div><h3>Overtus</h3><ul>${menu.filter(([s]) => !['servicos', 'setores', 'consultoria-ia'].includes(s)).map(([s, t]) => `<li><a href="${L(s)}">${t}</a></li>`).join('')}</ul></div>
     <div><h3>Conversar</h3><ul><li><a href="${site.agenda}" data-agendar>Agendar conversa</a></li><li><a href="${site.whatsappLink}" target="_blank" rel="noopener">WhatsApp ${site.whatsapp}</a></li><li><a href="mailto:${site.email}">${site.email}</a></li><li><a href="${site.agenda}" target="_blank" rel="noopener">cal.com/overtus</a></li></ul></div>
   </div>
   <div class="in r-base"><span>© ${new Date().getFullYear()} Overtus</span><span>Sites, sistemas e estrutura comercial</span></div>
@@ -228,6 +236,8 @@ const listaPrincipios = () => `<div class="princ">${principios.map(([t, d], i) =
 const outrosServicos = (lista, cls = '') => `<div class="outros${cls}">${lista.map(o => `<a class="outro" href="${L('servicos/' + o.slug)}"><span class="ico-caixa">${icone(o.slug)}</span><span><b>${o.nome}</b>${o.resumo}</span>${seta}</a>`).join('')}</div>`;
 
 const P = {};
+// Dados estruturados (JSON-LD) extras por página; Organization e WebSite vão em todas.
+const SCHEMA = {};
 
 // ---------- Início ----------
 P.index = `<section class="hero">
@@ -261,6 +271,15 @@ P.index = `<section class="hero">
       <ul>${g.itens.slice(0, 4).map(([t]) => `<li>${check}${t}</li>`).join('')}</ul>
       <span class="link">Conhecer ${seta}</span>
     </a>`).join('')}</div>
+  </div>
+</section>
+<section class="ia-chamada">
+  <div class="in">
+    <a class="ia-faixa" href="${L('consultoria-ia')}">
+      <span class="ia-faixa-selo">Consultoria em IA</span>
+      <span class="ia-faixa-txt"><b>Inteligência artificial com resultado na sua empresa.</b>Diagnóstico, plano, piloto e implantação no atendimento, nas vendas e nos processos internos.</span>
+      <span class="link">Conhecer a consultoria ${seta}</span>
+    </a>
   </div>
 </section>
 <section class="secao" style="padding-top:0">
@@ -648,7 +667,7 @@ P.orcamentos = `<section class="orc-hero">
 
 <section class="orc-ramos">
   <div class="in">
-    <p>Feito para empresas que vendem sob encomenda e vivem de orçamento. Da mesma equipe que já entregou <a href="${L('projetos')}">${cases.length} sites de empresas B2B</a>.</p>
+    <p>Feito para empresas que vendem sob encomenda e vivem de orçamento. Faz parte da nossa <a href="${L('consultoria-ia')}">consultoria em IA</a>, da mesma equipe que já entregou <a href="${L('projetos')}">${cases.length} sites de empresas B2B</a>.</p>
     <div class="orc-faixa" aria-hidden="true"><div>${[...ORC.ramos, ...ORC.ramos].map(r => `<span>${r}</span>`).join('')}</div></div>
   </div>
 </section>
@@ -740,6 +759,184 @@ P.orcamentos = `<section class="orc-hero">
   </div>
 </section>`;
 
+// ---------- Consultoria em IA (página de serviço pensada para busca: "consultoria em IA", "consultoria em inteligência artificial") ----------
+// Fotos (Unsplash License, uso livre): consultoria-ia-workshop-diagnostico https://unsplash.com/photos/1552664730-d307ca884978
+//   consultoria-ia-painel-de-dados https://unsplash.com/photos/1551288049-bebda4e38f71
+//   consultoria-ia-infraestrutura-de-dados https://unsplash.com/photos/1573164713988-8665fc963095
+//   consultoria-ia-equipe-industria https://unsplash.com/photos/1581092160607-ee22621dd758
+// Sem números de resultado, clientes ou preços: só o que a Overtus faz e como faz.
+const iEscudo = SVG('<path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>');
+const iGrafico = SVG('<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>');
+const iEngrenagem = SVG('<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/>');
+const iAlvo = SVG('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>');
+const FOTO_IA = (nome, alt, attrs = '') => img(nome, alt, `width="800" height="534"${attrs ? ' ' + attrs : ''}`);
+const IA = {
+  casos: [
+    [iChat, 'Atendimento e pré-venda', 'Agente de IA no WhatsApp e no site que responde dúvidas técnicas, qualifica o contato e passa para o vendedor certo, a qualquer hora.'],
+    [iGrafico, 'Relatórios e análise de dados', 'Vendas, estoque e produção lidos em linguagem simples: a diretoria pergunta e a IA responde com base nos dados da empresa.'],
+    [iDoc, 'Documentos e contratos', 'Leitura de editais, pedidos, notas e contratos, com extração dos dados importantes e alerta do que precisa de atenção.'],
+    [iEngrenagem, 'Processos internos', 'Tarefas repetitivas do administrativo e do financeiro automatizadas: cadastro, conferência, cobrança e respostas padrão.'],
+    [SVG('<path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/>'), 'Base de conhecimento interna', 'Manuais, normas, fichas técnicas e procedimentos respondidos pela IA para a equipe, sem procurar em pastas e e-mails antigos.'],
+    [iAlvo, 'Marketing e prospecção', 'Pesquisa de empresas-alvo, mensagens de abordagem personalizadas e conteúdo técnico para o site e as redes, revisados pela equipe.'],
+  ],
+  metodo: [
+    ['Diagnóstico', 'Entrevistas com diretoria e equipes, mapa dos processos e dos dados que a empresa já tem.'],
+    ['Mapa de oportunidades', 'Lista priorizada de usos da IA, com o ganho esperado, o esforço e o risco de cada um.'],
+    ['Piloto', 'O primeiro caso de uso funcionando com dados reais, testado pela sua equipe antes de crescer.'],
+    ['Implantação', 'Integração com WhatsApp, ERP, CRM, planilhas e e-mail, com regras e limites definidos.'],
+    ['Treinamento e acompanhamento', 'Equipe treinada para usar a IA no dia a dia e revisões periódicas dos resultados.'],
+  ],
+  entregas: [
+    ['Plano de IA da empresa', 'Um documento objetivo para a diretoria decidir onde investir primeiro.', ['Processos e dados mapeados', 'Oportunidades com ganho, esforço e risco', 'Ordem de implantação recomendada']],
+    ['Solução funcionando', 'Não termina em apresentação: o primeiro uso da IA entra na rotina.', ['Agente ou automação no ar', 'Conectado aos sistemas que a empresa já usa', 'Regras de aprovação humana onde importa']],
+    ['Equipe preparada', 'A IA só dá resultado quando as pessoas sabem usar e confiam nela.', ['Treinamento prático por área', 'Política de uso de IA para a empresa', 'Acompanhamento e ajustes após a implantação']],
+  ],
+  compara: [
+    ['Ponto de partida', 'A ferramenta da moda', 'O processo que mais custa para a empresa'],
+    ['Dados da empresa', 'Copiados em ferramentas soltas', 'Conectados com controle de acesso'],
+    ['Resultado', 'Testes que não viram rotina', 'Uso medido e incorporado ao trabalho'],
+    ['Equipe', 'Cada um usa de um jeito', 'Treinada, com política de uso definida'],
+    ['Riscos', 'Informação sensível exposta', 'LGPD e confidencialidade previstas desde o início'],
+  ],
+  seguranca: ['Dados tratados de acordo com a LGPD, com acesso só de quem precisa', 'Informações confidenciais fora do treinamento de modelos públicos', 'Aprovação de uma pessoa antes de qualquer decisão sensível', 'Registro do que a IA respondeu e fez, para auditoria'],
+  perguntas: [
+    ['O que é uma consultoria em inteligência artificial?', 'É o trabalho de identificar onde a inteligência artificial traz ganho real para a empresa, planejar o uso com segurança e implantar as soluções nos processos, junto com a equipe. A consultoria em IA da Overtus vai do diagnóstico ao agente ou à automação funcionando.'],
+    ['Para que tipo de empresa é a consultoria em IA?', 'Para empresas B2B, como indústrias, distribuidoras, empresas de engenharia, agronegócio e serviços técnicos, que têm processos comerciais e administrativos repetitivos e querem usar a IA com resultado, não como experimento.'],
+    ['Quanto custa uma consultoria em IA?', 'O investimento depende do número de áreas envolvidas, das integrações e do tamanho da implantação. Depois da primeira conversa, apresentamos uma proposta com escopo, prazo e valor fechados.'],
+    ['Quanto tempo leva para ver resultado?', 'O primeiro piloto costuma ficar pronto em semanas, não em meses, porque começamos pelo caso de uso com maior ganho e menor esforço. O prazo exato é definido no diagnóstico.'],
+    ['Preciso ter equipe de TI ou trocar meus sistemas?', 'Não. A Overtus conduz a parte técnica e trabalha com o que a empresa já usa: WhatsApp, e-mail, planilhas, ERP e CRM. A sua equipe participa definindo regras e validando os resultados.'],
+    ['Os dados da minha empresa ficam seguros?', 'Sim. A segurança faz parte do projeto: controle de acesso, tratamento conforme a LGPD, informações confidenciais fora do treinamento de modelos públicos e aprovação humana nas decisões sensíveis.'],
+    ['A consultoria atende empresas de todo o Brasil?', 'Sim. As conversas, os treinamentos e o acompanhamento são feitos por vídeo, o que permite atender empresas em qualquer estado.'],
+  ],
+};
+const urlIA = `${site.dominio}/consultoria-ia/`;
+SCHEMA['consultoria-ia'] = [
+  { '@type': 'Service', '@id': urlIA + '#servico', name: 'Consultoria em inteligência artificial para empresas', alternateName: ['Consultoria em IA', 'Consultoria de IA para empresas'], serviceType: 'Consultoria em inteligência artificial', description: 'Diagnóstico, plano de IA, piloto, implantação e treinamento para empresas B2B usarem inteligência artificial em atendimento, vendas, documentos, dados e processos internos, com segurança e LGPD.', provider: { '@id': `${site.dominio}/#organizacao` }, areaServed: { '@type': 'Country', name: 'Brasil' }, availableLanguage: 'pt-BR', url: urlIA, image: `${site.dominio}/assets/img/consultoria-ia-workshop-diagnostico.webp`,
+    hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Etapas da consultoria em IA', itemListElement: IA.metodo.map(([t, d]) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: t, description: d } })) } },
+  { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Início', item: `${site.dominio}/` }, { '@type': 'ListItem', position: 2, name: 'Consultoria em IA', item: urlIA }] },
+  { '@type': 'FAQPage', mainEntity: IA.perguntas.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+];
+
+P['consultoria-ia'] = `<section class="hero ia-hero">
+  <div class="in">
+    <div>
+      ${trilha([['', 'Consultoria em IA']])}
+      <span class="rotulo">Consultoria em IA para empresas B2B</span>
+      <h1>Consultoria em <em>inteligência artificial</em> para empresas que querem resultado.</h1>
+      <p class="lead">A Overtus identifica onde a IA traz ganho real para a sua empresa, monta o plano e implanta as soluções no atendimento, nas vendas e nos processos internos, com segurança e junto com a sua equipe.</p>
+      <div class="acoes">${agendar('Agendar diagnóstico')}<a class="btn btn-sec" href="#como-funciona">Como funciona</a></div>
+      <ul class="ia-fatos"><li>${iAlvo}Do diagnóstico à implantação</li><li>${iEscudo}LGPD e dados protegidos</li><li>${iGlobo}Atendimento em todo o Brasil</li></ul>
+    </div>
+    <div class="folhas" aria-label="Fotos de workshop de diagnóstico, painel de dados, infraestrutura e equipe industrial">
+      <div class="fo-1">${FOTO_IA('consultoria-ia-workshop-diagnostico', 'Workshop de diagnóstico de consultoria em IA com equipe e post-its no quadro', 'loading="eager" fetchpriority="high"')}</div>
+      <div class="fo-2">${FOTO_IA('consultoria-ia-painel-de-dados', 'Painel de dados e indicadores em um notebook, usado na análise com inteligência artificial', 'loading="eager"')}</div>
+      <div class="fo-3">${FOTO_IA('consultoria-ia-infraestrutura-de-dados', 'Profissionais em sala de servidores avaliando a infraestrutura de dados para IA', 'loading="eager"')}</div>
+      <div class="fo-4">${FOTO_IA('consultoria-ia-equipe-industria', 'Equipe técnica em uma indústria, onde a IA apoia processos e atendimento', 'loading="eager"')}</div>
+      <div class="fo-semente"></div>
+    </div>
+  </div>
+</section>
+
+<section class="secao secao-topo">
+  <div class="in ia-oque">
+    <div>
+      <span class="rotulo">O que é</span>
+      <h2>O que faz uma consultoria em IA?</h2>
+      <p>Uma consultoria em inteligência artificial ajuda a empresa a sair da curiosidade e chegar ao uso com resultado. Em vez de começar pela ferramenta, começamos pelo processo: onde a equipe perde tempo, onde o cliente espera resposta e onde a informação já existe, mas ninguém consegue usar.</p>
+      <p>A partir disso, a Overtus desenha o plano de IA da empresa, escolhe as tecnologias certas para cada caso e implanta as soluções conectadas aos sistemas que você já usa. A equipe é treinada e acompanhada até a IA fazer parte da rotina.</p>
+    </div>
+    <aside class="painel ia-resumo">
+      <h3>Na consultoria em IA da Overtus</h3>
+      <ul class="check">${['Diagnóstico dos processos e dos dados da empresa', 'Plano de IA com prioridades, ganhos e riscos', 'Piloto funcionando com dados reais', 'Implantação integrada a WhatsApp, ERP e CRM', 'Treinamento da equipe e política de uso de IA'].map(x => `<li>${check}${x}</li>`).join('')}</ul>
+    </aside>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="in">
+    <div class="sec-cab"><div><span class="rotulo">Aplicações</span><h2>Onde a inteligência artificial traz retorno para empresas B2B.</h2></div><p class="lead">Os usos que mais aparecem nos diagnósticos de indústrias, distribuidoras e empresas de serviços técnicos.</p></div>
+    <div class="ia-casos">
+      <a class="ia-caso ia-caso-destaque" href="${L('orcamentos')}">
+        <span class="ico-caixa">${iDoc}</span>
+        <h3>Orçamentos e propostas</h3>
+        <p>Um agente de IA recebe o pedido, calcula com a sua tabela e as suas regras, envia a proposta no padrão da empresa e cobra o retorno do comprador.</p>
+        <span class="link">Ver orçamentos automatizados ${seta}</span>
+      </a>
+      ${IA.casos.map(([ic, t, d]) => `<article class="ia-caso"><span class="ico-caixa">${ic}</span><h3>${t}</h3><p>${d}</p></article>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="orc-prazo" id="como-funciona">
+  <div class="in">
+    <div class="orc-prazo-painel">
+      <span class="rotulo">Como funciona</span>
+      <h2 class="orc-prazo-grande">Consultoria em IA em cinco etapas: <span>do diagnóstico à IA na rotina.</span></h2>
+      <ol class="orc-prazo-linha ia-linha">${IA.metodo.map(([t, d], i) => `<li><b>${num(i)}</b><h3>${t}</h3><span>${d}</span></li>`).join('')}</ol>
+    </div>
+  </div>
+</section>
+
+<section class="secao orc-funcoes">
+  <div class="in">
+    <div class="sec-cab"><div><span class="rotulo">Entregas</span><h2>O que a sua empresa recebe.</h2></div><p class="lead">Plano, solução funcionando e equipe preparada: a consultoria termina com a IA em uso, não com um relatório na gaveta.</p></div>
+    <ol class="orc-func">${IA.entregas.map(([t, d, itens], i) => `<li><span class="orc-num">${num(i)}</span><div><h3>${t}</h3><p>${d}</p></div><ul class="check">${itens.map(x => `<li>${check}${x}</li>`).join('')}</ul></li>`).join('')}</ol>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="in">
+    <div class="sec-centro"><span class="rotulo">Por que uma consultoria</span><h2>Usar IA por conta própria ou com uma consultoria em IA?</h2><p class="lead">Muitas iniciativas de IA nas empresas param no teste. A diferença está em começar pelo problema certo e cuidar dos dados.</p></div>
+    <div class="orc-tabela" role="table" aria-label="Comparação entre usar IA por conta própria e com consultoria">
+      <div class="orc-tl orc-tl-cab" role="row"><span role="columnheader"></span><span role="columnheader">Por conta própria</span><span role="columnheader">Com a consultoria em IA</span></div>
+      ${IA.compara.map(([a, b, c]) => `<div class="orc-tl" role="row"><b role="rowheader">${a}</b><span role="cell">${b}</span><span role="cell">${check}${c}</span></div>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="secao secao-topo">
+  <div class="in ia-seguranca">
+    <div class="ia-seguranca-foto">${FOTO_IA('consultoria-ia-infraestrutura-de-dados', 'Profissionais em sala de servidores avaliando a segurança dos dados da empresa')}</div>
+    <div>
+      <span class="rotulo">Segurança e LGPD</span>
+      <h2>Inteligência artificial com os dados da empresa protegidos.</h2>
+      <p class="lead">Cada projeto define quem acessa o quê, quais informações podem ser usadas e onde a decisão continua sendo de uma pessoa.</p>
+      <ul class="check">${IA.seguranca.map(x => `<li>${check}${x}</li>`).join('')}</ul>
+    </div>
+  </div>
+</section>
+
+<section class="secao" style="padding-top:0">
+  <div class="in">
+    <div class="painel ia-setores">
+      <div><span class="rotulo">Setores</span><h2>Consultoria em IA para o seu setor.</h2><p>Conhecemos a forma como cada setor vende e atende. Veja como trabalhamos em cada um:</p></div>
+      <div class="chips">${setores.map(s => `<a class="chip" href="${L('setores/' + s.slug)}">${s.nome}</a>`).join('')}</div>
+    </div>
+  </div>
+</section>
+
+<section class="secao secao-topo">
+  <div class="in orc-faq-in">
+    <div><span class="rotulo">Perguntas frequentes</span><h2>Dúvidas sobre consultoria em IA.</h2><p class="lead">Outra dúvida? Fale pelo <a href="${site.whatsappLink}" target="_blank" rel="noopener">WhatsApp</a> ou escreva para <a href="mailto:${site.email}">${site.email}</a>.</p></div>
+    <div class="faq">${IA.perguntas.map(([q, r]) => `<details><summary>${q}</summary><p>${r}</p></details>`).join('')}</div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="in">
+    <div class="painel painel-azul">
+      <div><span class="rotulo">Diagnóstico</span><h2>Onde a inteligência artificial pode ajudar a sua empresa?</h2><p>Em 30 minutos entendemos como a sua empresa trabalha hoje e apontamos os primeiros usos da IA com mais retorno.</p>
+      <div class="acoes">${agendar('Agendar diagnóstico')}<a class="btn btn-sec" href="${L('servicos/sistemas')}">Ver sistemas e automação</a></div><p class="nota">Conversa sem compromisso, por vídeo.</p></div>
+      <div class="cta-lado cartao aba-cartao">
+        <h4>Agendar conversa</h4>
+        <div class="campo"><span>Agenda</span><div>${iCal}cal.com/overtus · 30 minutos, por vídeo</div></div>
+        <div class="campo"><span>E-mail</span><div>${iMail}<a href="mailto:${site.email}">${site.email}</a></div></div>
+        <div class="campo"><span>WhatsApp</span><div>${iWhats}<a href="${site.whatsappLink}" target="_blank" rel="noopener">${site.whatsapp}</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>`;
+
 // ---------- Escreve as páginas na raiz de public/ ----------
 for (const d of fs.readdirSync(pub, { withFileTypes: true })) {
   if (d.isDirectory() && d.name !== 'assets') fs.rmSync(path.join(pub, d.name), { recursive: true, force: true });
@@ -752,4 +949,14 @@ for (const [slug, corpo] of Object.entries(P)) {
 // Endereço antigo da vitrine (/cases/, 2026-11-05) leva para /projetos/.
 fs.mkdirSync(path.join(pub, 'cases'), { recursive: true });
 fs.writeFileSync(path.join(pub, 'cases', 'index.html'), '<!doctype html><meta charset="utf-8"><title>Projetos · Overtus</title><meta name="robots" content="noindex"><link rel="canonical" href="/projetos/"><meta http-equiv="refresh" content="0; url=/projetos/"><a href="/projetos/">Projetos</a>\n');
+// Sitemap e robots.txt de www.overtus.com.br (o worker serve esta pasta na raiz do domínio).
+const hoje = new Date().toISOString().slice(0, 10);
+const prioridade = slug => slug === 'index' ? '1.0' : ['consultoria-ia', 'orcamentos', 'servicos'].includes(slug) ? '0.9' : '0.7';
+const imagensSitemap = { 'consultoria-ia': [['consultoria-ia-workshop-diagnostico', 'Workshop de diagnóstico de consultoria em IA'], ['consultoria-ia-painel-de-dados', 'Painel de dados analisado com inteligência artificial'], ['consultoria-ia-infraestrutura-de-dados', 'Infraestrutura de dados para IA'], ['consultoria-ia-equipe-industria', 'Equipe técnica em indústria usando IA']] };
+fs.writeFileSync(path.join(pub, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${Object.keys(P).map(slug => `  <url><loc>${site.dominio}${L(slug)}</loc><lastmod>${hoje}</lastmod><priority>${prioridade(slug)}</priority>${(imagensSitemap[slug] || []).map(([n, t]) => `<image:image><image:loc>${site.dominio}/assets/img/${n}.webp</image:loc><image:title>${esc(t)}</image:title></image:image>`).join('')}</url>`).join('\n')}
+</urlset>
+`);
+fs.writeFileSync(path.join(pub, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.dominio}/sitemap.xml\n`);
 console.log(`agencia: ${Object.keys(P).length} páginas`);
