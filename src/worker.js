@@ -99,6 +99,9 @@ export default {
     if (DOMINIOS[semWww] && (host === semWww || url.protocol === 'http:')) return Response.redirect(`https://www.${semWww}${url.pathname}${url.search}`, 301);
 
     const cliente = DOMINIOS[semWww] || (overtus && sub !== 'site-modelo' ? sub : null);
+    // Site vendido: a prévia <cliente>.overtus.com.br manda para o domínio próprio (o Google indexa só o endereço oficial).
+    const proprio = overtus && Object.keys(DOMINIOS).find(d => DOMINIOS[d] === sub);
+    if (proprio) return Response.redirect(`https://www.${proprio}${url.pathname}${url.search}`, 301);
 
     if (!cliente) {
       if (url.pathname.startsWith(PREFIX) || url.pathname.startsWith('/_hub/')) return new Response('Not found', { status: 404 });
