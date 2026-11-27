@@ -94,8 +94,9 @@ export default {
     if (host === 'www.overtus.com.br') return servir(env, 'agencia', url, request);
 
     // Domínio próprio do cliente (src/dominios.js): www vai para o endereço sem www.
+    // Também força HTTPS (cadeado no navegador): http:// vai para https:// sem www.
     const semWww = host.replace(/^www\./, '');
-    if (DOMINIOS[semWww] && host !== semWww) return Response.redirect(`https://${semWww}${url.pathname}${url.search}`, 301);
+    if (DOMINIOS[semWww] && (host !== semWww || url.protocol === 'http:')) return Response.redirect(`https://${semWww}${url.pathname}${url.search}`, 301);
 
     const cliente = DOMINIOS[host] || (overtus && sub !== 'site-modelo' ? sub : null);
 
