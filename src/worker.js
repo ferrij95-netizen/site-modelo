@@ -93,12 +93,12 @@ export default {
     if (host === 'overtus.com.br') return Response.redirect(`https://www.overtus.com.br${url.pathname}${url.search}`, 301);
     if (host === 'www.overtus.com.br') return servir(env, 'agencia', url, request);
 
-    // Domínio próprio do cliente (src/dominios.js): www vai para o endereço sem www.
-    // Também força HTTPS (cadeado no navegador): http:// vai para https:// sem www.
+    // Domínio próprio do cliente (src/dominios.js): o endereço oficial é https://www.<dominio> (pedido do Joao).
+    // Sem www ou em http:// redireciona para ele (cadeado no navegador).
     const semWww = host.replace(/^www\./, '');
-    if (DOMINIOS[semWww] && (host !== semWww || url.protocol === 'http:')) return Response.redirect(`https://${semWww}${url.pathname}${url.search}`, 301);
+    if (DOMINIOS[semWww] && (host === semWww || url.protocol === 'http:')) return Response.redirect(`https://www.${semWww}${url.pathname}${url.search}`, 301);
 
-    const cliente = DOMINIOS[host] || (overtus && sub !== 'site-modelo' ? sub : null);
+    const cliente = DOMINIOS[semWww] || (overtus && sub !== 'site-modelo' ? sub : null);
 
     if (!cliente) {
       if (url.pathname.startsWith(PREFIX) || url.pathname.startsWith('/_hub/')) return new Response('Not found', { status: 404 });

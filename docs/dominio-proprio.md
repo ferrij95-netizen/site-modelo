@@ -19,7 +19,7 @@ Salvar o token no ambiente de nuvem do projeto como segredo de rede para `api.cl
 1. `node scripts/dominio-proprio.mjs <dominio>`: cria a zona, liga HTTPS sempre e mostra os 2 nameservers.
 2. O Joao troca os nameservers no registro.br (Domínio > DNS > Alterar servidores DNS > colar os 2 da Cloudflare).
    Se o registro.br perguntar de DNSSEC, deixar sem DNSSEC.
-3. Linha `'<dominio>': '<cliente>'` em `src/dominios.js` (o worker passa a servir `clientes/<cliente>` nesse endereço; www redireciona para sem www).
+3. Linha `'<dominio>': '<cliente>'` em `src/dominios.js` (o worker passa a servir `clientes/<cliente>` nesse endereço; sem www redireciona para o www).
 4. Quando a zona estiver `active` (minutos a algumas horas após a troca), acrescentar em `wrangler.jsonc`:
    `{ "pattern": "<dominio>", "custom_domain": true }` e `{ "pattern": "www.<dominio>", "custom_domain": true }`.
    Não acrescentar antes: custom domain numa zona que não está na conta quebra o deploy de todos os sites.
