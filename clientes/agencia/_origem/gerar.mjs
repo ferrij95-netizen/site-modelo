@@ -1,10 +1,12 @@
 // Gera clientes/agencia/public/ (site da própria Overtus, uma versão só, servida na raiz de agencia.overtus.com.br).
 // Rodar depois de mudar qualquer texto: node clientes/agencia/_origem/gerar.mjs
 //
-// Fotos de banco (public/assets/img/hero-pessoa, sobre-*, proc-*, set-*): Unsplash, Unsplash License (uso livre, sem atribuição obrigatória).
-//   hero-pessoa  https://unsplash.com/photos/1507003211169-0a1dd7228f2d
+// Fotos de banco (public/assets/img/hero-*, sobre-*, proc-*, set-*): Unsplash, Unsplash License (uso livre, sem atribuição obrigatória).
+//   hero-obra-montagem https://unsplash.com/photos/1504307651254-35680f356dfd
+//   hero-engenheira    https://unsplash.com/photos/1581091226825-a6a2a5aee158
+//   hero-campo         https://unsplash.com/photos/1500382017468-9049fed747ef
+//   hero-reuniao-mesa  https://unsplash.com/photos/1517048676732-d65bc937f952
 //   sobre-equipe https://unsplash.com/photos/1521737711867-e3b97375f902
-//   sobre-reuniao https://unsplash.com/photos/1551836022-d5d88e9218df
 //   sobre-mesa   https://unsplash.com/photos/1556761175-b413da4baf72
 //   proc-reuniao https://unsplash.com/photos/1600880292203-757bb62b4baf
 //   proc-sala    https://unsplash.com/photos/1542744173-8e7e53415bb0
@@ -235,18 +237,12 @@ P.index = `<section class="hero">
       <p class="lead">${site.linha2}</p>
       <div class="acoes">${agendar()}<a class="btn btn-sec" href="${L('projetos')}">Ver projetos</a></div>
     </div>
-    <div class="mosaico" aria-label="Fotos de empresas em operação e prints de sites desenvolvidos pela Overtus">
-      <div class="m-a">${img('hero-pessoa', 'Profissional de terno em escritório', 'loading="eager"')}</div>
-      <div class="m-b">${img('proc-fabrica', 'Linha de produção de uma fábrica', 'loading="eager" fetchpriority="high"')}</div>
-      <div class="m-c">${img('sobre-reuniao', 'Reunião de trabalho', 'loading="eager"')}</div>
-      <div class="m-d forma forma-q4"></div>
-      <div class="m-e">${tela('p-texian', 'Site de engenharia e montagem industrial', '', 'loading="eager"')}</div>
-      <div class="m-f">${img('set-escritorio', 'Escritório', 'loading="eager"')}</div>
-      <div class="m-g forma forma-mist forma-c"></div>
-      <div class="m-h forma forma-q1"></div>
-      <div class="m-i">${img('proc-solda', 'Soldador em uma indústria', 'loading="eager"')}</div>
-      <div class="m-j">${tela('p-engenho-am', 'Site de beneficiamento de arroz', '', 'loading="eager"')}</div>
-      <div class="m-k">${img('set-distribuicao', 'Galpão de distribuição', 'loading="eager"')}</div>
+    <div class="folhas" aria-label="Fotos de obra, engenharia, reunião e campo">
+      <div class="fo-1">${img('hero-obra-montagem', 'Montadores em uma obra industrial vista de cima', 'loading="eager" fetchpriority="high"')}</div>
+      <div class="fo-2">${img('hero-engenheira', 'Engenheira trabalhando em um equipamento', 'loading="eager"')}</div>
+      <div class="fo-3">${img('hero-campo', 'Campo de trigo ao pôr do sol', 'loading="eager"')}</div>
+      <div class="fo-4">${img('hero-reuniao-mesa', 'Mesa de reunião com anotações', 'loading="eager"')}</div>
+      <div class="fo-semente"></div>
     </div>
   </div>
 </section>
