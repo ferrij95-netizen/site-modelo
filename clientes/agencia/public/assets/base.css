@@ -627,3 +627,11 @@ em { font-style: normal; color: var(--navy); font-weight: 600; }
   .orc-conecta { padding: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .orc-faixa div { animation: none; } }
+
+/* Botão flutuante do WhatsApp (todas as páginas) */
+.campos-2 > .campo:nth-child(3):last-child { grid-column: 1 / -1; }
+.whats-flut { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 10px 26px -8px rgba(17, 27, 51, .45), 0 2px 6px rgba(17, 27, 51, .18); transition: transform .2s ease, box-shadow .2s ease; }
+.whats-flut:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 14px 30px -8px rgba(17, 27, 51, .5), 0 2px 6px rgba(17, 27, 51, .2); }
+.whats-flut:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+@media (max-width: 640px) { .whats-flut { right: 14px; bottom: 14px; width: 54px; height: 54px; } }
+@media print { .whats-flut { display: none; } }
