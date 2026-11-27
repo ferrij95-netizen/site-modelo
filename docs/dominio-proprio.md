@@ -28,3 +28,12 @@ Salvar o token no ambiente de nuvem do projeto como segredo de rede para `api.cl
 6. PR mergeado na main e conferir `https://<dominio>` no ar. O endereço `<cliente>.overtus.com.br` continua funcionando.
 
 Domínios ligados: rremotorsport.com.br (RRE Motorsport, 2026-11).
+
+## SEO ao vender (feito na RRE)
+
+- Tirar `noindex` do HTML, `<link rel="canonical">` no www, título e descrição com "<serviço> em <cidade>".
+- Fotos fora do HTML (nada de base64): `public/img/<palavras-chave>.webp`, alt descritivo com serviço + bairro/cidade, width/height, lazy.
+- JSON-LD do tipo de negócio (ex.: AutoRepair) com endereço, telefone, horário, Instagram e serviços.
+- `public/robots.txt` + `public/sitemap.xml` com as imagens.
+- A prévia `<cliente>.overtus.com.br` redireciona (301) para o domínio próprio (src/worker.js), para não duplicar no Google.
+- Depois: cadastrar o domínio no Google Search Console e ligar o site no perfil do Google (Google Meu Negócio) do cliente.
