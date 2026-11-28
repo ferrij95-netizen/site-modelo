@@ -145,14 +145,11 @@ export const principios = [
 // [pasta em clientes/, setor, ramo, etiquetas fixas (opcional), imagem (opcional)]. Páginas, idiomas e versões
 // são contados pelo gerar.mjs a partir de clientes/<pasta>/public.
 export const projetos = [
-  ['texian', 'industria', 'Engenharia e montagem industrial', ['Multipágina', 'Vídeo na abertura']],
   ['instor', 'industria', 'Robótica móvel'],
   ['globalmicrofusao', 'industria', 'Microfusão de aço'],
-  ['abplast', 'industria', 'Embalagens para cosméticos'],
   ['mazzer', 'industria', 'Equipamentos para papel e açúcar'],
   ['extrusaobrasil', 'industria', 'Extrusoras para plástico'],
   ['thermotech', 'industria', 'Tratamento térmico'],
-  ['gramola', 'industria', 'Fundição de peças automotivas'],
   ['northeastprecision', 'industria', 'Usinagem CNC nos Estados Unidos'],
   ['alumigroup', 'industria', 'Metais não ferrosos'],
   ['turbimoendas', 'industria', 'Usinagem pesada'],
@@ -172,10 +169,8 @@ export const projetos = [
   ['reina', 'agro', 'Produção de sementes'],
   ['emmig', 'construcao', 'Estruturas metálicas'],
   ['faximobiliaria', 'construcao', 'Imobiliária'],
-  ['alexandreaugusto', 'construcao', 'Imobiliária de bairro'],
   ['toniolo', 'construcao', 'Rejeitos, barragens e dragagem'],
   ['dht', 'saude', 'Indústria médica', ['Catálogo', 'Duas versões'], 'v-dht-a'],
-  ['unitec', 'saude', 'Fabricante hospitalar'],
   ['grupokss', 'saude', 'Equipamentos para centro cirúrgico'],
   ['medicor', 'saude', 'Descartáveis hospitalares'],
   ['equipamentosvrc', 'saude', 'Equipamentos para prótese dentária'],
